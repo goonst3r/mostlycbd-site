@@ -142,6 +142,14 @@
             text-align: center;
         }
 
+        .main-logo {
+            max-width: 300px; /* Adjust this number to make it bigger/smaller */
+            width: 100%;      /* Makes it responsive on mobile */
+            height: auto;
+            margin-bottom: 1rem;
+            display: block;   /* Fixes weird spacing issues */
+        }
+
         /* --- Mobile Tweaks --- */
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
@@ -154,7 +162,7 @@
 
     <div class="container">
         <header>
-            <h1>mostlyCBD.</h1>
+            <img src="logo_1.png" alt="mostlyCBD logo" class="main-logo">
             <p class="subtitle">> Simple. Safe. Natural. Rewriting the script & helping to find your personal balance.</p>
         </header>
 
