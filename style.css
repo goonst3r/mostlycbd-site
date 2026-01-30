@@ -1,0 +1,263 @@
+:root {
+    --bg-color: #DAD7CD;       /* Bone */
+    --text-color: #2D2D2D;     /* Off-Black */
+    --accent-color: #344E41;   /* Deep Green */
+    --card-bg: #E8E6DF;        /* Slightly lighter bone for cards */
+    --hover-color: #A3B18A;    /* Sage Green */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Space Mono', monospace;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+/* --- Layout --- */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+header {
+    margin-bottom: 4rem;
+    border-bottom: 2px solid var(--text-color);
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+}
+
+/* --- The Grid --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+ }
+
+/* --- Cards --- */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--text-color);
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.2s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 4px 4px 0px var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.card.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    border-style: dashed;
+}
+
+.card.disabled:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--text-color);
+}
+
+.card-header {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.card-desc {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.status-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.7rem;
+    border: 1px solid var(--text-color);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.status-badge.info {
+    background-color: #588157; /* A distinct Sage Green */
+    color: #fff;
+}
+
+/* --- Footer --- */
+footer {
+    margin-top: 4rem;
+    font-size: 0.75rem;
+    opacity: 0.6;
+    text-align: center;
+}
+
+.main-logo {
+    max-width: 300px; /* Adjust this number to make it bigger/smaller */
+    width: 100%;      /* Makes it responsive on mobile */
+    height: auto;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;   /* Fixes weird spacing issues */
+}
+
+/* --- Mobile Tweaks --- */
+@media (max-width: 600px) {
+    h1 { font-size: 2rem; }
+    body { padding: 1.5rem; }
+    .grid { grid-template-columns: 1fr; }
+}
+
+/* --- GUIDE / ARTICLE PAGE STYLES --- */
+
+/* 1. Layout Container (Keeps text readable) */
+.content-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: inherit;
+    color: #333;
+    line-height: 1.7;
+}
+
+/* 2. Brand Headers */
+.guide-title {
+    font-size: 2.5em;
+    color: #344E41; /* Deep Green */
+    margin-bottom: 10px;
+}
+
+.guide-subtitle {
+    font-size: 1.2em;
+    color: #588157; /* Sage Green */
+    font-weight: bold;
+    margin-bottom: 50px;
+    border-left: 4px solid #344E41;
+    padding-left: 15px;
+}
+
+h2 {
+    color: #344E41;
+    border-bottom: 2px solid #DAD7CD; /* Light Sage Border */
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    margin-top: 60px;
+}
+
+h3 {
+    color: #3A5A40;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+/* 3. The "Disclaimer" Box */
+.disclaimer-box {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+/* 4. The "Concept" Box (Yellow/Cream Highlight) */
+.concept-box {
+    background-color: #DAD7CD; /* Light Sage Background */
+    color: #344E41;
+    padding: 25px;
+    border-radius: 8px;
+    margin: 30px 0;
+    border-left: 5px solid #344E41;
+}
+
+.concept-title {
+    display: block;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+/* 5. Terpene Cards Grid */
+.terpene-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.terpene-card {
+    background: #fff;
+    border: 1px solid #DAD7CD;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(52, 78, 65, 0.05); /* Subtle Green Shadow */
+}
+
+.terpene-name {
+    color: #344E41;
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+}
+
+/* 6. Navigation Bar Logo (Specific to internal pages) */
+.nav-header {
+    text-align: center;
+    padding: 40px 0 20px 0;
+}
+
+.nav-logo {
+    max-width: 200px; 
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
