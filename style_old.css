@@ -34,7 +34,6 @@ body {
     justify-content: center;
 }
 
-/* --- Index/Hub Header --- */
 header {
     margin-bottom: 4rem;
     border-bottom: 2px solid var(--text-color);
@@ -126,7 +125,7 @@ h1 {
 }
 
 .status-badge.info {
-    background-color: var(--accent-color);
+    background-color: #588157; /* A distinct Sage Green */
     color: #fff;
 }
 
@@ -139,13 +138,13 @@ footer {
 }
 
 .main-logo {
-    max-width: 300px;
-    width: 100%;
+    max-width: 300px; /* Adjust this number to make it bigger/smaller */
+    width: 100%;      /* Makes it responsive on mobile */
     height: auto;
     margin-bottom: 1rem;
     margin-left: auto;
     margin-right: auto;
-    display: block;
+    display: block;   /* Fixes weird spacing issues */
 }
 
 /* --- Mobile Tweaks --- */
@@ -155,72 +154,68 @@ footer {
     .grid { grid-template-columns: 1fr; }
 }
 
-/* =========================================
-   GUIDE PAGE STYLES (Synced to Index)
-   ========================================= */
+/* --- GUIDE / ARTICLE PAGE STYLES --- */
 
-/* 1. Layout Container */
+/* 1. Layout Container (Keeps text readable) */
 .content-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 40px 20px;
-    padding-top: 200px; /* Space for Sticky Header */
-    font-family: 'Space Mono', monospace; /* Ensures Font Consistency */
-    color: var(--text-color);
+    padding-top: 200px;
+    font-family: inherit;
+    color: #333;
     line-height: 1.7;
 }
 
 /* 2. Brand Headers */
 .guide-title {
     font-size: 2.5em;
-    color: var(--accent-color);
+    color: #344E41; /* Deep Green */
     margin-bottom: 10px;
 }
 
 .guide-subtitle {
     font-size: 1.2em;
-    color: var(--accent-color);
+    color: #588157; /* Sage Green */
     font-weight: bold;
     margin-bottom: 50px;
-    border-left: 4px solid var(--accent-color);
+    border-left: 4px solid #344E41;
     padding-left: 15px;
-    opacity: 0.8;
 }
 
 h2 {
-    color: var(--accent-color);
-    border-bottom: 2px solid var(--text-color);
+    color: #344E41;
+    border-bottom: 2px solid #DAD7CD; /* Light Sage Border */
     padding-bottom: 15px;
     margin-bottom: 25px;
     margin-top: 60px;
 }
 
 h3 {
-    color: var(--accent-color);
+    color: #3A5A40;
     margin-top: 30px;
     font-weight: bold;
 }
 
 /* 3. The "Disclaimer" Box */
 .disclaimer-box {
-    background-color: var(--card-bg); /* Use Card BG */
-    border: 1px solid var(--text-color);
-    border-radius: 4px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     padding: 20px;
     font-size: 0.9em;
-    color: var(--text-color);
+    color: #666;
     margin-bottom: 50px;
 }
 
-/* 4. The "Concept" Box */
+/* 4. The "Concept" Box (Yellow/Cream Highlight) */
 .concept-box {
-    background-color: var(--card-bg);
-    color: var(--text-color);
+    background-color: #DAD7CD; /* Light Sage Background */
+    color: #344E41;
     padding: 25px;
-    border: 1px solid var(--text-color);
-    border-radius: 4px;
+    border-radius: 8px;
     margin: 30px 0;
-    border-left: 5px solid var(--accent-color);
+    border-left: 5px solid #344E41;
 }
 
 .concept-title {
@@ -229,7 +224,7 @@ h3 {
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 10px;
-    color: var(--accent-color);
+    opacity: 0.8;
 }
 
 /* 5. Terpene Cards Grid */
@@ -241,45 +236,60 @@ h3 {
 }
 
 .terpene-card {
-    background: var(--card-bg);
-    border: 1px solid var(--text-color);
+    background: #fff;
+    border: 1px solid #DAD7CD;
     padding: 20px;
-    border-radius: 4px;
-    box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(52, 78, 65, 0.05); /* Subtle Green Shadow */
 }
 
 .terpene-name {
-    color: var(--accent-color);
+    color: #344E41;
     font-weight: bold;
     font-size: 1.2em;
     display: block;
 }
 
-/* 6. Sticky Header (Guide Only) */
+/* 6. Navigation Bar Logo (Specific to internal pages) */
+.nav-header {
+    text-align: center;
+    padding: 40px 0 20px 0;
+}
+
+.nav-logo {
+    max-width: 200px; 
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* --- STICKY HEADER & NAV --- */
+
 .sticky-header {
-    position: fixed;
+    position: fixed;      /* Pins it to the screen */
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--bg-color); /* MATCHES BODY BG */
-    border-bottom: 2px solid var(--text-color);
-    z-index: 1000;
+    background-color: #FDFDD0; /* Matches your Cream background */
+    border-bottom: 2px solid #DAD7CD; /* The "Line" you wanted */
+    z-index: 1000;        /* Ensures it sits on top of scrolling text */
     text-align: center;
     padding-top: 20px;
     padding-bottom: 15px;
 }
 
 .nav-logo {
-    max-width: 180px;
+    max-width: 180px;     /* Slightly smaller for the header */
     height: auto;
     display: block;
-    margin: 0 auto 15px auto;
+    margin: 0 auto 15px auto; /* Centered, with gap below */
 }
 
+/* The Navigation Links Container */
 .main-nav {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 30px;            /* Space between links */
     font-size: 1.1em;
     font-weight: bold;
     text-transform: uppercase;
@@ -288,17 +298,25 @@ h3 {
 
 .main-nav a {
     text-decoration: none;
-    color: var(--text-color);
-    opacity: 0.6;
+    color: #344E41;       /* Deep Green */
+    opacity: 0.8;
     transition: opacity 0.2s;
 }
 
 .main-nav a:hover, 
 .main-nav a.active {
     opacity: 1;
-    border-bottom: 2px solid var(--accent-color);
+    border-bottom: 2px solid #344E41; /* Underline effect on hover */
 }
 
+/* --- CONTENT ADJUSTMENT --- */
+/* Since the header is fixed, we need to push the content down 
+   so it doesn't get hidden behind the logo */
+.content-container {
+    padding-top: 180px; /* Adjust this number if header covers text */
+}
+
+/* --- FOOTER LINKS --- */
 .footer-links {
     margin-top: 20px;
     display: flex;
@@ -307,7 +325,7 @@ h3 {
     font-size: 0.9em;
 }
 .footer-links a {
-    color: var(--accent-color);
+    color: #588157;
     text-decoration: none;
     font-weight: bold;
 }

@@ -5,15 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Guide | mostlyCBD</title>
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css"> 
     <link rel="icon" type="image/png" href="Favicon.png">
-</head>
+    
+    </head>
 <body>
 
-    <header class="container">
+    <header class="sticky-header">
         <a href="index.html">
-            <img src="logo_1.png" alt="mostlyCBD" class="main-logo">
+            <img src="logo_1.png" alt="mostlyCBD" class="nav-logo">
         </a>
+        
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="https://shop.mostlycbd.com">Shop</a>
+            <a href="guide.html" class="active">Guide</a>
+        </nav>
     </header>
 
     <div class="content-container">
@@ -107,8 +118,18 @@
 
     </div>
 
-    <footer style="text-align: center; padding: 40px; font-size: 0.9em; color: #666;">
-        <p>&copy; 2026 mostlyCBD. Focused. Functional. Fair.</p>
+    <footer style="text-align: center; padding: 40px; border-top: 1px solid var(--text-color); margin-top: 50px;">
+        <div class="footer-links">
+            <a href="https://twitter.com/scrapthescript">X (Twitter)</a>
+            <span style="color: var(--text-color);">|</span>
+            <a href="https://www.instagram.com/mostly.cbd/">Instagram</a>
+            <span style="color: var(--text-color);">|</span>
+            <a href="https://www.tiktok.com/@mostlycbd/">TikTok</a>
+            <span style="color: var(--text-color);">|</span>
+            <a href="#" style="color: var(--text-color); cursor: default;">The App (Compiling...)</a>
+        </div>
+
+        <p style="color: var(--text-color);">&copy; 2026 mostlyCBD. Focused. Functional. Fair.</p>
     </footer>
 
 </body>
