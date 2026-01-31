@@ -164,7 +164,7 @@ footer {
     max-width: 800px;
     margin: 0 auto;
     padding: 40px 20px;
-    padding-top: 200px; /* Space for Sticky Header */
+    padding-top: 150px; /* Space for Sticky Header */
     font-family: 'Space Mono', monospace; /* Ensures Font Consistency */
     color: var(--text-color);
     line-height: 1.7;
@@ -207,7 +207,7 @@ h3 {
     border: 1px solid var(--text-color);
     border-radius: 4px;
     padding: 20px;
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: var(--text-color);
     margin-bottom: 50px;
 }
@@ -261,12 +261,28 @@ h3 {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--bg-color); /* MATCHES BODY BG */
-    border-bottom: 2px solid var(--text-color);
+    background-color: var(--bg-color);
+    border-bottom: none;  /* CRITICAL: Removes the old full-screen line */
     z-index: 1000;
     text-align: center;
     padding-top: 20px;
     padding-bottom: 15px;
+}
+
+/* The New "Partial" Line */
+.sticky-header::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Centers the line */
+    
+    /* WIDTH CONTROLS */
+    width: 90%;           /* Mobile: Leaves a 5% gap on edges */
+    max-width: 800px;     /* Desktop: STOPS exactly at your text width */
+    
+    border-bottom: 2px solid var(--text-color);
 }
 
 .nav-logo {
