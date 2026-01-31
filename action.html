@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Action | mostlyCBD</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="icon" type="image/png" href="Favicon.png">
+
+    <style>
+        /* --- ACTION PAGE SPECIFIC STYLES --- */
+        .action-box {
+            background: #fff;
+            border: 2px solid var(--accent-color);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            box-shadow: 4px 4px 0px rgba(52, 78, 65, 0.1);
+        }
+
+        .letter-text {
+            background: #f4f4f4;
+            padding: 20px;
+            border: 1px solid #ddd;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85em;
+            white-space: pre-wrap; 
+            margin-bottom: 20px;
+            color: #555;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        /* Buttons */
+        .btn {
+            background-color: var(--accent-color);
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            font-family: 'Space Mono', monospace;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-block;
+            text-decoration: none;
+            width: 100%; /* Mobile friendly */
+            text-align: center;
+        }
+        .btn:hover { background-color: var(--hover-color); transform: translateY(-2px); }
+
+        /* Zip Code Input Area */
+        .zip-search-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .zip-input {
+            flex-grow: 1;
+            padding: 15px;
+            border: 2px solid var(--text-color);
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1em;
+            border-radius: 4px;
+        }
+
+        /* Results List */
+        .rep-results {
+            margin-top: 20px;
+            display: none; /* Hidden until search */
+        }
+
+        .rep-card {
+            background: #f9f9f9;
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .rep-info h4 { margin: 0; color: var(--accent-color); font-size: 1.1em; }
+        .rep-info span { font-size: 0.8em; color: #888; text-transform: uppercase; }
+        
+        .contact-link {
+            font-size: 0.8em;
+            text-decoration: underline;
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="sticky-header">
+        <a href="index.html"><img src="logo_1.png" alt="mostlyCBD" class="nav-logo"></a>
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="https://shop.mostlycbd.com">Shop</a>
+            <a href="guide.html">Guide</a>
+        </nav>
+    </header>
+
+    <div class="content-container">
+
+        <h1 class="guide-title">Scrap The Script.</h1>
+        <div class="guide-subtitle">
+            Advocacy Protocol v1.0<br>
+            Democracy is a participation sport. Let's play.
+        </div>
+
+        <div class="guide-section">
+            <h2><span class="step-number">1</span> Copy the Script</h2>
+            <p>This pre-written letter urges clear regulation and safety standards. Click to copy it to your clipboard.</p>
+            
+            <div class="action-box">
+                <div class="letter-text" id="letterContent">Dear [Representative Name],
+
+I am a constituent writing to urge you to support the clear legalization and regulation of CBD and hemp-derived products.
+
+Current restrictions and lack of clarity prevent safe access to natural alternatives for pain and stress management. We need a regulatory framework that prioritizes:
+
+1. SAFETY: Mandatory lab testing (COAs) for all products.
+2. ACCESS: Clear laws protecting consumer access to non-intoxicating cannabinoids.
+3. EDUCATION: Transparent labeling standards.
+
+Please support legislation that secures the future of hemp as a safe, natural resource for health and wellness.
+
+Sincerely,
+[Your Name]
+[Your City/State]</div>
+                <button onclick="copyLetter()" class="btn" id="copyBtn">Copy to Clipboard</button>
+            </div>
+        </div>
+
+        <div class="guide-section">
+            <h2><span class="step-number">2</span> Find & Contact</h2>
+            <p>You have three people representing you in D.C. (1 Representative and 2 Senators). We recommend sending this letter to all of them.</p>
+            
+            <div class="action-box" style="text-align: center;">
+                
+                <a href="https://www.house.gov/representatives/find-your-representative" target="_blank" class="btn" style="margin-bottom: 15px;">
+                    Find US Representative ↗
+                </a>
+
+                <a href="https://www.senate.gov/senators/senators-contact.htm" target="_blank" class="btn">
+                    Find US Senators ↗
+                </a>
+
+                <p style="margin-top: 25px; font-size: 0.9em; color: #555; text-align: left;">
+                    <strong>The Protocol:</strong><br>
+                    1. Click a button above to open the official lookup.<br>
+                    2. Locate your rep and click "Contact" (often an envelope icon).<br>
+                    3. Paste the script into their message box and hit send.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer style="text-align: center; padding: 40px; border-top: 1px solid var(--text-color); margin-top: 50px;">
+        <div class="footer-links">
+            <a href="https://twitter.com/scrapthescript">X (Twitter)</a>
+            <span style="color: var(--text-color);">|</span>
+            <a href="https://www.instagram.com/mostly.cbd/">Instagram</a>
+            <span style="color: var(--text-color);">|</span>
+            <a href="https://www.tiktok.com/@mostlycbd/">TikTok</a>
+            <span style="color: var(--text-color);">|</span>
+            <a href="#" style="color: var(--text-color); cursor: default;">The App (Coming Soon)</a>
+        </div>
+
+        <p style="color: var(--text-color);">&copy; 2026 mostlyCBD. Focused. Functional. Fair.</p>
+    </footer>
+
+    <script>
+        function copyLetter() {
+            var copyText = document.getElementById("letterContent").innerText;
+            navigator.clipboard.writeText(copyText).then(function() {
+                var btn = document.getElementById("copyBtn");
+                btn.innerText = "COPIED // READY TO PASTE";
+                btn.style.backgroundColor = "#588157"; 
+                setTimeout(function(){
+                    btn.innerText = "Copy to Clipboard";
+                    btn.style.backgroundColor = ""; 
+                }, 3000);
+            });
+        }
+    </script>
+
+</body>
+</html>
