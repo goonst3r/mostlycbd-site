@@ -315,6 +315,12 @@ h3 {
     border-bottom: 2px solid var(--accent-color);
 }
 
+.inactiveLink {
+    pointer-events: none;
+    cursor: default;
+    color: gray; /* Optional: visual hint */
+}
+
 .footer-links {
     margin-top: 20px;
     display: flex;
