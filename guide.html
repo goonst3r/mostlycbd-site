@@ -14,13 +14,11 @@
     <link rel="stylesheet" href="style.css"> 
     <link rel="icon" type="image/png" href="Favicon.png">
     
-    </head>
+</head>
 <body>
 
     <header class="sticky-header">
-        <a href="index.html">
-            <img src="logo_1.png" alt="mostlyCBD" class="nav-logo">
-        </a>
+        <a href="index.html"><img src="logo_1.png" alt="mostlyCBD" class="nav-logo"></a>
         
         <nav class="main-nav">
             <a href="index.html">Home</a>
@@ -29,6 +27,8 @@
             <a href="action.html">Action</a>
         </nav>
     </header>
+
+    <div id="top-of-page"></div>
 
     <div class="content-container">
 
@@ -181,6 +181,49 @@
         </div>
 
     </div>
+
+    <a href="#top-of-page" id="backToTop" title="Return to Top">
+        ↑ TOP
+    </a>
+
+    <style>
+        /* Smooth Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* The Button Styling */
+        #backToTop {
+            position: fixed; /* Stays in place while scrolling */
+            bottom: 30px;    /* Distance from bottom */
+            right: 30px;     /* Distance from right */
+
+            background-color: #344E41; /* Your Deep Green */
+            color: #DAD7CD;            /* Your Bone Color */
+
+            padding: 12px 20px;
+            text-decoration: none;
+            font-family: 'Courier New', Courier, monospace; /* Tech Font */
+            font-weight: bold;
+            font-size: 14px;
+            border-radius: 4px; /* Slight rounded corners */
+
+            /* The "Shadow" for depth */
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+
+            /* Animation for hovering */
+            transition: transform 0.2s, background-color 0.2s;
+            z-index: 1000; /* Ensures it sits on top of everything */
+        }
+
+        /* Hover Effect (When mouse is over it) */
+        #backToTop:hover {
+            background-color: #DAD7CD; /* Swaps to Bone */
+            color: #344E41;            /* Swaps to Green */
+            transform: translateY(-3px); /* Moves up slightly */
+            border: 2px solid #344E41;
+        }
+    </style>
 
     <footer style="text-align: center; padding: 40px; border-top: 1px solid var(--text-color); margin-top: 50px;">
         <div class="footer-links">
