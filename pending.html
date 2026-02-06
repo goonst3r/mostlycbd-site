@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You | mostlyCBD</title>
+    <title>Action Required | mostlyCBD</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,17 +16,11 @@
     
     <style>
         /* Specific Styles for this Page */
-        header {
-            margin-bottom: 0 !important; /* Removes the orange void at the bottom */
-            margin-top: 0; /* Removes any top margin */
-            padding-top: 0; /* Keeps the logo from hitting the browser roof */
-            text-align: center;
-        }
-
         .confirmed-container {
             max-width: 700px;
-            margin: 10px auto 0;
+            margin: 80px auto 0;
             padding: 0 20px;
+            padding-top: 20px; /* Account for sticky header */
             text-align: center;            
         }
         
@@ -39,51 +33,52 @@
             font-family: 'Courier New', Courier, monospace;
             border-left: 5px solid #A3B18A;
             box-shadow: 4px 4px 0px rgba(52, 78, 65, 0.2);
-            margin-top: 0;
+            margin-top: 40px;
         }
 
     </style>
 </head>
 
 <body>
-    
-        <header>
-            <a href="index.html"><img src="logo_1.png" alt="mostlyCBD logo" class="main-logo"></a>
-        </header>
+
+    <header class="sticky-header">
+        <a href="index.html"><img src="logo_1.png" alt="mostlyCBD" class="nav-logo"></a>
+        
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="https://shop.mostlycbd.com">Shop</a>
+            <a href="guide.html">Guide</a>
+            <a href="action.html">Action</a>
+        </nav>
+    </header>
 
     <main>
         <div class="confirmed-container">
 
             <div class="protocol-box">
-                <h4 style="text-align: center; margin-top: 0; color: #FFFFFF; border-bottom: 1px dashed #A3B18A; padding-bottom: 10px; margin-bottom: 20px;">
-                    WE REALLY APPRECIATE YOUR INTEREST!<BR>
-                    HERE'S WHAT YOU CAN EXPECT NEXT:
+                <h4 style="margin-top: 0; color: #FFFFFF; border-bottom: 1px dashed #E9C46A; padding-bottom: 10px; margin-bottom: 20px;">
+                    > STATUS PENDING / ACTION REQUIRED:
                 </h4>
 
-                <ul style="padding-left: 20px; line-height: 1.8; margin-bottom: 0;">
-
+                <ol style="padding-left: 20px; line-height: 1.8; margin-bottom: 0;">
                     <li style="margin-bottom: 10px;">
-                        You will <strong>NOT</strong> receive general marketing emails or newsletters.
+                        <strong>Check your inbox</strong> for a verification email.
                     </li>
-                    
                     <li style="margin-bottom: 10px;">
-                        You will <strong>ONLY</strong> receive emails when the App is available, or for development updates.
+                        Click the <strong>Confirm Subscription</strong> link.
                     </li>
-                    
-                </ul>
-
-                <h4 style="text-align: center; margin-top: 0; color: #FFFFFF; border-top: 1px dashed #A3B18A; padding-bottom: 10px; margin-bottom: 20px;">
-                    <br>THAT'S IT! FOCUSED. FUNCTIONAL. FAIR.
-                </h4>
-
+                    <li>
+                        <em>Note: Check "Promotions" or "Spam" if not received in 60 seconds.</em>
+                    </li>
+                </ol>
             </div>
+
+            <p style="margin-top: 30px; font-size: 0.8em; color: #999;">
+                *Unverified requests are purged from the system after 24 hours.
+            </p>
 
         </div>
     </main>
-
-    <div style="text-align: center;">
-        <a href="index.html" class="return-btn">Home</a>
-    </div>    
 
     <footer style="text-align: center; padding: 40px; border-top: 1px solid var(--text-color); margin-top: 50px;">
             <div class="footer-links">
@@ -94,7 +89,8 @@
                 <a href="https://www.instagram.com/mostly.cbd/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: var(--accent-color); font-weight: bold;">Instagram</a>
                 <span style="color: var(--text-color); margin: 0 10px;">|</span>
                 <a href="https://www.tiktok.com/@mostlycbd/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: var(--accent-color); font-weight: bold;">TikTok</a>
-                <span style="color: var(--text-color); margin: 0 10px;">|</span>                
+                <span style="color: var(--text-color); margin: 0 10px;">|</span>
+                <a href="#" style="color: var(--text-color); cursor: default;">The App (Coming Soon)</a>
             </div>
 
             <p style="color: var(--text-color);">&copy; 2026 mostlyCBD. Focused. Functional. Fair.</p>
