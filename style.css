@@ -130,6 +130,27 @@ h1 {
     color: #fff;
 }
 
+/* --- return button --- */
+.return-btn {
+    display: inline-block;
+    margin-top: 50px;
+    background-color: #344E41; 
+    color: #DAD7CD; 
+    text-decoration: none; 
+    padding: 15px 30px; 
+    border-radius: 4px; 
+    font-family: 'Space Mono', monospace; 
+    font-weight: bold; 
+    transition: all 0.2s ease;
+    border: 2px solid #344E41;
+}
+
+.return-btn:hover {
+    background-color: #DAD7CD;
+    color: #344E41;
+    transform: translateY(-2px);
+}
+
 /* --- Footer --- */
 footer {
     margin-top: 4rem;
