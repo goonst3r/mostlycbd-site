@@ -174,7 +174,13 @@ h1 {
 
 .community-card {
     background-image: linear-gradient(rgba(52,78,65,0.1), rgba(52,78,65,0.7)), url('images/bg_community.jpg');
-    background-size: 140%;
+    background-size: cover;
+}
+
+@media (min-width:768px) {
+    .community-card {
+        background-size:140%;
+    }
 }
 
 /* --- FORCE WHITE TEXT ON IMAGE CARDS --- */
