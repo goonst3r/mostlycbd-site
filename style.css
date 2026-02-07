@@ -134,6 +134,76 @@ h1 {
     color: #fff;
 }
 
+/* --- CARD BACKGROUND UPDATES --- */
+
+/* 1. Base settings for all image cards */
+.card-bg-style {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* This is the magic sauce: It blends the Green Color with the Image */
+    background-blend-mode: multiply; 
+    /* The fallback color if image fails */
+    background-color: #344E41; 
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+}
+
+/* 2. Hover Effect: Brighten slightly and lift */
+.card-bg-style:hover {
+    background-blend-mode: multiply
+    /* We just shift the card up, we don't change the background-image anymore.
+       Instead, we use a box-shadow inset to darken it cleanly. */
+    box-shadow: inset 0 0 0 200px rgba(0,0,0,0.2), 0 10px 20px rgba(0,0,0,0.3);
+    
+    transform: translateY(-5px);
+}
+
+/* 3. Specific Backgrounds for each card */
+/* We use a lighter gradient here so the photo shows through clearly */
+.shop-card {
+    /* 70% Opacity Green -> allows texture to show */
+    background-image: linear-gradient(rgba(52,78,65,0.7), rgba(52,78,65,0.7)), url('images/bg_shop2.jpg');
+}
+
+.guide-card {
+    background-image: linear-gradient(rgba(52,78,65,0.7), rgba(52,78,65,0.7)), url('images/bg_guide.jpg');
+}
+
+.app-card {
+    background-image: linear-gradient(rgba(52,78,65,0.7), rgba(52,78,65,0.7)), url('images/bg_app.jpg');
+}
+
+.community-card {
+    background-image: linear-gradient(rgba(52,78,65,0.7), rgba(52,78,65,0.7)), url('bg_community.jpg');
+}
+
+/* --- FORCE WHITE TEXT ON IMAGE CARDS --- */
+
+/* 1. Reset the Header (Protocol/Source) */
+.card-bg-style .card-header {
+    color: #A3B18A !important; /* Light Green Accent acts as a highlighter */
+    border-bottom: 1px solid rgba(255,255,255,0.3); /* Subtle white divider */
+}
+
+/* 2. Reset the Title (The Shop, The Guide) */
+.card-bg-style .card-title {
+    color: #FFFFFF !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Adds a shadow so it pops off the photo */
+}
+
+/* 3. Reset the Description text */
+.card-bg-style .card-desc {
+    color: #E0E0E0 !important; /* Slightly off-white for readability */
+}
+
+/* 4. Reset the Badges (Status/Join) */
+.card-bg-style .status-badge {
+    color: #FFFFFF !important;
+    border: 1px solid #FFFFFF !important;
+    background-color: rgba(0,0,0,0.3); /* Semi-transparent background */
+}
+
 /* --- return button --- */
 .return-btn {
     display: inline-block;

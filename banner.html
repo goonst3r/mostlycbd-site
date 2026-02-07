@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reddit Banner Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #f0f0f0;
+            padding: 50px;
+            font-family: 'Space Mono', monospace;
+        }
+
+        h2 { margin-bottom: 10px; color: #333; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- DESKTOP BANNER (Text Based) --- */
+        .banner-desktop {
+            width: 100%;
+            max-width: 1200px;
+            height: 192px; 
+            background-color: #344E41;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-sizing: border-box;
+            color: #DAD7CD; 
+            border-bottom: 4px solid #A3B18A;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grid-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(#A3B18A 1px, transparent 1px),
+            linear-gradient(90deg, #A3B18A 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.05; 
+        }
+
+        .brand-name {
+            font-size: 42px;
+            font-weight: 700;
+            z-index: 2;
+            letter-spacing: -2px;
+        }
+
+        .tagline {
+            font-size: 18px;
+            opacity: 0.8;
+            z-index: 2;
+            text-align: right;
+            border-left: 2px solid #A3B18A;
+            padding-left: 20px;
+        }
+
+        /* --- MOBILE BANNER (Image Based) --- */
+        .banner-mobile {
+            width: 800px; /* Scaled for screenshot */
+            height: 240px; 
+            background-color: #344E41;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #DAD7CD;
+            position: relative;
+            border-bottom: 8px solid #A3B18A;
+            margin-top: 50px;
+        }
+
+        /* LOGO STYLING */
+        .mobile-logo {
+            width: 280px; /* Adjust this number to scale the logo up or down */
+            height: auto;
+            z-index: 2;
+            margin-bottom: 15px; /* Space between logo and text */
+        }
+        
+        .mobile-sub {
+            font-size: 20px;
+            color: #A3B18A;
+            z-index: 2;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>Desktop Banner (Screenshot this bar)</h2>
+    <div class="banner-desktop">
+        <div class="grid-overlay"></div>
+        <div class="brand-name">r/mostlyCBD</div>
+        <div class="tagline">
+            // FOCUSED. FUNCTIONAL. FAIR.<br>
+            <span style="font-size: 14px; opacity: 0.6;">EST. 2026 | PROTOCOL: OPEN</span>
+        </div>
+    </div>
+
+    <br><br><br>
+
+    <h2>Mobile Banner (Screenshot this box)</h2>
+    <div class="banner-mobile">
+        <div class="grid-overlay"></div>
+        
+        <img src="logo_2.png" alt="mostlyCBD" class="mobile-logo">
+        
+        <div class="mobile-sub">SCRAP THE SCRIPT</div>
+    </div>
+
+</body>
+</html>
