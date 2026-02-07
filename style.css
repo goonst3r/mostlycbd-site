@@ -149,7 +149,7 @@ h1 {
 
 /* 2. Hover Effect: Brighten slightly and lift */
 .card-bg-style:hover {
-    background-blend-mode: multiply
+    background-blend-mode: multiply;
     /* We just shift the card up, we don't change the background-image anymore.
        Instead, we use a box-shadow inset to darken it cleanly. */
     box-shadow: inset 0 0 0 200px rgba(0,0,0,0.2), 0 10px 20px rgba(0,0,0,0.3);
@@ -202,12 +202,13 @@ h1 {
     color: #E0E0E0 !important; /* Slightly off-white for readability */
 }
 
-/* 4. Reset the Badges (Status/Join) 
+/* 4. Reset the Badges (Status/Join) - DISABLED
 .card-bg-style .status-badge {
     color: #FFFFFF !important;
     border: 1px solid #FFFFFF !important;
-    background-color: rgba(218, 215, 205, 0.3); /* Semi-transparent background */
-}*/
+    background-color: rgba(218, 215, 205, 0.3);
+}
+*/
 
 /* --- return button --- */
 .return-btn {
