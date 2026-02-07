@@ -127,11 +127,9 @@ h1 {
     border: 1px solid var(--text-color);
     padding: 2px 6px;
     border-radius: 4px;
-}
-
-.status-badge.info {
-    background-color: var(--accent-color);
-    color: #fff;
+    color: #FFFFFF !important;
+    border: 1px solid #FFFFFF !important;
+    background-color: rgba(218, 215, 205, 0.3); /* Semi-transparent background */
 }
 
 /* --- CARD BACKGROUND UPDATES --- */
@@ -197,12 +195,12 @@ h1 {
     color: #E0E0E0 !important; /* Slightly off-white for readability */
 }
 
-/* 4. Reset the Badges (Status/Join) */
+/* 4. Reset the Badges (Status/Join) 
 .card-bg-style .status-badge {
     color: #FFFFFF !important;
     border: 1px solid #FFFFFF !important;
-    background-color: rgba(0,0,0,0.3); /* Semi-transparent background */
-}
+    background-color: rgba(218, 215, 205, 0.3); /* Semi-transparent background */
+}*/
 
 /* --- return button --- */
 .return-btn {
