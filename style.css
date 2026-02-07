@@ -79,12 +79,8 @@ h1 {
     display: flex;
     flex-direction: column;
     height: 100%;
-
-    /* NEW: Softens the corners */
-    border-radius: 16px; 
-    
-    /* NEW: Ensures the background image clips perfectly to the curve */
-    overflow: hidden;
+    border-radius: 16px;    /* NEW: Softens the corners */
+    overflow: hidden;       /* NEW: Ensures the background image clips perfectly to the curve */
 }
 
 .card:hover {
@@ -138,22 +134,35 @@ h1 {
     background-color: rgba(218, 215, 205, 0.3); /* Semi-transparent background */
 }
 
+/* --- Full Width Action Card --- */
+
+/* 1. The Layout Magic */
+.full-width-card {
+    grid-column: 1 / -1; /* This command forces the card to span ALL columns */
+    
+    /* Optional: Center the text for a "Billboard" effect */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 250px; /* Make it a bit taller/more substantial */
+}
+
 /* --- CARD BACKGROUND UPDATES --- */
 
-/* 1. Base settings for all image cards */
+/* Base settings for all image cards */
 .card-bg-style {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* This is the magic sauce: It blends the Green Color with the Image */
-    background-blend-mode: multiply; 
-    /* The fallback color if image fails */
-    background-color: #344E41; 
+    background-blend-mode: multiply;    /* This is the magic sauce: It blends the Green Color with the Image */
+    background-color: #344E41;        /* The fallback color if image fails */
     color: #FFFFFF;
     transition: all 0.3s ease;
 }
 
-/* 2. Hover Effect: Brighten slightly and lift */
+/* Hover Effect: Brighten slightly and lift */
 .card-bg-style:hover {
     background-blend-mode: multiply;
     /* We just shift the card up, we don't change the background-image anymore.
@@ -163,7 +172,9 @@ h1 {
     transform: translateY(-5px);
 }
 
-/* 3. Specific Backgrounds for each card */
+
+
+/* Specific Backgrounds for each card */
 /* We use a lighter gradient here so the photo shows through clearly */
 .shop-card {
     /* 70% Opacity Green -> allows texture to show */
@@ -189,26 +200,37 @@ h1 {
     }
 }
 
+.action-card {
+    /* You will need to upload an image named 'bg_action.jpg' to your images folder */
+    background-image: linear-gradient(rgba(52,78,65,0.7), rgba(52,78,65,0.7)), url('images/bg_action.jpeg');
+}
+
+/* Tweak the text width so it doesn't stretch too far on wide screens */
+.action-card .card-desc {
+    max-width: 600px;
+    margin-top: 10px;
+}
+
 /* --- FORCE WHITE TEXT ON IMAGE CARDS --- */
 
-/* 1. Reset the Header (Protocol/Source) */
+/* Reset the Header (Protocol/Source) */
 .card-bg-style .card-header {
     color: #A3B18A !important; /* Light Green Accent acts as a highlighter */
     border-bottom: 1px solid rgba(255,255,255,0.3); /* Subtle white divider */
 }
 
-/* 2. Reset the Title (The Shop, The Guide) */
+/* Reset the Title (The Shop, The Guide) */
 .card-bg-style .card-title {
     color: #FFFFFF !important;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Adds a shadow so it pops off the photo */
 }
 
-/* 3. Reset the Description text */
+/* Reset the Description text */
 .card-bg-style .card-desc {
     color: #E0E0E0 !important; /* Slightly off-white for readability */
 }
 
-/* 4. Reset the Badges (Status/Join) - DISABLED
+/* Reset the Badges (Status/Join) - DISABLED
 .card-bg-style .status-badge {
     color: #FFFFFF !important;
     border: 1px solid #FFFFFF !important;
@@ -266,7 +288,7 @@ footer {
    GUIDE PAGE STYLES (Synced to Index)
    ========================================= */
 
-/* 1. Layout Container */
+/* Layout Container */
 .content-container {
     max-width: 800px;
     margin: 0 auto;
@@ -277,7 +299,7 @@ footer {
     line-height: 1.7;
 }
 
-/* 2. Brand Headers */
+/* Brand Headers */
 .guide-title {
     font-size: 2.5em;
     color: var(--accent-color);
@@ -308,7 +330,7 @@ h3 {
     font-weight: bold;
 }
 
-/* 3. The "Disclaimer" Box */
+/* The "Disclaimer" Box */
 .disclaimer-box {
     background-color: var(--card-bg); /* Use Card BG */
     border: 1px solid var(--text-color);
@@ -319,7 +341,7 @@ h3 {
     margin-bottom: 50px;
 }
 
-/* 4. The "Concept" Box */
+/* The "Concept" Box */
 .concept-box {
     background-color: var(--card-bg);
     color: var(--text-color);
@@ -339,7 +361,7 @@ h3 {
     color: var(--accent-color);
 }
 
-/* 5. Terpene Cards Grid */
+/* Terpene Cards Grid */
 .terpene-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -362,7 +384,7 @@ h3 {
     display: block;
 }
 
-/* 6. Sticky Header (Guide Only) */
+/* Sticky Header (Guide Only) */
 .sticky-header {
     position: fixed;
     top: 0;
