@@ -186,11 +186,11 @@ h1 {
 }
 
 .app-card {
-    background-image: linear-gradient(rgba(52,78,65,0.1), rgba(52,78,65,0.7)), url('images/bg_app.jpg');
+    background-image: linear-gradient(rgba(52,78,65,0.1), rgba(52,78,65,0.1)), url('images/bg_app.jpg');
 }
 
 .community-card {
-    background-image: linear-gradient(rgba(52,78,65,0.1), rgba(52,78,65,0.7)), url('images/bg_community.jpg');
+    background-image: linear-gradient(rgba(52,78,65,0.1), rgba(52,78,65,0.1)), url('images/bg_community.jpg');
     background-size: cover;
 }
 
@@ -202,7 +202,7 @@ h1 {
 
 .action-card {
     /* You will need to upload an image named 'bg_action.jpg' to your images folder */
-    background-image: linear-gradient(rgba(52,78,65,0.7), rgba(52,78,65,0.7)), url('images/bg_action2.jpeg');
+    background-image: linear-gradient(rgba(52,78,65,0.7), rgba(52,78,65,0.05)), url('images/bg_action2.jpeg');
 }
 
 /* Tweak the text width so it doesn't stretch too far on wide screens */
