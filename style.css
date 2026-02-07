@@ -79,6 +79,12 @@ h1 {
     display: flex;
     flex-direction: column;
     height: 100%;
+
+    /* NEW: Softens the corners */
+    border-radius: 16px; 
+    
+    /* NEW: Ensures the background image clips perfectly to the curve */
+    overflow: hidden;
 }
 
 .card:hover {
