@@ -220,6 +220,18 @@ h1 {
     background-image: linear-gradient(rgba(52,78,65,0.1), rgba(52,78,65,0.1)), url('images/bg_action2.jpeg');
 }
 
+.action-card2 {
+    /* You will need to upload an image named 'bg_action.jpg' to your images folder */
+    background-image: linear-gradient(rgba(52,78,65,0.1), rgba(52,78,65,0.1)), url('images/bg_action3.jpeg');
+    align-items: center; /* Centers the Button and Content horizontally */
+    text-align: center;  /* Centers the text inside the paragraphs */
+}
+
+/* Optional: Ensure the countdown widget doesn't overflow */
+.action-card2 .countdown-timer {
+    max-width: 100%; 
+}
+
 /* Tweak the text width so it doesn't stretch too far on wide screens */
 .action-card .card-desc {
     max-width: 600px;
@@ -456,6 +468,54 @@ h3 {
     pointer-events: none;
     cursor: default;
     color: gray; /* Optional: visual hint */
+}
+
+/* =========================================
+   ACTION / MISSION PAGE STYLES
+   ========================================= */
+
+.mission-box {
+    background: #fff; /* or var(--card-bg) if you want it bone-colored */
+    border: 2px solid var(--accent-color);
+    padding: 40px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    text-align: center;
+    box-shadow: 4px 4px 0px rgba(52, 78, 65, 0.1);
+}
+
+.mission-stat {
+    font-size: 3em;
+    font-weight: bold;
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: 20px;
+    line-height: 1;
+}
+
+.btn-large {
+    background-color: var(--accent-color);
+    color: #fff !important; /* Force white text */
+    border: none;
+    padding: 20px 40px;
+    font-family: 'Space Mono', monospace;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 20px;
+    border-radius: 4px;
+    text-align: center;
+    max-width: 600px;
+}
+
+.btn-large:hover {
+    background-color: var(--hover-color); /* The Sage Green */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 footer {
