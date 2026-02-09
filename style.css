@@ -187,8 +187,6 @@ h1 {
     transform: translateY(-5px);
 }
 
-
-
 /* Specific Backgrounds for each card */
 /* We use a lighter gradient here so the photo shows through clearly */
 .shop-card {
@@ -245,6 +243,47 @@ h1 {
 .action-card .card-desc {
     max-width: 600px;
     margin-top: 10px;
+}
+
+/* ---------------------------- */
+/* --- Social Feedback Card --- */
+/* ---------------------------- */
+.feedback-card {
+    /* 1. The "System" Background Look */
+    background-image: linear-gradient(rgba(52,78,65,0.9), rgba(52,78,65,0.8)), url('images/bg_social.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    background-color: #344E41; /* Fallback */
+    
+    /* 2. Shape & Border */
+    align-items: center;
+    max-width: 750px;
+    padding: 40px;
+    border-radius: 16px; /* Matches other cards */
+    border: 1px dashed rgba(218, 215, 205, 0.3) !important; /* Subtle dashed border */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    
+    /* 3. Text Colors (Force Light Mode) */
+    color: #E0E0E0 !important;
+    text-align: center;
+}
+
+/* Force the links inside to be Bone/White */
+.feedback-card a {
+    color: #DAD7CD !important;
+    transition: opacity 0.2s;
+}
+
+.feedback-card a:hover {
+    opacity: 0.7;
+    text-decoration: none;
+}
+
+/* Make the "Platform Names" (Twitter/Insta) bright white */
+.feedback-card strong, 
+.feedback-card span.platform-name {
+    color: #FFFFFF !important;
 }
 
 /* --- FORCE WHITE TEXT ON IMAGE CARDS --- */
