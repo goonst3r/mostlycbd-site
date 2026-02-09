@@ -605,7 +605,11 @@ footer p {
 
 /* --- Mobile Tweaks --- */
 .mobile-text {
-  display: none;
+  display: block;
+}
+
+.desktop-text {
+    display: none;
 }
 
 @media (min-width:600px) {
