@@ -250,7 +250,7 @@ h1 {
 /* ---------------------------- */
 .feedback-card {
     /* 1. The "System" Background Look */
-    background-image: linear-gradient(rgba(52,78,65,0.3), rgba(52,78,65,0.2)), url('images/bg_social_alt_transpBG_50.jpg') !important;
+    background-image: linear-gradient(rgba(52,78,65,0.3), rgba(52,78,65,0.2)), url('images/bg_social_temp.jpg') !important;
     background-size: cover !important;
     background-position: center !important;
     background-blend-mode: multiply !important;
