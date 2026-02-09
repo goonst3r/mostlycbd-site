@@ -227,6 +227,15 @@ h1 {
     margin-right: 20px;*/
 }
 
+/* Disable the "Dimming" effect for the Countdown Card */
+.action-card2:hover {
+    /* Reset the shadow to just a normal drop-shadow (removing the 200px inset) */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important;
+    
+    /* Optional: If you don't want it to move up either, add this: */
+    /* transform: none !important; */
+}
+
 /* Optional: Ensure the countdown widget doesn't overflow */
 .action-card2 .countdown-timer {
     max-width: 100%; 
@@ -515,9 +524,9 @@ h3 {
     font-weight: bold;
 }
 
-/* =========================================
-   ACTION / MISSION PAGE STYLES
-   ========================================= */
+/* -------------------------------- */
+/*   ACTION / MISSION PAGE STYLES   */
+/* -------------------------------- */
 
 .mission-box {
     background: #fff; /* or var(--card-bg) if you want it bone-colored */
@@ -578,10 +587,17 @@ h3 {
 }
 
 .time-unit {
-    background: rgba(0,0,0,0.2); /* Slight dark box behind numbers */
+    /* NEW: Vertical Gradient (Dark Green -> Darker Green) */
+    background: linear-gradient(180deg, rgba(52, 78, 65, 0.85) 0%, rgba(30, 45, 35, 0.95) 100%);
+    
     padding: 20px 10px;
     border-radius: 8px;
-    border: 1px solid rgba(218, 215, 205, 0.3); /* Subtle bone border */
+    
+    /* Slightly brighter border to frame the gradient */
+    border: 1px solid rgba(218, 215, 205, 0.4); 
+    
+    /* Add a tiny shadow to give the buttons depth */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
 .time-val {
