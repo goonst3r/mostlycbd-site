@@ -34,9 +34,51 @@
     <div class="card card-bg-style action-card2">
             <h1 style="color: #dad7cd;">Strength in Numbers</h1>
                         
-            <script src="https://cdn.logwork.com/widget/countdown.js"></script>
-            <a href="https://logwork.com/countdown-timer" class="countdown-timer" data-timezone="America/New_York" data-textcolor="#dad7cd" data-date="2026-11-13 00:00" data-background="#344e41" data-digitscolor="#dad7cd" data-unitscolor="#dad7cd" 
-                style="border: none; width: 100%; max-width: 900px; height: 450px; overflow: hidden; display: block; margin: 0 auto; background: transparent;" scrolling="no">Countdown to Hemp Ban</a>
+            <div id="system-countdown" class="countdown-grid">
+                <div class="time-unit">
+                    <div class="time-val" id="days">00</div>
+                    <div class="time-label">DAYS</div>
+                </div>
+    
+                <div class="time-unit">
+                    <div class="time-val" id="hours">00</div>
+                    <div class="time-label">HRS</div>
+                </div>
+    
+                <div class="time-unit">
+                    <div class="time-val" id="minutes">00</div>
+                    <div class="time-label">MIN</div>
+                </div>
+    
+                <div class="time-unit">
+                    <div class="time-val" id="seconds">00</div>
+                    <div class="time-label">SEC</div>
+                </div>
+            </div>
+
+            <script>
+                // Set the date we're counting down to
+                var countDownDate = new Date("Nov 13, 2026 00:00:00").getTime();
+
+                // Update the count down every 1 second
+                var x = setInterval(function() {
+
+                    var now = new Date().getTime();
+                    var distance = countDownDate - now;
+
+                    // Time calculations
+                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    // Output the result to elements
+                    document.getElementById("days").innerHTML = days;
+                    document.getElementById("hours").innerHTML = hours;
+                    document.getElementById("minutes").innerHTML = minutes;
+                    document.getElementById("seconds").innerHTML = seconds;
+                }, 1000);
+            </script>
 
             <a href="https://hempsupporter.com/" target="_blank" class="btn-large" rel="noopener noreferrer">
                 Join the Fight at HempSupporter.com

@@ -563,6 +563,56 @@ h3 {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+/* ------------------------------- */
+/* --- NATIVE COUNTDOWN STYLES --- */
+/* ------------------------------- */
+
+.countdown-grid {
+    display: grid;
+    /* DESKTOP: 4 items in a row */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.time-unit {
+    background: rgba(0,0,0,0.2); /* Slight dark box behind numbers */
+    padding: 20px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(218, 215, 205, 0.3); /* Subtle bone border */
+}
+
+.time-val {
+    font-family: 'Space Mono', monospace;
+    font-size: 3.5rem; /* HUGE NUMBERS */
+    font-weight: bold;
+    color: #dad7cd; /* Bone Color */
+    line-height: 1;
+}
+
+.time-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9rem;
+    color: #A3B18A; /* Sage Green */
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 600px) {
+    .countdown-grid {
+        /* MOBILE: Switch to 2x2 Grid (2 items per row) */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px;
+    }
+    
+    .time-val {
+        font-size: 2.5rem; /* Still huge, but fits phone */
+    }
+}
+
 footer {
     text-align: center;
     padding: 60px 20px;
