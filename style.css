@@ -219,6 +219,12 @@ h1 {
     background-image: linear-gradient(rgba(52,78,65,0.1), rgba(52,78,65,0.1)), url('images/bg_action3.jpeg');
     align-items: center; /* Centers the Button and Content horizontally */
     text-align: center;  /* Centers the text inside the paragraphs */
+    /* FIX: Push it down so it clears the Sticky Header */
+    margin-top: 150px; 
+    
+    /* Optional: Add some side margin if it's touching the screen edges on mobile 
+    margin-left: 20px;
+    margin-right: 20px;*/
 }
 
 /* Optional: Ensure the countdown widget doesn't overflow */
@@ -412,14 +418,6 @@ h3 {
     padding-top: 15px; /* Slightly tighter than index for space */
     padding-bottom: 15px;
 }
-
-/* DELETE OR COMMENT OUT THIS SECTION */
-/* We don't need the heavy black line anymore, the shadow handles the separation */
-.sticky-header::after {
-    display: none; 
-}
-
-
 
 .nav-logo {
     max-width: 180px;
