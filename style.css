@@ -209,12 +209,6 @@ h1 {
     background-size: cover;
 }
 
-@media (min-width:768px) {
-    .community-card {
-        background-size:140%;
-    }
-}
-
 .action-card {
     /* You will need to upload an image named 'bg_action.jpg' to your images folder */
     background-image: linear-gradient(rgba(52,78,65,0.1), rgba(52,78,65,0.1)), url('images/bg_action2.jpeg');
@@ -294,13 +288,6 @@ h1 {
     margin-left: auto;
     margin-right: auto;
     display: block;
-}
-
-/* --- Mobile Tweaks --- */
-@media (max-width: 600px) {
-    h1 { font-size: 2rem; }
-    body { padding: 1.5rem; }
-    .grid { grid-template-columns: 1fr; }
 }
 
 /* =========================================
@@ -614,4 +601,25 @@ footer p {
     color: #999; /* Muted gray */
     margin-top: 30px;
     font-size: 0.8em;
+}
+
+/* --- Mobile Tweaks --- */
+.mobile-text {
+  display: none;
+}
+
+@media (min-width:600px) {
+    .community-card { background-size:140%; }
+    .desktop-text {
+        display: block; /* Shown only on larger screens */
+    }
+    .mobile-text {
+        display: none; /* Hidden on larger screens */
+    }    
+}
+
+@media (max-width: 600px) {
+    h1 { font-size: 2rem; }
+    body { padding: 1.5rem; }
+    .grid { grid-template-columns: 1fr; }    
 }
