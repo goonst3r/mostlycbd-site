@@ -470,6 +470,64 @@ h3 {
     color: gray; /* Optional: visual hint */
 }
 
+/* --- Action Page Hero Banner --- */
+
+.action-hero-banner {
+    display: block; /* Makes the link act like a box */
+    text-decoration: none; /* Removes underline */
+    
+    /* The Background Image + Overlay */
+    background-image: linear-gradient(rgba(52,78,65,0.3), rgba(52,78,65,0.4)), url('images/hero_action.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply; /* The "Moody" filter */
+    background-color: #344E41;
+    
+    /* Box Styling */
+    border-radius: 16px;
+    padding: 60px 40px;
+    margin-bottom: 50px;
+    text-align: center;
+    border: 1px solid rgba(52,78,65,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    
+    /* Animation */
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.action-hero-banner:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    /* Lighten the overlay slightly on hover to reveal the art */
+    background-image: linear-gradient(rgba(52,78,65,0.6), rgba(52,78,65,0.5)), url('images/hero_action.jpg');
+}
+
+/* Force Text Colors inside the Hero */
+.action-hero-banner .guide-title {
+    color: #FFFFFF !important;
+    margin-bottom: 10px;
+    margin-top: 0; /* Reset spacing */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.action-hero-banner .guide-subtitle {
+    color: #DAD7CD !important; /* Bone color text */
+    border-left: none; /* Remove the green vertical line from the standard subtitle */
+    padding-left: 0;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+/* The tiny "Click to follow" hint */
+.hero-subtext {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #A3B18A; /* Sage Green */
+    font-weight: bold;
+}
+
 /* =========================================
    ACTION / MISSION PAGE STYLES
    ========================================= */
