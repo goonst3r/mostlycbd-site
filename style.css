@@ -40,10 +40,25 @@ main {
 
 /* --- Index/Hub Header --- */
 header {
-    margin-bottom: 4rem;
-    border-bottom: 2px solid var(--text-color);
-    padding-bottom: 1rem;
     text-align: center;
+    
+    /* 1. The Box Shape (Matches your cards) */
+    margin-bottom: 3rem; /* Spacing below the header */
+    padding: 4rem 2rem;  /* generous padding to let the logo breathe */
+    border-radius: 16px;
+    
+    /* 2. Remove the old divider line */
+    border-bottom: none; 
+    
+    /* 3. The Bone Vellum Effect */
+    /* We use a high opacity (0.9) to ensure the logo is readable */
+    background-image: linear-gradient(rgba(218, 215, 205, 0.9), rgba(218, 215, 205, 0.8)), url('images/bg_header.jpeg');
+    background-size: cover;
+    background-position: center;
+    
+    /* 4. Subtle definition */
+    border: 1px solid rgba(52, 78, 65, 0.1); /* Very faint green border */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03); /* Tiny lift */
 }
 
 h1 {
