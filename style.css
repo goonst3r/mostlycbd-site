@@ -674,7 +674,33 @@ footer {
     border-top: 1px solid #eee; /* Subtle divider line */
 }
 
-/* FOOTER LINKS */
+/* --- RESPONSIVE FOOTER TOGGLE --- */
+
+/* 1. DEFAULT (Mobile First) */
+/* By default, we hide the big desktop footer and show the mobile one */
+.footer-desktop {
+    display: none;
+}
+
+.footer-mobile {
+    display: block;
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid #eee;
+}
+
+/* 2. DESKTOP (Screens wider than 600px) */
+@media (min-width: 600px) {
+    
+    .footer-mobile {
+        display: none; /* Hide the mobile version */
+    }
+
+    .footer-desktop {
+        display: block; /* Show the desktop version */
+    }
+}
+
 /* The Container for the Links */
 .footer-links {
     line-height: 2;
