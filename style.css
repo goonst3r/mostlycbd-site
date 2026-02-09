@@ -701,7 +701,7 @@ footer p {
     .action-card2 {
         /* On desktop it's 150px. On mobile, the header is taller (2 lines), 
            so we push it down further to clear it. */
-        margin-top: 240px !important; 
+        /*margin-top: 160px !important; */
         
         /* Ensure the card itself fits the screen */
         width: 90%;
