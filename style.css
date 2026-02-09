@@ -250,14 +250,13 @@ h1 {
 /* ---------------------------- */
 .feedback-card {
     /* 1. The "System" Background Look */
-    background-image: linear-gradient(rgba(52,78,65,0.9), rgba(52,78,65,0.8)), url('images/bg_social.jpg');
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: multiply;
-    background-color: #344E41; /* Fallback */
+    background-image: linear-gradient(rgba(52,78,65,0.3), rgba(52,78,65,0.2)), url('images/bg_social.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-blend-mode: multiply !important;
+    background-color: #344E41 !important; /* Fallback */
     
     /* 2. Shape & Border */
-    align-items: center;
     max-width: 750px;
     padding: 40px;
     border-radius: 16px; /* Matches other cards */
