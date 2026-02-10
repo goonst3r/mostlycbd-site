@@ -791,13 +791,34 @@ h3 {
     display: block;
 }
 
-/* 3. The "Orchestra" Box */
+/* --- The "Orchestra" / Synergy Box --- */
 .orchestra-box {
-    background: #E8E6DF;
-    border-left: 6px solid var(--accent-color);
-    padding: 30px;
+    /* 1. Background Image & Overlay */
+    background-image: linear-gradient(rgba(52,78,65,0.9), rgba(52,78,65,0.8)), url('images/bg_orchestra.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: #344E41; /* Fallback */
+    
+    /* 2. Shape & Border */
+    padding: 40px 30px;
     margin: 30px 0;
-    border-radius: 0 8px 8px 0;
+    border-radius: 12px;
+    border-left: 6px solid #E9C46A; /* Gold Accent Bar */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    
+    /* 3. Text Styling */
+    color: #DAD7CD; /* Bone Body Text */
+    font-size: 1.05em;
+}
+
+/* Force the Titles (THC, CBD, Terpenes) to be Gold */
+.orchestra-box strong {
+    color: #E9C46A !important; 
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block; /* Ensures the title sits on its own line */
+    margin-bottom: 5px;
 }
 
 /* --- Guide Page Specifics --- */
