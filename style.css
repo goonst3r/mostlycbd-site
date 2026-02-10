@@ -389,16 +389,16 @@ h3 {
     font-weight: bold;
 }
 
-/* The "Disclaimer" Box */
+/* The "Disclaimer" Box 
 .disclaimer-box {
-    background-color: var(--card-bg); /* Use Card BG */
+    background-color: var(--card-bg);*/ /* Use Card BG 
     border: 1px solid var(--text-color);
     border-radius: 4px;
     padding: 20px;
     font-size: 0.8em;
     color: var(--text-color);
     margin-bottom: 50px;
-}
+}*/
 
 /* The "Concept" Box */
 .concept-box {
@@ -751,6 +751,51 @@ h3 {
     padding: 30px;
     margin: 30px 0;
     border-radius: 0 8px 8px 0;
+}
+
+/* --- Guide Page Specifics --- */
+
+/* 1. The Hero Background (Moves inline styles to CSS) */
+.guide-hero {
+    background-image: linear-gradient(rgba(52,78,65,0.3), rgba(52,78,65,0.2)), url('images/bg_guide.jpg') !important;
+    cursor: default; /* Show regular mouse cursor, not a hand */
+}
+
+/* Disable the "Hops Up" animation since this isn't a button 
+.guide-hero:hover {
+    transform: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Keep shadow static 
+    background-image: linear-gradient(rgba(52,78,65,0.8), rgba(52,78,65,0.7)), url('images/bg_guide.jpg') !important; /* Don't lighten on hover 
+}*/
+
+/* 2. The Disclaimer / Notice Box */
+.disclaimer-box {
+    /* Texture Background */
+    background-image: linear-gradient(rgba(52,78,65,0.7), rgba(52,78,65,0.6)), url('images/bg_notice.jpeg');
+    background-size: cover;
+    background-position: center;
+    
+    /* Box Shape */
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    
+    /* Borders & Colors */
+    border-left: 5px solid #E9C46A; /* Yellow/Gold alert stripe */
+    border-right: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    
+    color: #DAD7CD; /* Bone Text */
+    font-size: 0.95em;
+    line-height: 1.6;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.disclaimer-box strong {
+    color: #E9C46A; /* Matches the yellow border */
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* --------------------------- */
