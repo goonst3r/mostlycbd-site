@@ -679,21 +679,68 @@ h3 {
     margin: 30px 0;
 }
 
+/* Base Style for all 3 boxes */
 .status-item {
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid var(--accent-color);
-    padding: 20px;
-    border-radius: 8px;
+    /* Layout */
+    padding: 40px 20px; /* Taller for better impact */
+    border-radius: 12px;
     text-align: center;
-    transition: transform 0.2s;
+    border: 1px solid rgba(255,255,255,0.3); /* Bright subtle border */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    
+    /* Text Visibility Helpers */
+    color: #F0F0F0; /* Bright white/grey text */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.9); /* Heavy shadow so text pops */
+    
+    /* Default Background Settings */
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply; /* The "Moody" System Filter */
+    background-color: #344E41; /* Fallback Green */
+    
+    transition: transform 0.2s ease;
+}
+
+.status-item:hover {
+    transform: translateY(-5px); /* Hop up slightly on hover */
 }
 
 .status-item strong {
     display: block;
-    color: var(--accent-color);
+    color: #E9C46A; /* Gold/Yellow for the "Alert" Title */
+    font-size: 1.1em;
     text-transform: uppercase;
-    margin-bottom: 5px;
-    font-size: 0.9em;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+/* --- Specific Background Images --- */
+
+/* 1. Temperature */
+.status-temp {
+    background-image: linear-gradient(rgba(52,78,65,0.4), rgba(52,78,65,0.4)), url('images/bg_sweat1.jpg');
+    background-blend-mode: normal !important; 
+    background-color: transparent !important;
+    background-size: cover;
+    background-position: center;
+}
+
+/* 2. Stress */
+.status-stress {
+    background-image: linear-gradient(rgba(52,78,65,0.4), rgba(52,78,65,0.4)), url('images/bg_stress.jpg');
+    background-blend-mode: normal !important; 
+    background-color: transparent !important;
+    background-size: cover;
+    background-position: center;
+}
+
+/* 3. Pain */
+.status-pain {
+    background-image: linear-gradient(rgba(52,78,65,0.4), rgba(52,78,65,0.4)), url('images/bg_pain.jpg');
+    background-blend-mode: normal !important; 
+    background-color: transparent !important;
+    background-size: cover;
+    background-position: center;
 }
 
 /* 2. The "Protocol Card" (For Dosage) */
@@ -796,6 +843,38 @@ h3 {
     color: #E9C46A; /* Matches the yellow border */
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+/* --- The "Solution" / Helping Hand Card --- */
+.concept-solution {
+    /* 1. The Image & Overlay */
+    background-image: linear-gradient(rgba(52,78,65,0.05), rgba(52,78,65,0.05)), url('images/bg_helpingHand.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply; /* The "System" look */
+    background-color: #344E41;
+    
+    /* 2. Box Shape */
+    padding: 30px;
+    border-radius: 12px;
+    margin-top: 30px;
+    
+    /* 3. The "Technical" Border */
+    border: 2px dashed rgba(218, 215, 205, 0.4); 
+    
+    /* 4. Text Styling */
+    color: #DAD7CD; /* Bone Text */
+    font-size: 1.05em;
+    line-height: 1.6;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.concept-solution strong {
+    color: #FFFFFF; /* Bright White for "The Solution:" */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--accent-color);
+    margin-right: 5px;
 }
 
 /* --------------------------- */
