@@ -199,7 +199,7 @@ h1 {
 }
 
 .blog-card {
-    background-image: linear-gradient(rgba(52,78,65,0.1), rgba(52,78,65,0.1)), url('images/bg_guide.jpg');
+    background-image: linear-gradient(rgba(52,78,65,0.1), rgba(52,78,65,0.1)), url('images/bg_blog.jpg');
 }
 
 .app-card {
