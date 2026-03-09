@@ -1008,6 +1008,9 @@ footer p {
     border-radius: 16px;
     padding: 40px 40px;
     margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 75%;
     text-align: center;
     border: 1px solid rgba(52,78,65,0.1);
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -1644,6 +1647,7 @@ footer p {
     .article-stat-grid { grid-template-columns: 1fr 1fr; }
     .blog-grid { grid-template-columns: 1fr; }
     .article-hero-banner { padding: 2rem 1.25rem; }
+    .blog-hero-banner { padding: 2rem 1.25rem; max-width: 100%; }
     .article-share-strip { flex-direction: column; align-items: flex-start; }
     .blog-hero-title { font-size: 1.8rem; }
 }
