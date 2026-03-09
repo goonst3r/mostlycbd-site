@@ -999,14 +999,14 @@ footer p {
 /* --- Blog Index: Hero Banner --- */
 
 .blog-hero-banner {
-    background-image: linear-gradient(rgba(52,78,65,0.75), rgba(52,78,65,0.85)), url('../images/bg_action2.jpeg');
+    background-image: linear-gradient(rgba(52,78,65,0.75), rgba(52,78,65,0.85)), url('../images/bg_blog.jpg');
     background-size: cover;
     background-position: center;
     background-blend-mode: multiply;
     background-color: #344E41;
 
     border-radius: 16px;
-    padding: 60px 40px;
+    padding: 40px 40px;
     margin-bottom: 40px;
     text-align: center;
     border: 1px solid rgba(52,78,65,0.1);
