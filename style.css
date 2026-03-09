@@ -1226,7 +1226,7 @@ footer p {
 
 /* Article hero — dark full-bleed header */
 .article-hero-banner {
-    background-image: linear-gradient(rgba(52,78,65,0.82), rgba(52,78,65,0.92)), url('../images/bg_action2.jpeg');
+    background-image: linear-gradient(rgba(52,78,65,0.82), rgba(52,78,65,0.92)), url('../images/bg_hearst.jpeg');
     background-size: cover;
     background-position: center;
     background-color: #344E41;

@@ -22,7 +22,7 @@
         <nav class="main-nav">
             <a href="index.html">Home</a>
             <a href="https://shop.mostlycbd.com">Shop</a>
-            <a href="#top-of-page">Guide</a>
+            <a href="guide.html" class="inactiveLink">Guide</a>
             <a href="blog.html">Deep Dives</a>
             <a href="https://www.reddit.com/r/mostlyCBD/" target="blank">Community</a>
             <a href="action.html">Action</a>
@@ -325,14 +325,33 @@
 
     </div>
 
-    <div style="text-align: center;">
-        <a href="#top-of-page" class="return-btn">Return to Top</a>
-    </div>
+    <a href="#top-of-page" id="backToTop">↑ TOP</a>
 
-    <a href="#top-of-page" id="backToTop" title="Return to Top">
-        ↑ TOP
-    </a>
+    <style>
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: #344E41; color: #DAD7CD;
+            padding: 12px 20px; text-decoration: none;
+            font-family: 'Space Mono', monospace; font-weight: bold; font-size: 14px;
+            border-radius: 4px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.2s, background-color 0.2s;
+            z-index: 1000; opacity: 0; pointer-events: none;
+        }
+        #backToTop.visible { opacity: 1; pointer-events: all; }
+        #backToTop:hover {
+            background-color: #DAD7CD; color: #344E41;
+            transform: translateY(-3px); border: 2px solid #344E41;
+        }
+    </style>
 
+    <script>
+        const btn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            btn.classList.toggle('visible', window.scrollY > 300);
+        });
+    </script>
+
+<!--
     <style>
         /* Smooth Scroll Behavior */
         html {
@@ -371,6 +390,7 @@
             border: 2px solid #344E41;
         }
     </style>
+-->
 
     </main>
 
