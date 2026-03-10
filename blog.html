@@ -3,20 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Dives | mostlyCBD</title>
-    <meta name="description" content="Evidence-based deep dives on cannabis policy, history, and science. No ads. No agenda. Just facts." />
-
+    <title>Resources | mostlyCBD</title>
+    <meta name="description" content="Evidence-based deep dives, data reports, and advocacy tools on cannabis policy, history, and science. Free to share." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
     <script data-goatcounter="https://mostlycbd.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="Favicon.png">
+    <style>
+        .resources-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid rgba(52,78,65,0.15);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .resources-tab {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.62rem;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-color);
+            opacity: 0.4;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            margin-bottom: -2px;
+        }
+        .resources-tab:hover { opacity: 0.7; }
+        .resources-tab.active {
+            opacity: 1;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+        .resources-tab::before { content: '// '; color: #A3B18A; opacity: 0.6; }
+        .resources-section { display: none; }
+        .resources-section.active { display: block; }
+        .infographic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .infographic-card {
+            background: var(--card-bg);
+            border: 1px solid var(--text-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .infographic-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 4px 4px 0px var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        .infographic-card-body { padding: 1.25rem 1.5rem 1.5rem; }
+        .infographic-card-title {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            font-style: italic;
+            margin-bottom: 0.4rem;
+            margin-top: 0.25rem;
+        }
+        .infographic-card-desc {
+            font-size: 0.72rem;
+            color: var(--text-color);
+            opacity: 0.65;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-family: Georgia, serif;
+        }
+        .infographic-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: flex-end; }
+        .infographic-btn {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.58rem;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            background: none;
+        }
+        .infographic-btn:hover { background: #344E41; border-color: #344E41; color: #DAD7CD; transform: translateY(-1px); }
+        .infographic-btn.primary { background: #344E41; border-color: #344E41; color: #DAD7CD; }
+        .infographic-btn.primary:hover { background: #A3B18A; border-color: #A3B18A; color: #344E41; }
+        .infographic-btn.done { background: #344E41; border-color: #344E41; color: #DAD7CD; }
+        .graphics-intro {
+            background: var(--card-bg);
+            border: 1px solid rgba(52,78,65,0.15);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 0 8px 8px 0;
+            padding: 1.1rem 1.4rem;
+            margin-bottom: 2rem;
+            font-size: 0.78rem;
+            color: var(--text-color);
+            line-height: 1.65;
+        }
+        .graphics-intro strong { color: var(--accent-color); }
+        .graphics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+        .graphic-card {
+            background: var(--card-bg);
+            border: 1px solid var(--text-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Ensures all cards in a row have the same height */
+        }
+        .graphic-card:hover { transform: translateY(-4px); box-shadow: 4px 4px 0px var(--accent-color); border-color: var(--accent-color); }
+        .graphic-preview {
+            width: 100%;
+            display: block;
+            border-bottom: 1px solid rgba(52,78,65,0.1);
+            background: #1a1a1a;
+            aspect-ratio: 16/7;
+            object-fit: cover;
+            object-position: top;
+        }
+        .graphic-card-body { padding: 1.1rem 1.25rem 1.25rem; }
+        .graphic-card-title { font-size: 0.82rem; font-weight: bold; color: var(--accent-color); font-style: italic; margin-bottom: 0.3rem; margin-top: 0.2rem; }
+        .graphic-card-desc { font-size: 0.68rem; color: var(--text-color); opacity: 0.6; line-height: 1.55; margin-bottom: 0.9rem; font-family: Georgia, serif; }
+        .graphic-source-badge {
+            display: inline-block;
+            font-size: 0.52rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            background: rgba(52,78,65,0.08);
+            color: var(--accent-color);
+            border: 1px solid rgba(52,78,65,0.2);
+            border-radius: 4px;
+            padding: 2px 7px;
+            margin-bottom: 0.75rem;
+        }
+        .infographic-card.soon { opacity: 0.5; cursor: not-allowed; border-style: dashed; }
+        .infographic-card.soon:hover { transform: none; box-shadow: none; border-color: var(--text-color); }
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: #344E41; color: #DAD7CD;
+            padding: 12px 20px; text-decoration: none;
+            font-family: 'Space Mono', monospace; font-weight: bold; font-size: 14px;
+            border-radius: 4px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.2s, background-color 0.2s;
+            z-index: 1000; opacity: 0; pointer-events: none;
+        }
+        #backToTop.visible { opacity: 1; pointer-events: all; }
+        #backToTop:hover { background-color: #DAD7CD; color: #344E41; transform: translateY(-3px); border: 2px solid #344E41; }
+        @media (max-width: 600px) {
+            .infographic-grid, .graphics-grid { grid-template-columns: 1fr; }
+            .resources-tab { padding: 0.65rem 0.9rem; font-size: 0.55rem; }
+        }
+    </style>
 </head>
 <body>
-
     <header class="sticky-header">
         <a href="index.html"><img src="logo_1.png" alt="mostlyCBD" class="nav-logo"></a>
         <nav class="main-nav">
@@ -31,92 +187,208 @@
 
     <main>
         <div id="top-of-page"></div>
-
         <div class="content-container">
 
             <div class="blog-hero-banner">
-                <span class="blog-eyebrow">The Mission · Deep Dives</span>
+                <span class="blog-eyebrow">The Mission &middot; Resources</span>
                 <h1 class="blog-hero-title">Facts over stigma.<br>Every time.</h1>
-                <p class="blog-hero-sub">
-                    Evidence-based breakdowns on cannabis policy, history, and science.
-                    No ads. No sponsors. No agenda. Just the reading you wished existed
-                    when you started asking questions.
-                </p>
+                <p class="blog-hero-sub">Evidence-based breakdowns on cannabis policy, history, and science. No ads. No sponsors. No agenda. Free to share, cite, and use.</p>
             </div>
 
             <div class="mission-strip">
-                Educate to regulate
-                <span class="dot">·</span> Reschedule
-                <span class="dot">·</span> Fund the trials
-                <span class="dot">·</span> Protect access
-                <span class="dot">·</span> Regulate by evidence
+                Educate to regulate <span class="dot">&middot;</span> Reschedule <span class="dot">&middot;</span> Fund the trials <span class="dot">&middot;</span> Protect access <span class="dot">&middot;</span> Regulate by evidence
             </div>
 
-            <div class="blog-section-label">Latest</div>
+            <div class="resources-tabs" role="tablist">
+                <button class="resources-tab active" role="tab" data-section="deep-dives" onclick="switchTab(this,'deep-dives')">Deep Dives</button>
+                <button class="resources-tab" role="tab" data-section="infographics" onclick="switchTab(this,'infographics')">Infographics</button>
+                <button class="resources-tab" role="tab" data-section="advocacy-graphics" onclick="switchTab(this,'advocacy-graphics')">Advocacy Graphics</button>
+            </div>
 
-            <a class="blog-card-featured" href="blog/hearst-anslinger.html">
-                <div class="blog-card-tag">History · Policy</div>
-                <h2>One Man.<br>28 Papers.<br>87 Years of Stigma.</h2>
-                <p class="blog-card-desc">
-                    Before cannabis was illegal, it was medicine — listed in the U.S. Pharmacopeia
-                    for 87 years. The story of how William Randolph Hearst and Harry Anslinger turned
-                    a plant into a political weapon, and why that weapon is still loaded.
-                </p>
-                <div class="blog-card-meta">
-                    <span class="blog-meta-item">History · Policy</span>
-                    <span class="blog-meta-item">~7 min read</span>
-                    <span class="blog-read-btn">Read →</span>
+            <!-- DEEP DIVES -->
+            <div class="resources-section active" id="deep-dives">
+                <div class="blog-section-label">Published</div>
+                <a class="blog-card-featured" href="blog/hearst-anslinger.html">
+                    <div class="blog-card-tag">History &middot; Policy</div>
+                    <h2>One Man. 28 Papers. 90+ Years of Stigma.</h2>
+                    <p class="blog-card-desc">Before cannabis was illegal, it was medicine &mdash; listed in the U.S. Pharmacopeia for 92 years. The story of how William Randolph Hearst and Harry Anslinger turned a plant into a political weapon, and why that weapon is still loaded.</p>
+                    <div class="blog-card-meta">
+                        <span class="blog-meta-item">History &middot; Policy</span>
+                        <span class="blog-meta-item">~7 min read</span>
+                        <span class="blog-read-btn">Read &rarr;</span>
+                    </div>
+                </a>
+                <div class="blog-section-label" style="margin-top:2.5rem;">Coming Up</div>
+                <div class="blog-grid">
+                    <div class="blog-card-soon">
+                        <div class="blog-card-tag">Science &middot; Market</div>
+                        <h3>The 14:1 Problem &mdash; How the Industry Bred Out the Brakes</h3>
+                        <p class="blog-card-desc">The traditional plant had a THC-to-CBD ratio near 14:1. Modern products have pushed that past 80:1. That's not the plant's fault &mdash; it's a regulatory and market failure.</p>
+                        <span class="blog-soon-badge">Coming Soon</span>
+                    </div>
+                    <div class="blog-card-soon">
+                        <div class="blog-card-tag">Healthcare &middot; Policy</div>
+                        <h3>It's Not a Cannabis Problem. It's a Healthcare Crisis Wearing a Cannabis Mask.</h3>
+                        <p class="blog-card-desc">67-day psychiatrist wait times. 60% of Americans locked out by cost. When the clinic door is closed, the dispensary is what's left.</p>
+                        <span class="blog-soon-badge">Coming Soon</span>
+                    </div>
+                    <div class="blog-card-soon">
+                        <div class="blog-card-tag">Research &middot; Schedule I</div>
+                        <h3>You Can't Demand Evidence While Blocking the Research</h3>
+                        <p class="blog-card-desc">Schedule I means no recognized medical use. It also means no federally approved clinical trials. The classification doesn't reflect ignorance &mdash; it actively maintains it.</p>
+                        <span class="blog-soon-badge">Coming Soon</span>
+                    </div>
                 </div>
-            </a>
+            </div>
 
-            <div class="blog-section-label" style="margin-top: 2.5rem;">Coming Up</div>
+            <!-- infographics -->
+            <div class="resources-section" id="infographics">
+                <div class="blog-section-label">Published</div>
+                <div class="infographic-grid">
+                    <div class="graphic-card"  style="grid-column:1;">
+                        <img class="graphic-preview" src="infographics/ny-cannabis-tax-infographic.png" alt="Cannabis Revenue is paving the way in New York." loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Revenue &middot; Policy</div>
+                            <div class="graphic-card-title">"Cannabis Is Paying Its Way"</div>
+                            <p class="graphic-card-desc">New York's regulated adult-use cannabis market generated $4.16M in net tax revenue in a single month — 
+                                up 81% year-over-year. It now sits as a tracked line item alongside alcohol, tobacco, and opioid excise 
+                                in official state revenue reports. Tobacco is down 15.8% in the same period. The opioid excise keeps 
+                                climbing. The data is building a case. The question is whether policymakers are reading it.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="images/infographics/ny-cannabis-tax-infographic.png" download="ny-cannabis-tax-infographic.png">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/ny-cannabis-tax-infographic.png')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="blog-grid">
+                    
 
-                <div class="blog-card-soon">
-                    <div class="blog-card-tag">Science · Market</div>
-                    <h3>The 14:1 Problem — How the Industry Bred Out the Brakes</h3>
-                    <p class="blog-card-desc">
-                        The traditional plant had a THC-to-CBD ratio near 14:1. Modern products
-                        have pushed that past 80:1. That's not the plant's fault — it's a
-                        regulatory and market failure.
-                    </p>
-                    <span class="blog-soon-badge">Coming Soon</span>
+                    <div class="graphic-card" style="grid-column:2;">
+                        <img class="graphic-preview" src="infographics/infographic-1-ratio-crisis.png" alt="Cannabis Revenue is paving the way in New York." loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Market &middot; Science</div>
+                            <div class="graphic-card-title">"The Ratio Crisis — How the Market Bred Out the Brakes"</div>
+                            <p class="graphic-card-desc">The traditional cannabis plant had a THC-to-CBD ratio near 14:1. Modern commercial products have pushed that past 80:1. Backed by 1,962-patient Minnesota peer-reviewed data (Cancer Medicine, 2025) &mdash; the first large-scale analysis linking product characteristics to patient-reported anxiety outcomes.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="images/infographics/infographic-1-ratio-crisis.png" download="infographic-1-ratio-crisis.png">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/infographic-1-ratio-crisis.png')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="infographic-card" style="grid-column:2;">
+                        <div style="width:100%;height:260px;overflow:hidden;border-bottom:1px solid rgba(52,78,65,0.1);background:#F5F0E8;position:relative;">
+                            <iframe src="infographics/infographic-2-door-was-closed.html" title="The Ratio Crisis infographic preview" style="width:900px;height:900px;border:none;transform:scale(0.72);transform-origin:top left;pointer-events:none;" scrolling="no" loading="lazy"></iframe>
+                        </div>
+                        <div class="infographic-card-body">
+                            <div class="blog-card-tag">Healthcare &middot; Policy</div>
+                            <div class="infographic-card-title">The The Door Was Closed</div>
+                            <p class="infographic-card-desc">The cannabis-mental health link runs the other direction. Mendelian randomization data shows genetic 
+                                vulnerability to schizophrenia predicts cannabis use — more strongly than cannabis predicts schizophrenia. 
+                                People arrived at the dispensary because the clinic door was already closed: 67-day psychiatrist waits, 
+                                60% locked out by cost, no clinical guidance on the other side. That's not a cannabis problem. That's a 
+                                healthcare crisis wearing a cannabis mask.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="infographics/infographic-2-door-was-closed.html" target="_blank">View Full &rarr;</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/infographic-2-door-was-closed.html')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>-->
+                    
+                    <!--<div class="infographic-card soon">
+                        <div style="width:100%;height:140px;background:#344E41;opacity:0.25;"></div>
+                        <div class="infographic-card-body">
+                            <div class="blog-card-tag">Policy &middot; History</div>
+                            <div class="infographic-card-title">56 Years of a "Temporary" Fix</div>
+                            <p class="infographic-card-desc">Nixon's Schedule I placement was temporary &mdash; pending a review he never honored.</p>
+                            <span class="blog-soon-badge">Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="infographic-card soon">
+                        <div style="width:100%;height:140px;background:#344E41;opacity:0.25;"></div>
+                        <div class="infographic-card-body">
+                            <div class="blog-card-tag">Healthcare &middot; Context</div>
+                            <div class="infographic-card-title">Cannabis is Paying Its Way &mdash; NY Tax Data</div>
+                            <p class="infographic-card-desc">$4.16M in a single month, up 76.2% YOY. The fiscal case for regulation, visualized.</p>
+                            <span class="blog-soon-badge">Coming Soon</span>
+                        </div>
+                    </div>-->
                 </div>
+            </div>
 
-                <div class="blog-card-soon">
-                    <div class="blog-card-tag">Healthcare · Policy</div>
-                    <h3>It's Not a Cannabis Problem. It's a Healthcare Crisis Wearing a Cannabis Mask.</h3>
-                    <p class="blog-card-desc">
-                        67-day psychiatrist wait times. 60% of Americans locked out by cost.
-                        When the clinic door is closed, the dispensary is what's left.
-                        That's not a drug problem — that's a system failure.
-                    </p>
-                    <span class="blog-soon-badge">Coming Soon</span>
+            <!-- ADVOCACY GRAPHICS -->
+            <div class="resources-section" id="advocacy-graphics">
+                <div class="graphics-intro">
+                    <strong>Free to use. Free to share.</strong> These graphics were made to move &mdash; post them, share them, cite them. All we ask: keep the source credit intact. Attribution keeps the data honest.
                 </div>
+                <div class="blog-section-label">Share-Ready Graphics</div>
+                <div class="graphics-grid">
 
-                <div class="blog-card-soon">
-                    <div class="blog-card-tag">Research · Schedule I</div>
-                    <h3>You Can't Demand Evidence While Blocking the Research</h3>
-                    <p class="blog-card-desc">
-                        Schedule I means no recognized medical use. It also means no federally
-                        approved clinical trials. The classification doesn't reflect ignorance —
-                        it actively maintains it.
-                    </p>
-                    <span class="blog-soon-badge">Coming Soon</span>
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="images/advocacy/BredOut.jpg" alt="They Bred Out the Safety Valve graphic" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Original</div>
+                            <div class="graphic-card-title">"They Bred Out the Safety Valve."</div>
+                            <p class="graphic-card-desc">14:1 &rarr; 80:1. The ratio shift wasn't an accident &mdash; it was a market incentive. CBD is protective. The industry removed it.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="images/advocacy/BredOut.jpg" download="mostlycbd-bred-out-safety-valve.jpg">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/images/BredOut.jpg')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="images/advocacy/InTheSystem.jpg" alt="Detection window vs impairment window" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Original</div>
+                            <div class="graphic-card-title">"These Are Not the Same Thing."</div>
+                            <p class="graphic-card-desc">3&ndash;4 hrs impairment. 30 days detectable. Zero correlation. Presence in a drug test tells you nothing about behavior yesterday.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="images/advocacy/InTheSystem.jpg" download="mostlycbd-detection-vs-impairment.jpg">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/images/InTheSystem.jpg')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="graphic-card" style="grid-column:1/-1;">
+                        <img class="graphic-preview" src="images/advocacy/nixon2.jpg" alt="56 Years of a Temporary Fix" loading="lazy" style="aspect-ratio:21/7;object-position:center;">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Original</div>
+                            <div class="graphic-card-title">56 Years of a "Temporary" Fix.</div>
+                            <p class="graphic-card-desc">Filed 1970. Status: temporary &mdash; pending review Nixon never honored. His own Shafer Commission recommended decriminalization. He buried the report.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="images/advocacy/nixon2.jpg" download="mostlycbd-56-years-temporary-fix.jpg">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/images/nixon2.jpg')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="images/advocacy/CDC_alcoholDeathsPerDay.jpg" alt="CDC: 488 alcohol deaths per day" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">Source: CDC &middot; cdc.gov/alcohol</div>
+                            <div class="graphic-card-title">488 Deaths Per Day from Excessive Alcohol Use</div>
+                            <p class="graphic-card-desc">That's 20 people every hour. 2020&ndash;2021 U.S. data. Context matters when discussing which substances are regulated and which aren't.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="https://www.cdc.gov/alcohol/graphics/index.html" target="_blank" rel="noopener">Source: CDC &rarr;</a>
+                                <a class="infographic-btn" href="images/advocacy/CDC_alcoholDeathsPerDay.jpg" download="cdc-alcohol-deaths-per-day.jpg">Download</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="images/advocacy/CDC_alcoholDeathsPerYr.jpg" alt="CDC: Alcohol deaths on the rise" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">Source: CDC &middot; cdc.gov/alcohol</div>
+                            <div class="graphic-card-title">Alcohol Deaths Rising &mdash; 138K to 178K Per Year</div>
+                            <p class="graphic-card-desc">A 29% increase from 2016&ndash;17 to 2020&ndash;21. The freely available, fully legal substance comparison the policy conversation rarely makes.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="https://www.cdc.gov/alcohol/graphics/index.html" target="_blank" rel="noopener">Source: CDC &rarr;</a>
+                                <a class="infographic-btn" href="images/advocacy/CDC_alcoholDeathsPerYr.jpg" download="cdc-alcohol-deaths-per-year.jpg">Download</a>
+                            </div>
+                        </div>
+                    </div>                    
+
                 </div>
-
-                <!--<div class="blog-card-soon">
-                    <div class="blog-card-tag">Science · Entourage Effect</div>
-                    <h3>CBD Without THC Is a Car Without an Ignition</h3>
-                    <p class="blog-card-desc">
-                        Why a functional, balanced cannabinoid ratio matters more than isolate
-                        dosing — and what the entourage effect actually means for people managing
-                        real conditions.
-                    </p>
-                    <span class="blog-soon-badge">Coming Soon</span>
-                </div> -->
-
             </div>
 
         </div>
@@ -129,34 +401,34 @@
             <a href="https://www.instagram.com/mostly.cbd/">Instagram</a>
             <a href="https://www.reddit.com/r/mostlyCBD/">Reddit</a>
         </div>
-        <p>© 2026 mostlyCBD · Focused. Functional. Fair.</p>
+        <p>&copy; 2026 mostlyCBD &middot; Focused. Functional. Fair.</p>
     </footer>
 
-    <a href="#top-of-page" id="backToTop">↑ TOP</a>
-
-    <style>
-        #backToTop {
-            position: fixed; bottom: 30px; right: 30px;
-            background-color: #344E41; color: #DAD7CD;
-            padding: 12px 20px; text-decoration: none;
-            font-family: 'Space Mono', monospace; font-weight: bold; font-size: 14px;
-            border-radius: 4px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-            transition: transform 0.2s, background-color 0.2s;
-            z-index: 1000; opacity: 0; pointer-events: none;
-        }
-        #backToTop.visible { opacity: 1; pointer-events: all; }
-        #backToTop:hover {
-            background-color: #DAD7CD; color: #344E41;
-            transform: translateY(-3px); border: 2px solid #344E41;
-        }
-    </style>
+    <a href="#top-of-page" id="backToTop">&uarr; TOP</a>
 
     <script>
-        const btn = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            btn.classList.toggle('visible', window.scrollY > 300);
-        });
+        function switchTab(btn, sectionId) {
+            document.querySelectorAll('.resources-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.resources-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelector('.resources-tabs').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        function copyLink(btn, url) {
+            navigator.clipboard.writeText(url).then(() => {
+                const orig = btn.textContent;
+                btn.textContent = '\u2713 Copied!';
+                btn.classList.add('done');
+                setTimeout(() => { btn.textContent = orig; btn.classList.remove('done'); }, 2500);
+            });
+        }
+        const topBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => { topBtn.classList.toggle('visible', window.scrollY > 300); });
+        const hash = window.location.hash.replace('#','');
+        if (hash && document.getElementById(hash)) {
+            const tab = document.querySelector('[data-section="' + hash + '"]');
+            if (tab) switchTab(tab, hash);
+        }
     </script>
-
 </body>
 </html>
