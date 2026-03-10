@@ -1656,6 +1656,10 @@ footer p {
     .article-stat-grid { grid-template-columns: 1fr; }
 }
 
+@media screen and (max-width: 767px) {
+    .mission-strip { display: none; }
+}
+
 
 /* =========================================
    READABILITY: SERIF BODY TEXT
