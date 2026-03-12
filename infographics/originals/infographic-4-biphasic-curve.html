@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Biphasic Curve — mostlycbd.com</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #4a7c2c;
+    --dark-green: #2d5016;
+    --bg-dark: #0a0a0a;
+    --bg-mid: #1a1a1a;
+    --text-light: #e0e0e0;
+    --text-mid: #bbb;
+    --text-muted: #888;
+    --accent: #b8d4a8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-dark);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-light);
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .infographic-container {
+    background: var(--bg-mid);
+    max-width: 1000px;
+    width: 100%;
+    border-radius: 24px;
+    padding: 60px 80px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .eyebrow {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text-light);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    color: var(--text-mid);
+    margin-bottom: 60px;
+    max-width: 800px;
+  }
+
+  /* Target Curve Layout */
+  .curve-wrapper {
+    background: var(--bg-dark);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px;
+    padding: 60px 40px;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .curve-svg {
+    width: 100%;
+    max-width: 800px;
+    height: 160px;
+    overflow: visible;
+  }
+
+  /* Path animation or simple static styling */
+  .curve-path {
+    fill: none;
+    stroke: url(#curve-gradient);
+    stroke-width: 6;
+    stroke-linecap: round;
+  }
+  
+  .axis-line {
+    stroke: rgba(255,255,255,0.1);
+    stroke-width: 2;
+  }
+
+  .labels {
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 32px auto 0;
+    text-align: left;
+  }
+  
+  .label-group {
+    width: 30%;
+    position: relative;
+  }
+
+  .label-group:nth-child(2) { text-align: center; }
+  .label-group:nth-child(3) { text-align: right; }
+
+  .label-dose {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .label-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  
+  .label-list {
+    list-style: none;
+    margin-top: 12px;
+    font-size: 0.9rem;
+  }
+  
+  .label-list li {
+    margin-bottom: 4px;
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .label-group:nth-child(2) .label-list li {
+    justify-content: center;
+  }
+  .label-group:nth-child(3) .label-list li {
+    justify-content: flex-end;
+  }
+
+  .label-list li.good::before { content: "✓"; color: var(--accent); margin-right: 8px; font-weight: 700; }
+  .label-list li.bad::before { content: "✗"; color: #ff6b6b; margin-right: 8px; font-weight: 700; }
+  .label-list li.neutral::before { content: "~"; color: var(--text-mid); margin-right: 8px; font-weight: 700; }
+
+  /* Side by Side layout for Factor and Real-World Data */
+  .split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+
+  .cbd-factor, .real-world {
+    background: var(--bg-dark);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .factor-box {
+    margin-bottom: 24px;
+  }
+
+  .factor-box:last-child { margin-bottom: 0; }
+
+  .factor-title {
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  
+  .factor-box.negative .factor-title { color: #ff6b6b; }
+
+  .bullet-list {
+    list-style: none;
+    color: var(--text-mid);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .bullet-list li::before {
+    content: "•";
+    color: var(--text-muted);
+    display: inline-block;
+    width: 16px;
+  }
+
+  .rw-data-box {
+    margin-bottom: 24px;
+  }
+
+  .rw-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .rw-stat {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-light);
+  }
+  
+  .rw-stat span {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    font-weight: 400;
+  }
+
+  .important-note {
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(255,255,255,0.05);
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin-top: 24px;
+  }
+
+  .bottom-line {
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text-light);
+    margin: 60px 0;
+    padding: 40px;
+    background: rgba(74, 124, 44, 0.15);
+    border-left: 8px solid var(--primary);
+    border-radius: 0 16px 16px 0;
+  }
+
+  /* Footer */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .sources {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .brand {
+    text-align: right;
+  }
+
+  .brand-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+  }
+
+  .brand-tagline {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 900px) {
+    .infographic-container { padding: 40px; }
+    .split-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 3rem; }
+    .bottom-line { font-size: 1.5rem; }
+    .footer { flex-direction: column; gap: 24px; }
+    .brand { text-align: left; }
+    .labels { flex-direction: column; gap: 32px; }
+    .label-group { width: 100%; text-align: left !important; }
+    .label-group:nth-child(2) .label-list li, .label-group:nth-child(3) .label-list li { justify-content: flex-start; }
+    .curve-svg { display: none; } /* Hide curve on very small mobile for space */
+  }
+</style>
+</head>
+<body>
+
+<div class="infographic-container">
+  
+  <div class="header">
+    <div class="eyebrow">Infographic 4: Dose-Dependent Effects · mostlycbd.com</div>
+    <h1>The Biphasic Curve</h1>
+    <p class="subtitle">Why THC Dose and Balance Matter</p>
+  </div>
+
+  <div class="curve-wrapper">
+    <!-- SVG Biphasic Curve -->
+    <svg class="curve-svg" viewBox="0 0 800 160" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="curve-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#b8d4a8" />
+          <stop offset="50%" stop-color="#4a7c2c" />
+          <stop offset="100%" stop-color="#ff6b6b" />
+        </linearGradient>
+      </defs>
+      <!-- Horizontal Axis Base -->
+      <line class="axis-line" x1="0" y1="140" x2="800" y2="140" />
+      <!-- The Inverted U Curve -->
+      <path class="curve-path" d="M 50 140 Q 400 -60 750 140"></path>
+      <!-- Divider Lines -->
+      <line class="axis-line" stroke-dasharray="4" x1="250" y1="20" x2="250" y2="140" />
+      <line class="axis-line" stroke-dasharray="4" x1="550" y1="20" x2="550" y2="140" />
+    </svg>
+
+    <div class="labels">
+      <!-- Low Dose -->
+      <div class="label-group">
+        <div class="label-dose" style="color: var(--accent);">LOW DOSE (2.5-5mg)</div>
+        <ul class="label-list">
+          <li class="good">Anxiety reduction</li>
+          <li class="good">Mood improvement</li>
+          <li class="good">Therapeutic benefit</li>
+        </ul>
+      </div>
+
+      <!-- Moderate Dose -->
+      <div class="label-group">
+        <div class="label-dose" style="color: var(--primary);">MODERATE DOSE (10-20mg)</div>
+        <ul class="label-list">
+          <li class="good">Peak therapeutic window</li>
+          <li class="good">Minimal adverse effects</li>
+          <li class="neutral">Individual variance increases</li>
+        </ul>
+      </div>
+
+      <!-- High Dose -->
+      <div class="label-group">
+        <div class="label-dose" style="color: #ff6b6b;">HIGH DOSE (40mg+)</div>
+        <ul class="label-list">
+          <li class="bad">Increased anxiety</li>
+          <li class="bad">Psychotic-like symptoms</li>
+          <li class="bad">Memory impairment</li>
+          <li class="bad">Dose-dependent harms</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="split-grid">
+    <!-- The CBD Factor -->
+    <div class="cbd-factor">
+      <h3>The CBD Factor</h3>
+      
+      <div class="factor-box">
+        <div class="factor-title">WITH CBD PRESENT (balanced):</div>
+        <ul class="bullet-list">
+          <li>THC's therapeutic window widens</li>
+          <li>Adverse effects reduced</li>
+          <li>Anxiety protection maintained</li>
+          <li>Memory preserved</li>
+        </ul>
+      </div>
+
+      <div class="factor-box negative">
+        <div class="factor-title">WITHOUT CBD (modern high-potency):</div>
+        <ul class="bullet-list">
+          <li>Narrow therapeutic window</li>
+          <li>Increased risk profile</li>
+          <li>Anxiety amplification</li>
+          <li>Cognitive impairment</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Real-World Data -->
+    <div class="real-world">
+      <h3>Real-World Data</h3>
+      
+      <div style="font-size: 0.9rem; color: var(--text-mid); margin-bottom: 24px;">
+        <strong>MINNESOTA MEDICAL CANNABIS PROGRAM</strong><br>
+        1,962 cancer patients tracked
+      </div>
+
+      <div class="rw-data-box">
+        <div class="rw-subtitle">Optimal CBD Dose for Depression:</div>
+        <div class="rw-stat">5-10mg/day <span>(then plateaus)</span></div>
+      </div>
+
+      <div class="rw-data-box">
+        <div class="rw-subtitle">Optimal THC Dose (varies by route):</div>
+        <div class="rw-stat">20-40mg/day <span>enteral administration<br>showed benefit</span></div>
+      </div>
+
+      <div class="important-note">
+        RATIO MATTERS MORE THAN RAW POTENCY
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-line">
+    "The market pushed maximum THC because it sells.<br>
+    The science shows balanced formulations work better<br>
+    and carry fewer risks."
+  </div>
+
+  <div class="footer">
+    <div class="sources">
+      Source Citation:<br>
+      • Reddy et al. (2025). Cancer Medicine, 14(21)
+    </div>
+    <div class="brand">
+      <div class="brand-logo">mostlycbd.com</div>
+      <div class="brand-tagline">Educate to Regulate.</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
