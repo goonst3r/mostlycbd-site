@@ -1084,8 +1084,8 @@ footer p {
 
 /* --- Blog Index: Featured Card --- */
 .blog-card-featured {
-    background-image: linear-gradient(rgba(52,78,65,0.82), rgba(52,78,65,0.92)), url('../images/bg_hearst.jpg');
-    background-size: contain;
+    /* Background image set inline per card - see blog.html */
+    background-size: cover;
     background-position: center;
     background-color: #344E41;
     background-blend-mode: multiply;
