@@ -447,67 +447,6 @@ h3 {
     display: block;
 }
 
-/* Sticky Header (Guide Only) */
-.sticky-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    
-    /* THE VELLUM TEXTURE */
-    /* Matches index.html perfectly */
-    background-image: linear-gradient(rgba(218, 215, 205, 0.85), rgba(218, 215, 205, 0.8)), url('images/bg_header.jpeg');
-    background-size: cover;
-    background-position: center;
-    
-    /* Subtle Definition */
-    border-bottom: 1px solid rgba(52, 78, 65, 0.1); 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-    
-    z-index: 1000;
-    text-align: center;
-    padding-top: 15px; /* Slightly tighter than index for space */
-    padding-bottom: 15px;
-}
-
-.nav-logo {
-    max-width: 180px;
-    height: auto;
-    display: block;
-    margin: 0 auto 15px auto;
-}
-
-.main-nav {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    font-size: 1.1em;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    
-    flex-wrap: wrap; /* Allows the nav to wrap on smaller screens */
-}
-
-.main-nav a {
-    text-decoration: none;
-    color: var(--text-color);
-    opacity: 0.6;
-    transition: opacity 0.2s;
-}
-
-.main-nav a:hover, 
-.main-nav a.active {
-    opacity: 1;
-    border-bottom: 2px solid var(--accent-color);
-}
-
-.inactiveLink {
-    pointer-events: none;
-    cursor: default;
-    color: gray; /* Optional: visual hint */
-}
-
 /* --- Action Page Hero Banner --- */
 
 .action-hero-banner {
@@ -967,12 +906,6 @@ footer p {
     h1 { font-size: 2rem; }
     body { padding: 1.5rem; }
     .grid { grid-template-columns: 1fr; }
-    .main-nav {
-        gap: 15px;
-        font-size: 0.85em;
-        padding-bottom: 5px;
-    }
-    .nav-logo { max-width: 140px; }   /* Shrink logo slightly on mobile */
     .action-card2 {
         /* On desktop it's 150px. On mobile, the header is taller (2 lines), 
            so we push it down further to clear it. */
@@ -1963,6 +1896,67 @@ footer p {
             background: var(--anchor);
             border-radius: 1px;
         }
+
+        /* Hamburger button — hidden on desktop */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            z-index: 101;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile nav */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-image: linear-gradient(rgba(218, 215, 205, 0.97), rgba(218, 215, 205, 0.95)), url('images/bg_header.jpeg');
+                background-size: cover;
+                background-position: center;
+                padding: 1rem 0;
+                gap: 0;
+                border-bottom: 1px solid var(--border-subtle);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-links li {
+                text-align: center;
+                padding: 0.75rem 0;
+            }
+            .nav-links a {
+                font-size: 0.95rem;
+            }
+        }
+
         .hero {
             min-height: 60vh;
             display: flex;

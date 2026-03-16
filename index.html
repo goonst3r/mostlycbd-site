@@ -16,13 +16,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="logo_1.png" alt="mostlyCBD logo" class="main-logo">
-            <p class="subtitle mobile-text">A simpler, safer, natural resource. Let's scrap the script & boost your bliss!</p>
-            <p class="subtitle desktop-text">A simpler, safer, natural resource.<br>
-                Let's scrap the script & boost your bliss!</p>            
-        </header>
+    <div class="ambient"></div>
+    <div class="page">
+
+        <nav id="nav">
+            <a href="index.html"><img src="logo_1.png" alt="mostlyCBD" height="40em" style="margin: 0 auto 0 auto;"></a>
+            <button class="hamburger" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="guide.html">Guide</a></li>
+                <li><a href="blog.html">Deep Dives</a></li>
+                <li><a href="https://www.reddit.com/r/mostlyCBD/" target="_blank">Community</a></li>
+                <li><a href="action.html">Action</a></li>
+                <li><a href="https://shop.mostlycbd.com">Shop</a></li>
+            </ul>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-label">Education · Advocacy · Access</div>
+            <h1>A simple, safe, <em>natural</em> resource</h1>
+            <p class="hero-sub">
+                Plant-based wellness rooted in science, not stigma.
+                Understand your body. Make informed choices.
+                Join a community that puts evidence before everything.
+            </p>
+        </section>
 
         <div id="top-of-page"></div>
 
