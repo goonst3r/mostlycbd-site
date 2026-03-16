@@ -313,16 +313,20 @@
 
 </head>
 <body>
-    <header class="sticky-header">
-        <nav class="main-nav">
-            <a href="index.html">Home</a>
-            <a href="guide.html">Guide</a>
-            <a href="blog.html">Deep Dives</a>
-            <a href="https://www.reddit.com/r/mostlyCBD/" target="blank">Community</a>
-            <a href="action.html" class="inactiveLink">Action</a>
-            <a href="https://shop.mostlycbd.com">Shop</a>
-        </nav>
-    </header>
+    <nav id="nav">
+        <a href="index.html"><img src="logo_1.png" alt="mostlyCBD" height="40em" style="margin: 0 auto 0 auto;"></a>
+        <button class="hamburger" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="guide.html">Guide</a></li>
+            <li><a href="blog.html">Deep Dives</a></li>
+            <li><a href="https://www.reddit.com/r/mostlyCBD/" target="_blank">Community</a></li>
+            <li><a href="action.html" class="active">Action</a></li>
+            <li><a href="https://shop.mostlycbd.com">Shop</a></li>
+        </ul>
+    </nav>
 
     <main>
         <div id="top-of-page"></div>
