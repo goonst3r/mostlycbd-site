@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Take Action | mostlyCBD</title>
-    
+    <meta name="description" content="Where we stand. Reschedule federally. Fund the science. Protect functional access. Regulate by evidence, not stigma." />
+
+    <meta property="og:title" content="Where We Stand | mostlyCBD" />
+    <meta property="og:description" content="Not selling you on cannabis. Giving you honest information and letting you decide for yourself." />
+    <meta property="og:url" content="https://mostlycbd.com/action.html" />
+    <meta property="og:site_name" content="mostlyCBD" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@scrapthescript" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -14,10 +22,306 @@
     <link rel="stylesheet" href="style.css"> 
     <link rel="icon" type="image/png" href="Favicon.png">
 
+    <style>
+        /* === ACTION PAGE — SCOPED ENHANCEMENTS === */
+
+        /* Hero override — full-bleed advocacy feel */
+        .action-page-hero {
+            background-image: linear-gradient(rgba(52,78,65,0.78), rgba(52,78,65,0.92)), url('images/bg_action2.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: multiply;
+            background-color: #344E41;
+            border-radius: 16px;
+            padding: 3.5rem 2.5rem 3rem;
+            margin-bottom: 3rem;
+            text-align: left;
+            border: 1px solid rgba(52,78,65,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .action-page-hero .blog-eyebrow {
+            margin-bottom: 1rem;
+        }
+
+        .action-page-hero h1 {
+            color: #FFFFFF;
+            font-size: 2.4rem;
+            font-style: italic;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.75rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .action-page-hero .article-dek {
+            color: rgba(218,215,205,0.8);
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1rem;
+            line-height: 1.75;
+            max-width: 640px;
+            margin: 0;
+        }
+
+        /* Position cards — numbered advocacy planks */
+        .position-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin: 2rem 0 2.5rem;
+        }
+
+        .position-card {
+            background: var(--card-bg);
+            border: 1px solid var(--text-color);
+            border-radius: 16px;
+            padding: 1.75rem 1.5rem;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .position-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 4px 4px 0px var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .position-num {
+            font-family: 'Space Mono', monospace;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            opacity: 0.15;
+            position: absolute;
+            top: 1rem;
+            right: 1.25rem;
+            line-height: 1;
+        }
+
+        .position-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .position-card p {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        /* Full-width position card for the 5th plank */
+        .position-card.full-span {
+            grid-column: 1 / -1;
+        }
+
+        /* Data callout — stat pair */
+        .action-stat-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin: 2rem 0;
+        }
+
+        .action-stat-block {
+            background-color: #344E41;
+            border-radius: 16px;
+            padding: 2rem 1.75rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 14px rgba(52,78,65,0.25);
+        }
+
+        .action-stat-block::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 2px, transparent 2px, transparent 10px);
+            pointer-events: none;
+        }
+
+        .action-stat-num {
+            font-family: 'Space Mono', monospace;
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #FFFFFF;
+            line-height: 1;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .action-stat-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #A3B18A;
+            line-height: 1.6;
+        }
+
+        /* The banner/share section */
+        .banner-share-section {
+            background: var(--card-bg);
+            border: 1px solid var(--text-color);
+            border-radius: 16px;
+            overflow: hidden;
+            margin: 2.5rem 0;
+            transition: all 0.2s ease;
+        }
+
+        .banner-share-section:hover {
+            box-shadow: 4px 4px 0px var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .banner-share-section img {
+            width: 100%;
+            display: block;
+            border-bottom: 1px solid rgba(52,78,65,0.1);
+        }
+
+        .banner-share-body {
+            padding: 1.5rem 1.75rem;
+        }
+
+        .banner-share-body .position-title {
+            margin-bottom: 0.6rem;
+        }
+
+        .banner-share-body p {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: var(--text-color);
+            margin: 0 0 1.25rem;
+        }
+
+        .banner-actions {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .banner-actions .article-share-btn {
+            color: #344E41;
+            background-color: #DAD7CD;
+            border-color: #DAD7CD;
+        }
+
+        /* Advocacy callout box */
+        .advocacy-callout {
+            background: var(--card-bg);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 0 8px 8px 0;
+            padding: 1.5rem 1.75rem;
+            margin: 2.5rem 0;
+        }
+
+        .advocacy-callout h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.68rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-color);
+            margin: 0 0 0.75rem;
+        }
+
+        .advocacy-callout h3::before {
+            content: '// ';
+            color: #A3B18A;
+        }
+
+        .advocacy-callout p {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--text-color);
+            margin: 0 0 1rem;
+        }
+
+        .advocacy-callout .btn-row {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* Community voice card */
+        .voice-card {
+            background-color: #344E41;
+            border-radius: 16px;
+            padding: 2.25rem 2rem;
+            margin: 2.5rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(52,78,65,0.3);
+        }
+
+        .voice-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 2px, transparent 2px, transparent 10px);
+            pointer-events: none;
+        }
+
+        .voice-card .position-title {
+            color: #A3B18A;
+            margin-bottom: 0.85rem;
+        }
+
+        .voice-card p {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: #DAD7CD;
+            margin: 0 0 1rem;
+        }
+
+        .voice-card a {
+            color: #A3B18A;
+            font-weight: bold;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .voice-card a:hover {
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            .position-grid {
+                grid-template-columns: 1fr;
+            }
+            .position-card.full-span {
+                grid-column: auto;
+            }
+            .action-stat-pair {
+                grid-template-columns: 1fr;
+            }
+            .action-page-hero {
+                padding: 2.25rem 1.5rem 2rem;
+            }
+            .action-page-hero h1 {
+                font-size: 1.8rem;
+            }
+            .action-stat-num {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+
 </head>
 <body>
     <header class="sticky-header">
-        <!--<a href="index.html"><img src="logo_1.png" alt="mostlyCBD" class="nav-logo"></a>-->
         <nav class="main-nav">
             <a href="index.html">Home</a>
             <a href="guide.html">Guide</a>
@@ -28,11 +332,12 @@
         </nav>
     </header>
 
-    <div id="top-of-page"></div>
+    <main>
+        <div id="top-of-page"></div>
 
-    <div class="content-container">
+        <div class="content-container">
 
-        <!-- Hero Banner -->
+            <!-- Hero Banner -->
         <div class="article-hero-banner" style="text-align: left; margin-bottom: 2.5rem; background-image: linear-gradient(rgba(52,78,65,0.1), rgba(52,78,65,0.1)), url('images/bg_action2.jpeg'); background-size: cover; background-blend-mode: multiply; background-color: #344E41;">
             <span class="blog-eyebrow">Advocacy · Where We Stand</span>
             <h1 class="guide-title" style="color: #fff !important; font-style: italic; margin-bottom: 0.75rem;">Where We Stand.</h1>
@@ -41,66 +346,72 @@
             </p>
         </div>
 
-        <!-- Intro / Personal Bio -->
-        <div class="guide-section" style="margin-top: 0;">
+            <!-- ======= ARTICLE BODY ======= -->
+            <div class="guide-section" style="margin-top: 0;">
+                <div class="article-body">
 
-            <div class="article-body">
+                    <p class="article-lede">
+                        I use a balanced CBD/THC blend to manage chronic neuropathic atrophy and anxiety. Not chasing a high — managing a condition. There's a difference, and that difference is the whole point of this site.
+                    </p>
 
-                <p class="article-lede">
-                    I use a balanced CBD/THC blend to manage chronic neuropathic atrophy and anxiety. Not chasing a high — managing a condition. There's a difference, and that difference is the whole point of this site.
-                </p>
+                    <p>
+                        The cannabis conversation in this country has two broken extremes: prohibition-era fear tactics that ignore 80+ years of suppressed research, and a commercial market that bred the brakes out of the plant and calls it progress. Neither one serves patients. Neither one serves the truth.
+                    </p>
 
-                <p>
-                    The cannabis conversation in this country has two broken extremes: prohibition-era fear tactics that ignore 80+ years of suppressed research, and a commercial market that bred the brakes out of the plant and calls it progress. Neither one serves patients. Neither one serves the truth.
-                </p>
+                    <p>
+                        The traditional cannabis plant had a THC-to-CBD ratio near 14:1. Modern commercial products have pushed that past 80:1. CBD is protective. The industry removed it. That's not the plant's fault — it's a regulatory failure, and we should say so plainly.
+                    </p>
 
-                <p>
-                    The traditional cannabis plant had a THC-to-CBD ratio near 14:1. Modern commercial products have pushed that past 80:1. CBD is protective. The industry removed it. That's not the plant's fault — it's a regulatory failure, and we should say so plainly.
-                </p>
+                    <!-- ======= POSITION PLANKS ======= -->
+                    <h2>My Position</h2>
 
-                <h2>My Position</h2>
-
-                <!-- Position List styled as protocol card -->
-                <div class="protocol-card" style="margin-top: 1.5rem;">
-                    <div class="protocol-step">
-                        <span class="protocol-title">Reschedule Federally</span>
-                        End the Schedule I blockade that prevents the clinical trials we need.
+                    <div class="position-grid">
+                        <div class="position-card">
+                            <span class="position-num">01</span>
+                            <span class="position-title">Reschedule Federally</span>
+                            <p>End the Schedule I blockade that prevents the clinical trials we need. You can't demand evidence while making evidence illegal to produce.</p>
+                        </div>
+                        <div class="position-card">
+                            <span class="position-num">02</span>
+                            <span class="position-title">Fund the Science</span>
+                            <p>Real trials. Real data. Open results. Not industry-funded studies designed to sell product — publicly funded research designed to find the truth.</p>
+                        </div>
+                        <div class="position-card">
+                            <span class="position-num">03</span>
+                            <span class="position-title">Protect Functional Access</span>
+                            <p>For the millions already using cannabis therapeutically — often because the healthcare system failed them first.</p>
+                        </div>
+                        <div class="position-card">
+                            <span class="position-num">04</span>
+                            <span class="position-title">Restrict Synthetic &amp; High-Potency Products</span>
+                            <p>Stop products reaching kids through gas station loopholes and unregulated channels. The plant isn't the problem. The unregulated market is.</p>
+                        </div>
+                        <div class="position-card full-span">
+                            <span class="position-num">05</span>
+                            <span class="position-title">Regulate by Evidence, Not Stigma</span>
+                            <p>Policy should follow science. Not the other way around. The stigma was manufactured in a newsroom to protect a timber fortune. That's documented history, not conspiracy theory. It's time to move past it.</p>
+                        </div>
                     </div>
-                    <div class="protocol-step">
-                        <span class="protocol-title">Fund the Science</span>
-                        Real trials. Real data. Open results.
+
+                    <!-- ======= CANNABIS & MENTAL HEALTH ======= -->
+                    <h2>On Cannabis &amp; Mental Health</h2>
+
+                    <p>
+                        The relationship is more complicated than the headlines suggest. Emerging research — including Mendelian randomization studies — points to a largely inverted relationship. Pre-existing vulnerabilities, often unaddressed because of a healthcare system with 67-day psychiatrist wait times and costs that lock out 60% of Americans, drive people toward self-medication. They arrive at a dispensary because the clinic door was closed.
+                    </p>
+
+                    <div class="article-pull-quote">
+                        <p>That's a healthcare crisis wearing a cannabis mask.</p>
                     </div>
-                    <div class="protocol-step">
-                        <span class="protocol-title">Protect Functional Access</span>
-                        For the millions already using cannabis therapeutically — often because the healthcare system failed them first.
-                    </div>
-                    <div class="protocol-step">
-                        <span class="protocol-title">Restrict Synthetic &amp; High-Potency Products</span>
-                        Stop products reaching kids through gas station loopholes and unregulated channels.
-                    </div>
-                    <div class="protocol-step">
-                        <span class="protocol-title">Regulate by Evidence, Not Stigma</span>
-                        Policy should follow science. Not the other way around.
-                    </div>
-                </div>
 
-                <h2>On Cannabis &amp; Mental Health</h2>
+                    <p>
+                        Cannabis is not harmless. High-potency, unbalanced products carry real risks — especially for young or vulnerable users. But the answer to that isn't prohibition. It's education, honest regulation, and clinical infrastructure that actually reaches people.
+                    </p>
 
-                <p>
-                    The relationship is more complicated than the headlines suggest. Emerging research — including Mendelian randomization studies — points to a largely inverted relationship. Pre-existing vulnerabilities, often unaddressed because of a healthcare system with 67-day psychiatrist wait times and costs that lock out 60% of Americans, drive people toward self-medication. They arrive at a dispensary because the clinic door was closed.
-                </p>
+                    <!-- ======= THE TRAINING GAP ======= -->
+                    <h2>The Training Gap</h2>
 
-                <div class="article-pull-quote">
-                    <p>That's a healthcare crisis wearing a cannabis mask.</p>
-                </div>
-
-                <p>
-                    Cannabis is not harmless. High-potency, unbalanced products carry real risks — especially for young or vulnerable users. But the answer to that isn't prohibition. It's education, honest regulation, and clinical infrastructure that actually reaches people.
-                </p>
-
-                <h2>The Training Gap</h2>
-
-                <div class="article-stat-grid">
+                    <div class="article-stat-grid">
                     <div class="article-stat-card">
                         <span class="article-stat-num">9%</span>
                         <span class="article-stat-label">U.S. medical schools that include cannabis education in curriculum</span>
@@ -111,67 +422,70 @@
                     </div>
                 </div>
 
-                <p>
-                    Patients are making decisions without clinical guidance, and providers can't fill that gap because they were never trained to. That's not a patient failure. That's a system failure.
-                </p>
-
-                <h2>Get Involved</h2>
-
-                <p>
-                    Your story matters. Your voice counts. The stigma was manufactured by a handful of powerful people in newsrooms and boardrooms. It can be dismantled the same way — one honest conversation at a time.
-                </p>
-
-                <!-- Banner Share Section -->
-                <div class="protocol-card" style="margin-top: 2rem; text-align: center;">
-                    <img src="images/advocacy/narrativeVoice1.jpg" alt="#ScrapTheScript - Changing the narrative, one voice at a time" style="width: 100%; max-width: 900px; border-radius: 8px; margin-bottom: 1.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-                    
-                    <div style="border-left: none; padding-left: 0;">
-                        <span class="protocol-title">Share the Banner</span>
-                        Use this graphic on social media. Tag <strong>#ScrapTheScript</strong> — let the collective voices drown out the manufactured stigma. Download below, post it, share it. Attribution keeps the data honest.
-                    </div>
-                    
-                    <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
-                        <a href="images/advocacy/narrativeVoice1.jpg" download="scrapthescript-narrative-banner.jpg" class="article-share-btn" style="color: #344E41; background-color: #DAD7CD; border-color: #DAD7CD;">Download Banner</a>
-                        <button class="article-share-btn" onclick="(this,'https://mostlycbd.com/images/advocacy/narrativeVoice1.jpg')" id="copyBannerBtn" style="color: #344E41; background-color: #DAD7CD; border-color: #DAD7CD;">Copy Link</button>
-                    </div>
-                </div>
-
-                <!-- Advocacy Tools Callout -->
-                <div style="background: var(--card-bg); border-left: 4px solid var(--accent-color); border-radius: 0 8px 8px 0; padding: 1.5rem 1.75rem; margin: 2rem 0;">
-                    <h3 style="color: var(--accent-color); margin-top: 0; margin-bottom: 0.75rem; font-size: 1rem;">Use the Advocacy Tools</h3>
-                    <p style="margin-bottom: 1rem; font-size: 0.9rem;">
-                        We've built infographics and shareable graphics backed by peer-reviewed data. They're free to use, free to share. Post them. Cite them. Use them to push back when the conversation goes sideways.
-                    </p>
-                    <a href="blog.html#data-reports" class="article-share-btn" style="display: inline-block; color: var(--text-color);">Browse Infographics →</a>
-                    <a href="blog.html#advocacy-graphics" class="article-share-btn" style="display: inline-block; color: var(--text-color); margin-left: 0.5rem;">Advocacy Graphics →</a>
-                </div>
-
-                <!-- Community Voice Section -->
-                <div class="article-stat-grid" style="grid-template-columns: 1fr;">
-                    <div class="article-stat-card" style="text-align: left; padding: 1.75rem;">
-                        <span class="protocol-title" style="color: var(--accent-color); display: block; margin-bottom: 0.75rem;">Add Your Voice</span>
-                        <p style="font-size: 0.85rem; line-height: 1.65; margin-bottom: 1rem;">
-                            Share your story on <a href="https://www.reddit.com/r/mostlyCBD/" target="_blank" rel="noopener" style="color: var(--accent-color); font-weight: bold; text-decoration: none;">r/mostlyCBD</a>. Whether it's how you found functional relief, how the system failed you first, or how stigma impacted someone you care about — your experience adds to the record. The data says one thing. Real stories give it weight.
-                        </p>
-                        <p style="font-size: 0.85rem; line-height: 1.65; margin: 0;">
-                            Tag me on X: <a href="https://twitter.com/intent/tweet?text=@scrapthescript" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); font-weight: bold; text-decoration: none;">@scrapthescript</a> 
-                            and use <strong>#ScrapTheScript</strong> when you share research, personal experiences, or call out policy failures. Visibility matters. The more people speaking truth to power, the harder it is to ignore.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="article-bottom-line">
-                    <span class="article-bottom-line-label">Bottom Line</span>
                     <p>
-                        <strong>Educate to regulate.</strong> The stigma was manufactured. The research was blocked. The patients are still waiting. Follow the work on X → <a href="https://twitter.com/scrapthescript" target="_blank" rel="noopener noreferrer" style="color: #A3B18A; text-decoration: none;">@ScrapTheScript</a>
+                        Patients are making decisions without clinical guidance, and providers can't fill that gap because they were never trained to. That's not a patient failure. That's a system failure.
                     </p>
-                    <span class="article-signature">// Focused. Functional. Fair. 🌿</span>
+
+                    <!-- ======= GET INVOLVED ======= -->
+                    <h2>Get Involved</h2>
+
+                    <p>
+                        Your story matters. Your voice counts. The stigma was manufactured by a handful of powerful people in newsrooms and boardrooms. It can be dismantled the same way — one honest conversation at a time.
+                    </p>
+
+                    <!-- Banner Share Section -->
+                    <div class="banner-share-section">
+                        <img src="images/advocacy/narrativeVoice1.jpg" alt="#ScrapTheScript — Changing the narrative, one voice at a time">
+                        <div class="banner-share-body">
+                            <span class="position-title">Share the Banner</span>
+                            <p>
+                                Use this graphic on social media. Tag <strong>#ScrapTheScript</strong> — let collective voices drown out the manufactured stigma. Download below, post it, share it. Attribution keeps the data honest.
+                            </p>
+                            <div class="banner-actions">
+                                <a href="images/advocacy/narrativeVoice1.jpg" download="scrapthescript-narrative-banner.jpg" class="article-share-btn" style="color: #344E41; background-color: #DAD7CD; border-color: #DAD7CD;">Download Banner</a>
+                                <button class="article-share-btn" onclick="copyBannerLink(this)" id="copyBannerBtn" style="color: #344E41; background-color: #DAD7CD; border-color: #DAD7CD;">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advocacy Tools Callout -->
+                    <div class="advocacy-callout">
+                        <h3>Use the Advocacy Tools</h3>
+                        <p>
+                            We've built infographics and shareable graphics backed by peer-reviewed data. They're free to use, free to share. Post them. Cite them. Use them to push back when the conversation goes sideways.
+                        </p>
+                        <div class="btn-row">
+                            <a href="blog.html#data-reports" class="article-share-btn" style="color: var(--text-color);">Browse Infographics →</a>
+                            <a href="blog.html#advocacy-graphics" class="article-share-btn" style="color: var(--text-color);">Advocacy Graphics →</a>
+                        </div>
+                    </div>
+
+                    <!-- Community Voice Card -->
+                    <div class="voice-card">
+                        <span class="position-title">Add Your Voice</span>
+                        <p>
+                            Share your story on <a href="https://www.reddit.com/r/mostlyCBD/" target="_blank" rel="noopener">r/mostlyCBD</a>. Whether it's how you found functional relief, how the system failed you first, or how stigma impacted someone you care about — your experience adds to the record. The data says one thing. Real stories give it weight.
+                        </p>
+                        <p style="margin-bottom: 0;">
+                            Tag on X: <a href="https://twitter.com/intent/tweet?text=@scrapthescript" target="_blank" rel="noopener noreferrer">@scrapthescript</a> 
+                            and use <strong style="color: #FFFFFF;">#ScrapTheScript</strong> when you share research, personal experiences, or call out policy failures. Visibility matters. The more people speaking truth to power, the harder it is to ignore.
+                        </p>
+                    </div>
+
+                    <!-- Bottom Line -->
+                    <div class="article-bottom-line">
+                        <span class="article-bottom-line-label">Bottom Line</span>
+                        <p>
+                            <strong>Educate to regulate.</strong> The stigma was manufactured. The research was blocked. The patients are still waiting. Follow the work on X → <a href="https://twitter.com/scrapthescript" target="_blank" rel="noopener noreferrer" style="color: #A3B18A; text-decoration: none;">@ScrapTheScript</a>
+                        </p>
+                        <span class="article-signature">// Focused. Functional. Fair.</span>
+                    </div>
+
                 </div>
-
             </div>
-        </div>
 
-    </div>
+        </div>
+    </main>
 
     <footer>
         <div class="footer-links">
@@ -203,10 +517,23 @@
     </style>
 
     <script>
+        // Back to top
         const topBtn = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             topBtn.classList.toggle('visible', window.scrollY > 300);
         });
+
+        // Copy banner link
+        function copyBannerLink(btn) {
+            navigator.clipboard.writeText('https://mostlycbd.com/images/advocacy/narrativeVoice1.jpg').then(() => {
+                btn.textContent = 'Copied ✓';
+                btn.classList.add('done');
+                setTimeout(() => {
+                    btn.textContent = 'Copy Link';
+                    btn.classList.remove('done');
+                }, 2500);
+            });
+        }
     </script>
 
 </body>
