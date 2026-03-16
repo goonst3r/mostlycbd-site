@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Read(//c/Users/jody/Documents/$cbd/mostlyCBD/mostlycbd-site/mostlycbd-site/**)",
+      "Bash(/c/Python314/python -c:*)"
     ]
   }
 }
