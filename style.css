@@ -1360,7 +1360,10 @@ footer p {
     background-color: var(--card-bg);
     border-radius: 0 8px 8px 0;
     padding: 1.5rem 1.75rem;
-    margin: 2rem 0;
+    width: fit-content;
+    max-width: 80%;
+    margin: 2rem auto;
+    border-left: 4px solid var(--accent-color);
 }
 
 .article-pull-quote p {
