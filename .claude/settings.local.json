@@ -62,7 +62,19 @@
       "Bash(cp \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/eslint.config.js\" gbe/src-app/)",
       "Bash(cp \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/.gitignore\" gbe/src-app/)",
       "Bash(cp \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/.env\" gbe/src-app/)",
-      "Bash(cp \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/.env.example\" gbe/src-app/)"
+      "Bash(cp \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/.env.example\" gbe/src-app/)",
+      "Read(//c/Users/jody/Documents/$cbd/mostlyCBD/mostlycbd-site/mostlycbd-site/gbe/src-app/**)",
+      "Bash(node_modules/.bin/tsc --version)",
+      "Read(//c/Users/jody/Documents/$cbd/mostlyCBD/mostlycbd-site/mostlycbd-site/gbe/src-app//**)",
+      "Read(//c/Users/jody/Documents/$cbd/mostlyCBD/mostlycbd-site/mostlycbd-site/gbe/**)",
+      "Bash(rm -f index.html favicon.svg)",
+      "Bash(rm -rf assets/)",
+      "Bash(cp -r src-app/dist/* .)",
+      "WebFetch(domain:mostlycbd.com)",
+      "Bash(gh api:*)",
+      "Bash(where gh:*)",
+      "Read(//c/Program Files/GitHub CLI/**)",
+      "Bash('/c/Program Files/GitHub CLI/gh.exe' api repos/goonst3r/mostlycbd-site --jq '.has_pages, .homepage, .default_branch')"
     ]
   }
 }
