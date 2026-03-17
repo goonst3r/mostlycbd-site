@@ -48,7 +48,21 @@
       "Bash(git ls-remote:*)",
       "Read(//c/Users/jody/Documents/$cbd/mostlyCBD/mostlycbd-site/mostlycbd-site/**)",
       "Bash(rm -rf gbe/assets gbe/index.html gbe/icons.svg)",
-      "Bash(cp -r \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/dist/\"* gbe/)"
+      "Bash(cp -r \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/dist/\"* gbe/)",
+      "Bash(mkdir -p gbe/src-app)",
+      "Bash(cp -r \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/src\" gbe/src-app/)",
+      "Bash(cp -r \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/public\" gbe/src-app/)",
+      "Bash(cp \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/package.json\" gbe/src-app/)",
+      "Bash(cp \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/package-lock.json\" gbe/src-app/)",
+      "Bash(cp \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/vite.config.ts\" gbe/src-app/)",
+      "Bash(cp \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/tsconfig.json\" gbe/src-app/)",
+      "Bash(cp \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/tsconfig.app.json\" gbe/src-app/)",
+      "Bash(cp \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/tsconfig.node.json\" gbe/src-app/)",
+      "Bash(cp \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/index.html\" gbe/src-app/)",
+      "Bash(cp \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/eslint.config.js\" gbe/src-app/)",
+      "Bash(cp \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/.gitignore\" gbe/src-app/)",
+      "Bash(cp \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/.env\" gbe/src-app/)",
+      "Bash(cp \"C:/Users/jody/Documents/$VibeCoding/website-builder/gang-bang-eats/.env.example\" gbe/src-app/)"
     ]
   }
 }
