@@ -1,0 +1,344 @@
+/* ── Gang Bang Eats — App Logic ──────────────────────────────── */
+/* Alpine.js reactive store + components, zero build step        */
+
+// ── SVG Icon helpers (replaces Phosphor Icons) ──────────────────
+const ICONS = {
+  heart:    '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M240,98a57.63,57.63,0,0,1-17,41L128,236,33,139A58,58,0,0,1,114.77,57.23L128,70.46l13.23-13.23A58,58,0,0,1,240,98Z"/></svg>',
+  fire:     '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M183.89,153.34a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68ZM232,144a104,104,0,0,1-208,0c0-35.78,21.94-67.8,34.56-82.83A8,8,0,0,1,72,64.5l35.48,40.23a8,8,0,0,0,12-10.56L85.34,56.89A8,8,0,0,1,97.21,44.87c.45.5,44.73,49.42,62.79,68a8,8,0,0,0,11.5.39,24,24,0,0,0,.87-34.11,4,4,0,0,1,5.42-5.66C206.64,96.9,232,124,232,144Z"/></svg>',
+  skull:    '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M128,16C70.65,16,24,60.86,24,116c0,34.1,18.27,66,48,86v18a16,16,0,0,0,16,16h80a16,16,0,0,0,16-16V202c29.73-20,48-51.86,48-86C232,60.86,185.35,16,128,16ZM92,152a20,20,0,1,1,20-20A20,20,0,0,1,92,152Zm72,0a20,20,0,1,1,20-20A20,20,0,0,1,164,152Z"/></svg>',
+  fork:     '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M72,32V80a40,40,0,0,0,32,39.2V224a8,8,0,0,0,16,0V200h24a8,8,0,0,0,8-8V119.2A40,40,0,0,0,184,80V32a8,8,0,0,0-16,0V80a24,24,0,0,1-16,22.62V32a8,8,0,0,0-16,0v70.62A24,24,0,0,1,120,80V32a8,8,0,0,0-16,0V80a24,24,0,0,1-16-22.62V32A8,8,0,0,0,72,32Z"/></svg>',
+  globe:    '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-120h48a8,8,0,0,0,0-16H136V40a8,8,0,0,0-16,0V80H72a8,8,0,0,0,0,16h48v64H72a8,8,0,0,0,0,16h48v40a8,8,0,0,0,16,0V176h48a8,8,0,0,0,0-16H136Z"/></svg>',
+  shuffle:  '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M237.66,178.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,0,1-11.32-11.32L212.69,192H200.94a72.12,72.12,0,0,1-58.59-30.15l-14.28-20.1L96.73,192H40a8,8,0,0,1,0-16H88.34l36.49-51.31L88.34,80H40a8,8,0,0,1,0-16H96.73l31.34,44.07L142.35,88.15A72.12,72.12,0,0,1,200.94,64h11.75L202.34,53.66a8,8,0,0,1,11.32-11.32l24,24a8,8,0,0,1,0,11.32l-24,24a8,8,0,0,1-11.32-11.32L212.69,80H200.94a56.09,56.09,0,0,0-45.57,23.42L143.28,120l12.09,17,0,.05A56.09,56.09,0,0,0,200.94,160h11.75l-10.35-10.34a8,8,0,0,1,11.32-11.32Z"/></svg>',
+  pin:      '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M128,16a88.1,88.1,0,0,0-88,88c0,75.3,80,132.17,83.41,134.55a8,8,0,0,0,9.18,0C136,236.17,216,179.3,216,104A88.1,88.1,0,0,0,128,16Zm0,56a32,32,0,1,1-32,32A32,32,0,0,1,128,72Z"/></svg>',
+  arrow:    '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69l-58.35-58.34a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg>',
+  x:        '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg>',
+  pencil:   '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM92.69,208H48V163.31l88-88L180.69,120Z"/></svg>',
+  check:    '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>',
+  plus:     '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg>',
+  users:    '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M164.47,195.63a8,8,0,0,1-6.7,12.37H10.23a8,8,0,0,1-6.7-12.37,80.15,80.15,0,0,1,44.07-34.09,48,48,0,1,1,72.8,0A80.15,80.15,0,0,1,164.47,195.63ZM252.47,195.63a80.15,80.15,0,0,0-44.07-34.09,48,48,0,0,0-40-79.24,8,8,0,0,0,2.24,15.72,32,32,0,0,1,0,63.52,8,8,0,0,0-2.24,15.72,80.15,80.15,0,0,1,44.07,34.09,8,8,0,0,0,6.7,12.37h26.6A8,8,0,0,0,252.47,195.63Z"/></svg>',
+  store:    '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M232,96H216V72a8,8,0,0,0-8-8H48a8,8,0,0,0-8,8V96H24a8,8,0,0,0-8,8,104.35,104.35,0,0,0,56,92.28V208a16,16,0,0,0,16,16H168a16,16,0,0,0,16-16v-11.72A104.35,104.35,0,0,0,240,104,8,8,0,0,0,232,96Z"/></svg>',
+  upload:   '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M240,136v64a16,16,0,0,1-16,16H32a16,16,0,0,1-16-16V136a16,16,0,0,1,16-16H80a8,8,0,0,1,0,16H32v64H224V136H176a8,8,0,0,1,0-16h48A16,16,0,0,1,240,136ZM85.66,77.66,120,43.31V128a8,8,0,0,0,16,0V43.31l34.34,34.35a8,8,0,0,0,11.32-11.32l-48-48a8,8,0,0,0-11.32,0l-48,48A8,8,0,0,0,85.66,77.66Z"/></svg>',
+  warning:  '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M236.8,188.09,149.35,36.22a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"/></svg>',
+  back:     '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg>',
+  camera:   '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M208,56H180.28L166.65,35.56A8,8,0,0,0,160,32H96a8,8,0,0,0-6.65,3.56L75.72,56H48A24,24,0,0,0,24,80V192a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V80A24,24,0,0,0,208,56Zm-80,104a36,36,0,1,1,36-36A36,36,0,0,1,128,160Z"/></svg>',
+  chat:     '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M216,48H40A16,16,0,0,0,24,64V224a15.85,15.85,0,0,0,9.24,14.5A16.13,16.13,0,0,0,40,240a15.89,15.89,0,0,0,10.25-3.78L83.43,208H216a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48ZM80,144H64a8,8,0,0,1,0-16H80a8,8,0,0,1,0,16Zm96-32H64a8,8,0,0,1,0-16H176a8,8,0,0,1,0,16Z"/></svg>',
+  checkcircle: '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"/></svg>',
+  nav:      '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M237.33,106.21,61.41,41.53a16,16,0,0,0-20.67,21L66.75,128,40.74,193.49a16,16,0,0,0,20.67,21l175.92-64.68a16,16,0,0,0,0-30Z"/></svg>',
+};
+
+function icon(name, size) {
+  const s = size || 16;
+  return ICONS[name].replace(/width="1em"/g, `width="${s}"`).replace(/height="1em"/g, `height="${s}"`);
+}
+
+// ── Helpers ─────────────────────────────────────────────────────
+function getPrimaryType(ratings) {
+  if (!ratings || ratings.length === 0) return 'unrated';
+  const c = { marry: 0, fuck: 0, kill: 0 };
+  ratings.forEach(r => c[r.rating]++);
+  if (c.marry >= c.fuck && c.marry >= c.kill) return 'marry';
+  if (c.fuck > c.marry && c.fuck >= c.kill) return 'fuck';
+  return 'kill';
+}
+
+function buildRankingString(ratings) {
+  if (!ratings || ratings.length === 0) return '----';
+  return ratings.map(r => r.rating[0].toUpperCase()).join('').padEnd(4, '-').slice(0, 8);
+}
+
+function typeIcon(type) {
+  return { marry: 'heart', fuck: 'fire', kill: 'skull', unrated: 'store' }[type] || 'store';
+}
+
+// ── Alpine Store ────────────────────────────────────────────────
+document.addEventListener('alpine:init', () => {
+
+  Alpine.store('app', {
+    // State
+    view: 'feed',        // 'feed' | 'rate'
+    loading: true,
+    restaurants: [],
+    ratings: [],
+    members: [],
+    selectedRestaurant: null,
+    showMembers: false,
+
+    // Picker
+    pickedSpot: null,
+    isSpinning: false,
+    spinDisplay: null,
+    _spinRef: null,
+
+    // Unsubs
+    _unsubs: [],
+
+    // Computed-like
+    get enriched() {
+      const byRest = {};
+      this.ratings.forEach(r => {
+        if (!byRest[r.restaurantId]) byRest[r.restaurantId] = [];
+        byRest[r.restaurantId].push(r);
+      });
+      return this.restaurants.map(rest => {
+        const ratings = byRest[rest.id] || [];
+        return {
+          ...rest,
+          ratings,
+          rankingString: buildRankingString(ratings),
+          primaryType: getPrimaryType(ratings),
+        };
+      });
+    },
+
+    get sorted() {
+      const rank = { marry: 0, fuck: 1, kill: 2, unrated: 3 };
+      return [...this.enriched].sort((a, b) => {
+        const d = rank[a.primaryType] - rank[b.primaryType];
+        if (d !== 0) return d;
+        if (a.primaryType !== 'unrated') {
+          const ac = a.ratings.filter(r => r.rating === a.primaryType).length;
+          const bc = b.ratings.filter(r => r.rating === b.primaryType).length;
+          if (bc !== ac) return bc - ac;
+          return b.ratings.length - a.ratings.length;
+        }
+        return a.spot.localeCompare(b.spot);
+      });
+    },
+
+    get unvisited() {
+      return this.enriched.filter(r => r.primaryType === 'unrated');
+    },
+
+    // Init
+    init() {
+      let rLoaded = false, ratLoaded = false;
+      const check = () => { if (rLoaded && ratLoaded) this.loading = false; };
+
+      this._unsubs.push(
+        DB.subscribeRestaurants(data => { this.restaurants = data; rLoaded = true; check(); }),
+        DB.subscribeRatings(data => { this.ratings = data; ratLoaded = true; check(); }),
+        DB.subscribeMembers(data => { this.members = data; })
+      );
+    },
+
+    // Actions
+    selectRestaurant(r) { this.selectedRestaurant = r; document.body.style.overflow = 'hidden'; },
+    closeModal() { this.selectedRestaurant = null; document.body.style.overflow = ''; },
+
+    handleRandomPick() {
+      const unv = this.unvisited;
+      if (unv.length === 0 || this.isSpinning) return;
+      this.isSpinning = true;
+      this.pickedSpot = null;
+      let tick = 0;
+      const total = 20;
+      this._spinRef = setInterval(() => {
+        this.spinDisplay = unv[Math.floor(Math.random() * unv.length)].spot;
+        tick++;
+        if (tick >= total) {
+          clearInterval(this._spinRef);
+          const winner = unv[Math.floor(Math.random() * unv.length)];
+          this.spinDisplay = null;
+          this.pickedSpot = winner;
+          this.isSpinning = false;
+        }
+      }, 60);
+    },
+
+    isLargeCard(item, idx) {
+      return item.primaryType !== 'unrated' && (idx === 0 || idx === 3);
+    },
+  });
+
+  // ── Rate form store ─────────────────────────────────────────
+  Alpine.store('rate', {
+    rating: null,
+    restaurantId: '',
+    memberId: '',
+    notes: '',
+    submitting: false,
+    submitted: false,
+    addingNew: false,
+    newSpot: '',
+    newStyle: '',
+    newWebsite: '',
+    foodPhotos: [],
+    foodPreviews: [],
+    selfiePhotos: [],
+    selfiePreviews: [],
+
+    reset() {
+      this.rating = null;
+      this.restaurantId = '';
+      this.memberId = '';
+      this.notes = '';
+      this.submitting = false;
+      this.submitted = false;
+      this.addingNew = false;
+      this.newSpot = '';
+      this.newStyle = '';
+      this.newWebsite = '';
+      this.foodPhotos = [];
+      this.foodPreviews = [];
+      this.selfiePhotos = [];
+      this.selfiePreviews = [];
+    },
+
+    get canSubmit() {
+      return this.rating && this.memberId && (this.restaurantId || (this.addingNew && this.newSpot.trim()));
+    },
+
+    addFoodPhotos(input) {
+      const files = Array.from(input.files);
+      const remaining = 4 - this.foodPhotos.length;
+      const toAdd = files.slice(0, remaining);
+      toAdd.forEach(f => {
+        this.foodPhotos.push(f);
+        this.foodPreviews.push(URL.createObjectURL(f));
+      });
+      input.value = '';
+    },
+
+    removeFoodPhoto(idx) {
+      URL.revokeObjectURL(this.foodPreviews[idx]);
+      this.foodPhotos.splice(idx, 1);
+      this.foodPreviews.splice(idx, 1);
+    },
+
+    addSelfiePhotos(input) {
+      const files = Array.from(input.files);
+      const remaining = 2 - this.selfiePhotos.length;
+      const toAdd = files.slice(0, remaining);
+      toAdd.forEach(f => {
+        this.selfiePhotos.push(f);
+        this.selfiePreviews.push(URL.createObjectURL(f));
+      });
+      input.value = '';
+    },
+
+    removeSelfiePhoto(idx) {
+      URL.revokeObjectURL(this.selfiePreviews[idx]);
+      this.selfiePhotos.splice(idx, 1);
+      this.selfiePreviews.splice(idx, 1);
+    },
+
+    async submit() {
+      if (!this.canSubmit || this.submitting) return;
+      this.submitting = true;
+
+      try {
+        let restId = this.restaurantId;
+
+        if (this.addingNew && this.newSpot.trim()) {
+          restId = await DB.addRestaurant({
+            spot: this.newSpot.trim(),
+            style: this.newStyle.trim() || 'Restaurant',
+            website: this.newWebsite.trim() || null,
+            img: 'https://picsum.photos/seed/' + encodeURIComponent(this.newSpot.trim()) + '/800/600',
+          });
+        }
+
+        const allFiles = [...this.foodPhotos, ...this.selfiePhotos];
+        const photoUrls = allFiles.length > 0 ? await DB.uploadPhotos(allFiles, restId) : [];
+
+        const member = Alpine.store('app').members.find(m => m.id === this.memberId);
+
+        await DB.addRating({
+          restaurantId: restId,
+          memberId: this.memberId,
+          memberName: member ? member.name : '',
+          rating: this.rating,
+          notes: this.notes,
+          photos: photoUrls,
+        });
+
+        this.submitted = true;
+        setTimeout(() => {
+          this.reset();
+          Alpine.store('app').view = 'feed';
+        }, 1500);
+      } catch (err) {
+        console.error('Submit failed:', err);
+        this.submitting = false;
+      }
+    },
+  });
+
+  // ── Edit rating store ───────────────────────────────────────
+  Alpine.store('edit', {
+    active: false,
+    ratingId: null,
+    memberName: '',
+    restaurantName: '',
+    newRating: null,
+    notes: '',
+    saving: false,
+
+    open(rating, restaurant) {
+      this.active = true;
+      this.ratingId = rating.id;
+      this.memberName = rating.memberName;
+      this.restaurantName = restaurant.spot;
+      this.newRating = rating.rating;
+      this.notes = rating.notes || '';
+      this.saving = false;
+    },
+
+    close() {
+      this.active = false;
+      this.ratingId = null;
+    },
+
+    async save() {
+      if (!this.newRating || this.saving) return;
+      this.saving = true;
+      try {
+        await DB.updateRating(this.ratingId, {
+          rating: this.newRating,
+          notes: this.notes,
+        });
+        this.close();
+      } catch (err) {
+        console.error('Edit failed:', err);
+        this.saving = false;
+      }
+    },
+  });
+
+  // ── Members store ───────────────────────────────────────────
+  Alpine.store('mem', {
+    editingId: null,
+    editName: '',
+    newName: '',
+    adding: false,
+
+    startEdit(member) {
+      this.editingId = member.id;
+      this.editName = member.name;
+    },
+
+    async saveEdit() {
+      if (!this.editingId || !this.editName.trim()) return;
+      await DB.updateMember(this.editingId, this.editName.trim());
+      this.editingId = null;
+      this.editName = '';
+    },
+
+    cancelEdit() {
+      this.editingId = null;
+      this.editName = '';
+    },
+
+    async addMember() {
+      if (!this.newName.trim()) return;
+      this.adding = true;
+      await DB.addMember(this.newName.trim());
+      this.newName = '';
+      this.adding = false;
+    },
+  });
+});
+
+// Expose dev helpers
+window.resetDB = () => Seed.resetDatabase();
+window.seedDB = () => Seed.seedDatabase();

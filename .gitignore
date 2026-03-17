@@ -1,0 +1,12 @@
+# Claude working files
+.claude/
+gbe/.claude/
+
+# Dependencies
+node_modules/
+gbe/src-app/node_modules/
+gbe/src-app/dist/
+
+# Environment
+.env
+.env.local
