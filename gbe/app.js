@@ -50,17 +50,24 @@ function typeIcon(type) {
   return { marry: 'heart', fuck: 'fire', kill: 'skull', unrated: 'store' }[type] || 'store';
 }
 
+function ratingImg(type, size) {
+  const s = size || 24;
+  const src = { marry: 'marry.jpg', fuck: 'fuck.jpg', kill: 'kill.jpg' }[type];
+  if (!src) return '';
+  return `<img src="./${src}" width="${s}" height="${s}" alt="${type}" style="display:block;border-radius:50%;">`;
+}
+
 // ── Alpine Store ────────────────────────────────────────────────
 document.addEventListener('alpine:init', () => {
 
   Alpine.store('app', {
     // State
-    view: 'feed',        // 'feed' | 'rate'
+    view: 'feed',
     loading: true,
     restaurants: [],
     ratings: [],
     members: [],
-    selectedRestaurant: null,
+    selectedRestaurantId: null,
     showMembers: false,
 
     // Picker
@@ -109,6 +116,11 @@ document.addEventListener('alpine:init', () => {
       return this.enriched.filter(r => r.primaryType === 'unrated');
     },
 
+    get selectedRestaurant() {
+      if (!this.selectedRestaurantId) return null;
+      return this.enriched.find(r => r.id === this.selectedRestaurantId) || null;
+    },
+
     // Init
     init() {
       let rLoaded = false, ratLoaded = false;
@@ -122,8 +134,8 @@ document.addEventListener('alpine:init', () => {
     },
 
     // Actions
-    selectRestaurant(r) { this.selectedRestaurant = r; document.body.style.overflow = 'hidden'; },
-    closeModal() { this.selectedRestaurant = null; document.body.style.overflow = ''; },
+    selectRestaurant(r) { this.selectedRestaurantId = r.id; document.body.style.overflow = 'hidden'; },
+    closeModal() { this.selectedRestaurantId = null; document.body.style.overflow = ''; },
 
     handleRandomPick() {
       const unv = this.unvisited;
@@ -150,18 +162,13 @@ document.addEventListener('alpine:init', () => {
     },
   });
 
-  // ── Rate form store ─────────────────────────────────────────
+  // ── Rate form store (used inside restaurant modal) ──────────
   Alpine.store('rate', {
     rating: null,
-    restaurantId: '',
     memberId: '',
     notes: '',
     submitting: false,
     submitted: false,
-    addingNew: false,
-    newSpot: '',
-    newStyle: '',
-    newWebsite: '',
     foodPhotos: [],
     foodPreviews: [],
     selfiePhotos: [],
@@ -169,23 +176,25 @@ document.addEventListener('alpine:init', () => {
 
     reset() {
       this.rating = null;
-      this.restaurantId = '';
       this.memberId = '';
       this.notes = '';
       this.submitting = false;
       this.submitted = false;
-      this.addingNew = false;
-      this.newSpot = '';
-      this.newStyle = '';
-      this.newWebsite = '';
       this.foodPhotos = [];
       this.foodPreviews = [];
       this.selfiePhotos = [];
       this.selfiePreviews = [];
     },
 
+    get availableMembers() {
+      const sel = Alpine.store('app').selectedRestaurant;
+      if (!sel || !sel.ratings) return Alpine.store('app').members;
+      const voted = new Set(sel.ratings.map(r => r.memberId));
+      return Alpine.store('app').members.filter(m => !voted.has(m.id));
+    },
+
     get canSubmit() {
-      return this.rating && this.memberId && (this.restaurantId || (this.addingNew && this.newSpot.trim()));
+      return this.rating && this.memberId;
     },
 
     addFoodPhotos(input) {
@@ -227,15 +236,14 @@ document.addEventListener('alpine:init', () => {
       this.submitting = true;
 
       try {
-        let restId = this.restaurantId;
+        const restId = Alpine.store('app').selectedRestaurant.id;
 
-        if (this.addingNew && this.newSpot.trim()) {
-          restId = await DB.addRestaurant({
-            spot: this.newSpot.trim(),
-            style: this.newStyle.trim() || 'Restaurant',
-            website: this.newWebsite.trim() || null,
-            img: 'https://picsum.photos/seed/' + encodeURIComponent(this.newSpot.trim()) + '/800/600',
-          });
+        // Server-side duplicate guard
+        const isDup = await DB.checkDuplicate(this.memberId, restId);
+        if (isDup) {
+          alert('This member has already voted on this restaurant.');
+          this.submitting = false;
+          return;
         }
 
         const allFiles = [...this.foodPhotos, ...this.selfiePhotos];
@@ -253,10 +261,7 @@ document.addEventListener('alpine:init', () => {
         });
 
         this.submitted = true;
-        setTimeout(() => {
-          this.reset();
-          Alpine.store('app').view = 'feed';
-        }, 1500);
+        setTimeout(() => { this.reset(); }, 2000);
       } catch (err) {
         console.error('Submit failed:', err);
         this.submitting = false;
@@ -300,6 +305,18 @@ document.addEventListener('alpine:init', () => {
         this.close();
       } catch (err) {
         console.error('Edit failed:', err);
+        this.saving = false;
+      }
+    },
+
+    async remove() {
+      if (this.saving) return;
+      this.saving = true;
+      try {
+        await DB.deleteRating(this.ratingId);
+        this.close();
+      } catch (err) {
+        console.error('Delete failed:', err);
         this.saving = false;
       }
     },

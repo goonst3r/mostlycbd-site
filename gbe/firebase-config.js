@@ -61,6 +61,15 @@ window.DB = {
     });
   },
 
+  async checkDuplicate(memberId, restaurantId) {
+    const snap = await db.collection('ratings')
+      .where('memberId', '==', memberId)
+      .where('restaurantId', '==', restaurantId)
+      .limit(1)
+      .get();
+    return !snap.empty;
+  },
+
   async addRating(data) {
     const ref = await db.collection('ratings').add({
       ...data,

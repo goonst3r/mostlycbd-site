@@ -26,16 +26,12 @@
   <!-- NAVIGATION                                                  -->
   <!-- ═══════════════════════════════════════════════════════════ -->
   <div style="position:fixed;top:1.5rem;left:0;right:0;z-index:50;display:flex;justify-content:center;pointer-events:none;padding:0 1rem;">
-    <nav class="glass-panel" style="pointer-events:auto;display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.5rem;border-radius:2rem;max-width:32rem;width:100%;">
-      <div style="display:flex;align-items:center;gap:0.75rem;cursor:pointer;" @click="$store.app.view='feed'">
-        <div style="background:#18181b;color:#fff;padding:0.5rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;" x-html="icon('fork',16)"></div>
-        <span style="font-weight:600;letter-spacing:-0.025em;color:#18181b;font-size:1rem;">Gang Bang Eats</span>
+    <nav class="glass-panel" style="pointer-events:auto;display:flex;align-items:center;justify-content:space-between;padding:0.5rem 1.25rem;border-radius:2rem;max-width:24rem;width:100%;">
+      <div style="display:flex;align-items:center;gap:0.6rem;cursor:pointer;" @click="$store.app.view='feed'">
+        <div style="background:#18181b;color:#fff;padding:0.4rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;" x-html="icon('fork',14)"></div>
+        <span style="font-weight:600;letter-spacing:-0.025em;color:#18181b;font-size:0.875rem;">Gang Bang Eats</span>
       </div>
-      <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;font-weight:600;">
-        <button @click="$store.app.showMembers=true" style="color:#a1a1aa;padding:0.5rem;border-radius:9999px;border:none;background:none;cursor:pointer;display:flex;" title="Manage Members" x-html="icon('users',18)"></button>
-        <button @click="$store.app.view='feed'" :style="$store.app.view==='feed' ? 'color:#18181b' : 'color:#a1a1aa'" style="border:none;background:none;cursor:pointer;font-weight:600;font-size:0.875rem;font-family:var(--font-sans);">Feed</button>
-        <button @click="$store.app.view='rate'; $store.rate.reset()" :style="$store.app.view==='rate' ? 'background:#18181b;color:#fff;box-shadow:0 4px 12px rgba(24,24,27,0.2)' : 'background:rgba(244,244,245,0.5);color:#18181b'" style="padding:0.5rem 1.25rem;border-radius:9999px;border:none;cursor:pointer;font-weight:600;font-size:0.875rem;font-family:var(--font-sans);transition:all 0.2s;">Rate</button>
-      </div>
+      <button @click="$store.app.showMembers=true" style="color:#a1a1aa;padding:0.4rem;border-radius:9999px;border:none;background:none;cursor:pointer;display:flex;" title="Manage Members" x-html="icon('users',16)"></button>
     </nav>
   </div>
 
@@ -67,10 +63,10 @@
       </div>
 
       <!-- Random Picker -->
-      <div x-show="$store.app.unvisited.length > 0" class="picker-bar animate-fade-up">
+      <div x-show="$store.app.unvisited.length > 0" class="picker-bar animate-fade-up" style="margin:0.5rem 0 1.5rem;">
         <button class="picker-btn" @click="$store.app.handleRandomPick()" :disabled="$store.app.isSpinning">
           <span x-html="icon('shuffle',20)" :class="$store.app.isSpinning ? 'animate-spin' : ''"></span>
-          <span x-text="$store.app.isSpinning ? 'Picking...' : 'Where Next?'"></span>
+          <span x-text="$store.app.isSpinning ? 'Picking...' : 'Where to Next Gang Bangers?'"></span>
         </button>
 
         <!-- Spinning display -->
@@ -96,7 +92,8 @@
           <div class="card animate-fade-up"
                :class="{
                  'large': $store.app.isLargeCard(item, idx),
-                 'unrated-card': item.primaryType === 'unrated'
+                 'unrated-card': item.primaryType === 'unrated',
+                 'total-kill': item.primaryType === 'kill' && item.ratings.filter(r => r.rating === 'kill').length >= 4
                }"
                :style="'animation-delay:' + Math.min(idx * 0.05, 0.5) + 's; border-color:' + ({marry:'rgba(16,185,129,0.3)',fuck:'rgba(245,158,11,0.3)',kill:'rgba(244,63,94,0.3)',unrated:'rgba(113,113,122,0.3)'}[item.primaryType])"
                @click="$store.app.selectRestaurant(item)">
@@ -104,183 +101,29 @@
             <!-- Image -->
             <div class="card-img-wrap">
               <div class="card-gradient"></div>
-              <img class="card-img" :src="item.img" :alt="item.spot" loading="lazy" />
+              <img class="card-img" :src="item.primaryType === 'kill' && item.ratings.filter(r => r.rating === 'kill').length >= 4 ? './dead.jpg' : item.img" :alt="item.spot" loading="lazy" />
             </div>
 
             <!-- Content -->
             <div class="card-content">
               <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem;">
-                <div style="display:flex;align-items:center;gap:0.75rem;">
-                  <span class="badge" :class="'badge-' + item.primaryType">
-                    <span x-html="icon(typeIcon(item.primaryType), 14)"></span>
-                    <span x-text="item.primaryType.toUpperCase()"></span>
-                  </span>
-                  <span x-show="item.rankingString !== '----'" class="badge badge-rank" x-text="item.rankingString"></span>
+                <div style="display:flex;align-items:center;gap:0.5rem;">
+                  <template x-for="r in item.ratings" :key="r.id">
+                    <span class="rating-pip" :class="'pip-' + r.rating" x-html="ratingImg(r.rating, 26)"></span>
+                  </template>
                 </div>
                 <a x-show="item.website" :href="item.website" target="_blank" rel="noreferrer"
                    class="globe-link" @click.stop x-html="icon('globe',16)"></a>
               </div>
 
-              <h2 style="font-weight:700;color:#ffffff;letter-spacing:-0.025em;line-height:1;"
-                  :style="$store.app.isLargeCard(item, idx) ? 'font-size:2.25rem' : 'font-size:1.875rem'"
+              <h2 :style="'font-weight:700;color:#ffffff;letter-spacing:-0.025em;line-height:1;font-size:' + ($store.app.isLargeCard(item, idx) ? '2.25rem' : '1.875rem')"
                   x-text="item.spot"></h2>
 
               <p style="color:#d4d4d8;font-size:0.875rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;margin-top:0.25rem;"
                  x-text="item.style"></p>
-
-              <div x-show="item.ratings.length > 0" style="margin-top:0.25rem;">
-                <span style="color:#a1a1aa;font-size:0.75rem;" x-text="item.ratings.length + ' vote' + (item.ratings.length !== 1 ? 's' : '')"></span>
-              </div>
             </div>
           </div>
         </template>
-      </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- RATE VIEW                                               -->
-    <!-- ═══════════════════════════════════════════════════════ -->
-    <div x-show="$store.app.view==='rate' && !$store.app.loading" x-cloak style="max-width:42rem;margin:0 auto;">
-
-      <!-- Success State -->
-      <div x-show="$store.rate.submitted" class="animate-fade-up" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem 0;gap:1.5rem;">
-        <span style="color:#10b981;font-size:4rem;" x-html="icon('checkcircle',64)"></span>
-        <h2 style="font-size:1.875rem;font-weight:700;letter-spacing:-0.025em;color:#18181b;">Vote Recorded!</h2>
-        <p style="color:#71717a;">The gang has spoken. Redirecting...</p>
-      </div>
-
-      <!-- Form -->
-      <div x-show="!$store.rate.submitted" style="display:flex;flex-direction:column;gap:2.5rem;">
-        <div>
-          <h1 style="font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-0.05em;color:#18181b;line-height:1;margin-bottom:0.5rem;">Cast Your Vote</h1>
-          <p style="color:#71717a;font-size:1.125rem;line-height:1.6;">Record your meal honestly. Was it a marry, a fuck, or a kill?</p>
-        </div>
-
-        <!-- Who's Voting -->
-        <div style="display:flex;flex-direction:column;gap:0.75rem;">
-          <label style="font-size:0.75rem;font-weight:600;letter-spacing:-0.025em;color:#18181b;text-transform:uppercase;">Who's Voting?</label>
-          <select class="form-select" x-model="$store.rate.memberId" style="padding:1rem;font-size:1.125rem;">
-            <option value="">Select member...</option>
-            <template x-for="m in $store.app.members" :key="m.id">
-              <option :value="m.id" x-text="m.name"></option>
-            </template>
-          </select>
-        </div>
-
-        <!-- Spot Location -->
-        <div style="display:flex;flex-direction:column;gap:0.75rem;">
-          <label style="font-size:0.75rem;font-weight:600;letter-spacing:-0.025em;color:#18181b;text-transform:uppercase;">Spot Location</label>
-
-          <div x-show="!$store.rate.addingNew">
-            <select class="form-select" x-model="$store.rate.restaurantId" style="padding:1rem;font-size:1.125rem;">
-              <option value="">Select restaurant...</option>
-              <template x-for="r in $store.app.restaurants" :key="r.id">
-                <option :value="r.id" x-text="r.spot + ' \u2014 ' + r.style"></option>
-              </template>
-            </select>
-            <button @click="$store.rate.addingNew=true" style="margin-top:0.75rem;display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;font-weight:500;color:#71717a;background:none;border:none;cursor:pointer;font-family:var(--font-sans);">
-              <span x-html="icon('plus',14)"></span> New spot not on the list?
-            </button>
-          </div>
-
-          <div x-show="$store.rate.addingNew" style="background:#fff;border:1px solid #e4e4e7;padding:1.5rem;border-radius:2rem;display:flex;flex-direction:column;gap:1rem;">
-            <div style="display:flex;align-items:center;justify-content:space-between;">
-              <span style="font-size:0.875rem;font-weight:600;color:#18181b;">Add New Spot</span>
-              <button @click="$store.rate.addingNew=false;$store.rate.newSpot='';$store.rate.newStyle='';$store.rate.newWebsite='';" style="font-size:0.75rem;color:#71717a;background:none;border:none;cursor:pointer;font-family:var(--font-sans);">Cancel — pick from list</button>
-            </div>
-            <input class="form-input" x-model="$store.rate.newSpot" placeholder="Restaurant name" />
-            <input class="form-input" x-model="$store.rate.newStyle" placeholder="Cuisine style (e.g. Italian, BBQ)" />
-            <input class="form-input" x-model="$store.rate.newWebsite" placeholder="Website URL (optional)" />
-          </div>
-        </div>
-
-        <!-- Rating Buttons -->
-        <div style="display:flex;flex-direction:column;gap:1rem;">
-          <div style="display:flex;align-items:center;gap:0.75rem;">
-            <h3 style="font-size:0.75rem;font-weight:600;color:#18181b;text-transform:uppercase;letter-spacing:-0.025em;">Rate this Spot</h3>
-            <div style="height:1px;background:#e4e4e7;flex:1;"></div>
-          </div>
-          <div class="rating-grid">
-            <template x-for="opt in [{id:'marry',label:'Marry',icon:'heart',desc:'Outstanding. Will return regularly.'},{id:'fuck',label:'Fuck',icon:'fire',desc:'Good time, but not rushing back.'},{id:'kill',label:'Kill',icon:'skull',desc:'Bad experience. Never returning.'}]" :key="opt.id">
-              <button class="rating-btn"
-                      :class="$store.rate.rating === opt.id ? 'active-' + opt.id : ''"
-                      @click="$store.rate.rating = ($store.rate.rating === opt.id ? null : opt.id)">
-                <div class="rating-icon" :class="opt.id">
-                  <span x-html="icon(opt.icon, 28)"></span>
-                </div>
-                <div style="text-align:center;">
-                  <span style="display:block;font-weight:700;font-size:1.125rem;letter-spacing:-0.025em;" :style="$store.rate.rating === opt.id ? 'color:#fff' : 'color:#18181b'" x-text="opt.label"></span>
-                  <span style="display:block;font-size:0.75rem;max-width:180px;margin:0 auto;line-height:1.5;" :style="$store.rate.rating === opt.id ? 'color:rgba(255,255,255,0.9)' : 'color:#71717a'" x-text="opt.desc"></span>
-                </div>
-              </button>
-            </template>
-          </div>
-        </div>
-
-        <!-- Photo Upload -->
-        <div style="background:#fff;border:1px solid #e4e4e7;padding:2rem;border-radius:2.5rem;display:flex;flex-direction:column;gap:2rem;">
-          <!-- Food Photos -->
-          <div style="display:flex;flex-direction:column;gap:1rem;">
-            <div>
-              <h4 style="font-size:0.875rem;font-weight:600;color:#18181b;">Food Photos</h4>
-              <p style="font-size:0.875rem;color:#71717a;margin-top:0.25rem;">Visual proof of the culinary execution.</p>
-            </div>
-            <div class="photo-grid">
-              <template x-for="(p, idx) in $store.rate.foodPreviews" :key="p">
-                <div class="photo-thumb">
-                  <img :src="p" alt="Food" />
-                  <div class="photo-remove" @click="$store.rate.removeFoodPhoto(idx)">
-                    <span style="background:rgba(255,255,255,0.2);padding:0.5rem;border-radius:9999px;color:#fff;" x-html="icon('x',16)"></span>
-                  </div>
-                </div>
-              </template>
-              <div x-show="$store.rate.foodPreviews.length < 4" class="photo-add" @click="$refs.foodInput.click()">
-                <div style="padding:0.75rem;background:#fafafa;border-radius:9999px;" x-html="icon('upload',24)"></div>
-                <span style="font-size:0.75rem;font-weight:500;">Add Photo</span>
-              </div>
-            </div>
-            <input x-ref="foodInput" type="file" accept="image/*" multiple style="display:none;" @change="$store.rate.addFoodPhotos($el)" />
-          </div>
-
-          <div style="height:1px;background:#f4f4f5;"></div>
-
-          <!-- Selfie Photos -->
-          <div style="display:flex;flex-direction:column;gap:1rem;">
-            <div>
-              <h4 style="font-size:0.875rem;font-weight:600;color:#18181b;">Group Selfies</h4>
-              <p style="font-size:0.875rem;color:#71717a;margin-top:0.25rem;">Proof of attendance for the gang bang.</p>
-            </div>
-            <div class="photo-grid">
-              <template x-for="(p, idx) in $store.rate.selfiePreviews" :key="p">
-                <div class="photo-thumb">
-                  <img :src="p" alt="Selfie" />
-                  <div class="photo-remove" @click="$store.rate.removeSelfiePhoto(idx)">
-                    <span style="background:rgba(255,255,255,0.2);padding:0.5rem;border-radius:9999px;color:#fff;" x-html="icon('x',16)"></span>
-                  </div>
-                </div>
-              </template>
-              <div x-show="$store.rate.selfiePreviews.length < 2" class="photo-add" @click="$refs.selfieInput.click()">
-                <div style="padding:0.75rem;background:#fafafa;border-radius:9999px;" x-html="icon('upload',24)"></div>
-                <span style="font-size:0.75rem;font-weight:500;">Add Photo</span>
-              </div>
-            </div>
-            <input x-ref="selfieInput" type="file" accept="image/*" multiple style="display:none;" @change="$store.rate.addSelfiePhotos($el)" />
-          </div>
-        </div>
-
-        <!-- Notes -->
-        <div style="display:flex;flex-direction:column;gap:0.75rem;">
-          <label style="font-size:0.75rem;font-weight:600;letter-spacing:-0.025em;color:#18181b;text-transform:uppercase;">Final Verdict & Notes</label>
-          <textarea class="form-textarea" rows="4" x-model="$store.rate.notes"
-                    placeholder="What made it great or terrible? Detail the service, the waits, the taste..."></textarea>
-        </div>
-
-        <!-- Submit -->
-        <button class="btn-primary" style="width:100%;margin-top:1rem;" @click="$store.rate.submit()"
-                :disabled="!$store.rate.canSubmit || $store.rate.submitting">
-          <span x-text="$store.rate.submitting ? 'Submitting...' : 'Submit Rating'"></span>
-          <span x-show="!$store.rate.submitting" x-html="icon('nav',18)"></span>
-        </button>
       </div>
     </div>
   </main>
@@ -288,12 +131,12 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
   <!-- RESTAURANT MODAL                                            -->
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <div class="modal-overlay" :class="$store.app.selectedRestaurant ? 'open' : ''" @click="$store.app.closeModal(); $store.edit.close();" @keydown.escape.window="if($store.app.selectedRestaurant){ $store.edit.active ? $store.edit.close() : $store.app.closeModal(); }">
+  <div class="modal-overlay" :class="$store.app.selectedRestaurant ? 'open' : ''" @click="$store.app.closeModal(); $store.edit.close(); $store.rate.reset();" @keydown.escape.window="if($store.app.selectedRestaurant){ $store.edit.active ? $store.edit.close() : ($store.app.closeModal(), $store.rate.reset()); }">
     <div class="modal-backdrop"></div>
     <div class="modal-panel hide-scrollbar" @click.stop x-show="$store.app.selectedRestaurant">
 
       <!-- Edit Rating View -->
-      <div x-show="$store.edit.active" style="padding:2rem;display:flex;flex-direction:column;gap:2rem;">
+      <div x-show="$store.edit.active" style="padding:2.5rem;display:flex;flex-direction:column;gap:0.75rem;">
         <div style="display:flex;align-items:center;gap:1rem;">
           <button @click="$store.edit.close()" style="color:#a1a1aa;padding:0.5rem;border-radius:9999px;border:none;background:none;cursor:pointer;display:flex;" x-html="icon('back',20)"></button>
           <div>
@@ -306,10 +149,10 @@
           <p>All votes cast are final... but we'll let it slide this time. The group <em>will</em> be notified of your cowardice.</p>
         </div>
         <div class="rating-grid">
-          <template x-for="opt in [{id:'marry',label:'Marry',icon:'heart'},{id:'fuck',label:'Fuck',icon:'fire'},{id:'kill',label:'Kill',icon:'skull'}]" :key="opt.id">
+          <template x-for="opt in [{id:'marry',label:'Marry'},{id:'fuck',label:'Fuck'},{id:'kill',label:'Kill'}]" :key="opt.id">
             <button class="rating-btn" :class="$store.edit.newRating === opt.id ? 'active-' + opt.id : ''" @click="$store.edit.newRating = opt.id">
-              <div class="rating-icon" :class="opt.id"><span x-html="icon(opt.icon, 28)"></span></div>
-              <span style="font-weight:700;font-size:1.125rem;" :style="$store.edit.newRating === opt.id ? 'color:#fff' : 'color:#18181b'" x-text="opt.label"></span>
+              <div class="rating-icon" :class="opt.id"><span x-html="ratingImg(opt.id, 40)"></span></div>
+              <span :style="'font-weight:700;font-size:1.125rem;color:' + ($store.edit.newRating === opt.id ? '#fff' : '#18181b')" x-text="opt.label"></span>
             </button>
           </template>
         </div>
@@ -317,23 +160,31 @@
           <label style="font-size:0.75rem;font-weight:600;color:#18181b;text-transform:uppercase;">Updated Notes</label>
           <textarea class="form-textarea" rows="3" x-model="$store.edit.notes" placeholder="Changed your mind? Explain yourself..."></textarea>
         </div>
-        <button class="btn-primary" style="width:100%;" @click="$store.edit.save()" :disabled="!$store.edit.newRating || $store.edit.saving">
-          <span x-text="$store.edit.saving ? 'Saving...' : 'Save Changes'"></span>
-          <span x-show="!$store.edit.saving" x-html="icon('nav',18)"></span>
-        </button>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <button class="btn-primary" style="width:100%;" @click="$store.edit.save()" :disabled="!$store.edit.newRating || $store.edit.saving">
+            <span x-text="$store.edit.saving ? 'Saving...' : 'Save Changes'"></span>
+            <span x-show="!$store.edit.saving" x-html="icon('nav',18)"></span>
+          </button>
+          <button @click="$store.edit.remove()" :disabled="$store.edit.saving"
+                style="width:100%;padding:1.25rem;border-radius:9999px;border:1px solid #fecaca;background:none;color:#f43f5e;font-weight:600;font-size:0.875rem;cursor:pointer;font-family:var(--font-sans);display:flex;align-items:center;justify-content:center;gap:0.5rem;transition:all 0.2s;"
+                onmouseover="this.style.background='#fef2f2'" onmouseout="this.style.background='none'">
+          <span x-html="icon('x',16)"></span>
+          <span x-text="$store.edit.saving ? 'Deleting...' : 'Delete Vote'"></span>
+          </button>
+        </div>
       </div>
 
       <!-- Detail View -->
       <div x-show="!$store.edit.active && $store.app.selectedRestaurant">
         <!-- Hero -->
         <div class="modal-hero">
-          <img :src="$store.app.selectedRestaurant?.img" :alt="$store.app.selectedRestaurant?.spot" />
+          <img :src="$store.app.selectedRestaurant?.primaryType === 'kill' && ($store.app.selectedRestaurant?.ratings || []).filter(r => r.rating === 'kill').length >= 4 ? './dead.jpg' : $store.app.selectedRestaurant?.img" :alt="$store.app.selectedRestaurant?.spot" />
           <div class="modal-hero-gradient"></div>
           <div class="modal-hero-text">
             <p style="color:rgba(255,255,255,0.6);font-size:0.875rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.25rem;" x-text="$store.app.selectedRestaurant?.style"></p>
             <h2 style="font-size:clamp(1.5rem,4vw,2.25rem);font-weight:700;color:#fff;letter-spacing:-0.025em;" x-text="$store.app.selectedRestaurant?.spot"></h2>
           </div>
-          <button class="modal-close" @click="$store.app.closeModal()" x-html="icon('x',20)"></button>
+          <button class="modal-close" @click="$store.app.closeModal(); $store.rate.reset();" x-html="icon('x',20)"></button>
           <a x-show="$store.app.selectedRestaurant?.website" :href="$store.app.selectedRestaurant?.website" target="_blank" rel="noreferrer"
              class="globe-link modal-globe" x-html="icon('globe',20)"></a>
         </div>
@@ -345,12 +196,12 @@
             <div x-show="!$store.app.selectedRestaurant?.ratings?.length" style="color:#a1a1aa;font-size:0.875rem;">No votes yet. Be the first to rate this spot!</div>
             <div style="display:flex;flex-direction:column;gap:0.75rem;">
               <template x-for="r in ($store.app.selectedRestaurant?.ratings || [])" :key="r.id">
-                <div class="vote-row">
+                <div class="vote-row" :class="'vote-' + r.rating">
                   <div class="vote-info">
-                    <div class="vote-icon" :class="r.rating" x-html="icon(typeIcon(r.rating), 20)"></div>
-                    <div>
+                    <div class="vote-icon" x-html="ratingImg(r.rating, 36)"></div>
+                    <div style="display:flex;flex-direction:column;gap:0.2rem;">
                       <span style="font-weight:600;color:#18181b;" x-text="r.memberName"></span>
-                      <span style="margin-left:0.5rem;font-size:0.875rem;font-weight:500;"
+                      <span style="font-size:0.8125rem;font-weight:500;"
                             :style="'color:var(--color-' + r.rating + ')'"
                             x-text="r.rating.charAt(0).toUpperCase() + r.rating.slice(1)"></span>
                     </div>
@@ -388,6 +239,109 @@
                 </div>
               </template>
             </div>
+          </div>
+
+          <!-- ── Cast Your Vote ──────────────────────────── -->
+          <div x-show="$store.rate.submitted" style="display:flex;flex-direction:column;align-items:center;padding:2rem 0;gap:1rem;">
+            <span style="color:#10b981;" x-html="icon('checkcircle',48)"></span>
+            <h3 style="font-size:1.25rem;font-weight:700;color:#18181b;">Vote Recorded!</h3>
+            <p style="color:#71717a;font-size:0.875rem;">The gang has spoken.</p>
+          </div>
+
+          <div x-show="$store.rate.availableMembers.length > 0 && !$store.rate.submitted">
+            <div style="height:1px;background:#e4e4e7;margin-bottom:1.5rem;"></div>
+            <h3 style="font-size:0.75rem;font-weight:600;color:#18181b;text-transform:uppercase;letter-spacing:-0.025em;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
+              <span x-html="icon('plus',16)"></span> Cast Your Vote
+            </h3>
+
+            <!-- Member Picker -->
+            <div style="margin-bottom:1.25rem;">
+              <select class="form-select" x-model="$store.rate.memberId">
+                <option value="">Who's voting?</option>
+                <template x-for="m in $store.rate.availableMembers" :key="m.id">
+                  <option :value="m.id" x-text="m.name"></option>
+                </template>
+              </select>
+            </div>
+
+            <!-- Rating Buttons -->
+            <div class="rating-grid" style="margin-bottom:1.25rem;">
+              <template x-for="opt in [{id:'marry',label:'Marry'},{id:'fuck',label:'Fuck'},{id:'kill',label:'Kill'}]" :key="opt.id">
+                <button class="rating-btn"
+                        :class="$store.rate.rating === opt.id ? 'active-' + opt.id : ''"
+                        @click="$store.rate.rating = ($store.rate.rating === opt.id ? null : opt.id)">
+                  <div class="rating-icon" :class="opt.id">
+                    <span x-html="ratingImg(opt.id, 36)"></span>
+                  </div>
+                  <span :style="'font-weight:700;font-size:1rem;color:' + ($store.rate.rating === opt.id ? '#fff' : '#18181b')" x-text="opt.label"></span>
+                </button>
+              </template>
+            </div>
+
+            <!-- Photo Upload -->
+            <div style="background:#fafafa;border:1px solid #e4e4e7;padding:1.25rem;border-radius:1.5rem;margin-bottom:1.25rem;display:flex;flex-direction:column;gap:1.25rem;">
+              <!-- Food Photos -->
+              <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                <h4 style="font-size:0.75rem;font-weight:600;color:#18181b;text-transform:uppercase;">Food Photos</h4>
+                <div class="photo-grid">
+                  <template x-for="(p, idx) in $store.rate.foodPreviews" :key="p">
+                    <div class="photo-thumb">
+                      <img :src="p" alt="Food" />
+                      <div class="photo-remove" @click="$store.rate.removeFoodPhoto(idx)">
+                        <span style="background:rgba(255,255,255,0.2);padding:0.5rem;border-radius:9999px;color:#fff;" x-html="icon('x',16)"></span>
+                      </div>
+                    </div>
+                  </template>
+                  <div x-show="$store.rate.foodPreviews.length < 4" class="photo-add" @click="$refs.modalFoodInput.click()">
+                    <div style="padding:0.5rem;background:#fff;border-radius:9999px;" x-html="icon('upload',20)"></div>
+                    <span style="font-size:0.6875rem;font-weight:500;">Add</span>
+                  </div>
+                </div>
+                <input x-ref="modalFoodInput" type="file" accept="image/*" multiple style="display:none;" @change="$store.rate.addFoodPhotos($el)" />
+              </div>
+
+              <div style="height:1px;background:#e4e4e7;"></div>
+
+              <!-- Selfies -->
+              <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                <h4 style="font-size:0.75rem;font-weight:600;color:#18181b;text-transform:uppercase;">Group Selfies</h4>
+                <div class="photo-grid">
+                  <template x-for="(p, idx) in $store.rate.selfiePreviews" :key="p">
+                    <div class="photo-thumb">
+                      <img :src="p" alt="Selfie" />
+                      <div class="photo-remove" @click="$store.rate.removeSelfiePhoto(idx)">
+                        <span style="background:rgba(255,255,255,0.2);padding:0.5rem;border-radius:9999px;color:#fff;" x-html="icon('x',16)"></span>
+                      </div>
+                    </div>
+                  </template>
+                  <div x-show="$store.rate.selfiePreviews.length < 2" class="photo-add" @click="$refs.modalSelfieInput.click()">
+                    <div style="padding:0.5rem;background:#fff;border-radius:9999px;" x-html="icon('upload',20)"></div>
+                    <span style="font-size:0.6875rem;font-weight:500;">Add</span>
+                  </div>
+                </div>
+                <input x-ref="modalSelfieInput" type="file" accept="image/*" multiple style="display:none;" @change="$store.rate.addSelfiePhotos($el)" />
+              </div>
+            </div>
+
+            <!-- Notes -->
+            <div style="margin-bottom:1.25rem;">
+              <textarea class="form-textarea" rows="2" x-model="$store.rate.notes"
+                        placeholder="Notes — what made it great or terrible?"></textarea>
+            </div>
+
+            <!-- Submit -->
+            <button class="btn-primary" style="width:100%;" @click="$store.rate.submit()"
+                    :disabled="!$store.rate.canSubmit || $store.rate.submitting">
+              <span x-text="$store.rate.submitting ? 'Submitting...' : 'Submit Vote'"></span>
+              <span x-show="!$store.rate.submitting" x-html="icon('nav',18)"></span>
+            </button>
+          </div>
+
+          <!-- All voted -->
+          <div x-show="$store.rate.availableMembers.length === 0 && ($store.app.selectedRestaurant?.ratings?.length || 0) > 0 && !$store.rate.submitted"
+               style="text-align:center;padding:1rem 0;color:#a1a1aa;font-size:0.875rem;">
+            <span x-html="icon('checkcircle',20)"></span>
+            <p style="margin-top:0.5rem;">All members have voted on this spot!</p>
           </div>
         </div>
       </div>
