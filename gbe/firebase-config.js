@@ -54,6 +54,10 @@ window.DB = {
     await db.collection('restaurants').doc(id).update(data);
   },
 
+  async deleteRestaurant(id) {
+    await db.collection('restaurants').doc(id).delete();
+  },
+
   // --- Ratings ---
   subscribeRatings(callback) {
     return db.collection('ratings').orderBy('createdAt', 'desc').onSnapshot(snap => {

@@ -24,6 +24,7 @@ const ICONS = {
   chat:     '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M216,48H40A16,16,0,0,0,24,64V224a15.85,15.85,0,0,0,9.24,14.5A16.13,16.13,0,0,0,40,240a15.89,15.89,0,0,0,10.25-3.78L83.43,208H216a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48ZM80,144H64a8,8,0,0,1,0-16H80a8,8,0,0,1,0,16Zm96-32H64a8,8,0,0,1,0-16H176a8,8,0,0,1,0,16Z"/></svg>',
   checkcircle: '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"/></svg>',
   nav:      '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M237.33,106.21,61.41,41.53a16,16,0,0,0-20.67,21L66.75,128,40.74,193.49a16,16,0,0,0,20.67,21l175.92-64.68a16,16,0,0,0,0-30Z"/></svg>',
+  menu:     '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></svg>',
 };
 
 function icon(name, size) {
@@ -69,6 +70,15 @@ document.addEventListener('alpine:init', () => {
     members: [],
     selectedRestaurantId: null,
     showMembers: false,
+    confirmDeleteRestaurant: false,
+
+    // Menu
+    menuOpen: false,
+    menuFilter: null,
+    menuAddOpen: false,
+    menuNewSpot: '',
+    menuNewStyle: '',
+    menuNewWebsite: '',
 
     // Picker
     pickedSpot: null,
@@ -121,6 +131,41 @@ document.addEventListener('alpine:init', () => {
       return this.enriched.find(r => r.id === this.selectedRestaurantId) || null;
     },
 
+    get cuisineTypes() {
+      const types = new Set(this.restaurants.map(r => r.style).filter(Boolean));
+      return [...types].sort();
+    },
+
+    get menuRestaurants() {
+      let list = this.enriched;
+      if (this.menuFilter) list = list.filter(r => r.style === this.menuFilter);
+      return [...list].sort((a, b) => a.spot.localeCompare(b.spot));
+    },
+
+    toggleMenu() { this.menuOpen = !this.menuOpen; },
+    closeMenu() {
+      this.menuOpen = false;
+      this.menuFilter = null;
+      this.menuAddOpen = false;
+      this.menuNewSpot = '';
+      this.menuNewStyle = '';
+      this.menuNewWebsite = '';
+    },
+
+    async addNewRestaurant() {
+      if (!this.menuNewSpot.trim()) return;
+      await DB.addRestaurant({
+        spot: this.menuNewSpot.trim(),
+        style: this.menuNewStyle.trim() || 'Restaurant',
+        website: this.menuNewWebsite.trim() || null,
+        img: 'https://picsum.photos/seed/' + encodeURIComponent(this.menuNewSpot.trim()) + '/800/600',
+      });
+      this.menuNewSpot = '';
+      this.menuNewStyle = '';
+      this.menuNewWebsite = '';
+      this.menuAddOpen = false;
+    },
+
     // Init
     init() {
       let rLoaded = false, ratLoaded = false;
@@ -134,8 +179,15 @@ document.addEventListener('alpine:init', () => {
     },
 
     // Actions
-    selectRestaurant(r) { this.selectedRestaurantId = r.id; document.body.style.overflow = 'hidden'; },
-    closeModal() { this.selectedRestaurantId = null; document.body.style.overflow = ''; },
+    selectRestaurant(r) { this.selectedRestaurantId = r.id; this.confirmDeleteRestaurant = false; document.body.style.overflow = 'hidden'; },
+    closeModal() { this.selectedRestaurantId = null; this.confirmDeleteRestaurant = false; document.body.style.overflow = ''; },
+
+    async deleteRestaurant() {
+      const rest = this.selectedRestaurant;
+      if (!rest || rest.ratings.length > 0) return;
+      await DB.deleteRestaurant(rest.id);
+      this.closeModal();
+    },
 
     handleRandomPick() {
       const unv = this.unvisited;
@@ -158,7 +210,7 @@ document.addEventListener('alpine:init', () => {
     },
 
     isLargeCard(item, idx) {
-      return item.primaryType !== 'unrated' && (idx === 0 || idx === 3);
+      return idx === 0;
     },
   });
 

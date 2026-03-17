@@ -27,12 +27,77 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
   <div style="position:fixed;top:1.5rem;left:0;right:0;z-index:50;display:flex;justify-content:center;pointer-events:none;padding:0 1rem;">
     <nav class="glass-panel" style="pointer-events:auto;display:flex;align-items:center;justify-content:space-between;padding:0.5rem 1.25rem;border-radius:2rem;max-width:24rem;width:100%;">
-      <div style="display:flex;align-items:center;gap:0.6rem;cursor:pointer;" @click="$store.app.view='feed'">
-        <div style="background:#18181b;color:#fff;padding:0.4rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;" x-html="icon('fork',14)"></div>
+      <div style="display:flex;align-items:center;gap:0.6rem;cursor:pointer;" @click="$store.app.toggleMenu()">
+        <div style="background:#18181b;color:#fff;padding:0.4rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;" x-html="icon($store.app.menuOpen ? 'x' : 'menu', 14)"></div>
         <span style="font-weight:600;letter-spacing:-0.025em;color:#18181b;font-size:0.875rem;">Gang Bang Eats</span>
       </div>
       <button @click="$store.app.showMembers=true" style="color:#a1a1aa;padding:0.4rem;border-radius:9999px;border:none;background:none;cursor:pointer;display:flex;" title="Manage Members" x-html="icon('users',16)"></button>
     </nav>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- MENU PANEL                                                   -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="menu-overlay" :class="$store.app.menuOpen ? 'open' : ''" @click="$store.app.closeMenu()" @keydown.escape.window="$store.app.menuOpen && $store.app.closeMenu()">
+    <div class="menu-panel hide-scrollbar" @click.stop>
+
+      <!-- Filter Chips -->
+      <div class="menu-section">
+        <h3 class="menu-label">Filter by Type</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+          <button class="filter-chip" :class="!$store.app.menuFilter ? 'active' : ''" @click="$store.app.menuFilter = null">All</button>
+          <template x-for="type in $store.app.cuisineTypes" :key="type">
+            <button class="filter-chip" :class="$store.app.menuFilter === type ? 'active' : ''" @click="$store.app.menuFilter = type" x-text="type"></button>
+          </template>
+        </div>
+      </div>
+
+      <!-- Restaurant List -->
+      <div class="menu-section" style="flex:1;overflow-y:auto;">
+        <h3 class="menu-label" x-text="($store.app.menuFilter || 'All') + ' — ' + $store.app.menuRestaurants.length + ' spots'"></h3>
+        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+          <template x-for="r in $store.app.menuRestaurants" :key="r.id">
+            <button class="menu-item" @click="$store.app.selectRestaurant(r); $store.app.closeMenu();">
+              <div style="display:flex;align-items:center;gap:0.75rem;flex:1;min-width:0;">
+                <img :src="r.img" :alt="r.spot" style="width:2.5rem;height:2.5rem;border-radius:0.75rem;object-fit:cover;flex-shrink:0;" />
+                <div style="min-width:0;">
+                  <div style="font-weight:600;color:#18181b;font-size:0.875rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" x-text="r.spot"></div>
+                  <div style="font-size:0.75rem;color:#a1a1aa;text-transform:uppercase;letter-spacing:0.05em;" x-text="r.style"></div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:0.25rem;flex-shrink:0;">
+                <template x-for="rt in r.ratings" :key="rt.id">
+                  <span x-html="ratingImg(rt.rating, 18)"></span>
+                </template>
+              </div>
+            </button>
+          </template>
+        </div>
+      </div>
+
+      <!-- Add New Spot -->
+      <div class="menu-section" style="border-top:1px solid #e4e4e7;padding-top:1rem;">
+        <button x-show="!$store.app.menuAddOpen" @click="$store.app.menuAddOpen = true"
+                style="width:100%;display:flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.75rem;border-radius:1rem;border:1px dashed #d4d4d8;background:none;cursor:pointer;color:#71717a;font-weight:600;font-size:0.875rem;font-family:var(--font-sans);transition:all 0.2s;"
+                onmouseover="this.style.background='#fafafa'" onmouseout="this.style.background='none'">
+          <span x-html="icon('plus',16)"></span> Add New Spot
+        </button>
+        <div x-show="$store.app.menuAddOpen" style="display:flex;flex-direction:column;gap:0.75rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-weight:600;font-size:0.875rem;color:#18181b;">New Spot</span>
+            <button @click="$store.app.menuAddOpen=false;$store.app.menuNewSpot='';$store.app.menuNewStyle='';$store.app.menuNewWebsite='';"
+                    style="font-size:0.75rem;color:#a1a1aa;background:none;border:none;cursor:pointer;font-family:var(--font-sans);">Cancel</button>
+          </div>
+          <input class="form-input" x-model="$store.app.menuNewSpot" placeholder="Restaurant name" style="padding:0.75rem;font-size:0.875rem;border-radius:0.75rem;" />
+          <input class="form-input" x-model="$store.app.menuNewStyle" placeholder="Cuisine type (e.g. Italian, BBQ)" style="padding:0.75rem;font-size:0.875rem;border-radius:0.75rem;" />
+          <input class="form-input" x-model="$store.app.menuNewWebsite" placeholder="Website URL (optional)" style="padding:0.75rem;font-size:0.875rem;border-radius:0.75rem;" />
+          <button class="btn-primary" style="width:100%;padding:0.75rem;font-size:0.875rem;" @click="$store.app.addNewRestaurant()"
+                  :disabled="!$store.app.menuNewSpot.trim()">
+            <span x-html="icon('plus',16)"></span> Add to List
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ═══════════════════════════════════════════════════════════ -->
@@ -342,6 +407,34 @@
                style="text-align:center;padding:1rem 0;color:#a1a1aa;font-size:0.875rem;">
             <span x-html="icon('checkcircle',20)"></span>
             <p style="margin-top:0.5rem;">All members have voted on this spot!</p>
+          </div>
+
+          <!-- Delete Restaurant (only if no ratings) -->
+          <div x-show="!$store.app.selectedRestaurant?.ratings?.length" style="margin-top:1rem;">
+            <div style="height:1px;background:#e4e4e7;margin-bottom:1.5rem;"></div>
+
+            <!-- Initial delete button -->
+            <button x-show="!$store.app.confirmDeleteRestaurant"
+                    @click="$store.app.confirmDeleteRestaurant = true"
+                    style="width:100%;padding:0.75rem;border-radius:9999px;border:1px solid #fecaca;background:none;color:#f43f5e;font-weight:600;font-size:0.875rem;cursor:pointer;font-family:var(--font-sans);display:flex;align-items:center;justify-content:center;gap:0.5rem;transition:all 0.2s;"
+                    onmouseover="this.style.background='#fef2f2'" onmouseout="this.style.background='none'">
+              <span x-html="icon('x',16)"></span> Remove Restaurant
+            </button>
+
+            <!-- Confirmation -->
+            <div x-show="$store.app.confirmDeleteRestaurant" style="background:#fef2f2;border:1px solid #fecaca;border-radius:1rem;padding:1.25rem;display:flex;flex-direction:column;gap:1rem;text-align:center;">
+              <p style="font-size:0.875rem;color:#991b1b;font-weight:500;">Are you sure you want to delete <strong x-text="$store.app.selectedRestaurant?.spot"></strong>? This cannot be undone.</p>
+              <div style="display:flex;gap:0.75rem;">
+                <button @click="$store.app.confirmDeleteRestaurant = false"
+                        style="flex:1;padding:0.75rem;border-radius:9999px;border:1px solid #e4e4e7;background:#fff;color:#52525b;font-weight:600;font-size:0.875rem;cursor:pointer;font-family:var(--font-sans);">
+                  Cancel
+                </button>
+                <button @click="$store.app.deleteRestaurant()"
+                        style="flex:1;padding:0.75rem;border-radius:9999px;border:none;background:#f43f5e;color:#fff;font-weight:600;font-size:0.875rem;cursor:pointer;font-family:var(--font-sans);">
+                  Yes, Delete
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
