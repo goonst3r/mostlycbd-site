@@ -398,6 +398,12 @@ document.addEventListener('alpine:init', () => {
     index: 0,
     confirmDelete: false,
     deleting: false,
+    tagging: false,
+    tagText: '',
+    tagMemberId: '',
+    tagSaving: false,
+    confirmDeleteTag: null,
+    tagDeleting: false,
 
     _touchStartX: 0,
 
@@ -427,15 +433,21 @@ document.addEventListener('alpine:init', () => {
       this.index = 0;
       this.confirmDelete = false;
       this.deleting = false;
+      this.tagging = false;
+      this.tagText = '';
+      this.tagMemberId = '';
+      this.tagSaving = false;
+      this.confirmDeleteTag = null;
+      this.tagDeleting = false;
     },
 
     prev() {
-      if (this.confirmDelete) return;
+      if (this.confirmDelete || this.tagging) return;
       this.index = (this.index - 1 + this.photos.length) % this.photos.length;
     },
 
     next() {
-      if (this.confirmDelete) return;
+      if (this.confirmDelete || this.tagging) return;
       this.index = (this.index + 1) % this.photos.length;
     },
 
@@ -481,6 +493,98 @@ document.addEventListener('alpine:init', () => {
       } catch (err) {
         console.error('Delete photo failed:', err);
         this.deleting = false;
+      }
+    },
+
+    // ── Tagging ────────────────────────────────────────────────
+    promptTag() {
+      this.tagging = true;
+      this.tagText = '';
+      this.tagMemberId = '';
+      this.tagWarning = false;
+      this.tagSaving = false;
+    },
+
+    cancelTag() {
+      this.tagging = false;
+      this.tagText = '';
+      this.tagMemberId = '';
+      this.tagSaving = false;
+    },
+
+    get tagCanSubmit() {
+      return this.tagText.trim().length > 0 && !!this.tagMemberId;
+    },
+
+    async submitTag() {
+      if (!this.tagCanSubmit || this.tagSaving) return;
+      const url = this.currentUrl;
+      const sel = Alpine.store('app').selectedRestaurant;
+      if (!sel) return;
+
+      const member = Alpine.store('app').members.find(m => m.id === this.tagMemberId);
+      if (!member) return;
+
+      const tag = {
+        photoUrl: url,
+        text: this.tagText.trim(),
+        memberId: member.id,
+        memberName: member.name,
+        avatarUrl: member.avatarUrl || '',
+      };
+
+      this.tagSaving = true;
+      try {
+        const rating = (sel.ratings || []).find(r => (r.photos || []).includes(url));
+        if (rating) {
+          await DB.addPhotoTag(rating.id, tag);
+        } else {
+          await DB.addRestaurantPhotoTag(sel.id, tag);
+        }
+        this.cancelTag();
+      } catch (err) {
+        console.error('Tag failed:', err);
+        this.tagSaving = false;
+      }
+    },
+
+    get currentTags() {
+      const url = this.currentUrl;
+      const sel = Alpine.store('app').selectedRestaurant;
+      if (!sel || !url) return [];
+      const rating = (sel.ratings || []).find(r => (r.photos || []).includes(url));
+      const source = rating || sel;
+      return (source.photoTags || []).filter(t => t.photoUrl === url);
+    },
+
+    promptDeleteTag(tag) {
+      this.confirmDeleteTag = tag;
+    },
+
+    cancelDeleteTag() {
+      this.confirmDeleteTag = null;
+    },
+
+    async executeDeleteTag() {
+      if (!this.confirmDeleteTag || this.tagDeleting) return;
+      const tag = this.confirmDeleteTag;
+      const url = this.currentUrl;
+      const sel = Alpine.store('app').selectedRestaurant;
+      if (!sel) return;
+
+      this.tagDeleting = true;
+      try {
+        const rating = (sel.ratings || []).find(r => (r.photos || []).includes(url));
+        if (rating) {
+          await DB.removePhotoTag(rating.id, tag);
+        } else {
+          await DB.removeRestaurantPhotoTag(sel.id, tag);
+        }
+        this.confirmDeleteTag = null;
+      } catch (err) {
+        console.error('Delete tag failed:', err);
+      } finally {
+        this.tagDeleting = false;
       }
     },
   });

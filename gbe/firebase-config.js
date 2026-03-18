@@ -116,6 +116,33 @@ window.DB = {
     });
   },
 
+  // --- Photo Tags ---
+  async addPhotoTag(ratingId, tag) {
+    await db.collection('ratings').doc(ratingId).update({
+      photoTags: firebase.firestore.FieldValue.arrayUnion(tag),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+  },
+
+  async addRestaurantPhotoTag(restaurantId, tag) {
+    await db.collection('restaurants').doc(restaurantId).update({
+      photoTags: firebase.firestore.FieldValue.arrayUnion(tag),
+    });
+  },
+
+  async removePhotoTag(ratingId, tag) {
+    await db.collection('ratings').doc(ratingId).update({
+      photoTags: firebase.firestore.FieldValue.arrayRemove(tag),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+  },
+
+  async removeRestaurantPhotoTag(restaurantId, tag) {
+    await db.collection('restaurants').doc(restaurantId).update({
+      photoTags: firebase.firestore.FieldValue.arrayRemove(tag),
+    });
+  },
+
   // --- Avatar Upload ---
   async uploadAvatar(file, memberId) {
     const filename = Date.now() + '_avatar.png';
