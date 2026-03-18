@@ -263,18 +263,19 @@
               <template x-for="r in ($store.app.selectedRestaurant?.ratings || [])" :key="r.id">
                 <div class="vote-card" :class="'vote-' + r.rating"
                      x-data="{ get member() { return $store.app.members.find(m => m.id === r.memberId) || null },
-                               get av() { return (this.member || {}).avatarUrl || null } }">
+                               get av() { return (this.member || {}).avatarUrl || null },
+                               get isGuest() { return !!(this.member || {}).guest } }">
                   <button class="vote-edit" type="button" title="Edit vote"
                           @click="$store.edit.open(r, $store.app.selectedRestaurant)"
                           x-html="icon('pencil',16)"></button>
                   <div class="avatar-md vote-card-avatar"
                        :class="!av && member ? 'no-avatar-clickable' : ''"
-                       @click="!av && member && ($store.app.showMembers = true, $store.mem.openEdit(member))">
+                       @click="!av && member && ($store.app.showMembers = true, $store.mem.openEdit(member, true))">
                     <img x-show="av" :src="av" alt="" style="width:100%;height:100%;object-fit:cover;" />
-                    <span x-show="!av" style="color:#d4d4d8;" x-html="icon('users', 28)"></span>
-                    <div x-show="!av && member" class="avatar-add-hint" x-html="icon('camera', 12)"></div>
+                    <span x-show="!av" style="color:#d4d4d8;display:flex;align-items:center;justify-content:center;" x-html="icon('users', 28)"></span>
                   </div>
                   <span class="vote-card-name" x-text="(member || {}).name || r.memberName"></span>
+                  <span x-show="isGuest" class="vote-card-guest-label">honorary guest</span>
                   <div class="vote-card-verdict">
                     <span>wants to</span>
                     <img :src="r.rating + '.jpg'" :alt="r.rating" />
@@ -368,7 +369,7 @@
                 <div>
                   <label style="font-size:0.6875rem;font-weight:600;color:#71717a;text-transform:uppercase;margin-bottom:0.5rem;display:block;">Who's leaving this note?</label>
                   <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
-                    <template x-for="m in $store.app.members" :key="m.id">
+                    <template x-for="m in $store.app.members.filter(m => !m.guest)" :key="m.id">
                       <button type="button" @click="$store.addNote.selectMember(m)"
                               :style="'padding:0.375rem 0.75rem;border-radius:9999px;font-size:0.875rem;font-weight:500;cursor:pointer;border:1px solid;transition:all 0.2s;font-family:var(--font-sans);' + (!$store.addNote.isGuest && $store.addNote.memberId === m.id ? 'background:#18181b;color:#fff;border-color:#18181b;' : 'background:#fff;color:#52525b;border-color:#e4e4e7;')"
                               x-text="m.name"></button>
@@ -484,19 +485,21 @@
             <div style="margin-bottom:1.25rem;">
               <label style="font-size:0.6875rem;font-weight:600;color:#71717a;text-transform:uppercase;margin-bottom:0.5rem;display:block;">Who's voting?</label>
               <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
-                <template x-for="m in $store.rate.availableMembers" :key="m.id">
-                  <button @click="$store.rate.isGuest = false; $store.rate.guestName = ''; $store.rate.memberId = m.id"
-                          :style="'padding:0.375rem 0.75rem;border-radius:9999px;font-size:0.875rem;font-weight:500;cursor:pointer;border:1px solid;transition:all 0.2s;font-family:var(--font-sans);' + (!$store.rate.isGuest && $store.rate.memberId === m.id ? 'background:#18181b;color:#fff;border-color:#18181b;' : 'background:#fff;color:#52525b;border-color:#e4e4e7;')"
-                          x-text="m.name"></button>
-                </template>
                 <button @click="$store.rate.isGuest = true; $store.rate.memberId = ''"
                         :style="'padding:0.375rem 0.75rem;border-radius:9999px;font-size:0.875rem;font-weight:500;cursor:pointer;border:1px solid;transition:all 0.2s;font-family:var(--font-sans);display:flex;align-items:center;gap:0.35rem;' + ($store.rate.isGuest ? 'background:#18181b;color:#fff;border-color:#18181b;' : 'background:#fff;color:#52525b;border-color:#e4e4e7;')">
                   <span x-html="icon('plus',14)"></span> Guest
                 </button>
               </div>
               <!-- Guest name input -->
-              <div x-show="$store.rate.isGuest" style="margin-top:0.75rem;">
+              <div x-show="$store.rate.isGuest" style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.75rem;">
                 <input class="form-input" x-model="$store.rate.guestName" placeholder="Enter guest name..." style="width:100%;" />
+                <div class="edit-warning">
+                  <span style="color:#f59e0b;flex-shrink:0;" x-html="icon('warning',20)"></span>
+                  <p>According to <strong>GBE Bylaws, Article II, Section 4.1 &mdash; Honorary Visitorship &amp; Suffrage</strong>:
+                  No honorary guest shall be granted the sacred privilege of casting a vote without the <em>unanimous</em> consent
+                  of the Council of OG Bangers. Any vote submitted without said consent is hereby declared null, void, and
+                  a bit presumptuous. The Council also reserves the right to question your guest's taste in restaurants.</p>
+                </div>
               </div>
             </div>
 
@@ -529,7 +532,7 @@
           <div x-show="$store.rate.availableMembers.length === 0 && ($store.app.selectedRestaurant?.ratings?.length || 0) > 0 && !$store.rate.submitted"
                style="text-align:center;padding:1rem 0;color:#a1a1aa;font-size:0.875rem;">
             <span x-html="icon('checkcircle',20)"></span>
-            <p style="margin-top:0.5rem;">All members have voted on this spot!</p>
+            <p style="margin-top:0.5rem;">All OG Bangers have spoken!</p>
           </div>
 
           <!-- Delete Restaurant (only if no ratings) -->
@@ -636,7 +639,7 @@
         </div>
 
         <div style="display:flex;flex-direction:column;gap:0.75rem;">
-          <template x-for="m in $store.app.members" :key="m.id">
+          <template x-for="m in $store.app.members.filter(m => !m.guest)" :key="m.id">
             <div class="vote-row" style="cursor:pointer;" @click="$store.mem.openEdit(m)">
               <div style="display:flex;align-items:center;gap:0.75rem;">
                 <div class="avatar-sm">

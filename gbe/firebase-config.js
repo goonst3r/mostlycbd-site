@@ -23,9 +23,10 @@ window.DB = {
     });
   },
 
-  async addMember(name) {
+  async addMember(name, extra = {}) {
     const ref = await db.collection('members').add({
       name,
+      ...extra,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
     return ref.id;
@@ -106,6 +107,12 @@ window.DB = {
     await db.collection('ratings').doc(ratingId).update({
       photos: firebase.firestore.FieldValue.arrayRemove(photoUrl),
       updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+  },
+
+  async removePhotoFromRestaurant(restaurantId, photoUrl) {
+    await db.collection('restaurants').doc(restaurantId).update({
+      photos: firebase.firestore.FieldValue.arrayRemove(photoUrl),
     });
   },
 

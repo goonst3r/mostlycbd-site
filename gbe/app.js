@@ -247,7 +247,7 @@ document.addEventListener('alpine:init', () => {
       const sel = Alpine.store('app').selectedRestaurant;
       if (!sel || !sel.ratings) return Alpine.store('app').members;
       const voted = new Set(sel.ratings.map(r => r.memberId));
-      return Alpine.store('app').members.filter(m => !voted.has(m.id));
+      return Alpine.store('app').members.filter(m => !m.guest && !voted.has(m.id));
     },
 
     get canSubmit() {
@@ -301,7 +301,7 @@ document.addEventListener('alpine:init', () => {
         let voteMemberId = this.memberId;
         let voteMemberName = '';
         if (this.isGuest) {
-          const newId = await DB.addMember(this.guestName.trim());
+          const newId = await DB.addMember(this.guestName.trim(), { guest: true });
           voteMemberId = newId;
           voteMemberName = this.guestName.trim();
         } else {
@@ -458,12 +458,17 @@ document.addEventListener('alpine:init', () => {
       if (!sel) return;
 
       // Find which rating has this photo
-      const rating = sel.ratings.find(r => (r.photos || []).includes(url));
-      if (!rating) return;
+      const rating = (sel.ratings || []).find(r => (r.photos || []).includes(url));
+      const isRestaurantPhoto = !rating && (sel.photos || []).includes(url);
+      if (!rating && !isRestaurantPhoto) return;
 
       this.deleting = true;
       try {
-        await DB.removePhotoFromRating(rating.id, url);
+        if (rating) {
+          await DB.removePhotoFromRating(rating.id, url);
+        } else {
+          await DB.removePhotoFromRestaurant(sel.id, url);
+        }
         // Remove from local array and adjust index
         this.photos.splice(this.index, 1);
         if (this.photos.length === 0) {
@@ -643,22 +648,26 @@ document.addEventListener('alpine:init', () => {
     avatarFile: null,
     avatarPreview: '',
     saving: false,
+    fromRestaurant: false,
 
-    openEdit(member) {
+    openEdit(member, fromRestaurant = false) {
       this.editing = member;
       this.editName = member.name;
       this.avatarPreview = member.avatarUrl || '';
       this.avatarFile = null;
       this.saving = false;
+      this.fromRestaurant = fromRestaurant;
     },
 
     closeEdit() {
       if (this.avatarPreview && this.avatarFile) URL.revokeObjectURL(this.avatarPreview);
+      if (this.fromRestaurant) Alpine.store('app').showMembers = false;
       this.editing = null;
       this.editName = '';
       this.avatarFile = null;
       this.avatarPreview = '';
       this.saving = false;
+      this.fromRestaurant = false;
     },
 
     async setAvatar(input) {
@@ -799,3 +808,6 @@ document.addEventListener('alpine:init', () => {
 // Expose dev helpers
 window.resetDB = () => Seed.resetDatabase();
 window.seedDB = () => Seed.seedDatabase();
+window.markGuest = (name) => firebase.firestore().collection('members')
+  .where('name', '==', name).get()
+  .then(snap => { snap.docs.forEach(d => d.ref.update({ guest: true })); console.log(`Marked ${snap.size} member(s) as guest.`); });
