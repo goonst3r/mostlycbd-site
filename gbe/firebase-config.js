@@ -31,8 +31,9 @@ window.DB = {
     return ref.id;
   },
 
-  async updateMember(id, name) {
-    await db.collection('members').doc(id).update({ name });
+  async updateMember(id, data) {
+    if (typeof data === 'string') data = { name: data };
+    await db.collection('members').doc(id).update(data);
   },
 
   // --- Restaurants ---
@@ -106,6 +107,14 @@ window.DB = {
       photos: firebase.firestore.FieldValue.arrayRemove(photoUrl),
       updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
+  },
+
+  // --- Avatar Upload ---
+  async uploadAvatar(file, memberId) {
+    const filename = Date.now() + '_avatar.png';
+    const ref = storage.ref('avatars/' + memberId + '/' + filename);
+    await ref.put(file);
+    return ref.getDownloadURL();
   },
 
   // --- Photo Upload ---

@@ -219,6 +219,8 @@ document.addEventListener('alpine:init', () => {
     rating: null,
     memberId: '',
     notes: '',
+    isGuest: false,
+    guestName: '',
     submitting: false,
     submitted: false,
     foodPhotos: [],
@@ -230,6 +232,8 @@ document.addEventListener('alpine:init', () => {
       this.rating = null;
       this.memberId = '';
       this.notes = '';
+      this.isGuest = false;
+      this.guestName = '';
       this.submitting = false;
       this.submitted = false;
       this.foodPhotos = [];
@@ -246,7 +250,9 @@ document.addEventListener('alpine:init', () => {
     },
 
     get canSubmit() {
-      return this.rating && this.memberId;
+      if (!this.rating) return false;
+      if (this.isGuest) return this.guestName.trim().length > 0;
+      return !!this.memberId;
     },
 
     addFoodPhotos(input) {
@@ -290,8 +296,20 @@ document.addEventListener('alpine:init', () => {
       try {
         const restId = Alpine.store('app').selectedRestaurant.id;
 
+        // If guest, create the member first
+        let voteMemberId = this.memberId;
+        let voteMemberName = '';
+        if (this.isGuest) {
+          const newId = await DB.addMember(this.guestName.trim());
+          voteMemberId = newId;
+          voteMemberName = this.guestName.trim();
+        } else {
+          const member = Alpine.store('app').members.find(m => m.id === voteMemberId);
+          voteMemberName = member ? member.name : '';
+        }
+
         // Server-side duplicate guard
-        const isDup = await DB.checkDuplicate(this.memberId, restId);
+        const isDup = await DB.checkDuplicate(voteMemberId, restId);
         if (isDup) {
           alert('This member has already voted on this restaurant.');
           this.submitting = false;
@@ -301,12 +319,10 @@ document.addEventListener('alpine:init', () => {
         const allFiles = [...this.foodPhotos, ...this.selfiePhotos];
         const photoUrls = allFiles.length > 0 ? await DB.uploadPhotos(allFiles, restId) : [];
 
-        const member = Alpine.store('app').members.find(m => m.id === this.memberId);
-
         await DB.addRating({
           restaurantId: restId,
-          memberId: this.memberId,
-          memberName: member ? member.name : '',
+          memberId: voteMemberId,
+          memberName: voteMemberName,
           rating: this.rating,
           notes: this.notes,
           photos: photoUrls,
@@ -530,34 +546,160 @@ document.addEventListener('alpine:init', () => {
 
   // ── Members store ───────────────────────────────────────────
   Alpine.store('mem', {
-    editingId: null,
+    editing: null,
     editName: '',
-    newName: '',
-    adding: false,
+    avatarFile: null,
+    avatarPreview: '',
+    saving: false,
 
-    startEdit(member) {
-      this.editingId = member.id;
+    openEdit(member) {
+      this.editing = member;
       this.editName = member.name;
+      this.avatarPreview = member.avatarUrl || '';
+      this.avatarFile = null;
+      this.saving = false;
     },
 
-    async saveEdit() {
-      if (!this.editingId || !this.editName.trim()) return;
-      await DB.updateMember(this.editingId, this.editName.trim());
-      this.editingId = null;
+    closeEdit() {
+      if (this.avatarPreview && this.avatarFile) URL.revokeObjectURL(this.avatarPreview);
+      this.editing = null;
       this.editName = '';
+      this.avatarFile = null;
+      this.avatarPreview = '';
+      this.saving = false;
     },
 
-    cancelEdit() {
-      this.editingId = null;
-      this.editName = '';
+    async setAvatar(input) {
+      const file = input.files[0];
+      if (!file) return;
+      input.value = '';
+
+      // Apply cartoon filter via canvas
+      const filtered = await this._applyCartoonFilter(file);
+      this.avatarFile = filtered;
+      this.avatarPreview = URL.createObjectURL(filtered);
     },
 
-    async addMember() {
-      if (!this.newName.trim()) return;
-      this.adding = true;
-      await DB.addMember(this.newName.trim());
-      this.newName = '';
-      this.adding = false;
+    _applyCartoonFilter(file) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => {
+          const size = 512;
+          const canvas = document.createElement('canvas');
+          canvas.width = size;
+          canvas.height = size;
+          const ctx = canvas.getContext('2d');
+
+          // Draw image cropped to square (center crop)
+          const s = Math.min(img.width, img.height);
+          const sx = (img.width - s) / 2;
+          const sy = (img.height - s) / 2;
+          ctx.drawImage(img, sx, sy, s, s, 0, 0, size, size);
+
+          // Get pixel data
+          const imageData = ctx.getImageData(0, 0, size, size);
+          const d = imageData.data;
+
+          // Posterize (reduce to ~6 levels per channel) + boost saturation
+          const levels = 6;
+          const step = 255 / (levels - 1);
+          for (let i = 0; i < d.length; i += 4) {
+            let r = d[i], g = d[i + 1], b = d[i + 2];
+
+            // Posterize
+            r = Math.round(Math.round(r / step) * step);
+            g = Math.round(Math.round(g / step) * step);
+            b = Math.round(Math.round(b / step) * step);
+
+            // Boost saturation
+            const avg = (r + g + b) / 3;
+            const sat = 1.4;
+            r = Math.min(255, Math.max(0, avg + (r - avg) * sat));
+            g = Math.min(255, Math.max(0, avg + (g - avg) * sat));
+            b = Math.min(255, Math.max(0, avg + (b - avg) * sat));
+
+            // Increase contrast
+            const contrast = 1.2;
+            r = Math.min(255, Math.max(0, (r - 128) * contrast + 128));
+            g = Math.min(255, Math.max(0, (g - 128) * contrast + 128));
+            b = Math.min(255, Math.max(0, (b - 128) * contrast + 128));
+
+            d[i] = r;
+            d[i + 1] = g;
+            d[i + 2] = b;
+          }
+          ctx.putImageData(imageData, 0, 0);
+
+          // Edge detection overlay for comic-book outlines
+          const edgeCanvas = document.createElement('canvas');
+          edgeCanvas.width = size;
+          edgeCanvas.height = size;
+          const ectx = edgeCanvas.getContext('2d');
+          ectx.drawImage(img, sx, sy, s, s, 0, 0, size, size);
+          const edgeData = ectx.getImageData(0, 0, size, size);
+          const ed = edgeData.data;
+
+          // Simple Sobel-like edge detection
+          const gray = new Float32Array(size * size);
+          for (let i = 0; i < size * size; i++) {
+            gray[i] = (ed[i * 4] * 0.299 + ed[i * 4 + 1] * 0.587 + ed[i * 4 + 2] * 0.114);
+          }
+
+          const edges = new Float32Array(size * size);
+          for (let y = 1; y < size - 1; y++) {
+            for (let x = 1; x < size - 1; x++) {
+              const idx = y * size + x;
+              const gx = -gray[idx - size - 1] + gray[idx - size + 1]
+                       - 2 * gray[idx - 1] + 2 * gray[idx + 1]
+                       - gray[idx + size - 1] + gray[idx + size + 1];
+              const gy = -gray[idx - size - 1] - 2 * gray[idx - size] - gray[idx - size + 1]
+                       + gray[idx + size - 1] + 2 * gray[idx + size] + gray[idx + size + 1];
+              edges[idx] = Math.sqrt(gx * gx + gy * gy);
+            }
+          }
+
+          // Draw dark edges on top of posterized image
+          ctx.globalAlpha = 0.35;
+          for (let y = 0; y < size; y++) {
+            for (let x = 0; x < size; x++) {
+              const e = edges[y * size + x];
+              if (e > 40) {
+                const alpha = Math.min(1, e / 120);
+                const px = imageData.data;
+                const idx = (y * size + x) * 4;
+                px[idx] = Math.max(0, px[idx] - 80 * alpha);
+                px[idx + 1] = Math.max(0, px[idx + 1] - 80 * alpha);
+                px[idx + 2] = Math.max(0, px[idx + 2] - 80 * alpha);
+              }
+            }
+          }
+          ctx.globalAlpha = 1;
+          ctx.putImageData(imageData, 0, 0);
+
+          canvas.toBlob(blob => resolve(blob), 'image/png');
+        };
+        img.src = URL.createObjectURL(file);
+      });
+    },
+
+    async saveProfile() {
+      if (!this.editing || !this.editName.trim()) return;
+      this.saving = true;
+
+      try {
+        const updates = { name: this.editName.trim() };
+
+        if (this.avatarFile) {
+          const avatarUrl = await DB.uploadAvatar(this.avatarFile, this.editing.id);
+          updates.avatarUrl = avatarUrl;
+        }
+
+        await DB.updateMember(this.editing.id, updates);
+        this.closeEdit();
+      } catch (err) {
+        console.error('Save profile failed:', err);
+        this.saving = false;
+      }
     },
   });
 });
