@@ -185,8 +185,8 @@ document.addEventListener('alpine:init', () => {
     },
 
     // Actions
-    selectRestaurant(r) { this.selectedRestaurantId = r.id; this.confirmDeleteRestaurant = false; document.body.style.overflow = 'hidden'; Alpine.store('changePic').close(); },
-    closeModal() { this.selectedRestaurantId = null; this.confirmDeleteRestaurant = false; document.body.style.overflow = ''; Alpine.store('addPhotos').reset(); Alpine.store('changePic').close(); },
+    selectRestaurant(r) { this.selectedRestaurantId = r.id; this.confirmDeleteRestaurant = false; document.body.style.overflow = 'hidden'; Alpine.store('changePic').close(); Alpine.store('dvMenu').close(); },
+    closeModal() { this.selectedRestaurantId = null; this.confirmDeleteRestaurant = false; document.body.style.overflow = ''; Alpine.store('addPhotos').reset(); Alpine.store('changePic').close(); Alpine.store('dvMenu').close(); },
 
     async deleteRestaurant() {
       const rest = this.selectedRestaurant;
@@ -647,6 +647,68 @@ document.addEventListener('alpine:init', () => {
         this.close();
       } catch (err) {
         console.error('Upload pic failed:', err);
+        this.saving = false;
+      }
+    },
+  });
+
+  // ── DV Hamburger Menu store ─────────────────────────────────
+  Alpine.store('dvMenu', {
+    open: false,
+    editOpen: false,
+    editName: '',
+    editStyle: '',
+    editStyleNew: '',
+    customStyle: false,
+    editWebsite: '',
+    saving: false,
+
+    toggle() { this.open = !this.open; if (!this.open) { this.editOpen = false; this.saving = false; } },
+    close() { this.open = false; this.editOpen = false; this.saving = false; },
+
+    openEdit() {
+      const sel = Alpine.store('app').selectedRestaurant;
+      if (!sel) return;
+      this.editName = sel.spot;
+      const types = Alpine.store('app').cuisineTypes;
+      this.editStyle = types.includes(sel.style) ? sel.style : '';
+      this.editStyleNew = !types.includes(sel.style) ? (sel.style || '') : '';
+      this.customStyle = !types.includes(sel.style) && !!sel.style;
+      this.editWebsite = sel.website || '';
+      this.editOpen = true;
+    },
+
+    closeEdit() { this.editOpen = false; this.saving = false; },
+
+    scrollTo(id) {
+      this.close();
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 280);
+    },
+
+    get canSave() {
+      if (!this.editName.trim()) return false;
+      if (this.customStyle) return this.editStyleNew.trim().length > 0;
+      return !!this.editStyle;
+    },
+
+    async save() {
+      if (!this.canSave || this.saving) return;
+      const sel = Alpine.store('app').selectedRestaurant;
+      if (!sel) return;
+      const style = this.customStyle ? this.editStyleNew.trim() : this.editStyle;
+      this.saving = true;
+      try {
+        await DB.updateRestaurant(sel.id, {
+          spot: this.editName.trim(),
+          style,
+          website: this.editWebsite.trim() || null,
+        });
+        this.close();
+      } catch (err) {
+        console.error('Edit restaurant failed:', err);
         this.saving = false;
       }
     },

@@ -256,6 +256,13 @@ body {
   color: #fff; cursor: pointer; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: background 0.2s;
 }
 .modal-change-pic:hover { background: rgba(0,0,0,0.5); }
+.modal-menu-btn {
+  position: absolute; top: 1rem; left: 1rem; z-index: 2;
+  background: rgba(0,0,0,0.3); border: none; border-radius: 9999px;
+  width: 2.25rem; height: 2.25rem; display: flex; align-items: center; justify-content: center;
+  color: #fff; cursor: pointer; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: background 0.2s;
+}
+.modal-menu-btn:hover { background: rgba(0,0,0,0.5); }
 
 /* ── Vote Row (members modal) ────────────────────────────────── */
 .vote-row {
@@ -569,32 +576,32 @@ body {
 }
 .lightbox-tags-overlay {
   position: absolute; bottom: 0; left: 0; right: 0;
-  display: flex; flex-wrap: wrap; gap: 0.9375rem;
-  padding: 2rem 0.625rem 0.625rem;
+  display: flex; flex-wrap: wrap; gap: 0.75rem;
+  padding: 1.6rem 0.5rem 0.5rem;
   background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%);
   border-radius: 0 0 1rem 1rem;
 }
 .lightbox-tag-badge {
-  display: inline-flex; align-items: center; gap: 0.9375rem;
+  display: inline-flex; align-items: center; gap: 0.75rem;
   background: rgba(0,0,0,0.5); backdrop-filter: blur(6px);
   border: 1px solid rgba(255,255,255,0.15); border-radius: 9999px;
-  padding: 0.625rem 1.5625rem 0.625rem 0.625rem;
-  color: #fff; font-size: 1.71875rem; font-weight: 600; letter-spacing: 0.01em;
+  padding: 0.5rem 1.25rem 0.5rem 0.5rem;
+  color: #fff; font-size: 1.375rem; font-weight: 600; letter-spacing: 0.01em;
 }
 .lightbox-tag-avatar {
-  width: 45px; height: 45px; border-radius: 50%; object-fit: cover; flex-shrink: 0;
+  width: 36px; height: 36px; border-radius: 50%; object-fit: cover; flex-shrink: 0;
 }
 .lightbox-tag-delete-btn {
   display: inline-flex; align-items: center; justify-content: center;
   background: rgba(255,255,255,0.15); border: none; color: rgba(255,255,255,0.7);
-  border-radius: 9999px; width: 40px; height: 40px; padding: 0;
+  border-radius: 9999px; width: 32px; height: 32px; padding: 0;
   cursor: pointer; flex-shrink: 0; transition: background 0.15s, color 0.15s;
-  margin-left: 0.3125rem;
+  margin-left: 0.25rem;
 }
 .lightbox-tag-delete-btn:hover { background: rgba(244,63,94,0.5); color: #fff; }
 .lightbox-tag-avatar-fallback {
-  width: 45px; height: 45px; border-radius: 50%;
+  width: 36px; height: 36px; border-radius: 50%;
   background: rgba(255,255,255,0.25); display: inline-flex;
   align-items: center; justify-content: center;
-  font-size: 1.5625rem; font-weight: 700; flex-shrink: 0;
+  font-size: 1.25rem; font-weight: 700; flex-shrink: 0;
 }
