@@ -117,6 +117,33 @@ window.DB = {
     return ref.getDownloadURL();
   },
 
+  // --- Restaurant-level Photos & Notes ---
+  async addRestaurantPhotos(restaurantId, urls) {
+    await db.collection('restaurants').doc(restaurantId).update({
+      photos: firebase.firestore.FieldValue.arrayUnion(...urls),
+    });
+  },
+
+  async addRestaurantNote(restaurantId, note) {
+    // note = { id, text, memberId, memberName }
+    await db.collection('restaurants').doc(restaurantId).update({
+      notes: firebase.firestore.FieldValue.arrayUnion(note),
+    });
+  },
+
+  async deleteRestaurantNote(restaurantId, note) {
+    await db.collection('restaurants').doc(restaurantId).update({
+      notes: firebase.firestore.FieldValue.arrayRemove(note),
+    });
+  },
+
+  async clearRatingNote(ratingId) {
+    await db.collection('ratings').doc(ratingId).update({
+      notes: '',
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+  },
+
   // --- Photo Upload ---
   async uploadPhoto(file, restaurantId) {
     const filename = Date.now() + '_' + file.name;

@@ -205,7 +205,7 @@
         <div style="display:flex;align-items:center;gap:1rem;">
           <button @click="$store.edit.close()" style="color:#a1a1aa;padding:0.5rem;border-radius:9999px;border:none;background:none;cursor:pointer;display:flex;" x-html="icon('back',20)"></button>
           <div>
-            <h2 style="font-size:1.5rem;font-weight:700;letter-spacing:-0.025em;color:#18181b;">Edit <span x-text="$store.edit.memberName"></span>'s Vote</h2>
+            <h2 style="font-size:1.5rem;font-weight:700;letter-spacing:-0.025em;color:#18181b;">Edit <span x-text="($store.app.members.find(m => m.id === $store.edit.memberId) || {}).name || $store.edit.memberName"></span>'s Vote</h2>
             <p style="color:#71717a;font-size:0.875rem;" x-text="$store.edit.restaurantName"></p>
           </div>
         </div>
@@ -259,39 +259,144 @@
           <div>
             <h3 style="font-size:0.75rem;font-weight:600;color:#18181b;text-transform:uppercase;letter-spacing:-0.025em;margin-bottom:1rem;">The Votes</h3>
             <div x-show="!$store.app.selectedRestaurant?.ratings?.length" style="color:#a1a1aa;font-size:0.875rem;">No votes yet. Be the first to rate this spot!</div>
-            <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div class="vote-cards">
               <template x-for="r in ($store.app.selectedRestaurant?.ratings || [])" :key="r.id">
-                <div class="vote-row" :class="'vote-' + r.rating">
-                  <div class="vote-info">
-                    <div class="avatar-xs" x-data="{ get av() { return ($store.app.members.find(m => m.id === r.memberId) || {}).avatarUrl } }">
-                      <img x-show="av" :src="av" alt="" style="width:100%;height:100%;object-fit:cover;" />
-                      <span x-show="!av" x-html="ratingImg(r.rating, 20)"></span>
-                    </div>
-                    <div style="display:flex;flex-direction:column;gap:0.2rem;">
-                      <span style="font-weight:600;color:#18181b;" x-text="r.memberName"></span>
-                      <span style="font-size:0.8125rem;font-weight:500;"
-                            :style="'color:var(--color-' + r.rating + ')'"
-                            x-text="r.rating.charAt(0).toUpperCase() + r.rating.slice(1)"></span>
-                    </div>
+                <div class="vote-card" :class="'vote-' + r.rating"
+                     x-data="{ get member() { return $store.app.members.find(m => m.id === r.memberId) || null },
+                               get av() { return (this.member || {}).avatarUrl || null } }">
+                  <button class="vote-edit" type="button" title="Edit vote"
+                          @click="$store.edit.open(r, $store.app.selectedRestaurant)"
+                          x-html="icon('pencil',16)"></button>
+                  <div class="avatar-md vote-card-avatar"
+                       :class="!av && member ? 'no-avatar-clickable' : ''"
+                       @click="!av && member && ($store.app.showMembers = true, $store.mem.openEdit(member))">
+                    <img x-show="av" :src="av" alt="" style="width:100%;height:100%;object-fit:cover;" />
+                    <span x-show="!av" style="color:#d4d4d8;" x-html="icon('users', 28)"></span>
+                    <div x-show="!av && member" class="avatar-add-hint" x-html="icon('camera', 12)"></div>
                   </div>
-                  <button class="vote-edit" @click="$store.edit.open(r, $store.app.selectedRestaurant)" x-html="icon('pencil',16)"></button>
+                  <span class="vote-card-name" x-text="(member || {}).name || r.memberName"></span>
+                  <div class="vote-card-verdict">
+                    <span>wants to</span>
+                    <img :src="r.rating + '.jpg'" :alt="r.rating" />
+                    <span>it!</span>
+                  </div>
                 </div>
               </template>
             </div>
           </div>
 
           <!-- Notes -->
-          <div x-show="($store.app.selectedRestaurant?.ratings || []).some(r => r.notes)">
+          <div x-show="($store.app.selectedRestaurant?.ratings || []).some(r => r.notes) || ($store.app.selectedRestaurant?.notes || []).length > 0 || ($store.app.selectedRestaurant?.ratings?.length || 0) > 0">
             <h3 style="font-size:0.75rem;font-weight:600;color:#18181b;text-transform:uppercase;letter-spacing:-0.025em;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
               <span x-html="icon('chat',16)"></span> Notes
             </h3>
-            <div style="display:flex;flex-direction:column;gap:0.75rem;">
+
+            <!-- Monty Python delete confirmation -->
+            <div x-show="$store.addNote.pendingDelete" class="monty-confirm">
+              <div class="monty-confirm-title">
+                <span x-html="icon('warning',18)"></span> NONE SHALL PASS!
+              </div>
+              <p class="monty-confirm-body">
+                What is this?! You dare to erase a note from the sacred chronicles of dining?
+                'Tis but a scratch, cries the Black Knight — yet yonder note shall be consigned
+                to the void, never spoken of again by man nor beast nor enchanted shrubbery.
+                Are you absolutely, completely, and most assuredly certain?
+              </p>
+              <div style="display:flex;gap:0.5rem;">
+                <button type="button" class="monty-btn-run" @click="$store.addNote.cancelDelete()">
+                  I'm not dead yet!
+                </button>
+                <button type="button" title="Confirm delete note" class="monty-btn-smite"
+                        :disabled="$store.addNote.deleting"
+                        @click="$store.addNote.confirmDelete()">
+                  <span x-text="$store.addNote.deleting ? 'Smiting...' : 'None shall pass.'"></span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Speech bubble notes list -->
+            <div style="display:flex;flex-direction:column;gap:0.875rem;">
+              <!-- Vote-attached notes -->
               <template x-for="r in ($store.app.selectedRestaurant?.ratings || []).filter(r => r.notes)" :key="r.id + '-note'">
-                <div style="background:#fafafa;border-radius:1rem;padding:1rem;">
-                  <span style="font-weight:600;color:#18181b;font-size:0.875rem;" x-text="r.memberName"></span>
-                  <p style="color:#52525b;font-size:0.875rem;margin-top:0.25rem;line-height:1.6;" x-text="r.notes"></p>
+                <div class="note-row"
+                     x-data="{ get member() { return $store.app.members.find(m => m.id === r.memberId) || null },
+                               get av() { return (this.member || {}).avatarUrl || null },
+                               get displayName() { return (this.member || {}).name || r.memberName } }">
+                  <div class="avatar-sm" x-show="av" style="flex-shrink:0;margin-top:0.25rem;">
+                    <img :src="av" alt="" style="width:100%;height:100%;object-fit:cover;" />
+                  </div>
+                  <div class="note-bubble" :class="av ? 'has-avatar' : ''">
+                    <div class="note-author" x-show="!av" x-text="displayName"></div>
+                    <p class="note-text" x-text="r.notes"></p>
+                    <button type="button" title="Delete note" class="note-delete-btn"
+                            @click="$store.addNote.promptDelete('rating', r)"
+                            x-html="icon('trash', 13)"></button>
+                  </div>
                 </div>
               </template>
+
+              <!-- Restaurant-level notes -->
+              <template x-for="note in ($store.app.selectedRestaurant?.notes || [])" :key="note.id || note.text">
+                <div class="note-row"
+                     x-data="{ get member() { return note.memberId ? ($store.app.members.find(m => m.id === note.memberId) || null) : null },
+                               get av() { return (this.member || {}).avatarUrl || null },
+                               get displayName() { return note.memberId ? ((this.member || {}).name || note.memberName) : note.memberName } }">
+                  <div class="avatar-sm" x-show="av" style="flex-shrink:0;margin-top:0.25rem;">
+                    <img :src="av" alt="" style="width:100%;height:100%;object-fit:cover;" />
+                  </div>
+                  <div class="note-bubble" :class="av ? 'has-avatar' : ''">
+                    <div class="note-author" x-show="!av && displayName" x-text="displayName"></div>
+                    <p class="note-text" x-text="note.text"></p>
+                    <button type="button" title="Delete note" class="note-delete-btn"
+                            @click="$store.addNote.promptDelete('restaurant', note)"
+                            x-html="icon('trash', 13)"></button>
+                  </div>
+                </div>
+              </template>
+            </div>
+
+            <!-- Add Note form -->
+            <div style="margin-top:0.875rem;">
+              <div x-show="!$store.addNote.open && !$store.addNote.pendingDelete">
+                <button type="button" @click="$store.addNote.toggle()"
+                        style="font-size:0.8125rem;font-weight:500;color:#71717a;background:none;border:none;cursor:pointer;padding:0;display:flex;align-items:center;gap:0.375rem;font-family:var(--font-sans);">
+                  <span x-html="icon('plus',14)"></span> Add a note
+                </button>
+              </div>
+              <div x-show="$store.addNote.open" style="display:flex;flex-direction:column;gap:0.75rem;">
+                <!-- Who's leaving this note? -->
+                <div>
+                  <label style="font-size:0.6875rem;font-weight:600;color:#71717a;text-transform:uppercase;margin-bottom:0.5rem;display:block;">Who's leaving this note?</label>
+                  <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+                    <template x-for="m in $store.app.members" :key="m.id">
+                      <button type="button" @click="$store.addNote.selectMember(m)"
+                              :style="'padding:0.375rem 0.75rem;border-radius:9999px;font-size:0.875rem;font-weight:500;cursor:pointer;border:1px solid;transition:all 0.2s;font-family:var(--font-sans);' + (!$store.addNote.isGuest && $store.addNote.memberId === m.id ? 'background:#18181b;color:#fff;border-color:#18181b;' : 'background:#fff;color:#52525b;border-color:#e4e4e7;')"
+                              x-text="m.name"></button>
+                    </template>
+                    <button type="button" @click="$store.addNote.selectGuest()"
+                            :style="'padding:0.375rem 0.75rem;border-radius:9999px;font-size:0.875rem;font-weight:500;cursor:pointer;border:1px solid;transition:all 0.2s;font-family:var(--font-sans);display:flex;align-items:center;gap:0.35rem;' + ($store.addNote.isGuest ? 'background:#18181b;color:#fff;border-color:#18181b;' : 'background:#fff;color:#52525b;border-color:#e4e4e7;')">
+                      <span x-html="icon('plus',14)"></span> Guest
+                    </button>
+                  </div>
+                  <div x-show="$store.addNote.isGuest" style="margin-top:0.625rem;">
+                    <input class="form-input" x-model="$store.addNote.guestName"
+                           placeholder="Guest name..." style="width:100%;" />
+                  </div>
+                </div>
+                <textarea class="form-textarea" rows="2" x-model="$store.addNote.text"
+                          placeholder="What's the word on this spot?"></textarea>
+                <div style="display:flex;gap:0.5rem;">
+                  <button type="button" @click="$store.addNote.toggle()"
+                          style="flex:1;padding:0.5rem 1rem;border-radius:9999px;border:1px solid #e4e4e7;background:#fff;color:#52525b;font-weight:500;font-size:0.875rem;cursor:pointer;font-family:var(--font-sans);">
+                    Cancel
+                  </button>
+                  <button type="button" title="Save Note" @click="$store.addNote.save()"
+                          :disabled="!$store.addNote.canSave || $store.addNote.saving"
+                          class="btn-primary" style="flex:1;">
+                    <span x-text="$store.addNote.saving ? 'Saving...' : 'Save Note'"></span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -301,20 +406,65 @@
               <span x-html="icon('camera',16)"></span> Photos
             </h3>
 
-            <!-- Existing photos grid -->
-            <div x-show="($store.app.selectedRestaurant?.ratings || []).flatMap(r => r.photos || []).length > 0"
-                 class="modal-photo-grid">
-              <template x-for="(url, i) in ($store.app.selectedRestaurant?.ratings || []).flatMap(r => r.photos || [])" :key="url + i">
-                <div style="aspect-ratio:1;border-radius:1rem;overflow:hidden;background:#f4f4f5;cursor:pointer;"
-                     @click="$store.lightbox.show(($store.app.selectedRestaurant?.ratings || []).flatMap(r => r.photos || []), i)">
-                  <img :src="url" alt="" style="width:100%;height:100%;object-fit:cover;" />
-                </div>
-              </template>
+            <!-- Existing photos grid (vote photos + restaurant photos combined) -->
+            <div x-data="{
+                  get allPhotos() {
+                    const votePhotos = (Alpine.store('app').selectedRestaurant?.ratings || []).flatMap(r => r.photos || []);
+                    const restPhotos = Alpine.store('app').selectedRestaurant?.photos || [];
+                    return [...votePhotos, ...restPhotos];
+                  }
+                }">
+              <div x-show="allPhotos.length > 0" class="modal-photo-grid">
+                <template x-for="(url, i) in allPhotos" :key="url + i">
+                  <div style="aspect-ratio:1;border-radius:1rem;overflow:hidden;background:#f4f4f5;cursor:pointer;"
+                       @click="$store.lightbox.show(allPhotos, i)">
+                    <img :src="url" alt="" style="width:100%;height:100%;object-fit:cover;" />
+                  </div>
+                </template>
+              </div>
+
+              <!-- Empty state -->
+              <p x-show="!$store.addPhotos.open && allPhotos.length === 0"
+                 style="color:#a1a1aa;font-size:0.875rem;">No photos yet. Be the first to add some!</p>
             </div>
 
-            <!-- Empty state -->
-            <p x-show="!$store.addPhotos.open && ($store.app.selectedRestaurant?.ratings || []).flatMap(r => r.photos || []).length === 0"
-               style="color:#a1a1aa;font-size:0.875rem;">No photos yet. Be the first to add some!</p>
+            <!-- Add Photos (available once any vote exists) -->
+            <div x-show="($store.app.selectedRestaurant?.ratings?.length || 0) > 0" style="margin-top:0.75rem;">
+              <div x-show="!$store.addPhotos.open">
+                <button type="button" @click="$store.addPhotos.toggle()"
+                        style="font-size:0.8125rem;font-weight:500;color:#71717a;background:none;border:none;cursor:pointer;padding:0;display:flex;align-items:center;gap:0.375rem;font-family:var(--font-sans);">
+                  <span x-html="icon('plus',14)"></span> Add photos
+                </button>
+              </div>
+              <div x-show="$store.addPhotos.open" style="display:flex;flex-direction:column;gap:0.75rem;">
+                <div class="photo-grid">
+                  <template x-for="(p, idx) in $store.addPhotos.previews" :key="p">
+                    <div class="photo-thumb">
+                      <img :src="p" alt="Photo" />
+                      <div class="photo-remove" @click="$store.addPhotos.removePhoto(idx)">
+                        <span style="background:rgba(255,255,255,0.2);padding:0.5rem;border-radius:9999px;color:#fff;" x-html="icon('x',16)"></span>
+                      </div>
+                    </div>
+                  </template>
+                  <div x-show="$store.addPhotos.previews.length < 6" class="photo-add" @click="$refs.detailPhotoInput.click()">
+                    <div style="padding:0.5rem;background:#fff;border-radius:9999px;" x-html="icon('upload',20)"></div>
+                    <span style="font-size:0.6875rem;font-weight:500;">Add</span>
+                  </div>
+                </div>
+                <input x-ref="detailPhotoInput" type="file" accept="image/*" multiple style="display:none;" @change="$store.addPhotos.addFiles($el)" />
+                <div style="display:flex;gap:0.5rem;">
+                  <button type="button" @click="$store.addPhotos.toggle()"
+                          style="flex:1;padding:0.5rem 1rem;border-radius:9999px;border:1px solid #e4e4e7;background:#fff;color:#52525b;font-weight:500;font-size:0.875rem;cursor:pointer;font-family:var(--font-sans);">
+                    Cancel
+                  </button>
+                  <button type="button" title="Upload Photos" @click="$store.addPhotos.upload()"
+                          :disabled="$store.addPhotos.photos.length === 0 || $store.addPhotos.uploading"
+                          class="btn-primary" style="flex:1;">
+                    <span x-text="$store.addPhotos.uploading ? 'Uploading...' : 'Upload Photos'"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- ── Cast Your Vote ──────────────────────────── -->
@@ -364,56 +514,8 @@
               </template>
             </div>
 
-            <!-- Photo Upload -->
-            <div style="background:#fafafa;border:1px solid #e4e4e7;padding:1.25rem;border-radius:1.5rem;margin-bottom:1.25rem;display:flex;flex-direction:column;gap:1.25rem;">
-              <!-- Food Photos -->
-              <div style="display:flex;flex-direction:column;gap:0.75rem;">
-                <h4 style="font-size:0.75rem;font-weight:600;color:#18181b;text-transform:uppercase;">Food Photos</h4>
-                <div class="photo-grid">
-                  <template x-for="(p, idx) in $store.rate.foodPreviews" :key="p">
-                    <div class="photo-thumb">
-                      <img :src="p" alt="Food" />
-                      <div class="photo-remove" @click="$store.rate.removeFoodPhoto(idx)">
-                        <span style="background:rgba(255,255,255,0.2);padding:0.5rem;border-radius:9999px;color:#fff;" x-html="icon('x',16)"></span>
-                      </div>
-                    </div>
-                  </template>
-                  <div x-show="$store.rate.foodPreviews.length < 4" class="photo-add" @click="$refs.modalFoodInput.click()">
-                    <div style="padding:0.5rem;background:#fff;border-radius:9999px;" x-html="icon('upload',20)"></div>
-                    <span style="font-size:0.6875rem;font-weight:500;">Add</span>
-                  </div>
-                </div>
-                <input x-ref="modalFoodInput" type="file" accept="image/*" multiple style="display:none;" @change="$store.rate.addFoodPhotos($el)" />
-              </div>
 
-              <div style="height:1px;background:#e4e4e7;"></div>
-
-              <!-- Selfies -->
-              <div style="display:flex;flex-direction:column;gap:0.75rem;">
-                <h4 style="font-size:0.75rem;font-weight:600;color:#18181b;text-transform:uppercase;">Group Selfies</h4>
-                <div class="photo-grid">
-                  <template x-for="(p, idx) in $store.rate.selfiePreviews" :key="p">
-                    <div class="photo-thumb">
-                      <img :src="p" alt="Selfie" />
-                      <div class="photo-remove" @click="$store.rate.removeSelfiePhoto(idx)">
-                        <span style="background:rgba(255,255,255,0.2);padding:0.5rem;border-radius:9999px;color:#fff;" x-html="icon('x',16)"></span>
-                      </div>
-                    </div>
-                  </template>
-                  <div x-show="$store.rate.selfiePreviews.length < 2" class="photo-add" @click="$refs.modalSelfieInput.click()">
-                    <div style="padding:0.5rem;background:#fff;border-radius:9999px;" x-html="icon('upload',20)"></div>
-                    <span style="font-size:0.6875rem;font-weight:500;">Add</span>
-                  </div>
-                </div>
-                <input x-ref="modalSelfieInput" type="file" accept="image/*" multiple style="display:none;" @change="$store.rate.addSelfiePhotos($el)" />
-              </div>
-            </div>
-
-            <!-- Notes -->
-            <div style="margin-bottom:1.25rem;">
-              <textarea class="form-textarea" rows="2" x-model="$store.rate.notes"
-                        placeholder="Notes — what made it great or terrible?"></textarea>
-            </div>
+            
 
             <!-- Submit -->
             <button class="btn-primary" style="width:100%;" @click="$store.rate.submit()"

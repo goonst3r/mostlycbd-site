@@ -25,6 +25,7 @@ const ICONS = {
   checkcircle: '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"/></svg>',
   nav:      '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M237.33,106.21,61.41,41.53a16,16,0,0,0-20.67,21L66.75,128,40.74,193.49a16,16,0,0,0,20.67,21l175.92-64.68a16,16,0,0,0,0-30Z"/></svg>',
   menu:     '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></svg>',
+  trash:    '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"/></svg>',
 };
 
 function icon(name, size) {
@@ -482,17 +483,9 @@ document.addEventListener('alpine:init', () => {
   // ── Add Photos store (detail view upload) ──────────────────
   Alpine.store('addPhotos', {
     open: false,
-    memberId: '',
     photos: [],
     previews: [],
     uploading: false,
-
-    get votedMembers() {
-      const sel = Alpine.store('app').selectedRestaurant;
-      if (!sel || !sel.ratings) return [];
-      const votedIds = new Set(sel.ratings.map(r => r.memberId));
-      return Alpine.store('app').members.filter(m => votedIds.has(m.id));
-    },
 
     toggle() {
       this.open = !this.open;
@@ -501,7 +494,6 @@ document.addEventListener('alpine:init', () => {
 
     reset() {
       this.open = false;
-      this.memberId = '';
       this.previews.forEach(p => URL.revokeObjectURL(p));
       this.photos = [];
       this.previews = [];
@@ -526,20 +518,120 @@ document.addEventListener('alpine:init', () => {
     },
 
     async upload() {
-      if (!this.memberId || this.photos.length === 0 || this.uploading) return;
+      if (this.photos.length === 0 || this.uploading) return;
       const sel = Alpine.store('app').selectedRestaurant;
       if (!sel) return;
-      const rating = sel.ratings.find(r => r.memberId === this.memberId);
-      if (!rating) return;
 
       this.uploading = true;
       try {
         const urls = await DB.uploadPhotos(this.photos, sel.id);
-        await DB.addPhotosToRating(rating.id, urls);
+        await DB.addRestaurantPhotos(sel.id, urls);
         this.reset();
       } catch (err) {
         console.error('Photo upload failed:', err);
         this.uploading = false;
+      }
+    },
+  });
+
+  // ── Add Note store (detail view) ────────────────────────────
+  Alpine.store('addNote', {
+    open: false,
+    text: '',
+    memberId: '',
+    memberName: '',
+    isGuest: false,
+    guestName: '',
+    saving: false,
+    pendingDelete: null, // { type: 'rating'|'restaurant', payload }
+    deleting: false,
+
+    toggle() {
+      this.open = !this.open;
+      if (!this.open) this.resetForm();
+    },
+
+    resetForm() {
+      this.text = '';
+      this.memberId = '';
+      this.memberName = '';
+      this.isGuest = false;
+      this.guestName = '';
+      this.saving = false;
+    },
+
+    reset() {
+      this.open = false;
+      this.resetForm();
+    },
+
+    selectMember(m) {
+      this.isGuest = false;
+      this.guestName = '';
+      this.memberId = m.id;
+      this.memberName = m.name;
+    },
+
+    selectGuest() {
+      this.isGuest = true;
+      this.memberId = '';
+      this.memberName = '';
+    },
+
+    get canSave() {
+      if (!this.text.trim()) return false;
+      if (this.isGuest) return this.guestName.trim().length > 0;
+      return !!this.memberId;
+    },
+
+    async save() {
+      if (!this.canSave || this.saving) return;
+      const sel = Alpine.store('app').selectedRestaurant;
+      if (!sel) return;
+
+      const noteMemberId = this.isGuest ? '' : this.memberId;
+      const noteMemberName = this.isGuest ? this.guestName.trim() : this.memberName;
+
+      this.saving = true;
+      try {
+        await DB.addRestaurantNote(sel.id, {
+          id: Date.now(),
+          text: this.text.trim(),
+          memberId: noteMemberId,
+          memberName: noteMemberName,
+        });
+        this.reset();
+      } catch (err) {
+        console.error('Add note failed:', err);
+        this.saving = false;
+      }
+    },
+
+    promptDelete(type, payload) {
+      this.pendingDelete = { type, payload };
+    },
+
+    cancelDelete() {
+      this.pendingDelete = null;
+      this.deleting = false;
+    },
+
+    async confirmDelete() {
+      if (!this.pendingDelete || this.deleting) return;
+      const sel = Alpine.store('app').selectedRestaurant;
+      if (!sel) return;
+      this.deleting = true;
+      try {
+        if (this.pendingDelete.type === 'rating') {
+          await DB.clearRatingNote(this.pendingDelete.payload.id);
+        } else {
+          await DB.deleteRestaurantNote(sel.id, this.pendingDelete.payload);
+        }
+        this.pendingDelete = null;
+      } catch (err) {
+        console.error('Delete note failed:', err);
+      } finally {
+        this.deleting = false;
       }
     },
   });

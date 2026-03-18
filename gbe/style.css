@@ -249,14 +249,11 @@ body {
   position: absolute; top: 1rem; left: 1rem; z-index: 2;
 }
 
-/* ── Vote Row ────────────────────────────────────────────────── */
+/* ── Vote Row (members modal) ────────────────────────────────── */
 .vote-row {
   display: flex; align-items: center; justify-content: space-between;
   border-radius: 1rem; padding: 1rem 1.25rem;
 }
-.vote-row.vote-marry { background: rgba(16,185,129,0.08); }
-.vote-row.vote-fuck  { background: rgba(245,158,11,0.08); }
-.vote-row.vote-kill  { background: rgba(244,63,94,0.08); }
 .vote-row:hover .vote-edit { opacity: 1; }
 .vote-info { display: flex; align-items: center; gap: 1rem; }
 .vote-icon {
@@ -267,6 +264,114 @@ body {
   color: #a1a1aa; padding: 0.5rem; border-radius: 9999px; transition: all 0.2s;
 }
 .vote-edit:hover { color: #52525b; background: #f4f4f5; }
+
+/* ── Note Speech Bubbles ─────────────────────────────────────── */
+.note-row { display: flex; align-items: flex-start; gap: 0.625rem; }
+.note-bubble {
+  position: relative; display: inline-block; max-width: 100%;
+  background: #fff; border: 2px solid #e4e4e7;
+  border-radius: 1.25rem; border-top-left-radius: 0.375rem;
+  padding: 0.75rem 2.5rem 0.75rem 0.875rem;
+}
+.note-bubble.has-avatar::before {
+  content: ''; position: absolute;
+  top: 0.625rem; left: -0.625rem;
+  border-top: 0.5rem solid transparent; border-bottom: 0.5rem solid transparent;
+  border-right: 0.5625rem solid #e4e4e7;
+}
+.note-bubble.has-avatar::after {
+  content: ''; position: absolute;
+  top: 0.7rem; left: -0.375rem;
+  border-top: 0.4rem solid transparent; border-bottom: 0.4rem solid transparent;
+  border-right: 0.4375rem solid #fff;
+}
+.note-author {
+  font-weight: 700; color: #18181b; font-size: 0.8rem;
+  margin-bottom: 0.25rem; letter-spacing: -0.01em;
+}
+.note-text { color: #52525b; font-size: 0.875rem; line-height: 1.6; }
+.note-delete-btn {
+  position: absolute; top: 0.4rem; right: 0.4rem;
+  background: none; border: none; cursor: pointer;
+  color: #d4d4d8; padding: 0.3rem; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  transition: color 0.15s, background 0.15s;
+}
+.note-delete-btn:hover { color: #f43f5e; background: #fff1f2; }
+
+/* ── Monty Python delete confirmation ────────────────────────── */
+.monty-confirm {
+  background: #fefce8; border: 2px solid #18181b;
+  border-radius: 1.25rem; padding: 1.25rem;
+  display: flex; flex-direction: column; gap: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+.monty-confirm-title {
+  font-size: 0.9375rem; font-weight: 800; color: #18181b;
+  letter-spacing: -0.02em; display: flex; align-items: center; gap: 0.5rem;
+}
+.monty-confirm-body {
+  font-size: 0.8125rem; color: #52525b; line-height: 1.65;
+  font-style: italic;
+}
+.monty-btn-run {
+  flex: 1; padding: 0.625rem 1rem; border-radius: 9999px;
+  border: 2px solid #18181b; background: #fff; color: #18181b;
+  font-weight: 700; font-size: 0.8125rem; cursor: pointer; font-family: var(--font-sans);
+  transition: background 0.15s;
+}
+.monty-btn-run:hover { background: #f4f4f5; }
+.monty-btn-smite {
+  flex: 1; padding: 0.625rem 1rem; border-radius: 9999px;
+  border: 2px solid #18181b; background: #18181b; color: #fefce8;
+  font-weight: 700; font-size: 0.8125rem; cursor: pointer; font-family: var(--font-sans);
+  transition: background 0.15s;
+}
+.monty-btn-smite:hover { background: #3f3f46; }
+.monty-btn-smite:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Vote Cards (detail view 2-col grid) ─────────────────────── */
+.vote-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+.vote-card {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0.625rem; padding: 1.5rem 1rem 1.25rem;
+  border-radius: 1.25rem; text-align: center;
+  border: 1.5px solid transparent;
+}
+.vote-card.vote-marry { background: rgba(16,185,129,0.07); border-color: rgba(16,185,129,0.18); }
+.vote-card.vote-fuck  { background: rgba(245,158,11,0.07); border-color: rgba(245,158,11,0.18); }
+.vote-card.vote-kill  { background: rgba(244,63,94,0.07); border-color: rgba(244,63,94,0.18); }
+.vote-card-name {
+  font-weight: 700; color: #18181b; font-size: 0.9375rem; line-height: 1.2;
+}
+.vote-card-verdict {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.35rem; flex-wrap: wrap;
+  font-size: 0.75rem; font-weight: 500; color: #71717a; line-height: 1;
+}
+.vote-card-verdict img {
+  width: 2rem; height: 2rem; border-radius: 50%; object-fit: cover; flex-shrink: 0;
+}
+.vote-card .vote-edit {
+  position: absolute; top: 0.375rem; right: 0.375rem;
+}
+.vote-card:hover .vote-edit { opacity: 1; }
+.avatar-md {
+  width: 3.5rem; height: 3.5rem; border-radius: 9999px; overflow: hidden;
+  background: #f4f4f5; border: 2px solid #e4e4e7; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.vote-card-avatar { position: relative; }
+.no-avatar-clickable { cursor: pointer; transition: border-color 0.15s; }
+.no-avatar-clickable:hover { border-color: #a1a1aa; }
+.avatar-add-hint {
+  position: absolute; bottom: 0; right: 0;
+  background: #18181b; color: #fff;
+  width: 1.1rem; height: 1.1rem; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1.5px solid #fff;
+}
 
 /* ── Rating Buttons ──────────────────────────────────────────── */
 .rating-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
