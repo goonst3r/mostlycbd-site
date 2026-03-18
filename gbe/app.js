@@ -663,8 +663,8 @@ document.addEventListener('alpine:init', () => {
     editWebsite: '',
     saving: false,
 
-    toggle() { this.open = !this.open; if (!this.open) { this.editOpen = false; this.saving = false; } },
-    close() { this.open = false; this.editOpen = false; this.saving = false; },
+    toggle() { this.open = !this.open; if (!this.open) { this.editOpen = false; this.saving = false; Alpine.store('app').confirmDeleteRestaurant = false; } },
+    close() { this.open = false; this.editOpen = false; this.saving = false; Alpine.store('app').confirmDeleteRestaurant = false; },
 
     openEdit() {
       const sel = Alpine.store('app').selectedRestaurant;

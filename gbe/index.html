@@ -261,11 +261,9 @@
                x-data="{ favErr: false }" x-effect="$store.app.selectedRestaurantId; favErr = false"
                style="display:flex;align-items:center;gap:0.75rem;padding:0.625rem 0.75rem;border-radius:1rem;color:#18181b;text-decoration:none;transition:background 0.15s;"
                onmouseover="this.style.background='#f4f4f5'" onmouseout="this.style.background='transparent'">
-              <span style="flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #e4e4e7;border-radius:0.5rem;padding:0.3rem 0.6rem 0.3rem 0.3rem;">
-                <img x-show="!favErr" :src="faviconUrl($store.app.selectedRestaurant?.website)" @error="favErr=true" alt=""
-                     style="width:18px;height:18px;border-radius:2px;display:block;" />
-                <span x-show="favErr" style="color:#52525b;" x-html="icon('globe',18)"></span>
-              </span>
+              <img x-show="!favErr" :src="faviconUrl($store.app.selectedRestaurant?.website)" @error="favErr=true" alt=""
+                   style="width:20px;height:20px;border-radius:3px;display:block;flex-shrink:0;margin-right:0.375rem;" />
+              <span x-show="favErr" style="flex-shrink:0;color:#52525b;margin-right:0.375rem;" x-html="icon('globe',20)"></span>
               <span style="font-size:0.875rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" x-text="$store.app.selectedRestaurant?.website"></span>
             </a>
 
@@ -283,14 +281,22 @@
               </button>
 
               <!-- Edit sub-form -->
-              <div x-show="$store.dvMenu.editOpen" x-transition style="display:flex;flex-direction:column;gap:1.25rem;padding:0.75rem 0.75rem 0.5rem;">
+              <div x-show="$store.dvMenu.editOpen" x-transition style="display:flex;flex-direction:column;padding:0.75rem 0.75rem 0.5rem;">
                 <!-- Name -->
-                <div>
-                  <label style="font-size:0.6875rem;font-weight:600;color:#71717a;text-transform:uppercase;margin-bottom:0.375rem;display:block;">Name</label>
-                  <input class="form-input" x-model="$store.dvMenu.editName" placeholder="Restaurant name..." />
+                <!-- Name + Change Photo row -->
+                <div style="display:flex;gap:0.75rem;align-items:flex-end;">
+                  <div style="flex:1;min-width:0;">
+                    <label style="font-size:0.6875rem;font-weight:600;color:#71717a;text-transform:uppercase;margin-bottom:0.375rem;display:block;">Name</label>
+                    <input class="form-input" x-model="$store.dvMenu.editName" placeholder="Restaurant name..." style="width:100%;" />
+                  </div>
+                  <button type="button" @click="$store.dvMenu.close(); $store.changePic.toggle();"
+                          style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:0.3rem;padding:0.5rem 0.75rem;border-radius:1rem;border:1px solid #e4e4e7;background:#fff;color:#52525b;font-weight:500;font-size:0.75rem;cursor:pointer;font-family:var(--font-sans);transition:background 0.15s;"
+                          onmouseover="this.style.background='#f4f4f5'" onmouseout="this.style.background='#fff'">
+                    <span x-html="icon('camera',18)"></span> Change Photo
+                  </button>
                 </div>
                 <!-- Style -->
-                <div>
+                <div style="margin-top:1.25rem;">
                   <label style="font-size:0.6875rem;font-weight:600;color:#71717a;text-transform:uppercase;margin-bottom:0.375rem;display:block;">Style</label>
                   <div style="display:flex;flex-wrap:wrap;gap:0.375rem;margin-bottom:0.375rem;">
                     <template x-for="type in $store.app.cuisineTypes" :key="type">
@@ -306,18 +312,12 @@
                   <input x-show="$store.dvMenu.customStyle" class="form-input" x-model="$store.dvMenu.editStyleNew" placeholder="New style..." />
                 </div>
                 <!-- Website -->
-                <div>
+                <div style="margin-top:1.25rem;">
                   <label style="font-size:0.6875rem;font-weight:600;color:#71717a;text-transform:uppercase;margin-bottom:0.375rem;display:block;">Website</label>
                   <input class="form-input" x-model="$store.dvMenu.editWebsite" placeholder="https://..." type="url" />
                 </div>
-                <!-- Change Photo -->
-                <button type="button" @click="$store.dvMenu.close(); $store.changePic.toggle();"
-                        style="display:flex;align-items:center;gap:0.5rem;padding:0.625rem 0.75rem;border-radius:1rem;border:1px solid #e4e4e7;background:#fff;color:#52525b;font-weight:500;font-size:0.8125rem;cursor:pointer;font-family:var(--font-sans);transition:background 0.15s;"
-                        onmouseover="this.style.background='#f4f4f5'" onmouseout="this.style.background='#fff'">
-                  <span x-html="icon('camera',16)"></span> Change Photo
-                </button>
                 <!-- Save / Cancel -->
-                <div style="display:flex;gap:0.5rem;">
+                <div style="margin-top:1.25rem;display:flex;gap:0.5rem;">
                   <button type="button" @click="$store.dvMenu.closeEdit()"
                           style="flex:1;padding:0.5rem 1rem;border-radius:9999px;border:1px solid #e4e4e7;background:#fff;color:#52525b;font-weight:500;font-size:0.875rem;cursor:pointer;font-family:var(--font-sans);">
                     Cancel
@@ -327,6 +327,28 @@
                           class="btn-primary" style="flex:1;padding:0.625rem 1rem;font-size:0.875rem;">
                     <span x-text="$store.dvMenu.saving ? 'Saving...' : 'Save'"></span>
                   </button>
+                </div>
+                <!-- Remove Restaurant (only if no votes) -->
+                <div x-show="!$store.app.selectedRestaurant?.ratings?.length" style="margin-top:1.25rem;text-align:center;">
+                  <button type="button" x-show="!$store.app.confirmDeleteRestaurant"
+                          @click="$store.app.confirmDeleteRestaurant = true"
+                          style="padding:0.625rem 1.25rem;border-radius:9999px;border:none;background:#f43f5e;color:#fff;font-weight:600;font-size:0.875rem;cursor:pointer;font-family:var(--font-sans);display:inline-flex;align-items:center;gap:0.4rem;transition:opacity 0.15s;"
+                          onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+                    <span x-html="icon('x',15)"></span> Remove Restaurant
+                  </button>
+                  <div x-show="$store.app.confirmDeleteRestaurant" style="width:100%;background:#fef2f2;border:1px solid #fecaca;border-radius:1rem;padding:1rem;display:flex;flex-direction:column;gap:0.75rem;text-align:center;">
+                    <p style="font-size:0.8125rem;color:#991b1b;font-weight:500;">Delete <strong x-text="$store.app.selectedRestaurant?.spot"></strong>? This cannot be undone.</p>
+                    <div style="display:flex;gap:0.5rem;">
+                      <button type="button" @click="$store.app.confirmDeleteRestaurant = false"
+                              style="flex:1;padding:0.5rem;border-radius:9999px;border:1px solid #e4e4e7;background:#fff;color:#52525b;font-weight:600;font-size:0.8125rem;cursor:pointer;font-family:var(--font-sans);">
+                        Cancel
+                      </button>
+                      <button type="button" @click="$store.app.deleteRestaurant()"
+                              style="flex:1;padding:0.5rem;border-radius:9999px;border:none;background:#f43f5e;color:#fff;font-weight:600;font-size:0.8125rem;cursor:pointer;font-family:var(--font-sans);">
+                        Yes, Delete
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -356,6 +378,7 @@
                 <span style="font-size:0.875rem;font-weight:500;color:#18181b;">Cast Your Vote</span>
               </button>
             </div>
+
           </div>
 
           <!-- ── Change Photo Panel ──────────────────────────── -->
@@ -682,33 +705,6 @@
           </div>
           </div><!-- /dv-rate -->
 
-          <!-- Delete Restaurant (only if no ratings) -->
-          <div x-show="!$store.app.selectedRestaurant?.ratings?.length" style="margin-top:1rem;">
-            <div style="height:1px;background:#e4e4e7;margin-bottom:1.5rem;"></div>
-
-            <!-- Initial delete button -->
-            <button x-show="!$store.app.confirmDeleteRestaurant"
-                    @click="$store.app.confirmDeleteRestaurant = true"
-                    style="width:100%;padding:0.75rem;border-radius:9999px;border:1px solid #fecaca;background:none;color:#f43f5e;font-weight:600;font-size:0.875rem;cursor:pointer;font-family:var(--font-sans);display:flex;align-items:center;justify-content:center;gap:0.5rem;transition:all 0.2s;"
-                    onmouseover="this.style.background='#fef2f2'" onmouseout="this.style.background='none'">
-              <span x-html="icon('x',16)"></span> Remove Restaurant
-            </button>
-
-            <!-- Confirmation -->
-            <div x-show="$store.app.confirmDeleteRestaurant" style="background:#fef2f2;border:1px solid #fecaca;border-radius:1rem;padding:1.25rem;display:flex;flex-direction:column;gap:1rem;text-align:center;">
-              <p style="font-size:0.875rem;color:#991b1b;font-weight:500;">Are you sure you want to delete <strong x-text="$store.app.selectedRestaurant?.spot"></strong>? This cannot be undone.</p>
-              <div style="display:flex;gap:0.75rem;">
-                <button @click="$store.app.confirmDeleteRestaurant = false"
-                        style="flex:1;padding:0.75rem;border-radius:9999px;border:1px solid #e4e4e7;background:#fff;color:#52525b;font-weight:600;font-size:0.875rem;cursor:pointer;font-family:var(--font-sans);">
-                  Cancel
-                </button>
-                <button @click="$store.app.deleteRestaurant()"
-                        style="flex:1;padding:0.75rem;border-radius:9999px;border:none;background:#f43f5e;color:#fff;font-weight:600;font-size:0.875rem;cursor:pointer;font-family:var(--font-sans);">
-                  Yes, Delete
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
