@@ -180,7 +180,7 @@ document.addEventListener('alpine:init', () => {
 
     // Actions
     selectRestaurant(r) { this.selectedRestaurantId = r.id; this.confirmDeleteRestaurant = false; document.body.style.overflow = 'hidden'; },
-    closeModal() { this.selectedRestaurantId = null; this.confirmDeleteRestaurant = false; document.body.style.overflow = ''; },
+    closeModal() { this.selectedRestaurantId = null; this.confirmDeleteRestaurant = false; document.body.style.overflow = ''; Alpine.store('addPhotos').reset(); },
 
     async deleteRestaurant() {
       const rest = this.selectedRestaurant;
@@ -370,6 +370,160 @@ document.addEventListener('alpine:init', () => {
       } catch (err) {
         console.error('Delete failed:', err);
         this.saving = false;
+      }
+    },
+  });
+
+  // ── Lightbox store ─────────────────────────────────────────
+  Alpine.store('lightbox', {
+    open: false,
+    photos: [],
+    index: 0,
+    confirmDelete: false,
+    deleting: false,
+
+    _touchStartX: 0,
+
+    show(photos, index) {
+      this.photos = photos;
+      this.index = index;
+      this.open = true;
+      this.confirmDelete = false;
+      this.deleting = false;
+    },
+
+    handleTouchStart(e) {
+      this._touchStartX = e.touches[0].clientX;
+    },
+
+    handleTouchEnd(e) {
+      const dx = e.changedTouches[0].clientX - this._touchStartX;
+      if (Math.abs(dx) > 50) {
+        if (dx < 0) this.next();
+        else this.prev();
+      }
+    },
+
+    close() {
+      this.open = false;
+      this.photos = [];
+      this.index = 0;
+      this.confirmDelete = false;
+      this.deleting = false;
+    },
+
+    prev() {
+      if (this.confirmDelete) return;
+      this.index = (this.index - 1 + this.photos.length) % this.photos.length;
+    },
+
+    next() {
+      if (this.confirmDelete) return;
+      this.index = (this.index + 1) % this.photos.length;
+    },
+
+    get currentUrl() {
+      return this.photos[this.index] || '';
+    },
+
+    promptDelete() {
+      this.confirmDelete = true;
+    },
+
+    cancelDelete() {
+      this.confirmDelete = false;
+    },
+
+    async executeDelete() {
+      if (this.deleting) return;
+      const url = this.currentUrl;
+      const sel = Alpine.store('app').selectedRestaurant;
+      if (!sel) return;
+
+      // Find which rating has this photo
+      const rating = sel.ratings.find(r => (r.photos || []).includes(url));
+      if (!rating) return;
+
+      this.deleting = true;
+      try {
+        await DB.removePhotoFromRating(rating.id, url);
+        // Remove from local array and adjust index
+        this.photos.splice(this.index, 1);
+        if (this.photos.length === 0) {
+          this.close();
+        } else {
+          if (this.index >= this.photos.length) this.index = this.photos.length - 1;
+          this.confirmDelete = false;
+          this.deleting = false;
+        }
+      } catch (err) {
+        console.error('Delete photo failed:', err);
+        this.deleting = false;
+      }
+    },
+  });
+
+  // ── Add Photos store (detail view upload) ──────────────────
+  Alpine.store('addPhotos', {
+    open: false,
+    memberId: '',
+    photos: [],
+    previews: [],
+    uploading: false,
+
+    get votedMembers() {
+      const sel = Alpine.store('app').selectedRestaurant;
+      if (!sel || !sel.ratings) return [];
+      const votedIds = new Set(sel.ratings.map(r => r.memberId));
+      return Alpine.store('app').members.filter(m => votedIds.has(m.id));
+    },
+
+    toggle() {
+      this.open = !this.open;
+      if (!this.open) this.reset();
+    },
+
+    reset() {
+      this.open = false;
+      this.memberId = '';
+      this.previews.forEach(p => URL.revokeObjectURL(p));
+      this.photos = [];
+      this.previews = [];
+      this.uploading = false;
+    },
+
+    addFiles(input) {
+      const files = Array.from(input.files);
+      const remaining = 6 - this.photos.length;
+      const toAdd = files.slice(0, remaining);
+      toAdd.forEach(f => {
+        this.photos.push(f);
+        this.previews.push(URL.createObjectURL(f));
+      });
+      input.value = '';
+    },
+
+    removePhoto(idx) {
+      URL.revokeObjectURL(this.previews[idx]);
+      this.photos.splice(idx, 1);
+      this.previews.splice(idx, 1);
+    },
+
+    async upload() {
+      if (!this.memberId || this.photos.length === 0 || this.uploading) return;
+      const sel = Alpine.store('app').selectedRestaurant;
+      if (!sel) return;
+      const rating = sel.ratings.find(r => r.memberId === this.memberId);
+      if (!rating) return;
+
+      this.uploading = true;
+      try {
+        const urls = await DB.uploadPhotos(this.photos, sel.id);
+        await DB.addPhotosToRating(rating.id, urls);
+        this.reset();
+      } catch (err) {
+        console.error('Photo upload failed:', err);
+        this.uploading = false;
       }
     },
   });

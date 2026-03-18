@@ -94,6 +94,20 @@ window.DB = {
     await db.collection('ratings').doc(id).delete();
   },
 
+  async addPhotosToRating(ratingId, photoUrls) {
+    await db.collection('ratings').doc(ratingId).update({
+      photos: firebase.firestore.FieldValue.arrayUnion(...photoUrls),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+  },
+
+  async removePhotoFromRating(ratingId, photoUrl) {
+    await db.collection('ratings').doc(ratingId).update({
+      photos: firebase.firestore.FieldValue.arrayRemove(photoUrl),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+  },
+
   // --- Photo Upload ---
   async uploadPhoto(file, restaurantId) {
     const filename = Date.now() + '_' + file.name;

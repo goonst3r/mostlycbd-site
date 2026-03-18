@@ -293,17 +293,83 @@
           </div>
 
           <!-- Photos -->
-          <div x-show="($store.app.selectedRestaurant?.ratings || []).flatMap(r => r.photos || []).length > 0">
-            <h3 style="font-size:0.75rem;font-weight:600;color:#18181b;text-transform:uppercase;letter-spacing:-0.025em;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
-              <span x-html="icon('camera',16)"></span> Photos
-            </h3>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;">
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+              <h3 style="font-size:0.75rem;font-weight:600;color:#18181b;text-transform:uppercase;letter-spacing:-0.025em;display:flex;align-items:center;gap:0.5rem;">
+                <span x-html="icon('camera',16)"></span> Photos
+              </h3>
+              <button x-show="!$store.addPhotos.open" @click="$store.addPhotos.open = true"
+                      style="display:flex;align-items:center;gap:0.375rem;font-size:0.75rem;font-weight:500;color:#71717a;background:#f4f4f5;border:none;padding:0.375rem 0.75rem;border-radius:9999px;cursor:pointer;font-family:var(--font-sans);transition:all 0.2s;"
+                      onmouseover="this.style.background='#e4e4e7';this.style.color='#18181b'" onmouseout="this.style.background='#f4f4f5';this.style.color='#71717a'">
+                <span x-html="icon('plus',12)"></span> Add Photos
+              </button>
+            </div>
+
+            <!-- Upload Panel -->
+            <div x-show="$store.addPhotos.open" x-transition
+                 style="background:#fafafa;border:1px solid #e4e4e7;border-radius:1.5rem;padding:1.25rem;margin-bottom:1rem;display:flex;flex-direction:column;gap:1rem;">
+
+              <!-- Member picker (only members who have voted) -->
+              <div>
+                <label style="font-size:0.6875rem;font-weight:600;color:#71717a;text-transform:uppercase;margin-bottom:0.5rem;display:block;">Who's uploading?</label>
+                <div x-show="$store.addPhotos.votedMembers.length === 0" style="color:#a1a1aa;font-size:0.875rem;">No votes yet — add a vote first to upload photos.</div>
+                <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+                  <template x-for="m in $store.addPhotos.votedMembers" :key="m.id">
+                    <button @click="$store.addPhotos.memberId = m.id"
+                            :style="'padding:0.375rem 0.75rem;border-radius:9999px;font-size:0.875rem;font-weight:500;cursor:pointer;border:1px solid;transition:all 0.2s;font-family:var(--font-sans);' + ($store.addPhotos.memberId === m.id ? 'background:#18181b;color:#fff;border-color:#18181b;' : 'background:#fff;color:#52525b;border-color:#e4e4e7;')"
+                            x-text="m.name"></button>
+                  </template>
+                </div>
+              </div>
+
+              <!-- Photo grid + add button -->
+              <div x-show="$store.addPhotos.memberId" style="display:flex;flex-direction:column;gap:0.75rem;">
+                <div class="photo-grid">
+                  <template x-for="(p, idx) in $store.addPhotos.previews" :key="p">
+                    <div class="photo-thumb">
+                      <img :src="p" alt="Upload" />
+                      <div class="photo-remove" @click="$store.addPhotos.removePhoto(idx)">
+                        <span style="background:rgba(255,255,255,0.2);padding:0.5rem;border-radius:9999px;color:#fff;" x-html="icon('x',16)"></span>
+                      </div>
+                    </div>
+                  </template>
+                  <div x-show="$store.addPhotos.previews.length < 6" class="photo-add" @click="$refs.addPhotoInput.click()">
+                    <div style="padding:0.5rem;background:#fff;border-radius:9999px;" x-html="icon('upload',20)"></div>
+                    <span style="font-size:0.6875rem;font-weight:500;">Add</span>
+                  </div>
+                </div>
+                <input x-ref="addPhotoInput" type="file" accept="image/*" multiple style="display:none;" @change="$store.addPhotos.addFiles($el)" />
+              </div>
+
+              <!-- Actions -->
+              <div style="display:flex;align-items:center;justify-content:flex-end;gap:0.5rem;">
+                <button @click="$store.addPhotos.reset()"
+                        style="padding:0.5rem 1rem;font-size:0.875rem;font-weight:500;color:#71717a;background:none;border:none;cursor:pointer;font-family:var(--font-sans);">
+                  Cancel
+                </button>
+                <button @click="$store.addPhotos.upload()"
+                        :disabled="!$store.addPhotos.memberId || $store.addPhotos.photos.length === 0 || $store.addPhotos.uploading"
+                        :style="'padding:0.5rem 1.25rem;font-size:0.875rem;font-weight:600;border-radius:9999px;border:none;cursor:pointer;font-family:var(--font-sans);display:flex;align-items:center;gap:0.5rem;transition:all 0.2s;' + (!$store.addPhotos.memberId || $store.addPhotos.photos.length === 0 || $store.addPhotos.uploading ? 'background:#e4e4e7;color:#a1a1aa;cursor:not-allowed;' : 'background:#18181b;color:#fff;')">
+                  <span x-show="$store.addPhotos.uploading" class="animate-spin" x-html="icon('shuffle',14)"></span>
+                  <span x-text="$store.addPhotos.uploading ? 'Uploading...' : 'Upload'"></span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Existing photos grid -->
+            <div x-show="($store.app.selectedRestaurant?.ratings || []).flatMap(r => r.photos || []).length > 0"
+                 class="modal-photo-grid">
               <template x-for="(url, i) in ($store.app.selectedRestaurant?.ratings || []).flatMap(r => r.photos || [])" :key="url + i">
-                <div style="aspect-ratio:1;border-radius:1rem;overflow:hidden;background:#f4f4f5;">
+                <div style="aspect-ratio:1;border-radius:1rem;overflow:hidden;background:#f4f4f5;cursor:pointer;"
+                     @click="$store.lightbox.show(($store.app.selectedRestaurant?.ratings || []).flatMap(r => r.photos || []), i)">
                   <img :src="url" alt="" style="width:100%;height:100%;object-fit:cover;" />
                 </div>
               </template>
             </div>
+
+            <!-- Empty state -->
+            <p x-show="!$store.addPhotos.open && ($store.app.selectedRestaurant?.ratings || []).flatMap(r => r.photos || []).length === 0"
+               style="color:#a1a1aa;font-size:0.875rem;">No photos yet. Be the first to add some!</p>
           </div>
 
           <!-- ── Cast Your Vote ──────────────────────────── -->
@@ -476,6 +542,52 @@
         <div style="display:flex;align-items:center;gap:0.5rem;">
           <input class="form-input" x-model="$store.mem.newName" @keydown.enter="$store.mem.addMember()" placeholder="Add a new member..." style="flex:1;" />
           <button class="btn-primary" style="padding:0.75rem;border-radius:1rem;" @click="$store.mem.addMember()" :disabled="!$store.mem.newName.trim() || $store.mem.adding" x-html="icon('plus',18)"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- LIGHTBOX                                                    -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="lightbox-overlay" :class="$store.lightbox.open ? 'open' : ''"
+       @click="$store.lightbox.confirmDelete ? null : $store.lightbox.close()"
+       @keydown.escape.window="$store.lightbox.open && ($store.lightbox.confirmDelete ? $store.lightbox.cancelDelete() : $store.lightbox.close())"
+       @keydown.left.window="$store.lightbox.open && $store.lightbox.prev()"
+       @keydown.right.window="$store.lightbox.open && $store.lightbox.next()">
+    <img class="lightbox-img" :src="$store.lightbox.currentUrl" alt="" @click.stop
+         @touchstart="$store.lightbox.handleTouchStart($event)"
+         @touchend="$store.lightbox.handleTouchEnd($event)" />
+    <button class="lightbox-close" @click.stop="$store.lightbox.confirmDelete ? $store.lightbox.cancelDelete() : $store.lightbox.close()" x-html="icon('x',20)"></button>
+    <button x-show="$store.lightbox.photos.length > 1 && !$store.lightbox.confirmDelete" class="lightbox-nav prev" @click.stop="$store.lightbox.prev()" x-html="icon('back',20)"></button>
+    <button x-show="$store.lightbox.photos.length > 1 && !$store.lightbox.confirmDelete" class="lightbox-nav next" @click.stop="$store.lightbox.next()" x-html="icon('arrow',20)"></button>
+    <span x-show="$store.lightbox.photos.length > 1 && !$store.lightbox.confirmDelete" class="lightbox-counter" x-text="($store.lightbox.index + 1) + ' / ' + $store.lightbox.photos.length"></span>
+
+    <!-- Delete button -->
+    <button x-show="!$store.lightbox.confirmDelete" class="lightbox-delete" @click.stop="$store.lightbox.promptDelete()">oopsie</button>
+
+    <!-- Confirmation dialog -->
+    <div x-show="$store.lightbox.confirmDelete" class="lightbox-confirm" @click.stop x-transition>
+      <div class="lightbox-confirm-inner">
+        <div style="font-size:2rem;text-align:center;">&#9878;</div>
+        <h3 style="font-size:1.125rem;font-weight:700;color:#18181b;text-align:center;line-height:1.3;">Halt! Official Proceedings Required</h3>
+        <p style="font-size:0.875rem;color:#52525b;line-height:1.7;text-align:center;">
+          According to <strong>GBE Bylaws, Article IV, Section 2.0 &mdash; Photographic Evidence</strong>: The removal of any photographic record shall only be sanctioned in the presence of a duly appointed <em>Original Gangster Banger</em> (OGB), who must provide explicit and enthusiastic consent, witnessed by no fewer than zero (0) peers.
+        </p>
+        <p style="font-size:1rem;font-weight:600;color:#18181b;text-align:center;margin-top:0.5rem;">
+          Doth the OGB consent to this act of erasure?
+        </p>
+        <div style="display:flex;gap:0.75rem;margin-top:0.5rem;">
+          <button @click="$store.lightbox.cancelDelete()"
+                  style="flex:1;padding:0.875rem;border-radius:9999px;border:1px solid #e4e4e7;background:#fff;color:#52525b;font-weight:600;font-size:0.875rem;cursor:pointer;font-family:var(--font-sans);transition:all 0.2s;"
+                  onmouseover="this.style.background='#fafafa'" onmouseout="this.style.background='#fff'">
+            Nay, I protest!
+          </button>
+          <button @click="$store.lightbox.executeDelete()" :disabled="$store.lightbox.deleting"
+                  style="flex:1;padding:0.875rem;border-radius:9999px;border:none;background:#f43f5e;color:#fff;font-weight:600;font-size:0.875rem;cursor:pointer;font-family:var(--font-sans);transition:all 0.2s;"
+                  onmouseover="this.style.background='#e11d48'" onmouseout="this.style.background='#f43f5e'">
+            <span x-text="$store.lightbox.deleting ? 'Banishing...' : 'Aye, banish it!'"></span>
+          </button>
         </div>
       </div>
     </div>
