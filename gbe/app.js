@@ -28,6 +28,11 @@ const ICONS = {
   trash:    '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"/></svg>',
 };
 
+function faviconUrl(website) {
+  if (!website) return '';
+  return 'https://www.google.com/s2/favicons?domain_url=' + encodeURIComponent(website) + '&sz=32';
+}
+
 function icon(name, size) {
   const s = size || 16;
   return ICONS[name].replace(/width="1em"/g, `width="${s}"`).replace(/height="1em"/g, `height="${s}"`);
@@ -180,8 +185,8 @@ document.addEventListener('alpine:init', () => {
     },
 
     // Actions
-    selectRestaurant(r) { this.selectedRestaurantId = r.id; this.confirmDeleteRestaurant = false; document.body.style.overflow = 'hidden'; },
-    closeModal() { this.selectedRestaurantId = null; this.confirmDeleteRestaurant = false; document.body.style.overflow = ''; Alpine.store('addPhotos').reset(); },
+    selectRestaurant(r) { this.selectedRestaurantId = r.id; this.confirmDeleteRestaurant = false; document.body.style.overflow = 'hidden'; Alpine.store('changePic').close(); },
+    closeModal() { this.selectedRestaurantId = null; this.confirmDeleteRestaurant = false; document.body.style.overflow = ''; Alpine.store('addPhotos').reset(); Alpine.store('changePic').close(); },
 
     async deleteRestaurant() {
       const rest = this.selectedRestaurant;
@@ -585,6 +590,64 @@ document.addEventListener('alpine:init', () => {
         console.error('Delete tag failed:', err);
       } finally {
         this.tagDeleting = false;
+      }
+    },
+  });
+
+  // ── Change Main Photo store ─────────────────────────────────
+  Alpine.store('changePic', {
+    open: false,
+    saving: false,
+
+    get allPhotos() {
+      const sel = Alpine.store('app').selectedRestaurant;
+      if (!sel) return [];
+      const votePhotos = (sel.ratings || []).flatMap(r => r.photos || []);
+      const restPhotos = sel.photos || [];
+      const all = [...new Set([...votePhotos, ...restPhotos])];
+      return all.filter(url => url !== sel.img);
+    },
+
+    toggle() { this.open = !this.open; this.saving = false; },
+    close() { this.open = false; this.saving = false; },
+
+    async _applyNewImg(url) {
+      const sel = Alpine.store('app').selectedRestaurant;
+      if (!sel) return;
+      const oldImg = sel.img;
+      const existing = [...(sel.ratings || []).flatMap(r => r.photos || []), ...(sel.photos || [])];
+      if (oldImg && !existing.includes(oldImg)) {
+        await DB.addRestaurantPhotos(sel.id, [oldImg]);
+      }
+      await DB.updateRestaurant(sel.id, { img: url });
+    },
+
+    async selectPhoto(url) {
+      if (this.saving) return;
+      this.saving = true;
+      try {
+        await this._applyNewImg(url);
+        this.close();
+      } catch (err) {
+        console.error('Change pic failed:', err);
+        this.saving = false;
+      }
+    },
+
+    async uploadPhoto(input) {
+      const file = input.files[0];
+      input.value = '';
+      if (!file || this.saving) return;
+      const sel = Alpine.store('app').selectedRestaurant;
+      if (!sel) return;
+      this.saving = true;
+      try {
+        const [url] = await DB.uploadPhotos([file], sel.id);
+        await this._applyNewImg(url);
+        this.close();
+      } catch (err) {
+        console.error('Upload pic failed:', err);
+        this.saving = false;
       }
     },
   });

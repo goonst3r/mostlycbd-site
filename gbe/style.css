@@ -249,6 +249,13 @@ body {
 .modal-globe {
   position: absolute; top: 1rem; left: 1rem; z-index: 2;
 }
+.modal-change-pic {
+  position: absolute; bottom: 1rem; right: 1rem; z-index: 2;
+  background: rgba(0,0,0,0.3); border: none; border-radius: 9999px;
+  width: 2.25rem; height: 2.25rem; display: flex; align-items: center; justify-content: center;
+  color: #fff; cursor: pointer; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: background 0.2s;
+}
+.modal-change-pic:hover { background: rgba(0,0,0,0.5); }
 
 /* ── Vote Row (members modal) ────────────────────────────────── */
 .vote-row {
