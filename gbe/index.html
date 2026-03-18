@@ -201,7 +201,7 @@
     <div class="modal-panel hide-scrollbar" @click.stop x-show="$store.app.selectedRestaurant">
 
       <!-- Edit Rating View -->
-      <div x-show="$store.edit.active" style="padding:2.5rem;display:flex;flex-direction:column;gap:0.75rem;">
+      <div x-show="$store.edit.active" style="padding:2.5rem;display:flex;flex-direction:column;gap:1rem;">
         <div style="display:flex;align-items:center;gap:1rem;">
           <button @click="$store.edit.close()" style="color:#a1a1aa;padding:0.5rem;border-radius:9999px;border:none;background:none;cursor:pointer;display:flex;" x-html="icon('back',20)"></button>
           <div>
@@ -221,11 +221,11 @@
             </button>
           </template>
         </div>
-        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        <!--<div style="display:flex;flex-direction:column;gap:0.75rem;">
           <label style="font-size:0.75rem;font-weight:600;color:#18181b;text-transform:uppercase;">Updated Notes</label>
           <textarea class="form-textarea" rows="3" x-model="$store.edit.notes" placeholder="Changed your mind? Explain yourself..."></textarea>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        </div>-->
+        <div style="display:flex;flex-direction:column;gap:1rem;">
           <button class="btn-primary" style="width:100%;" @click="$store.edit.save()" :disabled="!$store.edit.newRating || $store.edit.saving">
             <span x-text="$store.edit.saving ? 'Saving...' : 'Save Changes'"></span>
             <span x-show="!$store.edit.saving" x-html="icon('nav',18)"></span>
