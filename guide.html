@@ -1,372 +1,669 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Guide | mostlyCBD</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Guide | mostlyCBD</title>
+  <meta name="description" content="Understand your Endocannabinoid System, how CBD works, dosing protocols, and the science of terpenes. Written plainly. Cited honestly.">
+  <link rel="icon" type="image/png" href="Favicon.png">
 
-    <script data-goatcounter="https://mostlycbd.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-    
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="icon" type="image/png" href="Favicon.png">
-    
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script data-goatcounter="https://mostlycbd.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ─── resets ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #F4F1EB;
+      color: #1C1B18;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      padding: 0;
+    }
+    a { color: #3B6E52; text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: #C4692A; }
+    img { max-width: 100%; display: block; }
+
+    /* neutralize style.css nav side-margin offset */
+    .site-nav { display: block; padding: 0; margin-left: 0; margin-right: 0; }
+
+    /* ─── containers ─────────────────────────────────────────── */
+    .text-wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .rule { border: none; border-top: 1px solid #C8C3B8; margin: 0; }
+
+    /* ─── hero ───────────────────────────────────────────────── */
+    .guide-hero {
+      background-image: linear-gradient(rgba(59,110,82,0.82), rgba(59,110,82,0.94)), url('images/bg_header.jpeg');
+      background-size: cover;
+      background-position: center;
+      padding: 80px 0 64px;
+    }
+    .guide-hero__kicker {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #D4E7DC;
+      margin-bottom: 20px;
+    }
+    .guide-hero__headline {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-style: italic;
+      line-height: 1.15;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .guide-hero__sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      letter-spacing: .06em;
+      color: #D4E7DC;
+      margin-bottom: 10px;
+    }
+    .guide-hero__tagline {
+      font-size: 16px;
+      color: rgba(244,241,235,0.8);
+      max-width: 480px;
+    }
+
+    /* ─── sections ───────────────────────────────────────────── */
+    .section      { padding: 72px 0; }
+    .section--alt { background: #EAE6DC; }
+
+    .section__label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #3B6E52;
+      margin-bottom: 12px;
+    }
+    .section__heading {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: clamp(24px, 3.5vw, 34px);
+      line-height: 1.25;
+      margin-bottom: 24px;
+    }
+    .section__subheading {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #5A5750;
+      margin: 40px 0 16px;
+    }
+
+    /* ─── prose ──────────────────────────────────────────────── */
+    .prose p { margin-bottom: 20px; }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose strong { font-weight: 500; }
+    .prose em { font-style: italic; }
+
+    /* ─── disclaimer ─────────────────────────────────────────── */
+    .disclaimer {
+      background: #F5E4D5;
+      border-left: 3px solid #C4692A;
+      border-radius: 0 3px 3px 0;
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1C1B18;
+    }
+    .disclaimer strong {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #C4692A;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* ─── status grid ────────────────────────────────────────── */
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: #C8C3B8;
+      border: 1px solid #C8C3B8;
+      margin: 32px 0;
+    }
+    .status-cell {
+      background: #D4E7DC;
+      border-left: 3px solid #3B6E52;
+      padding: 20px 18px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .status-cell strong {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #3B6E52;
+      margin-bottom: 6px;
+    }
+
+    /* ─── key players list ───────────────────────────────────── */
+    .players-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      background: #C8C3B8;
+      border: 1px solid #C8C3B8;
+      margin: 24px 0;
+    }
+    .players-item {
+      background: #F4F1EB;
+      padding: 20px 24px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .section--alt .players-item { background: #EAE6DC; }
+
+    /* ─── dimmer switch callout ──────────────────────────────── */
+    .dimmer-box {
+      background: #F4F1EB;
+      border-left: 3px solid #3B6E52;
+      border-radius: 0 3px 3px 0;
+      padding: 28px 32px;
+      margin: 32px 0;
+    }
+    .dimmer-box h3 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .section--alt .dimmer-box { background: #EAE6DC; }
+
+    /* ─── concept box (helping hand) ─────────────────────────── */
+    .concept-box {
+      background: #D4E7DC;
+      border-left: 3px solid #3B6E52;
+      border-radius: 0 3px 3px 0;
+      padding: 24px 28px;
+      margin: 24px 0;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+    .concept-box strong {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #3B6E52;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* ─── protocol card ──────────────────────────────────────── */
+    .protocol-wrap {
+      background: #3B6E52;
+      border-radius: 3px;
+      padding: 32px 28px;
+      margin: 32px 0;
+      color: #fff;
+    }
+    .protocol-header {
+      border-bottom: 1px solid rgba(244,241,235,0.2);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    .protocol-header__title {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .protocol-header__sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #D4E7DC;
+    }
+    .protocol-step {
+      border-left: 2px solid rgba(244,241,235,0.3);
+      padding: 0 0 24px 20px;
+      margin-bottom: 0;
+      font-size: 15px;
+      line-height: 1.65;
+      color: rgba(244,241,235,0.9);
+    }
+    .protocol-step:last-of-type { border-left: none; padding-bottom: 0; }
+    .protocol-step__title {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #D4E7DC;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .protocol-rule {
+      background: rgba(0,0,0,0.2);
+      border-radius: 2px;
+      padding: 14px 18px;
+      margin-top: 24px;
+      font-size: 14px;
+      color: rgba(244,241,235,0.9);
+      text-align: center;
+    }
+
+    /* ─── orchestra / entourage ──────────────────────────────── */
+    .orchestra-wrap {
+      background: #3B6E52;
+      border-radius: 3px;
+      padding: 32px 28px;
+      margin: 32px 0;
+    }
+    .orchestra-wrap h4 {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #D4E7DC;
+      border-bottom: 1px solid rgba(244,241,235,0.2);
+      padding-bottom: 10px;
+      margin-bottom: 24px;
+    }
+    .orchestra-entry {
+      font-size: 15px;
+      line-height: 1.65;
+      color: rgba(244,241,235,0.9);
+      margin-bottom: 16px;
+    }
+    .orchestra-entry:last-child { margin-bottom: 0; }
+    .orchestra-entry strong { color: #fff; font-weight: 500; }
+
+    /* ─── terpene grid ───────────────────────────────────────── */
+    .terpene-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin: 24px 0;
+    }
+    .terpene-card {
+      border: 2px solid #3B6E52;
+      border-radius: 3px;
+      padding: 24px 20px;
+      width: calc(50% - 8px);
+      min-width: 260px;
+      color: rgba(244,241,235,0.9);
+      background-size: cover;
+      background-position: center;
+    }
+    .terpene-card h4 {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .terpene-card__found {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: #D4E7DC;
+      margin-bottom: 10px;
+    }
+    .terpene-card__desc {
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    /* ─── conclusion ─────────────────────────────────────────── */
+    .conclusion-box {
+      background: #D4E7DC;
+      border-left: 3px solid #3B6E52;
+      border-radius: 0 3px 3px 0;
+      padding: 28px 32px;
+      margin: 32px 0;
+    }
+
+    /* ─── back to top ────────────────────────────────────────── */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px;
+      background: #3B6E52; color: #fff;
+      padding: 10px 18px; text-decoration: none;
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: .08em; text-transform: uppercase;
+      border-radius: 2px; z-index: 1000;
+      opacity: 0; pointer-events: none;
+      transition: opacity .2s ease, background .15s ease;
+    }
+    #backToTop.visible { opacity: 1; pointer-events: all; }
+    #backToTop:hover { background: #C4692A; color: #fff; }
+
+    /* ─── terpene card backgrounds ──────────────────────────── */
+    .terpene-card--bcary  { background-image: linear-gradient(rgba(59,110,82,0.85), rgba(59,110,82,0.95)), url('images/beta-caryophyllene.jpg'); }
+    .terpene-card--limon  { background-image: linear-gradient(rgba(59,110,82,0.85), rgba(59,110,82,0.95)), url('images/limonene.jpg'); }
+    .terpene-card--myrc   { background-image: linear-gradient(rgba(59,110,82,0.90), rgba(59,110,82,0.95)), url('images/myrcene.jpg'); }
+    .terpene-card--pin    { background-image: linear-gradient(rgba(59,110,82,0.85), rgba(59,110,82,0.95)), url('images/pinene.jpg'); }
+    .terpene-card--linal  { background-image: linear-gradient(rgba(59,110,82,0.85), rgba(59,110,82,0.95)), url('images/linalool.jpg'); }
+    .terpene-card--humul  { background-image: linear-gradient(rgba(59,110,82,0.90), rgba(59,110,82,0.95)), url('images/humulene.jpg'); }
+
+    /* ─── responsive ─────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .status-grid { grid-template-columns: 1fr; }
+      .terpene-card { width: 100%; min-width: unset; }
+    }
+  </style>
 </head>
 <body>
-    <nav id="nav">
-        <a href="index.html"><img src="logo_1.png" alt="mostlyCBD" height="40em" style="margin: 0 auto 0 auto;"></a>
-        <button class="hamburger" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
-            <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="guide.html" class="active">Guide</a></li>
-            <li><a href="blog.html">Deep Dives</a></li>
-            <li><a href="https://www.reddit.com/r/mostlyCBD/" target="_blank">Community</a></li>
-            <li><a href="action.html">Action</a></li>
-            <li><a href="https://shop.mostlycbd.com">Shop</a></li>
-        </ul>
-    </nav>
 
-    <main>
-
-    <div id="top-of-page"></div>
-
-    <div class="content-container">
-
-        <div class="action-hero-banner guide-hero">
-            <h1 class="guide-title" style="color: #fff !important;">the Manual.</h1>
-            <div class="guide-subtitle" style="color: #dad7cd !important; border: none; padding: 0; margin-bottom: 10px;">
-                Reset. Rebalance. Recover.
-            </div>
-            <div class="hero-subtext">Simply understanding your internal network and how to help it.</div>
-        </div>
-
-        <div class="disclaimer-box">
-            <strong>the Safety Check:</strong><br>
-            We are here to empower you with knowledge, not prescriptions. The information below describes how these compounds interact with the human body based on current research. It is not intended to diagnose, treat, or cure any disease. Our goal is for you to feel comfortable enough to have an informed conversation with your health care provider, especially if you are currently on any prescription medications (like blood thinners), as cannabinoids can interact with how your body processes them.
-        </div>
-
-        <div class="guide-section">
-            <h2>the Hardware (ECS)</h2>
-            <p>Most of us walk around feeling "off." Maybe it's a short fuse, a bad back, or just a busy brain that won't shut up at 3 AM. It’s easy to think your system is broken. But usually, it’s just depleted.<br><br></p>
-            <p>You have a built-in system called the <strong>Endocannabinoid System (ECS)</strong>. It's sole job is to maintain <strong>homeostasis</strong>, or balance.<br><br></p>
-            <p>Think of the ECS like the thermostat in your house. It runs in the background, monitoring the room, making sure things don't get too hot or too cold.</p>
-
-            <div class="status-grid">
-                <div class="status-item status-temp">
-                    <strong>Temperature Rising?</strong>
-                    The ECS cools it down.
-                </div>
-                <div class="status-item status-stress">
-                    <strong>Stress Spiking?</strong>
-                    The ECS signals the calm.
-                </div>
-                <div class="status-item status-pain">
-                    <strong>Pain Flaring?</strong>
-                    The ECS turns down the volume.
-                </div>
-            </div>
-
-            <h3>the Native Code: How It Works</h3>
-            <p>Your body is already making cannabis-like molecules right now. They are called <strong>Endocannabinoids</strong>.<br><br></p>
-            <p>Unlike other neurotransmitters (like serotonin) which are stored in reserve, endocannabinoids are made <strong>"On-Demand"</strong>. Your body creates them instantly from fat lipids exactly when—and where—a crisis happens.<br></p>
-
-            <div class="ecs-players">
-                <h3>the Two Key Players:</h3>
-                <ul style="margin-top: 20px; padding-left: 30px; line-height: 1.6;">
-                    <li style="margin-bottom: 15px;">
-                        <strong>Anandamide (The Bliss Molecule):</strong><br>
-                        Named after the Sanskrit word for "bliss." It regulates mood, fear, and the feeling of being "centered."
-                    </li>
-                    <li style="margin-bottom: 15px;">
-                        <strong>2-AG (The Workhorse):</strong><br>
-                        The most abundant endocannabinoid. It manages inflammation, pain response, and immune function.
-                    </li>
-                </ul>
-            </div>
-
-            <div style="background: linear-gradient(to bottom, #A3B18A 0%, #DAD7CD 100%); padding: 40px; border-radius: 12px; margin: 40px 0;">
-                <h3>the Dimmer Switch</h3>
-                <p>This is what makes the ECS unique. Most signals in your brain travel one way: Forward. Endocannabinoids travel <strong>Backwards</strong> (Retrograde Signaling).<br><br></p>
-                <p>When a neuron is getting overwhelmed by too much noise (stress, pain, panic), the receiving cell creates Anandamide and sends it backwards to the sender. It acts as a <strong>biological dimmer switch</strong>, effectively telling the system: <em>"Turn the volume down. We are getting too hot."</em><br><br></p>
-            </div>
-
-            <h3>the Glitch</h3>
-            <p>The system was designed to be perfect, but it was designed for a different time. Because Anandamide is so powerful, in order for your body to maintain balance, it breaks it down incredibly fast using an enzyme called <strong>FAAH.</strong><br><br>
-                The problem: Modern life is loud. Between the notifications, the deadlines, and the daily grind, our Anandamide is being depleted faster than it can be replenished.</p>
-                        
-            <div class="concept-solution">
-                <strong>the Helping Hand (How CBD Works):</strong> CBD does not replace your system. It defends it. CBD inhibits the FAAH enzyme. Think of CBD as "running interference"; it occupies the enzyme so it can't attack your natural Anandamide. This allows your body’s own molecules to survive longer, keeping the dimmer switch active and extending that feeling of calm.<br><br>
-                In addition to protecting your natural cannabinoids, CBD also interacts with other receptors in the body (like serotonin and TRPV1) that can help with mood regulation, pain relief, and inflammation. It’s like giving your system a multi-tool instead of just a wrench. It’s not about forcing your body to do something unnatural. It's simply pausing the breakdown so your body has the time it needs to heal itself.<br><br>
-            </div>
-        </div>
-
-        <div class="guide-section">
-            <h2>the Input (Finding Your Sweet Spot)</h2>
-            <p>Q: <strong>"What's the standard dose?"</strong><br>
-               A: Trick question! There is no <em>standard dose</em>, because there is no <em>standard human</em>. Our metabolism, weight, genetic history, and current stress levels all contribute to how we process cannabinoids. Each one of us is a unique experiment of one.<br><br></p>
-            <p>Q: <strong>"What can I expect?"</strong><br>
-               A: We want our relief to be like an ON/OFF switch. If we hurt, flip a switch and feel nothing. But that's not how it works. We have to remember...the ECS is a <strong>Dimmer Switch</strong>. It's not trying to numb you out; it's just trying to dim the lights so the room is comfortable again.</p>
-            
-            <div class="protocol-card">
-                <div style="border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 20px; margin-bottom: 30px;">
-                    <span style="font-size: 2em; font-weight: bold; color: #fff;">THE PROTOCOL</span>
-                    <br><span style="color: #A3B18A; letter-spacing: 2px;">START LOW. GO SLOW.</span>
-                </div>
-
-                <div class="protocol-step">
-                    <span class="protocol-title">Step 1: Calibration (Day 1-3)</span>
-                    Start small (e.g., 5-10mg). Stick with this same amount for 3 days, and try to take around the same time. You can't tune a radio if you keep spinning the dial wildly. Give your body a moment to listen.
-                </div>
-
-                <div class="protocol-step">
-                    <span class="protocol-title">Step 2: Observation (The Log)</span>
-                    Write it down. It’s hard to notice gradual change if you aren't looking for it. How is your sleep? Your anxiety? Your focus? Pain levels?<br>
-                    <em>Different product types (flower, oils/tinctures, edibles), are all absorbed differently, which can influence how long it takes to kick in & how long the effects last.</em>
-                </div>
-
-                <div class="protocol-step" style="border-left: none;">
-                    <span class="protocol-title">Step 3: Titration (Adjust)</span>
-                    If you don't feel a shift after 3 days, bump it up 5mg or so. Repeat until you find your <strong>Sweet Spot</strong>—that place where the noise fades, but your mind stays clear.
-                </div>
-                
-                <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; font-size: 0.9em; text-align: center;">
-                    <strong>The Golden Rule:</strong> More isn't always better. Sometimes, a smaller nudge is all the system needs to correct itself.
-                </div>
-            </div>
-        </div>
-
-        <div class="guide-section">
-            <h2>the Synergy (or the Entourage Effect)</h2>
-            <p>You can eat flour, sugar, and eggs separately, and it's... fine. But mix them together, and it's a cake. The magic is in the mixture.<br><br></p>
-            <p>The idea is simple: The whole is greater than the sum of its parts. (1 + 1 = 5).</p>
-
-            <div class="orchestra-box">
-                <h4 style="margin-bottom: 25px; text-transform: uppercase; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; display: inline-block;">the Orchestra Analogy</h4>
-                
-                <p style="margin-bottom: 15px;">
-                    <strong>THC (the Conductor):</strong> Even in tiny, functional doses, THC is the only molecule that binds <em>directly</em> to your CB1 receptors. It "unlocks" the system and turns on the amplifier.
-                </p>
-                
-                <p style="margin-bottom: 15px;">
-                    <strong>CBD (the Section Leader):</strong> It manages the intensity by preventing the <em>volume</em> from getting too loud. It keeps things grounded while extending the duration of the relief. 
-                </p>
-                
-                <p style="margin-bottom: 0;">
-                    <strong>Terpenes (The Mood):</strong> They set the vibe. Are we winding down for the night, or waking up for the day? They steer the ship.
-                </p>
-            </div>
-            <p><strong>Why Functional THC Matters: </strong>We aren't talking about "getting high." We are talking about <strong>Activation</strong>. Without a small amount of THC to "unlock" the receptors, the CBD has to work twice as hard to get in. When they work together in a functional ratio, you get maximum relief with minimum impairment.<br><br></p>
-            <p style="font-weight: bold;">If the Cannabinoids (CBD/THC) are the Engine that powers the car, Terpenes are the Steering Wheel that determines the direction.</p>
-
-        </div>
-
-        <div class="guide-section">
-            <h2>the Steering (Terpenes)</h2>
-            <p>If CBD is the engine that keeps you moving, Terpenes are the GPS. They determine where that relief is going.</p>
-            
-            <h3>the Primary Drivers (Major Terpenes)</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-                <div style="
-                    border: 2px solid #344E41; 
-                    border-radius: 8px; 
-                    padding: 20px; 
-                    width: 45%; 
-                    min-width: 250px; 
-
-                    /* BACKGROUND IMAGE SETTINGS */
-                    background: linear-gradient(rgba(52, 78, 65, 0.85), rgba(52, 78, 65, 0.95)), url('images/beta-caryophyllene.jpg');
-                    background-size: cover;
-                    background-position: center;
-
-                    /* TEXT COLORS (Switched to Light for contrast) */
-                    color: #DAD7CD; 
-                    box-shadow: 4px 4px 0px rgba(52, 78, 65, 0.2);">
-
-                    <h4 style="margin: 0; color: #FFFFFF; text-transform: uppercase; letter-spacing: 1px;">Beta-Caryophyllene<br>// the Protector</h4>
-                    <p style="font-size: 12px; font-weight: bold; color: #A3B18A; margin-top: 5px;">Found in Black Pepper</p>
-
-                    <p style="font-size: 14px; margin-top: 10px; line-height: 1.5;">
-                        Best known for its anti-inflammatory, pain-relieving, & anxiety-reducing properties. Unique ability to interact directly with CB2 receptors. Effective for managing chronic pain, anxiety, depression, gut health, & potential neuroprotective properties.</p>
-                </div>
-
-                <div style="
-                    border: 2px solid #344E41; 
-                    border-radius: 8px; 
-                    padding: 20px; 
-                    width: 45%; 
-                    min-width: 250px; 
-
-                    /* BACKGROUND IMAGE SETTINGS */
-                    /* Note: I added a slightly higher opacity (0.90) at the bottom to ensure text readability over bright lemons */
-                    background: linear-gradient(rgba(52, 78, 65, 0.85), rgba(52, 78, 65, 0.95)), url('images/limonene.jpg');
-                    background-size: cover;
-                    background-position: center;
-
-                    /* TEXT COLORS */
-                    color: #DAD7CD; 
-                    box-shadow: 4px 4px 0px rgba(52, 78, 65, 0.2);">
-
-                    <h4 style="margin: 0; color: #FFFFFF; text-transform: uppercase; letter-spacing: 1px;">Limonene<br>// The Lifter</h4>
-                    <p style="font-size: 12px; font-weight: bold; color: #A3B18A; margin-top: 5px;">Found in Citrus Rinds & Juniper</p>
-                    <p style="font-size: 14px; margin-top: 10px; line-height: 1.5;">
-                        The system energizer. Known for mood elevation, stress relief, and "clearing the fog." It promotes alertness without the jitters. Excellent for morning protocols and combating social anxiety.</p>
-                </div>
-
-                <div style="
-                    border: 2px solid #344E41; 
-                    border-radius: 8px; 
-                    padding: 20px; 
-                    width: 45%; 
-                    min-width: 250px; 
-
-                    /* BACKGROUND IMAGE SETTINGS */
-                    /* Darker overlay (0.90) because hops can be busy */
-                    background: linear-gradient(rgba(52, 78, 65, 0.90), rgba(52, 78, 65, 0.95)), url('images/myrcene.jpg');
-                    background-size: cover;
-                    background-position: center;
-
-                    /* TEXT COLORS */
-                    color: #DAD7CD; 
-                    box-shadow: 4px 4px 0px rgba(52, 78, 65, 0.2);">
-
-                    <h4 style="margin: 0; color: #FFFFFF; text-transform: uppercase; letter-spacing: 1px;">Myrcene<br>// The Sedative</h4>
-                    <p style="font-size: 12px; font-weight: bold; color: #A3B18A; margin-top: 5px;">Found in Hops & Mangoes</p>
-                    <p style="font-size: 14px; margin-top: 10px; line-height: 1.5;">
-                        Best for nightime use, promotes deep relaxation, muscle relief, & "couch-lock." Essential for sleep management & great for recovery.</p>
-                </div>                
-
-                <div style="
-                    border: 2px solid #344E41; 
-                    border-radius: 8px; 
-                    padding: 20px; 
-                    width: 45%; 
-                    min-width: 250px; 
-
-                    /* BACKGROUND IMAGE SETTINGS */
-                    background: linear-gradient(rgba(52, 78, 65, 0.85), rgba(52, 78, 65, 0.95)), url('images/pinene.jpg');
-                    background-size: cover;
-                    background-position: center;
-
-                    /* TEXT COLORS */
-                    color: #DAD7CD; 
-                    box-shadow: 4px 4px 0px rgba(52, 78, 65, 0.2);">
-
-                    <h4 style="margin: 0; color: #FFFFFF; text-transform: uppercase; letter-spacing: 1px;">Pinene<br>// The Focuser</h4>
-                    <p style="font-size: 12px; font-weight: bold; color: #A3B18A; margin-top: 5px;">Found in Pine Needles & Rosemary</p>
-                    <p style="font-size: 14px; margin-top: 10px; line-height: 1.5;">
-                        The precision tool. It promotes alertness, memory retention, and mental clarity. It is also a bronchodilator (helps open airways). Excellent for study, work, or creative focus.</p>
-                </div>
-
-            </div>
-
-            <h3 style="margin-top: 60px;">the Support Crew (Secondary Terpenes)</h3>
-
-            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-            
-                <div style="
-                    border: 2px solid #344E41; 
-                    border-radius: 8px; 
-                    padding: 20px; 
-                    width: 45%; 
-                    min-width: 250px; 
-
-                    /* BACKGROUND IMAGE SETTINGS */
-                    /* Darker overlay (0.85) to make white text pop against purple lavender */
-                    background: linear-gradient(rgba(52, 78, 65, 0.85), rgba(52, 78, 65, 0.95)), url('images/linalool.jpg');
-                    background-size: cover;
-                    background-position: center;
-
-                    /* TEXT COLORS */
-                    color: #DAD7CD; 
-                    box-shadow: 4px 4px 0px rgba(52, 78, 65, 0.2);">
-
-                    <h4 style="margin: 0; color: #FFFFFF; text-transform: uppercase; letter-spacing: 1px;">Linalool<br>// The Soother</h4>
-                    <p style="font-size: 12px; font-weight: bold; color: #A3B18A; margin-top: 5px;">Found in Lavender & Birch</p>
-                    <p style="font-size: 14px; margin-top: 10px; line-height: 1.5;">
-                        The anxiety brake. Famous for its distinct floral aroma and ability to calm the nervous system. Excellent for acute stress, panic attacks, and pain modulation without heavy sedation.</p>
-                </div>
-
-                <div style="
-                    border: 2px solid #344E41; 
-                    border-radius: 8px; 
-                    padding: 20px; 
-                    width: 45%; 
-                    min-width: 250px; 
-
-                    /* BACKGROUND IMAGE SETTINGS */
-                    background: linear-gradient(rgba(52, 78, 65, 0.90), rgba(52, 78, 65, 0.95)), url('images/humulene.jpg');
-                    background-size: cover;
-                    background-position: center;
-
-                    /* TEXT COLORS */
-                    color: #DAD7CD; 
-                    box-shadow: 4px 4px 0px rgba(52, 78, 65, 0.2);">
-
-                    <h4 style="margin: 0; color: #FFFFFF; text-transform: uppercase; letter-spacing: 1px;">Humulene<br>// The Moderator</h4>
-                    <p style="font-size: 12px; font-weight: bold; color: #A3B18A; margin-top: 5px;">Found in Hops, Sage & Ginseng</p>
-                    <p style="font-size: 14px; margin-top: 10px; line-height: 1.5;">
-                        The appetite controller. Structurally similar to Beta-Caryophyllene, it fights inflammation potently but is unique for suppressing appetite (preventing the "munchies"). A key component for functional daytime use.</p>
-                </div>
-
-            </div>
-
-            </div>
-
-        <div class="conclusion-section">
-            <h2>Part 5: the Conclusion</h2>
-            <p>We live in a world that loves complicated answers. <strong>Occam's Razor</strong> states that often times, the simplest explanation is the right one.<br>
-                <strong>Your body knows how to heal itself; it just needs resources to do it.</strong><br><br>
-                Knowing when or how to ask for help is often the biggest hurdle. Don't make it weird, just make it work. Listen to your body and give it time.
-            </p>
-        </div>
-
+  <nav class="site-nav" aria-label="Site navigation">
+    <div class="site-nav__inner">
+      <a href="index.html" class="site-nav__logo">mostly<span>cbd</span>.com</a>
+      <button type="button" class="hamburger" aria-label="Menu"
+        onclick="this.classList.toggle('open');document.querySelector('.site-nav__links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="site-nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="guide.html">Guide</a></li>
+        <li><a href="blog.html">Deep Dives</a></li>
+        <li><a href="https://www.reddit.com/r/mostlyCBD/" target="_blank" rel="noopener">Community</a></li>
+        <li><a href="action.html">Action</a></li>
+        <li><a href="https://shop.mostlycbd.com">Shop</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <a href="#top-of-page" id="backToTop">↑ TOP</a>
+  <div id="top-of-page"></div>
 
-    <style>
-        #backToTop {
-            position: fixed; bottom: 30px; right: 30px;
-            background-color: #344E41; color: #DAD7CD;
-            padding: 12px 20px; text-decoration: none;
-            font-family: 'Space Mono', monospace; font-weight: bold; font-size: 14px;
-            border-radius: 4px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-            transition: transform 0.2s, background-color 0.2s;
-            z-index: 1000; opacity: 0; pointer-events: none;
-        }
-        #backToTop.visible { opacity: 1; pointer-events: all; }
-        #backToTop:hover {
-            background-color: #DAD7CD; color: #344E41;
-            transform: translateY(-3px); border: 2px solid #344E41;
-        }
-    </style>
+  <!-- Hero -->
+  <header class="guide-hero">
+    <div class="text-wrap">
+      <p class="guide-hero__kicker">Understanding your system</p>
+      <h1 class="guide-hero__headline">the Manual.</h1>
+      <p class="guide-hero__sub">Reset. Rebalance. Recover.</p>
+      <p class="guide-hero__tagline">Simply understanding your internal network and how to help it.</p>
+    </div>
+  </header>
 
-    <script>
-        const btn = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            btn.classList.toggle('visible', window.scrollY > 300);
-        });
-    </script>
+  <hr class="rule">
 
-    </main>
+  <!-- Safety Disclaimer -->
+  <section class="section">
+    <div class="text-wrap">
+      <div class="disclaimer">
+        <strong>the Safety Check</strong>
+        We are here to empower you with knowledge, not prescriptions. The information below describes how these compounds interact with the human body based on current research. It is not intended to diagnose, treat, or cure any disease. Our goal is for you to feel comfortable enough to have an informed conversation with your health care provider, especially if you are currently on any prescription medications (like blood thinners), as cannabinoids can interact with how your body processes them.
+      </div>
+    </div>
+  </section>
 
-    <footer>
-            <div class="footer-links">
-                <a href="https://twitter.com/scrapthescript" target="_blank">X: @scrapthescript</a>
-                <a href="https://www.tiktok.com/@mostlycbd/" target="_blank">TikTok</a>
-                <a href="https://www.instagram.com/mostly.cbd/" target="_blank">Instagram</a>                
-                <a href="https://www.reddit.com/r/mostlyCBD/" target="_blank">Reddit</a>
-            </div>
+  <hr class="rule">
 
-            <p>&copy; 2026 mostlyCBD<br>Focused. Functional. Fair.</p>
-    </footer>
-                
-          
+  <!-- Section 1: The Hardware -->
+  <section class="section section--alt">
+    <div class="text-wrap">
+      <p class="section__label">Part 1</p>
+      <h2 class="section__heading">the Hardware (ECS)</h2>
+
+      <div class="prose">
+        <p>Most of us walk around feeling "off." Maybe it's a short fuse, a bad back, or just a busy brain that won't shut up at 3 AM. It's easy to think your system is broken. But usually, it's just depleted.</p>
+        <p>You have a built-in system called the <strong>Endocannabinoid System (ECS)</strong>. Its sole job is to maintain <strong>homeostasis</strong>, or balance.</p>
+        <p>Think of the ECS like the thermostat in your house. It runs in the background, monitoring the room, making sure things don't get too hot or too cold.</p>
+      </div>
+
+      <div class="status-grid">
+        <div class="status-cell">
+          <strong>Temperature Rising?</strong>
+          The ECS cools it down.
+        </div>
+        <div class="status-cell">
+          <strong>Stress Spiking?</strong>
+          The ECS signals the calm.
+        </div>
+        <div class="status-cell">
+          <strong>Pain Flaring?</strong>
+          The ECS turns down the volume.
+        </div>
+      </div>
+
+      <p class="section__subheading">the Native Code: How It Works</p>
+      <div class="prose">
+        <p>Your body is already making cannabis-like molecules right now. They are called <strong>Endocannabinoids</strong>.</p>
+        <p>Unlike other neurotransmitters (like serotonin) which are stored in reserve, endocannabinoids are made <strong>"On-Demand"</strong>. Your body creates them instantly from fat lipids exactly when — and where — a crisis happens.</p>
+      </div>
+
+      <p class="section__subheading">the Two Key Players</p>
+      <ul class="players-list">
+        <li class="players-item">
+          <strong>Anandamide (The Bliss Molecule):</strong><br>
+          Named after the Sanskrit word for "bliss." It regulates mood, fear, and the feeling of being "centered."
+        </li>
+        <li class="players-item">
+          <strong>2-AG (The Workhorse):</strong><br>
+          The most abundant endocannabinoid. It manages inflammation, pain response, and immune function.
+        </li>
+      </ul>
+
+      <div class="dimmer-box">
+        <h3>the Dimmer Switch</h3>
+        <p>This is what makes the ECS unique. Most signals in your brain travel one way: Forward. Endocannabinoids travel <strong>Backwards</strong> (Retrograde Signaling).</p>
+        <br>
+        <p>When a neuron is getting overwhelmed by too much noise (stress, pain, panic), the receiving cell creates Anandamide and sends it backwards to the sender. It acts as a <strong>biological dimmer switch</strong>, effectively telling the system: <em>"Turn the volume down. We are getting too hot."</em></p>
+      </div>
+
+      <p class="section__subheading">the Glitch</p>
+      <div class="prose">
+        <p>The system was designed to be perfect, but it was designed for a different time. Because Anandamide is so powerful, in order for your body to maintain balance, it breaks it down incredibly fast using an enzyme called <strong>FAAH.</strong></p>
+        <p>The problem: Modern life is loud. Between the notifications, the deadlines, and the daily grind, our Anandamide is being depleted faster than it can be replenished.</p>
+      </div>
+
+      <div class="concept-box">
+        <strong>the Helping Hand (How CBD Works)</strong>
+        CBD does not replace your system. It defends it. CBD inhibits the FAAH enzyme. Think of CBD as "running interference" — it occupies the enzyme so it can't attack your natural Anandamide. This allows your body's own molecules to survive longer, keeping the dimmer switch active and extending that feeling of calm.<br><br>
+        In addition to protecting your natural cannabinoids, CBD also interacts with other receptors in the body (like serotonin and TRPV1) that can help with mood regulation, pain relief, and inflammation. It's not about forcing your body to do something unnatural. It's simply pausing the breakdown so your body has the time it needs to heal itself.
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- Section 2: The Input -->
+  <section class="section">
+    <div class="text-wrap">
+      <p class="section__label">Part 2</p>
+      <h2 class="section__heading">the Input (Finding Your Sweet Spot)</h2>
+
+      <div class="prose">
+        <p><strong>Q: "What's the standard dose?"</strong><br>
+        A: Trick question. There is no <em>standard dose</em>, because there is no <em>standard human</em>. Our metabolism, weight, genetic history, and current stress levels all contribute to how we process cannabinoids. Each one of us is a unique experiment of one.</p>
+        <p><strong>Q: "What can I expect?"</strong><br>
+        A: We want our relief to be like an ON/OFF switch. If we hurt, flip a switch and feel nothing. But that's not how it works. We have to remember — the ECS is a <strong>Dimmer Switch</strong>. It's not trying to numb you out; it's just trying to dim the lights so the room is comfortable again.</p>
+      </div>
+
+      <div class="protocol-wrap">
+        <div class="protocol-header">
+          <span class="protocol-header__title">The Protocol</span>
+          <span class="protocol-header__sub">Start Low. Go Slow.</span>
+        </div>
+        <div class="protocol-step">
+          <span class="protocol-step__title">Step 1: Calibration (Day 1–3)</span>
+          Start small (e.g., 5–10mg). Stick with this same amount for 3 days, and try to take around the same time. You can't tune a radio if you keep spinning the dial wildly. Give your body a moment to listen.
+        </div>
+        <div class="protocol-step">
+          <span class="protocol-step__title">Step 2: Observation (The Log)</span>
+          Write it down. It's hard to notice gradual change if you aren't looking for it. How is your sleep? Your anxiety? Your focus? Pain levels?<br>
+          <em>Different product types (flower, oils/tinctures, edibles) are all absorbed differently, which can influence how long it takes to kick in and how long the effects last.</em>
+        </div>
+        <div class="protocol-step">
+          <span class="protocol-step__title">Step 3: Titration (Adjust)</span>
+          If you don't feel a shift after 3 days, bump it up 5mg or so. Repeat until you find your <strong>Sweet Spot</strong> — that place where the noise fades, but your mind stays clear.
+        </div>
+        <div class="protocol-rule">
+          <strong>The Golden Rule:</strong> More isn't always better. Sometimes, a smaller nudge is all the system needs to correct itself.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- Section 3: Synergy -->
+  <section class="section section--alt">
+    <div class="text-wrap">
+      <p class="section__label">Part 3</p>
+      <h2 class="section__heading">the Synergy (or the Entourage Effect)</h2>
+
+      <div class="prose">
+        <p>You can eat flour, sugar, and eggs separately, and it's... fine. But mix them together, and it's a cake. The magic is in the mixture.</p>
+        <p>The idea is simple: The whole is greater than the sum of its parts. (1 + 1 = 5).</p>
+      </div>
+
+      <div class="orchestra-wrap">
+        <h4>the Orchestra Analogy</h4>
+        <div class="orchestra-entry">
+          <strong>THC (the Conductor):</strong> Even in tiny, functional doses, THC is the only molecule that binds <em>directly</em> to your CB1 receptors. It "unlocks" the system and turns on the amplifier.
+        </div>
+        <div class="orchestra-entry">
+          <strong>CBD (the Section Leader):</strong> It manages the intensity by preventing the <em>volume</em> from getting too loud. It keeps things grounded while extending the duration of the relief.
+        </div>
+        <div class="orchestra-entry">
+          <strong>Terpenes (The Mood):</strong> They set the vibe. Are we winding down for the night, or waking up for the day? They steer the ship.
+        </div>
+      </div>
+
+      <div class="prose">
+        <p><strong>Why Functional THC Matters:</strong> We aren't talking about "getting high." We are talking about <strong>Activation</strong>. Without a small amount of THC to "unlock" the receptors, the CBD has to work twice as hard to get in. When they work together in a functional ratio, you get maximum relief with minimum impairment.</p>
+        <p><strong>If the Cannabinoids (CBD/THC) are the Engine that powers the car, Terpenes are the Steering Wheel that determines the direction.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- Section 4: Terpenes -->
+  <section class="section">
+    <div class="text-wrap">
+      <p class="section__label">Part 4</p>
+      <h2 class="section__heading">the Steering (Terpenes)</h2>
+
+      <div class="prose">
+        <p>If CBD is the engine that keeps you moving, Terpenes are the GPS. They determine where that relief is going.</p>
+      </div>
+
+      <p class="section__subheading">the Primary Drivers (Major Terpenes)</p>
+      <div class="terpene-grid">
+
+        <div class="terpene-card terpene-card--bcary">
+          <h4>Beta-Caryophyllene<br>// the Protector</h4>
+          <p class="terpene-card__found">Found in Black Pepper</p>
+          <p class="terpene-card__desc">Best known for its anti-inflammatory, pain-relieving, and anxiety-reducing properties. Unique ability to interact directly with CB2 receptors. Effective for managing chronic pain, anxiety, depression, gut health, and potential neuroprotective properties.</p>
+        </div>
+
+        <div class="terpene-card terpene-card--limon">
+          <h4>Limonene<br>// The Lifter</h4>
+          <p class="terpene-card__found">Found in Citrus Rinds &amp; Juniper</p>
+          <p class="terpene-card__desc">The system energizer. Known for mood elevation, stress relief, and "clearing the fog." It promotes alertness without the jitters. Excellent for morning protocols and combating social anxiety.</p>
+        </div>
+
+        <div class="terpene-card terpene-card--myrc">
+          <h4>Myrcene<br>// The Sedative</h4>
+          <p class="terpene-card__found">Found in Hops &amp; Mangoes</p>
+          <p class="terpene-card__desc">Best for nighttime use, promotes deep relaxation, muscle relief, and "couch-lock." Essential for sleep management and great for recovery.</p>
+        </div>
+
+        <div class="terpene-card terpene-card--pin">
+          <h4>Pinene<br>// The Focuser</h4>
+          <p class="terpene-card__found">Found in Pine Needles &amp; Rosemary</p>
+          <p class="terpene-card__desc">The precision tool. It promotes alertness, memory retention, and mental clarity. It is also a bronchodilator (helps open airways). Excellent for study, work, or creative focus.</p>
+        </div>
+
+      </div>
+
+      <p class="section__subheading">the Support Crew (Secondary Terpenes)</p>
+      <div class="terpene-grid">
+
+        <div class="terpene-card terpene-card--linal">
+          <h4>Linalool<br>// The Soother</h4>
+          <p class="terpene-card__found">Found in Lavender &amp; Birch</p>
+          <p class="terpene-card__desc">The anxiety brake. Famous for its distinct floral aroma and ability to calm the nervous system. Excellent for acute stress, panic attacks, and pain modulation without heavy sedation.</p>
+        </div>
+
+        <div class="terpene-card terpene-card--humul">
+          <h4>Humulene<br>// The Moderator</h4>
+          <p class="terpene-card__found">Found in Hops, Sage &amp; Ginseng</p>
+          <p class="terpene-card__desc">The appetite controller. Structurally similar to Beta-Caryophyllene, it fights inflammation potently but is unique for suppressing appetite (preventing the "munchies"). A key component for functional daytime use.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- Conclusion -->
+  <section class="section section--alt">
+    <div class="text-wrap">
+      <p class="section__label">Part 5</p>
+      <h2 class="section__heading">the Conclusion</h2>
+      <div class="conclusion-box">
+        <div class="prose">
+          <p>We live in a world that loves complicated answers. <strong>Occam's Razor</strong> states that often times, the simplest explanation is the right one.</p>
+          <p><strong>Your body knows how to heal itself; it just needs resources to do it.</strong></p>
+          <p>Knowing when or how to ask for help is often the biggest hurdle. Don't make it weird, just make it work. Listen to your body and give it time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <strong>mostlycbd.com</strong>
+        Natural cannabis advocacy. Balanced profiles.<br/>
+        Hand-coded. GitHub Pages. No ads. No agenda but the evidence.
+      </div>
+      <div class="site-footer__taglines">
+        <div>Educate to Regulate.<br/>Focused. Functional. Fair.</div>
+        <div class="site-footer__socials">
+          <a href="https://twitter.com/scrapthescript" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@mostlycbd/" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/mostly.cbd/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a href="https://www.reddit.com/r/mostlyCBD/" target="_blank" rel="noopener" aria-label="Reddit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#top-of-page" id="backToTop">↑ Top</a>
+
+  <script>
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btn.classList.toggle('visible', window.scrollY > 300);
+    });
+  </script>
 
 </body>
 </html>

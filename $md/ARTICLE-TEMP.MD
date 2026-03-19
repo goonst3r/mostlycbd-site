@@ -336,27 +336,45 @@ CSS: `grid-template-columns: 1fr 1fr;` (not auto-fit).
 ```
 
 #### Callouts
+Stoplight color system — green / amber / red. The icon label reinforces tone; color carries the signal.
+
 ```html
 <!-- Amber: name the caveat — don't hide it -->
 <div class="callout callout--amber">
-  <div class="callout__icon">⚠</div>
+  <div class="callout__icon">// NOTE</div>
   <div class="callout__heading">[Title that names the issue directly]</div>
   <p>[Explain and contextualize. This is where we show we've done the work.]</p>
 </div>
 
 <!-- Green: affirmative finding or brand position -->
 <div class="callout callout--green">
-  <div class="callout__icon">◆</div>
+  <div class="callout__icon">// FINDING</div>
   <div class="callout__heading">[Affirmative statement]</div>
   <p>[Supporting detail.]</p>
 </div>
 
 <!-- Red: serious risk, misdiagnosis, or harm -->
 <div class="callout callout--red">
-  <div class="callout__icon">⚠</div>
+  <div class="callout__icon">// RISK</div>
   <div class="callout__heading">[Risk statement]</div>
   <p>[Plain-language explanation of the risk and its consequences.]</p>
 </div>
+```
+
+Required CSS in article `<style>` block — scopes icon label style to non-green callouts only:
+```css
+.callout--amber .callout__icon,
+.callout--green .callout__icon,
+.callout--red .callout__icon {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.callout--amber .callout__icon { color: var(--amber); }
+.callout--green .callout__icon { color: var(--green); }
+.callout--red   .callout__icon { color: var(--red); }
 ```
 
 #### Evidence Table

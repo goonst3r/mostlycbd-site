@@ -12,97 +12,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="Favicon.png">
     <style>
-      /* Reset style.css body padding (was 2rem all sides — breaks flush nav) */
-      body { padding: 0; }
-      /* Reset legacy fixed-header clearance (nav is now sticky, not fixed) */
-      .content-container { padding-top: 20px; }
-
-      /* ─── site nav ───────────────────────────────────────────── */
-      /* Reset style.css bare `nav` rule (position:fixed, padding, display:flex) */
-      .site-nav {
-        background-image: linear-gradient(rgba(218,215,205,0.85), rgba(218,215,205,0.80)), url('images/bg_header.jpeg');
-        background-size: cover;
-        background-position: center;
-        border-bottom: 1px solid rgba(52,78,65,0.12);
-        position: sticky; top: 0; z-index: 100;
-        display: block;
-        padding: 0;
-      }
-      .site-nav__inner {
-        display: flex; align-items: center; justify-content: space-between;
-        max-width: 1020px; margin: 0 auto; padding: 0 24px;
-        height: 64px; position: relative;
-      }
-      .site-nav__logo {
-        font-family: 'DM Mono', monospace;
-        font-size: 14px; font-weight: 500; letter-spacing: .04em;
-        color: #1C1B18; text-decoration: none;
-      }
-      .site-nav__logo span { color: #3B6E52; }
-      .site-nav__logo:hover { color: #C4692A; }
-      .site-nav__links {
-        list-style: none; display: flex; gap: 28px;
-        align-items: center; margin: 0; padding: 0;
-      }
-      .site-nav__links a {
-        font-family: 'DM Mono', monospace;
-        font-size: 11px; letter-spacing: .07em; text-transform: uppercase;
-        color: #5A5750; text-decoration: none; transition: color .15s ease;
-      }
-      .site-nav__links a:hover { color: #C4692A; }
-      .hamburger {
-        display: none; flex-direction: column; justify-content: space-between;
-        width: 24px; height: 16px; background: none; border: none;
-        cursor: pointer; padding: 0;
-      }
-      .hamburger span {
-        display: block; height: 2px; background: #5A5750;
-        border-radius: 1px; transition: all .25s ease;
-      }
-      .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-      .hamburger.open span:nth-child(2) { opacity: 0; }
-      .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-      @media (max-width: 680px) {
-        .hamburger { display: flex; }
-        .site-nav__links {
-          display: none; position: absolute; top: 64px; left: 0; right: 0;
-          flex-direction: column; align-items: flex-start; gap: 18px;
-          background-image: linear-gradient(rgba(218,215,205,0.96), rgba(218,215,205,0.97)), url('images/bg_header.jpeg');
-          background-size: cover; border-bottom: 1px solid rgba(52,78,65,0.12);
-          padding: 20px 24px 24px;
-        }
-        .site-nav__links.open { display: flex; }
-      }
-
-      /* ─── site footer ─────────────────────────────────────────── */
-      .site-footer {
-        border-top: 1px solid #C8C3B8;
-        padding: 40px 0 32px;
-        background: #EAE6DC;
-      }
-      .site-footer__inner {
-        max-width: 1020px; margin: 0 auto; padding: 0 24px;
-        display: flex; justify-content: space-between; align-items: flex-start;
-        flex-wrap: wrap; gap: 24px;
-      }
-      .site-footer__brand {
-        font-family: 'DM Mono', monospace; font-size: 12px; color: #5A5750;
-      }
-      .site-footer__brand strong {
-        display: block; font-size: 14px; color: #1C1B18; margin-bottom: 4px;
-      }
-      .site-footer__taglines {
-        font-family: 'DM Mono', monospace; font-size: 11px; color: #5A5750;
-        letter-spacing: .06em; text-align: right; line-height: 1.8;
-        display: flex; flex-direction: column; align-items: flex-end; gap: 14px;
-      }
-      .site-footer__socials { display: flex; gap: 18px; align-items: center; }
-      .site-footer__socials a {
-        display: flex; color: #5A5750; text-decoration: none; transition: color .15s ease;
-      }
-      .site-footer__socials a:hover { color: #3B6E52; }
-      .site-footer__socials svg { display: block; }
-
       /* ─── page lede (hero replacement) ───────────────────────── */
       .page-lede {
         padding: 20px 0 24px;
@@ -147,7 +56,6 @@
     </nav>
 
     <main>
-        <div id="top-of-page"></div>
         <div class="content-container">
 
             <div class="page-lede">
@@ -167,7 +75,7 @@
                 <div class="blog-section-label">Published</div>
                 
                 <a class="blog-card-featured" href="blog/akathisia.html"
-                   style="background-image: linear-gradient(rgba(52,78,65,0.82), rgba(52,78,65,0.92)), url('images/bg_akathisia.jpg');">
+                   style="background-image: linear-gradient(rgba(52,78,65,0.20), rgba(52,78,65,0.52)), url('images/bg_akathisia.jpg');">
                     <div class="blog-card-tag">Science &middot; Policy</div>
                     <h2>The Restlessness No One Names</h2>
                     <p class="blog-card-desc">Akathisia is a drug-induced movement disorder &mdash; unbearable inner restlessness, most often caused by the very medications meant to help. CBD's pharmacology may offer what pharmaceutical alternatives can't. The research to confirm that doesn't exist yet. Schedule I classification is why.</p>
@@ -179,7 +87,7 @@
                 </a>
 
                 <a class="blog-card-featured" href="blog/ecs-system.html"
-                   style="background-image: linear-gradient(rgba(52,78,65,0.82), rgba(52,78,65,0.92)), url('images/bg_ecs.jpg');">
+                   style="background-image: linear-gradient(rgba(52,78,65,0.20), rgba(52,78,65,0.52)), url('images/bg_ecs.jpg');">
                     <div class="blog-card-tag">Science &middot; Policy</div>
                     <h2>Every mammal has this system. Almost no one was taught it.</h2>
                     <p class="blog-card-desc">The endocannabinoid system regulates pain, mood, memory, appetite, and immune response. It was discovered in 1992. It's absent from 91% of medical school curricula — not because the science isn't there, but because the policy infrastructure was designed to suppress it.</p>
@@ -191,7 +99,7 @@
                 </a>
 
                 <a class="blog-card-featured" href="blog/hearst-anslinger.html"
-                   style="background-image: linear-gradient(rgba(52,78,65,0.82), rgba(52,78,65,0.92)), url('images/bg_hearst.jpg');">
+                   style="background-image: linear-gradient(rgba(52,78,65,0.20), rgba(52,78,65,0.52)), url('images/bg_hearst.jpg');">
                     <div class="blog-card-tag">History &middot; Policy</div>
                     <h2>One Man. 28 Papers. 87 Years of Stigma.</h2>
                     <p class="blog-card-desc">The stigma was manufactured in a newsroom to protect a timber fortune. Before cannabis was illegal, it was in the U.S. Pharmacopeia. The story of how yellow journalism became federal drug policy — and why the infrastructure it built is still running.</p>
@@ -453,32 +361,6 @@
         </div>
       </div>
     </footer>
-
-    <a href="#top-of-page" id="backToTop">↑ TOP</a>
-
-    <style>
-        #backToTop {
-            position: fixed; bottom: 30px; right: 30px;
-            background-color: #344E41; color: #DAD7CD;
-            padding: 12px 20px; text-decoration: none;
-            font-family: 'DM Mono', monospace; font-weight: bold; font-size: 14px;
-            border-radius: 4px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-            transition: transform 0.2s, background-color 0.2s;
-            z-index: 1000; opacity: 0; pointer-events: none;
-        }
-        #backToTop.visible { opacity: 1; pointer-events: all; }
-        #backToTop:hover {
-            background-color: #DAD7CD; color: #344E41;
-            transform: translateY(-3px); border: 2px solid #344E41;
-        }
-    </style>
-
-    <script>
-        const btn = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            btn.classList.toggle('visible', window.scrollY > 300);
-        });
-    </script>
 
     <style>
         /* Clickable preview images */
