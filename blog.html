@@ -14,6 +14,8 @@
     <style>
       /* Reset style.css body padding (was 2rem all sides — breaks flush nav) */
       body { padding: 0; }
+      /* Reset legacy fixed-header clearance (nav is now sticky, not fixed) */
+      .content-container { padding-top: 20px; }
 
       /* ─── site nav ───────────────────────────────────────────── */
       /* Reset style.css bare `nav` rule (position:fixed, padding, display:flex) */
@@ -100,6 +102,29 @@
       }
       .site-footer__socials a:hover { color: #3B6E52; }
       .site-footer__socials svg { display: block; }
+
+      /* ─── page lede (hero replacement) ───────────────────────── */
+      .page-lede {
+        padding: 20px 0 24px;
+        border-bottom: 1px solid #C8C3B8;
+        margin-bottom: 32px;
+      }
+      .page-lede__label {
+        font-family: 'DM Mono', monospace;
+        font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+        color: #C4692A; display: block; margin-bottom: 10px;
+      }
+      .page-lede__title {
+        font-family: 'Libre Baskerville', serif;
+        font-size: 1.65rem; font-weight: 700;
+        color: #1C1B18; line-height: 1.2;
+        margin: 0 0 12px;
+      }
+      .page-lede__desc {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.9rem; color: #5A5750;
+        max-width: 560px; line-height: 1.65; margin: 0;
+      }
     </style>
 </head>
 <body>
@@ -125,14 +150,10 @@
         <div id="top-of-page"></div>
         <div class="content-container">
 
-            <div class="blog-hero-banner">
-                <span class="blog-eyebrow">The Mission &middot; Resources</span>
-                <h1 class="blog-hero-title">Facts over stigma.<br>Every time.</h1>
-                <p class="blog-hero-sub">Evidence-based breakdowns on cannabis policy, history, and science. No ads. No sponsors. No agenda. Free to share, cite, and use.</p>
-            </div>
-
-            <div class="mission-strip">
-                Educate to regulate <span class="dot">&middot;</span> Reschedule <span class="dot">&middot;</span> Fund the trials <span class="dot">&middot;</span> Protect access <span class="dot">&middot;</span> Regulate by evidence
+            <div class="page-lede">
+                <span class="page-lede__label">Deep Dives &middot; mostlyCBD</span>
+                <h1 class="page-lede__title">Advocacy resources. Education. Free to use.</h1>
+                <p class="page-lede__desc">Evidence-based breakdowns on cannabis policy, history, and science &mdash; cited, shareable, and built to move.</p>
             </div>
 
             <div class="resources-tabs" role="tablist">
