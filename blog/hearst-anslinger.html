@@ -1,308 +1,912 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One Man. 28 Papers. 87 Years of Stigma. | mostlyCBD Deep Dives</title>
-    <meta name="description" content="Before cannabis was illegal, it was medicine. The real story of how William Randolph Hearst and Harry Anslinger manufactured the stigma — and why it still matters." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One Man. 28 Papers. 87 Years of Stigma. | mostlyCBD Deep Dives</title>
+  <meta name="description" content="Before cannabis was illegal, it was in the U.S. Pharmacopeia. William Randolph Hearst and Harry Anslinger built the stigma from a newsroom — and the infrastructure they created is still running." />
+  <meta property="og:title" content="One Man. 28 Papers. 87 Years of Stigma." />
+  <meta property="og:description" content="The stigma was manufactured in a newsroom to protect a timber fortune. Documented history — not conspiracy." />
+  <meta property="og:url" content="https://mostlycbd.com/blog/hearst-anslinger.html" />
+  <meta property="og:site_name" content="mostlyCBD" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@scrapthescript" />
+  <meta property="og:image" content="https://mostlycbd.com/images/bg_hearst.jpg" />
+  <meta name="twitter:image" content="https://mostlycbd.com/images/bg_hearst.jpg" />
 
-    <meta property="og:title" content="One Man. 28 Papers. 87 Years of Stigma." />
-    <meta property="og:description" content="The stigma was manufactured in a newsroom to protect a timber fortune. Documented history — not conspiracy." />
-    <meta property="og:url" content="https://mostlycbd.com/blog/hearst-anslinger.html" />
-    <meta property="og:site_name" content="mostlyCBD" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@scrapthescript" />
-    <meta property="og:image" content="https://mostlycbd.com/images/bg_hearst.jpg" />
-    <meta name="twitter:image" content="https://mostlycbd.com/images/bg_hearst.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script data-goatcounter="https://mostlycbd.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+  <link rel="icon" type="image/png" href="../Favicon.png" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ─── tokens ─────────────────────────────────────────────── */
+    :root {
+      --bg:          #F4F1EB;
+      --bg-alt:      #EAE6DC;
+      --ink:         #1C1B18;
+      --ink-muted:   #5A5750;
+      --rule:        #C8C3B8;
+      --green:       #3B6E52;
+      --green-pale:  #D4E7DC;
+      --amber:       #C4692A;
+      --amber-pale:  #F5E4D5;
+      --red-pale:    #F2DCDC;
+      --red:         #9B3030;
+      --serif:       'Libre Baskerville', Georgia, serif;
+      --sans:        'DM Sans', system-ui, sans-serif;
+      --mono:        'DM Mono', monospace;
+      --max:         760px;
+      --max-wide:    1020px;
+    }
 
-    <script data-goatcounter="https://mostlycbd.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    /* ─── reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--amber); }
 
-    <!-- One level up since this file lives in /blog/ -->
-    <link rel="stylesheet" href="../style.css">
-    <link rel="icon" type="image/png" href="../Favicon.png">
+    /* ─── utilities ─────────────────────────────────────────── */
+    .container  { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .container--wide { max-width: var(--max-wide); margin: 0 auto; padding: 0 24px; }
+    .rule { border: none; border-top: 1px solid var(--rule); margin: 0; }
+
+    /* ─── site nav ───────────────────────────────────────────── */
+    .site-nav {
+      background-image: linear-gradient(rgba(218,215,205,0.85), rgba(218,215,205,0.80)), url('../images/bg_header.jpeg');
+      background-size: cover;
+      background-position: center;
+      border-bottom: 1px solid rgba(52,78,65,0.12);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .site-nav__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: var(--max-wide); margin: 0 auto; padding: 0 24px;
+      height: 64px;
+      position: relative;
+    }
+    .site-nav__logo {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: .04em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .site-nav__logo span { color: var(--green); }
+    .site-nav__logo:hover { color: var(--amber); }
+
+    .site-nav__links {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      margin: 0; padding: 0;
+    }
+    .site-nav__links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color .15s ease;
+    }
+    .site-nav__links a:hover { color: var(--amber); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 16px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+    .hamburger span {
+      display: block;
+      height: 2px;
+      background: var(--ink-muted);
+      border-radius: 1px;
+      transition: all .25s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 680px) {
+      .hamburger { display: flex; }
+      .site-nav__links {
+        display: none;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        background-image: linear-gradient(rgba(218,215,205,0.96), rgba(218,215,205,0.97)), url('../images/bg_header.jpeg');
+        background-size: cover;
+        border-bottom: 1px solid rgba(52,78,65,0.12);
+        padding: 20px 24px 24px;
+      }
+      .site-nav__links.open { display: flex; }
+    }
+
+    /* ─── campaign label ─────────────────────────────────────── */
+    .campaign-label {
+      background: var(--green);
+      color: #fff;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    /* ─── hero ───────────────────────────────────────────────── */
+    .hero {
+      padding: 80px 0 56px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero__kicker {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--amber);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero__headline {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.15;
+      font-weight: 700;
+      max-width: 640px;
+      margin-bottom: 24px;
+    }
+    .hero__headline em {
+      font-style: italic;
+      color: var(--green);
+    }
+    .hero__sub {
+      font-size: 18px;
+      color: var(--ink-muted);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+    .hero__meta {
+      display: flex; gap: 32px; flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+      letter-spacing: .04em;
+    }
+    .hero__meta-item strong {
+      display: block;
+      color: var(--ink);
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    /* ─── section spacing ────────────────────────────────────── */
+    .section { padding: 72px 0; }
+    .section--alt { background: var(--bg-alt); }
+    .section--tight { padding: 48px 0; }
+
+    .section__label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+    .section__heading {
+      font-family: var(--serif);
+      font-size: clamp(24px, 3.5vw, 34px);
+      line-height: 1.25;
+      margin-bottom: 24px;
+    }
+    .section__heading--amber { color: var(--amber); }
+    .section__heading--red   { color: var(--red); }
+
+    /* ─── prose ──────────────────────────────────────────────── */
+    .prose p { margin-bottom: 20px; color: var(--ink); }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose strong { font-weight: 500; }
+
+    /* ─── stat grid ──────────────────────────────────────────── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin: 40px 0;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .stat-cell {
+      background: var(--bg);
+      padding: 28px 24px;
+    }
+    .stat-cell__num {
+      font-family: var(--serif);
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+    .stat-cell__num--amber { color: var(--amber); }
+    .stat-cell__num--red   { color: var(--red); }
+    .stat-cell__label {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.45;
+    }
+
+    /* ─── callout ────────────────────────────────────────────── */
+    .callout {
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 28px 32px;
+      margin: 32px 0;
+      position: relative;
+    }
+    .callout--amber { border-color: var(--amber); background: var(--amber-pale); }
+    .callout--green { border-color: var(--green); background: var(--green-pale); }
+    .callout--red   { border-color: var(--red); background: var(--red-pale); }
+    .callout__icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .callout__heading {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+    .callout p { font-size: 15px; line-height: 1.6; }
+
+    /* ─── pull quote ─────────────────────────────────────────── */
+    .pull-quote {
+      border-top: 2px solid var(--ink);
+      border-bottom: 1px solid var(--rule);
+      margin: 48px 0;
+      padding: 28px 0 24px;
+    }
+    .pull-quote__text {
+      font-family: var(--serif);
+      font-size: clamp(20px, 3vw, 26px);
+      font-style: italic;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .pull-quote__attr {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+    }
+
+    /* ─── evidence table ─────────────────────────────────────── */
+    .evidence-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+      font-size: 14px;
+    }
+    .evidence-table th {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 2px solid var(--rule);
+      background: var(--bg-alt);
+    }
+    .evidence-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .evidence-table tr:hover td { background: var(--bg-alt); }
+    .badge {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+    .badge--green { background: var(--green-pale); color: var(--green); }
+    .badge--amber { background: var(--amber-pale); color: var(--amber); }
+    .badge--red   { background: var(--red-pale); color: var(--red); }
+
+    /* ─── nuance section ─────────────────────────────────────── */
+    .nuance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin: 32px 0;
+    }
+    @media (max-width: 580px) {
+      .nuance-grid { grid-template-columns: 1fr; }
+    }
+    .nuance-cell {
+      background: var(--bg);
+      padding: 24px;
+    }
+    .nuance-cell__head {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .nuance-cell__head--concern { color: var(--amber); }
+    .nuance-cell__head--context { color: var(--green); }
+    .nuance-cell p { font-size: 14px; line-height: 1.6; color: var(--ink); }
+
+    /* ─── position cards ─────────────────────────────────────── */
+    .position-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .position-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px 24px;
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+    }
+    .position-item__num {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 36px;
+    }
+    .position-item__content p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    .position-item__content strong {
+      display: block;
+      font-family: var(--sans);
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    /* ─── footer ─────────────────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid var(--rule);
+      padding: 40px 0 32px;
+      background: var(--bg-alt);
+    }
+    .site-footer__inner {
+      max-width: var(--max-wide); margin: 0 auto; padding: 0 24px;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .site-footer__brand {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .site-footer__brand strong {
+      display: block;
+      font-size: 14px;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .site-footer__taglines {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-muted);
+      letter-spacing: .06em;
+      text-align: right;
+      line-height: 1.8;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 14px;
+    }
+    .site-footer__socials {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+    .site-footer__socials a {
+      display: flex;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color .15s ease;
+    }
+    .site-footer__socials a:hover { color: var(--green); }
+    .site-footer__socials svg { display: block; }
+
+    /* ─── footnote strip ─────────────────────────────────────── */
+    .footnotes {
+      padding: 32px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .footnotes__heading {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 16px;
+    }
+    .footnotes ol { padding-left: 20px; }
+    .footnotes li {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.55;
+      margin-bottom: 8px;
+    }
+    .footnotes a {
+      color: var(--ink-muted);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    /* ─── animations ─────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero__kicker    { animation: fadeUp .5s ease both; }
+    .hero__headline  { animation: fadeUp .55s .08s ease both; }
+    .hero__sub       { animation: fadeUp .55s .16s ease both; }
+    .hero__meta      { animation: fadeUp .5s .24s ease both; }
+  </style>
 </head>
 <body>
 
-    <nav id="nav">
-        <a href="../index.html"><img src="../logo_1.png" alt="mostlyCBD" height="40em" style="margin: 0 auto 0 auto;"></a>
-        <button class="hamburger" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
-            <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-links">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../guide.html">Guide</a></li>
-            <li><a href="../blog.html" class="active">Deep Dives</a></li>
-            <li><a href="https://www.reddit.com/r/mostlyCBD/" target="_blank">Community</a></li>
-            <li><a href="../action.html">Action</a></li>
-            <li><a href="https://shop.mostlycbd.com">Shop</a></li>
-        </ul>
-    </nav>
+<!-- NAV -->
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="site-nav__inner">
+    <a href="../index.html" class="site-nav__logo">mostly<span>cbd</span>.com</a>
+    <button type="button" class="hamburger" aria-label="Menu"
+      onclick="this.classList.toggle('open');document.querySelector('.site-nav__links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="site-nav__links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../guide.html">Guide</a></li>
+      <li><a href="../blog.html">Deep Dives</a></li>
+      <li><a href="https://www.reddit.com/r/mostlyCBD/" target="_blank" rel="noopener">Community</a></li>
+      <li><a href="../action.html">Action</a></li>
+      <li><a href="https://shop.mostlycbd.com">Shop</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <main>
-        <div id="top-of-page"></div>
+<!-- CAMPAIGN LABEL -->
+<div class="campaign-label">
+  Advocacy Series &nbsp;·&nbsp; Cannabis Policy &amp; History
+</div>
 
-        <div class="content-container">
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <p class="hero__kicker">the propaganda that became federal law</p>
+    <h1 class="hero__headline">
+      One man. 28 papers. 87 years.<br/>
+      <em>The stigma was built in a newsroom.</em>
+    </h1>
+    <p class="hero__sub">
+      Before cannabis was illegal, it was in the U.S. Pharmacopeia — prescribed for pain, neurological
+      disorders, and dozens of other conditions for 87 years. The decision to remove it wasn't driven by
+      new science. A newspaper baron protecting a timber fortune drove it, and a federal commissioner
+      turned that coverage into congressional testimony. This is what the documented record shows.
+    </p>
+    <div class="hero__meta">
+      <div class="hero__meta-item">
+        <strong>Topic</strong>
+        Cannabis Policy &amp; History
+      </div>
+      <div class="hero__meta-item">
+        <strong>Sources</strong>
+        Congressional Record · U.S. Pharmacopeia · Herer et al.
+      </div>
+      <div class="hero__meta-item">
+        <strong>Position</strong>
+        Educate to Regulate
+      </div>
+    </div>
+  </div>
+</header>
 
-            <!-- Article Hero -->
-            <div class="article-hero-banner">
-                <div class="article-breadcrumb">
-                    <a href="../blog.html">Deep Dives</a> / History · Policy
-                </div>
-                <span class="blog-eyebrow">The Mission · Deep Dive No. 01</span>
-                <h1 class="guide-title">One Man. 28 Papers. 90+ Years of Stigma.</h1>
-                <p class="article-dek">
-                    Before cannabis was illegal, it was medicine. The story of how William Randolph Hearst
-                    and Harry Anslinger manufactured the stigma from a newsroom — and why that weapon
-                    is still loaded today.
-                </p>
-                <div class="article-meta-row">
-                    <div class="article-meta-item"><strong>Category</strong>History · Policy</div>
-                    <div class="article-meta-item"><strong>Read Time</strong>~7 min</div>
-                    <div class="article-meta-item"><strong>Sources</strong>Cited inline</div>
-                </div>
-            </div>
+<!-- SECTION 1: The origin -->
+<section class="section">
+  <div class="container">
+    <p class="section__label">Where it started</p>
+    <h2 class="section__heading">DuPont Was a Footnote. Hearst Had the Megaphone.</h2>
 
-            <!-- Article Body -->
-            <div class="article-body">
+    <div class="stat-grid">
+      <div class="stat-cell">
+        <div class="stat-cell__num">87</div>
+        <div class="stat-cell__label">Years cannabis was listed in the U.S. Pharmacopeia before criminalization</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell__num">28</div>
+        <div class="stat-cell__label">Hearst newspapers amplifying the "marihuana" panic simultaneously across the country</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell__num stat-cell__num--red">0</div>
+        <div class="stat-cell__label">New scientific findings that justified removing cannabis from the Pharmacopeia in 1942</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell__num stat-cell__num--amber">9%</div>
+        <div class="stat-cell__label">U.S. medical schools that include cannabis education in their curriculum today</div>
+      </div>
+    </div>
 
-                <p class="article-lede">
-                    Cannabis was listed in the U.S. Pharmacopeia from 1850 onward — prescribed for neuralgia,
-                    convulsive disorders, pain, and dozens of other conditions. It had been there for 92 years
-                    when it was removed. No new science drove that decision. A newspaper baron did.
-                </p>
+    <div class="prose">
+      <p>
+        Most people who know anything about cannabis prohibition have heard the DuPont angle —
+        synthetic fibers, industrial hemp as a competitive threat to nylon. There's something to it.
+        DuPont's financial interests were not neutral. But that's not where the stigma was manufactured.
+        The stigma was built in a newsroom, and it was built deliberately.
+      </p>
+      <p>
+        <strong>William Randolph Hearst</strong> owned one of the largest newspaper chains in American
+        history — 28 papers at peak reach, landing on millions of doorsteps every day. He also owned
+        millions of acres of timber. Hemp paper threatened that investment directly. Hearst had both
+        a motive and an unmatched megaphone. DuPont had lawyers. Hearst had the public.<sup>1</sup>
+      </p>
+    </div>
+  </div>
+</section>
 
-                <h2>The DuPont Theory Is a Footnote</h2>
+<hr class="rule" />
 
-                <p>
-                    Most people who know anything about cannabis prohibition have heard the DuPont angle —
-                    synthetic fibers, industrial hemp as a competitive threat to nylon. There's something to it.
-                    DuPont's financial interests were not neutral. But that's not where the stigma was manufactured.
-                    The stigma was built in a newsroom, and it was built deliberately.
-                </p>
+<!-- SECTION 2: The rebranding -->
+<section class="section section--alt">
+  <div class="container">
+    <p class="section__label">The playbook</p>
+    <h2 class="section__heading">They Didn't Ban Cannabis. They Rebranded It.</h2>
 
-                <p>
-                    <strong>William Randolph Hearst</strong> owned one of the largest newspaper chains in American
-                    history — 28 papers at peak reach, landing on millions of doorsteps every day. He also owned
-                    millions of acres of timber. Hemp paper threatened that investment directly. Hearst had both
-                    a motive and an unmatched megaphone. DuPont had lawyers. Hearst had the public.
-                </p>
+    <div class="pull-quote">
+      <p class="pull-quote__text">"The passage of the Marihuana Tax Act was not based on sound science. It was primarily due to misinformation on the part of William Randolph Hearst and Harry Anslinger's campaign against African-American minorities and Mexican immigrant workers."</p>
+      <p class="pull-quote__attr">— Derek Rosenzweig · PA Legislative Testimony · 2019 · expert witness on prohibition history</p>
+    </div>
 
-                <h2>The Rebranding Campaign</h2>
+    <div class="prose">
+      <p>
+        Beginning around 1930, Hearst's papers ran a coordinated wave of stories connecting cannabis
+        to violence, insanity, and moral collapse. The framing was almost always racial — stories featured
+        Black or Mexican characters as perpetrators, connecting the plant to communities that white,
+        middle-class readers were already primed to fear.<sup>2</sup>
+      </p>
+      <p>
+        The word "marijuana" itself was part of the strategy. <em>Cannabis</em> was clinical, familiar,
+        American — it was in the Pharmacopeia, in medicine cabinets. It was not threatening.
+        <em>Marihuana</em> sounded foreign and dangerous. The deliberate rebranding created linguistic
+        distance between Americans and a plant they had been using medicinally for decades.
+        That distance made fear possible.<sup>3</sup>
+      </p>
+    </div>
+  </div>
+</section>
 
-                <p>
-                    Beginning around 1930, Hearst's papers ran a coordinated wave of stories connecting cannabis
-                    to violence, insanity, and moral collapse. The framing was almost always racial — stories
-                    featured Black or Mexican characters as perpetrators, connecting the plant to communities
-                    that white, middle-class readers were already primed to fear.
-                </p>
+<hr class="rule" />
 
-                <div class="article-pull-quote">
-                    <p>
-                        "The passage of the Marihuana Tax Act was not based on sound science. It was primarily
-                        due to misinformation on the part of William Randolph Hearst and Harry Anslinger's campaign
-                        against African-American minorities and Mexican immigrant workers."
-                    </p>
-                    <cite>— Derek Rosenzweig, PA Legislative Testimony on Cannabis Policy</cite>
-                </div>
+<!-- SECTION 3: The pipeline -->
+<section class="section">
+  <div class="container">
+    <p class="section__label">Propaganda to policy</p>
+    <h2 class="section__heading">From Yellow Journalism to Federal Law.</h2>
 
-                <p>
-                    The word "marijuana" itself was part of the strategy. <em>Cannabis</em> was clinical,
-                    familiar, American — it was in the Pharmacopeia, in medicine cabinets, it was not threatening.
-                    <em>Marihuana</em> sounded foreign and dangerous. The deliberate rebranding created linguistic
-                    distance between Americans and a plant they had been using medicinally for decades.
-                    That distance made fear possible.
-                </p>
+    <table class="evidence-table" aria-label="Timeline from propaganda to federal policy">
+      <thead>
+        <tr><th>Year</th><th>What happened</th><th>Why it matters</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1850</strong></td>
+          <td>Cannabis added to the U.S. Pharmacopeia. Prescribed for neuralgia, convulsive disorders, pain, alcoholism, and over a dozen other conditions.</td>
+          <td>Used medically in America for 87 years before criminalization</td>
+        </tr>
+        <tr>
+          <td><strong>1930</strong></td>
+          <td>Harry Anslinger appointed first commissioner of the Federal Bureau of Narcotics. Hearst newspapers begin the coordinated "marihuana" campaign — sensationalized headlines, racial panic, manufactured crisis.</td>
+          <td>A media operation, not a public health response</td>
+        </tr>
+        <tr>
+          <td><strong>1936</strong></td>
+          <td><em>Reefer Madness</em> released — church-funded, Hearst-amplified. Fictional panic reaches theaters nationwide. Public opinion fully primed.</td>
+          <td>The fictional becomes the official narrative</td>
+        </tr>
+        <tr>
+          <td><strong>1937</strong></td>
+          <td>Anslinger testifies before Congress, citing Hearst newspaper stories as scientific evidence. The Marihuana Tax Act passes in under two minutes of debate.</td>
+          <td>Yellow journalism laundered into federal law<sup>4</sup></td>
+        </tr>
+        <tr>
+          <td><strong>1942</strong></td>
+          <td>Cannabis removed from the U.S. Pharmacopeia. Zero new pharmacological evidence supported the removal.</td>
+          <td>92 years of medical use erased without scientific justification<sup>5</sup></td>
+        </tr>
+        <tr>
+          <td><strong>1970</strong></td>
+          <td>Nixon's Controlled Substances Act places cannabis in Schedule I — alongside heroin, above cocaine and meth. His own Shafer Commission recommends against it. Nixon overrides them.</td>
+          <td>Political override of the government's own scientific body<sup>6</sup></td>
+        </tr>
+        <tr>
+          <td><strong>Today</strong></td>
+          <td>Schedule I classification remains. Federal research blockade intact. Only 9% of U.S. medical schools include cannabis in curriculum.</td>
+          <td>The infrastructure is still running</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
-                <h2>From Newsprint to Federal Law</h2>
+<hr class="rule" />
 
-                <div class="article-timeline">
-                    <div class="article-timeline-heading">The Pipeline: Propaganda to Policy</div>
+<!-- SECTION 4: The circular logic trap -->
+<section class="section section--alt">
+  <div class="container">
+    <p class="section__label">The trap</p>
+    <h2 class="section__heading section__heading--amber">You Can't Demand Evidence While Blocking the Research.</h2>
 
-                    <div class="tl-item">
-                        <span class="tl-year">1850</span>
-                        <span class="tl-text">Cannabis added to the <strong>U.S. Pharmacopeia</strong>. Prescribed for neuralgia, convulsive disorders, pain, alcoholism, and over a dozen other conditions. Used medically for 87 years.</span>
-                    </div>
+    <div class="callout callout--amber">
+      <div class="callout__icon">⚠</div>
+      <div class="callout__heading">The Schedule I Circular Logic</div>
+      <p>Schedule I requires that a substance have "no accepted medical use." That classification is then used to deny research approval that would produce evidence of medical use. You cannot demand evidence while blocking the research. The circular logic is not an accident — it is a design feature of the system as it was built.</p>
+    </div>
 
-                    <div class="tl-item">
-                        <span class="tl-year">1930</span>
-                        <span class="tl-text"><strong>Harry Anslinger</strong> appointed first commissioner of the Federal Bureau of Narcotics. Hearst newspapers begin the coordinated "marihuana" campaign — sensationalized headlines, racial panic, manufactured crisis.</span>
-                    </div>
+    <div class="prose">
+      <p>
+        Anslinger laundered Hearst's yellow journalism into congressional testimony. Congress codified
+        that testimony as law. Nixon then used that law as a political weapon — his own aide, John Ehrlichman,
+        later confirmed on record that the War on Drugs was designed to disrupt Black communities and
+        antiwar protesters. The plant was the pretext. The stigma was the weapon.<sup>7</sup>
+      </p>
+      <p>
+        The classification built on that 1937 foundation is still active law. It still blocks federally
+        funded clinical trials. It's still why your doctor has almost certainly received zero clinical
+        training on cannabinoid medicine. It's still why, when people arrive at a dispensary after the
+        traditional healthcare system fails them, they meet a budtender instead of a clinician — and
+        encounter high-THC products with no guidance instead of balanced, evidence-informed formulations.
+      </p>
+    </div>
+  </div>
+</section>
 
-                    <div class="tl-item">
-                        <span class="tl-year">1936</span>
-                        <span class="tl-text"><em>Reefer Madness</em> released — church-funded, Hearst-amplified. The fictional panic reaches theaters nationwide. Public opinion is fully primed.</span>
-                    </div>
+<hr class="rule" />
 
-                    <div class="tl-item">
-                        <span class="tl-year">1937</span>
-                        <span class="tl-text">Anslinger testifies before Congress, <strong>citing Hearst newspaper stories as evidence</strong>. The Marihuana Tax Act passes. Yellow journalism has become federal policy.</span>
-                    </div>
+<!-- SECTION 5: What the record shows -->
+<section class="section">
+  <div class="container">
+    <p class="section__label">The present cost</p>
+    <h2 class="section__heading">The Infrastructure Is Still Running.</h2>
 
-                    <div class="tl-item">
-                        <span class="tl-year">1942</span>
-                        <span class="tl-text">Cannabis <strong>removed from the U.S. Pharmacopeia</strong> — 92 years after inclusion. Zero new pharmacological evidence supported the removal.</span>
-                    </div>
+    <table class="evidence-table" aria-label="What the historical record shows">
+      <thead>
+        <tr><th>Finding</th><th>Status</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Anslinger cited Hearst newspaper stories as scientific evidence in his 1937 congressional testimony</td>
+          <td><span class="badge badge--red">Documented</span></td>
+          <td>Congressional Record, 1937</td>
+        </tr>
+        <tr>
+          <td>Nixon's Shafer Commission recommended against Schedule I; Nixon overrode them for political reasons</td>
+          <td><span class="badge badge--red">Political override</span></td>
+          <td>Shafer Commission Report, 1972</td>
+        </tr>
+        <tr>
+          <td>Nixon aide confirmed on record that the War on Drugs targeted Black communities and antiwar protesters by design</td>
+          <td><span class="badge badge--red">On-record admission</span></td>
+          <td>Harper's Magazine, 2016</td>
+        </tr>
+        <tr>
+          <td>Cannabis removed from U.S. Pharmacopeia with zero new pharmacological justification</td>
+          <td><span class="badge badge--amber">Documented gap</span></td>
+          <td>U.S. Pharmacopeia, 1942</td>
+        </tr>
+        <tr>
+          <td>9% of U.S. medical schools include cannabis in curriculum; 84.9% of residents report zero clinical training</td>
+          <td><span class="badge badge--amber">Active education gap</span></td>
+          <td>JAMA, 2017</td>
+        </tr>
+        <tr>
+          <td>Federal Schedule I classification continues to block approval of clinical cannabis research</td>
+          <td><span class="badge badge--red">Active blockade</span></td>
+          <td>DEA scheduling rules, ongoing</td>
+        </tr>
+      </tbody>
+    </table>
 
-                    <div class="tl-item">
-                        <span class="tl-year">1970</span>
-                        <span class="tl-text">Nixon's Controlled Substances Act places cannabis in <strong>Schedule I</strong> — alongside heroin, above cocaine and meth. His own commission recommends against it. Nixon overrides them.</span>
-                    </div>
+    <div class="nuance-grid">
+      <div class="nuance-cell">
+        <div class="nuance-cell__head nuance-cell__head--concern">What they say</div>
+        <p>"Cannabis has no accepted medical use — that's why it's Schedule I."</p>
+      </div>
+      <div class="nuance-cell">
+        <div class="nuance-cell__head nuance-cell__head--context">What the record shows</div>
+        <p>Cannabis was prescribed in America for 87 years. Its removal from the Pharmacopeia was driven by a media campaign, not pharmacological evidence. Schedule I reflects a political decision made in 1937, not a scientific consensus reached at any point.</p>
+      </div>
+      <div class="nuance-cell">
+        <div class="nuance-cell__head nuance-cell__head--concern">What they say</div>
+        <p>"We need more research before we can change policy."</p>
+      </div>
+      <div class="nuance-cell">
+        <div class="nuance-cell__head nuance-cell__head--context">What the record shows</div>
+        <p>The Schedule I classification blocks the federally funded research that would produce that evidence. Demanding research while blocking it is not a scientific position — it is a policy design that maintains the status quo by making reform evidence-impossible.</p>
+      </div>
+      <div class="nuance-cell">
+        <div class="nuance-cell__head nuance-cell__head--concern">What they say</div>
+        <p>"Drug enforcement is about public safety, not race."</p>
+      </div>
+      <div class="nuance-cell">
+        <div class="nuance-cell__head nuance-cell__head--context">What the record shows</div>
+        <p>Anslinger's campaign was explicitly built on racial panic. Nixon's aide confirmed on record that the War on Drugs targeted Black communities by design. Enforcement patterns that persist today follow the documented origin of the policy.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-                    <div class="tl-item">
-                        <span class="tl-year">Today</span>
-                        <span class="tl-text">Schedule I classification remains. Federal research blockade intact. Only <strong>9% of U.S. medical schools</strong> include cannabis in curriculum. 84.9% of residents report receiving zero clinical training on it.</span>
-                    </div>
-                </div>
+<hr class="rule" />
 
-                <h2>The Circular Logic Trap</h2>
-
-                <p>
-                    Here's the part that should make anyone paying attention angry. The Schedule I classification
-                    that was built on Hearst's propaganda is now used to block the clinical research that would
-                    produce actual evidence. You can't get federal approval to run trials that would demonstrate
-                    cannabis has medical value — because the classification says it has no medical value.
-                </p>
-
-                <div class="article-callout">
-                    <span class="article-callout-icon">⚠</span>
-                    <p>You cannot demand evidence while blocking the research. The Schedule I classification doesn't just reflect ignorance about cannabis — it <strong>actively maintains it</strong>. That's not an oversight. That's a feature of the system as it was designed.</p>
-                </div>
-
-                <p>
-                    Anslinger laundered Hearst's yellow journalism into congressional testimony. Congress codified
-                    that testimony as law. Nixon then used that law as a political weapon — his own aide later
-                    confirmed on record that the War on Drugs was designed to disrupt Black communities and
-                    antiwar protesters. The plant was the pretext. The stigma was the weapon.
-                </p>
-
-                <h2>By the Numbers</h2>
-
-                <div class="article-stat-grid">
-                    <div class="article-stat-card">
-                        <span class="article-stat-num">87</span>
-                        <span class="article-stat-label">Years cannabis was in the U.S. Pharmacopeia before criminalization</span>
-                    </div>
-                    <div class="article-stat-card">
-                        <span class="article-stat-num">28</span>
-                        <span class="article-stat-label">Hearst newspapers amplifying the "marihuana" panic simultaneously</span>
-                    </div>
-                    <div class="article-stat-card">
-                        <span class="article-stat-num">0</span>
-                        <span class="article-stat-label">New scientific findings that justified removing cannabis from the Pharmacopeia in 1942</span>
-                    </div>
-                    <div class="article-stat-card">
-                        <span class="article-stat-num">9%</span>
-                        <span class="article-stat-label">U.S. medical schools that include cannabis education in their curriculum today</span>
-                    </div>
-                </div>
-
-                <h2>Why This Is Not Ancient History</h2>
-
-                <p>
-                    The classification built on that 1937 foundation is still active law. It still blocks
-                    federally funded clinical trials. It's still why your doctor has almost certainly received
-                    zero clinical training on cannabinoid medicine. It's still why, when people arrive at a
-                    dispensary after the traditional healthcare system fails them, they meet a budtender instead
-                    of a clinician — and encounter high-THC products with no guidance instead of balanced,
-                    evidence-informed formulations.
-                </p>
-
-                <p>
-                    The stigma Hearst manufactured didn't just change what people thought about a plant.
-                    It built a policy infrastructure that has blocked honest science for nearly a century.
-                    And that infrastructure is still running.
-                </p>
-
-                <div class="article-bottom-line">
-                    <span class="article-bottom-line-label">Bottom Line</span>
-                    <p>
-                        The stigma was manufactured in a newsroom to protect a timber fortune. The science was
-                        suppressed by policy built on that stigma. The people paying the price — patients who
-                        can't get honest clinical guidance, researchers who can't get federal approval, communities
-                        that were targeted from the beginning — are still paying it.
-                        <strong>That's not a cannabis problem. That's a documented policy failure that started
-                        with 28 newspapers and a financial motive.</strong>
-                    </p>
-                    <span class="article-signature">// Educate to regulate. 🌿</span>
-                </div>
-
-                <!-- Share strip -->
-                <div class="article-share-strip">
-                    <span class="article-share-label">Share this piece</span>
-                    <div class="article-share-actions">
-                        <a class="article-share-btn"
-                           href="https://twitter.com/intent/tweet?text=The+stigma+was+manufactured+in+a+newsroom+to+protect+a+timber+fortune.+One+man.+28+papers.+87+years+of+stigma.&url=https://mostlycbd.com/blog/hearst-anslinger.html&via=scrapthescript"
-                           target="_blank" rel="noopener">Post on X</a>
-                        <button class="article-share-btn" id="copyBtn" onclick="copyLink()">Copy Link</button>
-                        <a class="article-share-btn" href="../blog.html">← All Deep Dives</a>
-                    </div>
-                </div>
-
-                <!-- Next article -->
-                <div class="article-next">
-                    <span class="article-next-label">Up Next</span>
-                    <a class="article-next-card" href="../blog.html">
-                        <div class="blog-card-tag">Science · Market</div>
-                        <h3>The 14:1 Problem — How the Industry Bred Out the Brakes →</h3>
-                    </a>
-                </div>
-
-            </div><!-- /.article-body -->
-
-        </div><!-- /.content-container -->
-    </main>
-
-    <footer>
-        <div class="footer-links">
-            <a href="https://twitter.com/scrapthescript">X: @scrapthescript</a>
-            <a href="https://www.tiktok.com/@mostlycbd/">TikTok</a>
-            <a href="https://www.instagram.com/mostly.cbd/">Instagram</a>
-            <a href="https://www.reddit.com/r/mostlyCBD/">Reddit</a>
+<!-- SECTION 6: Positions -->
+<section class="section section--alt">
+  <div class="container">
+    <p class="section__label">Where we stand</p>
+    <h2 class="section__heading">Positions. No hedging.</h2>
+    <ul class="position-list">
+      <li class="position-item">
+        <span class="position-item__num">1</span>
+        <div class="position-item__content">
+          <strong>Reschedule cannabis federally.</strong>
+          <p>The Schedule I classification is built on Anslinger's congressional testimony — which was built on Hearst's yellow journalism. The scientific foundation was fabricated. Policy built on fabrication should not survive peer review, let alone 87 years of enforcement.</p>
         </div>
-        <p>© 2026 mostlyCBD · Focused. Functional. Fair.</p>
-    </footer>
+      </li>
+      <li class="position-item">
+        <span class="position-item__num">2</span>
+        <div class="position-item__content">
+          <strong>Remove the federal research blockade.</strong>
+          <p>You cannot demand evidence of medical value while classifying cannabis in a way that blocks the research to produce that evidence. The circular logic is a design feature of the current system, not an oversight. Dismantling it requires specific legislative action, not incremental scheduling review.</p>
+        </div>
+      </li>
+      <li class="position-item">
+        <span class="position-item__num">3</span>
+        <div class="position-item__content">
+          <strong>Acknowledge the historical record formally.</strong>
+          <p>The Marihuana Tax Act of 1937 was driven by a coordinated media campaign, not science. Congress should formally acknowledge this documented history as the basis for comprehensive reform — not as a symbolic gesture, but as a prerequisite for credible policy change.</p>
+        </div>
+      </li>
+      <li class="position-item">
+        <span class="position-item__num">4</span>
+        <div class="position-item__content">
+          <strong>Mandate cannabis education in medical school curricula.</strong>
+          <p>Nine percent is not a knowledge gap — it is a policy failure. Medical schools should be required to include endocannabinoid system pharmacology in standard training. Patients deserve clinicians who have been taught the science that exists, not kept ignorant of it.</p>
+        </div>
+      </li>
+      <li class="position-item">
+        <span class="position-item__num">5</span>
+        <div class="position-item__content">
+          <strong>End enforcement patterns rooted in the Anslinger era.</strong>
+          <p>Anslinger's campaign was explicitly built on racial panic. Disproportionate arrest and incarceration rates in Black and brown communities are not a coincidence — they follow the documented origin of the policy. Scheduling reform without enforcement reform is incomplete.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
 
-    <a href="#top-of-page" id="backToTop">↑ TOP</a>
+<hr class="rule" />
 
-    <style>
-        #backToTop {
-            position: fixed; bottom: 30px; right: 30px;
-            background-color: #344E41; color: #DAD7CD;
-            padding: 12px 20px; text-decoration: none;
-            font-family: 'Space Mono', monospace; font-weight: bold; font-size: 14px;
-            border-radius: 4px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-            transition: transform 0.2s, background-color 0.2s;
-            z-index: 1000; opacity: 0; pointer-events: none;
-        }
-        #backToTop.visible { opacity: 1; pointer-events: all; }
-        #backToTop:hover {
-            background-color: #DAD7CD; color: #344E41;
-            transform: translateY(-3px); border: 2px solid #344E41;
-        }
-    </style>
+<!-- SOURCES & REFERENCES -->
+<section class="footnotes section--tight">
+  <div class="container">
+    <div class="footnotes__heading">Sources &amp; References</div>
+    <ol>
+      <li>
+        Herer, J. <em>The Emperor Wears No Clothes.</em> Ah Ha Publishing, 1985.
+        <a href="https://jackherer.com/emperor-3/" target="_blank" rel="noopener">→ jackherer.com</a>
+      </li>
+      <li>
+        Musto, D. F. "The Marihuana Tax Act of 1937."
+        <em>Archives of General Psychiatry</em>, American Medical Association, 1972.
+        <a href="https://pubmed.ncbi.nlm.nih.gov/4258898/" target="_blank" rel="noopener">→ pubmed.ncbi.nlm.nih.gov</a>
+      </li>
+      <li>
+        Campos, I. <em>Home Grown: Marijuana and the Origins of Mexico's War on Drugs.</em>
+        University of North Carolina Press, 2012.
+        <a href="https://uncpress.org/book/9780807835579/home-grown/" target="_blank" rel="noopener">→ uncpress.org</a>
+      </li>
+      <li>
+        U.S. Congress, House Ways and Means Committee. <em>Hearings on H.R. 6906: Marihuana Tax Act of 1937.</em>
+        Congressional Record, 75th Congress, 1937.
+        <a href="https://www.loc.gov/law/help/statutes-at-large/75th-congress/session-1/c75s1ch553.pdf" target="_blank" rel="noopener">→ loc.gov</a>
+      </li>
+      <li>
+        U.S. Pharmacopeial Convention. <em>The Pharmacopeia of the United States of America.</em>
+        Historical editions, 1850–1942.
+        <a href="https://www.usp.org/about/public-policy" target="_blank" rel="noopener">→ usp.org</a>
+      </li>
+      <li>
+        National Commission on Marihuana and Drug Abuse (Shafer Commission).
+        <em>Marihuana: A Signal of Misunderstanding.</em> U.S. Government Printing Office, 1972.
+        <a href="https://www.druglibrary.org/schaffer/library/studies/nc/ncmenu.htm" target="_blank" rel="noopener">→ druglibrary.org</a>
+      </li>
+      <li>
+        Baum, D. "Legalize It All: How to Win the War on Drugs."
+        <em>Harper's Magazine</em>, April 2016. (John Ehrlichman on-record interview.)
+        <a href="https://harpers.org/archive/2016/04/legalize-it-all/" target="_blank" rel="noopener">→ harpers.org</a>
+      </li>
+    </ol>
+  </div>
+</section>
 
-    <script>
-        function copyLink() {
-            navigator.clipboard.writeText(window.location.href).then(() => {
-                const btn = document.getElementById('copyBtn');
-                btn.textContent = '✓ Copied!';
-                btn.classList.add('done');
-                setTimeout(() => {
-                    btn.textContent = 'Copy Link';
-                    btn.classList.remove('done');
-                }, 2500);
-            });
-        }
-
-        const topBtn = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            topBtn.classList.toggle('visible', window.scrollY > 400);
-        });
-    </script>
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <strong>mostlycbd.com</strong>
+      Natural cannabis advocacy. Balanced profiles.<br/>
+      Hand-coded. GitHub Pages. No ads. No agenda but the evidence.
+    </div>
+    <div class="site-footer__taglines">
+      <div>Educate to Regulate.<br/>Focused. Functional. Fair.</div>
+      <div class="site-footer__socials">
+        <a href="https://twitter.com/scrapthescript" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@mostlycbd/" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/mostly.cbd/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+          </svg>
+        </a>
+        <a href="https://www.reddit.com/r/mostlyCBD/" target="_blank" rel="noopener" aria-label="Reddit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>

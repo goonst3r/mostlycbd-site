@@ -1403,6 +1403,10 @@ footer p {
 
 .article-callout p strong { color: #DAD7CD !important; }
 
+.article-callout.light p { color: #1a1e1b !important; }
+.article-callout.light p strong { color: #1a1e1b !important; }
+.article-callout.light .article-callout-icon { color: #1a1e1b; }
+
 /* Stats grid — extends .status-grid */
 .article-stat-grid {
     display: grid;

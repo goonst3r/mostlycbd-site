@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Restlessness No One Names | mostlycbd.com</title>
+  <meta name="description" content="Akathisia is a drug-induced movement disorder causing unbearable inner restlessness. CBD's pharmacology may offer what pharmaceutical alternatives can't — without adding to the problem." />
+  <meta property="og:title" content="The Restlessness No One Names | mostlyCBD" />
+  <meta property="og:description" content="CBD doesn't cause akathisia. Every other compound operating at the same receptor level does. That's not a minor data point." />
+  <meta property="og:url" content="https://mostlycbd.com/blog/akathisia.html" />
+  <meta property="og:site_name" content="mostlyCBD" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@scrapthescript" />
+  <meta property="og:image" content="https://mostlycbd.com/images/bg_akathisia.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── tokens ─────────────────────────────────────────────── */
+    :root {
+      --bg:          #F4F1EB;
+      --bg-alt:      #EAE6DC;
+      --ink:         #1C1B18;
+      --ink-muted:   #5A5750;
+      --rule:        #C8C3B8;
+      --green:       #3B6E52;
+      --green-pale:  #D4E7DC;
+      --amber:       #C4692A;
+      --amber-pale:  #F5E4D5;
+      --red-pale:    #F2DCDC;
+      --red:         #9B3030;
+      --serif:       'Libre Baskerville', Georgia, serif;
+      --sans:        'DM Sans', system-ui, sans-serif;
+      --mono:        'DM Mono', monospace;
+      --max:         760px;
+      --max-wide:    1020px;
+    }
+
+    /* ─── reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--amber); }
+
+    /* ─── utilities ─────────────────────────────────────────── */
+    .container  { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .container--wide { max-width: var(--max-wide); margin: 0 auto; padding: 0 24px; }
+    .rule { border: none; border-top: 1px solid var(--rule); margin: 0; }
+
+    /* ─── site nav ───────────────────────────────────────────── */
+    .site-nav {
+      background-image: linear-gradient(rgba(218,215,205,0.85), rgba(218,215,205,0.80)), url('../images/bg_header.jpeg');
+      background-size: cover;
+      background-position: center;
+      border-bottom: 1px solid rgba(52,78,65,0.12);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .site-nav__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: var(--max-wide); margin: 0 auto; padding: 0 24px;
+      height: 64px;
+      position: relative;
+    }
+    .site-nav__logo {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: .04em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .site-nav__logo span { color: var(--green); }
+    .site-nav__logo:hover { color: var(--amber); }
+
+    /* nav links */
+    .site-nav__links {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      margin: 0; padding: 0;
+    }
+    .site-nav__links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color .15s ease;
+    }
+    .site-nav__links a:hover { color: var(--amber); }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 16px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+    .hamburger span {
+      display: block;
+      height: 2px;
+      background: var(--ink-muted);
+      border-radius: 1px;
+      transition: all .25s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 680px) {
+      .hamburger { display: flex; }
+      .site-nav__links {
+        display: none;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        background-image: linear-gradient(rgba(218,215,205,0.96), rgba(218,215,205,0.97)), url('../images/bg_header.jpeg');
+        background-size: cover;
+        border-bottom: 1px solid rgba(52,78,65,0.12);
+        padding: 20px 24px 24px;
+      }
+      .site-nav__links.open { display: flex; }
+    }
+
+    /* ─── campaign label ─────────────────────────────────────── */
+    .campaign-label {
+      background: var(--green);
+      color: #fff;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    /* ─── hero ───────────────────────────────────────────────── */
+    .hero {
+      padding: 80px 0 56px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero__kicker {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--amber);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero__headline {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.15;
+      font-weight: 700;
+      max-width: 640px;
+      margin-bottom: 24px;
+    }
+    .hero__headline em {
+      font-style: italic;
+      color: var(--green);
+    }
+    .hero__sub {
+      font-size: 18px;
+      color: var(--ink-muted);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+    .hero__meta {
+      display: flex; gap: 32px; flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+      letter-spacing: .04em;
+    }
+    .hero__meta-item strong {
+      display: block;
+      color: var(--ink);
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    /* ─── section spacing ────────────────────────────────────── */
+    .section { padding: 72px 0; }
+    .section--alt { background: var(--bg-alt); }
+    .section--tight { padding: 48px 0; }
+
+    .section__label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+    .section__heading {
+      font-family: var(--serif);
+      font-size: clamp(24px, 3.5vw, 34px);
+      line-height: 1.25;
+      margin-bottom: 24px;
+    }
+    .section__heading--amber { color: var(--amber); }
+    .section__heading--red   { color: var(--red); }
+
+    /* ─── prose ──────────────────────────────────────────────── */
+    .prose p { margin-bottom: 20px; color: var(--ink); }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose strong { font-weight: 500; }
+
+    /* ─── definition block ───────────────────────────────────── */
+    .definition {
+      background: var(--bg);
+      border-left: 3px solid var(--green);
+      padding: 24px 28px;
+      margin: 32px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .definition__term {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .definition__phonetic {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .definition p { color: var(--ink); line-height: 1.65; }
+
+    /* ─── stat grid ──────────────────────────────────────────── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2px;
+      margin: 40px 0;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .stat-cell {
+      background: var(--bg);
+      padding: 28px 24px;
+    }
+    .stat-cell__num {
+      font-family: var(--serif);
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+    .stat-cell__num--amber { color: var(--amber); }
+    .stat-cell__num--red   { color: var(--red); }
+    .stat-cell__label {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.45;
+    }
+
+    /* ─── mechanism diagram ──────────────────────────────────── */
+    .mechanism-wrap {
+      margin: 40px 0;
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .mechanism-header {
+      background: var(--green);
+      color: #fff;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .08em;
+      padding: 10px 20px;
+    }
+    .mechanism-body { padding: 28px 24px; }
+    .mechanism-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .mechanism-row:last-child { margin-bottom: 0; }
+    .mechanism-cell {
+      padding: 14px 16px;
+      border-radius: 3px;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .mechanism-cell--left  { background: var(--red-pale); border-left: 3px solid var(--red); }
+    .mechanism-cell--right { background: var(--green-pale); border-left: 3px solid var(--green); }
+    .mechanism-cell__label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 4px;
+    }
+    .mechanism-arrow {
+      font-size: 20px;
+      color: var(--ink-muted);
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .mechanism-vs {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-muted);
+      text-align: center;
+    }
+
+    /* ─── callout ────────────────────────────────────────────── */
+    .callout {
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 28px 32px;
+      margin: 32px 0;
+      position: relative;
+    }
+    .callout--amber { border-color: var(--amber); background: var(--amber-pale); }
+    .callout--green { border-color: var(--green); background: var(--green-pale); }
+    .callout--red   { border-color: var(--red); background: var(--red-pale); }
+    .callout__icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .callout__heading {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+    .callout p { font-size: 15px; line-height: 1.6; }
+
+    /* ─── pull quote ─────────────────────────────────────────── */
+    .pull-quote {
+      border-top: 2px solid var(--ink);
+      border-bottom: 1px solid var(--rule);
+      margin: 48px 0;
+      padding: 28px 0 24px;
+    }
+    .pull-quote__text {
+      font-family: var(--serif);
+      font-size: clamp(20px, 3vw, 26px);
+      font-style: italic;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .pull-quote__attr {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+    }
+
+    /* ─── evidence table ─────────────────────────────────────── */
+    .evidence-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+      font-size: 14px;
+    }
+    .evidence-table th {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 2px solid var(--rule);
+      background: var(--bg-alt);
+    }
+    .evidence-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .evidence-table tr:hover td { background: var(--bg-alt); }
+    .badge {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+    .badge--green { background: var(--green-pale); color: var(--green); }
+    .badge--amber { background: var(--amber-pale); color: var(--amber); }
+    .badge--red   { background: var(--red-pale); color: var(--red); }
+
+    /* ─── nuance section ─────────────────────────────────────── */
+    .nuance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin: 32px 0;
+    }
+    @media (max-width: 580px) {
+      .nuance-grid { grid-template-columns: 1fr; }
+      .mechanism-row { grid-template-columns: 1fr; }
+      .mechanism-arrow { display: none; }
+    }
+    .nuance-cell {
+      background: var(--bg);
+      padding: 24px;
+    }
+    .nuance-cell__head {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .nuance-cell__head--concern { color: var(--amber); }
+    .nuance-cell__head--context { color: var(--green); }
+    .nuance-cell p { font-size: 14px; line-height: 1.6; color: var(--ink); }
+
+    /* ─── position cards ─────────────────────────────────────── */
+    .position-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .position-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px 24px;
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+    }
+    .position-item__num {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 36px;
+    }
+    .position-item__content p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    .position-item__content strong {
+      display: block;
+      font-family: var(--sans);
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    /* ─── footer ─────────────────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid var(--rule);
+      padding: 40px 0 32px;
+      background: var(--bg-alt);
+    }
+    .site-footer__inner {
+      max-width: var(--max-wide); margin: 0 auto; padding: 0 24px;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .site-footer__brand {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+    .site-footer__brand strong {
+      display: block;
+      font-size: 14px;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .site-footer__taglines {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-muted);
+      letter-spacing: .06em;
+      text-align: right;
+      line-height: 1.8;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 14px;
+    }
+    .site-footer__socials {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+    .site-footer__socials a {
+      display: flex;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color .15s ease;
+    }
+    .site-footer__socials a:hover { color: var(--green); }
+    .site-footer__socials svg { display: block; }
+
+    /* ─── footnote strip ─────────────────────────────────────── */
+    .footnotes {
+      padding: 32px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .footnotes__heading {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 16px;
+    }
+    .footnotes ol {
+      padding-left: 20px;
+    }
+    .footnotes li {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.55;
+      margin-bottom: 8px;
+    }
+    .footnotes a {
+      color: var(--ink-muted);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    /* ─── animations ─────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero__kicker    { animation: fadeUp .5s ease both; }
+    .hero__headline  { animation: fadeUp .55s .08s ease both; }
+    .hero__sub       { animation: fadeUp .55s .16s ease both; }
+    .hero__meta      { animation: fadeUp .5s .24s ease both; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="site-nav__inner">
+    <a href="../index.html" class="site-nav__logo">mostly<span>cbd</span>.com</a>
+    <button type="button" class="hamburger" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.site-nav__links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="site-nav__links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../guide.html">Guide</a></li>
+      <li><a href="../blog.html">Deep Dives</a></li>
+      <li><a href="https://www.reddit.com/r/mostlyCBD/" target="_blank" rel="noopener">Community</a></li>
+      <li><a href="../action.html">Action</a></li>
+      <li><a href="https://shop.mostlycbd.com">Shop</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- CAMPAIGN LABEL -->
+<div class="campaign-label">
+  Advocacy Series &nbsp;·&nbsp; Functional Cannabis &amp; Neurology
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <p class="hero__kicker">The condition with no clean name</p>
+    <h1 class="hero__headline">
+      When the medicine<br/>
+      <em>causes</em> the restlessness
+    </h1>
+    <p class="hero__sub">
+      Akathisia is a drug-induced movement disorder that can feel worse than the condition being treated.
+      CBD's pharmacology may offer something the standard alternatives can't — without adding to the problem.
+      Here's what the science says, and what it means for functional patients.
+    </p>
+    <div class="hero__meta">
+      <div class="hero__meta-item">
+        <strong>Topic</strong>
+        Akathisia &amp; Cannabinoids
+      </div>
+      <div class="hero__meta-item">
+        <strong>Sources</strong>
+        PubMed · Springer · Frontiers
+      </div>
+      <div class="hero__meta-item">
+        <strong>Position</strong>
+        Educate to Regulate
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SECTION 1: What Is It -->
+<section class="section">
+  <div class="container">
+    <p class="section__label">Starting point</p>
+    <h2 class="section__heading">What akathisia actually is</h2>
+
+    <div class="definition">
+      <div class="definition__term">Akathisia</div>
+      <div class="definition__phonetic">/ ak·uh·THEE·zhuh / &nbsp;·&nbsp; from Greek: <em>a-</em> (without) + <em>kathizein</em> (to sit)</div>
+      <p>
+        A neuropsychiatric syndrome characterized by an intense, persistent feeling of inner restlessness — a compulsion to move that the body cannot satisfy.
+        Not anxiety. Not agitation. Not a symptom of the illness being treated.
+        Most often a side effect of the treatment itself.
+      </p>
+    </div>
+
+    <div class="prose">
+      <p>
+        The first medical description of akathisia appeared in 1901. The first report of
+        <em>drug-induced</em> akathisia came in 1960, when three patients developed what was called
+        "muscular restlessness" while taking phenothiazine antipsychotics.
+        It has been a clinical reality ever since — and one of the most consistently mismanaged ones.
+      </p>
+      <p>
+        Clinicians frequently misdiagnose akathisia as psychotic agitation, anxiety, or relapse —
+        which can lead to dose increases of the exact drug causing the problem.
+        It is also linked to elevated suicidality and, in some cases, violent behavior.
+        The condition often goes unrecognized in clinical practice not because it's rare,
+        but because it doesn't have a clean, familiar face.
+      </p>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-cell">
+        <div class="stat-cell__num">18.5%</div>
+        <div class="stat-cell__label">prevalence in community-dwelling antipsychotic users on stable regimens</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell__num stat-cell__num--amber">40%</div>
+        <div class="stat-cell__label">prevalence with two concurrent first-generation antipsychotics</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell__num stat-cell__num--red">30%+</div>
+        <div class="stat-cell__label">of haloperidol patients develop akathisia — one of the most commonly prescribed antipsychotics</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>
+        Current treatment options are limited and imperfect: beta-blockers, benzodiazepines,
+        anticholinergic drugs, or dose reduction. None are approved specifically for akathisia.
+        The evidence base supporting even the most common options is, by the medical literature's
+        own admission, "absent or inconsistent."
+      </p>
+      <p>
+        That's the gap. That's where the research conversation should be happening —
+        and where Schedule I classification has kept it from going.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- SECTION 2: CBD Mechanism -->
+<section class="section section--alt">
+  <div class="container">
+    <p class="section__label">The pharmacology</p>
+    <h2 class="section__heading">Why CBD's mechanism matters here</h2>
+
+    <div class="prose">
+      <p>
+        Akathisia's biology is still being worked out, but the serotonergic pathway is now
+        well-established as a major contributor — not just dopamine.
+        Drugs that antagonize serotonin at the 5-HT2A receptor (certain atypical antipsychotics)
+        reduce akathisia. Drugs that activate serotonin pathways (SSRIs) can induce it.
+        The implication: serotonin receptor activity is a clinically meaningful lever.
+      </p>
+      <p>
+        CBD is a documented agonist at 5-HT1A — a serotonin receptor subtype linked to
+        anxiolytic, antidepressant, and motor control effects. THC is not.
+        This distinction is not incidental. It is the pharmacological basis for why balanced
+        cannabinoid profiles behave differently from THC-dominant products —
+        and why the ratio question matters more than most conversations acknowledge.
+      </p>
+    </div>
+
+    <div class="mechanism-wrap">
+      <div class="mechanism-header">CBD vs. THC — Key Receptor Differences</div>
+      <div class="mechanism-body">
+        <div class="mechanism-row">
+          <div class="mechanism-cell mechanism-cell--left">
+            <div class="mechanism-cell__label">High-THC / Isolated THC</div>
+            Does not bind 5-HT1A in the relevant concentration range. Associated with transient akathisia, rigidity, and dyskinesia in antipsychotic-treated patients in controlled studies.
+          </div>
+          <div class="mechanism-arrow">⇄</div>
+          <div class="mechanism-cell mechanism-cell--right">
+            <div class="mechanism-cell__label">CBD — Whole Plant</div>
+            Acts as a functional agonist at the human 5-HT1A receptor. Facilitates serotonergic neurotransmission. Associated with anxiolytic and motor control effects in preclinical models.
+          </div>
+        </div>
+        <div class="mechanism-vs">The difference isn't cannabis vs. no cannabis. It's <strong>which cannabinoids, in what ratio.</strong></div>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">
+        "If CBD is primarily acting on dopaminergic pathways, it is surprising that it does not
+        cause akathisia — an effect which is observed with all other partial agonists."
+      </p>
+      <p class="pull-quote__attr">— Psychopharmacology (Springer), 2021 · Review of CBD in early-phase psychosis</p>
+    </div>
+
+    <div class="prose">
+      <p>
+        That's not a minor observation. Every other compound operating at that receptor level
+        produces akathisia as a documented side effect. CBD does not.
+        This "negative signal" — what a compound fails to cause as much as what it produces —
+        is a meaningful pharmacological data point that warrants direct clinical investigation.
+      </p>
+      <p>
+        CBD's 5-HT1A activity has also been confirmed in human brain tissue, not just cell culture.
+        It appears to function as an allosteric modulator at that receptor — potentially
+        facilitating the binding of endogenous serotonin rather than simply competing with it.
+        That's a gentler, more integrative mechanism than receptor blocking.
+        It's also consistent with the whole-plant, entourage-effect framework that balanced
+        cannabis advocates have been describing for years without the research infrastructure to prove it.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- SECTION 3: Evidence Summary -->
+<section class="section">
+  <div class="container">
+    <p class="section__label">What the research shows</p>
+    <h2 class="section__heading">Reading the evidence honestly</h2>
+
+    <div class="prose">
+      <p>
+        There are no clinical trials specifically examining CBD as a treatment for akathisia.
+        That's not a weakness in the argument — it's the argument.
+        Schedule I classification has made that research structurally impossible to fund at scale.
+        What we do have is a body of converging evidence that makes the case for doing that research.
+      </p>
+    </div>
+
+    <table class="evidence-table" aria-label="Evidence summary">
+      <thead>
+        <tr>
+          <th>Finding</th>
+          <th>Signal</th>
+          <th>Context</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CBD does not cause akathisia despite receptor activity where other drugs do</td>
+          <td><span class="badge badge--green">Favorable</span></td>
+          <td>Springer / Psychopharmacology, 2021</td>
+        </tr>
+        <tr>
+          <td>CBD acts as agonist at human 5-HT1A receptor — a key pathway in akathisia pathophysiology</td>
+          <td><span class="badge badge--green">Favorable</span></td>
+          <td>Neurochemical Research, 2005; confirmed in human brain tissue 2020</td>
+        </tr>
+        <tr>
+          <td>5-HT1A activity mediates CBD's motor control effects in preclinical models</td>
+          <td><span class="badge badge--green">Favorable</span></td>
+          <td>ScienceDirect / CBD &amp; 5-HT1A Receptors review</td>
+        </tr>
+        <tr>
+          <td>IV delta-9-THC transiently increased akathisia in antipsychotic-treated schizophrenia patients</td>
+          <td><span class="badge badge--amber">Concern (context-specific)</span></td>
+          <td>Biological Psychiatry, 2005 — high-dose isolated THC, not whole-plant</td>
+        </tr>
+        <tr>
+          <td>Cannabis/alcohol abuse in polysubstance detox population associated with elevated akathisia</td>
+          <td><span class="badge badge--amber">Concern (population-specific)</span></td>
+          <td>PubMed / U. de Montréal, 2010 — heavy use, no cannabinoid ratio data</td>
+        </tr>
+        <tr>
+          <td>CBD inhibits CYP450 enzymes — can raise plasma levels of co-administered antipsychotics</td>
+          <td><span class="badge badge--amber">Clinical consideration</span></td>
+          <td>Springer, 2021 — a drug interaction issue, not a cannabis issue</td>
+        </tr>
+        <tr>
+          <td>No clinical trials exist specifically examining CBD for antipsychotic-induced akathisia</td>
+          <td><span class="badge badge--red">Research gap</span></td>
+          <td>Direct consequence of Schedule I classification</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout--amber">
+      <div class="callout__icon">⚠</div>
+      <div class="callout__heading">The CYP450 wrinkle — name it, don't hide it</div>
+      <p>
+        CBD is a meaningful inhibitor of cytochrome P450 enzymes — the same enzymes that
+        metabolize many antipsychotic medications. Someone using CBD alongside an antipsychotic
+        could inadvertently raise that drug's effective plasma concentration, potentially
+        worsening side effects including akathisia. This is a drug-drug interaction consideration,
+        not a cannabis-specific toxicity. It's also exactly the kind of patient-specific question
+        that requires the clinical research infrastructure that Schedule I status has blocked.
+        Functional patients deserve clinicians who can have this conversation — not a regulatory
+        wall that makes it impossible to study.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- SECTION 4: The Bigger Frame -->
+<section class="section section--alt">
+  <div class="container">
+    <p class="section__label">The actual problem</p>
+    <h2 class="section__heading section__heading--amber">
+      A healthcare crisis wearing a cannabis mask
+    </h2>
+
+    <div class="prose">
+      <p>
+        The person most likely to walk into a dispensary asking about akathisia isn't a recreational user.
+        They're a psychiatric patient whose medication is causing unbearable restlessness,
+        who can't get a follow-up appointment for six weeks, who has been told their symptoms
+        are "probably anxiety" or possibly a sign they need a higher dose.
+        They arrived at that dispensary because the clinical door was closed.
+      </p>
+      <p>
+        That's not a cannabis problem. That's a healthcare system that has normalized
+        67-day psychiatric wait times and 60% cost-exclusion rates, dressed up as a drug concern.
+        The plant didn't create the gap. It's filling it — imperfectly, without oversight,
+        without dosing guidance, without clinicians in the loop — because we've structured the
+        system to make any alternative impossible to study or supervise.
+      </p>
+    </div>
+
+    <div class="nuance-grid">
+      <div class="nuance-cell">
+        <div class="nuance-cell__head nuance-cell__head--concern">The stigma narrative</div>
+        <p>"Cannabis is causing mental health problems in vulnerable people."</p>
+      </div>
+      <div class="nuance-cell">
+        <div class="nuance-cell__head nuance-cell__head--context">The structural reality</div>
+        <p>Pre-existing, unaddressed vulnerabilities drive people toward self-medication when clinical options are inaccessible or iatrogenic.</p>
+      </div>
+      <div class="nuance-cell">
+        <div class="nuance-cell__head nuance-cell__head--concern">The product narrative</div>
+        <p>"Cannabis causes restlessness and movement disorders."</p>
+      </div>
+      <div class="nuance-cell">
+        <div class="nuance-cell__head nuance-cell__head--context">The pharmacological reality</div>
+        <p>Isolated, high-potency THC can exacerbate akathisia in specific clinical contexts. CBD appears to do the opposite — and doesn't cause akathisia at all.</p>
+      </div>
+      <div class="nuance-cell">
+        <div class="nuance-cell__head nuance-cell__head--concern">The regulatory narrative</div>
+        <p>"We don't have enough research to act."</p>
+      </div>
+      <div class="nuance-cell">
+        <div class="nuance-cell__head nuance-cell__head--context">The policy reality</div>
+        <p>Schedule I classification is the reason that research doesn't exist. The blockade isn't a reason to wait — it's the thing that needs to end.</p>
+      </div>
+    </div>
+
+    <div class="callout callout--green">
+      <div class="callout__icon">◆</div>
+      <div class="callout__heading">The traditional plant didn't cause this problem</div>
+      <p>
+        The cannabis plant that emerged over centuries had roughly a 14:1 THC-to-CBD ratio.
+        The products saturating unregulated markets today push past 80:1.
+        When we talk about "cannabis and mental health," we are almost never talking
+        about the same thing. The distinction is not semantic. It is pharmacological.
+        It is the entire question.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- SECTION 5: Policy Positions -->
+<section class="section">
+  <div class="container">
+    <p class="section__label">Where we stand</p>
+    <h2 class="section__heading">Positions. No hedging.</h2>
+
+    <ul class="position-list">
+      <li class="position-item">
+        <span class="position-item__num">1</span>
+        <div class="position-item__content">
+          <strong>Reschedule cannabis federally.</strong>
+          <p>End the Schedule I research blockade. The absence of clinical trials on CBD and akathisia
+          is not a scientific finding. It's a policy outcome. Research cannot happen at scale without rescheduling.</p>
+        </div>
+      </li>
+      <li class="position-item">
+        <span class="position-item__num">2</span>
+        <div class="position-item__content">
+          <strong>Fund clinical trials — specifically on cannabinoid ratios.</strong>
+          <p>The question isn't "does cannabis help or hurt?" It's "which cannabinoids, in what ratio,
+          for which patients, under what conditions?" That is a tractable scientific question.
+          We need the infrastructure to answer it.</p>
+        </div>
+      </li>
+      <li class="position-item">
+        <span class="position-item__num">3</span>
+        <div class="position-item__content">
+          <strong>Protect functional patient access.</strong>
+          <p>People managing real conditions with balanced cannabinoid profiles deserve the same
+          presumption of competence and autonomy as any other patient making a medical decision.
+          Regulate it. Don't prohibit it.</p>
+        </div>
+      </li>
+      <li class="position-item">
+        <span class="position-item__num">4</span>
+        <div class="position-item__content">
+          <strong>Restrict synthetic and high-potency products — especially gas station loopholes.</strong>
+          <p>The concern about cannabis and psychomotor symptoms is largely a concern about
+          THC-dominant, synthetic, and unregulated products. Regulate those by product profile.
+          Don't let that concern swallow access to the whole plant.</p>
+        </div>
+      </li>
+      <li class="position-item">
+        <span class="position-item__num">5</span>
+        <div class="position-item__content">
+          <strong>Regulate by evidence, not stigma.</strong>
+          <p>The evidence on CBD's 5-HT1A activity, its absence of akathisia induction,
+          and its motor-control effects in preclinical models is peer-reviewed and replicable.
+          Policy should follow that evidence — not inherited assumptions from 1970.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- FOOTNOTES -->
+<section class="footnotes section--tight">
+  <div class="container">
+    <div class="footnotes__heading">Sources &amp; References</div>
+    <ol>
+      <li>
+        McGuire P, et al. "Cannabidiol (CBD) as a novel treatment in the early phases of psychosis."
+        <em>Psychopharmacology</em>, Springer, 2021.
+        <a href="https://link.springer.com/article/10.1007/s00213-021-05905-9" target="_blank" rel="noopener">→ springer.com</a>
+      </li>
+      <li>
+        Russo EB, et al. "Agonistic properties of cannabidiol at 5-HT1a receptors."
+        <em>Neurochemical Research</em>, 2005.
+        <a href="https://pubmed.ncbi.nlm.nih.gov/16258853/" target="_blank" rel="noopener">→ pubmed.ncbi.nlm.nih.gov</a>
+      </li>
+      <li>
+        Martínez-Aguirre C, et al. "Cannabidiol Acts at 5-HT1A Receptors in the Human Brain."
+        <em>Frontiers in Behavioral Neuroscience</em>, 2020.
+        <a href="https://www.frontiersin.org/journals/behavioral-neuroscience/articles/10.3389/fnbeh.2020.611278/full" target="_blank" rel="noopener">→ frontiersin.org</a>
+      </li>
+      <li>
+        D'Souza DC, et al. "Delta-9-tetrahydrocannabinol effects in schizophrenia."
+        <em>Biological Psychiatry</em>, 2005.
+        <a href="https://www.sciencedirect.com/science/article/abs/pii/S0006322304013101" target="_blank" rel="noopener">→ sciencedirect.com</a>
+      </li>
+      <li>
+        Papanastasiou I, et al. "Extrapyramidal symptoms in substance abusers with and without schizophrenia."
+        <em>PubMed / U. de Montréal</em>, 2010.
+        <a href="https://pubmed.ncbi.nlm.nih.gov/20669315/" target="_blank" rel="noopener">→ pubmed.ncbi.nlm.nih.gov</a>
+      </li>
+      <li>
+        Bratti IM, et al. "Chronic Restlessness With Antipsychotics."
+        <em>American Journal of Psychiatry</em>, 2007.
+        <a href="https://psychiatryonline.org/doi/10.1176/appi.ajp.2007.07071150" target="_blank" rel="noopener">→ psychiatryonline.org</a>
+      </li>
+      <li>
+        Khuzam HR. "The Assessment and Treatment of Antipsychotic-Induced Akathisia." <em>PMC</em>, 2018.
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6299189/" target="_blank" rel="noopener">→ pmc.ncbi.nlm.nih.gov</a>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <strong>mostlycbd.com</strong>
+      Natural cannabis advocacy. Balanced profiles.<br/>
+      Hand-coded. GitHub Pages. No ads. No agenda but the evidence.
+    </div>
+    <div class="site-footer__taglines">
+      <div>Educate to Regulate.<br/>Focused. Functional. Fair.</div>
+      <div class="site-footer__socials">
+        <!-- X / Twitter -->
+        <a href="https://twitter.com/scrapthescript" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@mostlycbd/" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+          </svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/mostly.cbd/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+          </svg>
+        </a>
+        <!-- Reddit -->
+        <a href="https://www.reddit.com/r/mostlyCBD/" target="_blank" rel="noopener" aria-label="Reddit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
