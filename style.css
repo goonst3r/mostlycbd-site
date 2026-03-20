@@ -1902,6 +1902,16 @@ h3 {
             transition: color .15s ease;
         }
         .site-nav__links a:hover { color: #C4692A; }
+        .site-nav__links .rfer-nav {
+            text-transform: none;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .06em;
+        }
+        .site-nav__links .rfer-nav .lr1 { color: #2d5a27; }
+        .site-nav__links .rfer-nav .lf  { color: #D4B44A; }
+        .site-nav__links .rfer-nav .le  { color: #8B7355; }
+        .site-nav__links .rfer-nav .lr2 { color: #b84a2e; }
         .hamburger {
             display: none;
             flex-direction: column;

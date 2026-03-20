@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RFER — Reschedule. Fund Trials. Educate. Regulate. — mostlycbd.com</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --dark: #1A1208;
+    --rust: #b84a2e;
+    --green: #2D5016;
+    --sage: #6B8F4E;
+    --gold: #D4B44A;
+    --brown: #8B7355;
+    --muted: #7A6E5F;
+    --thc-red: #b84a2e;
+    --olive: #5B6B4A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Inter', sans-serif;
+    color: var(--dark);
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+
+  .page-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    border-top: 8px solid var(--green);
+    padding: 64px 0 48px;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: -60px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(107,143,78,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.2rem, 7vw, 4.8rem);
+    line-height: 0.92;
+    color: var(--dark);
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+
+  .hero h1 .ac-r1 { color: var(--green); }
+  .hero h1 .ac-f  { color: var(--gold); }
+  .hero h1 .ac-e  { color: var(--brown); }
+  .hero h1 .ac-r2 { color: var(--rust); }
+
+  .hero-subtitle {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--muted);
+    font-style: italic;
+    max-width: 560px;
+    line-height: 1.5;
+    margin-bottom: 32px;
+  }
+
+  .hero-intro {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--dark);
+    max-width: 680px;
+    margin-bottom: 40px;
+  }
+
+  /* RFER Letter Grid in Hero */
+  .rfer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .rfer-letter-card {
+    background: white;
+    border: 1px solid #E0DAD0;
+    padding: 24px 20px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.2s ease;
+  }
+
+  .rfer-letter-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(26,18,8,0.08);
+  }
+
+  .rfer-letter-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+
+  .rfer-letter-card:nth-child(1)::before { background: var(--green); }
+  .rfer-letter-card:nth-child(2)::before { background: var(--gold); }
+  .rfer-letter-card:nth-child(3)::before { background: var(--brown); }
+  .rfer-letter-card:nth-child(4)::before { background: var(--rust); }
+
+  .rlc-letter {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.2rem;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .rfer-letter-card:nth-child(1) .rlc-letter { color: var(--green); }
+  .rfer-letter-card:nth-child(2) .rlc-letter { color: var(--gold); }
+  .rfer-letter-card:nth-child(3) .rlc-letter { color: var(--brown); }
+  .rfer-letter-card:nth-child(4) .rlc-letter { color: var(--rust); }
+
+  .rlc-word {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ═══ SECTIONS ═══ */
+  .section {
+    margin-bottom: 72px;
+    padding-top: 48px;
+    border-top: 1px solid #DDD6C8;
+  }
+
+  .section-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    line-height: 1;
+    color: #E8E2D8;
+    position: absolute;
+    top: -8px;
+    left: -4px;
+  }
+
+  .section-header {
+    position: relative;
+    margin-bottom: 32px;
+    padding-left: 0;
+  }
+
+  .section-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-eyebrow .pillar-badge {
+    background: var(--green);
+    color: white;
+    padding: 2px 8px;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+  }
+
+  .section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    line-height: 1;
+    color: var(--dark);
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+
+  .section-sub {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+    color: var(--muted);
+    font-style: italic;
+    max-width: 600px;
+    line-height: 1.5;
+  }
+
+  .section p {
+    margin-bottom: 20px;
+    max-width: 720px;
+  }
+
+  /* Stat Callouts */
+  .stat-row {
+    display: flex;
+    gap: 24px;
+    margin: 36px 0;
+    flex-wrap: wrap;
+  }
+
+  .stat-box {
+    flex: 1;
+    min-width: 160px;
+    padding: 24px;
+    background: white;
+    border: 1px solid #E0DAD0;
+    border-top: 3px solid var(--green);
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    line-height: 1;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* Pull Quotes */
+  .pull-quote {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--green);
+    font-style: italic;
+    line-height: 1.45;
+    padding: 28px 0 28px 28px;
+    border-left: 3px solid var(--sage);
+    margin: 36px 0;
+    max-width: 640px;
+  }
+
+  /* Compare Grid */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 36px 0;
+    border: 1px solid #E0DAD0;
+    overflow: hidden;
+  }
+
+  .compare-col {
+    padding: 28px;
+  }
+
+  .compare-col.left {
+    background: white;
+    border-right: 1px solid #E0DAD0;
+  }
+
+  .compare-col.right {
+    background: #2A1A0A;
+    color: var(--cream);
+  }
+
+  .compare-col h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .compare-col.left h4 { color: var(--sage); }
+  .compare-col.right h4 { color: var(--gold); }
+
+  .compare-col ul {
+    list-style: none;
+    font-size: 0.92rem;
+    line-height: 2;
+  }
+
+  .compare-col.left ul li::before {
+    content: '✓ ';
+    color: var(--sage);
+    font-weight: 600;
+  }
+
+  .compare-col.right ul li::before {
+    content: '✗ ';
+    color: var(--rust);
+    font-weight: 600;
+  }
+
+  /* Policy Ask Box */
+  .policy-ask {
+    background: var(--green);
+    color: var(--cream);
+    padding: 32px 36px;
+    margin: 36px 0;
+    position: relative;
+  }
+
+  .policy-ask::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .policy-ask h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+    color: var(--cream);
+  }
+
+  .policy-ask p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(245,240,232,0.88);
+    max-width: 640px;
+  }
+
+  /* Data Highlight */
+  .data-highlight {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem;
+    background: rgba(212,168,67,0.12);
+    padding: 2px 8px;
+    color: var(--dark);
+    font-weight: 500;
+  }
+
+  /* Source Block */
+  .source-block {
+    margin-top: 24px;
+    padding: 16px 20px;
+    background: rgba(0,0,0,0.02);
+    border-left: 2px solid #DDD6C8;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .source-block strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* Timeline */
+  .timeline {
+    margin: 36px 0;
+    position: relative;
+    padding-left: 32px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 0; bottom: 0;
+    width: 2px;
+    background: #DDD6C8;
+  }
+
+  .timeline-item {
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -28px; top: 6px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--sage);
+    border: 2px solid var(--cream);
+  }
+
+  .timeline-year {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .timeline-text {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .timeline-text strong {
+    color: var(--dark);
+  }
+
+  /* RFER Pillar Indicator */
+  .pillar-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    margin-bottom: 8px;
+  }
+
+  .pillar-tag.r1 { background: rgba(45,80,22,0.1); color: var(--green); }
+  .pillar-tag.f { background: rgba(212,168,67,0.15); color: #9A7820; }
+  .pillar-tag.e { background: rgba(139,115,85,0.12); color: var(--brown); }
+  .pillar-tag.r2 { background: rgba(196,80,10,0.1); color: var(--rust); }
+
+  /* Footer */
+  .page-footer {
+    border-top: 3px solid var(--dark);
+    padding-top: 24px;
+    margin-top: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: var(--green);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-tagline {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .footer-right {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 680px) {
+    .rfer-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-row { flex-direction: column; }
+    .compare-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- ═══ HERO ═══ -->
+  <header class="hero">
+    <div class="hero-eyebrow">mostlycbd.com · RFER Initiative</div>
+    <h1><span class="ac-r1">R</span>eschedule. <span class="ac-f">F</span>und Trials.<br><span class="ac-e">E</span>ducate. <span class="ac-r2">R</span>egulate.</h1>
+    <div class="hero-subtitle">They named it "reefer" to make you afraid. We're taking the word back — with a plan.</div>
+
+    <p class="hero-intro">
+      In the 1930s, the word "reefer" was manufactured to scare people — a rebrand of a plant that had been in the U.S. Pharmacopeia for 87 years. It worked. The fear stuck. The science was suppressed. And 90 years later, the stigma built on that fear is still shaping federal policy.
+    </p>
+    <p class="hero-intro">
+      RFER is a four-pillar policy framework. Four letters. Four actions. One path from prohibition to evidence-based regulation. Not a slogan — a gameplan.
+    </p>
+
+    <div class="rfer-grid">
+      <div class="rfer-letter-card">
+        <div class="rlc-letter">R</div>
+        <div class="rlc-word">Reschedule</div>
+      </div>
+      <div class="rfer-letter-card">
+        <div class="rlc-letter">F</div>
+        <div class="rlc-word">Fund Trials</div>
+      </div>
+      <div class="rfer-letter-card">
+        <div class="rlc-letter">E</div>
+        <div class="rlc-word">Educate</div>
+      </div>
+      <div class="rfer-letter-card">
+        <div class="rlc-letter">R</div>
+        <div class="rlc-word">Regulate</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ SECTION 1 — THE BIOLOGY ═══ -->
+  <section class="section" id="biology">
+    <div class="section-header">
+      <div class="section-eyebrow">Section 01 · The Foundation</div>
+      <h2>Your Body Already Speaks Cannabis</h2>
+      <div class="section-sub">The endocannabinoid system isn't alternative medicine. It's biology.</div>
+    </div>
+
+    <p>Every human body has a built-in regulatory system designed to maintain balance — mood, pain, appetite, immune response, memory. It's called the endocannabinoid system (ECS), and it's one of the largest receptor networks in the human body. It was only discovered in the early 1990s, which is part of why most doctors still don't know about it.</p>
+
+    <p>The ECS is composed of three parts: cannabinoid receptors (CB1, concentrated in the brain and central nervous system; CB2, found primarily in immune cells and peripheral tissue), endocannabinoids your body produces naturally (anandamide and 2-AG), and the enzymes that break them down (FAAH and MAGL).</p>
+
+    <p>When this system is functioning, it modulates anxiety, inflammation, pain perception, and mood regulation. When it's disrupted — through chronic stress, illness, or what researchers call an "endocannabinoid deficiency state" — the results include increased anxiety, depression, and vulnerability to a range of neurological conditions.</p>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num">CB1</div>
+        <div class="stat-label">Receptors in brain & CNS — regulate mood, memory, pain, appetite</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">CB2</div>
+        <div class="stat-label">Receptors in immune system — modulate inflammation & immune response</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">2-AG</div>
+        <div class="stat-label">Endocannabinoid that helps restore anxiety/depression symptoms when signaling is repaired</div>
+      </div>
+    </div>
+
+    <p>Phytocannabinoids — the ones from the cannabis plant — interact with this system because they fit the same receptors. CBD acts as a non-competitive antagonist at CB1 and an agonist at serotonin (5-HT1A) receptors. THC is a CB1 agonist. They do different things, and in balanced ratios, they complement each other. That's not a sales pitch — it's pharmacology.</p>
+
+    <p>This is why product composition matters. A balanced formulation with meaningful CBD content works with your ECS differently than a 90% THC concentrate with zero CBD. The plant's biology is sophisticated. The market has been treating it like a single-compound delivery system.</p>
+
+    <div class="source-block">
+      <strong>Sources</strong>
+      Shonesy et al. (2014). Endocannabinoid deficiency and self-medication. · Vinod & Hungund (2006). ECS role in depression/mood disorders. · Serra & Fratta (2007). CB1 agonists and antidepressant effects. · Bioque et al. (2009). ECS dysregulation in first-episode psychosis. · Reddy et al. (2025). CBD dose and anxiety outcomes in cancer patients. Cancer Medicine.
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 2 — RESCHEDULE ═══ -->
+  <section class="section" id="reschedule">
+    <div class="section-header">
+      <div class="section-eyebrow"><span class="pillar-badge" style="background:var(--green);">RFER PILLAR</span> R — Reschedule</div>
+      <h2>End the Research Blockade</h2>
+      <div class="section-sub">Schedule I didn't follow the science. The science has been following Schedule I ever since.</div>
+    </div>
+
+    <p>Cannabis is federally classified as Schedule I — alongside heroin. That classification means, by legal definition, it has "no accepted medical use" and "high abuse potential." Meanwhile, cocaine, OxyContin, and methamphetamine are Schedule II — meaning the government considers them medically useful and prescribes them.</p>
+
+    <p>This classification was not the result of scientific consensus. The Controlled Substances Act of 1970 placed cannabis in Schedule I temporarily, pending review. That review — the Shafer Commission — recommended decriminalization. President Nixon rejected the recommendation. Cannabis has remained Schedule I for over fifty years since.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">1850</div>
+        <div class="timeline-text">Cannabis enters the <strong>U.S. Pharmacopeia</strong> — officially recognized as medicine</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1937</div>
+        <div class="timeline-text"><strong>Marijuana Tax Act</strong> — yellow journalism and the "reefer" campaign effectively criminalize the plant</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1942</div>
+        <div class="timeline-text">Cannabis <strong>removed from Pharmacopeia</strong> — with zero new scientific findings justifying the change</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1970</div>
+        <div class="timeline-text"><strong>Controlled Substances Act</strong> — cannabis placed in Schedule I "temporarily"</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1972</div>
+        <div class="timeline-text"><strong>Shafer Commission</strong> recommends decriminalization — <strong>Nixon rejects it</strong></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1988</div>
+        <div class="timeline-text">DEA Judge Francis Young rules cannabis has <strong>accepted medical use</strong> — DEA overrides</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2023</div>
+        <div class="timeline-text">HHS recommends <strong>rescheduling to Schedule III</strong> — pending</div>
+      </div>
+    </div>
+
+    <p>Schedule I is not a safety measure. It's a research blockade. It prevents the federally funded clinical trials needed to build the evidence base that regulators and physicians say they want. You cannot demand evidence while blocking the research that would produce it.</p>
+
+    <div class="policy-ask">
+      <h4>The Ask: Reschedule Cannabis Federally</h4>
+      <p>Move cannabis out of Schedule I. This single action unlocks federal research funding, allows universities to conduct clinical trials without DEA obstruction, and begins aligning legal classification with the scientific evidence that already exists. The Shafer Commission got it right in 1972. It's time to stop overriding the science.</p>
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 3 — FUND TRIALS ═══ -->
+  <section class="section" id="fund-trials">
+    <div class="section-header">
+      <div class="section-eyebrow"><span class="pillar-badge" style="background:var(--gold);color:var(--dark);">RFER PILLAR</span> F — Fund Trials</div>
+      <h2>Real Science. Real Data. Conducted Openly.</h2>
+      <div class="section-sub">The evidence base exists despite the blockade, not because of it.</div>
+    </div>
+
+    <p>Even under Schedule I restrictions, the research that has managed to get through tells a consistent story: cannabinoids have real, measurable therapeutic applications. But the body of evidence is fragmented, underfunded, and far smaller than it should be for a substance used by over 43 million Americans annually.</p>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num">63%</div>
+        <div class="stat-label">Medical cannabis patients who report substituting it for a prescription drug</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">30%</div>
+        <div class="stat-label">Who specifically substituted cannabis for pharmaceutical opioids</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">~25%</div>
+        <div class="stat-label">Reduction in opioid overdose deaths in states with medical cannabis laws</div>
+      </div>
+    </div>
+
+    <p>CBD has shown clinical promise as an adjunctive therapy for psychotic symptoms — a finding from a double-blind study where schizophrenia patients receiving CBD alongside standard antipsychotics showed reduced positive symptoms, improved cognitive function, and minimal side effects (McGuire et al., 2017). Epidiolex, a CBD-based drug, is FDA-approved for seizure disorders. The Salk Institute found THC inhibits amyloid plaque formation relevant to Alzheimer's disease.</p>
+
+    <p>A 2025 longitudinal study of 1,962 cancer patients in the Minnesota Medical Cannabis Program found that higher CBD doses were associated with better anxiety outcomes, while unbalanced high-THC products performed worse. The ratio matters — and the market has gotten it exactly backwards.</p>
+
+    <p>CBD safety data from over 4,000 participants across multiple studies — including a 2022 Radicle Sciences study of 2,800 participants — shows no association with elevated liver tests, low testosterone, or daytime drowsiness. Minor side effects occurred in under 10% of participants.</p>
+
+    <div class="pull-quote">"The evidence for cannabis as a medicine is stronger than the evidence for prohibition as a policy. The difference is which one gets funded."</div>
+
+    <div class="policy-ask" style="border-top-color:var(--gold);">
+      <h4>The Ask: Fund the Clinical Trials</h4>
+      <p>Rescheduling removes the barrier. Funding builds the bridge. Allocate federal research dollars to large-scale, double-blind clinical trials studying cannabinoid therapies for pain management, anxiety, PTSD, neurodegenerative disease, and opioid substitution. Study product composition — ratio, dose, route of administration — not just "cannabis" as a monolith. The 1,962-patient Minnesota study showed what rigorous, product-specific research can reveal. Scale it.</p>
+    </div>
+
+    <div class="source-block">
+      <strong>Sources</strong>
+      McGuire et al. (2017). "Cannabidiol as adjunctive therapy in schizophrenia." American Journal of Psychiatry. · Bachhuber et al. (2014). "Medical cannabis laws and opioid overdose mortality." JAMA Internal Medicine. · Reddy, Hampton, Park et al. (2025). Cancer Medicine. · Radicle Sciences (2022). CBD safety in 2,800 participants. · Currais et al. (2016). Salk Institute / npj Aging.
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 4 — HEALTHCARE SYSTEM FAILURE ═══ -->
+  <section class="section" id="healthcare">
+    <div class="section-header">
+      <div class="section-eyebrow">Section 04 · The Access Crisis</div>
+      <h2>The Clinic Was Never Really Open</h2>
+      <div class="section-sub">People arrive at the dispensary because the healthcare system's door was closed.</div>
+    </div>
+
+    <p>The mainstream narrative says cannabis causes mental health crises. Emerging research — including Mendelian randomization studies that use genetic markers to trace actual cause and effect — says the relationship is largely inverted. A genetic predisposition for schizophrenia predicts cannabis initiation more strongly than cannabis use predicts schizophrenia. The vulnerability came first. The cannabis use followed it.</p>
+
+    <p>Why? Because the traditional healthcare system is structurally inaccessible for the people who need it most.</p>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num">67</div>
+        <div class="stat-label">Median days to get a psychiatrist appointment in the U.S.</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">60%</div>
+        <div class="stat-label">Of Americans locked out of mental healthcare by cost</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">9%</div>
+        <div class="stat-label">Of U.S. medical schools that include any cannabis education</div>
+      </div>
+    </div>
+
+    <p>People in crisis don't wait 67 days. They figure something out. When they arrive at the dispensary, they encounter budtenders instead of doctors, high-THC products instead of balanced formulations, and zero clinical guidance. That's not a cannabis problem — it's a healthcare crisis wearing a cannabis mask.</p>
+
+    <p>The self-medication theory of addiction, backed by over 30 years of research, holds that individuals with pre-existing psychological vulnerabilities use substances to compensate for deficiencies their healthcare system failed to address. When researchers find endocannabinoid deficiency states linked to anxiety and depression — and when the system that should treat those conditions is locked behind two-month wait times and unaffordable costs — the path to self-medication is predictable.</p>
+
+    <div class="pull-quote">"The dispensary door was open when the clinic door was closed. That's not a cannabis problem. That's a healthcare crisis wearing a cannabis mask."</div>
+
+    <div class="source-block">
+      <strong>Sources</strong>
+      Khantzian (1977, 2003). Self-medication theory of addiction. · Shonesy et al. (2014). Endocannabinoid deficiency and self-medication. · Mendelian randomization data referenced via Harvey II (2020) dissertation framework. · Psychiatrist wait time: Merritt Hawkins survey data.
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 5 — EDUCATE ═══ -->
+  <section class="section" id="educate">
+    <div class="section-header">
+      <div class="section-eyebrow"><span class="pillar-badge" style="background:var(--brown);">RFER PILLAR</span> E — Educate</div>
+      <h2>The Stigma Is the Safety Risk</h2>
+      <div class="section-sub">When healthcare providers don't know, patients are left navigating alone.</div>
+    </div>
+
+    <p>Roughly 43 million Americans use cannabis annually. It has documented interactions with prescription medications, documented therapeutic applications in pain, anxiety, seizure disorders, and even adjunctive psychosis treatment. And the people we trust to guide patients through it have been institutionally kept in the dark.</p>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num">9%</div>
+        <div class="stat-label">Of U.S. medical schools that include cannabis education</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">84.9%</div>
+        <div class="stat-label">Of medical residents who report receiving zero cannabis training</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">77%</div>
+        <div class="stat-label">Of pharmacy students lacking confidence to discuss cannabis risks</div>
+      </div>
+    </div>
+
+    <p>Schedule I doesn't just restrict access. It restricts knowledge. It blocks the clinical trials that would build the evidence base. It keeps healthcare providers uneducated. And then those same providers — and those same media outlets — point at cannabis when something goes wrong, because cannabis is the only variable they can name.</p>
+
+    <p>The distinction between natural, whole-plant cannabis with balanced cannabinoid profiles and high-potency, THC-dominant products has real clinical significance. The traditional plant had a THC-to-CBD ratio near 14:1. Modern market products have pushed past 80:1. CBD buffers THC's anxiety-inducing effects. The market bred it out to maximize the high — and the profit margin. Without educated healthcare providers, patients have no one to explain why that matters.</p>
+
+    <div class="compare-grid">
+      <div class="compare-col left">
+        <h4>What Education Enables</h4>
+        <ul>
+          <li>Biphasic dosing guidance (start low, go slow)</li>
+          <li>Product composition counseling (ratio, terpene profiles)</li>
+          <li>Drug interaction awareness</li>
+          <li>Risk stratification for vulnerable populations</li>
+          <li>Informed consent for therapeutic use</li>
+        </ul>
+      </div>
+      <div class="compare-col right">
+        <h4>What Stigma Produces</h4>
+        <ul>
+          <li>Budtenders as sole point of guidance</li>
+          <li>High-THC products as default recommendations</li>
+          <li>No drug interaction screening</li>
+          <li>Patients hiding use from physicians</li>
+          <li>Self-medication without clinical oversight</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="policy-ask" style="background:var(--brown);">
+      <h4>The Ask: Educate Healthcare Providers and the Public</h4>
+      <p>Integrate cannabis pharmacology into medical, nursing, and pharmacy school curricula. Fund continuing education for practicing clinicians. Develop evidence-based public education that distinguishes product types, explains biphasic dosing, and demystifies the ECS. The stigma itself is a barrier to safety — because it keeps honest conversation underground and keeps the people who should know better from learning.</p>
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 6 — REGULATE ═══ -->
+  <section class="section" id="regulate">
+    <div class="section-header">
+      <div class="section-eyebrow"><span class="pillar-badge" style="background:var(--rust);">RFER PILLAR</span> R — Regulate</div>
+      <h2>By Evidence. Not By Stigma.</h2>
+      <div class="section-sub">Prohibition created the unregulated market. Regulation fixes it.</div>
+    </div>
+
+    <p>Cannabis is not harmless, and no honest advocate claims it is. High-potency, unbalanced products carry real risks — especially for young or vulnerable users. But the answer to that isn't prohibition, which is the policy that created the conditions for those products to exist in the first place.</p>
+
+    <p>Right now, synthetic "hemp-derived" cannabinoids are on gas station shelves with zero testing, zero age verification, and zero clinical oversight. That's because a loophole in the 2018 Farm Bill didn't anticipate Delta-8 THC, THC-O, and other novel intoxicating compounds being extracted from legal hemp. The most dangerous products on the market exist precisely because federal policy pushed the market sideways rather than regulating it directly.</p>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num">1,000mg</div>
+        <div class="stat-label">THC gummies available at gas stations — zero age verification</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">48.8%</div>
+        <div class="stat-label">Of synthetic cannabinoid users are ages 13–19</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">80:1+</div>
+        <div class="stat-label">THC-to-CBD ratio in modern market products (was 14:1)</div>
+      </div>
+    </div>
+
+    <p>Synthetic products have been associated with seizures, myocardial infarction, renal damage, psychosis, and violent agitation. Manufacturers package them to look like natural cannabis products — exploiting consumer confusion. Vaping devices are designed as phones, pens, and flash drives, making detection nearly impossible for parents and educators. This is what an unregulated market produces.</p>
+
+    <p>Alcohol prohibition was tried. It created organized crime, bathtub gin, and increased consumption. The repeal didn't eliminate problems — but it created a framework for managing them. Cannabis is following the same historical arc, decades behind.</p>
+
+    <div class="compare-grid">
+      <div class="compare-col left">
+        <h4>What Evidence-Based Regulation Delivers</h4>
+        <ul>
+          <li>Mandatory potency testing and labeling</li>
+          <li>CBD-to-THC ratio standards</li>
+          <li>Age verification at point of sale</li>
+          <li>Childproof packaging requirements</li>
+          <li>Clinical guidance at dispensaries</li>
+          <li>Tax revenue funding education and treatment</li>
+        </ul>
+      </div>
+      <div class="compare-col right">
+        <h4>What Prohibition Delivers</h4>
+        <ul>
+          <li>Untested products on gas station shelves</li>
+          <li>Synthetics targeting adolescents</li>
+          <li>Zero consumer protections</li>
+          <li>Mass incarceration with no safety benefit</li>
+          <li>A research blockade on the plant</li>
+          <li>An unregulated gray market worth billions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="policy-ask" style="background:var(--rust);">
+      <h4>The Ask: Regulate By Evidence</h4>
+      <p>Close the hemp loophole that allows synthetic intoxicants to reach children through gas stations and convenience stores. Establish mandatory potency caps and CBD-to-THC ratio standards for retail products. Require age verification and childproof packaging universally. Fund state-level regulatory infrastructure through cannabis tax revenue. Protect functional patient access while restricting the products and channels that prohibition created.</p>
+    </div>
+
+    <div class="source-block">
+      <strong>Sources</strong>
+      Castellanos & Gralnik (2016). Synthetic cannabinoid dangers. · Popp (2018). Synthetic products in schools. · ElSohly et al. (2016). THC:CBD ratio collapse. · Stuyt (2019). "The problem with high potency THC marijuana." Missouri Medicine. · Ghosh et al. (2017). Colorado post-legalization regulatory responses.
+    </div>
+  </section>
+
+  <!-- ═══ SECTION 7 — THE PATH FORWARD ═══ -->
+  <section class="section" id="path-forward">
+    <div class="section-header">
+      <div class="section-eyebrow">Section 07 · The Framework</div>
+      <h2>Four Letters. Four Actions. One Path.</h2>
+      <div class="section-sub">RFER is a policy platform, not a slogan.</div>
+    </div>
+
+    <p>They named it "reefer" to make you afraid. Fear drove policy. Policy blocked research. Blocked research kept doctors uneducated. Uneducated doctors kept patients in the dark. Patients in the dark self-medicated with whatever the market offered. And the market — unregulated and profit-driven — bred the safety features out of the plant to maximize potency.</p>
+
+    <p>That's the feedback loop. RFER breaks it.</p>
+
+    <div class="rfer-grid" style="margin: 40px 0;">
+      <div class="rfer-letter-card">
+        <div class="rlc-letter">R</div>
+        <div class="rlc-word">Reschedule</div>
+        <p style="font-size:0.8rem;color:var(--muted);margin-top:8px;line-height:1.4;">End Schedule I. Unlock research.</p>
+      </div>
+      <div class="rfer-letter-card">
+        <div class="rlc-letter">F</div>
+        <div class="rlc-word">Fund Trials</div>
+        <p style="font-size:0.8rem;color:var(--muted);margin-top:8px;line-height:1.4;">Real science. Real data. Conducted openly.</p>
+      </div>
+      <div class="rfer-letter-card">
+        <div class="rlc-letter">E</div>
+        <div class="rlc-word">Educate</div>
+        <p style="font-size:0.8rem;color:var(--muted);margin-top:8px;line-height:1.4;">Doctors, patients, and the public.</p>
+      </div>
+      <div class="rfer-letter-card">
+        <div class="rlc-letter">R</div>
+        <div class="rlc-word">Regulate</div>
+        <p style="font-size:0.8rem;color:var(--muted);margin-top:8px;line-height:1.4;">By evidence. Not by stigma.</p>
+      </div>
+    </div>
+
+    <p>This isn't about being pro-cannabis. It's about being pro-evidence. It's about acknowledging that 90 years of prohibition produced an unregulated market, a research blockade, a medical education gap, and mass incarceration — while cannabis use only increased. The policy failed. The plant didn't.</p>
+
+    <p>The path forward starts with honest information. That's what this platform exists to provide. No hype. No fear. Just the data, the context, and the policy changes that the data supports.</p>
+
+    <div class="pull-quote">"Educate to regulate. That's the whole position. Give people honest information, give doctors the training they never received, give researchers the access they've been denied, and give regulators the evidence to build a framework that actually protects people."</div>
+
+    <p style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--green);font-style:italic;margin-top:40px;">Focused. Functional. Fair.</p>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="page-footer">
+    <div>
+      <div class="footer-brand">mostlycbd.com</div>
+      <div class="footer-tagline">Educate to regulate · Focused. Functional. Fair.</div>
+    </div>
+    <div class="footer-right">
+      RFER Initiative · March 2026<br>
+      Evidence-based cannabis policy framework
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
