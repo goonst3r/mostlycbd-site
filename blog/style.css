@@ -66,7 +66,14 @@ a:hover { color: var(--amber); }
 /* ─── hero ───────────────────────────────────────────────── */
 .hero {
   padding: 80px 0 56px;
+  border: none;
   border-bottom: 1px solid var(--rule);
+  border-radius: 0;
+  box-shadow: none;
+  background-image: none;
+  background-color: transparent;
+  margin-bottom: 0;
+  text-align: left;
 }
 .hero__kicker {
   font-family: var(--mono);
@@ -173,11 +180,14 @@ a:hover { color: var(--amber); }
 /* ─── stat grid ──────────────────────────────────────────── */
 .stat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2px;
   margin: 40px 0;
   background: var(--rule);
   border: 1px solid var(--rule);
+}
+@media (max-width: 480px) {
+  .stat-grid { grid-template-columns: 1fr; }
 }
 .stat-cell {
   background: var(--bg);
