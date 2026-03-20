@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RFER | mostlyCBD</title>
+  <meta name="description" content="Reschedule. Fund Trials. Educate. Regulate. A four-pillar policy framework for evidence-based cannabis reform. mostlycbd.com" />
+  <meta property="og:title" content="RFER — Reschedule. Fund Trials. Educate. Regulate." />
+  <meta property="og:description" content="They named it 'reefer' to make you afraid. We made it a plan." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mostlycbd.com/rfer.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── reset ───────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #F4F1EB;
+      color: #1C1B18;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: #3B6E52; text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: #C4692A; }
+    img { max-width: 100%; display: block; }
+
+    /* ─── site nav ────────────────────────────────────────────── */
+    .site-nav {
+      background: rgba(244,241,235,0.97);
+      border-bottom: 1px solid rgba(52,78,65,0.12);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: block;
+      padding: 0;
+    }
+
+    .site-nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      position: relative;
+    }
+
+    .site-nav__logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: .04em;
+      color: #1C1B18;
+      text-decoration: none;
+    }
+
+    .site-nav__logo span { color: #3B6E52; }
+    .site-nav__logo:hover { color: #C4692A; }
+
+    .site-nav__links {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      margin: 0; padding: 0;
+    }
+
+    .site-nav__links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: #5A5750;
+      text-decoration: none;
+      transition: color .15s ease;
+    }
+
+    .site-nav__links a:hover { color: #C4692A; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px; height: 16px;
+      background: none; border: none; cursor: pointer; padding: 0;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 2px;
+      background: #5A5750;
+      border-radius: 1px;
+      transition: all .25s ease;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 680px) {
+      .hamburger { display: flex; }
+      .site-nav__links {
+        display: none;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        background: rgba(244,241,235,0.98);
+        border-bottom: 1px solid rgba(52,78,65,0.12);
+        padding: 20px 24px 24px;
+      }
+      .site-nav__links.open { display: flex; }
+    }
+
+    /* ─── layout ──────────────────────────────────────────────── */
+    .text-wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .rule { border: none; border-top: 1px solid #C8C3B8; margin: 0; }
+
+    /* ─── page hero ───────────────────────────────────────────── */
+    .page-hero {
+      padding: 100px 0 88px;
+      background: #344E41;
+      text-align: center;
+    }
+
+    .page-hero__label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+      color: #A3B18A; margin-bottom: 22px;
+    }
+
+    .page-hero__headline {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: clamp(30px, 5vw, 48px);
+      font-style: italic; line-height: 1.2; font-weight: 700;
+      color: #fff; margin-bottom: 28px;
+      text-shadow: 0 1px 12px rgba(10,20,30,0.4);
+    }
+
+    .page-hero__headline em { font-style: normal; color: #A3B18A; }
+
+    .page-hero__sub {
+      font-size: 17px; color: rgba(255,255,255,0.72);
+      max-width: 520px; line-height: 1.65;
+      margin: 0 auto;
+    }
+
+    /* ─── sections ────────────────────────────────────────────── */
+    .section      { padding: 72px 0; }
+    .section--alt { background: #EAE6DC; }
+
+    .section__heading {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: clamp(24px, 3.5vw, 34px);
+      line-height: 1.25; margin-bottom: 24px;
+    }
+
+    .accent { color: #C4692A; }
+
+    .section__subheading {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+      color: #5A5750; margin: 40px 0 16px;
+    }
+
+    /* ─── prose ───────────────────────────────────────────────── */
+    .prose p { margin-bottom: 20px; font-size: 16px; line-height: 1.8; }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose strong { font-weight: 500; }
+    .prose em { font-style: italic; }
+
+    /* ─── RFER acronym block ──────────────────────────────────── */
+    .rfer-block {
+      background: #3B6E52;
+      border-radius: 3px;
+      padding: 32px 28px; margin: 32px 0;
+    }
+
+    .rfer-line {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(18px, 2.8vw, 24px);
+      font-weight: 500;
+      color: rgba(244,241,235,0.88);
+      letter-spacing: 0.04em;
+      line-height: 1.65;
+    }
+
+    .rfer-line .letter {
+      color: #A3B18A;
+      font-weight: 700;
+    }
+
+    .rfer-line .period { color: rgba(244,241,235,0.3); }
+
+    /* ─── concept box ─────────────────────────────────────────── */
+    .concept-box {
+      background: #D4E7DC;
+      border-left: 3px solid #3B6E52;
+      border-radius: 0 3px 3px 0;
+      padding: 24px 28px; margin: 24px 0;
+      font-size: 15px; line-height: 1.65;
+    }
+
+    .concept-box strong {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+      color: #3B6E52; display: block; margin-bottom: 8px;
+    }
+
+    /* ─── pillars list ────────────────────────────────────────── */
+    .pillars-list {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 2px;
+      background: #C8C3B8; border: 1px solid #C8C3B8; margin: 24px 0;
+    }
+
+    .pillar-item {
+      background: #F4F1EB;
+      padding: 22px 24px;
+      font-size: 15px; line-height: 1.65;
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 16px;
+      align-items: baseline;
+    }
+
+    .section--alt .pillar-item { background: #EAE6DC; }
+
+    .pillar-item__letter {
+      font-family: 'DM Mono', monospace;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .pillar-item:nth-child(1) .pillar-item__letter { color: #3B6E52; }
+    .pillar-item:nth-child(2) .pillar-item__letter { color: #C4A040; }
+    .pillar-item:nth-child(3) .pillar-item__letter { color: #3B6E8F; }
+    .pillar-item:nth-child(4) .pillar-item__letter { color: #C4692A; }
+
+    .pillar-item__body { color: #1C1B18; }
+    .pillar-item__body strong { font-weight: 600; display: block; margin-bottom: 2px; }
+    .pillar-item__body span { color: #5A5750; }
+
+    /* ─── disclaimer / context box ───────────────────────────── */
+    .disclaimer {
+      background: #F5E4D5;
+      border-left: 3px solid #C4692A;
+      border-radius: 0 3px 3px 0;
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px; line-height: 1.6; color: #1C1B18;
+    }
+
+    .disclaimer strong {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+      color: #C4692A; display: block; margin-bottom: 6px;
+    }
+
+    /* ─── next steps / CTA grid ──────────────────────────────── */
+    .next-steps__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: #C8C3B8;
+      border: 1px solid #C8C3B8;
+      margin: 16px 0 0;
+    }
+
+    @media (max-width: 560px) {
+      .next-steps__grid { grid-template-columns: 1fr; }
+    }
+
+    .next-step-card {
+      background: #EAE6DC;
+      padding: 28px 24px;
+      text-decoration: none;
+      color: #1C1B18;
+      display: block;
+      transition: background .15s ease;
+    }
+
+    .next-step-card:hover { background: #D4E7DC; color: #1C1B18; }
+
+    .next-step-card__label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+      color: #3B6E52; display: block; margin-bottom: 10px;
+    }
+
+    .next-step-card__title {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 18px; font-weight: 700; margin-bottom: 10px; line-height: 1.25;
+    }
+
+    .next-step-card__desc {
+      font-size: 14px; line-height: 1.6; color: #5A5750;
+    }
+
+    /* ─── conclusion / pull quote ─────────────────────────────── */
+    .conclusion-box {
+      background: #D4E7DC;
+      border-left: 3px solid #3B6E52;
+      border-radius: 0 3px 3px 0;
+      padding: 28px 32px; margin: 40px 0 0;
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 18px; font-style: italic;
+      color: #344E41; line-height: 1.6;
+    }
+
+    /* ─── site footer ─────────────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid #C8C3B8;
+      padding: 40px 0 32px;
+      background: #EAE6DC;
+    }
+
+    .site-footer__inner {
+      max-width: 1020px; margin: 0 auto; padding: 0 24px;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 24px;
+    }
+
+    .site-footer__brand {
+      font-family: 'DM Mono', monospace; font-size: 12px; color: #5A5750;
+    }
+
+    .site-footer__brand strong {
+      display: block; font-size: 14px; color: #1C1B18; margin-bottom: 4px;
+    }
+
+    .site-footer__taglines {
+      font-family: 'DM Mono', monospace; font-size: 11px; color: #5A5750;
+      letter-spacing: .06em; text-align: right; line-height: 1.8;
+      display: flex; flex-direction: column; align-items: flex-end; gap: 14px;
+    }
+
+    .site-footer__socials { display: flex; gap: 18px; align-items: center; }
+
+    .site-footer__socials a {
+      display: flex; color: #5A5750; text-decoration: none; transition: color .15s ease;
+    }
+
+    .site-footer__socials a:hover { color: #3B6E52; }
+    .site-footer__socials svg { display: block; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="site-nav__inner">
+    <a href="https://mostlycbd.com/index.html" class="site-nav__logo">mostly<span>cbd</span>.com</a>
+    <button type="button" class="hamburger" aria-label="Menu"
+      onclick="this.classList.toggle('open');document.querySelector('.site-nav__links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="site-nav__links">
+      <li><a href="https://mostlycbd.com/index.html">Home</a></li>
+      <li><a href="https://mostlycbd.com/guide.html">Guide</a></li>
+      <li><a href="https://mostlycbd.com/blog.html">Deep Dives</a></li>
+      <li><a href="https://www.reddit.com/r/mostlyCBD/" target="_blank" rel="noopener">Community</a></li>
+      <li><a href="https://mostlycbd.com/action.html">Action</a></li>
+      <li><a href="https://shop.mostlycbd.com">Shop</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="page-hero">
+  <div class="text-wrap">
+    <p class="page-hero__label">Advocacy &middot; Policy Framework</p>
+    <h1 class="page-hero__headline">They named it "reefer" to make you afraid.<br><em>We made it a plan.</em></h1>
+    <p class="page-hero__sub">
+      RFER is a four-pillar policy framework for evidence-based cannabis reform.
+      Four letters. Four actions. One path from prohibition to regulation.
+    </p>
+  </div>
+</header>
+
+<!-- SECTION: The Acronym -->
+<section class="section section--alt">
+  <div class="text-wrap">
+    <h2 class="section__heading"><span class="accent">RFER.</span> Not a Slogan. A Platform.</h2>
+
+    <div class="rfer-block">
+      <div class="rfer-line"><span class="letter">R</span>eschedule<span class="period">.</span></div>
+      <div class="rfer-line"><span class="letter">F</span>und Trials<span class="period">.</span></div>
+      <div class="rfer-line"><span class="letter">E</span>ducate<span class="period">.</span></div>
+      <div class="rfer-line"><span class="letter">R</span>egulate<span class="period">.</span></div>
+    </div>
+
+    <div class="prose">
+      <p>
+        In the 1930s, a newspaper baron and a bureaucrat needed a villain. They took a plant that had been
+        in the U.S. Pharmacopeia for 87 years, gave it a foreign-sounding slang name, and ran it
+        through 28 newspapers simultaneously until the fear stuck. That fear became the Marijuana Tax Act.
+        That act became Schedule I. And Schedule I has blocked federal research for over 50 years.
+      </p>
+      <p>
+        RFER takes the word they built to scare you and turns it into the four things
+        that would actually fix the problem.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- SECTION: The Framework -->
+<section class="section">
+  <div class="text-wrap">
+    <h2 class="section__heading">The <span class="accent">Four</span> Pillars</h2>
+
+    <ul class="pillars-list">
+      <li class="pillar-item">
+        <span class="pillar-item__letter">R</span>
+        <div class="pillar-item__body">
+          <strong>Reschedule</strong>
+          <span>End the Schedule I classification that blocks federal research, keeps doctors uneducated, and treats cannabis like heroin while cocaine sits in Schedule II.</span>
+        </div>
+      </li>
+      <li class="pillar-item">
+        <span class="pillar-item__letter">F</span>
+        <div class="pillar-item__body">
+          <strong>Fund Trials</strong>
+          <span>Real science. Real data. Conducted openly. Study cannabinoid ratios, dose, and route — not just "cannabis" as a monolith. The evidence exists despite the blockade, not because of it.</span>
+        </div>
+      </li>
+      <li class="pillar-item">
+        <span class="pillar-item__letter">E</span>
+        <div class="pillar-item__body">
+          <strong>Educate</strong>
+          <span>9% of medical schools teach cannabis pharmacology. 84.9% of residents report zero training. 43 million Americans use cannabis annually. Their doctors were never taught to guide them.</span>
+        </div>
+      </li>
+      <li class="pillar-item">
+        <span class="pillar-item__letter">R</span>
+        <div class="pillar-item__body">
+          <strong>Regulate</strong>
+          <span>Close the loopholes putting 1,000mg THC gummies on gas station shelves with zero age checks. Prohibition created the unregulated market. Evidence-based regulation fixes it.</span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="concept-box">
+      <strong>The core argument</strong>
+      The policy failed. The plant didn't. Schedule I wasn't based on science in 1970 —
+      the government's own Shafer Commission recommended decriminalization in 1972, one year after it was enacted.
+      It has been blocking research ever since.
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- SECTION: The Position -->
+<section class="section section--alt">
+  <div class="text-wrap">
+    <h2 class="section__heading"><span class="accent">Pro-evidence.</span> Not Pro-Cannabis.</h2>
+
+    <div class="prose">
+      <p>
+        This isn't about being pro-cannabis. It's about being pro-evidence.
+        <strong>90 years of prohibition</strong> produced an unregulated market, a research blockade,
+        a medical education gap, and mass incarceration — while cannabis use only increased.
+      </p>
+      <p>
+        No ads fund this site. No trackers sell your attention. No third-party cookies.
+        The content stays honest because the shop exists — and because the people wearing RFER
+        are doing more than buying a shirt. They're putting a policy framework on their back
+        and starting a conversation every time someone asks what it means.
+      </p>
+    </div>
+
+    <div class="disclaimer">
+      <strong>The position</strong>
+      Regulation by evidence, not fear. Clinical trial funding. Patient access. Federal rescheduling.
+      These aren't radical asks — they're what every other medicine in the country already has.
+    </div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- SECTION: CTA -->
+<section class="section">
+  <div class="text-wrap">
+    <h2 class="section__heading">Wear It. <span class="accent">Share It.</span></h2>
+
+    <div class="next-steps__grid">
+      <a href="https://shop.mostlycbd.com/product/rfer" class="next-step-card" target="_blank" rel="noopener">
+        <span class="next-step-card__label">the Shop</span>
+        <div class="next-step-card__title">Wear Your Advocacy</div>
+        <p class="next-step-card__desc">
+          100% cotton garment-dyed heavyweight tee. Olive drab. Monospace.
+          No leaf. No gimmick. Just the plan. First item ships free.
+        </p>
+      </a>
+
+      <a href="images/rfer-share-card.png" class="next-step-card" download>
+        <span class="next-step-card__label">Share Card</span>
+        <div class="next-step-card__title">Share the Framework</div>
+        <p class="next-step-card__desc">
+          Download the RFER share card for X, Instagram, or anywhere.
+          Post it. Tag @scrapthescript. Let the conversation start.
+        </p>
+      </a>
+    </div>
+
+    <div class="conclusion-box">
+      "Educate to regulate. That's the whole position."
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <strong>mostlycbd.com</strong>
+      Natural cannabis advocacy. Balanced profiles.<br/>
+      Hand-coded. GitHub Pages. No ads. No agenda but the evidence.
+    </div>
+    <div class="site-footer__taglines">
+      <div>Educate to Regulate.<br/>Focused. Functional. Fair.</div>
+      <div class="site-footer__socials">
+        <a href="https://twitter.com/scrapthescript" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@mostlycbd/" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/mostly.cbd/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+        <a href="https://www.reddit.com/r/mostlyCBD/" target="_blank" rel="noopener" aria-label="Reddit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
