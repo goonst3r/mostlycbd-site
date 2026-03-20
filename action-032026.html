@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Take Action | mostlyCBD</title>
+  <meta name="description" content="Where we stand. Reschedule federally. Fund the science. Protect functional access. Regulate by evidence, not stigma." />
+  <meta property="og:title" content="Where We Stand | mostlyCBD" />
+  <meta property="og:description" content="Not selling you on cannabis. Giving you honest information and letting you decide for yourself." />
+  <meta property="og:url" content="https://mostlycbd.com/action.html" />
+  <meta property="og:site_name" content="mostlyCBD" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@scrapthescript" />
+  <link rel="icon" type="image/png" href="Favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script data-goatcounter="https://mostlycbd.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ─── resets ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #F4F1EB;
+      color: #1C1B18;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      padding: 0;
+    }
+    a { color: #3B6E52; text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: #C4692A; }
+    img { max-width: 100%; display: block; }
+
+    /* neutralize style.css nav side-margin offset */
+    .site-nav { display: block; padding: 0; margin-left: 0; margin-right: 0; }
+
+    /* ─── containers ─────────────────────────────────────────── */
+    .text-wrap  { max-width: 760px;  margin: 0 auto; padding: 0 24px; }
+    .rule { border: none; border-top: 1px solid #C8C3B8; margin: 0; }
+
+    /* ─── site footer ─────────────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid #C8C3B8;
+      padding: 40px 0 32px;
+      background: #EAE6DC;
+    }
+    .site-footer__inner {
+      max-width: 1020px; margin: 0 auto; padding: 0 24px;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .site-footer__brand {
+      font-family: 'DM Mono', monospace; font-size: 12px; color: #5A5750;
+    }
+    .site-footer__brand strong {
+      display: block; font-size: 14px; color: #1C1B18; margin-bottom: 4px;
+    }
+    .site-footer__taglines {
+      font-family: 'DM Mono', monospace; font-size: 11px; color: #5A5750;
+      letter-spacing: .06em; text-align: right; line-height: 1.8;
+      display: flex; flex-direction: column; align-items: flex-end; gap: 14px;
+    }
+    .site-footer__socials { display: flex; gap: 18px; align-items: center; }
+    .site-footer__socials a {
+      display: flex; color: #5A5750; text-decoration: none; transition: color .15s ease;
+    }
+    .site-footer__socials a:hover { color: #3B6E52; }
+    .site-footer__socials svg { display: block; }
+
+    /* ─── page hero ──────────────────────────────────────────── */
+    /* reset style.css bare `header` rule (border-radius, border, text-align) */
+    .page-hero {
+      padding: 100px 0 88px;
+      background-image: linear-gradient(rgba(15,25,35,0.45), rgba(15,25,35,0.45)), url('images/bg_action2.jpeg');
+      background-size: cover;
+      background-position: center;
+      border-radius: 0;
+      border: none;
+      text-align: left;
+      margin-bottom: 0;
+      box-shadow: none;
+    }
+    .page-hero__label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+      color: #D4E7DC; margin-bottom: 22px;
+      text-shadow: 0 1px 6px rgba(10,20,30,0.5);
+    }
+    .page-hero__headline {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: clamp(36px, 5.5vw, 56px);
+      font-style: italic; line-height: 1.15; font-weight: 700; letter-spacing: 0.03em;
+      color: #fff; margin-bottom: 28px;
+      text-shadow: 0 1px 12px rgba(10,20,30,0.65);
+    }
+    .page-hero__sub {
+      font-size: 17px; color: rgba(255,255,255,0.82);
+      max-width: 560px; line-height: 1.65;
+      text-shadow: 0 1px 8px rgba(10,20,30,0.55);
+    }
+
+    /* ─── sections ───────────────────────────────────────────── */
+    .section      { padding: 72px 0; }
+    .section--alt { background: #EAE6DC; }
+
+    .section__label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #3B6E52;
+      margin-bottom: 12px;
+    }
+    .section__heading {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: clamp(24px, 3.5vw, 34px);
+      line-height: 1.25;
+      margin-bottom: 24px;
+    }
+    .prose p { margin-bottom: 20px; color: #1C1B18; }
+    .prose p:last-child { margin-bottom: 0; }
+
+    /* ─── lede ───────────────────────────────────────────────── */
+    .page-lede {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 19px;
+      line-height: 1.65;
+      color: #1C1B18;
+      margin-bottom: 24px;
+    }
+
+    /* ─── position list ──────────────────────────────────────── */
+    .position-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .position-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px 24px;
+      background: #F4F1EB;
+      border: 1px solid #C8C3B8;
+      border-radius: 3px;
+    }
+    .section--alt .position-item { background: #F4F1EB; }
+    .position-item__num {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #3B6E52;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 36px;
+    }
+    .position-item__content p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1C1B18;
+      margin: 0;
+    }
+    .position-item__content strong {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #3B6E52;
+      margin-bottom: 6px;
+    }
+
+    /* ─── pull quote ─────────────────────────────────────────── */
+    .pull-quote {
+      border-top: 2px solid #1C1B18;
+      border-bottom: 1px solid #C8C3B8;
+      margin: 48px 0;
+      padding: 28px 0 24px;
+    }
+    .pull-quote__text {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: clamp(20px, 3vw, 26px);
+      font-style: italic;
+      line-height: 1.4;
+      margin-bottom: 0;
+    }
+
+    /* ─── stat pair ──────────────────────────────────────────── */
+    .stat-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: #C8C3B8;
+      border: 1px solid #C8C3B8;
+      margin: 32px 0;
+    }
+    .stat-block {
+      background: #3B6E52;
+      padding: 32px 28px;
+      text-align: center;
+    }
+    .stat-block__num {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .stat-block__label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #D4E7DC;
+      line-height: 1.55;
+    }
+
+    /* ─── banner share ───────────────────────────────────────── */
+    .banner-share {
+      border: 1px solid #C8C3B8;
+      border-radius: 3px;
+      overflow: hidden;
+      margin: 32px 0;
+    }
+    .banner-share__body {
+      padding: 24px 28px;
+    }
+    .banner-share__label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #3B6E52;
+      margin-bottom: 10px;
+    }
+    .banner-share__body p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1C1B18;
+      margin-bottom: 16px;
+    }
+    .banner-share__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 9px 18px;
+      border-radius: 2px;
+      border: 1px solid #3B6E52;
+      background: transparent;
+      color: #3B6E52;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .15s ease, color .15s ease;
+    }
+    .btn:hover { background: #3B6E52; color: #fff; }
+    .btn.done { background: #D4E7DC; border-color: #D4E7DC; color: #3B6E52; }
+
+    /* ─── advocacy callout ───────────────────────────────────── */
+    .adv-callout {
+      border: 1px solid #C8C3B8;
+      border-left: 3px solid #3B6E52;
+      border-radius: 0 3px 3px 0;
+      padding: 24px 28px;
+      margin: 32px 0;
+      background: #D4E7DC;
+    }
+    .adv-callout__label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #3B6E52;
+      margin-bottom: 10px;
+    }
+    .adv-callout p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1C1B18;
+      margin-bottom: 16px;
+    }
+    .adv-callout .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* ─── voice card ─────────────────────────────────────────── */
+    .voice-card {
+      background: #3B6E52;
+      border-radius: 3px;
+      padding: 32px 28px;
+      margin: 32px 0;
+    }
+    .voice-card__label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #D4E7DC;
+      margin-bottom: 14px;
+    }
+    .voice-card p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(244,241,235,0.9);
+      margin-bottom: 16px;
+    }
+    .voice-card p:last-child { margin-bottom: 0; }
+    .voice-card a { color: #D4E7DC; font-weight: 500; }
+    .voice-card a:hover { color: #fff; }
+    .voice-card strong { color: #fff; }
+
+    /* ─── bottom line ────────────────────────────────────────── */
+    .bottom-line {
+      border-top: 2px solid #1C1B18;
+      padding-top: 24px;
+      margin-top: 48px;
+    }
+    .bottom-line__label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #C4692A;
+      margin-bottom: 10px;
+    }
+    .bottom-line p {
+      font-size: 16px;
+      line-height: 1.65;
+      color: #1C1B18;
+      margin-bottom: 8px;
+    }
+    .bottom-line__sig {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: #5A5750;
+      letter-spacing: .06em;
+    }
+
+    /* ─── back to top ────────────────────────────────────────── */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px;
+      background: #3B6E52; color: #fff;
+      padding: 10px 18px; text-decoration: none;
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: .08em; text-transform: uppercase;
+      border-radius: 2px; z-index: 1000;
+      opacity: 0; pointer-events: none;
+      transition: opacity .2s ease, background .15s ease;
+    }
+    #backToTop.visible { opacity: 1; pointer-events: all; }
+    #backToTop:hover { background: #C4692A; color: #fff; }
+
+    /* ─── responsive ─────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .stat-pair { grid-template-columns: 1fr; }
+      .banner-share__actions { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Site navigation">
+    <div class="site-nav__inner">
+      <a href="index.html" class="site-nav__logo">mostly<span>cbd</span>.com</a>
+      <button type="button" class="hamburger" aria-label="Menu"
+        onclick="this.classList.toggle('open');document.querySelector('.site-nav__links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="site-nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="guide.html">Guide</a></li>
+        <li><a href="blog.html">Deep Dives</a></li>
+        <li><a href="https://www.reddit.com/r/mostlyCBD/" target="_blank" rel="noopener">Community</a></li>
+        <li><a href="action.html">Action</a></li>
+        <li><a href="https://shop.mostlycbd.com">Shop</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="top-of-page"></div>
+
+  <!-- Hero -->
+  <header class="page-hero">
+    <div class="text-wrap">
+      <p class="page-hero__label">Advocacy &nbsp;·&nbsp; Where We Stand</p>
+      <h1 class="page-hero__headline">Where We Stand.</h1>
+      <p class="page-hero__sub">Not selling you on cannabis. Giving you honest information and letting you decide for yourself.</p>
+    </div>
+  </header>
+
+  <hr class="rule">
+
+  <!-- Opening -->
+  <section class="section">
+    <div class="text-wrap">
+      <p class="page-lede">
+        I use a balanced CBD/THC blend to manage chronic neuropathic atrophy and anxiety. Not chasing a high — managing a condition. There's a difference, and that difference is the whole point of this site.
+      </p>
+      <div class="prose">
+        <p>The cannabis conversation in this country has two broken extremes: prohibition-era fear tactics that ignore 80+ years of suppressed research, and a commercial market that bred the brakes out of the plant and calls it progress. Neither one serves patients. Neither one serves the truth.</p>
+        <p>The traditional cannabis plant had a THC-to-CBD ratio near 14:1. Modern commercial products have pushed that past 80:1. CBD is protective. The industry removed it. That's not the plant's fault — it's a regulatory failure, and we should say so plainly.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- Positions -->
+  <section class="section section--alt">
+    <div class="text-wrap">
+      <p class="section__label">Where we stand</p>
+      <h2 class="section__heading">Positions. No hedging.</h2>
+      <ul class="position-list">
+        <li class="position-item">
+          <span class="position-item__num">1</span>
+          <div class="position-item__content">
+            <strong>Reschedule Federally</strong>
+            <p>End the Schedule I blockade that prevents the clinical trials we need. You can't demand evidence while making evidence illegal to produce.</p>
+          </div>
+        </li>
+        <li class="position-item">
+          <span class="position-item__num">2</span>
+          <div class="position-item__content">
+            <strong>Fund the Science</strong>
+            <p>Real trials. Real data. Open results. Not industry-funded studies designed to sell product — publicly funded research designed to find the truth.</p>
+          </div>
+        </li>
+        <li class="position-item">
+          <span class="position-item__num">3</span>
+          <div class="position-item__content">
+            <strong>Protect Functional Access</strong>
+            <p>For the millions already using cannabis therapeutically — often because the healthcare system failed them first.</p>
+          </div>
+        </li>
+        <li class="position-item">
+          <span class="position-item__num">4</span>
+          <div class="position-item__content">
+            <strong>Restrict Synthetic &amp; High-Potency Products</strong>
+            <p>Stop products reaching kids through gas station loopholes and unregulated channels. The plant isn't the problem. The unregulated market is.</p>
+          </div>
+        </li>
+        <li class="position-item">
+          <span class="position-item__num">5</span>
+          <div class="position-item__content">
+            <strong>Regulate by Evidence, Not Stigma</strong>
+            <p>Policy should follow science. Not the other way around. The stigma was manufactured in a newsroom to protect a timber fortune. That's documented history, not conspiracy theory. It's time to move past it.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- Mental Health -->
+  <section class="section">
+    <div class="text-wrap">
+      <p class="section__label">The bigger picture</p>
+      <h2 class="section__heading">On Cannabis &amp; Mental Health</h2>
+      <div class="prose">
+        <p>The relationship is more complicated than the headlines suggest. Emerging research — including Mendelian randomization studies — points to a largely inverted relationship. Pre-existing vulnerabilities, often unaddressed because of a healthcare system with 67-day psychiatrist wait times and costs that lock out 60% of Americans, drive people toward self-medication. They arrive at a dispensary because the clinic door was closed.</p>
+      </div>
+
+      <div class="pull-quote">
+        <p class="pull-quote__text">That's a healthcare crisis wearing a cannabis mask.</p>
+      </div>
+
+      <div class="prose">
+        <p>Cannabis is not harmless. High-potency, unbalanced products carry real risks — especially for young or vulnerable users. But the answer to that isn't prohibition. It's education, honest regulation, and clinical infrastructure that actually reaches people.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- Training Gap -->
+  <section class="section section--alt">
+    <div class="text-wrap">
+      <p class="section__label">A system failure, not a patient failure</p>
+      <h2 class="section__heading">The Training Gap</h2>
+
+      <div class="stat-pair">
+        <div class="stat-block">
+          <span class="stat-block__num">9%</span>
+          <span class="stat-block__label">U.S. medical schools that include cannabis education in curriculum</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-block__num">84.9%</span>
+          <span class="stat-block__label">Medical residents reporting zero clinical training on cannabinoid medicine</span>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>Patients are making decisions without clinical guidance, and providers can't fill that gap because they were never trained to. That's not a patient failure. That's a system failure.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- Get Involved -->
+  <section class="section">
+    <div class="text-wrap">
+      <p class="section__label">Add your voice</p>
+      <h2 class="section__heading">Get Involved</h2>
+      <div class="prose">
+        <p>Your story matters. Your voice counts. The stigma was manufactured by a handful of powerful people in newsrooms and boardrooms. It can be dismantled the same way — one honest conversation at a time.</p>
+      </div>
+
+      <div class="banner-share">
+        <img src="images/advocacy/narrativeVoice1.jpg" alt="#ScrapTheScript — Changing the narrative, one voice at a time">
+        <div class="banner-share__body">
+          <p class="banner-share__label">Share the Banner</p>
+          <p>Use this graphic on social media. Tag <strong>#ScrapTheScript</strong> — let collective voices drown out the manufactured stigma. Download below, post it, share it. Attribution keeps the data honest.</p>
+          <div class="banner-share__actions">
+            <a href="images/advocacy/narrativeVoice1.jpg" download="scrapthescript-narrative-banner.jpg" class="btn">Download Banner</a>
+            <button type="button" class="btn" onclick="copyBannerLink(this)" id="copyBannerBtn">Copy Link</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="adv-callout">
+        <p class="adv-callout__label">Use the Advocacy Tools</p>
+        <p>We've built infographics and shareable graphics backed by peer-reviewed data. They're free to use, free to share. Post them. Cite them. Use them to push back when the conversation goes sideways.</p>
+        <div class="btn-row">
+          <a href="blog.html" class="btn">Browse Infographics →</a>
+          <a href="blog.html" class="btn">Advocacy Graphics →</a>
+        </div>
+      </div>
+
+      <div class="voice-card">
+        <p class="voice-card__label">Add Your Voice</p>
+        <p>Share your story on <a href="https://www.reddit.com/r/mostlyCBD/" target="_blank" rel="noopener">r/mostlyCBD</a>. Whether it's how you found functional relief, how the system failed you first, or how stigma impacted someone you care about — your experience adds to the record. The data says one thing. Real stories give it weight.</p>
+        <p>Tag on X: <a href="https://twitter.com/intent/tweet?text=@scrapthescript" target="_blank" rel="noopener noreferrer">@scrapthescript</a> and use <strong>#ScrapTheScript</strong> when you share research, personal experiences, or call out policy failures. Visibility matters. The more people speaking truth to power, the harder it is to ignore.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <strong>mostlycbd.com</strong>
+        Natural cannabis advocacy. Balanced profiles.<br/>
+        Hand-coded. GitHub Pages. No ads. No agenda but the evidence.
+      </div>
+      <div class="site-footer__taglines">
+        <div>Educate to Regulate.<br/>Focused. Functional. Fair.</div>
+        <div class="site-footer__socials">
+          <a href="https://twitter.com/scrapthescript" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@mostlycbd/" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/mostly.cbd/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a href="https://www.reddit.com/r/mostlyCBD/" target="_blank" rel="noopener" aria-label="Reddit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#top-of-page" id="backToTop">↑ Top</a>
+
+  <script>
+    const topBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      topBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+
+    function copyBannerLink(btn) {
+      navigator.clipboard.writeText('https://mostlycbd.com/images/advocacy/narrativeVoice1.jpg').then(() => {
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => {
+          btn.textContent = 'Copy Link';
+          btn.classList.remove('done');
+        }, 2500);
+      });
+    }
+  </script>
+
+</body>
+</html>

@@ -31,9 +31,7 @@
 
     /* ─── site nav ────────────────────────────────────────────── */
     .site-nav {
-      background-image: linear-gradient(rgba(244,241,235,0.85), rgba(244,241,235,0.80)), url('images/bg_header.jpeg');
-      background-size: cover;
-      background-position: center;
+      background: rgba(244,241,235,0.97);
       border-bottom: 1px solid rgba(52,78,65,0.12);
       position: sticky;
       top: 0;
@@ -84,18 +82,6 @@
     }
 
     .site-nav__links a:hover { color: #C4692A; }
-
-    .site-nav__links .rfer-nav {
-      text-transform: none;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: .06em;
-    }
-
-    .site-nav__links .rfer-nav .lr1 { color: #2d5a27; }
-    .site-nav__links .rfer-nav .lf  { color: #D4B44A; }
-    .site-nav__links .rfer-nav .le  { color: #8B7355; }
-    .site-nav__links .rfer-nav .lr2 { color: #b84a2e; }
 
     .hamburger {
       display: none;
@@ -188,7 +174,7 @@
     .prose p { margin-bottom: 20px; font-size: 16px; line-height: 1.8; }
     .prose p:last-child { margin-bottom: 0; }
     .prose strong { font-weight: 500; }
-    .prose em { font-style: italic; color: #5A5750; }
+    .prose em { font-style: italic; }
 
     /* ─── RFER acronym block ──────────────────────────────────── */
     .rfer-block {
@@ -320,44 +306,12 @@
       font-size: 14px; line-height: 1.6; color: #5A5750;
     }
 
-    /* ─── go deeper link ──────────────────────────────────────── */
-    .go-deeper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      background: #D4E7DC;
-      border-left: 3px solid #3B6E52;
-      border-radius: 0 3px 3px 0;
-      padding: 24px 28px;
-      margin: 24px 0;
-      text-decoration: none;
-      color: #1C1B18;
-      transition: background .15s ease;
-    }
-
-    .go-deeper:hover { background: #C4DDD0; color: #1C1B18; }
-
-    .go-deeper__title {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 17px; font-weight: 700; margin-bottom: 4px;
-    }
-
-    .go-deeper__desc {
-      font-size: 14px; color: #5A5750; line-height: 1.5;
-    }
-
-    .go-deeper__arrow {
-      font-family: 'DM Mono', monospace;
-      font-size: 18px; color: #3B6E52; flex-shrink: 0;
-    }
-
     /* ─── conclusion / pull quote ─────────────────────────────── */
     .conclusion-box {
       background: #D4E7DC;
       border-left: 3px solid #3B6E52;
       border-radius: 0 3px 3px 0;
-      padding: 28px 32px; margin: 24px 0 0;
+      padding: 28px 32px; margin: 40px 0 0;
       font-family: 'Libre Baskerville', Georgia, serif;
       font-size: 18px; font-style: italic;
       color: #344E41; line-height: 1.6;
@@ -415,7 +369,7 @@
       <li><a href="https://mostlycbd.com/guide.html">Guide</a></li>
       <li><a href="https://mostlycbd.com/blog.html">Deep Dives</a></li>
       <li><a href="https://www.reddit.com/r/mostlyCBD/" target="_blank" rel="noopener">Community</a></li>
-      <li><a href="https://mostlycbd.com/rfer.html" class="rfer-nav"><span class="lr1">R</span><span class="lf">F</span><span class="le">E</span><span class="lr2">R</span></a></li>
+      <li><a href="https://mostlycbd.com/action.html">Action</a></li>
       <li><a href="https://shop.mostlycbd.com">Shop</a></li>
     </ul>
   </div>
@@ -454,7 +408,7 @@
       </p>
       <p>
         RFER takes the word they built to scare you and turns it into the four things
-        that would actually fix the problem. Not a slogan. A policy platform.
+        that would actually fix the problem.
       </p>
     </div>
   </div>
@@ -509,40 +463,8 @@
 
 <hr class="rule" />
 
-<!-- SECTION: Why This Exists -->
+<!-- SECTION: The Position -->
 <section class="section section--alt">
-  <div class="text-wrap">
-    <h2 class="section__heading">Why <span class="accent">This Exists</span></h2>
-
-    <div class="prose">
-      <p>
-        I use a balanced CBD/THC blend to manage chronic neuropathic atrophy and anxiety.
-        Not chasing a high — managing a condition. There's a difference, and that difference
-        is the whole point of this site.
-      </p>
-      <p>
-        The cannabis conversation has two broken extremes: prohibition-era fear tactics that ignore
-        80+ years of suppressed research, and a commercial market that bred the brakes out of the plant
-        and calls it progress. Neither one serves patients. Neither one serves the truth.
-      </p>
-      <p>
-        The traditional plant had a THC-to-CBD ratio near 14:1. Modern commercial products have pushed
-        that past 80:1. CBD is protective — the industry removed it. That's not the plant's fault.
-        It's a regulatory failure, and we should say so plainly.
-      </p>
-      <p>
-        RFER exists because the path forward isn't prohibition or hype.
-        It's honest information, real science, and policy that follows the evidence.
-        <em>Educate to regulate.</em>
-      </p>
-    </div>
-  </div>
-</section>
-
-<hr class="rule" />
-
-<!-- SECTION: Pro-Evidence -->
-<section class="section">
   <div class="text-wrap">
     <h2 class="section__heading"><span class="accent">Pro-evidence.</span> Not Pro-Cannabis.</h2>
 
@@ -551,7 +473,6 @@
         This isn't about being pro-cannabis. It's about being pro-evidence.
         <strong>90 years of prohibition</strong> produced an unregulated market, a research blockade,
         a medical education gap, and mass incarceration — while cannabis use only increased.
-        The policy failed. The plant didn't.
       </p>
       <p>
         No ads fund this site. No trackers sell your attention. No third-party cookies.
@@ -572,9 +493,9 @@
 <hr class="rule" />
 
 <!-- SECTION: CTA -->
-<section class="section section--alt">
+<section class="section">
   <div class="text-wrap">
-    <h2 class="section__heading">Wear It. <span class="accent">Share It. Use It.</span></h2>
+    <h2 class="section__heading">Wear It. <span class="accent">Share It.</span></h2>
 
     <div class="next-steps__grid">
       <a href="https://shop.mostlycbd.com/product/rfer" class="next-step-card" target="_blank" rel="noopener">
@@ -594,33 +515,7 @@
           Post it. Tag @scrapthescript. Let the conversation start.
         </p>
       </a>
-
-      <a href="https://mostlycbd.com/blog.html" class="next-step-card">
-        <span class="next-step-card__label">Advocacy Tools</span>
-        <div class="next-step-card__title">Use the Data</div>
-        <p class="next-step-card__desc">
-          Infographics, data reports, and shareable graphics — all backed by
-          peer-reviewed data. Free to use. Free to share. Just keep the source credit.
-        </p>
-      </a>
-
-      <a href="https://www.reddit.com/r/mostlyCBD/" class="next-step-card" target="_blank" rel="noopener">
-        <span class="next-step-card__label">Community</span>
-        <div class="next-step-card__title">Join the Conversation</div>
-        <p class="next-step-card__desc">
-          Share your story. Ask questions. Find people who get it.
-          No judgment. Real people, real problems, real solutions.
-        </p>
-      </a>
     </div>
-
-    <a href="https://mostlycbd.com/blog/rfer-deep-dive.html" class="go-deeper">
-      <div>
-        <div class="go-deeper__title">Go Deeper — The Full RFER Framework</div>
-        <div class="go-deeper__desc">The science, the history, the data, and the policy asks behind each pillar. Cited and sourced.</div>
-      </div>
-      <div class="go-deeper__arrow">→</div>
-    </a>
 
     <div class="conclusion-box">
       "Educate to regulate. That's the whole position."
