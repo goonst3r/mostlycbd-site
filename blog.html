@@ -38,6 +38,16 @@
         font-size: 0.9rem; color: #5A5750;
         max-width: 560px; line-height: 1.65; margin: 0;
       }
+      .rfer-card-gold { color: #D4B44A; }
+      .blog-card-featured--rfer { display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: center; }
+      .rfer-card__stack { display: flex; flex-direction: column; gap: 0.2rem; }
+      .rfer-card__line { font-family: 'Libre Baskerville', serif; font-size: 1.45rem; font-weight: 700; color: #fff; white-space: nowrap; line-height: 1.35; }
+      .rfc-r1 { color: #7CB95A; }
+      .rfc-f  { color: #D4B44A; }
+      .rfc-e  { color: #C4A882; }
+      .rfc-r2 { color: #E06B4E; }
+      .rfer-card__right { display: flex; flex-direction: column; gap: 0.75rem; }
+      @media (max-width: 640px) { .blog-card-featured--rfer { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -77,7 +87,28 @@
             <!-- DEEP DIVES -->
             <div class="resources-section active" id="deep-dives">
                 <div class="blog-section-label">Published</div>
-                
+
+                <a class="blog-card-featured blog-card-featured--rfer" href="blog/rfer-deep-dive.html"
+                   style="background-image: linear-gradient(rgba(45,80,22,0.30), rgba(45,80,22,0.62)), url('images/bg_action2a.jpg');">
+                    <div class="rfer-card__left">
+                        <div class="rfer-card__stack">
+                            <div class="rfer-card__line"><span class="rfc-r1">R</span>eschedule.</div>
+                            <div class="rfer-card__line"><span class="rfc-f">F</span>und Trials.</div>
+                            <div class="rfer-card__line"><span class="rfc-e">E</span>ducate.</div>
+                            <div class="rfer-card__line"><span class="rfc-r2">R</span>egulate.</div>
+                        </div>
+                    </div>
+                    <div class="rfer-card__right">
+                        <div class="blog-card-tag">Policy &middot; Advocacy</div>
+                        <p class="blog-card-desc">They named it "reefer" to make you afraid. RFER is a four-pillar policy framework built from that origin story &mdash; a clear path from 90 years of manufactured stigma to evidence-based federal regulation. Four letters. Four actions. One gameplan.</p>
+                        <div class="blog-card-meta">
+                            <span class="blog-meta-item">Policy &middot; Advocacy</span>
+                            <span class="blog-meta-item">~10 min read</span>
+                            <span class="blog-read-btn">Read &rarr;</span>
+                        </div>
+                    </div>
+                </a>
+
                 <a class="blog-card-featured" href="blog/akathisia.html"
                    style="background-image: linear-gradient(rgba(52,78,65,0.20), rgba(52,78,65,0.52)), url('images/bg_akathisia.jpg');">
                     <div class="blog-card-tag">Science &middot; Policy</div>
