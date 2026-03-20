@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* ─── resets ─────────────────────────────────────────────── */
+    /* ─── style.css conflict resets ──────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background: #F4F1EB;
@@ -33,72 +33,86 @@
     /* neutralize style.css nav side-margin offset */
     .site-nav { display: block; padding: 0; margin-left: 0; margin-right: 0; }
 
+    /* ─── site footer ─────────────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid #C8C3B8;
+      padding: 40px 0 32px;
+      background: #EAE6DC;
+    }
+    .site-footer__inner {
+      max-width: 1020px; margin: 0 auto; padding: 0 24px;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .site-footer__brand {
+      font-family: 'DM Mono', monospace; font-size: 12px; color: #5A5750;
+    }
+    .site-footer__brand strong {
+      display: block; font-size: 14px; color: #1C1B18; margin-bottom: 4px;
+    }
+    .site-footer__taglines {
+      font-family: 'DM Mono', monospace; font-size: 11px; color: #5A5750;
+      letter-spacing: .06em; text-align: right; line-height: 1.8;
+      display: flex; flex-direction: column; align-items: flex-end; gap: 14px;
+    }
+    .site-footer__socials { display: flex; gap: 18px; align-items: center; }
+    .site-footer__socials a {
+      display: flex; color: #5A5750; text-decoration: none; transition: color .15s ease;
+    }
+    .site-footer__socials a:hover { color: #3B6E52; }
+    .site-footer__socials svg { display: block; }
+
     /* ─── containers ─────────────────────────────────────────── */
     .text-wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
     .rule { border: none; border-top: 1px solid #C8C3B8; margin: 0; }
 
-    /* ─── hero ───────────────────────────────────────────────── */
-    .guide-hero {
-      background-image: linear-gradient(rgba(59,110,82,0.82), rgba(59,110,82,0.94)), url('images/bg_header.jpeg');
+    /* ─── page hero ──────────────────────────────────────────── */
+    /* reset style.css bare `header` rule (border-radius, border, text-align) */
+    .page-hero {
+      padding: 100px 0 88px;
+      background-image: linear-gradient(rgba(15,25,35,0.42), rgba(15,25,35,0.42)), url('images/bg_guide.jpg');
       background-size: cover;
       background-position: center;
-      padding: 80px 0 64px;
+      border-radius: 0;
+      border: none;
+      text-align: center;
+      margin-bottom: 0;
+      box-shadow: none;
     }
-    .guide-hero__kicker {
+    .page-hero__label {
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: #D4E7DC;
-      margin-bottom: 20px;
+      font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+      color: #D4E7DC; margin-bottom: 22px;
+      text-shadow: 0 1px 6px rgba(10,20,30,0.5);
     }
-    .guide-hero__headline {
+    .page-hero__headline {
       font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: clamp(32px, 5vw, 52px);
-      font-style: italic;
-      line-height: 1.15;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 16px;
+      font-size: clamp(36px, 5.5vw, 56px);
+      font-style: italic; line-height: 1.15; font-weight: 700; letter-spacing: 0.03em;
+      color: #fff; margin-bottom: 28px;
+      text-shadow: 0 1px 12px rgba(10,20,30,0.65);
     }
-    .guide-hero__sub {
-      font-family: 'DM Mono', monospace;
-      font-size: 13px;
-      letter-spacing: .06em;
-      color: #D4E7DC;
-      margin-bottom: 10px;
-    }
-    .guide-hero__tagline {
-      font-size: 16px;
-      color: rgba(244,241,235,0.8);
-      max-width: 480px;
+    .page-hero__sub {
+      font-size: 17px; color: rgba(255,255,255,0.82);
+      max-width: 500px; line-height: 1.65;
+      margin: 0 auto;
+      text-shadow: 0 1px 8px rgba(10,20,30,0.55);
     }
 
     /* ─── sections ───────────────────────────────────────────── */
     .section      { padding: 72px 0; }
     .section--alt { background: #EAE6DC; }
 
-    .section__label {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: #3B6E52;
-      margin-bottom: 12px;
-    }
     .section__heading {
       font-family: 'Libre Baskerville', Georgia, serif;
       font-size: clamp(24px, 3.5vw, 34px);
-      line-height: 1.25;
-      margin-bottom: 24px;
+      line-height: 1.25; margin-bottom: 24px;
     }
+    .accent { color: #C4692A; }
     .section__subheading {
       font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: #5A5750;
-      margin: 40px 0 16px;
+      font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+      color: #5A5750; margin: 40px 0 16px;
     }
 
     /* ─── prose ──────────────────────────────────────────────── */
@@ -114,18 +128,12 @@
       border-radius: 0 3px 3px 0;
       padding: 20px 24px;
       margin: 32px 0;
-      font-size: 15px;
-      line-height: 1.6;
-      color: #1C1B18;
+      font-size: 15px; line-height: 1.6; color: #1C1B18;
     }
     .disclaimer strong {
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: #C4692A;
-      display: block;
-      margin-bottom: 6px;
+      font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+      color: #C4692A; display: block; margin-bottom: 6px;
     }
 
     /* ─── status grid ────────────────────────────────────────── */
@@ -141,34 +149,25 @@
       background: #D4E7DC;
       border-left: 3px solid #3B6E52;
       padding: 20px 18px;
-      font-size: 14px;
-      line-height: 1.5;
+      font-size: 14px; line-height: 1.5;
     }
     .status-cell strong {
       display: block;
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: #3B6E52;
-      margin-bottom: 6px;
+      font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+      color: #3B6E52; margin-bottom: 6px;
     }
 
     /* ─── key players list ───────────────────────────────────── */
     .players-list {
       list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      background: #C8C3B8;
-      border: 1px solid #C8C3B8;
-      margin: 24px 0;
+      display: flex; flex-direction: column; gap: 2px;
+      background: #C8C3B8; border: 1px solid #C8C3B8; margin: 24px 0;
     }
     .players-item {
       background: #F4F1EB;
       padding: 20px 24px;
-      font-size: 15px;
-      line-height: 1.6;
+      font-size: 15px; line-height: 1.6;
     }
     .section--alt .players-item { background: #EAE6DC; }
 
@@ -177,90 +176,66 @@
       background: #F4F1EB;
       border-left: 3px solid #3B6E52;
       border-radius: 0 3px 3px 0;
-      padding: 28px 32px;
-      margin: 32px 0;
+      padding: 28px 32px; margin: 32px 0;
     }
     .dimmer-box h3 {
       font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 14px;
+      font-size: 20px; font-weight: 700; margin-bottom: 14px;
     }
     .section--alt .dimmer-box { background: #EAE6DC; }
 
-    /* ─── concept box (helping hand) ─────────────────────────── */
+    /* ─── concept box ────────────────────────────────────────── */
     .concept-box {
       background: #D4E7DC;
       border-left: 3px solid #3B6E52;
       border-radius: 0 3px 3px 0;
-      padding: 24px 28px;
-      margin: 24px 0;
-      font-size: 15px;
-      line-height: 1.65;
+      padding: 24px 28px; margin: 24px 0;
+      font-size: 15px; line-height: 1.65;
     }
     .concept-box strong {
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: #3B6E52;
-      display: block;
-      margin-bottom: 8px;
+      font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+      color: #3B6E52; display: block; margin-bottom: 8px;
     }
 
     /* ─── protocol card ──────────────────────────────────────── */
     .protocol-wrap {
       background: #3B6E52;
       border-radius: 3px;
-      padding: 32px 28px;
-      margin: 32px 0;
+      padding: 32px 28px; margin: 32px 0;
       color: #fff;
     }
     .protocol-header {
       border-bottom: 1px solid rgba(244,241,235,0.2);
-      padding-bottom: 20px;
-      margin-bottom: 28px;
+      padding-bottom: 20px; margin-bottom: 28px;
     }
     .protocol-header__title {
       font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: #fff;
-      display: block;
-      margin-bottom: 4px;
+      font-size: 24px; font-weight: 700; color: #fff;
+      display: block; margin-bottom: 4px;
     }
     .protocol-header__sub {
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
+      font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
       color: #D4E7DC;
     }
     .protocol-step {
       border-left: 2px solid rgba(244,241,235,0.3);
-      padding: 0 0 24px 20px;
-      margin-bottom: 0;
-      font-size: 15px;
-      line-height: 1.65;
+      padding: 0 0 24px 20px; margin-bottom: 0;
+      font-size: 15px; line-height: 1.65;
       color: rgba(244,241,235,0.9);
     }
     .protocol-step:last-of-type { border-left: none; padding-bottom: 0; }
     .protocol-step__title {
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: #D4E7DC;
-      display: block;
-      margin-bottom: 8px;
+      font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+      color: #D4E7DC; display: block; margin-bottom: 8px;
     }
     .protocol-rule {
       background: rgba(0,0,0,0.2);
       border-radius: 2px;
-      padding: 14px 18px;
-      margin-top: 24px;
-      font-size: 14px;
-      color: rgba(244,241,235,0.9);
+      padding: 14px 18px; margin-top: 24px;
+      font-size: 14px; color: rgba(244,241,235,0.9);
       text-align: center;
     }
 
@@ -268,65 +243,46 @@
     .orchestra-wrap {
       background: #3B6E52;
       border-radius: 3px;
-      padding: 32px 28px;
-      margin: 32px 0;
+      padding: 32px 28px; margin: 32px 0;
     }
     .orchestra-wrap h4 {
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
+      font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
       color: #D4E7DC;
       border-bottom: 1px solid rgba(244,241,235,0.2);
-      padding-bottom: 10px;
-      margin-bottom: 24px;
+      padding-bottom: 10px; margin-bottom: 24px;
     }
     .orchestra-entry {
-      font-size: 15px;
-      line-height: 1.65;
-      color: rgba(244,241,235,0.9);
-      margin-bottom: 16px;
+      font-size: 15px; line-height: 1.65;
+      color: rgba(244,241,235,0.9); margin-bottom: 16px;
     }
     .orchestra-entry:last-child { margin-bottom: 0; }
     .orchestra-entry strong { color: #fff; font-weight: 500; }
 
     /* ─── terpene grid ───────────────────────────────────────── */
     .terpene-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center;
-      margin: 24px 0;
+      display: flex; flex-wrap: wrap; gap: 16px;
+      justify-content: center; margin: 24px 0;
     }
     .terpene-card {
       border: 2px solid #3B6E52;
-      border-radius: 3px;
       padding: 24px 20px;
-      width: calc(50% - 8px);
-      min-width: 260px;
+      width: calc(50% - 8px); min-width: 260px;
       color: rgba(244,241,235,0.9);
-      background-size: cover;
-      background-position: center;
+      background-size: cover; background-position: center;
     }
     .terpene-card h4 {
       font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: #fff;
-      margin-bottom: 4px;
+      font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
+      color: #fff; margin-bottom: 4px;
     }
     .terpene-card__found {
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      font-weight: 500;
-      color: #D4E7DC;
-      margin-bottom: 10px;
+      font-size: 11px; font-weight: 500;
+      color: #D4E7DC; margin-bottom: 10px;
     }
     .terpene-card__desc {
-      font-size: 14px;
-      line-height: 1.55;
+      font-size: 14px; line-height: 1.55;
     }
 
     /* ─── conclusion ─────────────────────────────────────────── */
@@ -334,8 +290,7 @@
       background: #D4E7DC;
       border-left: 3px solid #3B6E52;
       border-radius: 0 3px 3px 0;
-      padding: 28px 32px;
-      margin: 32px 0;
+      padding: 28px 32px; margin: 32px 0;
     }
 
     /* ─── back to top ────────────────────────────────────────── */
@@ -360,14 +315,43 @@
     .terpene-card--linal  { background-image: linear-gradient(rgba(59,110,82,0.85), rgba(59,110,82,0.95)), url('images/linalool.jpg'); }
     .terpene-card--humul  { background-image: linear-gradient(rgba(59,110,82,0.90), rgba(59,110,82,0.95)), url('images/humulene.jpg'); }
 
+    /* ─── next steps ─────────────────────────────────────────── */
+    .next-steps { margin-top: 40px; }
+    .next-steps__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: #C8C3B8;
+      border: 1px solid #C8C3B8;
+      margin: 16px 0 0;
+    }
+    .next-step-card {
+      background: #EAE6DC;
+      padding: 24px 20px;
+      text-decoration: none;
+      color: #1C1B18;
+      display: block;
+      transition: background .15s ease;
+    }
+    .next-step-card:hover { background: #D4E7DC; color: #1C1B18; }
+    .next-step-card__label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+      color: #3B6E52; display: block; margin-bottom: 8px;
+    }
+    .next-step-card__desc { font-size: 14px; line-height: 1.55; }
+
     /* ─── responsive ─────────────────────────────────────────── */
     @media (max-width: 600px) {
       .status-grid { grid-template-columns: 1fr; }
       .terpene-card { width: 100%; min-width: unset; }
+      .next-steps__grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
+
+  <div id="top-of-page"></div>
 
   <nav class="site-nav" aria-label="Site navigation">
     <div class="site-nav__inner">
@@ -387,41 +371,23 @@
     </div>
   </nav>
 
-  <div id="top-of-page"></div>
-
   <!-- Hero -->
-  <header class="guide-hero">
+  <header class="page-hero">
     <div class="text-wrap">
-      <p class="guide-hero__kicker">Understanding your system</p>
-      <h1 class="guide-hero__headline">the Manual.</h1>
-      <p class="guide-hero__sub">Reset. Rebalance. Recover.</p>
-      <p class="guide-hero__tagline">Simply understanding your internal network and how to help it.</p>
+      <p class="page-hero__label">Education &middot; Understanding Your System</p>
+      <h1 class="page-hero__headline">the Guide.</h1>
+      <p class="page-hero__sub">Reset. Rebalance. Recover. Your Endocannabinoid System — explained plainly, dosed honestly.</p>
     </div>
   </header>
-
-  <hr class="rule">
-
-  <!-- Safety Disclaimer -->
-  <section class="section">
-    <div class="text-wrap">
-      <div class="disclaimer">
-        <strong>the Safety Check</strong>
-        We are here to empower you with knowledge, not prescriptions. The information below describes how these compounds interact with the human body based on current research. It is not intended to diagnose, treat, or cure any disease. Our goal is for you to feel comfortable enough to have an informed conversation with your health care provider, especially if you are currently on any prescription medications (like blood thinners), as cannabinoids can interact with how your body processes them.
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule">
 
   <!-- Section 1: The Hardware -->
   <section class="section section--alt">
     <div class="text-wrap">
-      <p class="section__label">Part 1</p>
-      <h2 class="section__heading">the Hardware (ECS)</h2>
+      <h2 class="section__heading"><span class="accent">your</span> Hardware (ECS)</h2>
 
       <div class="prose">
         <p>Most of us walk around feeling "off." Maybe it's a short fuse, a bad back, or just a busy brain that won't shut up at 3 AM. It's easy to think your system is broken. But usually, it's just depleted.</p>
-        <p>You have a built-in system called the <strong>Endocannabinoid System (ECS)</strong>. Its sole job is to maintain <strong>homeostasis</strong>, or balance.</p>
+        <p>You have a built-in system called the <strong>Endocannabinoid System (ECS)</strong>. Its sole job is to maintain <strong>homeostasis</strong> — balance.</p>
         <p>Think of the ECS like the thermostat in your house. It runs in the background, monitoring the room, making sure things don't get too hot or too cold.</p>
       </div>
 
@@ -442,15 +408,21 @@
 
       <p class="section__subheading">the Native Code: How It Works</p>
       <div class="prose">
-        <p>Your body is already making cannabis-like molecules right now. They are called <strong>Endocannabinoids</strong>.</p>
-        <p>Unlike other neurotransmitters (like serotonin) which are stored in reserve, endocannabinoids are made <strong>"On-Demand"</strong>. Your body creates them instantly from fat lipids exactly when — and where — a crisis happens.</p>
+        <p>Your body is already making cannabis-like molecules right now. They're called <strong>Endocannabinoids</strong>.</p>
+        <p>Unlike other neurotransmitters (like serotonin) which are stored in reserve, endocannabinoids are made <strong>"on-demand."</strong> Your body creates them instantly from fat lipids exactly when — and where — a crisis happens.</p>
+      </div>
+
+      <p class="section__subheading">the Receivers (CB1 &amp; CB2)</p>
+      <div class="prose">
+        <p>Endocannabinoids don't just float around — they work by binding to specific receptors. Your body runs this system through two types. <strong>CB1 receptors</strong> live primarily in the brain and central nervous system — governing mood, memory, pain perception, and appetite. <strong>CB2 receptors</strong> live in the immune system and throughout the body — managing inflammation and immune response.</p>
+        <p>Think of it as a lock-and-key system. The endocannabinoid is the key. The receptor is the lock. When the right key hits the right lock, the adjustment happens.</p>
       </div>
 
       <p class="section__subheading">the Two Key Players</p>
       <ul class="players-list">
         <li class="players-item">
           <strong>Anandamide (The Bliss Molecule):</strong><br>
-          Named after the Sanskrit word for "bliss." It regulates mood, fear, and the feeling of being "centered."
+          Named after the Sanskrit word for "bliss." It regulates mood, fear, and the feeling of being centered.
         </li>
         <li class="players-item">
           <strong>2-AG (The Workhorse):</strong><br>
@@ -460,38 +432,157 @@
 
       <div class="dimmer-box">
         <h3>the Dimmer Switch</h3>
-        <p>This is what makes the ECS unique. Most signals in your brain travel one way: Forward. Endocannabinoids travel <strong>Backwards</strong> (Retrograde Signaling).</p>
-        <br>
-        <p>When a neuron is getting overwhelmed by too much noise (stress, pain, panic), the receiving cell creates Anandamide and sends it backwards to the sender. It acts as a <strong>biological dimmer switch</strong>, effectively telling the system: <em>"Turn the volume down. We are getting too hot."</em></p>
+        <div class="prose">
+          <p>This is what makes the ECS unique. Most signals in your brain travel one way: forward. Endocannabinoids travel <strong>backwards</strong> (retrograde signaling).</p>
+          <p>When a neuron is getting overwhelmed by too much noise — stress, pain, panic — the receiving cell creates Anandamide and sends it backwards to the sender. It acts as a <strong>biological dimmer switch</strong>, telling the system: <em>"Turn the volume down. We're getting too hot."</em></p>
+        </div>
       </div>
 
       <p class="section__subheading">the Glitch</p>
       <div class="prose">
-        <p>The system was designed to be perfect, but it was designed for a different time. Because Anandamide is so powerful, in order for your body to maintain balance, it breaks it down incredibly fast using an enzyme called <strong>FAAH.</strong></p>
-        <p>The problem: Modern life is loud. Between the notifications, the deadlines, and the daily grind, our Anandamide is being depleted faster than it can be replenished.</p>
+        <p>The system was designed to be perfect, but it was designed for a different time. Because Anandamide is so powerful, your body breaks it down incredibly fast using an enzyme called <strong>FAAH</strong> — just to keep things balanced.</p>
+        <p>The problem: modern life is loud. Between the notifications, the deadlines, and the daily grind, our Anandamide is being depleted faster than it can be replenished.</p>
       </div>
 
-      <div class="concept-box">
-        <strong>the Helping Hand (How CBD Works)</strong>
-        CBD does not replace your system. It defends it. CBD inhibits the FAAH enzyme. Think of CBD as "running interference" — it occupies the enzyme so it can't attack your natural Anandamide. This allows your body's own molecules to survive longer, keeping the dimmer switch active and extending that feeling of calm.<br><br>
-        In addition to protecting your natural cannabinoids, CBD also interacts with other receptors in the body (like serotonin and TRPV1) that can help with mood regulation, pain relief, and inflammation. It's not about forcing your body to do something unnatural. It's simply pausing the breakdown so your body has the time it needs to heal itself.
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- Section: The Support -->
+  <section class="section">
+    <div class="text-wrap">
+      <h2 class="section__heading">the Support</h2>
+
+      <div class="prose">
+        <p>Your ECS was built to run on endocannabinoids — molecules your own body makes. But the system doesn't discriminate. When <strong>phytocannabinoids</strong> — cannabinoids derived from plants — enter your body, they interact with the same CB1 and CB2 receptors. Same locks. Different keys.</p>
+        <p>Over 100 phytocannabinoids have been identified in the cannabis plant. Two carry most of the weight.</p>
+      </div>
+
+      <p class="section__subheading">THC — the Activator</p>
+      <div class="prose">
+        <p>THC is the only phytocannabinoid that binds <strong>directly</strong> to CB1 receptors — a full agonist. This is what makes it uniquely powerful, and what earned it its reputation. At high doses, that direct binding produces intoxication. At functional doses, it does something more precise: it unlocks the receptor and amplifies the signal.</p>
+        <p>Think of CB1 as a door that's partially stuck. THC is the only key that fits. Without it, other compounds are working around a half-open system. With even a small, functional amount of THC, the door opens — and everything that follows works better.</p>
+      </div>
+
+      <p class="section__subheading">CBD — the Modulator</p>
+      <div class="prose">
+        <p>CBD doesn't bind to CB1 or CB2 the way THC does. Its power is different — and in many ways, more nuanced.</p>
+        <p>It inhibits FAAH, the enzyme that breaks down Anandamide — your body's own bliss molecule. Less breakdown means your natural endocannabinoids survive longer. CBD isn't replacing your system. It's buying it time.</p>
+        <p>It also acts as a <strong>modulator at CB1</strong> — changing the receptor's shape so THC can't bind too aggressively. This is why CBD tempers THC's intensity. They aren't competing. They're calibrating each other.</p>
+        <p>On top of that, CBD activates serotonin and TRPV1 receptors independently — contributing to anxiety relief, pain modulation, and inflammation control through entirely separate channels. It's working on multiple fronts at once.</p>
+      </div>
+
+      <p class="section__subheading">the Entourage Effect</p>
+      <div class="prose">
+        <p>You can eat flour, sugar, and eggs separately. Mix them together and it's a cake. The magic is in the mixture — call it the 1+1=5 principle.</p>
+        <p>Isolated compounds have their place. But the full plant — cannabinoids, terpenes, and minor compounds working in concert — consistently outperforms any single extract. This is the Entourage Effect: the whole is greater than the sum of its parts.</p>
+      </div>
+
+      <div class="orchestra-wrap">
+        <h4>the Orchestra Analogy</h4>
+        <div class="orchestra-entry">
+          <strong>THC (the Conductor):</strong> Even in tiny, functional doses, THC is the only molecule that binds <em>directly</em> to CB1 receptors. It unlocks the system and turns on the amplifier.
+        </div>
+        <div class="orchestra-entry">
+          <strong>CBD (the Section Leader):</strong> It manages intensity — preventing the volume from getting too loud while extending the duration of relief.
+        </div>
+        <div class="orchestra-entry">
+          <strong>Terpenes (The Mood):</strong> They set the tone. Are we winding down for the night, or waking up for the day? Direction is everything.
+        </div>
+      </div>
+
+      <div class="prose">
+        <p><strong>The cannabinoids power the effect. Terpenes shape it. That's the whole game.</strong></p>
       </div>
     </div>
   </section>
 
   <hr class="rule">
 
-  <!-- Section 2: The Input -->
+  <!-- Section: Terpenes -->
+  <section class="section section--alt">
+    <div class="text-wrap">
+      <h2 class="section__heading">the Steering (Terpenes)</h2>
+
+      <div class="prose">
+        <p>Terpenes are aromatic compounds found in virtually every plant on earth. The smell of pine, the calm of lavender, the lift of citrus — all terpenes. Cannabis produces over 200 of them, and they're manufactured in the same trichomes as cannabinoids. They aren't incidental to the plant. They're integral to it.</p>
+        <p>Inside your body, they're anything but passive. Terpenes interact directly with your ECS — some binding to receptors, others modulating serotonin, dopamine, and GABA. They also influence how efficiently cannabinoids cross the blood-brain barrier, which means they shape not just the quality of an effect but how deep it goes. If cannabinoids are the horsepower, terpenes are the steering and the suspension — they determine where the power lands and how it feels when it gets there.</p>
+        <p>Beta-Caryophyllene deserves a specific callout: it's the only terpene that binds directly to CB2 receptors, making it both a terpene and a functional cannabinoid in the same molecule. It's a category of one.</p>
+      </div>
+
+      <div class="concept-box">
+        <strong>the Practical Truth</strong>
+        <div class="prose">
+          <p>Two products can have identical CBD:THC ratios and feel completely different. The terpene profile is why. This is the most underused piece of knowledge in the space. Most people shop by potency percentage. They should be shopping by terpene profile. What you feel, where you feel it, and how long it lasts is largely a terpene question.</p>
+        </div>
+      </div>
+
+      <p class="section__subheading">the Primary Drivers (Major Terpenes)</p>
+      <div class="terpene-grid">
+
+        <div class="terpene-card terpene-card--bcary">
+          <h4>Beta-Caryophyllene<br>the Protector</h4>
+          <p class="terpene-card__found">Found in Black Pepper</p>
+          <p class="terpene-card__desc">Best known for anti-inflammatory, pain-relieving, and anxiety-reducing properties. Uniquely able to interact directly with CB2 receptors. Effective for chronic pain, anxiety, depression, gut health, and neuroprotection.</p>
+        </div>
+
+        <div class="terpene-card terpene-card--limon">
+          <h4>Limonene<br>the Lifter</h4>
+          <p class="terpene-card__found">Found in Citrus Rinds &amp; Juniper</p>
+          <p class="terpene-card__desc">The system energizer. Known for mood elevation, stress relief, and clearing the fog. Promotes alertness without the jitters. Excellent for morning protocols and social anxiety.</p>
+        </div>
+
+        <div class="terpene-card terpene-card--myrc">
+          <h4>Myrcene<br>the Sedative</h4>
+          <p class="terpene-card__found">Found in Hops &amp; Mangoes</p>
+          <p class="terpene-card__desc">Best for nighttime use. Promotes deep relaxation, muscle relief, and the classic couch-lock feeling. Essential for sleep management and recovery.</p>
+        </div>
+
+        <div class="terpene-card terpene-card--pin">
+          <h4>Pinene<br>the Focuser</h4>
+          <p class="terpene-card__found">Found in Pine Needles &amp; Rosemary</p>
+          <p class="terpene-card__desc">The precision tool. Promotes alertness, memory retention, and mental clarity. Also a bronchodilator — helps open airways. Excellent for study, work, or creative focus.</p>
+        </div>
+
+      </div>
+
+      <p class="section__subheading">the Support Crew (Secondary Terpenes)</p>
+      <div class="terpene-grid">
+
+        <div class="terpene-card terpene-card--linal">
+          <h4>Linalool<br>the Soother</h4>
+          <p class="terpene-card__found">Found in Lavender &amp; Birch</p>
+          <p class="terpene-card__desc">The anxiety brake. Famous for its floral aroma and ability to calm the nervous system. Excellent for acute stress, panic, and pain modulation — without heavy sedation.</p>
+        </div>
+
+        <div class="terpene-card terpene-card--humul">
+          <h4>Humulene<br>the Moderator</h4>
+          <p class="terpene-card__found">Found in Hops, Sage &amp; Ginseng</p>
+          <p class="terpene-card__desc">The appetite controller. Structurally similar to Beta-Caryophyllene, it fights inflammation potently but is unique for suppressing appetite. A key component for functional daytime use.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- Section: The Input -->
   <section class="section">
     <div class="text-wrap">
-      <p class="section__label">Part 2</p>
       <h2 class="section__heading">the Input (Finding Your Sweet Spot)</h2>
+
+      <div class="disclaimer">
+        <strong>the Safety Check</strong>
+        This isn't medical advice — it's context. What follows is based on current research and is meant to help you have a smarter conversation with your doctor, not replace one. If you're on prescription medications — blood thinners especially — talk to your provider before starting any cannabinoid protocol. Cannabinoids affect how your body processes certain drugs.
+      </div>
 
       <div class="prose">
         <p><strong>Q: "What's the standard dose?"</strong><br>
-        A: Trick question. There is no <em>standard dose</em>, because there is no <em>standard human</em>. Our metabolism, weight, genetic history, and current stress levels all contribute to how we process cannabinoids. Each one of us is a unique experiment of one.</p>
+        Trick question. There is no <em>standard dose</em>, because there is no <em>standard human</em>. Metabolism, weight, genetic history, and current stress levels all determine how we process cannabinoids. Each one of us is an experiment of one.</p>
         <p><strong>Q: "What can I expect?"</strong><br>
-        A: We want our relief to be like an ON/OFF switch. If we hurt, flip a switch and feel nothing. But that's not how it works. We have to remember — the ECS is a <strong>Dimmer Switch</strong>. It's not trying to numb you out; it's just trying to dim the lights so the room is comfortable again.</p>
+        We want our relief like an ON/OFF switch — flip it and feel nothing. But that's not how it works. Remember: the ECS is a <strong>dimmer switch</strong>. It's not trying to numb you out. It's just trying to dim the lights so the room is comfortable again.</p>
       </div>
 
       <div class="protocol-wrap">
@@ -501,113 +592,19 @@
         </div>
         <div class="protocol-step">
           <span class="protocol-step__title">Step 1: Calibration (Day 1–3)</span>
-          Start small (e.g., 5–10mg). Stick with this same amount for 3 days, and try to take around the same time. You can't tune a radio if you keep spinning the dial wildly. Give your body a moment to listen.
+          Start small — 5 to 10mg. Stick with this same amount for three days, around the same time each day. You can't tune a radio by spinning the dial wildly. Give your body a moment to listen.
         </div>
         <div class="protocol-step">
           <span class="protocol-step__title">Step 2: Observation (The Log)</span>
-          Write it down. It's hard to notice gradual change if you aren't looking for it. How is your sleep? Your anxiety? Your focus? Pain levels?<br>
-          <em>Different product types (flower, oils/tinctures, edibles) are all absorbed differently, which can influence how long it takes to kick in and how long the effects last.</em>
+          Write it down. Gradual change is easy to miss. How is your sleep? Anxiety? Focus? Pain levels? Note that product type matters here — oils, edibles, and flower absorb at different rates, which affects when you feel it and how long it lasts.
         </div>
         <div class="protocol-step">
           <span class="protocol-step__title">Step 3: Titration (Adjust)</span>
-          If you don't feel a shift after 3 days, bump it up 5mg or so. Repeat until you find your <strong>Sweet Spot</strong> — that place where the noise fades, but your mind stays clear.
+          If you don't feel a shift after three days, bump up by 5mg or so. Repeat until you find your <strong>sweet spot</strong> — that place where the noise fades but your mind stays clear.
         </div>
         <div class="protocol-rule">
-          <strong>The Golden Rule:</strong> More isn't always better. Sometimes, a smaller nudge is all the system needs to correct itself.
+          <strong>The Golden Rule:</strong> More isn't always better. Sometimes a smaller nudge is all the system needs to correct itself.
         </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule">
-
-  <!-- Section 3: Synergy -->
-  <section class="section section--alt">
-    <div class="text-wrap">
-      <p class="section__label">Part 3</p>
-      <h2 class="section__heading">the Synergy (or the Entourage Effect)</h2>
-
-      <div class="prose">
-        <p>You can eat flour, sugar, and eggs separately, and it's... fine. But mix them together, and it's a cake. The magic is in the mixture.</p>
-        <p>The idea is simple: The whole is greater than the sum of its parts. (1 + 1 = 5).</p>
-      </div>
-
-      <div class="orchestra-wrap">
-        <h4>the Orchestra Analogy</h4>
-        <div class="orchestra-entry">
-          <strong>THC (the Conductor):</strong> Even in tiny, functional doses, THC is the only molecule that binds <em>directly</em> to your CB1 receptors. It "unlocks" the system and turns on the amplifier.
-        </div>
-        <div class="orchestra-entry">
-          <strong>CBD (the Section Leader):</strong> It manages the intensity by preventing the <em>volume</em> from getting too loud. It keeps things grounded while extending the duration of the relief.
-        </div>
-        <div class="orchestra-entry">
-          <strong>Terpenes (The Mood):</strong> They set the vibe. Are we winding down for the night, or waking up for the day? They steer the ship.
-        </div>
-      </div>
-
-      <div class="prose">
-        <p><strong>Why Functional THC Matters:</strong> We aren't talking about "getting high." We are talking about <strong>Activation</strong>. Without a small amount of THC to "unlock" the receptors, the CBD has to work twice as hard to get in. When they work together in a functional ratio, you get maximum relief with minimum impairment.</p>
-        <p><strong>If the Cannabinoids (CBD/THC) are the Engine that powers the car, Terpenes are the Steering Wheel that determines the direction.</strong></p>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule">
-
-  <!-- Section 4: Terpenes -->
-  <section class="section">
-    <div class="text-wrap">
-      <p class="section__label">Part 4</p>
-      <h2 class="section__heading">the Steering (Terpenes)</h2>
-
-      <div class="prose">
-        <p>If CBD is the engine that keeps you moving, Terpenes are the GPS. They determine where that relief is going.</p>
-      </div>
-
-      <p class="section__subheading">the Primary Drivers (Major Terpenes)</p>
-      <div class="terpene-grid">
-
-        <div class="terpene-card terpene-card--bcary">
-          <h4>Beta-Caryophyllene<br>// the Protector</h4>
-          <p class="terpene-card__found">Found in Black Pepper</p>
-          <p class="terpene-card__desc">Best known for its anti-inflammatory, pain-relieving, and anxiety-reducing properties. Unique ability to interact directly with CB2 receptors. Effective for managing chronic pain, anxiety, depression, gut health, and potential neuroprotective properties.</p>
-        </div>
-
-        <div class="terpene-card terpene-card--limon">
-          <h4>Limonene<br>// The Lifter</h4>
-          <p class="terpene-card__found">Found in Citrus Rinds &amp; Juniper</p>
-          <p class="terpene-card__desc">The system energizer. Known for mood elevation, stress relief, and "clearing the fog." It promotes alertness without the jitters. Excellent for morning protocols and combating social anxiety.</p>
-        </div>
-
-        <div class="terpene-card terpene-card--myrc">
-          <h4>Myrcene<br>// The Sedative</h4>
-          <p class="terpene-card__found">Found in Hops &amp; Mangoes</p>
-          <p class="terpene-card__desc">Best for nighttime use, promotes deep relaxation, muscle relief, and "couch-lock." Essential for sleep management and great for recovery.</p>
-        </div>
-
-        <div class="terpene-card terpene-card--pin">
-          <h4>Pinene<br>// The Focuser</h4>
-          <p class="terpene-card__found">Found in Pine Needles &amp; Rosemary</p>
-          <p class="terpene-card__desc">The precision tool. It promotes alertness, memory retention, and mental clarity. It is also a bronchodilator (helps open airways). Excellent for study, work, or creative focus.</p>
-        </div>
-
-      </div>
-
-      <p class="section__subheading">the Support Crew (Secondary Terpenes)</p>
-      <div class="terpene-grid">
-
-        <div class="terpene-card terpene-card--linal">
-          <h4>Linalool<br>// The Soother</h4>
-          <p class="terpene-card__found">Found in Lavender &amp; Birch</p>
-          <p class="terpene-card__desc">The anxiety brake. Famous for its distinct floral aroma and ability to calm the nervous system. Excellent for acute stress, panic attacks, and pain modulation without heavy sedation.</p>
-        </div>
-
-        <div class="terpene-card terpene-card--humul">
-          <h4>Humulene<br>// The Moderator</h4>
-          <p class="terpene-card__found">Found in Hops, Sage &amp; Ginseng</p>
-          <p class="terpene-card__desc">The appetite controller. Structurally similar to Beta-Caryophyllene, it fights inflammation potently but is unique for suppressing appetite (preventing the "munchies"). A key component for functional daytime use.</p>
-        </div>
-
       </div>
     </div>
   </section>
@@ -617,13 +614,31 @@
   <!-- Conclusion -->
   <section class="section section--alt">
     <div class="text-wrap">
-      <p class="section__label">Part 5</p>
       <h2 class="section__heading">the Conclusion</h2>
       <div class="conclusion-box">
         <div class="prose">
-          <p>We live in a world that loves complicated answers. <strong>Occam's Razor</strong> states that often times, the simplest explanation is the right one.</p>
-          <p><strong>Your body knows how to heal itself; it just needs resources to do it.</strong></p>
-          <p>Knowing when or how to ask for help is often the biggest hurdle. Don't make it weird, just make it work. Listen to your body and give it time.</p>
+          <p>Here's what you now know: your body has a system already designed to correct itself. The ECS is always running, making adjustments, trying to hold the line. CBD doesn't override it — it supports it. Terpenes don't just smell good — they steer where the relief lands. And your dose isn't a number on a label — it's a conversation you have with yourself over time.</p>
+          <p>The protocol is simple because the principle is simple: less interference, more support. Start low, pay attention, adjust.</p>
+          <p><strong>Your body knows how to heal itself. It just needs the resources to do it.</strong></p>
+          <p>Don't make it weird. Just make it work.</p>
+        </div>
+      </div>
+
+      <div class="next-steps">
+        <p class="section__subheading">keep going</p>
+        <div class="next-steps__grid">
+          <a href="blog.html" class="next-step-card">
+            <span class="next-step-card__label">Deep Dives</span>
+            <span class="next-step-card__desc">Long-form articles on specific conditions, compounds, and protocols.</span>
+          </a>
+          <a href="https://www.reddit.com/r/mostlyCBD/" class="next-step-card" target="_blank" rel="noopener">
+            <span class="next-step-card__label">Community</span>
+            <span class="next-step-card__desc">Ask questions, share results, find people who get it.</span>
+          </a>
+          <a href="https://shop.mostlycbd.com" class="next-step-card" target="_blank" rel="noopener">
+            <span class="next-step-card__label">The Shop</span>
+            <span class="next-step-card__desc">Vetted products, explained. What we use and why.</span>
+          </a>
         </div>
       </div>
     </div>
