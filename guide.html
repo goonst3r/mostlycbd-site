@@ -158,6 +158,33 @@
       color: #3B6E52; margin-bottom: 6px;
     }
 
+    /* ─── spectrum grid ──────────────────────────────────────── */
+    .spectrum-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: #C8C3B8;
+      border: 1px solid #C8C3B8;
+      margin: 24px 0;
+    }
+    .spectrum-cell {
+      padding: 20px 18px;
+      font-size: 14px; line-height: 1.55; color: #1C1B18;
+      background: #F4F1EB;
+    }
+    .spectrum-cell strong {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .spectrum-cell--full  { border-left: 3px solid #3B6E52; background: #D4E7DC; }
+    .spectrum-cell--full  strong { color: #3B6E52; }
+    .spectrum-cell--broad { border-left: 3px solid #C4692A; background: #F5E4D5; }
+    .spectrum-cell--broad strong { color: #C4692A; }
+    .spectrum-cell--iso   { border-left: 3px solid #8A8580; background: #F4F1EB; }
+    .spectrum-cell--iso   strong { color: #5A5750; }
+
     /* ─── key players list ───────────────────────────────────── */
     .players-list {
       list-style: none;
@@ -196,6 +223,21 @@
       font-family: 'DM Mono', monospace;
       font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
       color: #3B6E52; display: block; margin-bottom: 8px;
+    }
+
+    /* ─── evidence note ──────────────────────────────────────── */
+    .evidence-note {
+      background: #EAE6DC;
+      border-left: 3px solid #C4692A;
+      border-radius: 0 3px 3px 0;
+      padding: 16px 20px;
+      margin: 24px 0 8px;
+      font-size: 14px; line-height: 1.6; color: #5A5750;
+    }
+    .evidence-note strong {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+      color: #C4692A; display: block; margin-bottom: 6px;
     }
 
     /* ─── protocol card ──────────────────────────────────────── */
@@ -265,24 +307,38 @@
       justify-content: center; margin: 24px 0;
     }
     .terpene-card {
-      border: 2px solid #3B6E52;
+      border: 1px solid #C8C3B8;
+      border-left: 3px solid #3B6E52;
+      border-radius: 0 3px 3px 0;
       padding: 24px 20px;
       width: calc(50% - 8px); min-width: 260px;
-      color: rgba(244,241,235,0.9);
+      color: #1C1B18;
+      background: #F4F1EB;
       background-size: cover; background-position: center;
     }
     .terpene-card h4 {
       font-family: 'DM Mono', monospace;
       font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
-      color: #fff; margin-bottom: 4px;
+      color: #1C1B18; margin-bottom: 2px;
+    }
+    .terpene-card h4 .card-role {
+      display: block;
+      font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+      color: #3B6E52; font-weight: 400; margin-top: 3px; margin-bottom: 8px;
     }
     .terpene-card__found {
       font-family: 'DM Mono', monospace;
-      font-size: 11px; font-weight: 500;
-      color: #D4E7DC; margin-bottom: 10px;
+      font-size: 11px; font-weight: 400;
+      color: #5A5750; margin-bottom: 10px;
     }
     .terpene-card__desc {
-      font-size: 14px; line-height: 1.55;
+      font-size: 14px; line-height: 1.6; color: #1C1B18;
+      margin-bottom: 10px;
+    }
+    .terpene-card__use {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
+      color: #3B6E52;
     }
 
     /* ─── conclusion ─────────────────────────────────────────── */
@@ -308,12 +364,33 @@
     #backToTop:hover { background: #C4692A; color: #fff; }
 
     /* ─── terpene card backgrounds ──────────────────────────── */
-    .terpene-card--bcary  { background-image: linear-gradient(rgba(59,110,82,0.85), rgba(59,110,82,0.95)), url('images/beta-caryophyllene.jpg'); }
-    .terpene-card--limon  { background-image: linear-gradient(rgba(59,110,82,0.85), rgba(59,110,82,0.95)), url('images/limonene.jpg'); }
-    .terpene-card--myrc   { background-image: linear-gradient(rgba(59,110,82,0.90), rgba(59,110,82,0.95)), url('images/myrcene.jpg'); }
-    .terpene-card--pin    { background-image: linear-gradient(rgba(59,110,82,0.85), rgba(59,110,82,0.95)), url('images/pinene.jpg'); }
-    .terpene-card--linal  { background-image: linear-gradient(rgba(59,110,82,0.85), rgba(59,110,82,0.95)), url('images/linalool.jpg'); }
-    .terpene-card--humul  { background-image: linear-gradient(rgba(59,110,82,0.90), rgba(59,110,82,0.95)), url('images/humulene.jpg'); }
+    .terpene-card--bcary  { background-image: linear-gradient(to bottom, rgba(244,241,235,0.55) 0%, rgba(244,241,235,0.94) 100%), url('images/beta-caryophyllene.jpg'); }
+    .terpene-card--limon  { background-image: linear-gradient(to bottom, rgba(244,241,235,0.55) 0%, rgba(244,241,235,0.94) 100%), url('images/limonene.jpg'); }
+    .terpene-card--myrc   { background-image: linear-gradient(to bottom, rgba(244,241,235,0.55) 0%, rgba(244,241,235,0.94) 100%), url('images/myrcene.jpg'); }
+    .terpene-card--pin    { background-image: linear-gradient(to bottom, rgba(244,241,235,0.55) 0%, rgba(244,241,235,0.94) 100%), url('images/pinene.jpg'); }
+    .terpene-card--linal  { background-image: linear-gradient(to bottom, rgba(244,241,235,0.55) 0%, rgba(244,241,235,0.94) 100%), url('images/linalool.jpg'); }
+    .terpene-card--humul  { background-image: linear-gradient(to bottom, rgba(244,241,235,0.55) 0%, rgba(244,241,235,0.94) 100%), url('images/humulene.jpg'); }
+
+    /* ─── minor terpene list ──────────────────────────────────── */
+    .minor-terp-list {
+      list-style: none; padding: 0; margin: 16px 0;
+      border: 1px solid #C8C3B8;
+    }
+    .minor-terp-item {
+      display: grid; grid-template-columns: 170px 1fr;
+      gap: 20px; padding: 14px 20px;
+      border-bottom: 1px solid #C8C3B8;
+      font-size: 14px; line-height: 1.55; color: #1C1B18;
+      background: #F4F1EB;
+    }
+    .section--alt .minor-terp-item { background: #EAE6DC; }
+    .minor-terp-item:last-child { border-bottom: none; }
+    .minor-terp-item__name {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
+      color: #3B6E52; display: block; margin-bottom: 3px;
+    }
+    .minor-terp-item__aroma { font-size: 12px; color: #5A5750; }
 
     /* ─── next steps ─────────────────────────────────────────── */
     .next-steps { margin-top: 40px; }
@@ -344,7 +421,9 @@
     /* ─── responsive ─────────────────────────────────────────── */
     @media (max-width: 600px) {
       .status-grid { grid-template-columns: 1fr; }
+      .spectrum-grid { grid-template-columns: 1fr; }
       .terpene-card { width: 100%; min-width: unset; }
+      .minor-terp-item { grid-template-columns: 1fr; gap: 4px; }
       .next-steps__grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -506,63 +585,186 @@
       <h2 class="section__heading">the Steering (Terpenes)</h2>
 
       <div class="prose">
-        <p>Terpenes are aromatic compounds found in virtually every plant on earth. The smell of pine, the calm of lavender, the lift of citrus — all terpenes. Cannabis produces over 200 of them, and they're manufactured in the same trichomes as cannabinoids. They aren't incidental to the plant. They're integral to it.</p>
-        <p>Inside your body, they're anything but passive. Terpenes interact directly with your ECS — some binding to receptors, others modulating serotonin, dopamine, and GABA. They also influence how efficiently cannabinoids cross the blood-brain barrier, which means they shape not just the quality of an effect but how deep it goes. If cannabinoids are the horsepower, terpenes are the steering and the suspension — they determine where the power lands and how it feels when it gets there.</p>
-        <p>Beta-Caryophyllene deserves a specific callout: it's the only terpene that binds directly to CB2 receptors, making it both a terpene and a functional cannabinoid in the same molecule. It's a category of one.</p>
+        <p>Terpenes are aromatic compounds found in virtually every plant on earth. The smell of pine, the calm of lavender, the lift of citrus — all terpenes. Cannabis produces over 200 of them, manufactured in the same trichomes as cannabinoids. They aren't incidental to the plant. They're integral to it.</p>
+        <p>Inside your body, they're anything but passive. Terpenes interact directly with your ECS — some binding to receptors, others modulating serotonin, dopamine, and GABA. They also influence how efficiently cannabinoids cross the blood-brain barrier, shaping not just the quality of an effect but how deep it goes. If cannabinoids are the horsepower, terpenes are the steering — they determine where the power lands and how it feels when it gets there.</p>
+        <p>Beta-Caryophyllene deserves a specific callout: it's the only terpene that binds directly to CB2 receptors, making it both a terpene and a functional cannabinoid in the same molecule. The FDA has approved it as a food additive. It's a category of one.</p>
+        <p>This is also where your individuality enters the picture. Two people with the same symptoms can get completely different results from the same product. Terpene response varies with your biology, your stress history, your endocannabinoid baseline. What shuts one person down may wire another one up. Understanding your terpene profile isn't advanced knowledge — it's the most practical tuning tool you have.</p>
       </div>
 
       <div class="concept-box">
         <strong>the Practical Truth</strong>
         <div class="prose">
-          <p>Two products can have identical CBD:THC ratios and feel completely different. The terpene profile is why. This is the most underused piece of knowledge in the space. Most people shop by potency percentage. They should be shopping by terpene profile. What you feel, where you feel it, and how long it lasts is largely a terpene question.</p>
+          <p>Most people shop by potency percentage. They should be shopping by terpene profile. Two products with identical CBD:THC ratios can feel completely different — the terpenes determine the direction. What you feel, where you feel it, how long it lasts is largely a terpene question. The profiles below aren't exhaustive. They're a starting point for learning your own.</p>
         </div>
       </div>
 
       <p class="section__subheading">the Primary Drivers (Major Terpenes)</p>
+      <div class="evidence-note">
+        <strong>a note on the research</strong>
+        Most terpene data is preclinical — cell and animal models. That's real pharmacology, not speculation. Where human clinical trial data exists, we've noted it. We don't claim more than the science supports.
+      </div>
+
       <div class="terpene-grid">
 
         <div class="terpene-card terpene-card--bcary">
-          <h4>Beta-Caryophyllene<br>the Protector</h4>
-          <p class="terpene-card__found">Found in Black Pepper</p>
-          <p class="terpene-card__desc">Best known for anti-inflammatory, pain-relieving, and anxiety-reducing properties. Uniquely able to interact directly with CB2 receptors. Effective for chronic pain, anxiety, depression, gut health, and neuroprotection.</p>
+          <h4>Beta-Caryophyllene<span class="card-role">the Protector</span></h4>
+          <p class="terpene-card__found">Spicy, peppery &bull; Black pepper, cloves, hops</p>
+          <p class="terpene-card__desc">The only terpene known to bind directly to CB2 receptors — giving it a dual identity as terpene and functional cannabinoid. CB2 governs inflammation and immune response, making BCP a precision anti-inflammatory without psychoactive effect. FDA-approved as a food additive. <em>Strong preclinical evidence (Gertsch et al., 2008, PNAS).</em></p>
+          <p class="terpene-card__use">Best for: chronic pain &bull; inflammation &bull; anxiety &bull; gut health</p>
         </div>
 
         <div class="terpene-card terpene-card--limon">
-          <h4>Limonene<br>the Lifter</h4>
-          <p class="terpene-card__found">Found in Citrus Rinds &amp; Juniper</p>
-          <p class="terpene-card__desc">The system energizer. Known for mood elevation, stress relief, and clearing the fog. Promotes alertness without the jitters. Excellent for morning protocols and social anxiety.</p>
+          <h4>Limonene<span class="card-role">the Lifter</span></h4>
+          <p class="terpene-card__found">Bright citrus &bull; Lemon rind, orange peel, juniper</p>
+          <p class="terpene-card__desc">Associated with mood elevation and stress relief. In a 2024 Johns Hopkins double-blind clinical trial, d-limonene reduced THC-induced anxiety dose-dependently — without altering other effects. The strongest human-trial evidence for any single terpene currently in the literature. <em>Clinical evidence (Spindle et al., 2024).</em></p>
+          <p class="terpene-card__use">Best for: mood &bull; social anxiety &bull; morning clarity &bull; stress</p>
         </div>
 
         <div class="terpene-card terpene-card--myrc">
-          <h4>Myrcene<br>the Sedative</h4>
-          <p class="terpene-card__found">Found in Hops &amp; Mangoes</p>
-          <p class="terpene-card__desc">Best for nighttime use. Promotes deep relaxation, muscle relief, and the classic couch-lock feeling. Essential for sleep management and recovery.</p>
+          <h4>Myrcene<span class="card-role">the Sedative</span></h4>
+          <p class="terpene-card__found">Earthy, musky &bull; Hops, mangoes, lemongrass</p>
+          <p class="terpene-card__desc">The most abundant terpene in most cannabis varieties. Preclinical research consistently links myrcene to sedative and muscle-relaxant properties — largely responsible for the heavy, couch-lock quality of high-myrcene strains. Night-use anchor. <em>Preclinical consensus.</em></p>
+          <p class="terpene-card__use">Best for: sleep &bull; muscle recovery &bull; deep relaxation</p>
         </div>
 
         <div class="terpene-card terpene-card--pin">
-          <h4>Pinene<br>the Focuser</h4>
-          <p class="terpene-card__found">Found in Pine Needles &amp; Rosemary</p>
-          <p class="terpene-card__desc">The precision tool. Promotes alertness, memory retention, and mental clarity. Also a bronchodilator — helps open airways. Excellent for study, work, or creative focus.</p>
+          <h4>Pinene<span class="card-role">the Focuser</span></h4>
+          <p class="terpene-card__found">Sharp pine, fresh &bull; Pine needles, rosemary, basil</p>
+          <p class="terpene-card__desc">Anti-inflammatory and bronchodilatory — helps open airways. Research suggests it may support memory retention and counteract short-term cognitive effects of THC. A 2024 study documented neuroprotective properties against beta-amyloid toxicity. <em>Preclinical; neuroprotective research ongoing.</em></p>
+          <p class="terpene-card__use">Best for: focus &bull; study &bull; memory &bull; clarity</p>
         </div>
 
-      </div>
-
-      <p class="section__subheading">the Support Crew (Secondary Terpenes)</p>
-      <div class="terpene-grid">
 
         <div class="terpene-card terpene-card--linal">
-          <h4>Linalool<br>the Soother</h4>
-          <p class="terpene-card__found">Found in Lavender &amp; Birch</p>
-          <p class="terpene-card__desc">The anxiety brake. Famous for its floral aroma and ability to calm the nervous system. Excellent for acute stress, panic, and pain modulation — without heavy sedation.</p>
+          <h4>Linalool<span class="card-role">the Soother</span></h4>
+          <p class="terpene-card__found">Floral, lavender-like &bull; Lavender, birch, coriander</p>
+          <p class="terpene-card__desc">The anxiety brake. Calms the nervous system with a lighter touch than myrcene — useful for acute stress without heavy sedation. One of five terpenes showing preclinical analgesic effects near morphine's peak in a 2024 University of Arizona pain study. <em>Preclinical; Arizona pain study (Schwarz et al., 2024).</em></p>
+          <p class="terpene-card__use">Best for: anxiety &bull; panic &bull; acute stress &bull; pain modulation</p>
         </div>
 
         <div class="terpene-card terpene-card--humul">
-          <h4>Humulene<br>the Moderator</h4>
-          <p class="terpene-card__found">Found in Hops, Sage &amp; Ginseng</p>
-          <p class="terpene-card__desc">The appetite controller. Structurally similar to Beta-Caryophyllene, it fights inflammation potently but is unique for suppressing appetite. A key component for functional daytime use.</p>
+          <h4>Humulene<span class="card-role">the Moderator</span></h4>
+          <p class="terpene-card__found">Earthy, woody, hoppy &bull; Hops, sage, ginseng</p>
+          <p class="terpene-card__desc">Structurally related to BCP, with strong anti-inflammatory properties. One of the few terpenes associated with appetite suppression rather than increase — notable for functional daytime use. Also in the 2024 Arizona pain study group. <em>Preclinical; Arizona pain study (Schwarz et al., 2024).</em></p>
+          <p class="terpene-card__use">Best for: daytime use &bull; inflammation &bull; appetite management</p>
+        </div>
+
+        <div class="terpene-card">
+          <h4>Terpinolene<span class="card-role">the Specialist</span></h4>
+          <p class="terpene-card__found">Piney, floral, herbaceous &bull; Nutmeg, tea tree, lilacs</p>
+          <p class="terpene-card__desc">Less common as a dominant terpene, but worth noting when it appears. Associated with mildly uplifting, clear-headed effects — a different character than Limonene's brightness. Early preclinical research points to modest neuroprotective properties. <em>Preclinical; early-stage research.</em></p>
+          <p class="terpene-card__use">Best for: mood lift &bull; mental clarity &bull; neuroprotection (emerging)</p>
         </div>
 
       </div>
+
+      <p class="section__subheading">the Minor Players (Secondary &amp; Minor Terpenes)</p>
+      <ul class="minor-terp-list">
+
+        <li class="minor-terp-item">
+          <div><span class="minor-terp-item__name">Geraniol</span><span class="minor-terp-item__aroma">Floral, rose-like &bull; Geranium, citronella</span></div>
+          <div>One of the five terpenes in the 2024 University of Arizona pain study (Schwarz et al., PAIN), showing analgesic effects comparable to morphine preclinically. Less prominent as a dominant terpene but part of the whole-plant profile and worth identifying on a COA.</div>
+        </li>
+
+        <li class="minor-terp-item">
+          <div><span class="minor-terp-item__name">Ocimene</span><span class="minor-terp-item__aroma">Sweet, herbaceous &bull; Mint, parsley, basil</span></div>
+          <div>Preclinical evidence for modulating THC's activity at CB1 receptors (Raz et al., 2023, Biochemical Pharmacology). This suggests minor terpenes aren't just background — they may actively tune cannabinoid behavior in ways we're only beginning to map.</div>
+        </li>
+
+        <li class="minor-terp-item">
+          <div><span class="minor-terp-item__name">Bisabolol</span><span class="minor-terp-item__aroma">Chamomile-like, mild floral &bull; German chamomile</span></div>
+          <div>Anti-inflammatory and antimicrobial properties in preclinical research. Also found in chamomile — one of the most used calming botanicals historically. Likely contributes to overall soothing effect in high-CBD, floral-profile products.</div>
+        </li>
+
+        <li class="minor-terp-item">
+          <div><span class="minor-terp-item__name">Borneol</span><span class="minor-terp-item__aroma">Camphor-like, herbal &bull; Ginger, thyme, camphor</span></div>
+          <div>Preclinical evidence for antinociceptive (pain-blocking) and anticonvulsant activity. Used in traditional Chinese medicine. A reminder that minor terpenes often carry deep ethnobotanical history that predates clinical research.</div>
+        </li>
+
+        <li class="minor-terp-item">
+          <div><span class="minor-terp-item__name">Nerolidol</span><span class="minor-terp-item__aroma">Jasmine, woody tea tree &bull; Jasmine, ginger, neroli</span></div>
+          <div>Antifungal, antioxidant, and notable as a skin-penetration enhancer — may facilitate transdermal delivery of other compounds. Relevant for topical CBD products and potentially for absorption dynamics more broadly.</div>
+        </li>
+
+        <li class="minor-terp-item">
+          <div><span class="minor-terp-item__name">Camphene</span><span class="minor-terp-item__aroma">Earthy, herbal, fir-like &bull; Fir, ginger, valerian</span></div>
+          <div>Preclinical research touches on cardiovascular and skin health. Less studied than the primary terpenes but present in many full-spectrum products. Stripping for extract purity removes compounds like this before we fully understand what they contribute.</div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- Section: The Formula -->
+  <section class="section section--alt">
+    <div class="text-wrap">
+      <h2 class="section__heading">the Formula</h2>
+
+      <div class="prose">
+        <p>You now have the ingredients. The formula is how they're combined. Cannabinoid ratios and terpene profiles aren't separate decisions — they're a single system. The ratio sets the power level. The terpene profile sets the direction. Together, they determine whether something actually works for you.</p>
+        <p>Most products are labeled by ratio (CBD:THC) and by spectrum — full, broad, or isolate. Understanding both is what turns random product selection into something closer to calibration.</p>
+      </div>
+
+      <p class="section__subheading">what's in the bottle (Spectrum)</p>
+      <div class="spectrum-grid">
+        <div class="spectrum-cell spectrum-cell--full">
+          <strong>Full-Spectrum</strong>
+          All cannabinoids including trace THC (&lt;0.3%), plus intact terpenes and minor compounds. Maximum entourage effect. The whole plant working as evolved.
+        </div>
+        <div class="spectrum-cell spectrum-cell--broad">
+          <strong>Broad-Spectrum</strong>
+          THC removed. Terpenes typically preserved. Partial entourage effect. A reasonable middle ground for those avoiding THC entirely.
+        </div>
+        <div class="spectrum-cell spectrum-cell--iso">
+          <strong>Isolate</strong>
+          Pure CBD. No terpenes. No other cannabinoids. Precise dosing, but the weakest mechanism for most use cases. No entourage effect.
+        </div>
+      </div>
+
+      <div class="dimmer-box">
+        <h3>the Evidence on Spectrum</h3>
+        <div class="prose">
+          <p>A 2018 meta-analysis of 670 patients across 11 studies found that CBD-dominant whole-plant extracts achieved comparable seizure reduction at lower doses than pure CBD isolate — the clearest real-world data on whole-plant advantage to date. A 2024 Johns Hopkins clinical trial documented d-limonene reducing THC-induced anxiety dose-dependently, without altering other effects. The entourage effect isn't fully proven at clinical scale, but the evidence is building from real human trials.</p>
+          <p>When a product strips terpenes for a cleaner extract, it's trading the most pharmacologically active layer of the plant for shelf stability. That's a commercial decision, not a scientific one.</p>
+        </div>
+      </div>
+
+      <p class="section__subheading">reading the ratio (CBD:THC)</p>
+      <ul class="players-list">
+        <li class="players-item">
+          <strong>CBD-Only / Isolate:</strong><br>
+          No THC, no CB1 activation. General wellness and anxiety support. Useful for drug-test sensitive situations — but limited for pain and deeper ECS modulation.
+        </li>
+        <li class="players-item">
+          <strong>20:1 – 25:1 (High CBD, Trace THC):</strong><br>
+          Sub-perceptual THC. CB1 begins to open. The functional starting point for most people new to cannabinoids. Clear-headed, daytime-compatible.
+        </li>
+        <li class="players-item">
+          <strong>10:1 (CBD-Dominant):</strong><br>
+          Meaningful CB1 activation without significant psychoactive effect. The most versatile ratio for chronic pain, inflammation, and stress. A reliable daytime option once you know your baseline.
+        </li>
+        <li class="players-item">
+          <strong>5:1 – 4:1 (Balanced Toward CBD):</strong><br>
+          Noticeable THC effect with CBD moderating the intensity. Strong full-body relief. Requires tolerance awareness — ease in carefully.
+        </li>
+        <li class="players-item">
+          <strong>1:1 (Equal Parts):</strong><br>
+          The most-studied ratio in clinical research. CBD moderates THC's intensity while extending its duration. Best for deeper pain management and sleep. Not a starting point.
+        </li>
+      </ul>
+
+      <div class="concept-box">
+        <strong>the Terpene Layer</strong>
+        <div class="prose">
+          <p>The ratio sets the floor. Terpenes determine the ceiling. Two products at 10:1 can deliver completely different experiences depending on the profile:</p>
+          <p><strong>10:1 + Myrcene / Linalool</strong> &rarr; evening protocol. Deep muscle relaxation, anxiety off-switch, sedation for sleep.</p>
+          <p><strong>10:1 + Limonene / Pinene</strong> &rarr; daytime protocol. Mood elevation, mental clarity, functional energy without the jitter.</p>
+          <p>Ratio + spectrum + terpene profile is the complete picture. Any label that gives you only one of those three isn't giving you enough to make an informed choice.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
