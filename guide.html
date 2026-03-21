@@ -393,6 +393,71 @@
     }
     .minor-terp-item__aroma { font-size: 12px; color: #5A5750; }
 
+    /* ─── profile finder ─────────────────────────────────────── */
+    .finder { margin: 32px 0; }
+    .finder__step { display: none; margin-bottom: 32px; }
+    .finder__step.is-active { display: block; }
+    .finder__q-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+      color: #5A5750; margin-bottom: 8px;
+    }
+    .finder__q { font-size: 18px; color: #1C1B18; margin-bottom: 16px; line-height: 1.3; }
+    .finder__options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .finder__option {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+      padding: 10px 16px; border: 1px solid #C8C3B8; border-radius: 2px;
+      background: #EAE6DC; color: #5A5750;
+      cursor: pointer; transition: all .15s ease;
+    }
+    .section--alt .finder__option { background: #F4F1EB; }
+    .finder__option:hover { border-color: #3B6E52; color: #3B6E52; }
+    .finder__option.is-selected { background: #3B6E52; border-color: #3B6E52; color: #F4F1EB; }
+    .finder__result { display: none; margin-top: 8px; }
+    .finder__result.is-visible { display: block; }
+    .finder__profile {
+      background: #D4E7DC; border: 1px solid #C8C3B8;
+      border-left: 3px solid #3B6E52; border-radius: 0 3px 3px 0;
+      padding: 24px 28px; margin-bottom: 2px;
+    }
+    .finder__profile-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+      color: #3B6E52; margin-bottom: 8px;
+    }
+    .finder__profile-name { font-size: 22px; color: #1C1B18; margin-bottom: 12px; }
+    .finder__profile-terps {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+      color: #3B6E52; margin-bottom: 4px;
+    }
+    .finder__profile-ratio {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; letter-spacing: .04em;
+      color: #5A5750; margin-bottom: 14px;
+    }
+    .finder__profile-desc { font-size: 14px; line-height: 1.65; color: #1C1B18; }
+    .finder__bridge { background: #1C1B18; padding: 24px 28px; }
+    .finder__bridge p { font-size: 14px; line-height: 1.65; color: #C8C3B8; margin-bottom: 10px; }
+    .finder__bridge p:last-of-type { margin-bottom: 0; }
+    .finder__bridge-cta {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+      color: #F4F1EB; background: #3B6E52;
+      padding: 10px 18px; text-decoration: none;
+      display: inline-block; margin-top: 14px;
+      transition: opacity .15s ease;
+    }
+    .finder__bridge-cta:hover { opacity: .85; }
+    .finder__reset {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+      color: #5A5750; background: none; border: none;
+      cursor: pointer; padding: 0; margin-top: 14px;
+      display: block; text-decoration: underline;
+    }
+
     /* ─── next steps ─────────────────────────────────────────── */
     .next-steps { margin-top: 40px; }
     .next-steps__grid {
@@ -771,6 +836,72 @@
 
   <hr class="rule">
 
+  <!-- Section: Profile Finder -->
+  <section class="section">
+    <div class="text-wrap">
+      <h2 class="section__heading">the Profile Finder</h2>
+
+      <div class="prose">
+        <p>Three questions. A starting hypothesis — not a prescription. No tool can account for your biology, your history, or your baseline. But everyone needs a starting point, and this is a more informed one than guessing by potency.</p>
+      </div>
+
+      <div class="finder" id="profileFinder">
+
+        <div class="finder__step is-active" id="step1">
+          <p class="finder__q-label">// step 1 of 3</p>
+          <p class="finder__q">What are you primarily looking for?</p>
+          <div class="finder__options">
+            <button type="button" class="finder__option" data-step="1" data-value="sleep">Sleep</button>
+            <button type="button" class="finder__option" data-step="1" data-value="anxiety">Anxiety &amp; Stress</button>
+            <button type="button" class="finder__option" data-step="1" data-value="pain">Pain Relief</button>
+            <button type="button" class="finder__option" data-step="1" data-value="focus">Focus &amp; Clarity</button>
+            <button type="button" class="finder__option" data-step="1" data-value="mood">Mood</button>
+            <button type="button" class="finder__option" data-step="1" data-value="recovery">Recovery &amp; Inflammation</button>
+          </div>
+        </div>
+
+        <div class="finder__step" id="step2">
+          <p class="finder__q-label">// step 2 of 3</p>
+          <p class="finder__q">When do you typically use?</p>
+          <div class="finder__options">
+            <button type="button" class="finder__option" data-step="2" data-value="day">Morning &amp; Daytime</button>
+            <button type="button" class="finder__option" data-step="2" data-value="night">Evening &amp; Night</button>
+            <button type="button" class="finder__option" data-step="2" data-value="both">Flexible &amp; Both</button>
+          </div>
+        </div>
+
+        <div class="finder__step" id="step3">
+          <p class="finder__q-label">// step 3 of 3</p>
+          <p class="finder__q">How do you feel about THC?</p>
+          <div class="finder__options">
+            <button type="button" class="finder__option" data-step="3" data-value="avoid">Avoid it entirely</button>
+            <button type="button" class="finder__option" data-step="3" data-value="trace">Open to trace amounts</button>
+            <button type="button" class="finder__option" data-step="3" data-value="comfortable">Comfortable with it</button>
+          </div>
+        </div>
+
+        <div class="finder__result" id="finderResult">
+          <div class="finder__profile">
+            <p class="finder__profile-label">// your starting profile</p>
+            <p class="finder__profile-name" id="profileName"></p>
+            <p class="finder__profile-terps" id="profileTerps"></p>
+            <p class="finder__profile-ratio" id="profileRatio"></p>
+            <p class="finder__profile-desc" id="profileDesc"></p>
+          </div>
+          <div class="finder__bridge">
+            <p>This is a hypothesis, not a prescription. Your baseline, your biology, and your history with these compounds are variables no three-question tool can account for.</p>
+            <p>The App is where this hypothesis gets tested — session by session, dose by dose, until you have something that's actually yours.</p>
+            <a href="index.html" class="finder__bridge-cta">Join the waitlist &rarr;</a>
+          </div>
+          <button type="button" class="finder__reset" id="finderReset">// start over</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
   <!-- Section: The Input -->
   <section class="section">
     <div class="text-wrap">
@@ -875,6 +1006,113 @@
   </footer>
 
   <a href="#top-of-page" id="backToTop">↑ Top</a>
+
+  <script>
+    (function () {
+      var profiles = {
+        eveningReset: {
+          name: 'The Evening Reset',
+          terps: 'Myrcene · Linalool · Beta-Caryophyllene',
+          ratio: '10:1 or higher — evening use',
+          desc: 'Heavy relaxation, muscle release, anxiety off-switch. Designed for wind-down and sleep onset. Look for earthy, musky, or floral profiles — high Myrcene content on the COA is the target.'
+        },
+        calmAnchor: {
+          name: 'The Calm Anchor',
+          terps: 'Linalool · Limonene',
+          ratio: 'CBD-only or 20:1+ — daytime compatible',
+          desc: 'Anxiety and stress relief without CB1 activation. A lighter touch — the anxiety brake without sedation. Floral or citrus-forward profiles. No THC means no ceiling, but also less receptor reach — set expectations accordingly.'
+        },
+        daySettler: {
+          name: 'The Day Settler',
+          terps: 'Limonene · Linalool · Beta-Caryophyllene',
+          ratio: '20:1 – 10:1 — daytime use',
+          desc: "Anxiety management with trace THC opening the CB1 door. Citrus-forward, floral-backed. Functional and clear-headed. The trace THC here isn't about effect — it's about receptor access."
+        },
+        morningEdge: {
+          name: 'The Morning Edge',
+          terps: 'Pinene · Limonene · Terpinolene',
+          ratio: 'CBD-only or 20:1 — morning use',
+          desc: "Mental clarity and mood lift without sedation. Pine-forward, citrus-backed. Counteracts cognitive fog. If you've been skeptical that CBD can be a morning tool — this profile is the argument."
+        },
+        reliefStack: {
+          name: 'The Relief Stack',
+          terps: 'Beta-Caryophyllene · Humulene · Linalool',
+          ratio: '10:1 – 5:1 — daytime use',
+          desc: "Targeted anti-inflammatory and pain modulation with functional daytime clarity. BCP's CB2 binding is the engine here. Earthy, peppery, hoppy profiles. A daytime protocol you can work through."
+        },
+        painProtocol: {
+          name: 'The Pain Protocol',
+          terps: 'Myrcene · Linalool · Beta-Caryophyllene',
+          ratio: '5:1 – 1:1 — evening use',
+          desc: 'Deeper pain management through full CB1 + CB2 engagement. Not a starting point — requires THC tolerance awareness. Evening use only. The 1:1 ratio is the most-studied in pain research for a reason.'
+        },
+        moodLift: {
+          name: 'The Mood Lift',
+          terps: 'Limonene · Terpinolene · Pinene',
+          ratio: '20:1 – 10:1 — morning or midday',
+          desc: "Uplifting without stimulation. Citrus and pine forward. Limonene's clinical trial data on anxiety reduction applies here — mood and anxiety are the same dial turned different directions. Daytime protocol."
+        },
+        recoveryStack: {
+          name: 'The Recovery Stack',
+          terps: 'Beta-Caryophyllene · Humulene · Myrcene',
+          ratio: '10:1 — flexible timing',
+          desc: "Systemic anti-inflammatory support. BCP and Humulene are both in the Arizona pain study cohort. Earthy, woody, hoppy profiles. Humulene's appetite-neutral quality makes this a clean daytime recovery option."
+        }
+      };
+
+      function getProfile(goal, time, thc) {
+        if (goal === 'sleep')    return profiles.eveningReset;
+        if (goal === 'anxiety')  return thc === 'avoid' ? profiles.calmAnchor : profiles.daySettler;
+        if (goal === 'pain')     return time === 'night' ? profiles.painProtocol : profiles.reliefStack;
+        if (goal === 'focus')    return profiles.morningEdge;
+        if (goal === 'mood')     return profiles.moodLift;
+        if (goal === 'recovery') return profiles.recoveryStack;
+        return profiles.daySettler;
+      }
+
+      var answers = { goal: null, time: null, thc: null };
+
+      document.querySelectorAll('.finder__option').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var step = parseInt(this.dataset.step);
+          var value = this.dataset.value;
+          document.querySelectorAll('[data-step="' + step + '"]').forEach(function (b) {
+            b.classList.remove('is-selected');
+          });
+          this.classList.add('is-selected');
+          if (step === 1) answers.goal = value;
+          if (step === 2) answers.time = value;
+          if (step === 3) { answers.thc = value; showResult(); return; }
+          document.getElementById('step' + (step + 1)).classList.add('is-active');
+        });
+      });
+
+      function showResult() {
+        var p = getProfile(answers.goal, answers.time, answers.thc);
+        document.getElementById('profileName').textContent  = p.name;
+        document.getElementById('profileTerps').textContent = p.terps;
+        document.getElementById('profileRatio').textContent = p.ratio;
+        document.getElementById('profileDesc').textContent  = p.desc;
+        var result = document.getElementById('finderResult');
+        result.classList.add('is-visible');
+        result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      document.getElementById('finderReset').addEventListener('click', function () {
+        answers = { goal: null, time: null, thc: null };
+        document.querySelectorAll('.finder__step').forEach(function (s, i) {
+          s.classList.toggle('is-active', i === 0);
+        });
+        document.querySelectorAll('.finder__option').forEach(function (b) {
+          b.classList.remove('is-selected');
+        });
+        document.getElementById('finderResult').classList.remove('is-visible');
+        var target = document.getElementById('step1');
+        var offset = target.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      });
+    })();
+  </script>
 
   <script>
     const btn = document.getElementById('backToTop');
