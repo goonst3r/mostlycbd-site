@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Same Plant. Two Sets of Rules. — mostlycbd.com</title>
+<meta name="description" content="In Pennsylvania, a dispensary product clears 12+ regulatory checkpoints. A hemp-derived THC gummy at a gas station clears zero. Here's the legislation behind the gap — and the consequences.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --dark: #1A1208;
+    --rust: #C4500A;
+    --green: #2D5016;
+    --sage: #6B8F4E;
+    --gold: #D4A843;
+    --muted: #7A6E5F;
+    --cbd-blue: #3B6E8F;
+    --thc-red: #C4500A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .card {
+    border-top: 8px solid var(--green);
+    padding-top: 56px;
+  }
+
+  /* EYEBROWS */
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 14px;
+  }
+
+  /* HEADLINES */
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 7vw, 4.8rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--dark);
+    margin-bottom: 10px;
+  }
+  h1 span { color: var(--rust); }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    letter-spacing: 0.03em;
+    line-height: 1.05;
+    color: var(--dark);
+    margin-bottom: 20px;
+  }
+
+  .subtitle {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.55;
+    max-width: 580px;
+    margin-bottom: 48px;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 48px 0;
+    border-bottom: 1.5px solid #D4CFC4;
+  }
+  .section:last-of-type { border-bottom: none; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cbd-blue);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #D4CFC4;
+  }
+
+  /* PROSE */
+  p { margin-bottom: 16px; line-height: 1.75; }
+  p:last-child { margin-bottom: 0; }
+  strong { font-weight: 600; }
+  .green { color: var(--green); }
+  .rust { color: var(--rust); }
+
+  /* PULL QUOTES */
+  .pull-quote {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--green);
+    font-style: italic;
+    line-height: 1.5;
+    border-left: 4px solid var(--sage);
+    padding: 16px 24px;
+    margin: 32px 0;
+    background: rgba(107,143,78,0.04);
+  }
+
+  /* STAT CALLOUTS */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 32px 0;
+  }
+  .stat-cell {
+    border-top: 3px solid var(--sage);
+    padding-top: 14px;
+  }
+  .stat-cell.red { border-color: var(--thc-red); }
+  .stat-cell.gold { border-color: var(--gold); }
+  .stat-cell.blue { border-color: var(--cbd-blue); }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.6rem;
+    line-height: 1;
+    color: var(--dark);
+  }
+  .stat-num span { color: var(--sage); }
+  .stat-cell.red .stat-num span { color: var(--thc-red); }
+  .stat-cell.gold .stat-num span { color: var(--gold); }
+  .stat-cell.blue .stat-num span { color: var(--cbd-blue); }
+  .stat-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+
+  /* COMPARISON TABLE */
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 28px 0;
+    font-size: 0.9rem;
+  }
+  .comp-table th {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 2px solid var(--dark);
+  }
+  .comp-table th.reg { color: var(--green); }
+  .comp-table th.unreg { color: var(--thc-red); }
+  .comp-table td {
+    padding: 16px 18px;
+    border-bottom: 1px solid #D4CFC4;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .comp-table td.category {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    width: 120px;
+  }
+  .comp-table td.yes {
+    background: rgba(45,80,22,0.03);
+  }
+  .comp-table td.no {
+    background: rgba(196,80,10,0.03);
+  }
+  .comp-table .cite {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    margin-top: 6px;
+    font-style: italic;
+  }
+  .tag-yes {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--green);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .tag-no {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--thc-red);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* LAW BLOCKS */
+  .law-block {
+    background: white;
+    border: 1px solid #D4CFC4;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .law-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 5px; height: 100%;
+  }
+  .law-block.oversight::before { background: var(--green); }
+  .law-block.gap::before { background: var(--thc-red); }
+  .law-block.partial::before { background: var(--gold); }
+  .law-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 2px;
+  }
+  .law-ref {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .law-block p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+  .law-tag {
+    display: inline-block;
+    margin-top: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border: 1px solid;
+  }
+  .law-tag.g { color: var(--green); border-color: var(--green); }
+  .law-tag.r { color: var(--thc-red); border-color: var(--thc-red); }
+  .law-tag.y { color: var(--gold); border-color: var(--gold); }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+    margin: 24px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 5px; top: 0; bottom: 0;
+    width: 1px;
+    background: #D4CFC4;
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 24px;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -26px; top: 7px;
+    width: 7px; height: 7px;
+    background: var(--sage);
+    border-radius: 50%;
+  }
+  .tl-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--sage);
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+  .tl-text {
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  /* POSITION ITEMS */
+  .position-item {
+    border-left: 3px solid var(--sage);
+    padding: 12px 0 12px 20px;
+    margin-bottom: 24px;
+  }
+  .position-item strong {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .position-item p {
+    font-size: 0.95rem;
+  }
+
+  /* FOOTER */
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0 60px;
+    border-top: 3px solid var(--green);
+    margin-top: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: var(--sage);
+    text-transform: uppercase;
+  }
+  .footer-tagline {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  /* SOURCES */
+  .sources {
+    margin-top: 20px;
+    padding-top: 24px;
+    border-top: 1px solid #D4CFC4;
+  }
+  .sources ol {
+    padding-left: 20px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .sources li { margin-bottom: 6px; }
+  .sources a {
+    color: var(--cbd-blue);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--cbd-blue);
+  }
+
+  @media (max-width: 640px) {
+    .comp-table { font-size: 0.8rem; }
+    .comp-table td.category { width: auto; }
+    .stat-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+<div class="card">
+
+  <!-- ═══ SECTION 1: HERO ═══ -->
+  <div class="eyebrow">mostlycbd.com · The Regulation Gap</div>
+  <h1>Same Plant.<br>Same State.<br><span>Two Sets of Rules.</span></h1>
+  <p class="subtitle">In Pennsylvania, a medical cannabis product clears more than a dozen regulatory checkpoints before it reaches a patient. A hemp-derived THC gummy at a gas station clears zero. This is the legislation that built that gap — and the consequences we're living with.</p>
+
+  <!-- ═══ SECTION 2: THE PREMISE ═══ -->
+  <div class="section">
+    <div class="section-label">The Premise</div>
+    <p>This isn't an argument against hemp. It's an argument against <strong class="rust">the absence of rules</strong>.</p>
+    <p>When Congress passed the Agriculture Improvement Act of 2018 — the Farm Bill — the intent was to legalize industrial hemp for agriculture. Rope, textiles, seed oil, building materials. The slogan at the time was "Rope, not dope." The legislation defined hemp as cannabis containing no more than 0.3% delta-9 THC by dry weight. It said nothing about delta-8, delta-10, THCA, HHC, or any other intoxicating cannabinoid.</p>
+    <p>That silence created a loophole. And that loophole built a <strong>$28.4 billion market</strong> with no federal testing requirements, no labeling standards, no age restrictions, and no potency limits — operating right alongside one of the most regulated cannabis programs in the country.</p>
+
+    <div class="pull-quote">Congress did not establish baseline quality control regulations because it did not intend to create a commercial market for intoxicating hemp-derived consumables. Producers capitalized on that gap.</div>
+
+    <p>Pennsylvania is a case study in how the gap plays out. The same plant — Cannabis sativa L. — produces two categories of product living under entirely different rules. One is tracked from seed to sale, tested twice by independent labs, dispensed by licensed professionals. The other is synthesized in unregulated facilities, sold next to energy drinks, and marketed in packaging designed to look like children's candy.</p>
+  </div>
+
+  <!-- ═══ SECTION 3: THE COMPARISON ═══ -->
+  <div class="section">
+    <div class="section-label">What the Law Actually Requires</div>
+    <h2>The Side-by-Side</h2>
+    <p>Eight regulatory checkpoints. PA medical cannabis must clear all eight. Hemp-derived THC products must clear none.</p>
+
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th style="width:120px">Category</th>
+          <th class="reg">PA Medical Dispensary</th>
+          <th class="unreg">Hemp-Derived (Gas Station / Online)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="category">Licensing</td>
+          <td class="yes"><span class="tag-yes">■ Required</span>State permit: $5K–$10K application, $30K per dispensary location, $200K for grower/processors. Background checks on all principals and employees.<span class="cite">35 P.S. §§ 10231.101–2110; 28 Pa. Code § 1141a.31</span></td>
+          <td class="no"><span class="tag-no">■ None</span>No state license. No application. No background checks. Any retail business can sell.<span class="cite">No PA statute addresses licensing for hemp-derived consumables</span></td>
+        </tr>
+        <tr>
+          <td class="category">Lab Testing</td>
+          <td class="yes"><span class="tag-yes">■ Mandatory</span>ISO/IEC 17025-accredited labs. Every harvest batch tested before processing. Every process lot tested by a second independent lab before sale. Tests: cannabinoid profile, heavy metals (Hg, Pb, Cd, As), pesticides, microbial impurities, foreign material.<span class="cite">28 Pa. Code §§ 1171a.29–1171a.31; § 1171a.30 (AHP standards)</span></td>
+          <td class="no"><span class="tag-no">■ None</span>No mandatory testing. No lab accreditation required. No contaminant screening. Products may contain residual solvents, heavy metals, or unknown chemical byproducts from synthesis.<span class="cite">FDA: products "have not been evaluated or approved for safe use in any context"</span></td>
+        </tr>
+        <tr>
+          <td class="category">Tracking</td>
+          <td class="yes"><span class="tag-yes">■ Seed-to-Sale</span>Mandatory electronic tracking system — every plant, transfer, and sale recorded in real time. Monthly inventory reviews. Annual comprehensive inventories. Transport manifests for all transfers.<span class="cite">35 P.S. § 10231.701; 28 Pa. Code §§ 1151a.30, 1161a.32</span></td>
+          <td class="no"><span class="tag-no">■ None</span>No tracking. No supply chain documentation. No manifests. No audits. Product origin is unverifiable.<span class="cite">No federal or PA tracking framework for hemp-derived consumables</span></td>
+        </tr>
+        <tr>
+          <td class="category">Labeling</td>
+          <td class="yes"><span class="tag-yes">■ Strict</span>Must list: THC %, CBD %, individual terpenes and %, all other cannabinoids, dose count, medical warnings, child safety language. Original container required.<span class="cite">28 Pa. Code § 1161a.28</span></td>
+          <td class="no"><span class="tag-no">■ None</span>No labeling requirements. FDA found products routinely mislabeled. Some mimic children's snack brands — Skittles, Sour Patch Kids, Flamin' Hot Cheetos.<span class="cite">FDA/FTC joint warning letters, July 2024</span></td>
+        </tr>
+        <tr>
+          <td class="category">Age Gate</td>
+          <td class="yes"><span class="tag-yes">■ 18+ with ID</span>Qualifying medical condition required. Practitioner certification. State-issued patient ID card. Identity verified in-person at dispensary.<span class="cite">35 P.S. § 10231.801; 28 Pa. Code § 1161a.23</span></td>
+          <td class="no"><span class="tag-no">■ None</span>No age restriction in PA. No ID check. Available online with no age gate. Available at gas stations with zero purchase restrictions.<span class="cite">No PA statute addresses age minimums for hemp-derived THC</span></td>
+        </tr>
+        <tr>
+          <td class="category">Potency</td>
+          <td class="yes"><span class="tag-yes">■ Controlled</span>Pharmacist determines form, dosage, quantity per patient. 90-day supply limit. Cannabinoid content verified by independent lab.<span class="cite">35 P.S. § 10231.801; 28 Pa. Code § 1161a.24</span></td>
+          <td class="no"><span class="tag-no">■ None</span>No potency limits. No dosing guidance. No max serving. Concentrated delta-8 distillate far exceeds naturally occurring hemp levels.<span class="cite">FDA: "likely expose consumers to much higher levels than naturally occurring"</span></td>
+        </tr>
+        <tr>
+          <td class="category">Facility</td>
+          <td class="yes"><span class="tag-yes">■ Inspected</span>Indoor, enclosed, secure. Electronic locking and surveillance. Sanitation protocols. Pesticide use governed by PA Pesticide Control Act. Every application documented.<span class="cite">28 Pa. Code §§ 1151a.23, 1151a.26, 1151a.27</span></td>
+          <td class="no"><span class="tag-no">■ None</span>No manufacturing standards. Delta-8 synthesized from CBD using chemical catalysts — FDA flags use of "potentially unsafe household chemicals." No inspections.<span class="cite">FDA consumer update: delta-8 THC</span></td>
+        </tr>
+        <tr>
+          <td class="category">Recall</td>
+          <td class="yes"><span class="tag-yes">■ Mandatory</span>Written recall procedures. Adverse event reporting. Failed tests trigger investigation, root cause analysis, potential destruction. Ongoing DOH enforcement.<span class="cite">28 Pa. Code §§ 1161a.38, 1171a.31(c)</span></td>
+          <td class="no"><span class="tag-no">■ None</span>No recall mechanism. No adverse event reporting. FDA enforcement limited to warning letters. FDA has stated it lacks statutory authority for comprehensive regulation.<span class="cite">FDA has urged Congress to act</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══ SECTION 4: THE LEGISLATION ═══ -->
+  <div class="section">
+    <div class="section-label">The Legislation Behind the Gap</div>
+    <h2>How Law Created This</h2>
+
+    <div class="law-block oversight">
+      <div class="law-name">PA Medical Marijuana Act (Act 16 of 2016)</div>
+      <div class="law-ref">35 P.S. §§ 10231.101–10231.2110 · Senate Bill 3</div>
+      <p>Created Pennsylvania's medical cannabis program with comprehensive regulatory infrastructure: licensed grower/processors and dispensaries, electronic seed-to-sale tracking, mandatory independent lab testing, practitioner certification, patient registries, and ongoing Department of Health oversight.</p>
+      <span class="law-tag g">Created oversight</span>
+    </div>
+
+    <div class="law-block gap">
+      <div class="law-name">Agriculture Improvement Act of 2018 (Farm Bill)</div>
+      <div class="law-ref">P.L. 115-334 · 7 U.S.C. § 1639o</div>
+      <p>Defined hemp as cannabis with ≤0.3% delta-9 THC by dry weight. Removed hemp from the CSA. By referencing only delta-9 THC, it left delta-8, delta-10, THCA, HHC, and all other intoxicating cannabinoids outside federal scheduling — so long as they were hemp-derived. No consumer safety framework was created because no intoxicant market was anticipated.</p>
+      <span class="law-tag r">Created the gap</span>
+    </div>
+
+    <div class="law-block gap">
+      <div class="law-name">PA Industrial Hemp Act</div>
+      <div class="law-ref">3 Pa.C.S. Chapter 15 · Senate Bill 335 / House Bill 967</div>
+      <p>Aligned Pennsylvania's hemp definition with the federal Farm Bill. Legalized hemp-derived products including cannabinoids, extracts, and derivatives — but established no consumer safety framework, no testing requirements, and no licensing for consumable products. PA Dept. of Agriculture oversees hemp growing but has no jurisdiction over retail products.</p>
+      <span class="law-tag r">Extended the gap to PA</span>
+    </div>
+
+    <div class="law-block partial">
+      <div class="law-name">AK Futures LLC v. Boyd St. Distro (9th Circuit, 2022)</div>
+      <div class="law-ref">U.S. Court of Appeals for the Ninth Circuit</div>
+      <p>Held that hemp-derived delta-8 products are legal under the Farm Bill regardless of method of manufacture — effectively ruling that the source of the product (hemp vs. non-cannabis), not the process used, determines legality. This cemented the loophole in federal court.</p>
+      <span class="law-tag y">Cemented the loophole</span>
+    </div>
+
+    <div class="law-block partial">
+      <div class="law-name">FY2026 Agriculture Appropriations Act (Nov 2025)</div>
+      <div class="law-ref">P.L. 119-37, Section 781 · Effective November 12, 2026</div>
+      <p>Redefined hemp using a "total THC" standard (including THCA, delta-8). Capped finished products at 0.4mg total THC per container. Expressly excluded synthetically derived cannabinoids. Closes the loophole — but doesn't take effect until November 2026, and creates no alternative regulatory framework. Products currently on the market at 2.5–10mg per serving will become federally illegal with no transition pathway.</p>
+      <span class="law-tag y">Closes loophole — creates new gap</span>
+    </div>
+
+    <div class="law-block partial">
+      <div class="law-name">Executive Order 14370 (December 2025)</div>
+      <div class="law-ref">President Trump · "Increasing Medical Marijuana and Cannabidiol Research"</div>
+      <p>Directed federal agencies to accelerate Schedule III reclassification, expand research, and develop a regulatory framework for hemp-derived cannabinoid products. Acknowledged risks of inaccurate labeling and inconsistent quality control. Does not itself change any law — it directs agencies to work toward changes. No rescheduling has occurred.</p>
+      <span class="law-tag y">Directive — no force of law yet</span>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 5: CONSEQUENCES ═══ -->
+  <div class="section">
+    <div class="section-label">The Consequences Are Already Here</div>
+    <h2>What the Gap Produced</h2>
+
+    <div class="stat-row">
+      <div class="stat-cell red">
+        <div class="stat-num"><span>2,362</span></div>
+        <div class="stat-desc">Delta-8 exposure cases reported to U.S. poison control in 14 months (Jan '21–Feb '22)</div>
+      </div>
+      <div class="stat-cell red">
+        <div class="stat-num"><span>41%</span></div>
+        <div class="stat-desc">Of those exposure cases involved patients under 18 years old</div>
+      </div>
+      <div class="stat-cell red">
+        <div class="stat-num"><span>82%</span></div>
+        <div class="stat-desc">Of unintentional exposures involved children — often from candy-mimicking packaging</div>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-cell gold">
+        <div class="stat-num"><span>55%</span></div>
+        <div class="stat-desc">Of FDA-reported adverse events required emergency intervention or hospitalization</div>
+      </div>
+      <div class="stat-cell gold">
+        <div class="stat-num"><span>$28.4B</span></div>
+        <div class="stat-desc">Estimated intoxicating hemp sector market value by 2025 — zero federal safety framework</div>
+      </div>
+      <div class="stat-cell blue">
+        <div class="stat-num"><span>39</span></div>
+        <div class="stat-desc">State attorneys general — including PA's Dave Sunday — called to close the loophole (Nov '25)</div>
+      </div>
+    </div>
+
+    <p>In Pennsylvania, PA AG Dave Sunday called these products "rampantly available," noting that businesses profit from selling "super-potent, hemp-derived THC products that are often packaged to attract children." The FDA issued a warning letter to a Pennsylvania company (Hippy Mood) for selling delta-8 products in packaging mimicking children's cereal and candy brands.</p>
+
+    <p>Meanwhile, the PA Hemp & Cannabis Guild — representing the state's legitimate hemp businesses — has been pushing Harrisburg for the same regulations their own members already follow voluntarily: age-21 sales restrictions, advertising limits, and mandatory product testing. The rules they're asking for are less strict than what PA dispensaries already comply with. The state hasn't acted.</p>
+  </div>
+
+  <!-- ═══ SECTION 6: TIMELINE ═══ -->
+  <div class="section">
+    <div class="section-label">How We Got Here</div>
+    <h2>The Timeline</h2>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">1970</div>
+        <div class="tl-text">Controlled Substances Act places all cannabis — including hemp — under Schedule I.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">April 2016</div>
+        <div class="tl-text">Governor Wolf signs PA SB 3 — the Medical Marijuana Act — creating one of the most tightly regulated medical cannabis programs in the country.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">December 2018</div>
+        <div class="tl-text">The Farm Bill removes hemp from the CSA. Defines it solely by delta-9 THC. Unintentionally opens the door for intoxicating hemp-derived products.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2020–2021</div>
+        <div class="tl-text">Delta-8 products proliferate nationwide. Gas stations, vape shops, online. Poison control cases surge — disproportionately involving children.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">May 2022</div>
+        <div class="tl-text">Ninth Circuit rules in AK Futures v. Boyd St. Distro that hemp-derived delta-8 is legal under the Farm Bill. The loophole is cemented in federal court.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">July 2024</div>
+        <div class="tl-text">FDA and FTC jointly issue warning letters for "copycat" delta-8 products — including one PA company — packaging mimicking Skittles, Cap'n Crunch, and Flamin' Hot Cheetos.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">November 2025</div>
+        <div class="tl-text">PA AG Dave Sunday joins 38 state AGs calling on Congress to close the loophole. Products called "rampantly available" and "often packaged to attract children."</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">November 2025</div>
+        <div class="tl-text">P.L. 119-37 redefines hemp using total THC. Bans most intoxicating hemp products — effective November 12, 2026. No regulatory framework created as alternative.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">December 2025</div>
+        <div class="tl-text">Executive Order 14370 directs Schedule III reclassification and a regulatory framework for hemp-derived products. No force of law.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 7: POSITION ═══ -->
+  <div class="section">
+    <div class="section-label">Where We Stand</div>
+    <h2>The Path Forward</h2>
+
+    <div class="position-item">
+      <strong>Regulate, don't just ban.</strong>
+      <p>Prohibition without a regulatory alternative doesn't eliminate demand — it pushes it underground. The November 2026 ban creates a cliff with no bridge. Congress should establish a federal framework with mandatory testing, labeling, potency limits, and age restrictions — the same protections patients already receive in regulated state programs.</p>
+    </div>
+
+    <div class="position-item">
+      <strong>Close the gap — in both directions.</strong>
+      <p>The solution isn't only tighter rules for hemp-derived products. It's also removing the federal barriers that prevent the plant from being studied. Cannabis remains Schedule I. The research blockade remains intact. We are regulating by assumption instead of by evidence because the system prevents the evidence from being gathered.</p>
+    </div>
+
+    <div class="position-item">
+      <strong>Protect functional access.</strong>
+      <p>The goal should never be to restrict access for patients and responsible adults. It should be to ensure that what they access is safe, accurately labeled, honestly marketed, and produced under accountable conditions. Pennsylvania's medical program — for all its cost and complexity — proves rigorous oversight and patient access can coexist.</p>
+    </div>
+
+    <div class="position-item">
+      <strong>Protect kids by protecting standards — not by demonizing the plant.</strong>
+      <p>Children aren't being harmed by Cannabis sativa. They're being harmed by the absence of rules: no age checks, no child-resistant packaging, no restrictions on marketing products that look like candy. That's a regulatory failure, not a plant problem.</p>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="sources">
+    <div class="section-label">Sources & References</div>
+    <ol>
+      <li>PA Medical Marijuana Act — 35 P.S. §§ 10231.101–10231.2110 (SB 3, signed April 17, 2016)</li>
+      <li>28 Pa. Code Chapters 1141a, 1151a, 1161a, 1171a — PA medical cannabis regulations</li>
+      <li>Agriculture Improvement Act of 2018 — P.L. 115-334, 7 U.S.C. § 1639o</li>
+      <li>DEA Interim Final Rule — 85 FR 51639 (August 2020)</li>
+      <li>AK Futures LLC v. Boyd St. Distro, LLC — 9th Circuit, 2022</li>
+      <li>FDA, "5 Things to Know about Delta-8 THC" — <a href="https://www.fda.gov/consumers/consumer-updates/5-things-know-about-delta-8-tetrahydrocannabinol-delta-8-thc">fda.gov</a></li>
+      <li>FDA/FTC Joint Warning Letters — copycat delta-8 products, July 2024</li>
+      <li>CRS, "The 2018 Farm Bill's Hemp Definition" — <a href="https://www.congress.gov/crs-product/R48637">R48637</a></li>
+      <li>CRS, "Changes to the Statutory Definition of Hemp" — <a href="https://www.congress.gov/crs-product/IF13136">IF13136</a></li>
+      <li>FY2026 Agriculture Appropriations Act — P.L. 119-37, Section 781 (Nov 2025)</li>
+      <li>Executive Order 14370 (December 18, 2025)</li>
+      <li>PA Capital-Star — AG Sunday / 39-state AG letter (Nov 2025)</li>
+      <li>WHYY — PA Hemp & Cannabis Guild (September 2025)</li>
+      <li>PA Dept. of Agriculture, Hemp Program FAQs — <a href="https://www.pa.gov/agencies/pda/plants-land-water/hemp/hemp-program-faqs">pa.gov</a></li>
+      <li>Progressive Policy Institute — "The Farm Bill High" (October 2025)</li>
+      <li>Cannabinoid Safety and Regulation Act (CSRA) — Wyden/Merkley, December 2025</li>
+    </ol>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">mostlycbd.com · Educate to Regulate</div>
+    <div class="footer-tagline">Focused. Functional. Fair.</div>
+  </footer>
+
+</div>
+</div>
+
+</body>
+</html>
