@@ -15,60 +15,35 @@
     <link rel="icon" type="image/png" href="Favicon.png">
     
     <style>
-        /* PAGE SPECIFIC OVERRIDES */
-        
-        /* Kill Header Margins to avoid "Orange Void" */
         header {
             margin-bottom: 0 !important;
             margin-top: 0;
             padding-top: 0;
             text-align: center;
         }
-
-        .container-box {
-            max-width: 700px;
-            margin: 10px auto 0; 
-            padding: 0 20px;
-            text-align: center;            
-        }
-        
-        .protocol-box {
-            background-color: #344E41;
-            color: #DAD7CD;
-            padding: 40px;
-            border-radius: 8px;
-            text-align: left;
-            font-family: 'Courier New', Courier, monospace;
-            /* Blue/Grey Accent for "Information/Record" */
-            border-left: 5px solid #8FA6C9; 
-            box-shadow: 4px 4px 0px rgba(52, 78, 65, 0.2);
-            margin-top: 0;
-        }
-
-        
     </style>
 </head>
 
 <body>
 
     <header>
-        <a href="index.html"><img src="logo_1.png" alt="mostlyCBD logo" class="main-logo" style="max-width: 250px; height: auto;"></a>
+        <a href="index.html"><img src="logo_1.png" alt="mostlyCBD logo" class="main-logo"></a>
     </header>
 
     <main>
         <div class="container-box">
 
-            <div class="protocol-box">
-                <h4 style="text-align: center; margin-top: 0; color: #FFFFFF; border-bottom: 1px dashed #8FA6C9; padding-bottom: 10px; margin-bottom: 20px;">
+            <div class="protocol-box protocol-box--blue">
+                <h4 class="divider-bottom">
                     WOW, WE APPRECIATE YOUR ENTHUSIASM!
                 </h4>
 
-                <p style="text-align: center; margin-bottom: 20px; font-weight: bold;">
+                <p class="intro">
                     You've already secured your spot on the waitlist.
                 </p>
 
-                <ul style="padding-left: 40px; line-height: 1.8; margin-bottom: 0;">
-                    <li style="margin-bottom: 10px;">
+                <ul style="padding-left: 40px;">
+                    <li>
                         <em>No further action is required.</em>
                     </li>
                     <li>
@@ -80,7 +55,7 @@
         </div>
     </main>
 
-    <div style="text-align: center;">
+    <div class="btn-center">
         <a href="index.html" class="return-btn">Back Home</a>
     </div>
 

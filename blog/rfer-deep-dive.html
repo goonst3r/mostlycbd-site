@@ -483,6 +483,36 @@
     .compare-grid { grid-template-columns: 1fr; }
   }
 
+  /* ─── rfer-grid spacing variant ────────────────────────── */
+  .rfer-grid--spaced { margin: 40px 0; }
+
+  /* ─── pillar badge color variants ──────────────────────── */
+  .pillar-badge--gold  { background: var(--gold)  !important; color: var(--dark) !important; }
+  .pillar-badge--brown { background: var(--brown) !important; }
+  .pillar-badge--rust  { background: var(--rust)  !important; }
+
+  /* ─── policy-ask color variants ────────────────────────── */
+  .policy-ask--gold-top { border-top: 3px solid var(--gold); }
+  .policy-ask--brown    { background: var(--brown); }
+  .policy-ask--rust     { background: var(--rust); }
+
+  /* ─── rfer-letter-card caption ─────────────────────────── */
+  .rfer-letter-card p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+
+  /* ─── closing signoff line ──────────────────────────────── */
+  .rfer-signoff {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--green);
+    font-style: italic;
+    margin-top: 40px;
+  }
+
   /* ─── site nav ─────────────────────────────────────────── */
   .site-nav {
     background-image: linear-gradient(rgba(244,241,235,0.85), rgba(244,241,235,0.80)), url('../images/bg_header.jpeg');
@@ -703,7 +733,7 @@
   <!-- ═══ SECTION 2 — RESCHEDULE ═══ -->
   <section class="section" id="reschedule">
     <div class="section-header">
-      <div class="section-eyebrow"><span class="pillar-badge" style="background:var(--green);">RFER PILLAR</span> R — Reschedule</div>
+      <div class="section-eyebrow"><span class="pillar-badge">RFER PILLAR</span> R — Reschedule</div>
       <h2>End the Research Blockade</h2>
       <div class="section-sub">Schedule I didn't follow the science. The science has been following Schedule I ever since.</div>
     </div>
@@ -754,7 +784,7 @@
   <!-- ═══ SECTION 3 — FUND TRIALS ═══ -->
   <section class="section" id="fund-trials">
     <div class="section-header">
-      <div class="section-eyebrow"><span class="pillar-badge" style="background:var(--gold);color:var(--dark);">RFER PILLAR</span> F — Fund Trials</div>
+      <div class="section-eyebrow"><span class="pillar-badge pillar-badge--gold">RFER PILLAR</span> F — Fund Trials</div>
       <h2>Real Science. Real Data. Conducted Openly.</h2>
       <div class="section-sub">The evidence base exists despite the blockade, not because of it.</div>
     </div>
@@ -784,7 +814,7 @@
 
     <div class="pull-quote">"The evidence for cannabis as a medicine is stronger than the evidence for prohibition as a policy. The difference is which one gets funded."</div>
 
-    <div class="policy-ask" style="border-top-color:var(--gold);">
+    <div class="policy-ask policy-ask--gold-top">
       <h4>The Ask: Fund the Clinical Trials</h4>
       <p>Rescheduling removes the barrier. Funding builds the bridge. Allocate federal research dollars to large-scale, double-blind clinical trials studying cannabinoid therapies for pain management, anxiety, PTSD, neurodegenerative disease, and opioid substitution. Study product composition — ratio, dose, route of administration — not just "cannabis" as a monolith. The 1,962-patient Minnesota study showed what rigorous, product-specific research can reveal. Scale it.</p>
     </div>
@@ -837,7 +867,7 @@
   <!-- ═══ SECTION 5 — EDUCATE ═══ -->
   <section class="section" id="educate">
     <div class="section-header">
-      <div class="section-eyebrow"><span class="pillar-badge" style="background:var(--brown);">RFER PILLAR</span> E — Educate</div>
+      <div class="section-eyebrow"><span class="pillar-badge pillar-badge--brown">RFER PILLAR</span> E — Educate</div>
       <h2>The Stigma Is the Safety Risk</h2>
       <div class="section-sub">When healthcare providers don't know, patients are left navigating alone.</div>
     </div>
@@ -886,7 +916,7 @@
       </div>
     </div>
 
-    <div class="policy-ask" style="background:var(--brown);">
+    <div class="policy-ask policy-ask--brown">
       <h4>The Ask: Educate Healthcare Providers and the Public</h4>
       <p>Integrate cannabis pharmacology into medical, nursing, and pharmacy school curricula. Fund continuing education for practicing clinicians. Develop evidence-based public education that distinguishes product types, explains biphasic dosing, and demystifies the ECS. The stigma itself is a barrier to safety — because it keeps honest conversation underground and keeps the people who should know better from learning.</p>
     </div>
@@ -895,7 +925,7 @@
   <!-- ═══ SECTION 6 — REGULATE ═══ -->
   <section class="section" id="regulate">
     <div class="section-header">
-      <div class="section-eyebrow"><span class="pillar-badge" style="background:var(--rust);">RFER PILLAR</span> R — Regulate</div>
+      <div class="section-eyebrow"><span class="pillar-badge pillar-badge--rust">RFER PILLAR</span> R — Regulate</div>
       <h2>By Evidence. Not By Stigma.</h2>
       <div class="section-sub">Prohibition created the unregulated market. Regulation fixes it.</div>
     </div>
@@ -948,7 +978,7 @@
       </div>
     </div>
 
-    <div class="policy-ask" style="background:var(--rust);">
+    <div class="policy-ask policy-ask--rust">
       <h4>The Ask: Regulate By Evidence</h4>
       <p>Close the hemp loophole that allows synthetic intoxicants to reach children through gas stations and convenience stores. Establish mandatory potency caps and CBD-to-THC ratio standards for retail products. Require age verification and childproof packaging universally. Fund state-level regulatory infrastructure through cannabis tax revenue. Protect functional patient access while restricting the products and channels that prohibition created.</p>
     </div>
@@ -971,26 +1001,26 @@
 
     <p>That's the feedback loop. RFER breaks it.</p>
 
-    <div class="rfer-grid" style="margin: 40px 0;">
+    <div class="rfer-grid rfer-grid--spaced">
       <div class="rfer-letter-card">
         <div class="rlc-letter">R</div>
         <div class="rlc-word">Reschedule</div>
-        <p style="font-size:0.8rem;color:var(--muted);margin-top:8px;line-height:1.4;">End Schedule I. Unlock research.</p>
+        <p>End Schedule I. Unlock research.</p>
       </div>
       <div class="rfer-letter-card">
         <div class="rlc-letter">F</div>
         <div class="rlc-word">Fund Trials</div>
-        <p style="font-size:0.8rem;color:var(--muted);margin-top:8px;line-height:1.4;">Real science. Real data. Conducted openly.</p>
+        <p>Real science. Real data. Conducted openly.</p>
       </div>
       <div class="rfer-letter-card">
         <div class="rlc-letter">E</div>
         <div class="rlc-word">Educate</div>
-        <p style="font-size:0.8rem;color:var(--muted);margin-top:8px;line-height:1.4;">Doctors, patients, and the public.</p>
+        <p>Doctors, patients, and the public.</p>
       </div>
       <div class="rfer-letter-card">
         <div class="rlc-letter">R</div>
         <div class="rlc-word">Regulate</div>
-        <p style="font-size:0.8rem;color:var(--muted);margin-top:8px;line-height:1.4;">By evidence. Not by stigma.</p>
+        <p>By evidence. Not by stigma.</p>
       </div>
     </div>
 
@@ -1000,7 +1030,7 @@
 
     <div class="pull-quote">"Educate to regulate. That's the whole position. Give people honest information, give doctors the training they never received, give researchers the access they've been denied, and give regulators the evidence to build a framework that actually protects people."</div>
 
-    <p style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--green);font-style:italic;margin-top:40px;">Focused. Functional. Fair.</p>
+    <p class="rfer-signoff">Focused. Functional. Fair.</p>
   </section>
 
 
