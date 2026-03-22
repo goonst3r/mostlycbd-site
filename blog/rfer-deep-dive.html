@@ -75,14 +75,35 @@
   .hero h1 .ac-e  { color: var(--brown); }
   .hero h1 .ac-r2 { color: var(--rust); }
 
+  .hero-sidebyside {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 32px;
+  }
+
+  .hero-col-left {
+    flex: 1 1 50%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-sidebyside h1 {
+    margin: 0;
+  }
+
+  .hero h1 .rfer-line {
+    display: block;
+  }
+
   .hero-subtitle {
     font-family: 'DM Serif Display', serif;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: var(--muted);
     font-style: italic;
-    max-width: 560px;
-    line-height: 1.5;
-    margin-bottom: 32px;
+    flex: 1 1 50%;
+    line-height: 1.6;
+    text-align: center;
   }
 
   .hero-intro {
@@ -661,8 +682,17 @@
   <!-- ═══ HERO ═══ -->
   <header class="hero">
     <div class="hero-eyebrow">mostlycbd.com · RFER Initiative</div>
-    <h1><span class="ac-r1">R</span>eschedule. <span class="ac-f">F</span>und Trials.<br><span class="ac-e">E</span>ducate. <span class="ac-r2">R</span>egulate.</h1>
-    <div class="hero-subtitle">They named it "reefer" to make you afraid. We're taking the word back — with a plan.</div>
+    <div class="hero-sidebyside">
+      <div class="hero-col-left">
+        <h1>
+          <span class="ac-r1">R</span>eschedule.<br>
+          <span class="ac-f">F</span>und Trials.<br>
+          <span class="ac-e">E</span>ducate.<br>
+          <span class="ac-r2">R</span>egulate.
+        </h1>
+      </div>
+      <div class="hero-subtitle">They named it "reefer" to make you afraid. We're taking the word back — with a plan.</div>
+    </div>
 
     <p class="hero-intro">
       In the 1930s, the word "reefer" was manufactured to scare people — a rebrand of a plant that had been in the U.S. Pharmacopeia for 87 years. It worked. The fear stuck. The science was suppressed. And 90 years later, the stigma built on that fear is still shaping federal policy.

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Same Crisis. Different Laws. | mostlycbd.com</title>
+  <title>What the Phone Started | mostlycbd.com</title>
   <meta name="description" content="State-level data shows legalization didn't drive the youth mental health crisis. The real story is the 2018 Farm Bill loophole — and it's not what you think." />
-  <meta property="og:title" content="Same Crisis. Different Laws. | mostlyCBD" />
+  <meta property="og:title" content="What the Phone Started | mostlyCBD" />
   <meta property="og:description" content="If cannabis legalization drove the youth mental health crisis, the data would show it. State-level evidence and the 2018 Farm Bill loophole tell a different story." />
   <meta property="og:url" content="https://mostlycbd.com/blog/mental-health-youth.html" />
   <meta property="og:site_name" content="mostlyCBD" />
@@ -324,28 +324,71 @@
   }
 
   .policy-box h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.05em;
     color: var(--green);
     margin-top: 0;
-    margin-bottom: 16px;
+    margin-bottom: 4px;
   }
+
+  .policy-box__subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+
+  .policy-num.green { color: var(--green); }
+  .policy-num.gold  { color: var(--gold); }
+  .policy-num.brown { color: var(--brown); }
+  .policy-num.rust  { color: var(--rust); }
 
   .policy-item {
     display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 12px;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 8px;
     font-size: 0.95rem;
     line-height: 1.6;
+    border-radius: 6px;
+    overflow: hidden;
   }
 
   .policy-item:last-child { margin-bottom: 0; }
 
+  .policy-item:has(.policy-num.green) { background: rgba(45,80,22,0.09); }
+  .policy-item:has(.policy-num.gold)  { background: rgba(212,180,74,0.14); }
+  .policy-item:has(.policy-num.brown) { background: rgba(139,115,85,0.11); }
+  .policy-item:has(.policy-num.rust)  { background: rgba(184,74,46,0.09); }
+
+  .policy-item > div:last-child { padding: 16px 16px 16px 14px; }
+
   .policy-num {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    color: var(--sage);
+    font-size: 2rem;
     line-height: 1;
-    min-width: 24px;
+    flex: 0 0 72px;
+    width: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 8px;
+    text-align: center;
+  }
+
+  .pillar-word {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+    line-height: 1;
+    color: var(--muted);
   }
 
   /* Footnotes / Sources */
@@ -400,7 +443,7 @@
 <!-- ═══════════════ HERO ═══════════════ -->
 <div class="hero">
   <div class="eyebrow">Legalization &amp; Mental Health — A State-Level Analysis</div>
-  <h1>SAME CRISIS.<br><span class="accent">DIFFERENT LAWS.</span></h1>
+  <h1>WHAT THE <span class="accent">PHONE STARTED</span></h1>
   <div class="subtitle">If cannabis legalization were driving America's mental health crisis, the data would show it. It doesn't. Here's what the state-level evidence actually reveals — and what they're not telling you about the 2018 Farm Bill.</div>
   <div class="hero-meta">March 2026 · Cannabis Policy · mostlycbd.com</div>
 </div>
@@ -455,6 +498,40 @@
 <!-- ═══ SECTION 3 ═══ -->
 <div class="section">
   <div class="section-num">03</div>
+  <h2>WHAT THE ALGORITHM <span class="accent">OPTIMIZED FOR</span></h2>
+
+  <p>The mental health crisis didn't just coincide with smartphone adoption. The mechanism is specific and worth naming — because once you understand it, blaming the dispensary becomes genuinely difficult to do with a straight face.</p>
+
+  <p>The comparison trap went infinite. Before 2012, a teenager's social reference group was roughly 30 classmates. After 2012, it became thousands of algorithmically curated profiles — selected not for accuracy, but for engagement. Filters, highlight reels, and influencer aesthetics set a standard nobody in real life clears. Social comparison is normal adolescent development. Social comparison against an infinite, curated, engagement-optimized feed is something structurally different.</p>
+
+  <p>Social acceptance got scored publicly. Adolescent brains treat belonging as a survival-level signal — rejection and exclusion activate the same neural circuits as physical pain in developing brains. Likes, follower counts, and comment sections turned that ancient, already high-stakes signal into a live public score, updating in real time, visible to everyone at school. The stakes didn't change. The exposure did.</p>
+
+  <div class="stat-row">
+    <div class="stat-block">
+      <div class="stat-num">31%</div>
+      <div class="stat-label">Higher depression risk<br>in smartphone owners<br>at age 12</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">62%</div>
+      <div class="stat-label">Higher insufficient<br>sleep risk in<br>smartphone owners at 12</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">57%</div>
+      <div class="stat-label">Greater odds of clinical<br>psychopathology after<br>acquiring a phone at 13</div>
+    </div>
+  </div>
+
+  <p>The algorithm has no wellbeing incentive. Engagement optimization is neutral — it doesn't care whether a user is happy or miserable, only whether they stay on platform. A sad, anxious teen scrolls longer than a satisfied one. The platform learns this. Content that generates envy, distress, and insecurity performs well by the only metric that matters. Nobody designed it to hurt teenagers. It just optimized for what it measured.</p>
+
+  <p>And sleep became a direct casualty. Phones in bedrooms, pull notifications, infinite scroll at 1am — the same study that tracked depression risk found that smartphone ownership at 12 carries a 62% higher risk of insufficient sleep. Among kids who had no phone at 12 but acquired one by 13, the odds of clinical-level psychopathology in the following year rose by 57%. Not kids with prior mental health histories — new cases, in the year after the phone arrived. Sleep deprivation alone is one of the strongest standalone predictors of depression, anxiety, and suicidal ideation. The mechanism is physiological: less sleep means less emotional regulation, full stop.</p>
+
+  <div class="pull-quote">The platform didn't know it was hurting teenagers. It just knew that hurt teenagers scroll longer.</div>
+
+</div>
+
+<!-- ═══ SECTION 4 ═══ -->
+<div class="section">
+  <div class="section-num">04</div>
   <h2>TEEN CANNABIS USE <span class="accent">WENT DOWN,</span> NOT UP</h2>
 
   <p>If legalization drove youth mental health problems, you'd expect teen cannabis use to rise in legalization states. Across every major national survey — NSDUH, YRBS, Monitoring the Future — it didn't.</p>
@@ -465,7 +542,7 @@
       <div class="stat-label">Decline in teen current<br>cannabis use nationally<br>2014–2023 (NSDUH)</div>
     </div>
     <div class="stat-block">
-      <div class="stat-num">↓ 35%+</div>
+      <div class="stat-num">↓ 35%</div>
       <div class="stat-label">Decline in teen use<br>in Colorado &amp; Washington<br>since legalization</div>
     </div>
     <div class="stat-block">
@@ -485,9 +562,9 @@
   <p>Regulated markets removed the "forbidden fruit" appeal. Licensed dispensaries verify age at rates the illegal market never could. In 2012, before any state had regulated sales, 40% of high schoolers reported knowing a student who sells marijuana at school. That pipeline operated without a single compliance check. Dispensaries face them routinely.</p>
 </div>
 
-<!-- ═══ SECTION 4 ═══ -->
+<!-- ═══ SECTION 5 ═══ -->
 <div class="section">
-  <div class="section-num">04</div>
+  <div class="section-num">05</div>
   <h2>THE 2018 FARM BILL: <span class="accent">THE LOOPHOLE</span> NOBODY DESIGNED</h2>
 
   <p>On December 20, 2018, the Agriculture Improvement Act — the Farm Bill — redefined hemp as cannabis containing less than 0.3% delta-9 THC by dry weight. The intent was to support hemp agriculture. The effect was to open a legal doorway for an entirely new category of intoxicating products that nobody anticipated.</p>
@@ -532,9 +609,9 @@
   <p>Any study analyzing cannabis-related harms after 2018 that doesn't control for the Farm Bill loophole market is measuring two completely different things and calling them one.</p>
 </div>
 
-<!-- ═══ SECTION 5 ═══ -->
+<!-- ═══ SECTION 6 ═══ -->
 <div class="section">
-  <div class="section-num">05</div>
+  <div class="section-num">06</div>
   <h2>WHAT THE STATE-LEVEL <span class="accent">RESEARCH</span> ACTUALLY SHOWS</h2>
 
   <p>The largest study to examine cannabis legalization and psychosis across all 50 states — using commercial and Medicare claims data from 2003 to 2017 (entirely pre-Farm Bill) — found no association between state cannabis legalization policies and psychosis-related healthcare utilization.</p>
@@ -569,9 +646,9 @@
   </div>
 </div>
 
-<!-- ═══ SECTION 6 ═══ -->
+<!-- ═══ SECTION 7 ═══ -->
 <div class="section">
-  <div class="section-num">06</div>
+  <div class="section-num">07</div>
   <h2>THE <span class="accent">INVERTED</span> RELATIONSHIP</h2>
 
   <p>Mendelian randomization studies — which use genetic markers to trace direction of cause and effect — have found that a predisposition for schizophrenia predicts cannabis use more strongly than cannabis use predicts schizophrenia. The vulnerability came first. The plant came second.</p>
@@ -602,46 +679,43 @@
   <p>The picture isn't one-dimensional. It never was. But the honest picture is: regulated access to balanced cannabis products, within a functioning healthcare infrastructure, produces better outcomes than prohibition, which produces underground markets, uneducated providers, and patients with nowhere else to turn.</p>
 </div>
 
-<!-- ═══ SECTION 7 ═══ -->
+<!-- ═══ SECTION 8 ═══ -->
 <div class="section">
-  <div class="section-num">07</div>
+  <div class="section-num">08</div>
   <h2>WHERE WE GO <span class="accent">FROM HERE</span></h2>
 
-  <p>The evidence points in one direction: the problem isn't legalization. The problem is the absence of good regulation, the persistence of the research blockade, and a healthcare system that can't meet the demand.</p>
-
-  <p>The Farm Bill loophole proved what happens when you don't regulate — you get 1,000mg THC gummies on gas station shelves next to the Skittles. Prohibition proved what happens when you over-restrict — you get a black market, mass incarceration, and no clinical infrastructure.</p>
-
-  <p>The middle path is regulation built on evidence. Here's what that looks like:</p>
-
-  <div class="policy-box">
-    <h3>The Policy Ask</h3>
-    <div class="policy-item">
-      <div class="policy-num">1</div>
-      <div><strong>Reschedule cannabis federally.</strong> End the Schedule I classification that blocks the very clinical trials needed to build the evidence base. You can't demand evidence while blocking the research.</div>
-    </div>
-    <div class="policy-item">
-      <div class="policy-num">2</div>
-      <div><strong>Fund clinical trials.</strong> Real science, real data, conducted openly. Not observational studies that can't determine directionality — randomized controlled trials that can.</div>
-    </div>
-    <div class="policy-item">
-      <div class="policy-num">3</div>
-      <div><strong>Protect functional patient access.</strong> For the millions already using cannabis therapeutically — often because the traditional healthcare system failed them first. 63% of medical cannabis patients report substituting it for prescription drugs.</div>
-    </div>
-    <div class="policy-item">
-      <div class="policy-num">4</div>
-      <div><strong>Restrict synthetic, high-potency products targeting youth.</strong> Close the Farm Bill loophole completely. Age verification. Product testing. Dosing standards. Packaging restrictions. The regulated cannabis market already does this. The unregulated market does none of it.</div>
-    </div>
-    <div class="policy-item">
-      <div class="policy-num">5</div>
-      <div><strong>Regulate by evidence, not stigma.</strong> Include cannabis education in medical school curricula — currently absent from 91% of programs. Train healthcare providers so patients get clinical guidance instead of budtender advice.</div>
-    </div>
-  </div>
-
-  <p>The mental health crisis is real. It deserves real solutions — better access to psychiatric care, honest research into every substance people use to cope, and policies that distinguish between a regulated product and an unregulated one.</p>
+  <p>The mental health crisis is real. It deserves real solutions — better access to psychiatric care, honest research into every substance people use to cope, and policies built on what the evidence actually says.</p>
 
   <p>What it doesn't deserve is a scapegoat.</p>
 
   <div class="pull-quote">The data doesn't show that legalization broke mental health. It shows that mental health was already breaking — and that unregulated markets made it worse while regulated ones didn't.</div>
+
+  <p>That distinction matters for everything that comes next. The problem isn't that cannabis exists in a legal market. The problem is the absence of good regulation, the persistence of the research blockade, and a healthcare system stretched too thin to meet the demand.</p>
+
+  <p>The Farm Bill loophole is what no regulation looks like in practice — 1,000mg THC gummies on gas station shelves, no age verification, no dosing standards, no accountability. Prohibition showed us the other failure mode: black markets, mass incarceration, and zero clinical infrastructure. Neither extreme protected anyone.</p>
+
+  <p>The middle path is regulation built on evidence. Here's what that looks like in practice:</p>
+
+  <div class="policy-box">
+    <h3>RFER</h3>
+    <p class="policy-box__subtitle">Reschedule · Fund Trials · Educate · Regulate</p>
+    <div class="policy-item">
+      <div class="policy-num green">R<span class="pillar-word">Reschedule</span></div>
+      <div><strong>Reschedule cannabis federally.</strong> End the Schedule I classification that blocks the very research needed to answer these questions. You cannot demand clinical evidence while simultaneously making it illegal to produce.</div>
+    </div>
+    <div class="policy-item">
+      <div class="policy-num gold">F<span class="pillar-word">Fund Trials</span></div>
+      <div><strong>Fund real clinical trials.</strong> Not observational studies that can't determine directionality — randomized controlled trials that can. If the goal is to protect youth, build the science that actually tells us how.</div>
+    </div>
+    <div class="policy-item">
+      <div class="policy-num brown">E<span class="pillar-word">Educate</span></div>
+      <div><strong>Train the people doing the advising.</strong> Cannabis education is absent from 91% of medical school curricula. Patients are making consequential decisions without clinical guidance — not because they don't want it, but because their providers were never taught.</div>
+    </div>
+    <div class="policy-item">
+      <div class="policy-num rust">R<span class="pillar-word">Regulate</span></div>
+      <div><strong>Regulate by evidence, not fear.</strong> Protect functional patient access for the millions using cannabis therapeutically — 63% report substituting it for prescription drugs. Close the Farm Bill loophole completely: age verification, product testing, dosing standards, packaging restrictions. The regulated market already does this. The unregulated one does none of it.</div>
+    </div>
+  </div>
 </div>
 
 <!-- ═══════════════ FOOTNOTES / SOURCES ═══════════════ -->
@@ -668,6 +742,7 @@
       <li>Chen, Maclean &amp; French (2026). "Legalizing Cannabis: Implications for Child Maltreatment." NBER Working Paper No. 34673.</li>
       <li>Anderson, Rees &amp; Sabin (2014). Decreased suicides in medical marijuana law states.</li>
       <li>Denson &amp; Earleywine (2006). Cannabis users and depressed mood.</li>
+      <li>"Smartphone Ownership, Age of Smartphone Acquisition, and Adolescent Health Outcomes." <em>Pediatrics</em> 157(1), 2025. Adolescent Brain Cognitive Development Study, n=10,588. Smartphone ownership at age 12 associated with OR 1.31 for depression, OR 1.62 for insufficient sleep; acquisition by age 13 associated with OR 1.57 for clinical-level psychopathology in the following year. <a href="https://publications.aap.org/pediatrics/article-abstract/157/1/e2025072941/205716/Smartphone-Ownership-Age-of-Smartphone-Acquisition" target="_blank" rel="noopener">→ publications.aap.org</a></li>
     </ol>
   </div>
 </section>
