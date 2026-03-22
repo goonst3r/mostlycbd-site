@@ -654,6 +654,11 @@
             <div style="margin-bottom:1.25rem;">
               <label style="font-size:0.6875rem;font-weight:600;color:#71717a;text-transform:uppercase;margin-bottom:0.5rem;display:block;">Who's voting?</label>
               <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+                <template x-for="m in $store.rate.availableMembers" :key="m.id">
+                  <button @click="$store.rate.isGuest = false; $store.rate.memberId = m.id"
+                          :style="'padding:0.375rem 0.75rem;border-radius:9999px;font-size:0.875rem;font-weight:500;cursor:pointer;border:1px solid;transition:all 0.2s;font-family:var(--font-sans);' + (!$store.rate.isGuest && $store.rate.memberId === m.id ? 'background:#18181b;color:#fff;border-color:#18181b;' : 'background:#fff;color:#52525b;border-color:#e4e4e7;')"
+                          x-text="m.name"></button>
+                </template>
                 <button @click="$store.rate.isGuest = true; $store.rate.memberId = ''"
                         :style="'padding:0.375rem 0.75rem;border-radius:9999px;font-size:0.875rem;font-weight:500;cursor:pointer;border:1px solid;transition:all 0.2s;font-family:var(--font-sans);display:flex;align-items:center;gap:0.35rem;' + ($store.rate.isGuest ? 'background:#18181b;color:#fff;border-color:#18181b;' : 'background:#fff;color:#52525b;border-color:#e4e4e7;')">
                   <span x-html="icon('plus',14)"></span> Guest
