@@ -331,41 +331,41 @@
 
   /* Timeline */
   .timeline {
-    position: relative;
-    padding-left: 28px;
-    margin: 24px 0;
-  }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 5px; top: 0; bottom: 0;
-    width: 1px;
-    background: rgba(26,18,8,0.15);
+    margin: 32px 0;
+    border-left: 3px solid var(--sage);
+    padding-left: 24px;
   }
   .tl-item {
-    position: relative;
-    margin-bottom: 24px;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
   }
   .tl-item::before {
     content: '';
     position: absolute;
-    left: -26px; top: 7px;
-    width: 7px; height: 7px;
-    background: var(--sage);
+    left: -30.5px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
+    background: var(--sage);
   }
   .tl-date {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--sage);
-    font-weight: 500;
-    margin-bottom: 2px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 4px;
+
   }
   .tl-text {
-    font-size: 0.92rem;
-    line-height: 1.65;
-    max-width: none;
-    margin-bottom: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--dark);
+    max-width: 580px;
+    order: 0;
+    float: none;
+    width: 100%;
   }
 
   /* Position / advocacy items */
