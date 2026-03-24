@@ -215,10 +215,11 @@
                 <p class="page-lede__desc">Evidence-based breakdowns on cannabis policy, history, and science &mdash; cited, shareable, and built to move.</p>
             </div>
 
-            <div class="resources-tabs" role="tablist">
-                <button class="resources-tab active" role="tab" data-section="deep-dives" onclick="switchTab(this,'deep-dives')">Deep Dives</button>
-                <button class="resources-tab" role="tab" data-section="data-reports" onclick="switchTab(this,'data-reports')">Data Reports</button>
-                <button class="resources-tab" role="tab" data-section="advocacy-graphics" onclick="switchTab(this,'advocacy-graphics')">Advocacy Graphics</button>
+            <div class="main-toggle-wrapper">
+                <div class="main-toggle">
+                    <button class="toggle-btn active" data-target="deep-dives" onclick="setMainToggle(this, 'deep-dives')">Deep Dives</button>
+                    <button class="toggle-btn" data-target="graphics-hub" onclick="setMainToggle(this, 'graphics-hub')">Visuals &amp; Graphics</button>
+                </div>
             </div>
 
             <!-- DEEP DIVES -->
@@ -243,6 +244,18 @@
                             <span class="blog-meta-item">~10 min read</span>
                             <span class="blog-read-btn">Read &rarr;</span>
                         </div>
+                    </div>
+                </a>
+
+                <a class="blog-card-featured" href="blog/fomo.html"
+                   style="background-image: linear-gradient(rgba(52,78,65,0.20), rgba(52,78,65,0.52)), url('images/bg_fomo.jpg');">
+                    <div class="blog-card-tag">Mental Health &middot; Policy</div>
+                    <h2>The FOMO Pipeline</h2>
+                    <p class="blog-card-desc">How social media's fear of missing out is shaping the cannabis conversation and what it means for mental health.</p>
+                    <div class="blog-card-meta">
+                        <span class="blog-meta-item">Mental Health &middot; Policy</span>
+                        <span class="blog-meta-item">~12 min read</span>
+                        <span class="blog-read-btn">Read &rarr;</span>
                     </div>
                 </a>
 
@@ -282,18 +295,6 @@
                     </div>
                 </a>
 
-                <a class="blog-card-featured" href="blog/akathisia.html"
-                   style="background-image: linear-gradient(rgba(52,78,65,0.20), rgba(52,78,65,0.52)), url('images/bg_akathisia.jpg');">
-                    <div class="blog-card-tag">Science &middot; Policy</div>
-                    <h2>The Restlessness No One Names</h2>
-                    <p class="blog-card-desc">Akathisia is a drug-induced movement disorder &mdash; unbearable inner restlessness, most often caused by the very medications meant to help. CBD's pharmacology may offer what pharmaceutical alternatives can't. The research to confirm that doesn't exist yet. Schedule I classification is why.</p>
-                    <div class="blog-card-meta">
-                        <span class="blog-meta-item">Science &middot; Policy</span>
-                        <span class="blog-meta-item">~10 min read</span>
-                        <span class="blog-read-btn">Read &rarr;</span>
-                    </div>
-                </a>
-
                 <!-- THE ARCHIVES -->
                 <div class="blog-section-label" style="margin-top: 3rem;">The Archives</div>
                 
@@ -308,13 +309,20 @@
                 </div>
 
                 <div class="article-list" id="articleList">
+                    <a class="article-list-item" href="blog/fomo.html" data-title="the fomo pipeline social media mental health cannabis" data-tags="mental health policy">
+                        <div class="ali-image" style="background-image: url('images/bg_fomo.jpg');"></div>
+                        <div class="ali-content">
+                            <h3 class="ali-title">The FOMO Pipeline</h3>
+                            <p class="ali-desc">Social media platforms are designed to keep you engaged, often at the expense of your mental health. This is the FOMO pipeline &mdash; a system that exploits your fear of missing out to drive addiction and anxiety.</p>
+                        </div>
+                    </a>
+
                     <a class="article-list-item" href="blog/rfer-deep-dive.html" data-title="rfer reschedule fund trials educate regulate deep dive" data-tags="policy">
                         <div class="ali-image" style="background-image: url('images/bg_shop.jpg');"></div>
                         <div class="ali-content">
                             <h3 class="ali-title">RFER &mdash; The Deep Dive</h3>
                             <p class="ali-desc">They named it "reefer" to make you afraid. RFER is a four-pillar policy framework built from that origin story &mdash; a clear path from 90 years of manufactured stigma to evidence-based regulation.</p>
                         </div>
-                        <div class="ali-date">Mar 2026</div>
                     </a>
 
                     <a class="article-list-item" href="blog/mental-health-youth.html" data-title="what the phone started mental health youth teens social media" data-tags="policy science">
@@ -323,7 +331,6 @@
                             <h3 class="ali-title">What the Phone Started</h3>
                             <p class="ali-desc">Teen mental health started breaking before a single state legalized cannabis. The data points to a different culprit &mdash; one with an algorithm, not a root system.</p>
                         </div>
-                        <div class="ali-date">Mar 2026</div>
                     </a>
 
                     <a class="article-list-item" href="blog/training-gap.html" data-title="two hours to dispense medicine budtender pharmacist training gap" data-tags="policy science">
@@ -332,7 +339,6 @@
                             <h3 class="ali-title">Two Hours to Dispense Medicine</h3>
                             <p class="ali-desc">Pennsylvania has 440,000 registered medical cannabis patients and 185 dispensaries. The people dispensing their medicine received two hours of training &mdash; if that.</p>
                         </div>
-                        <div class="ali-date">Mar 2026</div>
                     </a>
 
                     <a class="article-list-item" href="blog/regulation-gap.html" data-title="same plant same state two sets of rules delta 8 farm bill" data-tags="policy">
@@ -341,7 +347,6 @@
                             <h3 class="ali-title">Same Plant. Same State. Two Sets of Rules.</h3>
                             <p class="ali-desc">A medical cannabis product clears more than a dozen regulatory checkpoints. A hemp-derived THC gummy at a gas station clears zero.</p>
                         </div>
-                        <div class="ali-date">Mar 2026</div>
                     </a>
 
                     <a class="article-list-item" href="blog/akathisia.html" data-title="the restlessness no one names akathisia cbd medicine" data-tags="science policy">
@@ -350,7 +355,6 @@
                             <h3 class="ali-title">The Restlessness No One Names</h3>
                             <p class="ali-desc">Akathisia is a drug-induced movement disorder &mdash; unbearable inner restlessness. CBD's pharmacology may offer what pharmaceutical alternatives can't.</p>
                         </div>
-                        <div class="ali-date">Mar 2026</div>
                     </a>
 
                     <a class="article-list-item" href="blog/ecs-system.html" data-title="every mammal has this system endocannabinoid ecs" data-tags="science policy">
@@ -359,7 +363,6 @@
                             <h3 class="ali-title">Every mammal has this system. Almost no one was taught it.</h3>
                             <p class="ali-desc">The endocannabinoid system regulates pain, mood, memory, appetite, and immune response. It was discovered in 1992. It's absent from 91% of medical school curricula.</p>
                         </div>
-                        <div class="ali-date">Mar 2026</div>
                     </a>
 
                     <a class="article-list-item" href="blog/hearst-anslinger.html" data-title="one man 28 papers 87 years of stigma william randolph hearst harry anslinger" data-tags="history policy">
@@ -368,7 +371,6 @@
                             <h3 class="ali-title">One Man. 28 Papers. 87 Years of Stigma.</h3>
                             <p class="ali-desc">The stigma was manufactured in a newsroom to protect a timber fortune. The story of how yellow journalism became federal drug policy.</p>
                         </div>
-                        <div class="ali-date">Mar 2026</div>
                     </a>
                 </div>
                 
@@ -377,8 +379,16 @@
                 </div>
             </div>
 
-            <!-- DATA REPORTS -->
-            <div class="resources-section" id="data-reports">
+            <!-- GRAPHICS HUB -->
+            <div class="resources-section" id="graphics-hub">
+                
+                <div class="sub-tabs">
+                    <button class="sub-tab active" data-target="data-reports" onclick="setSubTab(this, 'data-reports')">Data Reports &amp; Infographics</button>
+                    <button class="sub-tab" data-target="advocacy-graphics" onclick="setSubTab(this, 'advocacy-graphics')">Advocacy Graphics</button>
+                </div>
+
+                <!-- DATA REPORTS -->
+                <div class="graphic-section active" id="data-reports">
                 <div class="blog-section-label">Published</div>
                 <div class="infographic-grid">
                     <div class="graphic-card">
@@ -475,10 +485,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- ADVOCACY GRAPHICS -->
-            <div class="resources-section" id="advocacy-graphics">
+                <!-- ADVOCACY GRAPHICS -->
+                <div class="graphic-section" id="advocacy-graphics">
                 <div class="graphics-intro">
                     <strong>Free to use. Free to share.</strong> These graphics were made to move &mdash; post them, share them, cite them. All we ask: keep the source credit intact. Attribution keeps the data honest.
                 </div>
@@ -568,6 +577,7 @@
                 </div>
             </div>
 
+            </div>
         </div>
     </main>
 
@@ -750,12 +760,19 @@
     </script>
 
     <script>
-        function switchTab(btn, sectionId) {
-            document.querySelectorAll('.resources-tab').forEach(t => t.classList.remove('active'));
+        function setMainToggle(btn, sectionId) {
+            document.querySelectorAll('.toggle-btn').forEach(t => t.classList.remove('active'));
             btn.classList.add('active');
+            
             document.querySelectorAll('.resources-section').forEach(s => s.classList.remove('active'));
             document.getElementById(sectionId).classList.add('active');
-            document.querySelector('.resources-tabs').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        function setSubTab(btn, sectionId) {
+            document.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            
+            document.querySelectorAll('.graphic-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
         }
         function copyLink(btn, url) {
             navigator.clipboard.writeText(url).then(() => {
@@ -796,9 +813,16 @@
         const topBtn = document.getElementById('backToTop');
         window.addEventListener('scroll', () => { topBtn.classList.toggle('visible', window.scrollY > 300); });
         const hash = window.location.hash.replace('#','');
-        if (hash && document.getElementById(hash)) {
-            const tab = document.querySelector('[data-section="' + hash + '"]');
-            if (tab) switchTab(tab, hash);
+        if (hash) {
+            if (hash === 'deep-dives') {
+                const btn = document.querySelector('.toggle-btn[data-target="deep-dives"]');
+                if (btn) setMainToggle(btn, 'deep-dives');
+            } else if (hash === 'data-reports' || hash === 'advocacy-graphics') {
+                const mainBtn = document.querySelector('.toggle-btn[data-target="graphics-hub"]');
+                if (mainBtn) setMainToggle(mainBtn, 'graphics-hub');
+                const subBtn = document.querySelector(`.sub-tab[data-target="${hash}"]`);
+                if (subBtn) setSubTab(subBtn, hash);
+            }
         }
         const searchEl = document.getElementById('articleSearch');
         if (searchEl) {
