@@ -22,7 +22,7 @@
   :root {
     --cream: #F5F0E8;
     --dark: #1A1208;
-    --rust: #b84a2e;
+    --rust: #C4500A;
     --green: #2D5016;
     --sage: #6B8F4E;
     --gold: #D4B44A;
@@ -30,11 +30,13 @@
     --muted: #7A6E5F;
     --olive: #5B6B4A;
     --cbd-blue: #3B6E8F;
-    --thc-red: #b84a2e;
+    /*--thc-red: #b84a2e; */
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  /* root style.css pulls nav out by -2rem to offset its body padding;
+     this page has body padding: 0, so reset to flush */
   .site-nav { margin-left: 0; margin-right: 0; }
 
   body {
@@ -42,9 +44,10 @@
     font-family: 'Inter', sans-serif;
     color: var(--dark);
     line-height: 1.7;
-    font-size: 1rem;
+    padding: 0;
   }
 
+  /* prevent root style.css mobile media query from adding body padding on this page */
   @media (max-width: 600px) {
     body { padding: 0; }
   }  
@@ -52,7 +55,7 @@
   .page {
     max-width: 860px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 24px 40px;
   }
 
   .hero {
@@ -99,7 +102,7 @@
   /* override root .hero h1 rule (specificity 0,1,1 — beats bare h1) */
   .hero h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.8rem, 6vw, 4.4rem);
+    font-size: clamp(3.8rem, 6vw, 4.4rem);
     font-weight: 700;
     line-height: 0.95;
     color: var(--dark);
@@ -134,26 +137,30 @@
     margin-top: 20px;
   }
 
-  /* Stat strip */
-  .stat-strip {
+  /* Stat callouts */
+  .stat-row {
     display: flex;
-    gap: 32px;
-    margin-bottom: 56px;
-    padding: 28px 0;
-    border-top: 1px solid rgba(26,18,8,0.1);
-    border-bottom: 1px solid rgba(26,18,8,0.1);
+    gap: 40px;
     flex-wrap: wrap;
+    margin: 36px 0;
   }
-  .stat-item { flex: 1; min-width: 160px; }
+
+  .stat-block {
+    flex: 1;
+    min-width: 160px;
+  }
+
   .stat-num {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.4rem;
+    font-size: 3.2rem;
     line-height: 1;
-    color: var(--green);
-    letter-spacing: 0.02em;
+    color: var(--rust);
   }
-  .stat-num.rust { color: var(--rust); }
+
+  .stat-num.green { color: var(--green); }
   .stat-num.gold { color: var(--gold); }
+  .stat-num.blue { color: var(--cbd-blue); }
+
   .stat-label {
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem;
@@ -164,10 +171,13 @@
     line-height: 1.4;
   }
 
-  /* Section headers */
+  /* Sections */
   .section {
-    margin-bottom: 56px;
+    padding: 28px 0;
+    border-top: 1px solid rgba(26,18,8,0.1);
   }
+
+  /* RETAINED from fomo.html */
   .section-num {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 4rem;
@@ -175,14 +185,7 @@
     line-height: 1;
     margin-bottom: -12px;
   }
-  .section h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.4rem;
-    line-height: 1.05;
-    letter-spacing: 0.02em;
-    margin-bottom: 8px;
-  }
-  .section h2 span { color: var(--rust); }
+
   .section-tag {
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem;
@@ -191,6 +194,19 @@
     color: var(--rust);
     margin-bottom: 20px;
   }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.4rem, 4vw, 2.8rem);
+    line-height: 1.05;
+    color: var(--dark);
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  h2 .accent { color: var(--rust); }
 
   p {
     font-size: 1rem;
@@ -201,14 +217,13 @@
 
   .pull-quote {
     font-family: 'DM Serif Display', serif;
-    font-size: 1.35rem;
-    line-height: 1.45;
-    color: var(--green);
     font-style: italic;
-    border-left: 4px solid var(--sage);
-    padding: 20px 0 20px 28px;
+    font-size: 1.35rem;
+    color: var(--green);
+    line-height: 1.45;
     margin: 32px 0;
-    max-width: 600px;
+    padding-left: 24px;
+    border-left: 3px solid var(--sage);
   }
 
   .callout-box {
@@ -264,39 +279,63 @@
   .compare-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2px;
+    gap: 24px;
     margin: 32px 0;
+  }
+
+  .compare-box {
+    padding: 24px;
     border-radius: 6px;
-    overflow: hidden;
   }
-  .compare-col {
-    padding: 28px 24px;
-  }
-  .compare-col.good {
+
+  .compare-box.good {
     background: rgba(45,80,22,0.06);
+    border: 1px solid rgba(45,80,22,0.15);
   }
-  .compare-col.bad {
-    background: rgba(196,80,10,0.06);
+
+  .compare-box.bad {
+    background: rgba(184,74,46,0.04);
+    border: 1px solid rgba(184,74,46,0.12);
   }
-  .compare-col h3 {
+
+  .compare-title {
     font-family: 'DM Mono', monospace;
     font-size: 0.7rem;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
-  .compare-col.good h3 { color: var(--green); }
-  .compare-col.bad h3 { color: var(--rust); }
-  .compare-col ul {
+
+  .compare-box.good .compare-title { color: var(--green); }
+  .compare-box.bad .compare-title { color: var(--rust); }
+
+  .compare-box ul {
     list-style: none;
     font-size: 0.9rem;
     line-height: 1.7;
   }
-  .compare-col ul li {
+  .compare-box ul li {
     padding: 6px 0;
-    border-bottom: 1px solid rgba(26,18,8,0.06);
+    position: relative;
+    padding-left: 20px;
   }
-  .compare-col ul li:last-child { border-bottom: none; }
+  .compare-box ul li:last-child { border-bottom: none; }
+  .compare-box ul li::before {
+    content: '→ ';
+    color: var(--sage);
+    position: absolute;
+    left: 0;
+  }
+  .compare-box.bad ul li::before { color: var(--rust); }
+
+  .compare-box p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin-bottom: 8px;
+    max-width: none;
+  }
+
+  .compare-box p:last-child { margin-bottom: 0; }
 
   /* Policy list */
   .policy-list {
@@ -321,36 +360,32 @@
     top: 10px;
   }
 
-  /* Sources */
-  .sources {
-    margin-top: 56px;
-    padding-top: 28px;
-    border-top: 1px solid rgba(26,18,8,0.1);
-  }
-  .sources h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
+  /* Footnotes / Sources */
+  .rule { border: none; border-top: 1px solid #C8C3B8; margin: 0; }
+  .container { max-width: 760px; margin: 0 auto; }
+  .section--tight { padding: 48px 0; }
+  .footnotes { padding: 32px 0 0; border-top: 1px solid #C8C3B8; }
+  .footnotes__heading {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #5A5750;
     margin-bottom: 16px;
   }
-  .source-item {
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.6;
-    margin-bottom: 8px;
-    padding-left: 16px;
-    border-left: 2px solid rgba(26,18,8,0.06);
-  }
-  .source-item a {
-    color: var(--cbd-blue);
-    text-decoration: none;
-    border-bottom: 1px dotted var(--cbd-blue);
-  }
+  .footnotes ol { padding-left: 20px; }
+  .footnotes li { font-size: 13px; color: #5A5750; line-height: 1.55; margin-bottom: 8px; }
+  .footnotes a { color: #5A5750; font-family: 'DM Mono', monospace; font-size: 12px; }
+
+  /* Inline emphasis */
+  strong.rust { color: var(--rust); font-weight: 600; }
+  strong.green { color: var(--green); font-weight: 600; }
 
   /* Footnotes / Sources */
   .rule { border: none; border-top: 1px solid #C8C3B8; margin: 0; }
   .container { max-width: 760px; margin: 0 auto; }
   .section--tight { padding: 48px 0; }
-  .footnotes { padding: 32px 0; border-top: 1px solid #C8C3B8; }
+  .footnotes { padding: 32px 0 0; border-top: 1px solid #C8C3B8; }
   .footnotes__heading {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
@@ -373,8 +408,6 @@
   }
 
   strong { font-weight: 600; }
-
-  a { color: var(--cbd-blue); text-decoration: none; border-bottom: 1px dotted var(--cbd-blue); }
 </style>
 </head>
 <body>
@@ -398,50 +431,52 @@
 </nav>  
 
 <div class="page">
+
+<!-- ═══════════════ HERO ═══════════════ -->
   <div class="hero">
-
     <div class="eyebrow">FOMO, The Farm Bill &amp; The Unregulated Market</div>
-    <h1>The <span>FOMO</span> Pipeline</h1>
-    <h1 style="font-size:2.6rem; margin-bottom:4px;">How Fear of Missing Out Meets an Unregulated Market —</h1>
-    <h1 style="font-size:2.6rem; color:var(--muted);">And Who Pays the Price</h1>
+    <h1>THE <span class="accent">FOMO</span> PIPELINE</h1>
+    <div style="font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; color: var(--dark); line-height: .95; margin-bottom: 4px; letter-spacing: 0.02em; font-weight: bold;">HOW FEAR OF MISSING OUT MEETS AN UNREGULATED MARKET —<br><span style="color:var(--muted);">AND WHO PAYS THE PRICE</span></div>
     <div class="subtitle">The 2018 Farm Bill was supposed to legalize hemp. Instead, it created the largest unregulated cannabinoid market in American history. Fear did the rest.</div>
+    <div class="hero-meta">March 2026 · Cannabis Policy · mostlycbd.com</div>
+  </div>
 
-    <div class="stat-strip">
-      <div class="stat-item">
-        <div class="stat-num rust">10,000+</div>
-        <div class="stat-label">Delta-8 poison control<br>incidents, 2021–2025</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">$28B</div>
-        <div class="stat-label">Estimated hemp-derived<br>cannabinoid market (2024)</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num rust">424%</div>
-        <div class="stat-label">Increase in pediatric THC<br>exposures, Ohio 2018–2024</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num gold">0</div>
-        <div class="stat-label">FDA-approved safety<br>standards for hemp THC</div>
-      </div>
+  <div class="stat-row" style="margin-top: 0;">
+    <div class="stat-block">
+      <div class="stat-num">10,000+</div>
+      <div class="stat-label">Delta-8 poison control<br>incidents, 2021–2025</div>
     </div>
+    <div class="stat-block">
+      <div class="stat-num green">$28B</div>
+      <div class="stat-label">Estimated hemp-derived<br>cannabinoid market (2024)</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">424%</div>
+      <div class="stat-label">Increase in pediatric THC<br>exposures, Ohio 2018–2024</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num gold">0</div>
+      <div class="stat-label">FDA-approved safety<br>standards for hemp THC</div>
+    </div>
+  </div>
 
     <!-- ═══ SECTION 1 ═══ -->
     <div class="section">
       <div class="section-num">01</div>
       <div class="section-tag">The Psychology</div>
-      <h2>FOMO Is Not a Buzzword. <span>It's a Clinical Problem.</span></h2>
+      <h2>FOMO Is Not a Buzzword. <span class="accent">It's a Clinical Problem.</span></h2>
 
-      <p>Fear of Missing Out — FoMO — was first formally defined in 2004 as the persistent anxiety that others are having rewarding experiences you're absent from. By 2013, researchers at the University of Essex published the first validated scale for measuring it. What they found wasn't trivial: FoMO is strongly associated with increased anxiety, depression, disrupted sleep, reduced life satisfaction, and compulsive behavior patterns that mirror process addiction.</p>
+      <p>Fear of Missing Out — FOMO — was first formally defined in 2004 as the persistent anxiety that others are having rewarding experiences you're absent from. By 2013, researchers at the University of Essex published the first validated scale for measuring it. What they found wasn't trivial: FOMO is strongly associated with increased anxiety, depression, disrupted sleep, reduced life satisfaction, and compulsive behavior patterns that mirror process addiction.</p>
 
-      <p>A 2025 meta-analysis in <em>PLOS ONE</em> quantified the relationship: FoMO had the strongest correlation with social media addiction of any factor studied (r = 0.41), stronger than depression (r = 0.31), anxiety (r = 0.31), or loneliness (r = 0.21). Research published in the <em>Journal of Medical Internet Research</em> in 2025 confirmed that FoMO and social media fatigue create a bidirectional negative cycle — each feeding the other.</p>
+      <p>A 2025 meta-analysis in <em>PLOS ONE</em> quantified the relationship: FOMO had the strongest correlation with social media addiction of any factor studied (r = 0.41), stronger than depression (r = 0.31), anxiety (r = 0.31), or loneliness (r = 0.21). Research published in the <em>Journal of Medical Internet Research</em> in 2025 confirmed that FOMO and social media fatigue create a bidirectional negative cycle — each feeding the other.</p>
 
-      <p>Neurologically, FoMO activates the same threat-detection circuitry the brain uses for physical danger. The perceived social threat feels as real to the amygdala as a physical one. Social comparison, driven by curated highlight reels on social media, erodes self-esteem and amplifies rumination. Spending more than two hours daily on social media has been linked to higher risks of suicidal ideation.</p>
+      <p>Neurologically, FOMO activates the same threat-detection circuitry the brain uses for physical danger. The perceived social threat feels as real to the amygdala as a physical one. Social comparison, driven by curated highlight reels on social media, erodes self-esteem and amplifies rumination. Spending more than two hours daily on social media has been linked to higher risks of suicidal ideation.</p>
 
       <div class="pull-quote">
-        "FoMO includes two processes: first, perception of missing out, followed by a compulsive behavior to maintain social connections." — Gupta &amp; Sharma, World Journal of Clinical Cases (2021)
+        "FOMO includes two processes: first, perception of missing out, followed by a compulsive behavior to maintain social connections." — Gupta &amp; Sharma, World Journal of Clinical Cases (2021)
       </div>
 
-      <p>Here's where the cannabis market enters the picture. FoMO doesn't stay on your phone. It migrates to every consumer decision — including what you put in your body. When an unregulated market floods social media with "limited drop" gummies, "strongest legal high" claims, and viral potency competitions, it's not selling a product. It's selling urgency. And urgency, in a brain already wired for FOMO, bypasses critical evaluation.</p>
+      <p>Here's where the cannabis market enters the picture. FOMO doesn't stay on your phone. It migrates to every consumer decision — including what you put in your body. When an unregulated market floods social media with "limited drop" gummies, "strongest legal high" claims, and viral potency competitions, it's not selling a product. It's selling urgency. And urgency, in a brain already wired for FOMO, bypasses critical evaluation.</p>
 
       <p>This matters because the people most vulnerable to FOMO-driven purchasing are the same populations most vulnerable to the health consequences of unregulated, high-potency cannabinoid products: young adults aged 18–34, people with pre-existing anxiety, individuals with unmet psychological needs, and those with neurodivergent profiles who already struggle with impulse regulation.</p>
 
@@ -452,7 +487,7 @@
     <div class="section">
       <div class="section-num">02</div>
       <div class="section-tag">The Loophole</div>
-      <h2>The 2018 Farm Bill: <span>A Door Left Wide Open</span></h2>
+      <h2>The 2018 Farm Bill: <span class="accent">A Door Left Wide Open</span></h2>
 
       <p>The Agricultural Improvement Act of 2018 — the Farm Bill — defined "hemp" as Cannabis sativa L. with a delta-9 THC concentration of not more than 0.3% on a dry weight basis. The intent was straightforward: legalize industrial hemp for fiber, grain, and CBD extraction. Give American farmers a new crop. Create a regulated agricultural commodity.</p>
 
@@ -475,7 +510,7 @@
     <div class="section">
       <div class="section-num">03</div>
       <div class="section-tag">The Exploitation</div>
-      <h2>How FOMO Became a <span>Sales Strategy</span></h2>
+      <h2>How FOMO Became a <span class="accent">Sales Strategy</span></h2>
 
       <p>The unregulated hemp-derived market didn't just stumble into FOMO marketing. It perfected it. And the playbook is borrowed directly from the social media engagement model that researchers have linked to anxiety, depression, and compulsive behavior.</p>
 
@@ -509,7 +544,7 @@
     <div class="section">
       <div class="section-num">04</div>
       <div class="section-tag">The Health Consequences</div>
-      <h2>What FOMO Buys You When <span>Nobody's Testing the Product</span></h2>
+      <h2>What FOMO Buys You When <span class="accent">Nobody's Testing the Product</span></h2>
 
       <p>The health consequences of the Farm Bill loophole are not theoretical. They are measured, documented, and growing.</p>
 
@@ -532,15 +567,15 @@
     <div class="section">
       <div class="section-num">05</div>
       <div class="section-tag">The Distinction</div>
-      <h2>Not All Operators Are <span>Bad Actors.</span> That's the Point.</h2>
+      <h2>Not All Operators Are <span class="accent">Bad Actors.</span> That's the Point.</h2>
 
       <p>This is where the conversation requires precision. Because the loudest voices on both sides want a simple story — either "hemp is dangerous, ban it all" or "it's all fine, leave the market alone." Neither is honest.</p>
 
       <p>The 2018 Farm Bill loophole created a dual market. On one side: synthetic, intoxicating cannabinoids in candy packaging with zero oversight, sold by companies optimizing for impulse purchases and viral reach. On the other: legitimate hemp and CBD operators who were doing the work before the loophole existed and continue to do it despite the chaos.</p>
 
       <div class="compare-grid">
-        <div class="compare-col good">
-          <h3>Legitimate Operators</h3>
+        <div class="compare-box good">
+          <div class="compare-title">Legitimate Operators</div>
           <ul>
             <li>Third-party lab testing on every batch (COAs publicly available)</li>
             <li>cGMP-certified manufacturing facilities</li>
@@ -552,8 +587,8 @@
             <li>Self-imposed potency limits and dosing guidance</li>
           </ul>
         </div>
-        <div class="compare-col bad">
-          <h3>Loophole Exploiters</h3>
+        <div class="compare-box bad">
+          <div class="compare-title">Loophole Exploiters</div>
           <ul>
             <li>No testing — or testing from unaccredited labs</li>
             <li>No manufacturing standards or facility oversight</li>
@@ -584,7 +619,7 @@
     <div class="section">
       <div class="section-num">06</div>
       <div class="section-tag">The Systemic Failure</div>
-      <h2>Why the System <span>Created This Problem</span></h2>
+      <h2>Why the System <span class="accent">Created This Problem</span></h2>
 
       <p>The Farm Bill loophole is a symptom, not the disease. The disease is a federal policy framework that has refused for over fifty years to regulate cannabis based on evidence.</p>
 
@@ -609,7 +644,7 @@
     <div class="section">
       <div class="section-num">07</div>
       <div class="section-tag">The Path Forward</div>
-      <h2>What Evidence-Based Regulation <span>Actually Looks Like</span></h2>
+      <h2>What Evidence-Based Regulation <span class="accent">Actually Looks Like</span></h2>
 
       <p>The answer to the FOMO pipeline isn't more prohibition. Prohibition is what created the conditions for the loophole in the first place. The answer is regulation precise enough to distinguish between the people doing it right and the people exploiting the gap.</p>
 
@@ -631,38 +666,70 @@
       </div>
     </div>
 
-    <!-- ═══ SOURCES ═══ -->
-    <div class="sources">
-      <h2>Sources &amp; Citations</h2>
-
-      <div class="source-item">Przybylski, A. K., et al. (2013). "Motivational, emotional, and behavioral correlates of fear of missing out." <em>Computers in Human Behavior</em>, 29(4), 1841–1848.</div>
-      <div class="source-item">Jing, Z., et al. (2025). "Correlations between social media addiction and anxiety, depression, FoMO, loneliness and self-esteem among students." <em>PLOS ONE</em>.</div>
-      <div class="source-item">Yao, X., et al. (2025). "Relationship Between Fear of Missing Out and Social Media Fatigue: Cross-Lagged Panel Design." <em>J Med Internet Res</em> 27:e75701.</div>
-      <div class="source-item">Gupta, M. &amp; Sharma, A. (2021). "Fear of missing out: A brief overview of origin, theoretical underpinnings and relationship with mental health." <em>World J Clin Cases</em>, 9(19), 4881–4889.</div>
-      <div class="source-item">Agricultural Improvement Act of 2018 (2018 Farm Bill), Pub. L. 115-334.</div>
-      <div class="source-item">USDA, National Agricultural Statistics Service. (2022). <em>National Hemp Report</em>. Released February 17, 2022.</div>
-      <div class="source-item">Gaw, C., et al. (2024). "Delta-8 Tetrahydrocannabinol Exposures Reported to US Poison Centers." <em>J Med Toxicol</em>, 20(4), 389–400.</div>
-      <div class="source-item">America's Poison Centers. (2025). National Poison Data System tracking data: 10,000+ delta-8 exposure cases, 2021–2025.</div>
-      <div class="source-item">City Journal (2025). "THC Edibles Could Soon Be Banned." Reporting on Congressional hemp intoxicant ban, Ohio pediatric exposure data (424% increase, 1,100%+ in 0–5 cohort).</div>
-      <div class="source-item">Citizens for a Safe and Healthy Texas (2025). Texas Poison Center Network analysis: THC calls 923 (2019) → 2,592 (2024).</div>
-      <div class="source-item">Fuentes, J. (2026). "Florida's kids shouldn't be the test case for intoxicating hemp." <em>Tampa Bay Times</em> column.</div>
-      <div class="source-item">FDA. (2022). "5 Things to Know about Delta-8 Tetrahydrocannabinol." Consumer advisory.</div>
-      <div class="source-item">FTC. (2024). Warning letter to Mary Jane's Bakery Company re: 300 adverse event reports, delta-8 products resembling branded candy.</div>
-      <div class="source-item">Harvey II, D. G. (2020). <em>Epidemiology of Marijuana Use and Mental Health in the Context of Changing Policies</em>. Doctoral dissertation, Walden University.</div>
-      <div class="source-item">Vaucher, J., et al. (2018). "Cannabis use and risk of schizophrenia: a Mendelian randomization study." <em>Molecular Psychiatry / Nature</em>.</div>
-      <div class="source-item">McGuire, P., et al. (2018). "Cannabidiol (CBD) as an Adjunctive Therapy in Schizophrenia: A Multicenter Randomized Controlled Trial." <em>Am J Psychiatry</em>, 175(3), 225–231.</div>
-      <div class="source-item">Leas, E. C. (2021). "The hemp loophole: a need to clarify the legality of delta-8-THC." <em>Am J Public Health</em>, 111(11), 1927–1931.</div>
-    </div>
-
-    <!-- ═══ FOOTER ═══ -->
-    <div class="page-footer">
-      <div class="footer-brand">mostlycbd.com</div>
-      <div class="footer-tag">Focused. Functional. Fair. · Educate to Regulate.</div>
-      <div class="footer-tag" style="margin-top:8px;">© 2026 mostlycbd.com — Evidence-based advocacy, not prohibition.</div>
-    </div>
-
+<!-- ═══════════════ FOOTNOTES / SOURCES ═══════════════ -->
+<hr class="rule" />
+<section class="footnotes section--tight">
+  <div class="container">
+    <div class="footnotes__heading">Sources &amp; References</div>
+    <ol>
+      <li>Przybylski, A. K., et al. (2013). "Motivational, emotional, and behavioral correlates of fear of missing out." <em>Computers in Human Behavior</em>, 29(4), 1841–1848.</li>
+      <li>Jing, Z., et al. (2025). "Correlations between social media addiction and anxiety, depression, FOMO, loneliness and self-esteem among students." <em>PLOS ONE</em>.</li>
+      <li>Yao, X., et al. (2025). "Relationship Between Fear of Missing Out and Social Media Fatigue: Cross-Lagged Panel Design." <em>J Med Internet Res</em> 27:e75701.</li>
+      <li>Gupta, M. &amp; Sharma, A. (2021). "Fear of missing out: A brief overview of origin, theoretical underpinnings and relationship with mental health." <em>World J Clin Cases</em>, 9(19), 4881–4889.</li>
+      <li>Agricultural Improvement Act of 2018 (2018 Farm Bill), Pub. L. 115-334.</li>
+      <li>USDA, National Agricultural Statistics Service. (2022). <em>National Hemp Report</em>. Released February 17, 2022.</li>
+      <li>Gaw, C., et al. (2024). "Delta-8 Tetrahydrocannabinol Exposures Reported to US Poison Centers." <em>J Med Toxicol</em>, 20(4), 389–400.</li>
+      <li>America's Poison Centers. (2025). National Poison Data System tracking data: 10,000+ delta-8 exposure cases, 2021–2025.</li>
+      <li>City Journal (2025). "THC Edibles Could Soon Be Banned." Reporting on Congressional hemp intoxicant ban, Ohio pediatric exposure data (424% increase, 1,100%+ in 0–5 cohort).</li>
+      <li>Citizens for a Safe and Healthy Texas (2025). Texas Poison Center Network analysis: THC calls 923 (2019) → 2,592 (2024).</li>
+      <li>Fuentes, J. (2026). "Florida's kids shouldn't be the test case for intoxicating hemp." <em>Tampa Bay Times</em> column.</li>
+      <li>FDA. (2022). "5 Things to Know about Delta-8 Tetrahydrocannabinol." Consumer advisory.</li>
+      <li>FTC. (2024). Warning letter to Mary Jane's Bakery Company re: 300 adverse event reports, delta-8 products resembling branded candy.</li>
+      <li>Harvey II, D. G. (2020). <em>Epidemiology of Marijuana Use and Mental Health in the Context of Changing Policies</em>. Doctoral dissertation, Walden University.</li>
+      <li>Vaucher, J., et al. (2018). "Cannabis use and risk of schizophrenia: a Mendelian randomization study." <em>Molecular Psychiatry / Nature</em>.</li>
+      <li>McGuire, P., et al. (2018). "Cannabidiol (CBD) as an Adjunctive Therapy in Schizophrenia: A Multicenter Randomized Controlled Trial." <em>Am J Psychiatry</em>, 175(3), 225–231.</li>
+      <li>Leas, E. C. (2021). "The hemp loophole: a need to clarify the legality of delta-8-THC." <em>Am J Public Health</em>, 111(11), 1927–1931.</li>
+    </ol>
   </div>
-</div>
+</section>
+
+</div><!-- .page -->
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <strong>mostlycbd.com</strong>
+      Natural cannabis advocacy. No ads. No stigma.<br/>
+      © 2026 mostlycbd.com 
+    </div>
+    <div class="site-footer__taglines">
+      <div>Educate to Regulate.<br/>Focused. Functional. Fair.</div>
+      <div class="site-footer__socials">
+        <a href="https://twitter.com/scrapthescript" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@mostlycbd/" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/mostly.cbd/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+          </svg>
+        </a>
+        <a href="https://www.reddit.com/r/mostlyCBD/" target="_blank" rel="noopener" aria-label="Reddit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+         </svg>
+       </a>
+     </div>
+   </div>
+ </div>
+</footer>
 
 </body>
 </html>
