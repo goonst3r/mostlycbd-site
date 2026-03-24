@@ -49,6 +49,80 @@
       .rfer-card__right { display: flex; flex-direction: column; gap: 0.75rem; }
       
       /* ─── Archive Controls & List ────────────────────────────── */
+      .main-toggle-wrapper {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 3.5rem;
+      }
+      .main-toggle {
+          display: inline-flex;
+          background: rgba(28, 27, 24, 0.05);
+          border-radius: 50px;
+          padding: 6px;
+          border: 1px solid rgba(28, 27, 24, 0.06);
+          box-shadow: inset 0 2px 4px rgba(28, 27, 24, 0.03);
+      }
+      .toggle-btn {
+          font-family: 'DM Mono', monospace;
+          font-size: 0.75rem;
+          font-weight: 500;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #5A5750;
+          background: transparent;
+          border: none;
+          padding: 14px 32px;
+          border-radius: 40px;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .toggle-btn:hover:not(.active) { color: #1C1B18; }
+      .toggle-btn.active {
+          background: #FFFFFF;
+          color: #3B6E52;
+          font-weight: 700;
+          box-shadow: 0 2px 8px rgba(28, 27, 24, 0.08), 0 1px 2px rgba(28, 27, 24, 0.04);
+      }
+
+      .sub-tabs {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          margin-bottom: 2.5rem;
+          border-bottom: 1px solid #C8C3B8;
+          padding-bottom: 2rem;
+          flex-wrap: wrap;
+      }
+      .sub-tab {
+          font-family: 'DM Mono', monospace;
+          font-size: 0.7rem;
+          font-weight: 500;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: #5A5750;
+          background: transparent;
+          border: 1px solid transparent;
+          padding: 10px 24px;
+          border-radius: 30px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+      }
+      .sub-tab:hover:not(.active) {
+          background: rgba(28, 27, 24, 0.04);
+          color: #1C1B18;
+      }
+      .sub-tab.active {
+          background: #EAE6DC;
+          border-color: #C8C3B8;
+          color: #3B6E52;
+          font-weight: 700;
+          box-shadow: 0 2px 6px rgba(28, 27, 24, 0.04);
+      }
+
+      .graphic-section { display: none; }
+      .graphic-section.active { display: block; }
+
+
       .archive-controls {
           display: flex;
           flex-wrap: wrap;
@@ -184,6 +258,8 @@
           .ali-image { width: 100%; height: 140px; }
           .ali-desc { -webkit-line-clamp: 1; }
           .ali-date { text-align: left; padding-left: 0; margin-top: -4px; opacity: 0.8; }
+          .toggle-btn { padding: 12px 20px; font-size: 0.7rem; }
+          .sub-tab { padding: 8px 16px; font-size: 0.65rem; }
       }
     </style>
 </head>
@@ -207,7 +283,7 @@
     </nav>
 
     <main>
-        <div class="content-container">
+        <div class="content-container" style="padding-bottom: 20px;">
 
             <div class="page-lede">
                 <span class="page-lede__label">Deep Dives &middot; mostlyCBD</span>
@@ -387,16 +463,20 @@
                     <button class="sub-tab" data-target="advocacy-graphics" onclick="setSubTab(this, 'advocacy-graphics')">Advocacy Graphics</button>
                 </div>
 
+                <div class="graphics-intro" style="margin-top: -1rem;">
+                    <strong>Free to use. Free to share.</strong> These graphics were made to move &mdash; post them, share them, cite them. All we ask: keep the source credit intact. Attribution keeps the data honest.
+                </div>
+
                 <!-- DATA REPORTS -->
                 <div class="graphic-section active" id="data-reports">
-                <div class="blog-section-label">Published</div>
+                <div class="blog-section-label">Share-Ready Graphics</div>
                 <div class="infographic-grid">
                     <div class="graphic-card">
                         <img class="graphic-preview" src="infographics/efficacy/infographic-efficacy-cbd-safety.png" alt="CBD Is Remarkably Safe." loading="lazy">
                         <div class="graphic-card-body">
                             <div class="graphic-source-badge">mostlycbd.com &middot; Safety &middot; Evidence</div>
                             <div class="graphic-card-title">"CBD Is Remarkably Safe"</div>
-                            <p class="graphic-card-desc">.</p>
+                            <p class="graphic-card-desc">Safety data from over 4,000 participants shows no association with elevated liver tests or daytime drowsiness. The clinical evidence supports a strong safety profile for functional use.</p>
                             <div class="infographic-actions">
                                 <a class="infographic-btn primary" href="infographics/efficacy/infographic-efficacy-cbd-safety.png" download="infographic-efficacy-cbd-safety.png">Download</a>
                                 <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/efficacy/infographic-efficacy-cbd-safety.png')">Copy Link</button>
@@ -408,7 +488,7 @@
                         <div class="graphic-card-body">
                             <div class="graphic-source-badge">mostlycbd.com &middot; Clinical &middot; Evidence</div>
                             <div class="graphic-card-title">"Cannabis Works"</div>
-                            <p class="graphic-card-desc">.</p>
+                            <p class="graphic-card-desc">Despite a decades-long federal research blockade, the clinical evidence is clear: cannabinoids have real, measurable therapeutic applications for pain, anxiety, and neurodegenerative conditions.</p>
                             <div class="infographic-actions">
                                 <a class="infographic-btn primary" href="infographics/efficacy/infographic-efficacy-clinical-evidence.png" download="infographic-efficacy-clinical-evidence.png">Download</a>
                                 <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/efficacy/infographic-efficacy-clinical-evidence.png')">Copy Link</button>
@@ -420,7 +500,7 @@
                         <div class="graphic-card-body">
                             <div class="graphic-source-badge">mostlycbd.com &middot; Evidence</div>
                             <div class="graphic-card-title">"The Great Substitution"</div>
-                            <p class="graphic-card-desc">.</p>
+                            <p class="graphic-card-desc">63% of medical cannabis patients substitute it for prescription drugs &mdash; including a 30% substitution rate for opioids. When patients get access, they choose the plant.</p>
                             <div class="infographic-actions">
                                 <a class="infographic-btn primary" href="infographics/efficacy/infographic-efficacy-substitution-data.png" download="infographic-efficacy-substitution-data.png">Download</a>
                                 <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/efficacy/infographic-efficacy-substitution-data.png')">Copy Link</button>
@@ -484,13 +564,181 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="infographics/infographics-fomo-farm-bill.png" alt="The FOMO Pipeline & The Farm Bill" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Policy &middot; Market</div>
+                            <div class="graphic-card-title">"The FOMO Pipeline &amp; The Farm Bill"</div>
+                            <p class="graphic-card-desc">The 2018 Farm Bill created the largest unregulated cannabinoid market in American history. The industry uses scarcity marketing and FOMO to target young adults.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="infographics/infographics-fomo-farm-bill.png" download="infographics-fomo-farm-bill.png">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/infographics-fomo-farm-bill.png')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="infographics/infographic-legalization-mental-health.png" alt="Legalization & Mental Health" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Mental Health &middot; Data</div>
+                            <div class="graphic-card-title">"Legalization &amp; Mental Health"</div>
+                            <p class="graphic-card-desc">State-level data shows youth mental health declined years before cannabis legalization expanded. The timeline aligns with smartphone adoption, not dispensary openings.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="infographics/infographic-legalization-mental-health.png" download="infographic-legalization-mental-health.png">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/infographic-legalization-mental-health.png')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="infographics/infographic-regulation-gap.png" alt="The Regulation Gap" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Policy &middot; Regulation</div>
+                            <div class="graphic-card-title">"The Regulation Gap"</div>
+                            <p class="graphic-card-desc">In Pennsylvania, a medical cannabis product clears more than a dozen regulatory checkpoints before reaching a patient. A hemp-derived THC gummy at a gas station clears zero.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="infographics/infographic-regulation-gap.png" download="infographic-regulation-gap.png">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/infographic-regulation-gap.png')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="infographics/training-gap-infographic-1.png" alt="The Training Gap" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Healthcare &middot; Policy</div>
+                            <div class="graphic-card-title">"The Training Gap"</div>
+                            <p class="graphic-card-desc">Pennsylvania has 440,000 registered medical cannabis patients. The people dispensing their medicine received two hours of training &mdash; none of it clinical.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="infographics/training-gap-infographic-1.png" download="training-gap-infographic-1.png">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/training-gap-infographic-1.png')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="infographics/rfer-infographic-1.png" alt="RFER: The Four-Pillar Framework" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Policy &middot; Advocacy</div>
+                            <div class="graphic-card-title">"RFER: The Four-Pillar Framework"</div>
+                            <p class="graphic-card-desc">Reschedule. Fund Trials. Educate. Regulate. A clear path from 90 years of manufactured stigma to evidence-based federal regulation.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="infographics/rfer-infographic-1.png" download="rfer-infographic-1.png">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/rfer-infographic-1.png')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="infographics/infographic-4-biphasic-curve.jpg" alt="The Biphasic Dose-Response Curve" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Science &middot; Dosing</div>
+                            <div class="graphic-card-title">"The Biphasic Dose-Response Curve"</div>
+                            <p class="graphic-card-desc">More isn't always better. Low doses of cannabinoids can relieve anxiety and pain, while high doses can amplify the exact same symptoms.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="infographics/infographic-4-biphasic-curve.jpg" download="infographic-4-biphasic-curve.jpg">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/infographic-4-biphasic-curve.jpg')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="infographics/infographic-3-cbd-dose-response.png" alt="CBD Dose Response" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Science &middot; CBD</div>
+                            <div class="graphic-card-title">"CBD Dose Response"</div>
+                            <p class="graphic-card-desc">CBD operates on a bell-shaped curve. Efficacy increases with dose up to a point, after which higher doses become less effective. Ratio and spectrum matter.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="infographics/infographic-3-cbd-dose-response.png" download="infographic-3-cbd-dose-response.png">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/infographic-3-cbd-dose-response.png')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="infographics/infographic-1-inverted-arrow.png" alt="The Inverted Relationship" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Mental Health &middot; Evidence</div>
+                            <div class="graphic-card-title">"The Inverted Relationship"</div>
+                            <p class="graphic-card-desc">Mendelian randomization data shows genetic vulnerability to schizophrenia predicts cannabis use &mdash; more strongly than cannabis predicts schizophrenia.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="infographics/infographic-1-inverted-arrow.png" download="infographic-1-inverted-arrow.png">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/infographic-1-inverted-arrow.png')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="infographics/infographic-2-ratio-collapse.png" alt="The Ratio Collapse" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Science &middot; Market</div>
+                            <div class="graphic-card-title">"The Ratio Collapse"</div>
+                            <p class="graphic-card-desc">The traditional cannabis plant had a THC-to-CBD ratio near 14:1. Modern commercial products have pushed that past 80:1. The safety valve was bred out.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="infographics/infographic-2-ratio-collapse.png" download="infographic-2-ratio-collapse.png">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/infographic-2-ratio-collapse.png')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="infographics/infographic-3-cbd-protective-effect.png" alt="CBD's Protective Effect" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Science &middot; Pharmacology</div>
+                            <div class="graphic-card-title">"CBD's Protective Effect"</div>
+                            <p class="graphic-card-desc">CBD acts as a non-competitive antagonist at CB1 receptors, modulating THC's psychoactive intensity and reducing anxiety side effects.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="infographics/infographic-3-cbd-protective-effect.png" download="infographic-3-cbd-protective-effect.png">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/infographic-3-cbd-protective-effect.png')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="infographics/infographic-6-ecs-connection.png" alt="The ECS Connection" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Science &middot; ECS</div>
+                            <div class="graphic-card-title">"The ECS Connection"</div>
+                            <p class="graphic-card-desc">When the endocannabinoid system is disrupted by chronic stress or illness, the results include increased anxiety, depression, and vulnerability to neurological conditions.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="infographics/infographic-6-ecs-connection.png" download="infographic-6-ecs-connection.png">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/infographic-6-ecs-connection.png')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="infographics/ECS/infographic-ecs-1-what-is-ecs.png" alt="What is the Endocannabinoid System?" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Biology &middot; ECS</div>
+                            <div class="graphic-card-title">"What is the Endocannabinoid System?"</div>
+                            <p class="graphic-card-desc">A biological signaling network present in every mammal, regulating homeostasis across multiple systems &mdash; pain, mood, memory, appetite, immune response, and inflammation.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="infographics/ECS/infographic-ecs-1-what-is-ecs.png" download="infographic-ecs-1-what-is-ecs.png">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/ECS/infographic-ecs-1-what-is-ecs.png')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="infographics/ECS/infographic-ecs-2-thc-vs-cbd.png" alt="THC vs. CBD Mechanisms" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Pharmacology &middot; Science</div>
+                            <div class="graphic-card-title">"THC vs. CBD Mechanisms"</div>
+                            <p class="graphic-card-desc">THC binds directly to CB1 receptors as an agonist. CBD acts as an indirect modulator, raising anandamide levels and interacting with serotonin pathways.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="infographics/ECS/infographic-ecs-2-thc-vs-cbd.png" download="infographic-ecs-2-thc-vs-cbd.png">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/ECS/infographic-ecs-2-thc-vs-cbd.png')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="graphic-card">
+                        <img class="graphic-preview" src="infographics/ECS/infographic-ecs-3-healthcare-gap.png" alt="The ECS Healthcare Gap" loading="lazy">
+                        <div class="graphic-card-body">
+                            <div class="graphic-source-badge">mostlycbd.com &middot; Education &middot; Healthcare</div>
+                            <div class="graphic-card-title">"The ECS Healthcare Gap"</div>
+                            <p class="graphic-card-desc">The endocannabinoid system is fundamental to human physiology. Yet it is absent from 91% of U.S. medical school curricula, leaving patients to navigate alone.</p>
+                            <div class="infographic-actions">
+                                <a class="infographic-btn primary" href="infographics/ECS/infographic-ecs-3-healthcare-gap.png" download="infographic-ecs-3-healthcare-gap.png">Download</a>
+                                <button class="infographic-btn" onclick="copyLink(this,'https://mostlycbd.com/infographics/ECS/infographic-ecs-3-healthcare-gap.png')">Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+                
                 <!-- ADVOCACY GRAPHICS -->
                 <div class="graphic-section" id="advocacy-graphics">
-                <div class="graphics-intro">
-                    <strong>Free to use. Free to share.</strong> These graphics were made to move &mdash; post them, share them, cite them. All we ask: keep the source credit intact. Attribution keeps the data honest.
-                </div>
                 <div class="blog-section-label">Share-Ready Graphics</div>
                 <div class="graphics-grid">
 
