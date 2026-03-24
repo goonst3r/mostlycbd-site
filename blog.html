@@ -47,7 +47,144 @@
       .rfc-e  { color: #C4A882; }
       .rfc-r2 { color: #E06B4E; }
       .rfer-card__right { display: flex; flex-direction: column; gap: 0.75rem; }
-      @media (max-width: 640px) { .blog-card-featured--rfer { grid-template-columns: 1fr; } }
+      
+      /* ─── Archive Controls & List ────────────────────────────── */
+      .archive-controls {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 16px;
+          margin-bottom: 24px;
+          align-items: center;
+      }
+      .archive-search {
+          flex: 1;
+          min-width: 250px;
+          padding: 12px 16px;
+          border: 1px solid #C8C3B8;
+          border-radius: 6px;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.95rem;
+          background: #F4F1EB;
+          color: #1C1B18;
+          transition: all 0.2s ease;
+      }
+      .archive-search:focus {
+          outline: none;
+          border-color: #3B6E52;
+          box-shadow: 0 0 0 3px rgba(59, 110, 82, 0.1);
+      }
+      .archive-search::placeholder {
+          color: #A19D94;
+      }
+      .archive-filters {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+      }
+      .filter-btn {
+          padding: 6px 14px;
+          border: 1px solid #C8C3B8;
+          border-radius: 20px;
+          background: transparent;
+          font-family: 'DM Mono', monospace;
+          font-size: 0.65rem;
+          font-weight: 500;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          color: #5A5750;
+          cursor: pointer;
+          transition: all 0.2s;
+      }
+      .filter-btn:hover {
+          border-color: #3B6E52;
+          color: #3B6E52;
+      }
+      .filter-btn.active {
+          background: #3B6E52;
+          color: #fff;
+          border-color: #3B6E52;
+      }
+      
+      .article-list {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          margin-bottom: 48px;
+      }
+      .article-list-item {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          text-decoration: none;
+          padding: 16px;
+          background: #EAE6DC;
+          border: 1px solid #C8C3B8;
+          border-radius: 12px;
+          transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+          color: #1C1B18;
+      }
+      .article-list-item:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px rgba(28, 27, 24, 0.08);
+          border-color: #3B6E52;
+      }
+      .ali-image {
+          width: 120px;
+          height: 80px;
+          border-radius: 8px;
+          background-size: cover;
+          background-position: center;
+          flex-shrink: 0;
+      }
+      .ali-content {
+          flex: 1;
+          min-width: 0;
+      }
+      .ali-title {
+          font-family: 'Libre Baskerville', serif;
+          font-size: 1.15rem;
+          font-weight: 700;
+          margin: 0 0 6px;
+          color: #1C1B18;
+          line-height: 1.25;
+      }
+      .ali-desc {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.85rem;
+          color: #5A5750;
+          line-height: 1.5;
+          margin: 0;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+      }
+      .ali-date {
+          font-family: 'DM Mono', monospace;
+          font-size: 0.75rem;
+          color: #5A5750;
+          white-space: nowrap;
+          flex-shrink: 0;
+          padding-left: 12px;
+          text-align: right;
+      }
+      .no-results {
+          padding: 48px;
+          text-align: center;
+          color: #5A5750;
+          font-style: italic;
+          background: #EAE6DC;
+          border-radius: 12px;
+          border: 1px dashed #C8C3B8;
+          margin-bottom: 48px;
+      }
+      @media (max-width: 640px) { 
+          .blog-card-featured--rfer { grid-template-columns: 1fr; } 
+          .article-list-item { flex-direction: column; align-items: stretch; gap: 12px; }
+          .ali-image { width: 100%; height: 140px; }
+          .ali-desc { -webkit-line-clamp: 1; }
+          .ali-date { text-align: left; padding-left: 0; margin-top: -4px; opacity: 0.8; }
+      }
     </style>
 </head>
 <body>
@@ -86,10 +223,10 @@
 
             <!-- DEEP DIVES -->
             <div class="resources-section active" id="deep-dives">
-                <div class="blog-section-label">Published</div>
+                <div class="blog-section-label">Featured Reads</div>
 
                 <a class="blog-card-featured blog-card-featured--rfer" href="blog/rfer-deep-dive.html"
-                   style="background-image: linear-gradient(rgba(45,80,22,0.30), rgba(45,80,22,0.62)), url('images/bg_action2a.jpg');">
+                   style="background-image: linear-gradient(rgba(45,80,22,0.30), rgba(45,80,22,0.62)), url('images/bg_rfer.jpg');">
                     <div class="rfer-card__left">
                         <div class="rfer-card__stack">
                             <div class="rfer-card__line"><span class="rfc-r1">R</span>eschedule.</div>
@@ -157,50 +294,86 @@
                     </div>
                 </a>
 
-                <a class="blog-card-featured" href="blog/ecs-system.html"
-                   style="background-image: linear-gradient(rgba(52,78,65,0.20), rgba(52,78,65,0.52)), url('images/bg_ecs.jpg');">
-                    <div class="blog-card-tag">Science &middot; Policy</div>
-                    <h2>Every mammal has this system. Almost no one was taught it.</h2>
-                    <p class="blog-card-desc">The endocannabinoid system regulates pain, mood, memory, appetite, and immune response. It was discovered in 1992. It's absent from 91% of medical school curricula — not because the science isn't there, but because the policy infrastructure was designed to suppress it.</p>
-                    <div class="blog-card-meta">
-                        <span class="blog-meta-item">Science &middot; Policy</span>
-                        <span class="blog-meta-item">~12 min read</span>
-                        <span class="blog-read-btn">Read &rarr;</span>
+                <!-- THE ARCHIVES -->
+                <div class="blog-section-label" style="margin-top: 3rem;">The Archives</div>
+                
+                <div class="archive-controls">
+                    <input type="text" id="articleSearch" class="archive-search" placeholder="Search deep dives...">
+                    <div class="archive-filters">
+                        <button class="filter-btn active" data-filter="all" onclick="setFilter(this)">All</button>
+                        <button class="filter-btn" data-filter="policy" onclick="setFilter(this)">Policy &amp; Regulation</button>
+                        <button class="filter-btn" data-filter="science" onclick="setFilter(this)">Science &amp; Health</button>
+                        <button class="filter-btn" data-filter="history" onclick="setFilter(this)">History</button>
                     </div>
-                </a>
+                </div>
 
-                <a class="blog-card-featured" href="blog/hearst-anslinger.html"
-                   style="background-image: linear-gradient(rgba(52,78,65,0.20), rgba(52,78,65,0.52)), url('images/bg_hearst.jpg');">
-                    <div class="blog-card-tag">History &middot; Policy</div>
-                    <h2>One Man. 28 Papers. 87 Years of Stigma.</h2>
-                    <p class="blog-card-desc">The stigma was manufactured in a newsroom to protect a timber fortune. Before cannabis was illegal, it was in the U.S. Pharmacopeia. The story of how yellow journalism became federal drug policy — and why the infrastructure it built is still running.</p>
-                    <div class="blog-card-meta">
-                        <span class="blog-meta-item">History &middot; Policy</span>
-                        <span class="blog-meta-item">~10 min read</span>
-                        <span class="blog-read-btn">Read &rarr;</span>
-                    </div>
-                </a>
+                <div class="article-list" id="articleList">
+                    <a class="article-list-item" href="blog/rfer-deep-dive.html" data-title="rfer reschedule fund trials educate regulate deep dive" data-tags="policy">
+                        <div class="ali-image" style="background-image: url('images/bg_shop.jpg');"></div>
+                        <div class="ali-content">
+                            <h3 class="ali-title">RFER &mdash; The Deep Dive</h3>
+                            <p class="ali-desc">They named it "reefer" to make you afraid. RFER is a four-pillar policy framework built from that origin story &mdash; a clear path from 90 years of manufactured stigma to evidence-based regulation.</p>
+                        </div>
+                        <div class="ali-date">Mar 2026</div>
+                    </a>
 
-                <div class="blog-section-label coming-up">Coming Up</div>
-                <div class="blog-grid">
-                    <div class="blog-card-soon">
-                        <div class="blog-card-tag">Science &middot; Market</div>
-                        <h3>The 14:1 Problem &mdash; How the Industry Bred Out the Brakes</h3>
-                        <p class="blog-card-desc">The traditional plant had a THC-to-CBD ratio near 14:1. Modern products have pushed that past 80:1. That's not the plant's fault &mdash; it's a regulatory and market failure.</p>
-                        <span class="blog-soon-badge">Coming Soon</span>
-                    </div>
-                    <div class="blog-card-soon">
-                        <div class="blog-card-tag">Healthcare &middot; Policy</div>
-                        <h3>It's Not a Cannabis Problem. It's a Healthcare Crisis Wearing a Cannabis Mask.</h3>
-                        <p class="blog-card-desc">67-day psychiatrist wait times. 60% of Americans locked out by cost. When the clinic door is closed, the dispensary is what's left.</p>
-                        <span class="blog-soon-badge">Coming Soon</span>
-                    </div>
-                    <div class="blog-card-soon">
-                        <div class="blog-card-tag">Research &middot; Schedule I</div>
-                        <h3>You Can't Demand Evidence While Blocking the Research</h3>
-                        <p class="blog-card-desc">Schedule I means no recognized medical use. It also means no federally approved clinical trials. The classification doesn't reflect ignorance &mdash; it actively maintains it.</p>
-                        <span class="blog-soon-badge">Coming Soon</span>
-                    </div>
+                    <a class="article-list-item" href="blog/mental-health-youth.html" data-title="what the phone started mental health youth teens social media" data-tags="policy science">
+                        <div class="ali-image" style="background-image: url('images/bg_youth-phone.jpg');"></div>
+                        <div class="ali-content">
+                            <h3 class="ali-title">What the Phone Started</h3>
+                            <p class="ali-desc">Teen mental health started breaking before a single state legalized cannabis. The data points to a different culprit &mdash; one with an algorithm, not a root system.</p>
+                        </div>
+                        <div class="ali-date">Mar 2026</div>
+                    </a>
+
+                    <a class="article-list-item" href="blog/training-gap.html" data-title="two hours to dispense medicine budtender pharmacist training gap" data-tags="policy science">
+                        <div class="ali-image" style="background-image: url('images/bg_budtender.jpg');"></div>
+                        <div class="ali-content">
+                            <h3 class="ali-title">Two Hours to Dispense Medicine</h3>
+                            <p class="ali-desc">Pennsylvania has 440,000 registered medical cannabis patients and 185 dispensaries. The people dispensing their medicine received two hours of training &mdash; if that.</p>
+                        </div>
+                        <div class="ali-date">Mar 2026</div>
+                    </a>
+
+                    <a class="article-list-item" href="blog/regulation-gap.html" data-title="same plant same state two sets of rules delta 8 farm bill" data-tags="policy">
+                        <div class="ali-image" style="background-image: url('images/bg_delta.jpg');"></div>
+                        <div class="ali-content">
+                            <h3 class="ali-title">Same Plant. Same State. Two Sets of Rules.</h3>
+                            <p class="ali-desc">A medical cannabis product clears more than a dozen regulatory checkpoints. A hemp-derived THC gummy at a gas station clears zero.</p>
+                        </div>
+                        <div class="ali-date">Mar 2026</div>
+                    </a>
+
+                    <a class="article-list-item" href="blog/akathisia.html" data-title="the restlessness no one names akathisia cbd medicine" data-tags="science policy">
+                        <div class="ali-image" style="background-image: url('images/bg_akathisia.jpg');"></div>
+                        <div class="ali-content">
+                            <h3 class="ali-title">The Restlessness No One Names</h3>
+                            <p class="ali-desc">Akathisia is a drug-induced movement disorder &mdash; unbearable inner restlessness. CBD's pharmacology may offer what pharmaceutical alternatives can't.</p>
+                        </div>
+                        <div class="ali-date">Mar 2026</div>
+                    </a>
+
+                    <a class="article-list-item" href="blog/ecs-system.html" data-title="every mammal has this system endocannabinoid ecs" data-tags="science policy">
+                        <div class="ali-image" style="background-image: url('images/bg_ecs.jpg');"></div>
+                        <div class="ali-content">
+                            <h3 class="ali-title">Every mammal has this system. Almost no one was taught it.</h3>
+                            <p class="ali-desc">The endocannabinoid system regulates pain, mood, memory, appetite, and immune response. It was discovered in 1992. It's absent from 91% of medical school curricula.</p>
+                        </div>
+                        <div class="ali-date">Mar 2026</div>
+                    </a>
+
+                    <a class="article-list-item" href="blog/hearst-anslinger.html" data-title="one man 28 papers 87 years of stigma william randolph hearst harry anslinger" data-tags="history policy">
+                        <div class="ali-image" style="background-image: url('images/bg_hearst.jpg');"></div>
+                        <div class="ali-content">
+                            <h3 class="ali-title">One Man. 28 Papers. 87 Years of Stigma.</h3>
+                            <p class="ali-desc">The stigma was manufactured in a newsroom to protect a timber fortune. The story of how yellow journalism became federal drug policy.</p>
+                        </div>
+                        <div class="ali-date">Mar 2026</div>
+                    </a>
+                </div>
+                
+                <div id="no-results" class="no-results" style="display: none;">
+                    No deep dives found matching your criteria.
                 </div>
             </div>
 
@@ -401,9 +574,9 @@
     <footer class="site-footer">
       <div class="site-footer__inner">
         <div class="site-footer__brand">
-          <strong>mostlycbd.com</strong>
-          Natural cannabis advocacy. Balanced profiles.<br/>
-          Hand-coded. GitHub Pages. No ads. No agenda but the evidence.
+            <strong>mostlycbd.com</strong>
+            Natural cannabis advocacy. No ads. No stigma.<br/>
+            © 2026 mostlycbd.com 
         </div>
         <div class="site-footer__taglines">
           <div>Educate to Regulate.<br/>Focused. Functional. Fair.</div>
@@ -592,12 +765,44 @@
                 setTimeout(() => { btn.textContent = orig; btn.classList.remove('done'); }, 2500);
             });
         }
+        function filterArticles() {
+            const searchInput = document.getElementById('articleSearch').value.toLowerCase();
+            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+            const articles = document.querySelectorAll('.article-list-item');
+            let visibleCount = 0;
+
+            articles.forEach(article => {
+                const title = article.dataset.title || '';
+                const tags = article.dataset.tags || '';
+                
+                const matchesSearch = title.includes(searchInput);
+                const matchesFilter = activeFilter === 'all' || tags.includes(activeFilter);
+
+                if (matchesSearch && matchesFilter) {
+                    article.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+
+            document.getElementById('no-results').style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+        function setFilter(btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterArticles();
+        }
         const topBtn = document.getElementById('backToTop');
         window.addEventListener('scroll', () => { topBtn.classList.toggle('visible', window.scrollY > 300); });
         const hash = window.location.hash.replace('#','');
         if (hash && document.getElementById(hash)) {
             const tab = document.querySelector('[data-section="' + hash + '"]');
             if (tab) switchTab(tab, hash);
+        }
+        const searchEl = document.getElementById('articleSearch');
+        if (searchEl) {
+            searchEl.addEventListener('input', filterArticles);
         }
     </script>
 </body>

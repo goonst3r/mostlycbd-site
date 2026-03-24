@@ -423,7 +423,7 @@ footer.legacy-footer {
 .content-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 20px 40px;
+    padding: 20px 20px 0;
     font-family: 'Space Mono', monospace;
     color: var(--text-color);
     line-height: 1.7;
@@ -1195,103 +1195,7 @@ h3 {
     transform: translateY(-2px);
 }
 
-/* --- Blog Index: Coming Soon Cards Grid --- */
-.blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.25rem;
-}
-
-/* Coming soon cards — extend base .card style */
-.blog-card-soon {
-    background: var(--card-bg);
-    border: 1px dashed var(--text-color);
-    padding: 1.75rem;
-    border-radius: 16px;
-    opacity: 0.6;
-    cursor: not-allowed;
-    display: block;
-    color: var(--text-color);
-    text-decoration: none;
-}
-
-.blog-card-soon h3 {
-    color: var(--accent-color);
-    font-size: 1rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    font-style: italic;
-}
-
-.blog-card-soon .blog-card-desc {
-    color: var(--text-color);
-    opacity: 0.75;
-    font-size: 0.8rem;
-}
-
-.blog-soon-badge {
-    display: inline-block;
-    font-size: 0.58rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    background: var(--bg-color);
-    color: var(--text-color);
-    border: 1px solid var(--text-color);
-    border-radius: 4px;
-    padding: 2px 8px;
-    margin-top: 0.75rem;
-    opacity: 0.7;
-}
-
-/* =========================================
-   DEEP DIVES — ARTICLE PAGE STYLES
-   ========================================= */
-
-/* Article hero — dark full-bleed header */
-.article-hero-banner {
-    background-image: linear-gradient(rgba(52,78,65,0.82), rgba(52,78,65,0.92)), url('../images/bg_hearst.jpg');
-    background-size: contain;
-    background-position: center;
-    background-color: #344E41;
-    background-blend-mode: multiply;
-
-    border-radius: 16px;
-    padding: 3rem 2.5rem 2.5rem;
-    margin-bottom: 2.5rem;
-    color: #DAD7CD;
-    border: 1px solid rgba(52,78,65,0.15);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-.article-breadcrumb {
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(218,215,205,0.4);
-    margin-bottom: 1.25rem;
-}
-
-.article-breadcrumb a {
-    color: #A3B18A;
-    text-decoration: none;
-}
-
-.article-breadcrumb a:hover { text-decoration: underline; }
-
-.article-hero-banner .guide-title {
-    color: #FFFFFF !important;
-    font-style: italic;
-    margin-bottom: 0.75rem;
-    margin-top: 0;
-    font-size: 2.5rem;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    line-height: 1.15;
-    letter-spacing: -0.5px;
-}
-
-.article-dek {
-    font-size: 0.88rem;
-    color: rgba(218,215,205,0.72);
+/*  color: rgba(218,215,205,0.72);
     line-height: 1.75;
     max-width: 600px;
     margin-bottom: 1.75rem;
@@ -1672,7 +1576,6 @@ h3 {
 /* --- Blog responsive --- */
 @media (max-width: 600px) {
     .article-stat-grid { grid-template-columns: 1fr 1fr; }
-    .blog-grid { grid-template-columns: 1fr; }
     .article-hero-banner { padding: 2rem 1.25rem; }
     .blog-hero-banner { padding: 2rem 1.25rem; max-width: 100%; }
     .article-share-strip { flex-direction: column; align-items: flex-start; }
@@ -1720,8 +1623,7 @@ h3 {
 .guide-section .protocol-title,
 .guide-section .concept-title,
 .guide-section .terpene-name,
-.article-body h2,
-.article-body .article-pull-quote cite,
+.article-body h2,i
 .article-body .article-stat-label,
 .article-body .article-stat-num,
 .article-body .tl-year,
