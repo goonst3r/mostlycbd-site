@@ -287,13 +287,24 @@
     }
 
     /* ─── next steps / CTA grid ──────────────────────────────── */
+    .section--cta {
+      background: #344E41;
+      color: #F4F1EB;
+    }
+
+    .section--cta .section__heading {
+      color: #fff;
+    }
+
+    .section--cta .accent {
+      color: #D4B44A;
+    }
+
     .next-steps__grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 2px;
-      background: #C8C3B8;
-      border: 1px solid #C8C3B8;
-      margin: 16px 0 0;
+      gap: 20px;
+      margin: 32px 0 0;
     }
 
     @media (max-width: 560px) {
@@ -301,15 +312,22 @@
     }
 
     .next-step-card {
-      background: #EAE6DC;
-      padding: 28px 24px;
+      background: #F4F1EB;
+      border-radius: 8px;
+      padding: 32px 28px;
       text-decoration: none;
       color: #1C1B18;
-      display: block;
-      transition: background .15s ease;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      box-shadow: 0 4px 12px rgba(10, 20, 30, 0.15);
     }
 
-    .next-step-card:hover { background: #D4E7DC; color: #1C1B18; }
+    .next-step-card:hover { 
+      background: #fff; 
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(10, 20, 30, 0.25);
+    }
 
     .next-step-card__label {
       font-family: 'DM Mono', monospace;
@@ -332,17 +350,17 @@
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      background: #D4E7DC;
-      border-left: 3px solid #3B6E52;
+      background: rgba(244, 241, 235, 0.08);
+      border-left: 3px solid #D4B44A;
       border-radius: 0 3px 3px 0;
       padding: 24px 28px;
-      margin: 24px 0;
+      margin: 32px 0 24px;
       text-decoration: none;
-      color: #1C1B18;
+      color: #F4F1EB;
       transition: background .15s ease;
     }
 
-    .go-deeper:hover { background: #C4DDD0; color: #1C1B18; }
+    .go-deeper:hover { background: rgba(244, 241, 235, 0.15); color: #F4F1EB; }
 
     .go-deeper__title {
       font-family: 'Libre Baskerville', Georgia, serif;
@@ -350,23 +368,17 @@
     }
 
     .go-deeper__desc {
-      font-size: 14px; color: #5A5750; line-height: 1.5;
-    }
-
-    .go-deeper__arrow {
-      font-family: 'DM Mono', monospace;
-      font-size: 18px; color: #3B6E52; flex-shrink: 0;
+      font-size: 14px; color: rgba(244, 241, 235, 0.8); line-height: 1.5;
     }
 
     /* ─── conclusion / pull quote ─────────────────────────────── */
     .conclusion-box {
-      background: #D4E7DC;
-      border-left: 3px solid #3B6E52;
-      border-radius: 0 3px 3px 0;
-      padding: 28px 32px; margin: 24px 0 0;
+      text-align: center;
+      padding: 32px 0 0;
+      margin: 24px 0 0;
       font-family: 'Libre Baskerville', Georgia, serif;
       font-size: 18px; font-style: italic;
-      color: #344E41; line-height: 1.6;
+      color: #A3B18A; line-height: 1.6;
     }
 
     /* ─── site footer ─────────────────────────────────────────── */
@@ -578,7 +590,7 @@
 <hr class="rule" />
 
 <!-- SECTION: CTA -->
-<section class="section section--alt">
+<section class="section section--cta">
   <div class="text-wrap">
     <h2 class="section__heading">Wear It. <span class="accent">Share It. Use It.</span></h2>
 
@@ -625,7 +637,6 @@
         <div class="go-deeper__title">Go Deeper — The Full RFER Framework</div>
         <div class="go-deeper__desc">The science, the history, the data, and the policy asks behind each pillar. Cited and sourced.</div>
       </div>
-      <div class="go-deeper__arrow">→</div>
     </a>
 
     <div class="conclusion-box">
