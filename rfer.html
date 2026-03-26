@@ -18,404 +18,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
   <style>
-    /* ─── reset ───────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: #F4F1EB;
-      color: #1C1B18;
-      font-family: 'DM Sans', system-ui, sans-serif;
-      font-size: 17px;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
+    body { background: #F4F1EB; color: #1C1B18; font-family: 'DM Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
     a { color: #3B6E52; text-decoration: underline; text-underline-offset: 3px; }
     a:hover { color: #C4692A; }
     img { max-width: 100%; display: block; }
-
-    /* ─── site nav ────────────────────────────────────────────── */
-    .site-nav {
-      background-image: linear-gradient(rgba(244,241,235,0.85), rgba(244,241,235,0.80)), url('images/bg_header.jpeg');
-      background-size: cover;
-      background-position: center;
-      border-bottom: 1px solid rgba(52,78,65,0.12);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: block;
-      padding: 0;
-    }
-
-    .site-nav__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1020px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 64px;
-      position: relative;
-    }
-
-    .site-nav__logo {
-      font-family: 'DM Mono', monospace;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: .04em;
-      color: #1C1B18;
-      text-decoration: none;
-    }
-
-    .site-nav__logo span { color: #3B6E52; }
-    .site-nav__logo:hover { color: #C4692A; }
-
-    .site-nav__links {
-      list-style: none;
-      display: flex;
-      gap: 28px;
-      align-items: center;
-      margin: 0; padding: 0;
-    }
-
-    .site-nav__links a {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-      color: #5A5750;
-      text-decoration: none;
-      transition: color .15s ease;
-    }
-
-    .site-nav__links a:hover { color: #C4692A; }
-
-    .site-nav__links .rfer-nav {
-      text-transform: none;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: .06em;
-    }
-
-    .site-nav__links .rfer-nav .lr1 { color: #2d5a27; }
-    .site-nav__links .rfer-nav .lf  { color: #D4B44A; }
-    .site-nav__links .rfer-nav .le  { color: #8B7355; }
-    .site-nav__links .rfer-nav .lr2 { color: #b84a2e; }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 24px; height: 16px;
-      background: none; border: none; cursor: pointer; padding: 0;
-    }
-
-    .hamburger span {
-      display: block;
-      height: 2px;
-      background: #5A5750;
-      border-radius: 1px;
-      transition: all .25s ease;
-    }
-
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    @media (max-width: 680px) {
-      .hamburger { display: flex; }
-      .site-nav__links {
-        display: none;
-        position: absolute;
-        top: 64px; left: 0; right: 0;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
-        background: rgba(244,241,235,0.98);
-        border-bottom: 1px solid rgba(52,78,65,0.12);
-        padding: 20px 24px 24px;
-      }
-      .site-nav__links.open { display: flex; }
-    }
-
-    /* ─── layout ──────────────────────────────────────────────── */
-    .text-wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
-    .rule { border: none; border-top: 1px solid #C8C3B8; margin: 0; }
-
-    /* ─── page hero ───────────────────────────────────────────── */
-    .page-hero {
-      padding: 100px 0 88px;
-      background: #344E41;
-      text-align: center;
-    }
-
-    .page-hero__label {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
-      color: #A3B18A; margin-bottom: 22px;
-    }
-
-    .page-hero__headline {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: clamp(30px, 5vw, 48px);
-      font-style: italic; line-height: 1.2; font-weight: 700;
-      color: #fff; margin-bottom: 28px;
-      text-shadow: 0 1px 12px rgba(10,20,30,0.4);
-    }
-
+    .site-nav { display: block; padding: 0; margin-left: 0; margin-right: 0; }
+    .page-hero { padding: 100px 0 88px; background: #344E41; text-align: center; }
+    .page-hero__label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #A3B18A; margin-bottom: 22px; }
+    .page-hero__headline { font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(30px, 5vw, 48px); font-style: italic; line-height: 1.2; font-weight: 700; color: #fff; margin-bottom: 28px; text-shadow: 0 1px 12px rgba(10,20,30,0.4); }
     .page-hero__headline em { font-style: normal; color: #A3B18A; }
-
-    .page-hero__sub {
-      font-size: 17px; color: rgba(255,255,255,0.72);
-      max-width: 520px; line-height: 1.65;
-      margin: 0 auto;
-    }
-
-    /* ─── sections ────────────────────────────────────────────── */
-    .section      { padding: 72px 0; }
-    .section--alt { background: #EAE6DC; }
-
-    .section__heading {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: clamp(24px, 3.5vw, 34px);
-      line-height: 1.25; margin-bottom: 24px;
-    }
-
-    .accent { color: #C4692A; }
-
-    .section__subheading {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
-      color: #5A5750; margin: 40px 0 16px;
-    }
-
-    /* ─── prose ───────────────────────────────────────────────── */
-    .prose p { margin-bottom: 20px; font-size: 16px; line-height: 1.8; }
-    .prose p:last-child { margin-bottom: 0; }
-    .prose strong { font-weight: 500; }
-    .prose em { font-style: italic; color: #5A5750; }
-
-    /* ─── RFER acronym block ──────────────────────────────────── */
-    .rfer-block {
-      background: #3B6E52;
-      border-radius: 3px;
-      padding: 32px 28px; margin: 32px 0;
-    }
-
-    .rfer-line {
-      font-family: 'DM Mono', monospace;
-      font-size: clamp(18px, 2.8vw, 24px);
-      font-weight: 500;
-      color: rgba(244,241,235,0.88);
-      letter-spacing: 0.04em;
-      line-height: 1.65;
-    }
-
-    .rfer-line .letter { font-weight: 700; }
-    .rfer-line:nth-child(1) .letter { color: #7CB668; }
-    .rfer-line:nth-child(2) .letter { color: #E0C45C; }
-    .rfer-line:nth-child(3) .letter { color: #B89870; }
-    .rfer-line:nth-child(4) .letter { color: #D07050; }
-
-    .rfer-line .period { color: rgba(244,241,235,0.3); }
-
-    /* ─── concept box ─────────────────────────────────────────── */
-    .concept-box {
-      background: #D4E7DC;
-      border-left: 3px solid #3B6E52;
-      border-radius: 0 3px 3px 0;
-      padding: 24px 28px; margin: 24px 0;
-      font-size: 15px; line-height: 1.65;
-    }
-
-    .concept-box strong {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
-      color: #3B6E52; display: block; margin-bottom: 8px;
-    }
-
-    /* ─── pillars list ────────────────────────────────────────── */
-    .pillars-list {
-      list-style: none;
-      display: flex; flex-direction: column; gap: 2px;
-      background: #C8C3B8; border: 1px solid #C8C3B8; margin: 24px 0;
-    }
-
-    .pillar-item {
-      background: #F4F1EB;
-      padding: 22px 24px;
-      font-size: 15px; line-height: 1.65;
-      display: grid;
-      grid-template-columns: 24px 1fr;
-      gap: 16px;
-      align-items: baseline;
-    }
-
-    .section--alt .pillar-item { background: #EAE6DC; }
-
-    .pillar-item__letter {
-      font-family: 'DM Mono', monospace;
-      font-size: 17px;
-      font-weight: 700;
-      line-height: 1;
-    }
-
-    .pillar-item:nth-child(1) .pillar-item__letter { color: #2d5a27; }
-    .pillar-item:nth-child(2) .pillar-item__letter { color: #D4B44A; }
-    .pillar-item:nth-child(3) .pillar-item__letter { color: #8B7355; }
-    .pillar-item:nth-child(4) .pillar-item__letter { color: #b84a2e; }
-
-    .pillar-item__body { color: #1C1B18; }
-    .pillar-item__body strong { font-weight: 600; display: block; margin-bottom: 2px; }
-    .pillar-item__body span { color: #5A5750; }
-
-    /* ─── disclaimer / context box ───────────────────────────── */
-    .disclaimer {
-      background: #F5E4D5;
-      border-left: 3px solid #C4692A;
-      border-radius: 0 3px 3px 0;
-      padding: 20px 24px;
-      margin: 32px 0;
-      font-size: 15px; line-height: 1.6; color: #1C1B18;
-    }
-
-    .disclaimer strong {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
-      color: #C4692A; display: block; margin-bottom: 6px;
-    }
-
-    /* ─── next steps / CTA grid ──────────────────────────────── */
-    .section--cta {
-      background: #344E41;
-      color: #F4F1EB;
-    }
-
-    .section--cta .section__heading {
-      color: #fff;
-    }
-
-    .section--cta .accent {
-      color: #D4B44A;
-    }
-
-    .next-steps__grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      margin: 32px 0 0;
-    }
-
-    @media (max-width: 560px) {
-      .next-steps__grid { grid-template-columns: 1fr; }
-    }
-
-    .next-step-card {
-      background: #F4F1EB;
-      border-radius: 8px;
-      padding: 32px 28px;
-      text-decoration: none;
-      color: #1C1B18;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-      box-shadow: 0 4px 12px rgba(10, 20, 30, 0.15);
-    }
-
-    .next-step-card:hover { 
-      background: #fff; 
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(10, 20, 30, 0.25);
-    }
-
-    .next-step-card__label {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
-      color: #3B6E52; display: block; margin-bottom: 10px;
-    }
-
-    .next-step-card__title {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 18px; font-weight: 700; margin-bottom: 10px; line-height: 1.25;
-    }
-
-    .next-step-card__desc {
-      font-size: 14px; line-height: 1.6; color: #5A5750;
-    }
-
-    /* ─── go deeper link ──────────────────────────────────────── */
-    .go-deeper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      background: rgba(244, 241, 235, 0.08);
-      border-left: 3px solid #D4B44A;
-      border-radius: 0 3px 3px 0;
-      padding: 24px 28px;
-      margin: 32px 0 24px;
-      text-decoration: none;
-      color: #F4F1EB;
-      transition: background .15s ease;
-    }
-
-    .go-deeper:hover { background: rgba(244, 241, 235, 0.15); color: #F4F1EB; }
-
-    .go-deeper__title {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 17px; font-weight: 700; margin-bottom: 4px;
-    }
-
-    .go-deeper__desc {
-      font-size: 14px; color: rgba(244, 241, 235, 0.8); line-height: 1.5;
-    }
-
-    /* ─── conclusion / pull quote ─────────────────────────────── */
-    .conclusion-box {
-      text-align: center;
-      padding: 32px 0 0;
-      margin: 24px 0 0;
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 18px; font-style: italic;
-      color: #A3B18A; line-height: 1.6;
-    }
-
-    /* ─── site footer ─────────────────────────────────────────── */
-    .site-footer {
-      border-top: 1px solid #C8C3B8;
-      padding: 40px 0 32px;
-      background: #EAE6DC;
-    }
-
-    .site-footer__inner {
-      max-width: 1020px; margin: 0 auto; padding: 0 24px;
-      display: flex; justify-content: space-between; align-items: flex-start;
-      flex-wrap: wrap; gap: 24px;
-    }
-
-    .site-footer__brand {
-      font-family: 'DM Mono', monospace; font-size: 12px; color: #5A5750;
-    }
-
-    .site-footer__brand strong {
-      display: block; font-size: 14px; color: #1C1B18; margin-bottom: 4px;
-    }
-
-    .site-footer__taglines {
-      font-family: 'DM Mono', monospace; font-size: 11px; color: #5A5750;
-      letter-spacing: .06em; text-align: right; line-height: 1.8;
-      display: flex; flex-direction: column; align-items: flex-end; gap: 14px;
-    }
-
-    .site-footer__socials { display: flex; gap: 18px; align-items: center; }
-
-    .site-footer__socials a {
-      display: flex; color: #5A5750; text-decoration: none; transition: color .15s ease;
-    }
-
-    .site-footer__socials a:hover { color: #3B6E52; }
-    .site-footer__socials svg { display: block; }
+    .page-hero__sub { font-size: 17px; color: rgba(255,255,255,0.72); max-width: 520px; line-height: 1.65; margin: 0 auto; }
   </style>
 </head>
 <body>
@@ -594,38 +209,38 @@
   <div class="text-wrap">
     <h2 class="section__heading">Wear It. <span class="accent">Share It. Use It.</span></h2>
 
-    <div class="next-steps__grid">
-      <a href="https://shop.mostlycbd.com/product/rfer" class="next-step-card" target="_blank" rel="noopener">
-        <span class="next-step-card__label">the Shop</span>
-        <div class="next-step-card__title">Wear Your Advocacy</div>
-        <p class="next-step-card__desc">
+    <div class="rfer-next-grid">
+      <a href="https://shop.mostlycbd.com/product/rfer" class="rfer-next-card" target="_blank" rel="noopener">
+        <span class="rfer-next-card__label">the Shop</span>
+        <div class="rfer-next-card__title">Wear Your Advocacy</div>
+        <p class="rfer-next-card__desc">
           100% cotton garment-dyed heavyweight tee. Olive drab. Monospace.
           No leaf. No gimmick. Just the plan. First item ships free.
         </p>
       </a>
 
-      <a href="images/rfer-share-card.png" class="next-step-card" download>
-        <span class="next-step-card__label">Share Card</span>
-        <div class="next-step-card__title">Share the Framework</div>
-        <p class="next-step-card__desc">
+      <a href="images/rfer-share-card.png" class="rfer-next-card" download>
+        <span class="rfer-next-card__label">Share Card</span>
+        <div class="rfer-next-card__title">Share the Framework</div>
+        <p class="rfer-next-card__desc">
           Download the RFER share card for X, Instagram, or anywhere.
           Post it. Tag @scrapthescript. Let the conversation start.
         </p>
       </a>
 
-      <a href="https://mostlycbd.com/blog.html" class="next-step-card">
-        <span class="next-step-card__label">Advocacy Tools</span>
-        <div class="next-step-card__title">Use the Data</div>
-        <p class="next-step-card__desc">
+      <a href="https://mostlycbd.com/blog.html" class="rfer-next-card">
+        <span class="rfer-next-card__label">Advocacy Tools</span>
+        <div class="rfer-next-card__title">Use the Data</div>
+        <p class="rfer-next-card__desc">
           Infographics, data reports, and shareable graphics — all backed by
           peer-reviewed data. Free to use. Free to share. Just keep the source credit.
         </p>
       </a>
 
-      <a href="https://www.reddit.com/r/mostlyCBD/" class="next-step-card" target="_blank" rel="noopener">
-        <span class="next-step-card__label">Community</span>
-        <div class="next-step-card__title">Join the Conversation</div>
-        <p class="next-step-card__desc">
+      <a href="https://www.reddit.com/r/mostlyCBD/" class="rfer-next-card" target="_blank" rel="noopener">
+        <span class="rfer-next-card__label">Community</span>
+        <div class="rfer-next-card__title">Join the Conversation</div>
+        <p class="rfer-next-card__desc">
           Share your story. Ask questions. Find people who get it.
           No judgment. Real people, real problems, real solutions.
         </p>
@@ -639,7 +254,7 @@
       </div>
     </a>
 
-    <div class="conclusion-box">
+    <div class="rfer-conclusion">
       "Educate to regulate. That's the whole position."
     </div>
   </div>
