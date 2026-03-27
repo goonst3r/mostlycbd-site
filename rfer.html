@@ -19,51 +19,39 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #F4F1EB; color: #1C1B18; font-family: 'DM Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
-    a { color: #3B6E52; text-decoration: underline; text-underline-offset: 3px; }
-    a:hover { color: #C4692A; }
-    img { max-width: 100%; display: block; }
-    .site-nav { display: block; padding: 0; margin-left: 0; margin-right: 0; }
-    .page-hero { padding: 100px 0 88px; background: #344E41; text-align: center; }
-    .page-hero__label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #A3B18A; margin-bottom: 22px; }
-    .page-hero__headline { font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(30px, 5vw, 48px); font-style: italic; line-height: 1.2; font-weight: 700; color: #fff; margin-bottom: 28px; text-shadow: 0 1px 12px rgba(10,20,30,0.4); }
-    .page-hero__headline em { font-style: normal; color: #A3B18A; }
-    .page-hero__sub { font-size: 17px; color: rgba(255,255,255,0.72); max-width: 520px; line-height: 1.65; margin: 0 auto; }
-  </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="site-nav" aria-label="Site navigation">
   <div class="site-nav__inner">
-    <a href="https://mostlycbd.com/index.html" class="site-nav__logo">mostly<span>cbd</span>.com</a>
+    <a href="index.html" class="site-nav__logo">mostly<span>cbd</span>.com</a>
     <button type="button" class="hamburger" aria-label="Menu"
       onclick="this.classList.toggle('open');document.querySelector('.site-nav__links').classList.toggle('open')">
       <span></span><span></span><span></span>
     </button>
     <ul class="site-nav__links">
-      <li><a href="https://mostlycbd.com/index.html">Home</a></li>
-      <li><a href="https://mostlycbd.com/guide.html">Guide</a></li>
-      <li><a href="https://mostlycbd.com/blog.html">Deep Dives</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="guide.html">Guide</a></li>
+      <li><a href="blog.html">Deep Dives</a></li>
+      <li><a href="evidence.html">Evidence</a></li>
       <li><a href="https://www.reddit.com/r/mostlyCBD/" target="_blank" rel="noopener">Community</a></li>
-      <li><a href="https://mostlycbd.com/rfer.html" class="rfer-nav"><span class="lr1">R</span><span class="lf">F</span><span class="le">E</span><span class="lr2">R</span></a></li>
+      <li><a href="rfer.html" class="rfer-nav"><span class="lr1">R</span><span class="lf">F</span><span class="le">E</span><span class="lr2">R</span></a></li>
       <li><a href="https://shop.mostlycbd.com">Shop</a></li>
     </ul>
   </div>
 </nav>
 
 <!-- HERO -->
-<header class="page-hero">
-  <div class="text-wrap">
-    <p class="page-hero__label">Advocacy &middot; Policy Framework</p>
-    <h1 class="page-hero__headline">They named it "reefer" to make you afraid.<br><em>We made it a plan.</em></h1>
-    <p class="page-hero__sub">
-      RFER is a four-pillar policy framework for evidence-based cannabis reform.
-      Four letters. Four actions. One path from prohibition to regulation.
-    </p>
-  </div>
+<header class="page-hero" style="padding: 100px 0 88px; background: #344E41; text-align: center;">
+    <div class="text-wrap">
+      <p class="page-hero__label" style="font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #A3B18A; margin-bottom: 22px;">Advocacy &middot; Policy Framework</p>
+      <h1 class="page-hero__headline" style="font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(30px, 5vw, 48px); font-style: italic; line-height: 1.2; font-weight: 700; color: #fff; margin-bottom: 28px; text-shadow: 0 1px 12px rgba(10,20,30,0.4);">They named it "reefer" to make you afraid.<br><em>We made it a plan.</em></h1>
+      <p class="page-hero__sub" style="font-size: 17px; color: rgba(255,255,255,0.82); max-width: 500px; line-height: 1.65; margin: 0 auto; text-shadow: 0 1px 8px rgba(10,20,30,0.4);">
+        RFER is a four-pillar policy framework for evidence-based cannabis reform.
+        Four letters. Four actions. One path from prohibition to regulation.
+      </p>
+    </div>
 </header>
 
 <!-- SECTION: The Acronym -->
@@ -265,8 +253,8 @@
   <div class="site-footer__inner">
     <div class="site-footer__brand">
       <strong>mostlycbd.com</strong>
-      Natural cannabis advocacy. Balanced profiles.<br/>
-      Hand-coded. GitHub Pages. No ads. No agenda but the evidence.
+      Natural cannabis advocacy. No ads. No stigma.<br/>
+      © 2026 mostlycbd.com 
     </div>
     <div class="site-footer__taglines">
       <div>Educate to Regulate.<br/>Focused. Functional. Fair.</div>
