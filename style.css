@@ -1996,6 +1996,19 @@ body { padding: 0; }
     white-space: nowrap;
 }
 
+.filter-dropdown-select {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #5A5750;
+    border: 1px solid #C8C3B8;
+    border-radius: 4px;
+    background-color: #fff; /* Or a light bone color */
+    padding: 6px 12px;
+    outline: none;
+}
+
 .filter-divider {
     width: 1px; 
     background: #C8C3B8;

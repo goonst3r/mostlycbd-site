@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Evidence | Cannabinoid Research Database</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,700;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-900 min-h-screen">
+
+<!-- Header Section -->
+<header class="bg-white border-b border-stone-200 py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="max-w-3xl">
+<h1 class="text-4xl md:text-5xl font-bold text-stone-900 mb-4">Research Database</h1>
+<p class="text-lg text-stone-600 leading-relaxed">Explore a curated collection of peer-reviewed clinical studies and meta-analyses exploring the therapeutic potential of cannabinoids across various health conditions.</p>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Filters Sidebar -->
+<aside class="w-full lg:w-64 flex-shrink-0 space-y-8">
+<!-- Search -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-3" for="search">Search Database</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 border-stone-200 rounded-lg focus:ring-emerald-500 focus:border-emerald-500 text-sm" id="searchInput" placeholder="Search title or tags..." type="text"/>
+</div>
+</div>
+<!-- Condition Filter -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-3">Health Condition</label>
+<div class="space-y-2" id="conditionFilters">
+<!-- Dynamic -->
+</div>
+</div>
+<!-- Type Filter -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-3">Study Type</label>
+<div class="space-y-2" id="typeFilters">
+<!-- Dynamic -->
+</div>
+</div>
+<!-- Keyword Filter Section -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-3">Keywords</label>
+<div class="flex flex-wrap gap-2" id="keywordFilters">
+<!-- Dynamic Keywords -->
+</div>
+</div>
+<button class="text-sm text-emerald-700 font-medium hover:text-emerald-800 flex items-center gap-1" id="resetFilters">
+<span class="material-symbols-outlined text-sm">restart_alt</span> Reset all filters
+                </button>
+</aside>
+<!-- Results Section -->
+<div class="flex-grow">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-bold text-stone-800"><span id="resultCount">0</span> Studies Found</h2>
+<div class="flex items-center gap-2 text-sm text-stone-500">
+<span>Sort by:</span>
+<select class="bg-transparent border-none focus:ring-0 font-medium text-stone-800 cursor-pointer">
+<option>Most Recent</option>
+<option>Relevance</option>
+<option>Citation Count</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="studiesGrid">
+<!-- Study Cards injected here -->
+</div>
+<!-- Empty State -->
+<div class="hidden py-20 text-center" id="emptyState">
+<span class="material-symbols-outlined text-stone-300 text-6xl mb-4">search_off</span>
+<h3 class="text-xl font-bold text-stone-800 mb-2">No results found</h3>
+<p class="text-stone-500">Try adjusting your filters or search terms.</p>
+</div>
+</div>
+</div>
+</main>
+
+<script>
+        const allStudies = [
+            {
+                id: 1,
+                title: "Cannabinoids in the Management of Difficult to Treat Pain",
+                author: "Russo EB, et al.",
+                journal: "Therapeutics and Clinical Risk Management",
+                year: 2008,
+                condition: "Chronic Pain",
+                type: "Review",
+                summary: "A comprehensive review of the clinical evidence for cannabinoid therapeutics in chronic pain states.",
+                tags: ["THC", "CBD", "Neuropathic Pain", "Safety"],
+                url: "#"
+            },
+            {
+                id: 2,
+                title: "Cannabidiol as a Potential Treatment for Anxiety Disorders",
+                author: "Blessing EM, et al.",
+                journal: "Neurotherapeutics",
+                year: 2015,
+                condition: "Anxiety",
+                type: "Review",
+                summary: "Preclinical evidence strongly supports CBD as a treatment for generalized anxiety disorder, panic disorder, and social anxiety disorder.",
+                tags: ["CBD", "Anxiety", "Dosage", "Neuropsychiatry"],
+                url: "#"
+            },
+            {
+                id: 3,
+                title: "Trial of Cannabidiol for Drug-Resistant Seizures in the Dravet Syndrome",
+                author: "Devinsky O, et al.",
+                journal: "NEJM",
+                year: 2017,
+                condition: "Epilepsy",
+                type: "Clinical Trial",
+                summary: "A randomized, double-blind, placebo-controlled trial showing CBD significantly reduced seizure frequency.",
+                tags: ["CBD", "Pediatrics", "Seizure Control", "Side Effects"],
+                url: "#"
+            },
+            {
+                id: 4,
+                title: "Efficacy and Safety of Medical Marijuana in Patients with MS",
+                author: "Yadav V, et al.",
+                journal: "Neurology",
+                year: 2014,
+                condition: "Multiple Sclerosis",
+                type: "Meta-analysis",
+                summary: "Analysis of medical marijuana use for MS symptoms including spasticity, pain, and urinary dysfunction.",
+                tags: ["THC", "CBD", "Spasticity", "Safety"],
+                url: "#"
+            },
+            {
+                id: 5,
+                title: "Cannabis for the Treatment of Crohn’s Disease",
+                author: "Naftali T, et al.",
+                journal: "Clinical Gastroenterology and Hepatology",
+                year: 2013,
+                condition: "Gastrointestinal",
+                type: "Clinical Trial",
+                summary: "The first placebo-controlled study to evaluate the effects of cannabis in patients with Crohn’s disease.",
+                tags: ["THC", "Inflammation", "Terpenes", "Gastro"],
+                url: "#"
+            },
+            {
+                id: 6,
+                title: "The Effects of CBD on Sleep Quality",
+                author: "Shannon S, et al.",
+                journal: "The Permanente Journal",
+                year: 2019,
+                condition: "Sleep",
+                type: "Case Series",
+                summary: "Investigation into whether CBD helps improve sleep and/or anxiety in a clinical population.",
+                tags: ["CBD", "Sleep", "Dosage", "Anxiety"],
+                url: "#"
+            }
+        ];
+
+        let activeFilters = {
+            condition: 'all',
+            type: 'all',
+            keyword: 'all',
+            search: ''
+        };
+
+        const conditions = ['all', ...new Set(allStudies.map(s => s.condition))];
+        const types = ['all', ...new Set(allStudies.map(s => s.type))];
+        const keywords = ['all', ...new Set(allStudies.flatMap(s => s.tags))];
+
+        function init() {
+            renderFilterGroup('conditionFilters', conditions, 'condition');
+            renderFilterGroup('typeFilters', types, 'type');
+            renderKeywordFilter();
+            render();
+
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                activeFilters.search = e.target.value.toLowerCase();
+                render();
+            });
+
+            document.getElementById('resetFilters').addEventListener('click', () => {
+                activeFilters = { condition: 'all', type: 'all', keyword: 'all', search: '' };
+                document.getElementById('searchInput').value = '';
+                renderFilterGroup('conditionFilters', conditions, 'condition');
+                renderFilterGroup('typeFilters', types, 'type');
+                renderKeywordFilter();
+                render();
+            });
+        }
+
+        function renderFilterGroup(containerId, options, filterKey) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = options.map(opt => `
+                <button onclick="setFilter('${filterKey}', '${opt}')" 
+                    class="block w-full text-left px-3 py-1.5 rounded-md text-sm transition-all ${activeFilters[filterKey] === opt ? 'bg-emerald-50 text-emerald-700 font-semibold' : 'text-stone-600 hover:bg-stone-100'}">
+                    ${opt.charAt(0).toUpperCase() + opt.slice(1)}
+                </button>
+            `).join('');
+        }
+
+        function renderKeywordFilter() {
+            const container = document.getElementById('keywordFilters');
+            container.innerHTML = keywords.map(tag => `
+                <button onclick="setFilter('keyword', '${tag}')" 
+                    class="px-2.5 py-1 rounded-full text-xs font-medium border transition-all ${activeFilters.keyword === tag ? 'bg-emerald-700 border-emerald-700 text-white shadow-sm' : 'border-stone-200 bg-white text-stone-600 hover:border-emerald-300'}">
+                    ${tag}
+                </button>
+            `).join('');
+        }
+
+        window.setFilter = (key, value) => {
+            activeFilters[key] = value;
+            if (key === 'keyword') {
+                renderKeywordFilter();
+            } else {
+                renderFilterGroup(`${key}Filters`, key === 'condition' ? conditions : types, key);
+            }
+            render();
+        };
+
+        function render() {
+            const grid = document.getElementById('studiesGrid');
+            const emptyState = document.getElementById('emptyState');
+            
+            const filtered = allStudies.filter(s => {
+                const matchesCondition = activeFilters.condition === 'all' || s.condition === activeFilters.condition;
+                const matchesType = activeFilters.type === 'all' || s.type === activeFilters.type;
+                const matchesKeyword = activeFilters.keyword === 'all' || s.tags.includes(activeFilters.keyword);
+                const matchesSearch = s.title.toLowerCase().includes(activeFilters.search) || 
+                                    s.tags.some(t => t.toLowerCase().includes(activeFilters.search));
+                
+                return matchesCondition && matchesType && matchesKeyword && matchesSearch;
+            });
+
+            document.getElementById('resultCount').textContent = filtered.length;
+
+            if (filtered.length === 0) {
+                grid.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+            } else {
+                grid.classList.remove('hidden');
+                emptyState.classList.add('hidden');
+                grid.innerHTML = filtered.map(s => `
+                    <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow group flex flex-col">
+                        <div class="flex-grow">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">${s.type}</span>
+                                <span class="text-xs text-stone-400 font-medium">${s.year}</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-stone-900 mb-2 group-hover:text-emerald-800 transition-colors">${s.title}</h3>
+                            <p class="text-xs font-medium text-stone-500 mb-3">${s.author} — <span class="italic">${s.journal}</span></p>
+                            <p class="text-sm text-stone-600 line-clamp-3 mb-4">${s.summary}</p>
+                        </div>
+                        <div class="pt-4 border-t border-stone-100 mt-auto">
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                ${s.tags.map(tag => `<span class="text-[10px] bg-stone-100 text-stone-500 px-2 py-0.5 rounded">${tag}</span>`).join('')}
+                            </div>
+                            <a href="${s.url}" class="text-sm font-semibold text-stone-900 flex items-center gap-1 hover:text-emerald-700 transition-colors">
+                                View Full Study <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        init();
+    </script>
+</body></html>

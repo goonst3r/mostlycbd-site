@@ -100,35 +100,50 @@
                 <div class="evidence-count">Showing <span id="result-count">—</span> studies</div>
             </div>
 
+            <!-- EVIDENCE GRID -->
+            <div id="evidence-grid">
+                <p style="font-family:Georgia,serif;opacity:0.4;text-align:center;padding:2rem;">Loading studies...</p>
+            </div>
+
+            <div class="evidence-empty" id="evidence-empty">
+                No studies match your current filters. Try broadening your search.
             <!-- FILTER ROW -->
             <div class="filter-row" id="filterRow">
 
+                <!-- PRIMARY FILTERS -->
                 <span class="filter-group-label">Condition</span>
                 <button class="filter-btn active" data-filter="condition" data-value="all">All</button>
                 <button class="filter-btn" data-filter="condition" data-value="chronic-pain">Pain</button>
-                <button class="filter-btn" data-filter="condition" data-value="neuropathic-pain">Neuropathy</button>
                 <button class="filter-btn" data-filter="condition" data-value="anxiety">Anxiety</button>
-                <button class="filter-btn" data-filter="condition" data-value="ptsd">PTSD</button>
                 <button class="filter-btn" data-filter="condition" data-value="sleep">Sleep</button>
-                <button class="filter-btn" data-filter="condition" data-value="epilepsy">Epilepsy</button>
-                <button class="filter-btn" data-filter="condition" data-value="inflammation">Inflammation</button>
-                <button class="filter-btn" data-filter="condition" data-value="depression">Depression</button>
-                <button class="filter-btn" data-filter="condition" data-value="als">ALS</button>
 
                 <div class="filter-divider"></div>
 
+                <!-- SECONDARY FILTERS (collapsible) -->
                 <span class="filter-group-label">Type</span>
                 <button class="filter-btn active" data-filter="type" data-value="all">All</button>
                 <button class="filter-btn" data-filter="type" data-value="systematic_review">Systematic Review</button>
                 <button class="filter-btn" data-filter="type" data-value="meta_analysis">Meta-Analysis</button>
                 <button class="filter-btn" data-filter="type" data-value="rct">RCT</button>
-                <button class="filter-btn" data-filter="type" data-value="clinical_trial">Clinical Trial</button>
-                <button class="filter-btn" data-filter="type" data-value="observational">Observational</button>
-                <button class="filter-btn" data-filter="type" data-value="review">Review</button>
-                <button class="filter-btn" data-filter="type" data-value="preclinical">Preclinical</button>
 
                 <div class="filter-divider"></div>
 
+                <!-- "More" dropdown -->
+                <div class="filter-dropdown">
+                    <button class="filter-btn filter-btn--dropdown">More ▼</button>
+                    <div class="filter-dropdown-content">
+                        <button class="filter-btn" data-filter="condition" data-value="neuropathic-pain">Neuropathy</button>
+                        <button class="filter-btn" data-filter="condition" data-value="ptsd">PTSD</button>
+                        <button class="filter-btn" data-filter="condition" data-value="epilepsy">Epilepsy</button>
+                        <button class="filter-btn" data-filter="condition" data-value="inflammation">Inflammation</button>
+                        <button class="filter-btn" data-filter="condition" data-value="depression">Depression</button>
+                        <button class="filter-btn" data-filter="condition" data-value="als">ALS</button>
+                        <button class="filter-btn" data-filter="type" data-value="clinical_trial">Clinical Trial</button>
+                        <button class="filter-btn" data-filter="type" data-value="observational">Observational</button>
+                        <button class="filter-btn" data-filter="type" data-value="review">Review</button>
+                        <button class="filter-btn" data-filter="type" data-value="preclinical">Preclinical</button>
+
+                        <div class="filter-divider"></div>
                 <span class="filter-group-label">Finding</span>
                 <button class="filter-btn active" data-filter="finding" data-value="all">All</button>
                 <button class="filter-btn finding-positive" data-filter="finding" data-value="positive">Positive</button>
@@ -137,7 +152,7 @@
 
                 <div class="filter-divider"></div>
 
-                <span class="filter-group-label">Audience</span>
+                    <span class="filter-group-label">Audience</span>
                 <button class="filter-btn active" data-filter="audience" data-value="all">All</button>
                 <button class="filter-btn" data-filter="audience" data-value="patient">Patient</button>
                 <button class="filter-btn" data-filter="audience" data-value="provider">Provider</button>
@@ -145,8 +160,6 @@
 
             </div>
 
-            <!-- EVIDENCE GRID -->
-            <div id="evidence-grid">
                 <p style="font-family:Georgia,serif;opacity:0.4;text-align:center;padding:2rem;">Loading studies...</p>
             </div>
 
@@ -377,6 +390,16 @@
         topBtn.classList.toggle('visible', window.scrollY > 300);
     });
     </script>
+
+    <style>
+    .filter-row .filter-dropdown {
+        display: inline-flex;
+        align-items: center; /* Align label and select */
+    }
+
+
+
+    </style>
 
 </body>
 </html>
