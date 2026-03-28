@@ -1026,7 +1026,7 @@ h3 {
 /* --- Blog Index: Hero Banner --- */
 
 .blog-hero-banner {
-    background-image: linear-gradient(rgba(52,78,65,0.75), rgba(52,78,65,0.85)), url('../images/bg_blog.jpg');
+    background-image: linear-gradient(rgba(52,78,65,0.75), rgba(52,78,65,0.85)), url('images/bg_blog.jpg');
     background-size: cover;
     background-position: center;
     background-blend-mode: multiply;

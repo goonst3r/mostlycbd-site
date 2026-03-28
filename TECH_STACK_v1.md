@@ -26,15 +26,7 @@
 ├── logo_1.png              # Nav logo
 ├── ARTICLE_TEMPLATE.md     # Authoring guide for new articles
 │
-├── blog-hearst-anslinger.html
-├── blog-ecs-system.html
-├── blog-als-cannabis-deep-dive.html
-├── blog-training-gap.html
-├── blog-akathisia.html
-├── blog-mentalhealth.html
-├── blog-[new-article-slug].html
-│
-└── images/                 # All image assets
+├── blogiarte            # All image assets
     ├── bg_[article-slug].jpg   # Hero images (1200×630px min)
     └── narrativeVoice1.jpg     # Action page banner
 ```
@@ -101,8 +93,7 @@ Articles (prefixed with `blog-`) follow this structure:
   ├── Standard meta (charset, viewport)
   ├── SEO meta (title, description)
   ├── Open Graph tags (og:title, og:description, og:url, og:image, og:site_name)
-  ├── Twitter Card tags (twitter:card, twitter:site, twitter:image)
-  ├── Google Fonts (current stack)
+
   ├── GoatCounter analytics script
   ├── <link rel="stylesheet" href="../style.css">
   ├── <link rel="icon" href="../Favicon.png">

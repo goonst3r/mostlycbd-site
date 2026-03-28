@@ -5,266 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Guide | mostlyCBD</title>
   <meta name="description" content="Understand your Endocannabinoid System, how CBD works, dosing protocols, and the science of terpenes. Written plainly. Cited honestly.">
-  <meta property="og:title" content="The Guide | mostlyCBD" />
-  <meta property="og:description" content="Understand your Endocannabinoid System, how CBD works, dosing protocols, and the science of terpenes. Written plainly. Cited honestly." />
-  <meta property="og:url" content="https://mostlycbd.com/guide.html" />
-  <meta property="og:site_name" content="mostlyCBD" />
-  <meta property="og:image" content="https://mostlycbd.com/images/bg_guide.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@scrapthescript" />
-  <meta name="twitter:image" content="https://mostlycbd.com/images/bg_guide.jpg" />
   <link rel="icon" type="image/png" href="Favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <script data-goatcounter="https://mostlycbd.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* ── design tokens ─────────────────────────────────────── */
-    :root {
-      --cream: #F5F0E8;
-      --dark:  #1A1208;
-      --rust:  #b84a2e;
-      --green: #2D5016;
-      --sage:  #6B8F4E;
-      --gold:  #D4B44A;
-      --brown: #8B7355;
-      --muted: #7A6E5F;
-      --olive: #5B6B4A;
-    }
-
-    /* ── base resets ───────────────────────────────────────── */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background: var(--cream);
-      font-family: 'Inter', sans-serif;
-      color: var(--dark);
-      line-height: 1.7;
-      padding: 0;
-    }
-
-    @media (max-width: 600px) {
-      body { padding: 0; }
-    }
-
-    /* ── site nav ──────────────────────────────────────────── */
-    .site-nav {
-      background-image: linear-gradient(rgba(244,241,235,0.85), rgba(244,241,235,0.80)), url('images/bg_header.jpeg');
-      background-size: cover;
-      background-position: center;
-      border-bottom: 1px solid rgba(52,78,65,0.12);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: block;
-      padding: 0;
-      margin: 0;
-    }
-
-    .site-nav__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1020px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 64px;
-      position: relative;
-    }
-
-    .site-nav__logo {
-      font-family: 'DM Mono', monospace;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: .04em;
-      color: #1C1B18;
-      text-decoration: none;
-    }
-
-    .site-nav__logo span { color: #3B6E52; }
-    .site-nav__logo:hover { color: #C4692A; }
-
-    .site-nav__links {
-      list-style: none;
-      display: flex;
-      gap: 28px;
-      align-items: center;
-      margin: 0;
-      padding: 0;
-    }
-
-    .site-nav__links a {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-      color: #5A5750;
-      text-decoration: none;
-      transition: color .15s ease;
-    }
-
-    .site-nav__links a:hover { color: #C4692A; }
-    .site-nav__links .rfer-nav { text-transform: none; font-size: 13px; font-weight: 700; letter-spacing: .06em; }
-    .site-nav__links .rfer-nav .lr1 { color: #2d5a27; }
-    .site-nav__links .rfer-nav .lf  { color: #D4B44A; }
-    .site-nav__links .rfer-nav .le  { color: #8B7355; }
-    .site-nav__links .rfer-nav .lr2 { color: #b84a2e; }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 24px;
-      height: 16px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-    }
-
-    .hamburger span { display: block; height: 2px; background: #5A5750; border-radius: 1px; transition: all .25s ease; }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    @media (max-width: 680px) {
-      .hamburger { display: flex; }
-      .site-nav__links {
-        display: none;
-        position: absolute;
-        top: 64px; left: 0; right: 0;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
-        background-image: linear-gradient(rgba(244,241,235,0.96), rgba(244,241,235,0.97)), url('images/bg_header.jpeg');
-        background-size: cover;
-        border-bottom: 1px solid rgba(52,78,65,0.12);
-        padding: 20px 24px 24px;
-      }
-      .site-nav__links.open { display: flex; }
-    }
-
-    /* ── page hero (full-bleed photo) ─────────────────────── */
-    .page-hero {
-      padding: 100px 0 88px;
-      background-image: linear-gradient(rgba(15,25,35,0.48), rgba(15,25,35,0.48)), url('images/bg_guide.jpg');
-      background-size: cover;
-      background-position: center;
-      text-align: center;
-    }
-
-    .page-hero__label {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 20px;
-    }
-
-    .page-hero__headline {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(48px, 7vw, 80px);
-      line-height: 0.95;
-      letter-spacing: 0.04em;
-      color: #fff;
-      margin-bottom: 24px;
-    }
-
-    .page-hero__sub {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.15rem;
-      font-style: italic;
-      color: rgba(255,255,255,0.82);
-      max-width: 520px;
-      line-height: 1.6;
-      margin: 0 auto;
-    }
-
-    /* ── site footer ───────────────────────────────────────── */
-    .site-footer {
-      border-top: 1px solid #C8C3B8;
-      padding: 40px 0 32px;
-      background: #EAE6DC;
-    }
-
-    .site-footer__inner {
-      max-width: 1020px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-
-    .site-footer__brand {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      color: #5A5750;
-    }
-
-    .site-footer__brand strong { display: block; font-size: 14px; color: #1C1B18; margin-bottom: 4px; }
-
-    .site-footer__taglines {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: #5A5750;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 14px;
-    }
-
-    .site-footer__socials { display: flex; gap: 18px; align-items: center; }
-    .site-footer__socials a { display: flex; color: #5A5750; text-decoration: none; transition: color .15s ease; }
-    .site-footer__socials a:hover { color: #3B6E52; }
-    .site-footer__socials svg { display: block; }
-
-    /* ── back to top ───────────────────────────────────────── */
-    #backToTop {
-      position: fixed;
-      bottom: 32px;
-      right: 32px;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.14em;
-      padding: 9px 14px;
-      background: var(--dark);
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s;
-      z-index: 50;
-    }
-
-    #backToTop.visible { opacity: 1; pointer-events: auto; }
-
-    /* ── evidence note (guide-specific) ───────────────────── */
-    .evidence-note {
-      background: #EAE6DC;
-      border-left: 3px solid var(--rust);
-      border-radius: 0 3px 3px 0;
-      padding: 16px 20px;
-      margin: 24px 0 8px;
-      font-size: 14px;
-      line-height: 1.6;
-      color: #5A5750;
-    }
-
-    .evidence-note strong {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--rust);
-      display: block;
-      margin-bottom: 6px;
-    }
+    .page-hero { padding: 100px 0 88px; background-image: linear-gradient(rgba(15,25,35,0.42), rgba(15,25,35,0.42)), url('images/bg_guide.jpg'); background-size: cover; background-position: center; border-radius: 0; border: none; text-align: center; margin-bottom: 0; box-shadow: none; }
+    .page-hero__label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #D4E7DC; margin-bottom: 22px; text-shadow: 0 1px 6px rgba(10,20,30,0.5); }
+    .page-hero__headline { font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(36px, 5.5vw, 56px); font-style: italic; line-height: 1.15; font-weight: 700; letter-spacing: 0.03em; color: #fff; margin-bottom: 28px; text-shadow: 0 1px 12px rgba(10,20,30,0.65); }
+    .page-hero__sub { font-size: 17px; color: rgba(255,255,255,0.82); max-width: 500px; line-height: 1.65; margin: 0 auto; text-shadow: 0 1px 8px rgba(10,20,30,0.55); }
+    .evidence-note { background: #EAE6DC; border-left: 3px solid #C4692A; border-radius: 0 3px 3px 0; padding: 16px 20px; margin: 24px 0 8px; font-size: 14px; line-height: 1.6; color: #5A5750; }
+    .evidence-note strong { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #C4692A; display: block; margin-bottom: 6px; }
   </style>
 </head>
 <body>
@@ -473,6 +230,7 @@
           <p class="terpene-card__desc">Anti-inflammatory and bronchodilatory — helps open airways. Research suggests it may support memory retention and counteract short-term cognitive effects of THC. A 2024 study documented neuroprotective properties against beta-amyloid toxicity. <em>Preclinical; neuroprotective research ongoing.</em></p>
           <p class="terpene-card__use">Best for: focus &bull; study &bull; memory &bull; clarity</p>
         </div>
+
 
         <div class="terpene-card terpene-card--linal">
           <h4>Linalool<span class="card-role">the Soother</span></h4>
@@ -755,8 +513,8 @@
     <div class="site-footer__inner">
       <div class="site-footer__brand">
         <strong>mostlycbd.com</strong>
-        Natural cannabis advocacy. No ads. No stigma.<br/>
-        © 2026 mostlycbd.com
+        Natural cannabis advocacy. Balanced profiles.<br/>
+        Hand-coded. GitHub Pages. No ads. No agenda but the evidence.
       </div>
       <div class="site-footer__taglines">
         <div>Educate to Regulate.<br/>Focused. Functional. Fair.</div>
