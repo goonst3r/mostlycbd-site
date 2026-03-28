@@ -140,11 +140,6 @@
         <!-- MAIN -->
         <div class="rdb-main">
 
-          <!-- Mobile filter toggle -->
-          <button class="mobile-filter-toggle" id="mobileFilterToggle" onclick="openFilters()">
-            <span>Filter Studies</span><span class="toggle-arrow">▼</span>
-          </button>
-
           <!-- Methodology note -->
           <div class="rdb-methodology">
             <strong>📊 How we score —</strong>
@@ -165,6 +160,11 @@
               <div class="legend-dot" style="background:var(--find-mix)"></div>Mixed / inconclusive
             </div>
           </div>
+
+          <!-- Mobile filter toggle — sits just above search bar -->
+          <button class="mobile-filter-toggle" id="mobileFilterToggle" onclick="openFilters()">
+            <span>Filter Studies</span><span class="toggle-arrow">▼</span>
+          </button>
 
           <!-- Toolbar: search + sort + count -->
           <div class="rdb-toolbar">
@@ -393,14 +393,8 @@
 
     // ── Clear search ──
     function clearSearch() {
-      const input = document.getElementById('searchInput');
-      input.value = '';
-      searchQuery = '';
-      activeKeyword = '';
-      document.querySelectorAll('.sidebar-kw').forEach(b => b.classList.remove('sidebar-kw--active'));
-      document.getElementById('searchClear').style.display = 'none';
-      render();
-      input.focus();
+      clearAll();
+      document.getElementById('searchInput').focus();
     }
 
     // ── Search ──

@@ -1,10 +1,10 @@
 {
   "meta": {
     "version": "1.0",
-    "last_updated": "2026-03-26",
-    "total_entries": 16,
+    "last_updated": "2026-03-28",
+    "total_entries": 17,
     "threshold_score": 60,
-    "description": "mostlyCBD Evidence Library — curated cannabis research. Scored, tagged, and human-reviewed before publish."
+    "description": "mostlyCBD Evidence Library \u00e2\u20ac\u201d curated cannabis research. Scored, tagged, and human-reviewed before publish."
   },
   "studies": [
     {
@@ -16,12 +16,29 @@
       "study_type": "systematic_review",
       "url": "https://www.mdpi.com/1424-8247/17/11/1438",
       "pubmed_id": null,
-      "plain_summary": "PRISMA-guided review of 40 studies on CBD for pain. Found consistent analgesic properties across neuropathic, inflammatory, and chronic pain — with no significant adverse effects reported in clinical or preclinical trials. Notes activation of 5HT-1A receptors as a likely mechanism.",
+      "plain_summary": "PRISMA-guided review of 40 studies on CBD for pain. Found consistent analgesic properties across neuropathic, inflammatory, and chronic pain \u00e2\u20ac\u201d with no significant adverse effects reported in clinical or preclinical trials. Notes activation of 5HT-1A receptors as a likely mechanism.",
       "finding": "positive",
-      "tags": ["pain", "neuropathy", "inflammation", "safety", "cbd-only", "mechanism"],
-      "conditions": ["chronic-pain", "neuropathic-pain", "inflammation"],
-      "cannabinoids": ["cbd"],
-      "audience": ["patient", "provider", "researcher"],
+      "tags": [
+        "pain",
+        "neuropathy",
+        "inflammation",
+        "safety",
+        "cbd-only",
+        "mechanism"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "neuropathic-pain",
+        "inflammation"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
       "sample_size": "500+ source articles screened, 40 included",
       "score": 88,
       "score_notes": "Systematic review following PRISMA, peer-reviewed, recent (2024), broad scope, no conflicts reported",
@@ -30,18 +47,33 @@
     {
       "id": "s002",
       "title": "Are Cannabis-Based Medicines a Useful Treatment for Neuropathic Pain? A Systematic Review",
-      "authors": "Almuntashiri N, El Sharazly BM, Carter WG — University of Nottingham",
+      "authors": "Almuntashiri N, El Sharazly BM, Carter WG \u00e2\u20ac\u201d University of Nottingham",
       "journal": "Biomolecules",
       "year": 2025,
       "study_type": "systematic_review",
       "url": "https://pubmed.ncbi.nlm.nih.gov/40563456/",
       "pubmed_id": "40563456",
-      "plain_summary": "Reviewed 22 RCTs from 2003–2024 on cannabis-based medicines for neuropathic pain. Found promising evidence for balanced THC:CBD formulations (nabiximols/Sativex), with low risk of bias in most studies. Notes regulatory barriers as a major obstacle to expanded research.",
+      "plain_summary": "Reviewed 22 RCTs from 2003\u00e2\u20ac\u201c2024 on cannabis-based medicines for neuropathic pain. Found promising evidence for balanced THC:CBD formulations (nabiximols/Sativex), with low risk of bias in most studies. Notes regulatory barriers as a major obstacle to expanded research.",
       "finding": "positive",
-      "tags": ["neuropathy", "rct", "balanced-ratio", "thc-cbd", "regulation"],
-      "conditions": ["neuropathic-pain"],
-      "cannabinoids": ["cbd", "thc", "balanced"],
-      "audience": ["provider", "researcher"],
+      "tags": [
+        "neuropathy",
+        "rct",
+        "balanced-ratio",
+        "thc-cbd",
+        "regulation"
+      ],
+      "conditions": [
+        "neuropathic-pain"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc",
+        "balanced"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
       "sample_size": "22 RCTs",
       "score": 91,
       "score_notes": "Fresh (2025), systematic review of RCTs, dual risk-of-bias review, peer-reviewed journal, no conflicts",
@@ -50,18 +82,36 @@
     {
       "id": "s003",
       "title": "Cannabis-Based Products for Chronic Pain: An Updated Systematic Review",
-      "authors": "Chou R, Fu R, Ahmed AY, Morasco BJ — Oregon Health & Science University",
+      "authors": "Chou R, Fu R, Ahmed AY, Morasco BJ \u00e2\u20ac\u201d Oregon Health & Science University",
       "journal": "Annals of Internal Medicine",
       "year": 2026,
       "study_type": "systematic_review",
       "url": "https://www.acpjournals.org/doi/10.7326/ANNALS-25-03152",
       "pubmed_id": "41429020",
-      "plain_summary": "25 RCTs (n=2,303; 64% neuropathic pain). Comparable THC:CBD ratio products probably reduce pain severity with small effect sizes. High-THC-only products showed increased adverse events. Calls for long-term outcome studies. AHRQ-funded — no industry conflicts.",
+      "plain_summary": "25 RCTs (n=2,303; 64% neuropathic pain). Comparable THC:CBD ratio products probably reduce pain severity with small effect sizes. High-THC-only products showed increased adverse events. Calls for long-term outcome studies. AHRQ-funded \u00e2\u20ac\u201d no industry conflicts.",
       "finding": "mixed",
-      "tags": ["pain", "neuropathy", "rct", "thc-cbd", "safety", "adverse-effects", "ratio"],
-      "conditions": ["chronic-pain", "neuropathic-pain"],
-      "cannabinoids": ["cbd", "thc", "balanced"],
-      "audience": ["provider", "researcher"],
+      "tags": [
+        "pain",
+        "neuropathy",
+        "rct",
+        "thc-cbd",
+        "safety",
+        "adverse-effects",
+        "ratio"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "neuropathic-pain"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc",
+        "balanced"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
       "sample_size": "2,303 participants across 25 RCTs",
       "score": 95,
       "score_notes": "Annals of Internal Medicine (top-tier), AHRQ-funded (no industry bias), 2026 publication, PROSPERO registered, dual extraction",
@@ -76,12 +126,23 @@
       "study_type": "systematic_review",
       "url": "https://pubmed.ncbi.nlm.nih.gov/37953193/",
       "pubmed_id": "37953193",
-      "plain_summary": "15 studies included from 8 databases. Majority showed pain reduction of 42–66% with CBD. Three studies showed no significant improvement. Concludes CBD may be useful for chronic pain but calls for more robust designs and standardized dosing protocols.",
+      "plain_summary": "15 studies included from 8 databases. Majority showed pain reduction of 42\u00e2\u20ac\u201c66% with CBD. Three studies showed no significant improvement. Concludes CBD may be useful for chronic pain but calls for more robust designs and standardized dosing protocols.",
       "finding": "positive",
-      "tags": ["pain", "cbd-only", "dosing"],
-      "conditions": ["chronic-pain"],
-      "cannabinoids": ["cbd"],
-      "audience": ["patient", "provider"],
+      "tags": [
+        "pain",
+        "cbd-only",
+        "dosing"
+      ],
+      "conditions": [
+        "chronic-pain"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "patient",
+        "provider"
+      ],
       "sample_size": "15 studies, 1,516 screened",
       "score": 80,
       "score_notes": "PRISMA-guided, multi-database, no conflicts, moderate heterogeneity across included studies",
@@ -98,10 +159,27 @@
       "pubmed_id": "38924898",
       "plain_summary": "Meta-analysis of 8 eligible studies (n=316). CBD showed a substantial effect on anxiety (Hedges' g = -0.92). 70% of highest-quality studies reported positive outcomes for GAD, SAD, and PTSD. 30% showed negative results for OCD, trichotillomania, and test anxiety. Calls for standardized dosing and longitudinal research.",
       "finding": "positive",
-      "tags": ["anxiety", "ptsd", "meta-analysis", "cbd-only", "gad", "social-anxiety"],
-      "conditions": ["anxiety", "ptsd", "gad"],
-      "cannabinoids": ["cbd"],
-      "audience": ["patient", "provider", "researcher"],
+      "tags": [
+        "anxiety",
+        "ptsd",
+        "meta-analysis",
+        "cbd-only",
+        "gad",
+        "social-anxiety"
+      ],
+      "conditions": [
+        "anxiety",
+        "ptsd",
+        "gad"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
       "sample_size": "316 participants, 8 studies",
       "score": 86,
       "score_notes": "Meta-analysis with effect size calculation, recent (2024), peer-reviewed, notes limitations honestly",
@@ -110,18 +188,35 @@
     {
       "id": "s006",
       "title": "Evidence for Use of Cannabinoids in Mood Disorders, Anxiety Disorders, and PTSD: A Systematic Review",
-      "authors": "Stanciu CN, Brunette MF, Teja N, Budney AJ — Dartmouth",
+      "authors": "Stanciu CN, Brunette MF, Teja N, Budney AJ \u00e2\u20ac\u201d Dartmouth",
       "journal": "Psychiatric Services",
       "year": 2021,
       "study_type": "systematic_review",
       "url": "https://pubmed.ncbi.nlm.nih.gov/33530732/",
       "pubmed_id": "33530732",
-      "plain_summary": "Only 8 controlled trials met inclusion criteria. Found insufficient evidence for CBD or THC to manage anxiety, mood disorders, or PTSD. Single-dose CBD showed acute anxiety reduction. High-dose THC in depressed patients worsened symptoms in >50%. Important counterweight — the evidence base is still thin.",
+      "plain_summary": "Only 8 controlled trials met inclusion criteria. Found insufficient evidence for CBD or THC to manage anxiety, mood disorders, or PTSD. Single-dose CBD showed acute anxiety reduction. High-dose THC in depressed patients worsened symptoms in >50%. Important counterweight \u00e2\u20ac\u201d the evidence base is still thin.",
       "finding": "negative",
-      "tags": ["anxiety", "ptsd", "depression", "mood", "evidence-gaps", "thc-risks"],
-      "conditions": ["anxiety", "ptsd", "depression"],
-      "cannabinoids": ["cbd", "thc"],
-      "audience": ["provider", "researcher"],
+      "tags": [
+        "anxiety",
+        "ptsd",
+        "depression",
+        "mood",
+        "evidence-gaps",
+        "thc-risks"
+      ],
+      "conditions": [
+        "anxiety",
+        "ptsd",
+        "depression"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
       "sample_size": "8 controlled trials",
       "score": 82,
       "score_notes": "Dartmouth, Psychiatric Services (peer-reviewed, clinical), honest negative finding, no conflicts",
@@ -136,12 +231,27 @@
       "study_type": "observational",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6326553/",
       "pubmed_id": "30624194",
-      "plain_summary": "72-patient chart review at a psychiatric clinic. Anxiety scores decreased in 79.2% within the first month and remained decreased. Sleep improved in 66.7% but fluctuated over time. CBD was well tolerated in all but 3 patients. Observational design — no control group.",
+      "plain_summary": "72-patient chart review at a psychiatric clinic. Anxiety scores decreased in 79.2% within the first month and remained decreased. Sleep improved in 66.7% but fluctuated over time. CBD was well tolerated in all but 3 patients. Observational design \u00e2\u20ac\u201d no control group.",
       "finding": "positive",
-      "tags": ["anxiety", "sleep", "cbd-only", "safety", "observational", "outpatient"],
-      "conditions": ["anxiety", "sleep"],
-      "cannabinoids": ["cbd"],
-      "audience": ["patient", "provider"],
+      "tags": [
+        "anxiety",
+        "sleep",
+        "cbd-only",
+        "safety",
+        "observational",
+        "outpatient"
+      ],
+      "conditions": [
+        "anxiety",
+        "sleep"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "patient",
+        "provider"
+      ],
       "sample_size": "72 adult patients",
       "score": 72,
       "score_notes": "Real-world clinical data, peer-reviewed, honest about limitations; docked for lack of control group",
@@ -156,12 +266,29 @@
       "study_type": "review",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4604171/",
       "pubmed_id": "26341731",
-      "plain_summary": "Foundational review of preclinical and clinical evidence. Demonstrates CBD's efficacy across GAD, panic disorder, SAD, OCD, and PTSD in animal models. Human data support anxiolytic effects with no anxiogenic properties and excellent safety profile. Notes all human studies used acute dosing — chronic dosing data lacking.",
+      "plain_summary": "Foundational review of preclinical and clinical evidence. Demonstrates CBD's efficacy across GAD, panic disorder, SAD, OCD, and PTSD in animal models. Human data support anxiolytic effects with no anxiogenic properties and excellent safety profile. Notes all human studies used acute dosing \u00e2\u20ac\u201d chronic dosing data lacking.",
       "finding": "positive",
-      "tags": ["anxiety", "ptsd", "gad", "cbd-only", "preclinical", "mechanism", "safety"],
-      "conditions": ["anxiety", "ptsd", "gad"],
-      "cannabinoids": ["cbd"],
-      "audience": ["provider", "researcher"],
+      "tags": [
+        "anxiety",
+        "ptsd",
+        "gad",
+        "cbd-only",
+        "preclinical",
+        "mechanism",
+        "safety"
+      ],
+      "conditions": [
+        "anxiety",
+        "ptsd",
+        "gad"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
       "sample_size": "Review (multiple studies)",
       "score": 83,
       "score_notes": "Neurotherapeutics (high-impact), foundational paper, NYU authors, docked slightly for age (2015) and limited chronic dosing data",
@@ -178,10 +305,29 @@
       "pubmed_id": null,
       "plain_summary": "14 outpatients with moderate-to-severe anxiety treated with 4 weeks of full-spectrum high-CBD sublingual solution (9.97 mg/mL CBD, 0.23 mg/mL THC). Significant anxiety reduction on primary outcomes. Improvements also in mood, sleep, quality of life, and executive function. No serious adverse events.",
       "finding": "positive",
-      "tags": ["anxiety", "sleep", "full-spectrum", "balanced-ratio", "cognition", "cbd-dominant", "clinical-trial"],
-      "conditions": ["anxiety", "sleep"],
-      "cannabinoids": ["cbd", "thc", "full-spectrum"],
-      "audience": ["patient", "provider", "researcher"],
+      "tags": [
+        "anxiety",
+        "sleep",
+        "full-spectrum",
+        "balanced-ratio",
+        "cognition",
+        "cbd-dominant",
+        "clinical-trial"
+      ],
+      "conditions": [
+        "anxiety",
+        "sleep"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc",
+        "full-spectrum"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
       "sample_size": "14 outpatients",
       "score": 79,
       "score_notes": "Nature Portfolio journal, full-spectrum (real-world relevant), docked for small n=14 and open-label design",
@@ -196,12 +342,33 @@
       "study_type": "review",
       "url": "https://pubmed.ncbi.nlm.nih.gov/17712817/",
       "pubmed_id": "17712817",
-      "plain_summary": "Reviews Phase I–III Sativex (1:1 THC:CBD) trials across 2,000 subjects with 1,000 patient-years exposure. Marked improvement in subjective sleep in patients with neuropathic pain, MS, cancer pain, and rheumatoid arthritis. CBD has mild activating effect; THC-dominant extracts show residual sedation. Foundational balanced-ratio data.",
+      "plain_summary": "Reviews Phase I\u00e2\u20ac\u201cIII Sativex (1:1 THC:CBD) trials across 2,000 subjects with 1,000 patient-years exposure. Marked improvement in subjective sleep in patients with neuropathic pain, MS, cancer pain, and rheumatoid arthritis. CBD has mild activating effect; THC-dominant extracts show residual sedation. Foundational balanced-ratio data.",
       "finding": "positive",
-      "tags": ["sleep", "pain", "neuropathy", "balanced-ratio", "thc-cbd", "long-term", "ms"],
-      "conditions": ["sleep", "chronic-pain", "neuropathic-pain", "ms"],
-      "cannabinoids": ["cbd", "thc", "balanced"],
-      "audience": ["patient", "provider", "researcher"],
+      "tags": [
+        "sleep",
+        "pain",
+        "neuropathy",
+        "balanced-ratio",
+        "thc-cbd",
+        "long-term",
+        "ms"
+      ],
+      "conditions": [
+        "sleep",
+        "chronic-pain",
+        "neuropathic-pain",
+        "ms"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc",
+        "balanced"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
       "sample_size": "2,000 subjects, 1,000 patient-years",
       "score": 84,
       "score_notes": "Ethan Russo (respected cannabinoid researcher), massive clinical dataset, docked for age (2007) and Sativex industry connection",
@@ -218,10 +385,24 @@
       "pubmed_id": "31810321",
       "plain_summary": "Examines how the ECS regulates neuroinflammation and seizure activity, and how cannabinoids may reduce incidence and severity of epileptic events. CBD highlighted as most promising therapeutic cannabinoid due to non-psychoactive profile and neuroprotective properties. Notes lack of rigorous long-term safety data.",
       "finding": "positive",
-      "tags": ["epilepsy", "ecs", "neuroinflammation", "mechanism", "cbd-only", "neuroprotection"],
-      "conditions": ["epilepsy"],
-      "cannabinoids": ["cbd"],
-      "audience": ["provider", "researcher"],
+      "tags": [
+        "epilepsy",
+        "ecs",
+        "neuroinflammation",
+        "mechanism",
+        "cbd-only",
+        "neuroprotection"
+      ],
+      "conditions": [
+        "epilepsy"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
       "sample_size": "Literature review",
       "score": 78,
       "score_notes": "Open access, clear mechanism review, peer-reviewed MDPI, docked for age and review-only design",
@@ -230,7 +411,7 @@
     {
       "id": "s012",
       "title": "Targeting Endocannabinoid System in Epilepsy: For Good or for Bad",
-      "authors": "Martínez-Aguirre C, Cinar R, Rocha L — Center for Research and Advanced Studies, Mexico City",
+      "authors": "Mart\u00c3\u00adnez-Aguirre C, Cinar R, Rocha L \u00e2\u20ac\u201d Center for Research and Advanced Studies, Mexico City",
       "journal": "Neuroscience",
       "year": 2022,
       "study_type": "review",
@@ -238,10 +419,24 @@
       "pubmed_id": "34923038",
       "plain_summary": "Presents a nuanced view: ECS activation can both suppress AND facilitate seizure activity depending on conditions. CB1 signaling can promote neuroinflammation under certain pathological conditions. Important counterbalance to purely positive framings of cannabinoid use in epilepsy.",
       "finding": "mixed",
-      "tags": ["epilepsy", "ecs", "mechanism", "adverse-effects", "cb1", "neuroinflammation"],
-      "conditions": ["epilepsy"],
-      "cannabinoids": ["thc", "cbd"],
-      "audience": ["researcher"],
+      "tags": [
+        "epilepsy",
+        "ecs",
+        "mechanism",
+        "adverse-effects",
+        "cb1",
+        "neuroinflammation"
+      ],
+      "conditions": [
+        "epilepsy"
+      ],
+      "cannabinoids": [
+        "thc",
+        "cbd"
+      ],
+      "audience": [
+        "researcher"
+      ],
       "sample_size": "Literature review",
       "score": 76,
       "score_notes": "Elsevier Neuroscience, honest mixed finding, important counterpoint, no conflicts",
@@ -250,27 +445,42 @@
     {
       "id": "s013",
       "title": "Oral Cannabis for Taxane-Induced Neuropathy: A Pilot Randomized Placebo-Controlled Study",
-      "authors": "Haney M, Choo T, Tiersten A et al. — Columbia University",
+      "authors": "Haney M, Choo T, Tiersten A et al. \u00e2\u20ac\u201d Columbia University",
       "journal": "Cannabis and Cannabinoid Research",
       "year": 2025,
       "study_type": "rct",
       "url": "https://pubmed.ncbi.nlm.nih.gov/40611810/",
       "pubmed_id": "40611810",
-      "plain_summary": "8-week double-blind RCT in breast cancer patients with taxane-induced neuropathy. Both groups improved over time, but cannabis patients had significantly higher neuropathy ratings and lower functional well-being in final weeks vs placebo. A carefully conducted negative trial — rare and valuable.",
+      "plain_summary": "8-week double-blind RCT in breast cancer patients with taxane-induced neuropathy. Both groups improved over time, but cannabis patients had significantly higher neuropathy ratings and lower functional well-being in final weeks vs placebo. A carefully conducted negative trial \u00e2\u20ac\u201d rare and valuable.",
       "finding": "negative",
-      "tags": ["neuropathy", "rct", "cancer", "adverse-effects", "negative-result"],
-      "conditions": ["neuropathic-pain", "cancer-related"],
-      "cannabinoids": ["thc", "cbd"],
-      "audience": ["provider", "researcher"],
+      "tags": [
+        "neuropathy",
+        "rct",
+        "cancer",
+        "adverse-effects",
+        "negative-result"
+      ],
+      "conditions": [
+        "neuropathic-pain",
+        "cancer-related"
+      ],
+      "cannabinoids": [
+        "thc",
+        "cbd"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
       "sample_size": "Pilot RCT (small n, specific population)",
       "score": 85,
-      "score_notes": "Columbia University, double-blind RCT design, 2025, rigorous — negative results are essential to include",
+      "score_notes": "Columbia University, double-blind RCT design, 2025, rigorous \u00e2\u20ac\u201d negative results are essential to include",
       "approved": true
     },
     {
       "id": "s014",
       "title": "Cannabidiol: A Potential New Alternative for the Treatment of Anxiety, Depression, and Psychotic Disorders",
-      "authors": "García-Gutiérrez MS et al.",
+      "authors": "Garc\u00c3\u00ada-Guti\u00c3\u00a9rrez MS et al.",
       "journal": "Frontiers in Psychiatry",
       "year": 2020,
       "study_type": "review",
@@ -278,10 +488,25 @@
       "pubmed_id": "33228239",
       "plain_summary": "Reviews animal and human data for CBD's anxiolytic, antidepressant, and antipsychotic potential. Effects are dose- and route-dependent. Key targets include CB1/CB2 receptors, 5-HT1A receptors, and neurogenesis factors. Preliminary clinical trials show positive risk-benefit profile. Calls for large-scale RCTs.",
       "finding": "positive",
-      "tags": ["anxiety", "depression", "psychosis", "cbd-only", "mechanism", "dose-dependent"],
-      "conditions": ["anxiety", "depression"],
-      "cannabinoids": ["cbd"],
-      "audience": ["provider", "researcher"],
+      "tags": [
+        "anxiety",
+        "depression",
+        "psychosis",
+        "cbd-only",
+        "mechanism",
+        "dose-dependent"
+      ],
+      "conditions": [
+        "anxiety",
+        "depression"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
       "sample_size": "Review (preclinical + clinical)",
       "score": 78,
       "score_notes": "Frontiers in Psychiatry, open access, honest about evidence gaps, no conflicts",
@@ -290,7 +515,7 @@
     {
       "id": "s015",
       "title": "ALS, the Endocannabinoid System, and Exogenous Cannabinoids: Current State and Clinical Implications",
-      "authors": "Denton TT, Carter GT, Goddard M et al. — Washington State University",
+      "authors": "Denton TT, Carter GT, Goddard M et al. \u00e2\u20ac\u201d Washington State University",
       "journal": "Muscle & Nerve",
       "year": 2025,
       "study_type": "review",
@@ -298,10 +523,30 @@
       "pubmed_id": "39936266",
       "plain_summary": "Reviews preclinical and emerging clinical evidence for cannabinoids in ALS. THC, CBD, CBG, and other cannabinoids show antioxidative, anti-inflammatory, and neuroprotective properties in SOD1 mouse models, including delayed disease onset and prolonged neuronal survival. Human clinical data remains limited.",
       "finding": "positive",
-      "tags": ["als", "neurodegeneration", "ecs", "cbd", "cbg", "thc", "neuroprotection", "inflammation"],
-      "conditions": ["als", "neurodegeneration"],
-      "cannabinoids": ["cbd", "thc", "cbg", "full-spectrum"],
-      "audience": ["provider", "researcher"],
+      "tags": [
+        "als",
+        "neurodegeneration",
+        "ecs",
+        "cbd",
+        "cbg",
+        "thc",
+        "neuroprotection",
+        "inflammation"
+      ],
+      "conditions": [
+        "als",
+        "neurodegeneration"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc",
+        "cbg",
+        "full-spectrum"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
       "sample_size": "Review (preclinical + early clinical)",
       "score": 80,
       "score_notes": "WSU/Steve Gleason Institute, Muscle & Nerve journal (respected), 2025, Ethan Russo co-author",
@@ -316,15 +561,69 @@
       "study_type": "preclinical",
       "url": "https://pubmed.ncbi.nlm.nih.gov/30239436/",
       "pubmed_id": "30239436",
-      "plain_summary": "Preclinical study demonstrating CBD reverses allodynia (pain from non-painful stimuli) and anxiety in a neuropathic pain model via 5-HT1A serotonin receptor activation. Directly relevant to patients who experience co-occurring neuropathic pain and anxiety — suggests a unified mechanism.",
+      "plain_summary": "Preclinical study demonstrating CBD reverses allodynia (pain from non-painful stimuli) and anxiety in a neuropathic pain model via 5-HT1A serotonin receptor activation. Directly relevant to patients who experience co-occurring neuropathic pain and anxiety \u00e2\u20ac\u201d suggests a unified mechanism.",
       "finding": "positive",
-      "tags": ["neuropathy", "anxiety", "mechanism", "serotonin", "cbd-only", "allodynia", "preclinical"],
-      "conditions": ["neuropathic-pain", "anxiety"],
-      "cannabinoids": ["cbd"],
-      "audience": ["researcher", "provider"],
+      "tags": [
+        "neuropathy",
+        "anxiety",
+        "mechanism",
+        "serotonin",
+        "cbd-only",
+        "allodynia",
+        "preclinical"
+      ],
+      "conditions": [
+        "neuropathic-pain",
+        "anxiety"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "researcher",
+        "provider"
+      ],
       "sample_size": "Preclinical (animal model)",
       "score": 74,
       "score_notes": "Published in PAIN (top-tier pain journal), important mechanism discovery, docked for preclinical-only design",
+      "approved": true
+    },
+    {
+      "id": "s017",
+      "title": "Oral capsules of tetra-hydro-cannabinol (THC), cannabidiol (CBD) and their combination in peripheral neuropathic pain treatment",
+      "authors": "Zubcevic K, Petersen M, Bach FW et al.",
+      "journal": "Eur J Pain",
+      "year": 2023,
+      "study_type": "randomized",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36571471/",
+      "pubmed_id": "36571471",
+      "plain_summary": "1. Eur J Pain. 2023 Apr;27(4):492-506.",
+      "finding": "positive",
+      "tags": [
+        "pain",
+        "neuropathy",
+        "cbd-only",
+        "thc",
+        "balanced",
+        "preclinical",
+        "rct"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "neuropathic-pain"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc",
+        "balanced"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "n=145",
+      "score": 60,
+      "score_notes": "Study type: randomized (+18); Journal: Eur J Pain (+12); Recency: 2023, 3 years old (+10); CBD relevance: 3 keywords (+12); Sample size signals (+8)",
       "approved": true
     }
   ]

@@ -1,0 +1,10 @@
+{
+  "meta": {
+    "generated": "2026-03-28T03:41:22.120764",
+    "pipeline_version": "1.0",
+    "threshold_used": 60,
+    "total_pending": 0,
+    "instructions": "Review each entry. Set 'approved': true for entries you want in the library. Then run: python build_evidence.py --approve"
+  },
+  "pending": []
+}
