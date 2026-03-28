@@ -574,7 +574,7 @@
       "sample_size": "n=494",
       "score": 58,
       "score_notes": "type:systematic review [text](+23) | journal:+8 | year:2025(+14) | cbd_relevance:2hits(+6) | sample(+7)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1114",
@@ -616,7 +616,7 @@
       "sample_size": "n=341",
       "score": 58,
       "score_notes": "type:systematic review [pubtype](+23) | journal:+8 | year:2025(+14) | cbd_relevance:2hits(+6) | sample(+7)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1134",
@@ -655,7 +655,7 @@
       "sample_size": "n=7017",
       "score": 58,
       "score_notes": "type:meta-analysis [pubtype](+25) | journal:+8 | year:2023(+10) | sample(+15)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1164",
@@ -692,7 +692,7 @@
       "sample_size": "n=33",
       "score": 58,
       "score_notes": "type:systematic review [pubtype](+23) | journal:+10 | year:2026(+15) | cbd_relevance:3hits(+9) | sample(+1)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1328",
@@ -739,7 +739,7 @@
       "sample_size": "See source",
       "score": 58,
       "score_notes": "type:meta-analysis [text](+25) | journal:+15 | year:2026(+15) | cbd_relevance:3hits(+9) | caution:-6",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1222",
@@ -778,7 +778,7 @@
       "sample_size": "n=74",
       "score": 57,
       "score_notes": "type:systematic review [pubtype](+23) | journal:+8 | year:2025(+14) | cbd_relevance:3hits(+9) | sample(+3)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1233",
@@ -826,7 +826,7 @@
       "sample_size": "n=5",
       "score": 57,
       "score_notes": "type:randomised controlled trial [text](+22) | journal:+8 | year:2026(+15) | cbd_relevance:4hits(+12)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1119",
@@ -867,7 +867,7 @@
       "sample_size": "n=153",
       "score": 56,
       "score_notes": "type:randomized controlled trial [pubtype](+22) | journal:+8 | year:2026(+15) | cbd_relevance:2hits(+6) | sample(+5)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1198",
@@ -902,7 +902,7 @@
       "sample_size": "n=178",
       "score": 56,
       "score_notes": "type:meta-analysis [text](+25) | journal:+8 | year:2026(+15) | cbd_relevance:1hits(+3) | sample(+5)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1276",
@@ -942,7 +942,7 @@
       "sample_size": "n=927",
       "score": 56,
       "score_notes": "type:meta-analysis [text](+25) | journal:+8 | year:2025(+14) | sample(+9)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1001",
@@ -1022,7 +1022,7 @@
       "sample_size": "See source",
       "score": 55,
       "score_notes": "type:systematic review [text](+23) | journal:+8 | year:2026(+15) | cbd_relevance:3hits(+9)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1056",
@@ -1066,7 +1066,7 @@
       "sample_size": "n=268",
       "score": 55,
       "score_notes": "type:randomised controlled trial [text](+22) | journal:+8 | year:2026(+15) | cbd_relevance:1hits(+3) | sample(+7)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1290",
@@ -1107,7 +1107,7 @@
       "sample_size": "n=028",
       "score": 55,
       "score_notes": "type:meta-analysis [pubtype](+25) | journal:+14 | year:2024(+12) | cbd_relevance:1hits(+3) | sample(+1)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1027",
@@ -1143,7 +1143,7 @@
       "sample_size": "See source",
       "score": 54,
       "score_notes": "type:meta-analysis [pubtype](+25) | journal:+12 | year:2025(+14) | sample(+3)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1061",
@@ -1179,7 +1179,7 @@
       "sample_size": "n=26",
       "score": 54,
       "score_notes": "type:meta-analysis [text](+25) | journal:+8 | year:2025(+14) | cbd_relevance:2hits(+6) | sample(+1)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1169",
@@ -15825,7 +15825,7 @@
       "sample_size": "See source",
       "score": 30,
       "score_notes": "type:journal article [pubtype](+8) | journal:+8 | year:2025(+14)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1267",
