@@ -21,520 +21,11 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Analytics -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <script data-goatcounter="https://mostlycbd.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="global.css">
   <link rel="icon" type="image/png" href="Favicon.png">
 
-  <style>
-    /* ── Design System Tokens ── */
-    :root {
-      --bg: #F5F0E8;
-      --text: #2D2D2D;
-      --green: #344E41;
-      --sage: #A3B18A;
-      --rust: #BC4749;
-      --gold: #E9C46A;
-      --card-bg: #FFFFFF;
-      --border: rgba(52,78,65,0.12);
-      --muted: rgba(45,45,45,0.55);
-      --find-pos: #3A7D44;
-      --find-neg: #8B4049;
-      --find-mix: #C4992A;
-    }
-
-    /* ── PAGE BODY FONT — scoped override (style.css uses DM Sans globally) ── */
-    .rdb-page, .rdb-hero, .rdb-page p, .rdb-page li {
-      font-family: 'Inter', system-ui, sans-serif;
-    }
-
-    /* ── PAGE SHELL ── */
-    .rdb-page {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 0 80px;
-    }
-
-    /* ── HERO — full-bleed green band ── */
-    .rdb-hero {
-      padding: 52px 24px 44px;
-      margin-bottom: 0;
-      background: var(--green);
-      color: #fff;
-    }
-    /* Inner content max-width matches page container */
-    .rdb-hero-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .rdb-hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(52px, 8vw, 84px);
-      line-height: 1;
-      color: #fff;
-      letter-spacing: .02em;
-      margin-bottom: 14px;
-    }
-    .rdb-hero p {
-      max-width: 620px;
-      font-size: 15px;
-      color: rgba(255,255,255,0.82);
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
-    .rdb-hero .eyebrow {
-      font-family: 'DM Mono', monospace;
-      font-size: 10.5px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 10px;
-      display: block;
-    }
-    .rdb-meta-strip {
-      display: flex;
-      gap: 28px;
-      flex-wrap: wrap;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: rgba(255,255,255,0.55);
-      letter-spacing: .04em;
-    }
-    .rdb-meta-strip strong {
-      color: var(--sage);
-      font-weight: 600;
-      margin-right: 4px;
-    }
-
-    /* ── LAYOUT: SIDEBAR + GRID ── */
-    .rdb-layout {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 32px;
-      align-items: start;
-      padding: 36px 20px 0;
-    }
-    @media (max-width: 860px) {
-      .rdb-layout { grid-template-columns: 1fr; }
-      .rdb-sidebar { display: none; }
-      .rdb-sidebar.mobile-open { display: block; }
-    }
-
-    /* ── SIDEBAR ── */
-    .rdb-sidebar {
-      position: sticky;
-      top: 72px;
-    }
-    .sidebar-section {
-      margin-bottom: 28px;
-    }
-    .sidebar-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 9.5px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 10px;
-      display: block;
-    }
-    .sidebar-btn {
-      display: block;
-      width: 100%;
-      text-align: left;
-      background: none;
-      border: none;
-      padding: 7px 10px;
-      border-radius: 4px;
-      font-family: 'Inter', sans-serif;
-      font-size: 13.5px;
-      color: var(--text);
-      cursor: pointer;
-      transition: background .15s, color .15s;
-      margin-bottom: 2px;
-    }
-    .sidebar-btn:hover {
-      background: rgba(52,78,65,.07);
-    }
-    .sidebar-btn.active {
-      background: var(--green);
-      color: #fff;
-      font-weight: 500;
-    }
-    .sidebar-divider {
-      height: 1px;
-      background: var(--border);
-      margin: 18px 0;
-    }
-    /* Finding color dots in sidebar */
-    .sidebar-btn .dot {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      margin-right: 7px;
-      vertical-align: middle;
-    }
-    .dot-pos { background: var(--find-pos); }
-    .dot-neg { background: var(--find-neg); }
-    .dot-mix { background: var(--find-mix); }
-
-    /* Mobile sidebar toggle */
-    .mobile-filter-toggle {
-      display: none;
-      align-items: center;
-      gap: 8px;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 8px 14px;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: var(--text);
-      cursor: pointer;
-      margin-bottom: 16px;
-    }
-    @media (max-width: 860px) {
-      .mobile-filter-toggle { display: flex; }
-    }
-
-    /* ── MAIN CONTENT AREA ── */
-    .rdb-main {}
-
-    /* Search + count bar */
-    .rdb-toolbar {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-    .rdb-search-wrap {
-      position: relative;
-      flex: 1;
-      min-width: 200px;
-    }
-    .rdb-search-wrap .search-icon {
-      position: absolute;
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 14px;
-      pointer-events: none;
-    }
-    .rdb-search {
-      width: 100%;
-      padding: 9px 12px 9px 36px;
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      background: var(--card-bg);
-      font-family: 'Inter', sans-serif;
-      font-size: 13.5px;
-      color: var(--text);
-      outline: none;
-      transition: border-color .2s;
-    }
-    .rdb-search:focus { border-color: var(--sage); }
-    .rdb-sort {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
-    .rdb-sort select {
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      background: var(--card-bg);
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      padding: 6px 10px;
-      color: var(--text);
-      cursor: pointer;
-      outline: none;
-    }
-    .rdb-count {
-      font-family: 'DM Mono', monospace;
-      font-size: 11.5px;
-      color: var(--muted);
-      letter-spacing: .04em;
-      white-space: nowrap;
-    }
-    .rdb-count strong { color: var(--green); }
-
-    /* ── FINDING LEGEND ── */
-    .rdb-legend {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-      font-family: 'DM Mono', monospace;
-      font-size: 10.5px;
-      color: var(--muted);
-      letter-spacing: .04em;
-    }
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .legend-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    /* ── STUDY CARDS ── */
-    #rdb-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .study-card2 {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 20px 22px 16px;
-      transition: box-shadow .2s, border-color .2s;
-    }
-    .study-card2:hover {
-      box-shadow: 0 4px 16px rgba(52,78,65,.08);
-      border-color: rgba(52,78,65,.22);
-    }
-
-    /* Card top row: badge + type label + year */
-    .card2-toprow {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-    .card2-finding-badge {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .card2-finding-badge.positive { background: var(--find-pos); }
-    .card2-finding-badge.negative { background: var(--find-neg); }
-    .card2-finding-badge.mixed    { background: var(--find-mix); }
-
-    .card2-type-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 9.5px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--green);
-      background: rgba(52,78,65,.08);
-      padding: 2px 7px;
-      border-radius: 3px;
-    }
-    .card2-year {
-      font-family: 'DM Mono', monospace;
-      font-size: 10.5px;
-      color: var(--muted);
-      margin-left: auto;
-    }
-
-    /* Title */
-    .card2-title {
-      font-family: 'Inter', sans-serif;
-      font-size: 15.5px;
-      font-weight: 600;
-      line-height: 1.35;
-      margin-bottom: 5px;
-      color: var(--text);
-    }
-    .card2-title a {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px dotted rgba(52,78,65,.35);
-    }
-    .card2-title a:hover { color: var(--green); border-bottom-color: var(--green); }
-
-    /* Authors / journal row */
-    .card2-byline {
-      font-family: 'DM Mono', monospace;
-      font-size: 10.5px;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-    .card2-byline em { font-style: italic; }
-
-    /* Summary */
-    .card2-summary {
-      font-size: 13.5px;
-      color: rgba(45,45,45,.8);
-      line-height: 1.6;
-      margin-bottom: 14px;
-    }
-
-    /* Bottom row: tags + score + link */
-    .card2-bottom {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .card2-tags {
-      display: flex;
-      gap: 5px;
-      flex-wrap: wrap;
-      flex: 1;
-    }
-    .card2-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 9.5px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--text);
-      background: rgba(163,177,138,.18);
-      border: 1px solid rgba(163,177,138,.35);
-      padding: 2px 7px;
-      border-radius: 3px;
-    }
-
-    /* Score bar */
-    .card2-score {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-shrink: 0;
-    }
-    .score-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .08em;
-    }
-    .score-bar {
-      width: 60px;
-      height: 4px;
-      background: rgba(52,78,65,.12);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .score-fill {
-      height: 100%;
-      background: var(--sage);
-      border-radius: 2px;
-      transition: width .4s;
-    }
-    .score-fill.high { background: var(--find-pos); }
-    .score-fill.mid  { background: var(--sage); }
-    .score-num {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--green);
-      font-weight: 500;
-      width: 22px;
-      text-align: right;
-    }
-
-    /* PubMed link */
-    .card2-link {
-      font-family: 'DM Mono', monospace;
-      font-size: 10.5px;
-      letter-spacing: .06em;
-      color: var(--green);
-      text-decoration: none;
-      border: 1px solid rgba(52,78,65,.25);
-      padding: 4px 10px;
-      border-radius: 3px;
-      white-space: nowrap;
-      transition: background .15s;
-    }
-    .card2-link:hover {
-      background: var(--green);
-      color: #fff;
-    }
-
-    /* Empty state */
-    .rdb-empty {
-      display: none;
-      text-align: center;
-      padding: 60px 20px;
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: .06em;
-    }
-
-    /* Loading */
-    .rdb-loading {
-      text-align: center;
-      padding: 60px 20px;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: .08em;
-      opacity: .5;
-    }
-
-    /* Methodology callout */
-    .rdb-methodology {
-      background: rgba(52,78,65,.05);
-      border-left: 3px solid var(--sage);
-      border-radius: 0 4px 4px 0;
-      padding: 14px 16px;
-      margin-bottom: 28px;
-      font-size: 13px;
-      color: rgba(45,45,45,.75);
-      line-height: 1.6;
-    }
-
-    /* Cross-links */
-    .rdb-crosslinks {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 52px;
-      padding-top: 28px;
-      border-top: 1px solid var(--border);
-    }
-    .crosslink2 {
-      flex: 1;
-      min-width: 160px;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      padding: 14px 16px;
-      text-decoration: none;
-      color: var(--text);
-      transition: border-color .2s, box-shadow .2s;
-    }
-    .crosslink2:hover {
-      border-color: var(--sage);
-      box-shadow: 0 2px 8px rgba(52,78,65,.08);
-      color: var(--green);
-    }
-    .crosslink2 span {
-      display: block;
-      font-family: 'DM Mono', monospace;
-      font-size: 9.5px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-    .crosslink2 strong {
-      font-family: 'Inter', sans-serif;
-      font-size: 13.5px;
-      font-weight: 600;
-    }
-
-  </style>
 </head>
 <body>
 
@@ -585,6 +76,11 @@
 
         <!-- SIDEBAR -->
         <aside class="rdb-sidebar" id="sidebar">
+
+          <button class="rdb-sidebar-close" onclick="closeFilters()" aria-label="Close filters">✕</button>
+
+          <span class="rdb-sidebar-heading">Filter Studies</span>
+          <button class="rdb-clear-all" id="clearAllBtn" onclick="clearAll()">// Reset Filters</button>
 
           <div class="sidebar-section">
             <span class="sidebar-label">Health Condition</span>
@@ -645,8 +141,8 @@
         <div class="rdb-main">
 
           <!-- Mobile filter toggle -->
-          <button class="mobile-filter-toggle" onclick="document.getElementById('sidebar').classList.toggle('mobile-open'); this.textContent = document.getElementById('sidebar').classList.contains('mobile-open') ? '▲ Hide Filters' : '▼ Show Filters'">
-            ▼ Show Filters
+          <button class="mobile-filter-toggle" id="mobileFilterToggle" onclick="openFilters()">
+            <span>Filter Studies</span><span class="toggle-arrow">▼</span>
           </button>
 
           <!-- Methodology note -->
@@ -681,6 +177,7 @@
                 placeholder="Search title, author, condition, keyword..."
                 autocomplete="off"
               />
+              <button class="rdb-search-clear" id="searchClear" onclick="clearSearch()" aria-label="Clear search">✕</button>
             </div>
             <div class="rdb-sort">
               Sort by
@@ -691,6 +188,11 @@
               </select>
             </div>
             <div class="rdb-count"><strong id="result-count">—</strong> Studies Found</div>
+          </div>
+
+          <!-- Reset search — always visible below search bar -->
+          <div class="rdb-reset-row">
+            <button class="rdb-search-clear-text" id="searchClearText" onclick="clearSearch()">// Reset Search</button>
           </div>
 
           <!-- Grid -->
@@ -727,6 +229,9 @@
       </div><!-- /rdb-layout -->
     </div><!-- /rdb-page -->
   </main>
+
+  <!-- Mobile sidebar backdrop -->
+  <div class="rdb-sidebar-backdrop" id="sidebarBackdrop" onclick="closeFilters()"></div>
 
   <!-- FOOTER -->
   <footer class="site-footer">
@@ -767,10 +272,40 @@
   <a href="#top" id="backToTop">↑ TOP</a>
 
   <script>
+    // ── Clear all ──
+    function clearAll() {
+      activeFilters = { condition: 'all', type: 'all', finding: 'all' };
+      searchQuery = '';
+      activeKeyword = '';
+      document.getElementById('searchInput').value = '';
+      document.getElementById('searchClear').style.display = 'none';
+      document.querySelectorAll('.sidebar-btn[data-filter]').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.value === 'all');
+      });
+      document.querySelectorAll('.sidebar-kw').forEach(b => b.classList.remove('sidebar-kw--active'));
+      render();
+    }
+
+    // ── Mobile filter panel ──
+    function openFilters() {
+      document.getElementById('sidebar').classList.add('mobile-open');
+      document.getElementById('sidebarBackdrop').classList.add('active');
+      document.body.classList.add('rdb-filters-open');
+      document.documentElement.style.overflow = 'hidden';
+    }
+
+    function closeFilters() {
+      document.getElementById('sidebar').classList.remove('mobile-open');
+      document.getElementById('sidebarBackdrop').classList.remove('active');
+      document.body.classList.remove('rdb-filters-open');
+      document.documentElement.style.overflow = '';
+    }
+
     // ── State ──
     let allStudies = [];
     let activeFilters = { condition: 'all', type: 'all', finding: 'all' };
     let searchQuery = '';
+    let activeKeyword = '';
     let sortMode = 'score';
 
     // ── Type label map ──
@@ -825,8 +360,21 @@
       cloud.querySelectorAll('.sidebar-kw').forEach(btn => {
         btn.addEventListener('click', () => {
           const kw = btn.dataset.kw;
-          document.getElementById('searchInput').value = kw;
-          searchQuery = kw;
+          if (activeKeyword === kw) {
+            activeKeyword = '';
+            searchQuery = '';
+            document.getElementById('searchInput').value = '';
+            document.getElementById('searchClear').style.display = 'none';
+          } else {
+            activeKeyword = kw;
+            searchQuery = kw;
+            document.getElementById('searchInput').value = kw;
+            document.getElementById('searchClear').style.display = 'block';
+          }
+          // update highlight on all kw buttons
+          cloud.querySelectorAll('.sidebar-kw').forEach(b => {
+            b.classList.toggle('sidebar-kw--active', b.dataset.kw === activeKeyword);
+          });
           render();
         });
       });
@@ -843,12 +391,32 @@
       });
     });
 
+    // ── Clear search ──
+    function clearSearch() {
+      const input = document.getElementById('searchInput');
+      input.value = '';
+      searchQuery = '';
+      activeKeyword = '';
+      document.querySelectorAll('.sidebar-kw').forEach(b => b.classList.remove('sidebar-kw--active'));
+      document.getElementById('searchClear').style.display = 'none';
+      render();
+      input.focus();
+    }
+
     // ── Search ──
     let searchTimeout;
     document.getElementById('searchInput').addEventListener('input', e => {
       clearTimeout(searchTimeout);
+      const val = e.target.value;
+      const hasText = val.length > 0;
+      document.getElementById('searchClear').style.display = hasText ? 'block' : 'none';
       searchTimeout = setTimeout(() => {
-        searchQuery = e.target.value.toLowerCase().trim();
+        searchQuery = val.toLowerCase().trim();
+        // Deactivate keyword pill if user types manually
+        if (activeKeyword && searchQuery !== activeKeyword) {
+          activeKeyword = '';
+          document.querySelectorAll('.sidebar-kw').forEach(b => b.classList.remove('sidebar-kw--active'));
+        }
         render();
       }, 180);
     });
