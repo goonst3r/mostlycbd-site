@@ -16,7 +16,7 @@
       "study_type": "systematic_review",
       "url": "https://www.mdpi.com/1424-8247/17/11/1438",
       "pubmed_id": null,
-      "plain_summary": "PRISMA-guided review of 40 studies on CBD for pain. Found consistent analgesic properties across neuropathic, inflammatory, and chronic pain with no significant adverse effects reported in clinical or preclinical trials. Notes activation of 5HT-1A receptors as a likely mechanism.",
+      "plain_summary": "PRISMA-guided review of studies on CBD for pain. Found consistent analgesic properties across neuropathic, inflammatory, and chronic pain with no significant adverse effects reported in clinical or preclinical trials. Notes activation of HT-A receptors as a likely mechanism.",
       "finding": "positive",
       "tags": [
         "pain",
@@ -53,7 +53,7 @@
       "study_type": "systematic_review",
       "url": "https://www.mdpi.com/2218-273X/15/6/816",
       "pubmed_id": "40563456",
-      "plain_summary": "Reviewed 22 RCTs from 2003 - 2024 on cannabis-based medicines for neuropathic pain. Found promising evidence for balanced THC:CBD formulations (nabiximols/Sativex), with low risk of bias in most studies. Notes regulatory barriers as a major obstacle to expanded research.",
+      "plain_summary": "Reviewed RCTs from - on cannabis-based medicines for neuropathic pain. Found promising evidence for balanced THC:CBD formulations (nabiximols/Sativex), with low risk of bias in most studies. Notes regulatory barriers as a major obstacle to expanded research.",
       "finding": "positive",
       "tags": [
         "neuropathy",
@@ -88,7 +88,7 @@
       "study_type": "systematic_review",
       "url": "https://www.acpjournals.org/doi/10.7326/ANNALS-25-03152",
       "pubmed_id": "41429020",
-      "plain_summary": "25 RCTs (n=2303; 64% neuropathic pain). Comparable THC:CBD ratio products may slightly reduce pain severity with small effect sizes. High-THC-only products showed increased adverse events. Calls for long-term outcome studies.",
+      "plain_summary": "Comparable THC:CBD ratio products may slightly reduce pain severity with small effect sizes. High-THC-only products showed increased adverse events.",
       "finding": "mixed",
       "tags": [
         "pain",
@@ -126,7 +126,7 @@
       "study_type": "systematic_review",
       "url": "https://pubmed.ncbi.nlm.nih.gov/37953193/",
       "pubmed_id": "37953193",
-      "plain_summary": "15 studies included from 8 databases. Majority showed pain reduction of 42 - 66% with CBD. Three studies showed no significant improvement. Concludes CBD may be useful for chronic pain but calls for more robust designs and standardized dosing protocols.",
+      "plain_summary": "Majority showed pain reduction of - % with CBD. Three studies showed no significant improvement. Concludes CBD may be useful for chronic pain but calls for more robust designs and standardized dosing protocols.",
       "finding": "positive",
       "tags": [
         "pain",
@@ -157,7 +157,7 @@
       "study_type": "meta_analysis",
       "url": "https://pubmed.ncbi.nlm.nih.gov/38924898/",
       "pubmed_id": "38924898",
-      "plain_summary": "Meta-analysis of 8 eligible studies (n=316). CBD showed a substantial effect on anxiety (Hedges' g = -0.92). 70% of highest-quality studies reported positive outcomes for GAD, SAD, and PTSD. 30% showed negative results for OCD, trichotillomania, and test anxiety. Calls for standardized dosing and longitudinal research.",
+      "plain_summary": "CBD showed a substantial effect on anxiety (Hedges' g = -.). % of highest-quality studies reported positive outcomes for GAD, SAD, and PTSD. % showed negative results for OCD, trichotillomania, and test anxiety.",
       "finding": "positive",
       "tags": [
         "anxiety",
@@ -194,7 +194,7 @@
       "study_type": "systematic_review",
       "url": "https://pubmed.ncbi.nlm.nih.gov/33530732/",
       "pubmed_id": "33530732",
-      "plain_summary": "Only 8 controlled trials met inclusion criteria. Found insufficient evidence for CBD or THC to manage anxiety, mood disorders, or PTSD. Single-dose CBD showed acute anxiety reduction. High-dose THC in depressed patients worsened symptoms in >50%. Important counterweight - the evidence base is still thin.",
+      "plain_summary": "Only controlled trials met inclusion criteria. Found insufficient evidence for CBD or THC to manage anxiety, mood disorders, or PTSD. Single-dose CBD showed acute anxiety reduction.",
       "finding": "negative",
       "tags": [
         "anxiety",
@@ -231,7 +231,7 @@
       "study_type": "observational",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6326553/",
       "pubmed_id": "30624194",
-      "plain_summary": "72-patient chart review at a psychiatric clinic. Anxiety scores decreased in 79.2% within the first month and remained decreased. Sleep improved in 66.7% but fluctuated over time. CBD was well tolerated in all but 3 patients. Observational design &mdash; no control group.",
+      "plain_summary": "-patient chart review at a psychiatric clinic. Anxiety scores decreased in .% within the first month and remained decreased. Sleep improved in .% but fluctuated over time.",
       "finding": "positive",
       "tags": [
         "anxiety",
@@ -266,7 +266,7 @@
       "study_type": "review",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4604171/",
       "pubmed_id": "26341731",
-      "plain_summary": "Foundational review of preclinical and clinical evidence. Demonstrates CBD's efficacy across GAD, panic disorder, SAD, OCD, and PTSD in animal models. Human data support anxiolytic effects with no anxiogenic properties and excellent safety profile. Notes all human studies used acute dosing &mdash; chronic dosing data lacking.",
+      "plain_summary": "Foundational review of preclinical and clinical evidence. Demonstrates CBD's efficacy across GAD, panic disorder, SAD, OCD, and PTSD in animal models. Human data support anxiolytic effects with no anxiogenic properties and excellent safety profile.",
       "finding": "positive",
       "tags": [
         "anxiety",
@@ -303,7 +303,7 @@
       "study_type": "clinical_trial",
       "url": "https://www.nature.com/articles/s43856-022-00202-8",
       "pubmed_id": null,
-      "plain_summary": "14 outpatients with moderate-to-severe anxiety treated with 4 weeks of full-spectrum high-CBD sublingual solution (9.97 mg/mL CBD, 0.23 mg/mL THC). Significant anxiety reduction on primary outcomes. Improvements also in mood, sleep, quality of life, and executive function. No serious adverse events.",
+      "plain_summary": "Outpatients with moderate-to-severe anxiety treated with weeks of full-spectrum high-CBD sublingual solution (. Significant anxiety reduction on primary outcomes. Improvements also in mood, sleep, quality of life, and executive function.",
       "finding": "positive",
       "tags": [
         "anxiety",
@@ -342,7 +342,7 @@
       "study_type": "review",
       "url": "https://pubmed.ncbi.nlm.nih.gov/17712817/",
       "pubmed_id": "17712817",
-      "plain_summary": "Reviews Phase I\u00e2\u20ac\u201cIII Sativex (1:1 THC:CBD) trials across 2,000 subjects with 1,000 patient-years exposure. Marked improvement in subjective sleep in patients with neuropathic pain, MS, cancer pain, and rheumatoid arthritis. CBD has mild activating effect; THC-dominant extracts show residual sedation. Foundational balanced-ratio data.",
+      "plain_summary": "Reviews Phase I–III Sativex (1:1 THC:CBD) trials across 2,000 subjects with 1,000 patient-years exposure. Marked improvement in subjective sleep in patients with neuropathic pain, MS, cancer pain, and rheumatoid arthritis. CBD has mild activating effect; THC-dominant extracts show residual sedation.",
       "finding": "positive",
       "tags": [
         "sleep",
@@ -411,13 +411,13 @@
     {
       "id": "s012",
       "title": "Targeting Endocannabinoid System in Epilepsy: For Good or for Bad",
-      "authors": "Mart\u00c3\u00adnez-Aguirre C, Cinar R, Rocha L &mdash; Center for Research and Advanced Studies, Mexico City",
+      "authors": "MartÃ­nez-Aguirre C, Cinar R, Rocha L &mdash; Center for Research and Advanced Studies, Mexico City",
       "journal": "Neuroscience",
       "year": 2022,
       "study_type": "review",
       "url": "https://pubmed.ncbi.nlm.nih.gov/34923038/",
       "pubmed_id": "34923038",
-      "plain_summary": "Presents a nuanced view: ECS activation can both suppress AND facilitate seizure activity depending on conditions. CB1 signaling can promote neuroinflammation under certain pathological conditions. Important counterbalance to purely positive framings of cannabinoid use in epilepsy.",
+      "plain_summary": "Presents a nuanced view: ECS activation can both suppress AND facilitate seizure activity depending on conditions. CB signaling can promote neuroinflammation under certain pathological conditions. Important counterbalance to purely positive framings of cannabinoid use in epilepsy.",
       "finding": "mixed",
       "tags": [
         "epilepsy",
@@ -451,7 +451,7 @@
       "study_type": "rct",
       "url": "https://pubmed.ncbi.nlm.nih.gov/40611810/",
       "pubmed_id": "40611810",
-      "plain_summary": "8-week double-blind RCT in breast cancer patients with taxane-induced neuropathy. Both groups improved over time, but cannabis patients had significantly higher neuropathy ratings and lower functional well-being in final weeks vs placebo. A carefully conducted negative trial &mdash; rare and valuable.",
+      "plain_summary": "-week double-blind RCT in breast cancer patients with taxane-induced neuropathy. Both groups improved over time, but cannabis patients had significantly higher neuropathy ratings and lower functional well-being in final weeks vs placebo. A carefully conducted negative trial &mdash; rare and valuable.",
       "finding": "negative",
       "tags": [
         "neuropathy",
@@ -480,13 +480,13 @@
     {
       "id": "s014",
       "title": "Cannabidiol: A Potential New Alternative for the Treatment of Anxiety, Depression, and Psychotic Disorders",
-      "authors": "Garc\u00c3\u00ada-Guti\u00c3\u00a9rrez MS et al.",
+      "authors": "GarcÃ­a-GutiÃ©rrez MS et al.",
       "journal": "Frontiers in Psychiatry",
       "year": 2020,
       "study_type": "review",
       "url": "https://pubmed.ncbi.nlm.nih.gov/33228239/",
       "pubmed_id": "33228239",
-      "plain_summary": "Reviews animal and human data for CBD's anxiolytic, antidepressant, and antipsychotic potential. Effects are dose- and route-dependent. Key targets include CB1/CB2 receptors, 5-HT1A receptors, and neurogenesis factors. Preliminary clinical trials show positive risk-benefit profile. Calls for large-scale RCTs.",
+      "plain_summary": "Reviews animal and human data for CBD's anxiolytic, antidepressant, and antipsychotic potential. Key targets include CB/CB receptors, -HTA receptors, and neurogenesis factors. Preliminary clinical trials show positive risk-benefit profile.",
       "finding": "positive",
       "tags": [
         "anxiety",
@@ -521,7 +521,7 @@
       "study_type": "review",
       "url": "https://pubmed.ncbi.nlm.nih.gov/39936266/",
       "pubmed_id": "39936266",
-      "plain_summary": "Reviews preclinical and emerging clinical evidence for cannabinoids in ALS. THC, CBD, CBG, and other cannabinoids show antioxidative, anti-inflammatory, and neuroprotective properties in SOD1 mouse models, including delayed disease onset and prolonged neuronal survival. Human clinical data remains limited.",
+      "plain_summary": "Reviews preclinical and emerging clinical evidence for cannabinoids in ALS. THC, CBD, CBG, and other cannabinoids show antioxidative, anti-inflammatory, and neuroprotective properties in SOD mouse models, including delayed disease onset and prolonged neuronal survival.",
       "finding": "positive",
       "tags": [
         "als",
@@ -561,7 +561,7 @@
       "study_type": "preclinical",
       "url": "https://pubmed.ncbi.nlm.nih.gov/30239436/",
       "pubmed_id": "30239436",
-      "plain_summary": "Preclinical study demonstrating CBD reverses allodynia (pain from non-painful stimuli) and anxiety in a neuropathic pain model via 5-HT1A serotonin receptor activation. Directly relevant to patients who experience co-occurring neuropathic pain and anxiety &mdash; suggests a unified mechanism.",
+      "plain_summary": "Preclinical study demonstrating CBD reverses allodynia (pain from non-painful stimuli) and anxiety in a neuropathic pain model via -HTA serotonin receptor activation. Directly relevant to patients who experience co-occurring neuropathic pain and anxiety &mdash; suggests a unified mechanism.",
       "finding": "positive",
       "tags": [
         "neuropathy",
@@ -630,14 +630,14 @@
       "id": "s018",
       "source": "pubmed",
       "title": "Cannabis-based medicines for chronic neuropathic pain in adults",
-      "authors": "Ate\u015f G, Welsch P, Klose P et al.",
+      "authors": "Ateş G, Welsch P, Klose P et al.",
       "journal": "Cochrane Database Syst Rev",
       "year": 2026,
       "study_type": "meta_analysis",
       "url": "https://pubmed.ncbi.nlm.nih.gov/41548880/",
       "pubmed_id": "41548880",
       "doi": null,
-      "plain_summary": "Ate\u015f G(), Welsch P(), Klose P(), Phillips T(), Lambers B()(), H\u00e4user W()(), Radbruch L(). Author information:\n()Institute for Digitalization and General Medicine, Center for Rare Diseases Aachen (ZSEA), Medical Faculty RWTH Aachen University, Aachen, Germany. ()Medical Center Pain Medicine and Mental Health, Saarbr\u00fccken, Germany.",
+      "plain_summary": "Ateş G(), Welsch P(), Klose P(), Phillips T(), Lambers B()(), Häuser W()(), Radbruch L(). Author information:\n()Institute for Digitalization and General Medicine, Center for Rare Diseases Aachen (ZSEA), Medical Faculty RWTH Aachen University, Aachen, Germany. ()Medical Center Pain Medicine and Mental Health, Saarbrücken, Germany.",
       "finding": "mixed",
       "tags": [
         "pain",
@@ -729,7 +729,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40929927/",
       "pubmed_id": "40929927",
       "doi": null,
-      "plain_summary": "subjective sleep quality in people with and without insomnia or poor sleep: A systematic review and meta-analysis of randomised studies. da Silva GHS(), Barbosa EC(), de Lima FR(), Barroso DC(), Paez LEFE(), Guimar\u00e3es FBM(), Lan\u00e7a SB(), de Faria SBC(), Petrucci ABC(), Garbacka A(), Walsh JH(). Author information:\n()Department of Medicine, Catholic University of Pernambuco, Recife, Brazil.",
+      "plain_summary": "Subjective sleep quality in people with and without insomnia or poor sleep: A systematic review and meta-analysis of randomised studies.",
       "finding": "mixed",
       "tags": [
         "anxiety",
@@ -760,14 +760,14 @@
       "id": "s021",
       "source": "pubmed",
       "title": "CARE - A Retrospective, Dual-Cohort, 24-Week Real-World Study from the German Pain e-Registry on the Effectiveness and Safety of CBD-Dominant Oral Cannabis Extracts versus THC/Dronabinol in Older Patients with Chronic Pain",
-      "authors": "\u00dcberall MA, M\u00fcller-Schwefe PCG, K\u00fcster MA et al.",
+      "authors": "Überall MA, Müller-Schwefe PCG, Küster MA et al.",
       "journal": "J Pain Res",
       "year": 2026,
       "study_type": "rct",
       "url": "https://pubmed.ncbi.nlm.nih.gov/41821925/",
       "pubmed_id": "41821925",
       "doi": null,
-      "plain_summary": ", -Week Real-World Study from the German Pain e-Registry on the Effectiveness and Safety of CBD-Dominant Oral Cannabis Extracts versus THC/Dronabinol in Older Patients with Chronic Pain. \u00dcberall MA(), M\u00fcller-Schwefe PCG(), K\u00fcster MA(), M\u00fcller-Schwefe GHH(). Author information:\n()IFNAP - Private Institute of Neurological Sciences; O.",
+      "plain_summary": ", -Week Real-World Study from the German Pain e-Registry on the Effectiveness and Safety of CBD-Dominant Oral Cannabis Extracts versus THC/Dronabinol in Older Patients with Chronic Pain.",
       "finding": "positive",
       "tags": [
         "pain",
@@ -809,7 +809,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40705150/",
       "pubmed_id": "40705150",
       "doi": null,
-      "plain_summary": "cancer: a double-blind, placebo-controlled, randomised clinical trial of : tetrahydrocannabinol and cannabidiol. Hardy JR(), Greer RM()(), Pelecanos AM()(), Huggett GE()(), Kearney AM()(), Gurgenci TH()(), Good PD()()(). Author information:\n()Mater Research Institute, University of Queensland, Aubigny Place, Mater Health SEQ, Brisbane, QLD, , Australia.",
+      "plain_summary": "Summary not available. See source for full abstract.",
       "finding": "positive",
       "tags": [
         "pain",
@@ -853,7 +853,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41897881/",
       "pubmed_id": "41897881",
       "doi": null,
-      "plain_summary": "a Full-Spectrum Oral Cannabis sativa Oil Extract, Standardized Based on CBD-A, CBD and THC-A, THC in Canines with Chronic Osteoarthritis. Benjamin ET(), Maria Teresa SE(), Alexander NS(), Stephanie SA(), Mart\u00edn SC(), Sylvia AB(). Author information:\n()Escuela de Medicina Veterinaria, Facultad de Medicina y Ciencias de la Salud, Universidad Mayor, La Pir\u00e1mide , Huechuraba , Chile.",
+      "plain_summary": "a Full-Spectrum Oral Cannabis sativa Oil Extract, Standardized Based on CBD-A, CBD and THC-A, THC in Canines with Chronic Osteoarthritis. Benjamin ET(), Maria Teresa SE(), Alexander NS(), Stephanie SA(), Martín SC(), Sylvia AB(). Author information:\n()Escuela de Medicina Veterinaria, Facultad de Medicina y Ciencias de la Salud, Universidad Mayor, La Pirámide , Huechuraba , Chile.",
       "finding": "positive",
       "tags": [
         "pain",
@@ -894,7 +894,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40932699/",
       "pubmed_id": "40932699",
       "doi": null,
-      "plain_summary": "of Life of Cancer Patients: A Critical Review. Author information:\n()Programa de P\u00f3s-Gradua\u00e7\u00e3o Interdisciplinar em Ci\u00eancias da Sa\u00fade, Universidade Federal de S\u00e3o Paulo (UNIFESP), Santos, Brazil. ()Departamento de Bioci\u00eancias, Instituto de Sa\u00fade e Sociedade, Universidade Federal de S\u00e3o Paulo (UNIFESP), Santos, Brazil.",
+      "plain_summary": "of Life of Cancer Patients: A Critical Review. Author information:\n()Programa de Pós-Graduação Interdisciplinar em Ciências da Saúde, Universidade Federal de São Paulo (UNIFESP), Santos, Brazil. ()Departamento de Biociências, Instituto de Saúde e Sociedade, Universidade Federal de São Paulo (UNIFESP), Santos, Brazil.",
       "finding": "mixed",
       "tags": [
         "pain",
@@ -940,7 +940,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41760917/",
       "pubmed_id": "41760917",
       "doi": null,
-      "plain_summary": "noid system in alcohol use disorder: A translational systematic review and meta-analysis of preclinical and human studies. Costa GPA(#)()(), Cerezo-Matias MA(#)()(), Funaro MC(), Bagdas D()(), Kaye A(), Krystal J(), Petrakis I(), De Aquino JP()()(). Author information:\n()Department of Psychiatry, Yale University School of Medicine, New Haven, CT, USA.",
+      "plain_summary": "Noid system in alcohol use disorder: A translational systematic review and meta-analysis of preclinical and human studies.",
       "finding": "positive",
       "tags": [
         "cbd-only",
@@ -976,7 +976,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40437694/",
       "pubmed_id": "40437694",
       "doi": null,
-      "plain_summary": "Chhabra M(), Paul A(), Abulannaz O()(), L\u00ea ML(), Mansell H(), Finkelstein Y(), Huntsman RJ(), Kelly LE()(). Author information:\n()Department of Pharmacology and Therapeutics, Max Rady College of Medicine, University of Manitoba, Winnipeg, Canada. ()Department of Pharmacology, Faculty of Medicine, Jordan University of Science and Technology, Ar-Ramtha, Jordan.",
+      "plain_summary": "Chhabra M(), Paul A(), Abulannaz O()(), Lê ML(), Mansell H(), Finkelstein Y(), Huntsman RJ(), Kelly LE()(). Author information:\n()Department of Pharmacology and Therapeutics, Max Rady College of Medicine, University of Manitoba, Winnipeg, Canada. ()Department of Pharmacology, Faculty of Medicine, Jordan University of Science and Technology, Ar-Ramtha, Jordan.",
       "finding": "mixed",
       "tags": [
         "epilepsy",
@@ -1021,7 +1021,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41752306/",
       "pubmed_id": "41752306",
       "doi": null,
-      "plain_summary": "ety: Daily and Longitudinal Reductions Vary Between Flower and Edible Products. Rosa L(), Lisano JK(), Skrzynski CJ(), Bryan AD(), Bidwell LC()(). Author information:\n()Department of Psychology and Neuroscience, University of Colorado Boulder, Boulder, CO , USA.",
+      "plain_summary": "Summary not available. See source for full abstract.",
       "finding": "mixed",
       "tags": [
         "anxiety",
@@ -1056,7 +1056,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40248548/",
       "pubmed_id": "40248548",
       "doi": null,
-      "plain_summary": "binoids for Autism Spectrum Disorder: An Updated Systematic Review. Pereira DA(), Cheidde L(), Megiolaro MDR(), Camargo AEF(), Weba ETP(), Soares VG(), Pereira da Silva AM(), Cheidde L(), Ladeira J\u00fanior PP(), Amaral DC(), Triaca R(), Fernandes MAN(), Mimura PMP(). Author information:\n()Department of Human Reproduction and Childhood, Pontif\u00edcia Universidade Cat\u00f3lica de S\u00e3o Paulo, Sorocaba, BRA.",
+      "plain_summary": "Binoids for Autism Spectrum Disorder: An Updated Systematic Review.",
       "finding": "mixed",
       "tags": [
         "anxiety",
@@ -1095,7 +1095,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40186931/",
       "pubmed_id": "40186931",
       "doi": null,
-      "plain_summary": "nal cannabis on mental health: A systematic review. de Bode N(), Kroon E(), Sznitman SR(), Cousijn J(). Author information:\n()Neuroscience of Addiction Lab, Center for Substance Use and Addiction Research, Department of Psychology, Education & Child Studies, Erasmus School of Social and Behavioral Sciences, Erasmus University Rotterdam, the Netherlands.",
+      "plain_summary": "Summary not available. See source for full abstract.",
       "finding": "positive",
       "tags": [
         "anxiety",
@@ -1137,7 +1137,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/36716312/",
       "pubmed_id": "36716312",
       "doi": null,
-      "plain_summary": "o for pain: A systematic review with meta-analysis and Trial Sequential Analysis. Barakji J(), Korang SK(), Feinberg J()(), Maagaard M()(), Mathiesen O()(), Gluud C()(), Jakobsen JC()(). Author information:\n()Copenhagen Trial Unit, Centre for Clinical Intervention Research, The Capital Region, Copenhagen University Hospital \u2500 Rigshospitalet, Copenhagen, Denmark.",
+      "plain_summary": "O for pain: A systematic review with meta-analysis and Trial Sequential Analysis.",
       "finding": "mixed",
       "tags": [
         "pain",
@@ -1176,7 +1176,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41558068/",
       "pubmed_id": "41558068",
       "doi": null,
-      "plain_summary": "ly purified cannabidiol in developmental and epileptic encephalopathies and complex treatment-resistant epilepsies: Changes in seizure frequency and adverse events. Coppola A(), Moore-Ramdin L(), Navetta M(), Samanta D(). Author information:\n()Epilepsy Centre, Department of Neuroscience, Reproductive Sciences and Odontostomatology, Federico II University, Naples, Italy.",
+      "plain_summary": "Ly purified cannabidiol in developmental and epileptic encephalopathies and complex treatment-resistant epilepsies: Changes in seizure frequency and adverse events.",
       "finding": "positive",
       "tags": [
         "epilepsy",
@@ -1347,7 +1347,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41616640/",
       "pubmed_id": "41616640",
       "doi": null,
-      "plain_summary": "ctive treatment with the fatty acid amide hydrolase inhibitor JNJ- in participants with major depressive disorder with anxious distress: A double-blind, placebo-controlled, randomised study. Schmidt ME(), Gargano C(), Zhou X(), Palmer JA(), Saad ZS(), Vieta E(), Drevets WC(), Stuyckens K(), Pandina G(). Author information:\n()Johnson & Johnson, Beerse, Belgium.",
+      "plain_summary": "Ctive treatment with the fatty acid amide hydrolase inhibitor JNJ- in participants with major depressive disorder with anxious distress: A double-blind, placebo-controlled, randomised study.",
       "finding": "mixed",
       "tags": [
         "pain",
@@ -1423,7 +1423,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39570218/",
       "pubmed_id": "39570218",
       "doi": null,
-      "plain_summary": "reatment of Peripheral Neuropathy and Neuropathic Pain: A Systematic Review. Choi J(), Li G(), Stephens KL(), Timko MP(), DeGeorge BR(). Author information:\n()University of Virginia School of Medicine, Charlottesville, VA.",
+      "plain_summary": "Reatment of Peripheral Neuropathy and Neuropathic Pain: A Systematic Review.",
       "finding": "mixed",
       "tags": [
         "pain",
@@ -1505,7 +1505,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41343025/",
       "pubmed_id": "41343025",
       "doi": null,
-      "plain_summary": "series analysing clinical outcomes of medicinal cannabis therapy for fibromyalgia. Varadpande M(), Erridge S()(), Aggarwal A(), Clarke E(), McLachlan K(), Coomber R()(), Barnes S()(), Darweish Medniuk A()(), Guru R()(), Holden W(), Sajad M(), Searle R(), Usmani A(), Varma S(), Rucker JJ()()(), Platt M(), Sodergren MH()(). Author information:\n()Medical Cannabis Research Group, Department of Surgery & Cancer, Imperial College London, Academic Surgical Unit, St Mary's Hospital, Th Floor QEQM, St Mary's Hospital,...",
+      "plain_summary": "Summary not available. See source for full abstract.",
       "finding": "mixed",
       "tags": [
         "pain",
@@ -1549,7 +1549,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/38171632/",
       "pubmed_id": "38171632",
       "doi": null,
-      "plain_summary": "hronic non-cancer pain: a systematic review and network meta-analysis of randomised clinical trials. Jeddi HM(), Busse JW()()(), Sadeghirad B()()(), Levine M()()()()(), Zoratti MJ(), Wang L()(), Noori A()(), Couban RJ(), Tarride JE()()(). Author information:\n()Department of Health Research Methods, Evidence, and Impact (HEI), Department of Health Research Methods, Evidence, and Impact (HEI), McMaster University, Ontario, Canada markjeddi@me.com.",
+      "plain_summary": "Summary not available. See source for full abstract.",
       "finding": "mixed",
       "tags": [
         "pain",
@@ -1583,14 +1583,14 @@
       "id": "s041",
       "source": "pubmed",
       "title": "Cannabinoids for Acute Postoperative Pain Management: A Systematic Review and Meta-Analysis of Clinical Trials",
-      "authors": "Gonz\u00e1lez C\u00e1rdenas VH, Valdivieso D\u00edaz M, Mateus Almeciga CF et al.",
+      "authors": "González Cárdenas VH, Valdivieso Díaz M, Mateus Almeciga CF et al.",
       "journal": "Eur J Pain",
       "year": 2025,
       "study_type": "meta_analysis",
       "url": "https://pubmed.ncbi.nlm.nih.gov/39878042/",
       "pubmed_id": "39878042",
       "doi": null,
-      "plain_summary": "nt: A Systematic Review and Meta-Analysis of Clinical Trials. Gonz\u00e1lez C\u00e1rdenas VH()(), Valdivieso D\u00edaz M(), Mateus Almeciga CF(), Echeverry Carrillo JC(), L\u00f3pez Trujillo JC(), Hern\u00e1ndez Arenas AR(), Paternina Rojas JL(). Author information:\n()Fundaci\u00f3n Universitaria de Ciencias de la Salud (FUCS), Bogot\u00e1, Colombia.",
+      "plain_summary": "Summary not available. See source for full abstract.",
       "finding": "mixed",
       "tags": [
         "pain",
@@ -1626,7 +1626,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41551042/",
       "pubmed_id": "41551042",
       "doi": null,
-      "plain_summary": "fects and underlying mechanisms of medical cannabinoids in ischemic stroke: a systematic meta-analysis with bibliometric mapping of cerebral ischemia research. Li X(), Wen L(), Du Y(), Fan X(), Xue N(), Qu M()(). Author information:\n()Third Clinical Medical College of Beijing University of Chinese Medicine, Beijing, China.",
+      "plain_summary": "Fects and underlying mechanisms of medical cannabinoids in ischemic stroke: a systematic meta-analysis with bibliometric mapping of cerebral ischemia research.",
       "finding": "positive",
       "tags": [
         "inflammation",
@@ -1654,7 +1654,7 @@
     {
       "id": "s043",
       "source": "pubmed",
-      "title": "Evaluation of the efficacy, safety, and pharmacokinetics of nanodispersible cannabidiol oral solution (150\u202fmg/mL) versus placebo in mild to moderate anxiety subjects: A double blind multicenter randomized clinical trial",
+      "title": "Evaluation of the efficacy, safety, and pharmacokinetics of nanodispersible cannabidiol oral solution (150 mg/mL) versus placebo in mild to moderate anxiety subjects: A double blind multicenter randomized clinical trial",
       "authors": "Gundugurti PR, Banda N, Yadlapalli SSR et al.",
       "journal": "Asian J Psychiatr",
       "year": 2024,
@@ -1662,7 +1662,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/38797087/",
       "pubmed_id": "38797087",
       "doi": null,
-      "plain_summary": ", and pharmacokinetics of nanodispersible cannabidiol oral solution (\u202fmg/mL) versus placebo in mild to moderate anxiety subjects: A double blind multicenter randomized clinical trial. Gundugurti PR(), Banda N(), Yadlapalli SSR(), Narala A(), Thatikonda R(), Kocherlakota C(), Kothapalli KS(). Author information:\n()Asha Hospital,\u00a0, Venkat Nagar, Banjara Hills,\u00a0Hyderabad,\u00a0Telangana ,\u00a0India.",
+      "plain_summary": ", and pharmacokinetics of nanodispersible cannabidiol oral solution ( mg/mL) versus placebo in mild to moderate anxiety subjects: A double blind multicenter randomized clinical trial.",
       "finding": "positive",
       "tags": [
         "anxiety",
@@ -1702,7 +1702,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40526158/",
       "pubmed_id": "40526158",
       "doi": null,
-      "plain_summary": "Extracts in the Treatment of Chronic Pain: An Open Label Study. F A(), M L(), G B()(), R GJ()(), S K(), I M(). Author information:\n()Hospital Zonal Andr\u00e9s Isola, Puerto Madryn, Argentina.",
+      "plain_summary": "Extracts in the Treatment of Chronic Pain: An Open Label Study.",
       "finding": "positive",
       "tags": [
         "pain",
@@ -1735,14 +1735,14 @@
       "id": "s045",
       "source": "pubmed",
       "title": "Effects of Different Cannabinoid Formulations on Anxiety-Related Disorders, and Tourette Syndrome: A Systematic Review and Meta-Analysis",
-      "authors": "Raminelli AO, Simei JLQ, Guimar\u00e3es FS et al.",
+      "authors": "Raminelli AO, Simei JLQ, Guimarães FS et al.",
       "journal": "Cannabis Cannabinoid Res",
       "year": 2025,
       "study_type": "meta_analysis",
       "url": "https://pubmed.ncbi.nlm.nih.gov/40956670/",
       "pubmed_id": "40956670",
       "doi": null,
-      "plain_summary": "ions on Anxiety-Related Disorders, and Tourette Syndrome: A Systematic Review and Meta-Analysis. Raminelli AO(), Simei JLQ(), Guimar\u00e3es FS()(), Zuardi A()(), Hallak JEC()(), Crippa JA()()(), Os\u00f3rio FL()(). Author information:\n()Department of Neuroscience and Behavior, Ribeir\u00e3o Preto Medical School, University of S\u00e3o Paulo, Ribeir\u00e3o Preto, Brazil.",
+      "plain_summary": "Summary not available. See source for full abstract.",
       "finding": "positive",
       "tags": [
         "anxiety",
@@ -1783,7 +1783,7 @@
       "url": "https://www.mdpi.com/1422-0067/26/24/11963",
       "pubmed_id": "41465389",
       "doi": null,
-      "plain_summary": "'s Disease-Related Neuroinflammation: A Systematic Review and Meta-Analysis. Author information:\n()UCL School of Pharmacy, - Brunswick Square, London WCN AX, UK. Alzheimer's disease (AD) is a pervasive neurodegenerative disorder characterized by chronic neuroinflammation; current interventions primarily offer symptomatic relief.",
+      "plain_summary": "'s Disease-Related Neuroinflammation: A Systematic Review and Meta-Analysis.",
       "finding": "positive",
       "tags": [
         "inflammation",
@@ -1815,14 +1815,14 @@
       "id": "s047",
       "source": "pubmed",
       "title": "The Interplay Between CB(2) and NMDA Receptors in Parkinson's Disease",
-      "authors": "Reyes-Resina I, Lillo J, Ra\u00efch I et al.",
+      "authors": "Reyes-Resina I, Lillo J, Raïch I et al.",
       "journal": "Int J Mol Sci",
       "year": 2025,
       "study_type": "review",
       "url": "https://pubmed.ncbi.nlm.nih.gov/41096688/",
       "pubmed_id": "41096688",
       "doi": null,
-      "plain_summary": "Reyes-Resina I()()(), Lillo J()()(), Ra\u00efch I()()(), Rebassa JB()()(), Cap\u00f3 T()()(), Badia P(), Navarro G()()(). Author information:\n()Department of Biochemistry and Physiology, School of Pharmacy and Food Sciences, University of Barcelona, Barcelona, Spain. ()Network Center for Biomedical Research in Neurodegenerative Diseases, CiberNed, Spanish National Health Institute Carlos III, Av.",
+      "plain_summary": "Reyes-Resina I()()(), Lillo J()()(), Raïch I()()(), Rebassa JB()()(), Capó T()()(), Badia P(), Navarro G()()(). Author information:\n()Department of Biochemistry and Physiology, School of Pharmacy and Food Sciences, University of Barcelona, Barcelona, Spain. ()Network Center for Biomedical Research in Neurodegenerative Diseases, CiberNed, Spanish National Health Institute Carlos III, Av.",
       "finding": "mixed",
       "tags": [
         "pain",

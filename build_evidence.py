@@ -452,11 +452,43 @@ def infer_audience(type_slug, score):
 def clean_abstract(text):
     if not text:
         return ""
+    # Strip author/affiliation blocks PubMed appends after abstract
+    text = re.sub(r"Author information:.*", "", text, flags=re.IGNORECASE | re.DOTALL)
+    text = re.sub(r"\(\)[\w\s,]+(?:University|Institute|Department|Hospital|School|Center|Centre|College|Faculty|Laboratory|Lab|Clinic)[^\n]*", "", text, flags=re.IGNORECASE)
+    # Strip leading author name lists: "Smith J(), Jones A()..."
+    text = re.sub(r"^(?:[A-Z][a-z\-]* [A-Z]{1,4}\(\)[()]*,?\s*){2,}", "", text.strip())
+    # Strip section-header labels
+    text = re.sub(r"\b(BACKGROUND|OBJECTIVE[S]?|PURPOSE|METHODS?|RESULTS?|CONCLUSIONS?|INTRODUCTION|SIGNIFICANCE|AIM[S]?|DESIGN|SETTING|PARTICIPANTS?|INTERVENTION[S]?|MAIN OUTCOME[S]?|FINDINGS?):\s*", "", text, flags=re.IGNORECASE)
+    # Strip citation artifacts
     text = re.sub(r"\[?\d+\]?", "", text)
-    text = re.sub(r"(PMID|doi|DOI|PMCID):[\s\S]{0,60}", "", text)
+    text = re.sub(r"(PMID|doi|DOI|PMCID):[\s\S]{0,80}", "", text)
+    text = re.sub(r"https?://\S+", "", text)
     text = re.sub(r"\s{2,}", " ", text).strip()
-    sentences = [s.strip() for s in re.split(r"(?<=[.!?])\s+", text) if len(s.strip()) > 40]
-    summary = " ".join(sentences[:3])
+
+    raw_sentences = re.split(r"(?<=[.!?])\s+", text)
+    clean = []
+    fragment_starters = ("and ","or ","but ","for ","nor ","so ","yet ",
+                         "the ","a ","an ","in ","of ","to ","with ","by ",
+                         "on ","at ","from ","as ","is ","was ","are ","were ",
+                         "ids ","tion ","ing ","ed ","ion ","nts ","ces ")
+    for s in raw_sentences:
+        s = s.strip()
+        if len(s) < 40:
+            continue
+        # Skip author/affiliation noise
+        if s.count("()") / max(len(s.split()), 1) > 0.15:
+            continue
+        if re.match(r"^[a-z]", s):
+            if any(s.startswith(w) for w in fragment_starters):
+                continue
+            s = s[0].upper() + s[1:]
+        clean.append(s)
+        if len(clean) == 3:
+            break
+
+    if not clean:
+        return ""
+    summary = " ".join(clean)
     if len(summary) > 520:
         summary = summary[:520].rsplit(" ", 1)[0] + "..."
     return summary
@@ -466,7 +498,9 @@ def extract_sample_size(abstract):
     for p in [r"n\s*=\s*(\d+)", r"(\d+)\s+patients", r"(\d+)\s+participants",
               r"(\d+)\s+subjects", r"(\d+)\s+(?:studies|trials|rcts)"]:
         m = re.search(p, abstract.lower())
-        if m: return f"n={m.group(1)}"
+        if m:
+            num = int(m.group(1))   # strips leading zeros
+            return f"N={num}"
     return "See source"
 
 

@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Research Database | mostlyCBD</title>
-  <meta name="description" content="A curated, searchable database of peer-reviewed cannabis and cannabinoid research. Filtered by condition, study type, and keyword. Scored for quality." />
+  <meta name="description" content="A curated, searchable database of peer-reviewed cannabis and cannabinoid research. Filtered by condition, study type, and keyword. Human-reviewed." />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Research Database | mostlyCBD" />
-  <meta property="og:description" content="Peer-reviewed cannabis research, scored and tagged by condition, study type, and cannabinoid. For patients, providers, and researchers." />
+  <meta property="og:description" content="Peer-reviewed cannabis research tagged by condition, study type, and cannabinoid. For patients, providers, and researchers." />
   <meta property="og:url" content="https://mostlycbd.com/research.html" />
   <meta property="og:site_name" content="mostlyCBD" />
   <meta property="og:image" content="https://mostlycbd.com/images/og_research.jpg" />
@@ -26,6 +26,218 @@
   <link rel="stylesheet" href="global.css">
   <link rel="icon" type="image/png" href="Favicon.png">
 
+  <style>
+    /* ════════════════════════════════════════
+       INLINE FILTER CONTROLS
+    ════════════════════════════════════════ */
+
+    /* Finding legend — centered, multi-select pills */
+    .rdb-legend--interactive {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .legend-filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px 6px 10px;
+      border-radius: 20px;
+      border: 1.5px solid rgba(163,177,138,.45);
+      background: rgba(163,177,138,.08);
+      font-family: 'DM Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: .04em;
+      color: var(--rdb-muted, #5A6650);
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, color 0.15s, opacity 0.15s;
+      opacity: 0.8;
+    }
+    .legend-filter-btn:hover { opacity: 1; background: rgba(163,177,138,.16); border-color: rgba(163,177,138,.7); }
+    .legend-filter-btn .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .legend-filter-btn--pos.legend-filter-btn--active { background: #EBF4EC; border-color: var(--find-pos,#3A7D44); color: var(--find-pos,#3A7D44); opacity: 1; }
+    .legend-filter-btn--neg.legend-filter-btn--active { background: #F4EAEB; border-color: var(--find-neg,#8B4049); color: var(--find-neg,#8B4049); opacity: 1; }
+    .legend-filter-btn--mix.legend-filter-btn--active { background: #F4F0E5; border-color: var(--find-mix,#C4992A); color: var(--find-mix,#C4992A); opacity: 1; }
+
+    /* Dropdown filter row */
+    .rdb-dropdowns {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    /* Each dropdown wrapper */
+    .rdb-dropdown {
+      position: relative;
+    }
+
+    /* Trigger button */
+    .rdb-dropdown-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 20px;
+      border: 1.5px solid rgba(163,177,138,.45);
+      background: rgba(163,177,138,.08);
+      font-family: 'DM Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: .04em;
+      color: var(--rdb-muted, rgba(45,45,45,0.55));
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      white-space: nowrap;
+    }
+    .rdb-dropdown-trigger:hover { background: rgba(163,177,138,.16); border-color: rgba(163,177,138,.7); }
+    .rdb-dropdown-trigger.has-selection {
+      border-color: var(--rdb-accent, #344E41);
+      background: #EBF4EC;
+      font-weight: 500;
+    }
+    .rdb-dropdown-trigger .dd-arrow {
+      font-size: 8px;
+      opacity: 0.5;
+      transition: transform 0.15s;
+    }
+    .rdb-dropdown.open .dd-arrow { transform: rotate(180deg); }
+
+    /* Dropdown panel */
+    .rdb-dropdown-panel {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      z-index: 200;
+      background: var(--rdb-card-bg, #F4F1EA);
+      border: 1.5px solid var(--rdb-border, #C8C3B4);
+      border-radius: 12px;
+      padding: 12px;
+      min-width: 240px;
+      max-width: 320px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+    }
+    .rdb-dropdown.open .rdb-dropdown-panel { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    /* Pill buttons inside panel */
+    .dd-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 12px;
+      border-radius: 14px;
+      border: 1.5px solid var(--rdb-border, #C8C3B4);
+      background: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .04em;
+      color: var(--rdb-muted, #5A6650);
+      cursor: pointer;
+      transition: all 0.12s;
+      white-space: nowrap;
+    }
+    .dd-pill:hover { border-color: var(--rdb-accent,#344E41); color: var(--rdb-accent,#344E41); background: #EBF4EC; }
+    .dd-pill.active {
+      background: var(--rdb-accent, #344E41);
+      border-color: var(--rdb-accent, #344E41);
+      color: #DAD7CD;
+    }
+
+    /* Reset link inside panel */
+    .dd-reset {
+      width: 100%;
+      margin-top: 4px;
+      padding-top: 8px;
+      border-top: 1px solid var(--rdb-border, #C8C3B4);
+      font-family: 'DM Mono', monospace;
+      font-size: 9.5px;
+      color: var(--rdb-muted, #5A6650);
+      background: none;
+      border-left: none; border-right: none; border-bottom: none;
+      cursor: pointer;
+      text-align: left;
+      letter-spacing: .06em;
+    }
+    .dd-reset:hover { color: var(--rdb-accent, #344E41); }
+
+    /* Active filter count badge on trigger */
+    .dd-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--rdb-accent, #344E41);
+      color: #DAD7CD;
+      font-size: 9px;
+      font-weight: 700;
+      margin-left: 2px;
+    }
+
+    /* ── Card meta row (year · type · sample size) ── */
+    .card2-tag { font-size: 10px; }
+
+    .card2-meta-pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--rdb-text);
+      background: rgba(197,179,139,.20);
+      border: 1px solid rgba(197,179,139,.40);
+      padding: 2px 7px;
+      border-radius: 3px;
+    }
+
+    /* ── Reset all bar ── */
+    .rdb-reset-bar {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--rdb-muted, #5A6650);
+      letter-spacing: .04em;
+    }
+    .rdb-reset-bar.visible { display: flex; }
+    .rdb-reset-bar button {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: inherit;
+      color: var(--rdb-accent, #344E41);
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 0;
+      letter-spacing: inherit;
+    }
+    .active-filter-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: #EBF4EC;
+      border: 1px solid var(--rdb-accent,#344E41);
+      color: var(--rdb-accent,#344E41);
+      font-size: 9.5px;
+    }
+    .active-filter-pill button {
+      text-decoration: none;
+      font-size: 10px;
+      line-height: 1;
+      color: inherit;
+    }
+
+    /* No sidebar — full width main */
+    .rdb-layout { display: block; }
+    .rdb-sidebar, .rdb-sidebar-backdrop,
+    .mobile-filter-toggle, .rdb-reset-row { display: none !important; }
+    .rdb-main { width: 100%; }
+  </style>
 </head>
 <body>
 
@@ -51,120 +263,109 @@
 
   <main>
 
-    <!-- HERO — full-bleed green band -->
+    <!-- HERO -->
     <div class="rdb-hero hero">
       <div class="rdb-hero-inner">
         <span class="eyebrow">mostlyCBD · Research Library</span>
         <h1>Research Database</h1>
         <p>
-          A curated collection of peer-reviewed clinical studies and meta-analyses on cannabis, 
-          cannabinoids, and the endocannabinoid system. Scored for quality. Tagged by condition. 
+          A curated collection of peer-reviewed clinical studies and meta-analyses on cannabis,
+          cannabinoids, and the endocannabinoid system. Tagged by condition.
           Human-reviewed before it appears here. Not an argument — just the data.
         </p>
         <div class="rdb-meta-strip">
           <span><strong id="meta-total">—</strong>studies indexed</span>
           <span><strong id="meta-updated">—</strong>last updated</span>
-          <span><strong id="meta-threshold">60+</strong>quality threshold</span>
         </div>
       </div>
     </div>
 
     <div class="rdb-page">
-
-      <!-- LAYOUT -->
       <div class="rdb-layout">
-
-        <!-- SIDEBAR -->
-        <aside class="rdb-sidebar" id="sidebar">
-
-          <button class="rdb-sidebar-close" onclick="closeFilters()" aria-label="Close filters">✕</button>
-
-          <span class="rdb-sidebar-heading">Filter Studies</span>
-          <button class="rdb-clear-all" id="clearAllBtn" onclick="clearAll()">// Reset Filters</button>
-
-          <div class="sidebar-section">
-            <span class="sidebar-label">Health Condition</span>
-            <button class="sidebar-btn active" data-filter="condition" data-value="all">All</button>
-            <button class="sidebar-btn" data-filter="condition" data-value="chronic-pain">Chronic Pain</button>
-            <button class="sidebar-btn" data-filter="condition" data-value="anxiety">Anxiety</button>
-            <button class="sidebar-btn" data-filter="condition" data-value="epilepsy">Epilepsy</button>
-            <button class="sidebar-btn" data-filter="condition" data-value="neuropathic-pain">Neuropathy</button>
-            <button class="sidebar-btn" data-filter="condition" data-value="sleep">Sleep</button>
-            <button class="sidebar-btn" data-filter="condition" data-value="ptsd">PTSD</button>
-            <button class="sidebar-btn" data-filter="condition" data-value="multiple-sclerosis">Multiple Sclerosis</button>
-            <button class="sidebar-btn" data-filter="condition" data-value="inflammation">Inflammation</button>
-            <button class="sidebar-btn" data-filter="condition" data-value="depression">Depression</button>
-            <button class="sidebar-btn" data-filter="condition" data-value="als">ALS</button>
-            <button class="sidebar-btn" data-filter="condition" data-value="gastrointestinal">Gastrointestinal</button>
-          </div>
-
-          <div class="sidebar-divider"></div>
-
-          <div class="sidebar-section">
-            <span class="sidebar-label">Study Type</span>
-            <button class="sidebar-btn active" data-filter="type" data-value="all">All</button>
-            <button class="sidebar-btn" data-filter="type" data-value="systematic_review">Systematic Review</button>
-            <button class="sidebar-btn" data-filter="type" data-value="meta_analysis">Meta-Analysis</button>
-            <button class="sidebar-btn" data-filter="type" data-value="rct">RCT</button>
-            <button class="sidebar-btn" data-filter="type" data-value="clinical_trial">Clinical Trial</button>
-            <button class="sidebar-btn" data-filter="type" data-value="observational">Observational</button>
-            <button class="sidebar-btn" data-filter="type" data-value="review">Review</button>
-            <button class="sidebar-btn" data-filter="type" data-value="preclinical">Preclinical</button>
-          </div>
-
-          <div class="sidebar-divider"></div>
-
-          <div class="sidebar-section">
-            <span class="sidebar-label">Finding</span>
-            <button class="sidebar-btn active" data-filter="finding" data-value="all">All</button>
-            <button class="sidebar-btn" data-filter="finding" data-value="positive">
-              <span class="dot dot-pos"></span>Positive
-            </button>
-            <button class="sidebar-btn" data-filter="finding" data-value="negative">
-              <span class="dot dot-neg"></span>Negative
-            </button>
-            <button class="sidebar-btn" data-filter="finding" data-value="mixed">
-              <span class="dot dot-mix"></span>Mixed
-            </button>
-          </div>
-
-          <div class="sidebar-divider"></div>
-
-          <div class="sidebar-section">
-            <span class="sidebar-label">Keywords</span>
-            <div id="keyword-cloud" style="display:flex;flex-wrap:wrap;gap:5px;margin-top:4px;"></div>
-          </div>
-
-        </aside>
-
-        <!-- MAIN -->
         <div class="rdb-main">
 
           <!-- Methodology note -->
           <div class="rdb-methodology">
-            <strong>📊 How we score —</strong>
-            Each study is evaluated on study design (RCT > systematic review > observational > preclinical), 
-            journal quality, sample size, recency, and conflict-of-interest disclosures. 
-            Minimum score to appear: 60/100. Negative and mixed findings are included. Score notes visible on hover.
+            <strong>📊 How entries are selected —</strong>
+            Each study is evaluated on study design (RCT &gt; systematic review &gt; observational &gt; preclinical),
+            journal quality, sample size, recency, and conflict-of-interest disclosures.
+            Results are human-reviewed before appearing here. Negative and mixed findings are included —
+            a selectively positive library isn't an honest one.
           </div>
 
-          <!-- Legend -->
-          <div class="rdb-legend">
-            <div class="legend-item">
-              <div class="legend-dot" style="background:var(--find-pos)"></div>Positive finding
-            </div>
-            <div class="legend-item">
-              <div class="legend-dot" style="background:var(--find-neg)"></div>Negative / no benefit
-            </div>
-            <div class="legend-item">
-              <div class="legend-dot" style="background:var(--find-mix)"></div>Mixed / inconclusive
-            </div>
+          <!-- Finding legend / multi-select filter -->
+          <div class="rdb-legend rdb-legend--interactive" id="findingLegend" aria-label="Filter by finding">
+            <button class="legend-filter-btn legend-filter-btn--pos" data-finding="positive" aria-pressed="false">
+              <span class="legend-dot" style="background:var(--find-pos)"></span>Positive finding
+            </button>
+            <button class="legend-filter-btn legend-filter-btn--neg" data-finding="negative" aria-pressed="false">
+              <span class="legend-dot" style="background:var(--find-neg)"></span>Negative / no benefit
+            </button>
+            <button class="legend-filter-btn legend-filter-btn--mix" data-finding="mixed" aria-pressed="false">
+              <span class="legend-dot" style="background:var(--find-mix)"></span>Mixed / inconclusive
+            </button>
           </div>
 
-          <!-- Mobile filter toggle — sits just above search bar -->
-          <button class="mobile-filter-toggle" id="mobileFilterToggle" onclick="openFilters()">
-            <span>Filter Studies</span><span class="toggle-arrow">▼</span>
-          </button>
+          <!-- Dropdown filter row -->
+          <div class="rdb-dropdowns">
+
+            <!-- Condition dropdown -->
+            <div class="rdb-dropdown" id="dd-condition">
+              <button class="rdb-dropdown-trigger" id="dd-condition-trigger"
+                onclick="toggleDropdown('condition')" aria-haspopup="true" aria-expanded="false">
+                Health Condition <span class="dd-arrow">▼</span>
+              </button>
+              <div class="rdb-dropdown-panel" id="dd-condition-panel" role="listbox" aria-label="Health Condition">
+                <button class="dd-pill active" data-dd="condition" data-value="all">All</button>
+                <button class="dd-pill" data-dd="condition" data-value="chronic-pain">Chronic Pain</button>
+                <button class="dd-pill" data-dd="condition" data-value="neuropathic-pain">Neuropathy</button>
+                <button class="dd-pill" data-dd="condition" data-value="anxiety">Anxiety</button>
+                <button class="dd-pill" data-dd="condition" data-value="ptsd">PTSD</button>
+                <button class="dd-pill" data-dd="condition" data-value="depression">Depression</button>
+                <button class="dd-pill" data-dd="condition" data-value="sleep">Sleep</button>
+                <button class="dd-pill" data-dd="condition" data-value="epilepsy">Epilepsy</button>
+                <button class="dd-pill" data-dd="condition" data-value="multiple-sclerosis">Multiple Sclerosis</button>
+                <button class="dd-pill" data-dd="condition" data-value="inflammation">Inflammation</button>
+                <button class="dd-pill" data-dd="condition" data-value="als">ALS</button>
+                <button class="dd-pill" data-dd="condition" data-value="fibromyalgia">Fibromyalgia</button>
+                <button class="dd-pill" data-dd="condition" data-value="parkinson">Parkinson's</button>
+                <button class="dd-pill" data-dd="condition" data-value="autism">Autism Spectrum</button>
+                <button class="dd-pill" data-dd="condition" data-value="cancer-related">Cancer / Palliative</button>
+                <button class="dd-pill" data-dd="condition" data-value="opioid-related">Opioid-Related</button>
+                <button class="dd-pill" data-dd="condition" data-value="arthritis">Arthritis</button>
+                <button class="dd-pill" data-dd="condition" data-value="migraine">Migraine</button>
+                <button class="dd-pill" data-dd="condition" data-value="addiction">Addiction / Withdrawal</button>
+                <button class="dd-pill" data-dd="condition" data-value="gastrointestinal">Gastrointestinal</button>
+                <button class="dd-reset" onclick="resetDropdown('condition')">// Clear condition</button>
+              </div>
+            </div>
+
+            <!-- Study Type dropdown -->
+            <div class="rdb-dropdown" id="dd-type">
+              <button class="rdb-dropdown-trigger" id="dd-type-trigger"
+                onclick="toggleDropdown('type')" aria-haspopup="true" aria-expanded="false">
+                Study Type <span class="dd-arrow">▼</span>
+              </button>
+              <div class="rdb-dropdown-panel" id="dd-type-panel" role="listbox" aria-label="Study Type">
+                <button class="dd-pill active" data-dd="type" data-value="all">All</button>
+                <button class="dd-pill" data-dd="type" data-value="meta_analysis">Meta-Analysis</button>
+                <button class="dd-pill" data-dd="type" data-value="systematic_review">Systematic Review</button>
+                <button class="dd-pill" data-dd="type" data-value="rct">RCT</button>
+                <button class="dd-pill" data-dd="type" data-value="clinical_trial">Clinical Trial</button>
+                <button class="dd-pill" data-dd="type" data-value="observational">Observational</button>
+                <button class="dd-pill" data-dd="type" data-value="review">Review</button>
+                <button class="dd-pill" data-dd="type" data-value="preclinical">Preclinical</button>
+                <button class="dd-reset" onclick="resetDropdown('type')">// Clear type</button>
+              </div>
+            </div>
+
+          </div><!-- /rdb-dropdowns -->
+
+          <!-- Active filter summary + reset -->
+          <div class="rdb-reset-bar" id="resetBar">
+            <span id="activeFilterPills"></span>
+            <button onclick="clearAll()">// Clear Filters</button>
+          </div>
 
           <!-- Toolbar: search + sort + count -->
           <div class="rdb-toolbar">
@@ -174,7 +375,7 @@
                 type="text"
                 class="rdb-search"
                 id="searchInput"
-                placeholder="Search title, author, condition, keyword..."
+                placeholder="Search title, author, journal, condition, cannabinoid..."
                 autocomplete="off"
               />
               <button class="rdb-search-clear" id="searchClear" onclick="clearSearch()" aria-label="Clear search">✕</button>
@@ -182,17 +383,11 @@
             <div class="rdb-sort">
               Sort by
               <select id="sortSelect">
-                <option value="score">Score</option>
                 <option value="year_desc">Newest</option>
                 <option value="year_asc">Oldest</option>
               </select>
             </div>
             <div class="rdb-count"><strong id="result-count">—</strong> Studies Found</div>
-          </div>
-
-          <!-- Reset search — always visible below search bar -->
-          <div class="rdb-reset-row">
-            <button class="rdb-search-clear-text" id="searchClearText" onclick="clearSearch()">// Reset Search</button>
           </div>
 
           <!-- Grid -->
@@ -230,9 +425,6 @@
     </div><!-- /rdb-page -->
   </main>
 
-  <!-- Mobile sidebar backdrop -->
-  <div class="rdb-sidebar-backdrop" id="sidebarBackdrop" onclick="closeFilters()"></div>
-
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="site-footer__inner">
@@ -245,24 +437,16 @@
         <div>#ScrapTheScript<br/>Educate to Regulate.<br/>Focused. Functional. Fair.</div>
         <div class="site-footer__socials">
           <a href="https://twitter.com/scrapthescript" target="_blank" rel="noopener" aria-label="X (Twitter)">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
           <a href="https://www.tiktok.com/@mostlycbd/" target="_blank" rel="noopener" aria-label="TikTok">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
-            </svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
           </a>
           <a href="https://www.instagram.com/mostly.cbd/" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-            </svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
           </a>
           <a href="https://www.reddit.com/r/mostlyCBD/" target="_blank" rel="noopener" aria-label="Reddit">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
-            </svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
           </a>
         </div>
       </div>
@@ -272,43 +456,15 @@
   <a href="#top" id="backToTop">↑ TOP</a>
 
   <script>
-    // ── Clear all ──
-    function clearAll() {
-      activeFilters = { condition: 'all', type: 'all', finding: 'all' };
-      searchQuery = '';
-      activeKeyword = '';
-      document.getElementById('searchInput').value = '';
-      document.getElementById('searchClear').style.display = 'none';
-      document.querySelectorAll('.sidebar-btn[data-filter]').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.value === 'all');
-      });
-      document.querySelectorAll('.sidebar-kw').forEach(b => b.classList.remove('sidebar-kw--active'));
-      render();
-    }
-
-    // ── Mobile filter panel ──
-    function openFilters() {
-      document.getElementById('sidebar').classList.add('mobile-open');
-      document.getElementById('sidebarBackdrop').classList.add('active');
-      document.body.classList.add('rdb-filters-open');
-      document.documentElement.style.overflow = 'hidden';
-    }
-
-    function closeFilters() {
-      document.getElementById('sidebar').classList.remove('mobile-open');
-      document.getElementById('sidebarBackdrop').classList.remove('active');
-      document.body.classList.remove('rdb-filters-open');
-      document.documentElement.style.overflow = '';
-    }
 
     // ── State ──
-    let allStudies = [];
-    let activeFilters = { condition: 'all', type: 'all', finding: 'all' };
-    let searchQuery = '';
-    let activeKeyword = '';
-    let sortMode = 'score';
+    let allStudies    = [];
+    let activeFilters = { condition: 'all', type: 'all' };
+    let activeFindings = new Set();   // empty = show all
+    let searchQuery   = '';
+    let sortMode      = 'year_desc';
 
-    // ── Type label map ──
+    // ── Label maps ──
     const typeLabels = {
       systematic_review: 'Systematic Review',
       meta_analysis:     'Meta-Analysis',
@@ -320,19 +476,23 @@
       case_series:       'Case Series'
     };
     const findingLabel = { positive: 'Positive', negative: 'Negative', mixed: 'Mixed' };
+    const conditionLabel = {
+      'all':'All','chronic-pain':'Chronic Pain','neuropathic-pain':'Neuropathy',
+      'anxiety':'Anxiety','ptsd':'PTSD','depression':'Depression','sleep':'Sleep',
+      'epilepsy':'Epilepsy','multiple-sclerosis':'Multiple Sclerosis','inflammation':'Inflammation',
+      'als':'ALS','fibromyalgia':'Fibromyalgia','parkinson':"Parkinson's",
+      'autism':'Autism Spectrum','cancer-related':'Cancer / Palliative',
+      'opioid-related':'Opioid-Related','arthritis':'Arthritis','migraine':'Migraine',
+      'addiction':'Addiction / Withdrawal','gastrointestinal':'Gastrointestinal'
+    };
 
-    // ── Load data ──
+    // ── Load studies.json ──
     fetch('studies.json')
       .then(r => r.json())
       .then(data => {
         allStudies = data.studies.filter(s => s.approved);
-
-        // Meta strip
-        document.getElementById('meta-total').textContent    = allStudies.length;
-        document.getElementById('meta-updated').textContent  = data.meta?.last_updated || '2026';
-        document.getElementById('meta-threshold').textContent = (data.meta?.threshold_score || 60) + '+';
-
-        buildKeywordCloud();
+        document.getElementById('meta-total').textContent   = allStudies.length;
+        document.getElementById('meta-updated').textContent = data.meta?.last_updated || '2026';
         render();
       })
       .catch(() => {
@@ -340,61 +500,180 @@
           '<div class="rdb-loading">Could not load studies. Ensure studies.json is in the same directory.</div>';
       });
 
-    // ── Keyword cloud (sidebar) ──
-    function buildKeywordCloud() {
-      const tagFreq = {};
-      allStudies.forEach(s => (s.tags || []).forEach(t => {
-        tagFreq[t] = (tagFreq[t] || 0) + 1;
-      }));
-      const topTags = Object.entries(tagFreq)
-        .sort((a,b) => b[1]-a[1])
-        .slice(0, 18)
-        .map(([tag]) => tag);
+    // ════════════════════════════════════════
+    //  DROPDOWN LOGIC
+    // ════════════════════════════════════════
 
-      const cloud = document.getElementById('keyword-cloud');
-      cloud.innerHTML = topTags.map(t => `
-        <button class="card2-tag sidebar-kw" data-kw="${t.toLowerCase()}"
-          style="cursor:pointer;font-size:9px;">${t}</button>
-      `).join('');
+    function toggleDropdown(key) {
+      const el      = document.getElementById(`dd-${key}`);
+      const trigger = document.getElementById(`dd-${key}-trigger`);
+      const isOpen  = el.classList.contains('open');
 
-      cloud.querySelectorAll('.sidebar-kw').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const kw = btn.dataset.kw;
-          if (activeKeyword === kw) {
-            activeKeyword = '';
-            searchQuery = '';
-            document.getElementById('searchInput').value = '';
-            document.getElementById('searchClear').style.display = 'none';
-          } else {
-            activeKeyword = kw;
-            searchQuery = kw;
-            document.getElementById('searchInput').value = kw;
-            document.getElementById('searchClear').style.display = 'block';
-          }
-          // update highlight on all kw buttons
-          cloud.querySelectorAll('.sidebar-kw').forEach(b => {
-            b.classList.toggle('sidebar-kw--active', b.dataset.kw === activeKeyword);
-          });
-          render();
-        });
+      // Close all first
+      document.querySelectorAll('.rdb-dropdown.open').forEach(d => {
+        d.classList.remove('open');
+        d.querySelector('.rdb-dropdown-trigger').setAttribute('aria-expanded','false');
+      });
+
+      if (!isOpen) {
+        el.classList.add('open');
+        trigger.setAttribute('aria-expanded','true');
+      }
+    }
+
+    function resetDropdown(key) {
+      activeFilters[key] = 'all';
+      document.querySelectorAll(`[data-dd="${key}"]`).forEach(b => {
+        b.classList.toggle('active', b.dataset.value === 'all');
+      });
+      updateTriggerLabel(key);
+      closeAllDropdowns();
+      updateResetBar();
+      render();
+    }
+
+    function closeAllDropdowns() {
+      document.querySelectorAll('.rdb-dropdown.open').forEach(d => {
+        d.classList.remove('open');
+        d.querySelector('.rdb-dropdown-trigger').setAttribute('aria-expanded','false');
       });
     }
 
-    // ── Sidebar filter buttons ──
-    document.querySelectorAll('.sidebar-btn[data-filter]').forEach(btn => {
+    // Close dropdowns on outside click
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.rdb-dropdown')) closeAllDropdowns();
+    });
+
+    // Pill click handlers
+    document.querySelectorAll('.dd-pill[data-dd]').forEach(btn => {
       btn.addEventListener('click', () => {
-        const group = btn.dataset.filter;
-        document.querySelectorAll(`.sidebar-btn[data-filter="${group}"]`).forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeFilters[group] = btn.dataset.value;
+        const key = btn.dataset.dd;
+        activeFilters[key] = btn.dataset.value;
+        document.querySelectorAll(`[data-dd="${key}"]`).forEach(b => {
+          b.classList.toggle('active', b.dataset.value === btn.dataset.value);
+        });
+        updateTriggerLabel(key);
+        closeAllDropdowns();
+        updateResetBar();
         render();
       });
     });
 
-    // ── Clear search ──
+    function updateTriggerLabel(key) {
+      const trigger  = document.getElementById(`dd-${key}-trigger`);
+      const val      = activeFilters[key];
+      const labelMap = key === 'condition' ? conditionLabel : typeLabels;
+      const label    = key === 'condition'
+        ? (conditionLabel[val] || val)
+        : (typeLabels[val] || val);
+
+      // Clear old badge
+      trigger.querySelectorAll('.dd-badge').forEach(b => b.remove());
+
+      if (val === 'all') {
+        trigger.childNodes[0].textContent = key === 'condition' ? 'Health Condition ' : 'Study Type ';
+        trigger.classList.remove('has-selection');
+      } else {
+        trigger.childNodes[0].textContent = label + ' ';
+        trigger.classList.add('has-selection');
+      }
+    }
+
+    // ════════════════════════════════════════
+    //  FINDING LEGEND MULTI-SELECT
+    // ════════════════════════════════════════
+
+    document.querySelectorAll('.legend-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const finding = btn.dataset.finding;
+        if (activeFindings.has(finding)) {
+          activeFindings.delete(finding);
+          btn.classList.remove('legend-filter-btn--active');
+          btn.setAttribute('aria-pressed','false');
+        } else {
+          activeFindings.add(finding);
+          btn.classList.add('legend-filter-btn--active');
+          btn.setAttribute('aria-pressed','true');
+        }
+        updateResetBar();
+        render();
+      });
+    });
+
+    // ════════════════════════════════════════
+    //  RESET BAR — shows active filters
+    // ════════════════════════════════════════
+
+    function updateResetBar() {
+      const bar        = document.getElementById('resetBar');
+      const pillsEl    = document.getElementById('activeFilterPills');
+      const hasFilters = activeFilters.condition !== 'all'
+                      || activeFilters.type !== 'all'
+                      || activeFindings.size > 0
+                      || searchQuery.length > 0;
+
+      bar.classList.toggle('visible', hasFilters);
+
+      const pills = [];
+      if (activeFilters.condition !== 'all') {
+        pills.push(`<span class="active-filter-pill">${conditionLabel[activeFilters.condition] || activeFilters.condition}<button onclick="resetDropdown('condition')" aria-label="Remove condition filter">✕</button></span>`);
+      }
+      if (activeFilters.type !== 'all') {
+        pills.push(`<span class="active-filter-pill">${typeLabels[activeFilters.type] || activeFilters.type}<button onclick="resetDropdown('type')" aria-label="Remove type filter">✕</button></span>`);
+      }
+      activeFindings.forEach(f => {
+        pills.push(`<span class="active-filter-pill">${findingLabel[f]}<button onclick="removeFinding('${f}')" aria-label="Remove finding filter">✕</button></span>`);
+      });
+      if (searchQuery) {
+        pills.push(`<span class="active-filter-pill">"${searchQuery}"<button onclick="clearSearch()" aria-label="Clear search">✕</button></span>`);
+      }
+      pillsEl.innerHTML = pills.join('');
+    }
+
+    function removeFinding(f) {
+      activeFindings.delete(f);
+      const btn = document.querySelector(`.legend-filter-btn[data-finding="${f}"]`);
+      if (btn) { btn.classList.remove('legend-filter-btn--active'); btn.setAttribute('aria-pressed','false'); }
+      updateResetBar();
+      render();
+    }
+
+    // ════════════════════════════════════════
+    //  CLEAR ALL
+    // ════════════════════════════════════════
+
+    function clearAll() {
+      activeFilters  = { condition: 'all', type: 'all' };
+      activeFindings = new Set();
+      searchQuery    = '';
+
+      document.getElementById('searchInput').value = '';
+      document.getElementById('searchClear').style.display = 'none';
+
+      // Reset dropdown triggers
+      ['condition','type'].forEach(key => {
+        document.querySelectorAll(`[data-dd="${key}"]`).forEach(b => {
+          b.classList.toggle('active', b.dataset.value === 'all');
+        });
+        updateTriggerLabel(key);
+      });
+
+      // Reset finding legend
+      document.querySelectorAll('.legend-filter-btn').forEach(b => {
+        b.classList.remove('legend-filter-btn--active');
+        b.setAttribute('aria-pressed','false');
+      });
+
+      updateResetBar();
+      render();
+    }
+
     function clearSearch() {
-      clearAll();
-      document.getElementById('searchInput').focus();
+      searchQuery = '';
+      document.getElementById('searchInput').value = '';
+      document.getElementById('searchClear').style.display = 'none';
+      updateResetBar();
+      render();
     }
 
     // ── Search ──
@@ -402,15 +681,10 @@
     document.getElementById('searchInput').addEventListener('input', e => {
       clearTimeout(searchTimeout);
       const val = e.target.value;
-      const hasText = val.length > 0;
-      document.getElementById('searchClear').style.display = hasText ? 'block' : 'none';
+      document.getElementById('searchClear').style.display = val.length > 0 ? 'block' : 'none';
       searchTimeout = setTimeout(() => {
         searchQuery = val.toLowerCase().trim();
-        // Deactivate keyword pill if user types manually
-        if (activeKeyword && searchQuery !== activeKeyword) {
-          activeKeyword = '';
-          document.querySelectorAll('.sidebar-kw').forEach(b => b.classList.remove('sidebar-kw--active'));
-        }
+        updateResetBar();
         render();
       }, 180);
     });
@@ -421,7 +695,10 @@
       render();
     });
 
-    // ── Render ──
+    // ════════════════════════════════════════
+    //  RENDER
+    // ════════════════════════════════════════
+
     function render() {
       let filtered = allStudies.filter(s => {
         if (activeFilters.condition !== 'all') {
@@ -430,23 +707,22 @@
         if (activeFilters.type !== 'all') {
           if (s.study_type !== activeFilters.type) return false;
         }
-        if (activeFilters.finding !== 'all') {
-          if (s.finding !== activeFilters.finding) return false;
+        if (activeFindings.size > 0) {
+          if (!activeFindings.has(s.finding)) return false;
         }
         if (searchQuery) {
           const hay = [
             s.title, s.authors, s.journal, s.plain_summary,
-            (s.tags||[]).join(' '), (s.conditions||[]).join(' '), (s.cannabinoids||[]).join(' ')
+            (s.tags||[]).join(' '), (s.conditions||[]).join(' '),
+            (s.cannabinoids||[]).join(' '), s.study_type || ''
           ].join(' ').toLowerCase();
           if (!hay.includes(searchQuery)) return false;
         }
         return true;
       });
 
-      // Sort
-      if (sortMode === 'score')      filtered.sort((a,b) => b.score - a.score);
-      else if (sortMode === 'year_desc') filtered.sort((a,b) => b.year - a.year);
-      else if (sortMode === 'year_asc')  filtered.sort((a,b) => a.year - b.year);
+      if (sortMode === 'year_desc') filtered.sort((a,b) => (b.year||0) - (a.year||0));
+      else if (sortMode === 'year_asc') filtered.sort((a,b) => (a.year||0) - (b.year||0));
 
       document.getElementById('result-count').textContent = filtered.length;
       const grid  = document.getElementById('rdb-grid');
@@ -463,10 +739,8 @@
 
     // ── Card template ──
     function renderCard(s) {
-      const scoreClass = s.score >= 85 ? 'high' : s.score >= 70 ? 'mid' : '';
       const displayTags = (s.tags || []).slice(0, 5);
-
-      const pubmedLink = s.pubmed_id
+      const pubmedLink  = s.pubmed_id
         ? `<a class="card2-link" href="https://pubmed.ncbi.nlm.nih.gov/${s.pubmed_id}/" target="_blank" rel="noopener">PubMed →</a>`
         : (s.url ? `<a class="card2-link" href="${s.url}" target="_blank" rel="noopener">Source →</a>` : '');
 
@@ -486,14 +760,8 @@
         <p class="card2-summary">${s.plain_summary || ''}</p>
         <div class="card2-bottom">
           <div class="card2-tags">
+            ${s.sample_size && s.sample_size !== 'See source' ? `<span class="card2-meta-pill">${s.sample_size}</span>` : ''}
             ${displayTags.map(t => `<span class="card2-tag">${t}</span>`).join('')}
-          </div>
-          <div class="card2-score" title="${s.score_notes || ''}">
-            <span class="score-label">Score</span>
-            <div class="score-bar">
-              <div class="score-fill ${scoreClass}" style="width:${s.score}%"></div>
-            </div>
-            <span class="score-num">${s.score}</span>
           </div>
           ${pubmedLink}
         </div>
@@ -505,6 +773,7 @@
     window.addEventListener('scroll', () => {
       topBtn.classList.toggle('visible', window.scrollY > 300);
     });
+
   </script>
 
 </body>
