@@ -4,7 +4,7 @@
     "last_updated": "2026-03-29",
     "total_entries": 47,
     "threshold_score": 60,
-    "description": "mostlyCBD Evidence Library \u00e2\u20ac\u201d curated cannabis research. Scored, tagged, and human-reviewed before publish."
+    "description": "mostlyCBD Evidence Library &mdash; curated cannabis research. Scored, tagged, and human-reviewed before publish."
   },
   "studies": [
     {
@@ -16,7 +16,7 @@
       "study_type": "systematic_review",
       "url": "https://www.mdpi.com/1424-8247/17/11/1438",
       "pubmed_id": null,
-      "plain_summary": "PRISMA-guided review of 40 studies on CBD for pain. Found consistent analgesic properties across neuropathic, inflammatory, and chronic pain \u00e2\u20ac\u201d with no significant adverse effects reported in clinical or preclinical trials. Notes activation of 5HT-1A receptors as a likely mechanism.",
+      "plain_summary": "PRISMA-guided review of 40 studies on CBD for pain. Found consistent analgesic properties across neuropathic, inflammatory, and chronic pain with no significant adverse effects reported in clinical or preclinical trials. Notes activation of 5HT-1A receptors as a likely mechanism.",
       "finding": "positive",
       "tags": [
         "pain",
@@ -47,13 +47,13 @@
     {
       "id": "s002",
       "title": "Are Cannabis-Based Medicines a Useful Treatment for Neuropathic Pain? A Systematic Review",
-      "authors": "Almuntashiri N, El Sharazly BM, Carter WG \u00e2\u20ac\u201d University of Nottingham",
+      "authors": "Almuntashiri N, El Sharazly BM, Carter WG",
       "journal": "Biomolecules",
       "year": 2025,
       "study_type": "systematic_review",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40563456/",
+      "url": "https://www.mdpi.com/2218-273X/15/6/816",
       "pubmed_id": "40563456",
-      "plain_summary": "Reviewed 22 RCTs from 2003\u00e2\u20ac\u201c2024 on cannabis-based medicines for neuropathic pain. Found promising evidence for balanced THC:CBD formulations (nabiximols/Sativex), with low risk of bias in most studies. Notes regulatory barriers as a major obstacle to expanded research.",
+      "plain_summary": "Reviewed 22 RCTs from 2003 - 2024 on cannabis-based medicines for neuropathic pain. Found promising evidence for balanced THC:CBD formulations (nabiximols/Sativex), with low risk of bias in most studies. Notes regulatory barriers as a major obstacle to expanded research.",
       "finding": "positive",
       "tags": [
         "neuropathy",
@@ -82,13 +82,13 @@
     {
       "id": "s003",
       "title": "Cannabis-Based Products for Chronic Pain: An Updated Systematic Review",
-      "authors": "Chou R, Fu R, Ahmed AY, Morasco BJ \u00e2\u20ac\u201d Oregon Health & Science University",
+      "authors": "Chou R, Fu R, Ahmed AY, Morasco BJ",
       "journal": "Annals of Internal Medicine",
       "year": 2026,
       "study_type": "systematic_review",
       "url": "https://www.acpjournals.org/doi/10.7326/ANNALS-25-03152",
       "pubmed_id": "41429020",
-      "plain_summary": "25 RCTs (n=2,303; 64% neuropathic pain). Comparable THC:CBD ratio products probably reduce pain severity with small effect sizes. High-THC-only products showed increased adverse events. Calls for long-term outcome studies. AHRQ-funded \u00e2\u20ac\u201d no industry conflicts.",
+      "plain_summary": "25 RCTs (n=2303; 64% neuropathic pain). Comparable THC:CBD ratio products may slightly reduce pain severity with small effect sizes. High-THC-only products showed increased adverse events. Calls for long-term outcome studies.",
       "finding": "mixed",
       "tags": [
         "pain",
@@ -126,7 +126,7 @@
       "study_type": "systematic_review",
       "url": "https://pubmed.ncbi.nlm.nih.gov/37953193/",
       "pubmed_id": "37953193",
-      "plain_summary": "15 studies included from 8 databases. Majority showed pain reduction of 42\u00e2\u20ac\u201c66% with CBD. Three studies showed no significant improvement. Concludes CBD may be useful for chronic pain but calls for more robust designs and standardized dosing protocols.",
+      "plain_summary": "15 studies included from 8 databases. Majority showed pain reduction of 42 - 66% with CBD. Three studies showed no significant improvement. Concludes CBD may be useful for chronic pain but calls for more robust designs and standardized dosing protocols.",
       "finding": "positive",
       "tags": [
         "pain",
@@ -188,13 +188,13 @@
     {
       "id": "s006",
       "title": "Evidence for Use of Cannabinoids in Mood Disorders, Anxiety Disorders, and PTSD: A Systematic Review",
-      "authors": "Stanciu CN, Brunette MF, Teja N, Budney AJ \u00e2\u20ac\u201d Dartmouth",
+      "authors": "Stanciu CN, Brunette MF, Teja N, Budney AJ",
       "journal": "Psychiatric Services",
       "year": 2021,
       "study_type": "systematic_review",
       "url": "https://pubmed.ncbi.nlm.nih.gov/33530732/",
       "pubmed_id": "33530732",
-      "plain_summary": "Only 8 controlled trials met inclusion criteria. Found insufficient evidence for CBD or THC to manage anxiety, mood disorders, or PTSD. Single-dose CBD showed acute anxiety reduction. High-dose THC in depressed patients worsened symptoms in >50%. Important counterweight \u00e2\u20ac\u201d the evidence base is still thin.",
+      "plain_summary": "Only 8 controlled trials met inclusion criteria. Found insufficient evidence for CBD or THC to manage anxiety, mood disorders, or PTSD. Single-dose CBD showed acute anxiety reduction. High-dose THC in depressed patients worsened symptoms in >50%. Important counterweight - the evidence base is still thin.",
       "finding": "negative",
       "tags": [
         "anxiety",
@@ -231,7 +231,7 @@
       "study_type": "observational",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6326553/",
       "pubmed_id": "30624194",
-      "plain_summary": "72-patient chart review at a psychiatric clinic. Anxiety scores decreased in 79.2% within the first month and remained decreased. Sleep improved in 66.7% but fluctuated over time. CBD was well tolerated in all but 3 patients. Observational design \u00e2\u20ac\u201d no control group.",
+      "plain_summary": "72-patient chart review at a psychiatric clinic. Anxiety scores decreased in 79.2% within the first month and remained decreased. Sleep improved in 66.7% but fluctuated over time. CBD was well tolerated in all but 3 patients. Observational design &mdash; no control group.",
       "finding": "positive",
       "tags": [
         "anxiety",
@@ -266,7 +266,7 @@
       "study_type": "review",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4604171/",
       "pubmed_id": "26341731",
-      "plain_summary": "Foundational review of preclinical and clinical evidence. Demonstrates CBD's efficacy across GAD, panic disorder, SAD, OCD, and PTSD in animal models. Human data support anxiolytic effects with no anxiogenic properties and excellent safety profile. Notes all human studies used acute dosing \u00e2\u20ac\u201d chronic dosing data lacking.",
+      "plain_summary": "Foundational review of preclinical and clinical evidence. Demonstrates CBD's efficacy across GAD, panic disorder, SAD, OCD, and PTSD in animal models. Human data support anxiolytic effects with no anxiogenic properties and excellent safety profile. Notes all human studies used acute dosing &mdash; chronic dosing data lacking.",
       "finding": "positive",
       "tags": [
         "anxiety",
@@ -411,7 +411,7 @@
     {
       "id": "s012",
       "title": "Targeting Endocannabinoid System in Epilepsy: For Good or for Bad",
-      "authors": "Mart\u00c3\u00adnez-Aguirre C, Cinar R, Rocha L \u00e2\u20ac\u201d Center for Research and Advanced Studies, Mexico City",
+      "authors": "Mart\u00c3\u00adnez-Aguirre C, Cinar R, Rocha L &mdash; Center for Research and Advanced Studies, Mexico City",
       "journal": "Neuroscience",
       "year": 2022,
       "study_type": "review",
@@ -445,13 +445,13 @@
     {
       "id": "s013",
       "title": "Oral Cannabis for Taxane-Induced Neuropathy: A Pilot Randomized Placebo-Controlled Study",
-      "authors": "Haney M, Choo T, Tiersten A et al. \u00e2\u20ac\u201d Columbia University",
+      "authors": "Haney M, Choo T, Tiersten A et al. &mdash; Columbia University",
       "journal": "Cannabis and Cannabinoid Research",
       "year": 2025,
       "study_type": "rct",
       "url": "https://pubmed.ncbi.nlm.nih.gov/40611810/",
       "pubmed_id": "40611810",
-      "plain_summary": "8-week double-blind RCT in breast cancer patients with taxane-induced neuropathy. Both groups improved over time, but cannabis patients had significantly higher neuropathy ratings and lower functional well-being in final weeks vs placebo. A carefully conducted negative trial \u00e2\u20ac\u201d rare and valuable.",
+      "plain_summary": "8-week double-blind RCT in breast cancer patients with taxane-induced neuropathy. Both groups improved over time, but cannabis patients had significantly higher neuropathy ratings and lower functional well-being in final weeks vs placebo. A carefully conducted negative trial &mdash; rare and valuable.",
       "finding": "negative",
       "tags": [
         "neuropathy",
@@ -474,7 +474,7 @@
       ],
       "sample_size": "Pilot RCT (small n, specific population)",
       "score": 85,
-      "score_notes": "Columbia University, double-blind RCT design, 2025, rigorous \u00e2\u20ac\u201d negative results are essential to include",
+      "score_notes": "Columbia University, double-blind RCT design, 2025, rigorous &mdash; negative results are essential to include",
       "approved": true
     },
     {
@@ -515,7 +515,7 @@
     {
       "id": "s015",
       "title": "ALS, the Endocannabinoid System, and Exogenous Cannabinoids: Current State and Clinical Implications",
-      "authors": "Denton TT, Carter GT, Goddard M et al. \u00e2\u20ac\u201d Washington State University",
+      "authors": "Denton TT, Carter GT, Goddard M et al. &mdash; Washington State University",
       "journal": "Muscle & Nerve",
       "year": 2025,
       "study_type": "review",
@@ -561,7 +561,7 @@
       "study_type": "preclinical",
       "url": "https://pubmed.ncbi.nlm.nih.gov/30239436/",
       "pubmed_id": "30239436",
-      "plain_summary": "Preclinical study demonstrating CBD reverses allodynia (pain from non-painful stimuli) and anxiety in a neuropathic pain model via 5-HT1A serotonin receptor activation. Directly relevant to patients who experience co-occurring neuropathic pain and anxiety \u00e2\u20ac\u201d suggests a unified mechanism.",
+      "plain_summary": "Preclinical study demonstrating CBD reverses allodynia (pain from non-painful stimuli) and anxiety in a neuropathic pain model via 5-HT1A serotonin receptor activation. Directly relevant to patients who experience co-occurring neuropathic pain and anxiety &mdash; suggests a unified mechanism.",
       "finding": "positive",
       "tags": [
         "neuropathy",

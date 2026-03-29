@@ -784,15 +784,52 @@ def run_pipeline(debug=False, source_filter=None):
     print(f"  4. python build_evidence.py --approve")
     print()
 
+def sanitize_text(value):
+    """Fix encoding artifacts before writing to studies.json.
+    Handles mojibake (UTF-8 bytes misread as Latin-1) and maps
+    Unicode typographic characters to safe HTML entities."""
+    if not isinstance(value, str):
+        return value
+    # Mojibake: UTF-8 multi-byte sequences misread as Latin-1
+    mojibake = [
+        ("\u00e2\u20ac\u201d", "&mdash;"),
+        ("\u00e2\u20ac\u0153", "&ldquo;"),
+        ("\u00e2\u20ac\u009d", "&rdquo;"),
+        ("\u00e2\u20ac\u02dc", "&lsquo;"),
+        ("\u00e2\u20ac\u2122", "&rsquo;"),
+        ("\u00e2\u20ac\u00a6", "&hellip;"),
+        ("\u00e2\u20ac\u201c", "&ndash;"),
+    ]
+    for bad, good in mojibake:
+        value = value.replace(bad, good)
+    # Unicode typographic chars -> HTML entities
+    replacements = [
+        ("\u2014", "&mdash;"),
+        ("\u2013", "&ndash;"),
+        ("\u2018", "&lsquo;"),
+        ("\u2019", "&rsquo;"),
+        ("\u201c", "&ldquo;"),
+        ("\u201d", "&rdquo;"),
+        ("\u2026", "&hellip;"),
+        ("\u00a0", " "),
+    ]
+    for char, entity in replacements:
+        value = value.replace(char, entity)
+    return value
+
+def sanitize_entry(entry):
+    """Recursively sanitize all string values in an entry dict."""
+    return {k: sanitize_text(v) if isinstance(v, str) else v for k, v in entry.items()}
+
 def run_approve():
     if not os.path.exists(PENDING_FILE):
-        print(f"  ⚠ {PENDING_FILE} not found. Run pipeline first.")
+        print(f"  \u26a0 {PENDING_FILE} not found. Run pipeline first.")
         return
     with open(PENDING_FILE) as f:
         pending_data = json.load(f)
     approved = [e for e in pending_data.get("pending",[]) if e.get("approved")]
     if not approved:
-        print("  ⚠ No entries marked approved. Set \"approved\": true and re-run.")
+        print("  \u26a0 No entries marked approved. Set \"approved\": true and re-run.")
         return
     library = {"meta":{},"studies":[]}
     if os.path.exists(STUDIES_FILE):
@@ -809,15 +846,15 @@ def run_approve():
         if (pmid_key and pmid_key in known) or (doi_key and doi_key in known):
             continue
         entry["id"] = f"s{len(library['studies'])+1:03d}"
-        library["studies"].append(entry)
+        library["studies"].append(sanitize_entry(entry))
         if pmid_key: known.add(pmid_key)
         if doi_key:  known.add(doi_key)
         added += 1
     library["meta"]["last_updated"]  = date.today().isoformat()
     library["meta"]["total_entries"] = len(library["studies"])
     with open(STUDIES_FILE, "w") as f:
-        json.dump(library, f, indent=2)
-    print(f"\n  ✅ Added {added} entries. Library total: {library['meta']['total_entries']}")
+        json.dump(library, f, indent=2, ensure_ascii=False)
+    print(f"\n  \u2705 Added {added} entries. Library total: {library['meta']['total_entries']}")
     print(f"  Commit and push studies.json to publish.")
 
 def run_stats():
