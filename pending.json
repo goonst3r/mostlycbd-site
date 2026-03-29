@@ -1592,7 +1592,7 @@
       "sample_size": "See source",
       "score": 53,
       "score_notes": "type:meta-analysis [pubtype](+25) | journal:+8 | year:2025(+14) | cbd_relevance:2hits(+6)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1287",
