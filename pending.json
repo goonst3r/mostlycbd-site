@@ -4,7 +4,20 @@
     "pipeline_version": "1.2",
     "threshold_used": 30,
     "total_pending": 430,
-    "instructions": "Review each entry. Edit plain_summary to match your voice. Set 'approved': true to publish. Run: python build_evidence.py --approve"
+    "instructions": "Review each entry. Edit plain_summary to match your voice. Set 'approved': true to publish. Run: python build_evidence.py --approve",
+    "auto_approved_at": "2026-03-29T11:57:02.523484",
+    "auto_approved_count": 0,
+    "auto_approve_criteria": {
+      "finding": "positive",
+      "score_min": 60,
+      "study_types": [
+        "clinical_trial",
+        "meta_analysis",
+        "rct",
+        "systematic_review"
+      ],
+      "all_positive_mode": false
+    }
   },
   "pending": [
     {
@@ -1259,7 +1272,7 @@
       "sample_size": "n=89",
       "score": 54,
       "score_notes": "type:randomized controlled trial [pubtype](+22) | journal:+8 | year:2024(+12) | cbd_relevance:3hits(+9) | sample(+3)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1292",
@@ -1456,7 +1469,7 @@
       "sample_size": "n=23",
       "score": 53,
       "score_notes": "type:clinical trial [pubtype](+17) | journal:+12 | year:2025(+14) | cbd_relevance:3hits(+9) | sample(+1)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1081",
@@ -1540,7 +1553,7 @@
       "sample_size": "See source",
       "score": 53,
       "score_notes": "type:meta-analysis [pubtype](+25) | journal:+8 | year:2025(+14) | cbd_relevance:2hits(+6)",
-      "approved": false
+      "approved": true
     },
     {
       "id": "p1240",
@@ -1550,7 +1563,7 @@
       "journal": "Int J Mol Sci",
       "year": 2025,
       "study_type": "meta_analysis",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41465389/",
+      "url": "https://www.mdpi.com/1422-0067/26/24/11963",
       "pubmed_id": "41465389",
       "doi": null,
       "plain_summary": "'s Disease-Related Neuroinflammation: A Systematic Review and Meta-Analysis. Author information:\n()UCL School of Pharmacy, - Brunswick Square, London WCN AX, UK. Alzheimer's disease (AD) is a pervasive neurodegenerative disorder characterized by chronic neuroinflammation; current interventions primarily offer symptomatic relief.",
