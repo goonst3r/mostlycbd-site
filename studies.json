@@ -1760,6 +1760,466 @@
       "score": 30,
       "score_notes": "type:journal article [pubtype](+8) | journal:+8 | year:2025(+14)",
       "approved": true
+    },
+        {
+      "id": "s048",
+      "source": "pubmed",
+      "title": "Effects of Cannabidiol on Social Relating, Anxiety, and Parental Stress in Autistic Children: A Randomized Controlled Crossover Trial",
+      "authors": "Parrella NF, Hill AT, Enticott PG et al.",
+      "journal": "Autism Res",
+      "year": 2026,
+      "study_type": "rct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41452412/",
+      "pubmed_id": "41452412",
+      "doi": null,
+      "plain_summary": "While no significant changes were seen in overall social responsiveness, CBD led to improvements in specific social behaviors, reduced anxiety, and lowered parental stress. These findings suggest potential benefits of CBD for some autism‐related symptoms, but larger studies are needed to confirm effectiveness.",
+      "finding": "mixed",
+      "tags": [
+        "anxiety",
+        "sleep",
+        "autism",
+        "cbd-only",
+        "safety",
+        "preclinical",
+        "dosing",
+        "rct"
+      ],
+      "conditions": [
+        "anxiety",
+        "sleep",
+        "autism"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 54,
+      "score_notes": "type:randomized controlled trial [pubtype](+22) | journal:+8 | year:2026(+15) | cbd_relevance:3hits(+9)",
+      "approved": true
+    },
+    {
+      "id": "s049",
+      "source": "pubmed",
+      "title": "Cannabis and cannabidiol for postoperative pain management in orthopedic surgery: a scoping review",
+      "authors": "Tran K, Odland K, Polly DW Jr",
+      "journal": "Pain Med",
+      "year": 2026,
+      "study_type": "clinical_trial",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40828884/",
+      "pubmed_id": "40828884",
+      "doi": null,
+      "plain_summary": "Whereas CBD-only interventions showed mixed results, THC/CBD combinations demonstrated modest potential for opioid-sparing effects, with neutral safety profiles. One THC-only study reported increased opioid use and length of stay, though confounding variables were present.",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "opioid",
+        "cbd-only",
+        "thc",
+        "safety",
+        "preclinical",
+        "dosing"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "opioid-related"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 53,
+      "score_notes": "type:clinical trial [text](+17) | journal:+12 | year:2026(+15) | cbd_relevance:3hits(+9)",
+      "approved": true
+    },
+    {
+      "id": "s050",
+      "source": "pubmed",
+      "title": "The Pleiotropic Influence of Cannabidiol and Tetrahydrocannabinol on Inflammatory Biomarkers: A Systematic Review and Meta-Analytical Synthesis",
+      "authors": "Candeloro BM, de Oliveira CM, Gimenez FVM et al.",
+      "journal": "Int J Mol Sci",
+      "year": 2025,
+      "study_type": "meta_analysis",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41373770/",
+      "pubmed_id": "41373770",
+      "doi": null,
+      "plain_summary": "Overall, preclinical and early clinical data converge on plausible immunomodulatory mechanisms for phytocannabinoids—particularly the inhibition of the NLRP3 inflammasome and suppression of NF-κB. Yet, clinical translation to consistent systemic biomarker changes is restricted by route, formulation, exposure, and population selection. Well-powered, PK-informed RCTs in selected clinical populations are mandatory before phytocannabinoids can be suggested as systemic anti-inflammatory agents.",
+      "finding": "mixed",
+      "tags": [
+        "inflammation",
+        "cbd-only",
+        "thc",
+        "preclinical"
+      ],
+      "conditions": [
+        "inflammation"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 53,
+      "score_notes": "type:meta-analysis [pubtype](+25) | journal:+8 | year:2025(+14) | cbd_relevance:2hits(+6)",
+      "approved": true
+    },
+    {
+      "id": "s051",
+      "source": "pubmed",
+      "title": "Therapeutic potential of cannabidiol in oral disorders: A systematic review of clinical evidence",
+      "authors": "de Abreu LM, Biancardi MR, Di Benedetto M et al.",
+      "journal": "J Am Dent Assoc",
+      "year": 2025,
+      "study_type": "meta_analysis",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41062198/",
+      "pubmed_id": "41062198",
+      "doi": null,
+      "plain_summary": "Topical and intraoral CBD formulations had beneficial effects in reducing pain, muscle tension, gingival inflammation, bacterial load, and aphthous ulcer symptoms. No serious adverse effects were reported. Heterogeneity in dosage, formulation, follow-up duration, and outcome measures limited direct comparison across studies and precluded meta-analysis.",
+      "finding": "positive",
+      "tags": [
+        "pain",
+        "inflammation",
+        "cbd-only",
+        "safety",
+        "preclinical",
+        "dosing",
+        "meta-analysis",
+        "rct"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "inflammation"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "n=7",
+      "score": 53,
+      "score_notes": "type:meta-analysis [text](+25) | journal:+8 | year:2025(+14) | cbd_relevance:2hits(+6)",
+      "approved": true
+    },
+    {
+      "id": "s052",
+      "source": "pubmed",
+      "title": "Clinical Outcomes and Patient Profiles in the UK Medical Cannabis Registry: A k-Means Clustering Analysis",
+      "authors": "Erridge S, Clarke E, McLachlan K et al.",
+      "journal": "J Clin Pharmacol",
+      "year": 2026,
+      "study_type": "observational",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41510842/",
+      "pubmed_id": "41510842",
+      "doi": null,
+      "plain_summary": "These findings contribute valuable insights to the evolving evidence base for cannabis-based medical products (CBMPs), whilst highlighting the urgent need for high-quality randomized controlled trials or novel methods of evidence evaluation in cannabis-naïve populations to establish definitive therapeutic efficacy across the heterogeneous patient populations currently accessing CBMPs in clinical practice.",
+      "finding": "mixed",
+      "tags": [
+        "anxiety",
+        "sleep",
+        "cancer",
+        "safety",
+        "preclinical"
+      ],
+      "conditions": [
+        "anxiety",
+        "sleep",
+        "cancer-related"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider"
+      ],
+      "sample_size": "n=6952",
+      "score": 53,
+      "score_notes": "type:cohort study [text](+12) | journal:+8 | year:2026(+15) | cbd_relevance:1hits(+3) | sample(+15)",
+      "approved": true
+    },
+    {
+      "id": "s053",
+      "source": "pubmed",
+      "title": "Prenatal cannabis exposure and the risk for neuropsychiatric anomalies in the offspring: a systematic review and meta-analysis",
+      "authors": "Bassalov H, Yakirevich-Amir N, Reuveni I et al.",
+      "journal": "Am J Obstet Gynecol",
+      "year": 2024,
+      "study_type": "meta_analysis",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38908654/",
+      "pubmed_id": "38908654",
+      "doi": null,
+      "plain_summary": "Prenatal cannabis exposure is not associated with an increased risk of ASD, psychotic symptoms, anxiety, or depression in offspring. However, it may slightly elevate the risk of ADHD and predispose offspring to cannabis consumption. Despite these findings, caution is warranted regarding cannabis use during pregnancy. Further research is imperative, especially given the increasing potency of cannabis in recent years.",
+      "finding": "mixed",
+      "tags": [
+        "anxiety",
+        "depression",
+        "autism",
+        "preclinical",
+        "meta-analysis"
+      ],
+      "conditions": [
+        "anxiety",
+        "depression",
+        "autism"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "n=445",
+      "score": 52,
+      "score_notes": "type:meta-analysis [pubtype](+25) | journal:+8 | year:2024(+12) | sample(+7)",
+      "approved": true
+    },
+    {
+      "id": "s054",
+      "source": "pubmed",
+      "title": "Efficacy and safety of cannabidiol oil in psoriasis: a randomized, double-blind, placebo-controlled trial",
+      "authors": "Roongpisuthipong W, Klangjareonchai T, Kurathong S et al.",
+      "journal": "J Dermatolog Treat",
+      "year": 2026,
+      "study_type": "rct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41459647/",
+      "pubmed_id": "41459647",
+      "doi": null,
+      "plain_summary": "Cannabidiol oil was well-tolerated; however, it did not result in a significant reduction in psoriasis severity. Temporary improvements in itch relief and sleep onset indicate that further research with higher doses and extended durations is warranted.",
+      "finding": "mixed",
+      "tags": [
+        "sleep",
+        "inflammation",
+        "cbd-only",
+        "safety",
+        "preclinical",
+        "dosing",
+        "rct"
+      ],
+      "conditions": [
+        "sleep",
+        "inflammation"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "n=28",
+      "score": 52,
+      "score_notes": "type:randomized controlled trial [pubtype](+22) | journal:+8 | year:2026(+15) | cbd_relevance:2hits(+6) | sample(+1)",
+      "approved": true
+    },
+    {
+      "id": "s055",
+      "source": "pubmed",
+      "title": "Cross-sectional comparison of cannabis use in adults with neuropathic versus non-neuropathic pain",
+      "authors": "Laroya CJP, Smith CL, Bindler RJ et al.",
+      "journal": "Front Pain Res (Lausanne)",
+      "year": 2025,
+      "study_type": "review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41487383/",
+      "pubmed_id": "41487383",
+      "doi": null,
+      "plain_summary": "Adults whose most bothersome pain condition(s) were neuropathic used cannabis, especially THC and THC/CBD combination products, more frequently than those whose most bothersome pain was non-neuropathic. Participants with neuropathic pain also reported higher levels of pain intensity and interference. Further longitudinal research is needed to confirm whether increased use of THC-rich cannabis provides symptom relief for adults with neuropathic pain.",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "neuropathy",
+        "inflammation",
+        "cbd-only",
+        "thc",
+        "ecs",
+        "preclinical"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "neuropathic-pain",
+        "inflammation"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "n=104",
+      "score": 52,
+      "score_notes": "type:cross-sectional [text](+9) | journal:+12 | year:2025(+14) | cbd_relevance:4hits(+12) | sample(+5)",
+      "approved": true
+    },
+    {
+      "id": "s056",
+      "source": "pubmed",
+      "title": "UK Medical Cannabis Registry: A clinical outcomes analysis for insomnia",
+      "authors": "Aggarwal A, Erridge S, Cowley I et al.",
+      "journal": "PLOS Ment Health",
+      "year": 2025,
+      "study_type": "rct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41662070/",
+      "pubmed_id": "41662070",
+      "doi": null,
+      "plain_summary": "The findings indicate a promising association between cannabis-based medicinal product treatment and improvements in sleep-specific outcomes and general HRQoL measures. However, it is crucial to acknowledge that these findings must be interpreted with consideration of the limitations in the study’s design, and there is a need for high quality RCTs to assess the long-term efficacy and safety of cannabis-based medicinal product for primary insomnia.",
+      "finding": "positive",
+      "tags": [
+        "pain",
+        "anxiety",
+        "sleep",
+        "depression",
+        "safety",
+        "preclinical",
+        "rct"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "anxiety",
+        "sleep",
+        "depression"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "n=124",
+      "score": 52,
+      "score_notes": "type:randomised controlled trial [text](+22) | journal:+8 | year:2025(+14) | cbd_relevance:1hits(+3) | sample(+5)",
+      "approved": true
+    },
+    {
+      "id": "s057",
+      "source": "pubmed",
+      "title": "Effects of cannabidiol in alcohol use disorder patients with and without co-occurring post-traumatic stress disorder: Tolerability but no evidence for efficacy in two randomized proof-of-concept trials",
+      "authors": "Bogenschutz MP, Blessing E, Dgheim D et al.",
+      "journal": "Alcohol Clin Exp Res (Hoboken)",
+      "year": 2026,
+      "study_type": "rct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41312717/",
+      "pubmed_id": "41312717",
+      "doi": null,
+      "plain_summary": "These findings support the feasibility and tolerability of twice-daily oral CBD up to 1200 mg/day in actively drinking individuals but do not demonstrate efficacy at the CBD levels that were achieved in this study. Further dose finding and larger, well-powered trials are needed to clarify CBD's therapeutic potential in AUD and comorbid PTSD.",
+      "finding": "mixed",
+      "tags": [
+        "anxiety",
+        "ptsd",
+        "cbd-only",
+        "mechanism",
+        "safety",
+        "preclinical",
+        "dosing"
+      ],
+      "conditions": [
+        "anxiety",
+        "ptsd"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "n=20",
+      "score": 52,
+      "score_notes": "type:randomized controlled trial [pubtype](+22) | journal:+8 | year:2026(+15) | cbd_relevance:2hits(+6) | sample(+1)",
+      "approved": true
+    },
+    {
+      "id": "s058",
+      "source": "pubmed",
+      "title": "Unprescribed cannabinoids and multiple sclerosis: a multicenter, cross-sectional, epidemiological study in Lombardy, Italy",
+      "authors": "Giossi R, Mercenari M, Filippi M et al.",
+      "journal": "J Neurol",
+      "year": 2024,
+      "study_type": "clinical_trial",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38844694/",
+      "pubmed_id": "38844694",
+      "doi": null,
+      "plain_summary": "Unprescribed cannabis use is common in patients with MS in Italy, with observed prevalence seemingly superior to the general population, often intended for medical use and without the disclosure to the treating physician, although with potential clinical benefits.",
+      "finding": "positive",
+      "tags": [
+        "pain",
+        "ms",
+        "preclinical"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "ms"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "n=5620",
+      "score": 52,
+      "score_notes": "type:clinical trial [text](+17) | journal:+8 | year:2024(+12) | sample(+15)",
+      "approved": true
+    },
+    {
+      "id": "s059",
+      "source": "openalex",
+      "title": "Safety and Tolerability of Low-Dose Full-Spectrum Cannabidiol in Long-Term Virally Suppressed Adults with HIV: A Randomized Double-Blind Placebo-Controlled Trial",
+      "authors": "Clemence Couton, Mathilde Wanneveich, Barbara De Dieuleveult et al.",
+      "journal": "medRxiv",
+      "year": 2026,
+      "study_type": "rct",
+      "url": "https://doi.org/10.64898/2026.03.21.26348972",
+      "pubmed_id": null,
+      "doi": "10.64898/2026.03.21.26348972",
+      "plain_summary": "Abstract Introduction People with long-term virologically suppressed HIV (PWH) experience chronic inflammation. Beneficial effects such as lower levels of inflammation were reported for cannabis-based medicine but data on the safety of standardized low-dose full-spectrum cannabidiol (CBD) are limited. Methods This double-blind randomized placebo-controlled trial ( NCT ) included ART-treated PWH with undetectable viremia (median time on efficient ART years, median age years), encompassing % women.",
+      "finding": "positive",
+      "tags": [
+        "inflammation",
+        "cbd-only",
+        "thc",
+        "full-spectrum",
+        "safety",
+        "preclinical",
+        "dosing",
+        "rct"
+      ],
+      "conditions": [
+        "inflammation"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 52,
+      "score_notes": "type:double-blind [text](+20) | journal:+8 | year:2026(+15) | cbd_relevance:3hits(+9)",
+      "approved": true
     }
   ]
 }
