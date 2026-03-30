@@ -126,7 +126,7 @@
       "study_type": "systematic_review",
       "url": "https://pubmed.ncbi.nlm.nih.gov/37953193/",
       "pubmed_id": "37953193",
-      "plain_summary": "Majority showed pain reduction of - % with CBD. Three studies showed no significant improvement. Concludes CBD may be useful for chronic pain but calls for more robust designs and standardized dosing protocols.",
+      "plain_summary": "Majority showed pain reduction of 42 - 66% with CBD. Three studies showed no significant improvement. Concludes CBD may be useful for chronic pain but calls for more robust designs and standardized dosing protocols.",
       "finding": "positive",
       "tags": [
         "pain",
@@ -157,7 +157,7 @@
       "study_type": "meta_analysis",
       "url": "https://pubmed.ncbi.nlm.nih.gov/38924898/",
       "pubmed_id": "38924898",
-      "plain_summary": "CBD showed a substantial effect on anxiety (Hedges' g = -.). % of highest-quality studies reported positive outcomes for GAD, SAD, and PTSD. % showed negative results for OCD, trichotillomania, and test anxiety.",
+      "plain_summary": "This meta-analysis revealed a substantial significant impact of CBD on anxiety with a considerable effect size. In addition, this meta-analysis focuses on the efficacy of CBD in treating anxiety disorders such as generalized anxiety disorder (GAD), social anxiety disorder (SAD), and post-traumatic stress disorder (PTSD). However, caution should be exercised in interpreting our findings due to the limited size of the clinical sample, and additional trials ought to be carried out if deemed necessary.",
       "finding": "positive",
       "tags": [
         "anxiety",
@@ -194,7 +194,7 @@
       "study_type": "systematic_review",
       "url": "https://pubmed.ncbi.nlm.nih.gov/33530732/",
       "pubmed_id": "33530732",
-      "plain_summary": "Only controlled trials met inclusion criteria. Found insufficient evidence for CBD or THC to manage anxiety, mood disorders, or PTSD. Single-dose CBD showed acute anxiety reduction.",
+      "plain_summary": "In this systematic review, the authors summarize the design and results of controlled trials assessing the effects of THC and CBD on affective disorders, anxiety disorders, and posttraumatic stress disorder (PTSD).",
       "finding": "negative",
       "tags": [
         "anxiety",
@@ -231,7 +231,7 @@
       "study_type": "observational",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6326553/",
       "pubmed_id": "30624194",
-      "plain_summary": "-patient chart review at a psychiatric clinic. Anxiety scores decreased in .% within the first month and remained decreased. Sleep improved in .% but fluctuated over time.",
+      "plain_summary": "A large retrospective case series at a psychiatric clinic involving clinical application of CBD for anxiety and sleep complaints as an adjunct to usual treatment. The retrospective chart review included monthly documentation of anxiety and sleep quality in 103 adult patients.",
       "finding": "positive",
       "tags": [
         "anxiety",
@@ -303,7 +303,7 @@
       "study_type": "clinical_trial",
       "url": "https://www.nature.com/articles/s43856-022-00202-8",
       "pubmed_id": null,
-      "plain_summary": "Outpatients with moderate-to-severe anxiety treated with weeks of full-spectrum high-CBD sublingual solution (. Significant anxiety reduction on primary outcomes. Improvements also in mood, sleep, quality of life, and executive function.",
+      "plain_summary": "Outpatients with moderate-to-severe anxiety treated with weeks of full-spectrum high-CBD sublingual solution. Significant anxiety reduction on primary outcomes. Improvements also in mood, sleep, quality of life, and executive function.",
       "finding": "positive",
       "tags": [
         "anxiety",
@@ -451,7 +451,7 @@
       "study_type": "rct",
       "url": "https://pubmed.ncbi.nlm.nih.gov/40611810/",
       "pubmed_id": "40611810",
-      "plain_summary": "-week double-blind RCT in breast cancer patients with taxane-induced neuropathy. Both groups improved over time, but cannabis patients had significantly higher neuropathy ratings and lower functional well-being in final weeks vs placebo. A carefully conducted negative trial &mdash; rare and valuable.",
+      "plain_summary": "8-week double-blind RCT in breast cancer patients with taxane-induced neuropathy. Both groups improved over time, but cannabis patients had significantly higher neuropathy ratings and lower functional well-being in final weeks vs placebo. A carefully conducted negative trial &mdash; rare and valuable.",
       "finding": "negative",
       "tags": [
         "neuropathy",
@@ -597,8 +597,8 @@
       "study_type": "randomized",
       "url": "https://pubmed.ncbi.nlm.nih.gov/36571471/",
       "pubmed_id": "36571471",
-      "plain_summary": "1. Eur J Pain. 2023 Apr;27(4):492-506.",
-      "finding": "positive",
+      "plain_summary": "Randomized, double-blind, trial (8 weeks) with treatment arms for cannabidiol (CBD), tetra-hydro-cannabinol (THC), CBD and THC combination (CBD/THC), and placebo in a 1:1:1:1 ratio and flexible drug doses (CBD 5-50 mg, THC 2.5-25 mg, and CBD/THC 5 mg/2.5 mg-50 mg/25 mg).",
+      "finding": "negative",
       "tags": [
         "pain",
         "neuropathy",
@@ -637,7 +637,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41548880/",
       "pubmed_id": "41548880",
       "doi": null,
-      "plain_summary": "Ateş G(), Welsch P(), Klose P(), Phillips T(), Lambers B()(), Häuser W()(), Radbruch L(). Author information:\n()Institute for Digitalization and General Medicine, Center for Rare Diseases Aachen (ZSEA), Medical Faculty RWTH Aachen University, Aachen, Germany. ()Medical Center Pain Medicine and Mental Health, Saarbrücken, Germany.",
+      "plain_summary": "To assess the benefits and harms of cannabis-based medicines (herbal, plant-based, synthetic) compared to placebo or conventional drugs for chronic neuropathic pain conditions in adults.",
       "finding": "mixed",
       "tags": [
         "pain",
@@ -682,7 +682,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41856154/",
       "pubmed_id": "41856154",
       "doi": null,
-      "plain_summary": "ids for the treatment of mental disorders and substance use disorders: a systematic review and meta-analysis. Wilson J(), Dobson O(), Langcake A(), Mishra P(), Bryant Z(), Leung J(), Dawson D(), Graham M(), Teesson M(), Freeman TP(), Hall W(), Chan GCK(), Stockings E(). Author information:\n()The Matilda Centre for Research in Mental Health and Substance Use, The University of Sydney, Sydney, NSW, Australia.",
+      "plain_summary": "Systematic review and meta-analysis of randomised controlled trials (RCTs) testing the efficacy and safety of cannabinoids as the primary treatment for mental disorders or SUDs.",
       "finding": "mixed",
       "tags": [
         "anxiety",
@@ -767,7 +767,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41821925/",
       "pubmed_id": "41821925",
       "doi": null,
-      "plain_summary": ", -Week Real-World Study from the German Pain e-Registry on the Effectiveness and Safety of CBD-Dominant Oral Cannabis Extracts versus THC/Dronabinol in Older Patients with Chronic Pain.",
+      "plain_summary": "In this real-world cohort of older adults with chronic pain, CBD-Ddominant extracts were associated with more favorable multidimensional outcomes and better tolerability than THC/DRO. Findings are exploratory and warrant confirmation in randomized controlled trials.",
       "finding": "positive",
       "tags": [
         "pain",
@@ -809,8 +809,8 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40705150/",
       "pubmed_id": "40705150",
       "doi": null,
-      "plain_summary": "Summary not available. See source for full abstract.",
-      "finding": "positive",
+      "plain_summary": "Patients can be informed that a 1:1 THC:CBD combination cannabis oil was no better than palliative care alone in palliating symptoms in patients with advanced cancer.",
+      "finding": "negative",
       "tags": [
         "pain",
         "cancer",
@@ -853,7 +853,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41897881/",
       "pubmed_id": "41897881",
       "doi": null,
-      "plain_summary": "a Full-Spectrum Oral Cannabis sativa Oil Extract, Standardized Based on CBD-A, CBD and THC-A, THC in Canines with Chronic Osteoarthritis. Benjamin ET(), Maria Teresa SE(), Alexander NS(), Stephanie SA(), Martín SC(), Sylvia AB(). Author information:\n()Escuela de Medicina Veterinaria, Facultad de Medicina y Ciencias de la Salud, Universidad Mayor, La Pirámide , Huechuraba , Chile.",
+      "plain_summary": "This study shows that Cannabis sativa oil extract can reduce pain in dogs with chronic osteoarthritis. Conventional treatments may cause adverse effects or lose effectiveness over time, but this research suggests that Cannabis therapy is a safe and effective adjunct.",
       "finding": "positive",
       "tags": [
         "pain",
@@ -894,8 +894,8 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40932699/",
       "pubmed_id": "40932699",
       "doi": null,
-      "plain_summary": "of Life of Cancer Patients: A Critical Review. Author information:\n()Programa de Pós-Graduação Interdisciplinar em Ciências da Saúde, Universidade Federal de São Paulo (UNIFESP), Santos, Brazil. ()Departamento de Biociências, Instituto de Saúde e Sociedade, Universidade Federal de São Paulo (UNIFESP), Santos, Brazil.",
-      "finding": "mixed",
+      "plain_summary": "The studies suggest that medical cannabis can improve mental health, sleep, appetite, and pain in cancer patients and decrease nausea, vomiting, and the use of other medications, such as opioids. Increased survival time and cognitive function improvements were also observed, with mild or moderate adverse effects.",
+      "finding": "positive",
       "tags": [
         "pain",
         "sleep",
@@ -940,8 +940,8 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41760917/",
       "pubmed_id": "41760917",
       "doi": null,
-      "plain_summary": "Noid system in alcohol use disorder: A translational systematic review and meta-analysis of preclinical and human studies.",
-      "finding": "positive",
+      "plain_summary": "Preclinical evidence supports ECS modulation, particularly CB-1R antagonism and CBD, as promising strategies for reducing alcohol use behaviors, clinical translation has been limited by safety concerns, methodological inconsistencies, and under-investigation of novel compounds.",
+      "finding": "mixed",
       "tags": [
         "cbd-only",
         "mechanism",
@@ -976,7 +976,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40437694/",
       "pubmed_id": "40437694",
       "doi": null,
-      "plain_summary": "Chhabra M(), Paul A(), Abulannaz O()(), Lê ML(), Mansell H(), Finkelstein Y(), Huntsman RJ(), Kelly LE()(). Author information:\n()Department of Pharmacology and Therapeutics, Max Rady College of Medicine, University of Manitoba, Winnipeg, Canada. ()Department of Pharmacology, Faculty of Medicine, Jordan University of Science and Technology, Ar-Ramtha, Jordan.",
+      "plain_summary": "Cannabinoids are used for medical purposes in children with an expanding array of products and conditions studied, including drug-resistant epilepsy, autism spectrum disorder, symptoms experienced by patients with cancer, and various other health conditions.",
       "finding": "mixed",
       "tags": [
         "epilepsy",
@@ -1021,8 +1021,8 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41752306/",
       "pubmed_id": "41752306",
       "doi": null,
-      "plain_summary": "Summary not available. See source for full abstract.",
-      "finding": "mixed",
+      "plain_summary": "This study provides within-person, naturalistic findings that cannabis use is associated with short-term reductions in anxiety, with CBD products producing the most consistent benefits. The results suggest that, among individuals who already choose to use cannabis for anxiety, CBD-dominant products were associated with more consistent reductions in self-reported anxiety, although further placebo-controlled trials are needed.",
+      "finding": "positive",
       "tags": [
         "anxiety",
         "cbd-only",
@@ -1056,7 +1056,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40248548/",
       "pubmed_id": "40248548",
       "doi": null,
-      "plain_summary": "Binoids for Autism Spectrum Disorder: An Updated Systematic Review.",
+      "plain_summary": "This systematic review assessed the potential impact of cannabinoids on ASD symptoms and adverse effects. While preliminary evidence suggests potential benefits, particularly for anxiety, sleep, and behavior, the findings remain inconclusive due to study heterogeneity and methodological limitations.",
       "finding": "mixed",
       "tags": [
         "anxiety",
@@ -1095,8 +1095,8 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40186931/",
       "pubmed_id": "40186931",
       "doi": null,
-      "plain_summary": "Summary not available. See source for full abstract.",
-      "finding": "positive",
+      "plain_summary": "Overall, the evidence suggests both positive and negative effects on mental health symptoms. More specifically, the most consistent improvements were observed in anxiety and sleep-related symptoms, as well as less intense withdrawal and craving in SUDs.",
+      "finding": "mixed",
       "tags": [
         "anxiety",
         "sleep",
@@ -1137,7 +1137,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/36716312/",
       "pubmed_id": "36716312",
       "doi": null,
-      "plain_summary": "O for pain: A systematic review with meta-analysis and Trial Sequential Analysis.",
+      "plain_summary": "Cannabinoids reduced chronic pain and improved quality of sleep, but the effect sizes are of questionable importance. Cannabinoids had no effects on acute pain or cancer pain and increased the risks of non-serious adverse events.",
       "finding": "mixed",
       "tags": [
         "pain",
@@ -1176,7 +1176,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41558068/",
       "pubmed_id": "41558068",
       "doi": null,
-      "plain_summary": "Ly purified cannabidiol in developmental and epileptic encephalopathies and complex treatment-resistant epilepsies: Changes in seizure frequency and adverse events.",
+      "plain_summary": "Summarizes evidence that CBD, particularly Epidiolex/Epidyolex, may have the potential to reduce seizures in patients with a range of developmental and epileptic encephalopathies and chronic treatment-resistant epilepsies. While adverse effects were common across studies, they were usually mild or moderate. More research is needed to confirm these initial findings. Notably, the studies identified by this review were consistent in showing the benefits with CBD, regardless of different patient populations.",
       "finding": "positive",
       "tags": [
         "epilepsy",
@@ -1203,53 +1203,6 @@
       "approved": true
     },
     {
-      "id": "s032",
-      "source": "pubmed",
-      "title": "Therapeutic Use of Cannabis and Cannabinoids: A Review",
-      "authors": "Hsu M, Shah A, Jordan A et al.",
-      "journal": "JAMA",
-      "year": 2026,
-      "study_type": "meta_analysis",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41296368/",
-      "pubmed_id": "41296368",
-      "doi": null,
-      "plain_summary": "Hsu M()(), Shah A(), Jordan A(), Gold MS(), Hill KP(). Author information:\n()Department of Psychiatry and Biobehavioral Sciences, David Geffen School of Medicine, Los Angeles, California. ()Veterans Affairs Greater Los Angeles Healthcare System, Los Angeles, California.",
-      "finding": "positive",
-      "tags": [
-        "pain",
-        "anxiety",
-        "sleep",
-        "epilepsy",
-        "depression",
-        "cancer",
-        "cbd-only",
-        "thc",
-        "preclinical",
-        "dosing"
-      ],
-      "conditions": [
-        "chronic-pain",
-        "anxiety",
-        "sleep",
-        "epilepsy",
-        "depression",
-        "cancer-related"
-      ],
-      "cannabinoids": [
-        "cbd",
-        "thc"
-      ],
-      "audience": [
-        "patient",
-        "provider",
-        "researcher"
-      ],
-      "sample_size": "See source",
-      "score": 58,
-      "score_notes": "type:meta-analysis [text](+25) | journal:+15 | year:2026(+15) | cbd_relevance:3hits(+9) | caution:-6",
-      "approved": true
-    },
-    {
       "id": "s033",
       "source": "pubmed",
       "title": "The Potential Use of Cannabidiol in the Treatment of Opioid Use Disorder: A Systematic Review",
@@ -1260,7 +1213,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40415392/",
       "pubmed_id": "40415392",
       "doi": null,
-      "plain_summary": "of Opioid Use Disorder: A Systematic Review. Shafie M(), Ing K()(), Rostam-Abadi Y(), Weleff J()()(), Griffin M(), Ranganathan M()(), Mohammad Aghaei A(), Pratt N(), Funaro MC(), Bassir Nia A()()(). Author information:\n()School of Medicine, Tehran University of Medical Sciences, Tehran, Iran.",
+      "plain_summary": "This systematic review highlights the potential of CBD as a beneficial treatment option for addressing cravings and anxiety symptoms during abstinence in individuals with opioid use disorder, based on findings from human studies.",
       "finding": "positive",
       "tags": [
         "anxiety",
@@ -1299,8 +1252,8 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41343139/",
       "pubmed_id": "41343139",
       "doi": null,
-      "plain_summary": "on Medicinal Cannabis for Treatment of Mental Health and Substance Use Disorders: A Scoping Review. Cooling S(), Bonomo YA()()(), Castle D(), Hallinan CM()()()(). Author information:\n()Department of General Practice and Primary Care, Melbourne Medical School, Faculty of Medicine, Dentistry and Health Sciences, Medical Building, The University of Melbourne, Grattan Street, Parkville, VIC, , Australia.",
-      "finding": "positive",
+      "plain_summary": "Overall, whilst there may be some potential therapeutic benefits for medicinal cannabis in certain psychiatric disorders, the findings of the present review reiterate the need for more high-quality, adequately powered RCTs investigating the use of medicinal cannabis for mental health conditions.",
+      "finding": "mixed",
       "tags": [
         "anxiety",
         "ptsd",
@@ -1337,47 +1290,6 @@
       "approved": true
     },
     {
-      "id": "s035",
-      "source": "pubmed",
-      "title": "Efficacy and safety of adjunctive treatment with the fatty acid amide hydrolase inhibitor JNJ-42165279 in participants with major depressive disorder with anxious distress: A double-blind, placebo-controlled, randomised study",
-      "authors": "Schmidt ME, Gargano C, Zhou X et al.",
-      "journal": "Eur Neuropsychopharmacol",
-      "year": 2026,
-      "study_type": "rct",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/41616640/",
-      "pubmed_id": "41616640",
-      "doi": null,
-      "plain_summary": "Ctive treatment with the fatty acid amide hydrolase inhibitor JNJ- in participants with major depressive disorder with anxious distress: A double-blind, placebo-controlled, randomised study.",
-      "finding": "mixed",
-      "tags": [
-        "pain",
-        "anxiety",
-        "depression",
-        "balanced",
-        "safety",
-        "ecs",
-        "preclinical",
-        "dosing",
-        "rct"
-      ],
-      "conditions": [
-        "chronic-pain",
-        "anxiety",
-        "depression"
-      ],
-      "cannabinoids": [
-        "balanced"
-      ],
-      "audience": [
-        "provider",
-        "researcher"
-      ],
-      "sample_size": "n=153",
-      "score": 56,
-      "score_notes": "type:randomized controlled trial [pubtype](+22) | journal:+8 | year:2026(+15) | cbd_relevance:2hits(+6) | sample(+5)",
-      "approved": true
-    },
-    {
       "id": "s036",
       "source": "pubmed",
       "title": "Regular cannabinoid use and inflammatory biomarkers: Systematic review and hierarchical meta-analysis",
@@ -1388,7 +1300,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41740869/",
       "pubmed_id": "41740869",
       "doi": null,
-      "plain_summary": "and inflammatory biomarkers: Systematic review and hierarchical meta-analysis. Belvederi Murri M(), Guglielmo R(), Zizzi A(), Muscettola A(), Nanni MG(), Dall'Oro M(), Serafini G(), Inuggi A(), Escelsior A(), Amore M(), Grassi L(). Author information:\n()Institute of Psychiatry, Department of Neuroscience and Rehabilitation, University of Ferrara, Italy.",
+      "plain_summary": "Cannabinoid use is associated with concurrent pro- and anti-inflammatory modulation in non-medical populations, consistent with immunomodulatory effects rather than a uniform pro- or anti-inflammatory shift.",
       "finding": "mixed",
       "tags": [
         "inflammation",
@@ -1423,7 +1335,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39570218/",
       "pubmed_id": "39570218",
       "doi": null,
-      "plain_summary": "Reatment of Peripheral Neuropathy and Neuropathic Pain: A Systematic Review.",
+      "plain_summary": "Our analysis of the literature shows that cannabis-based medicines may be effective in treating the pain and symptoms of peripheral neuropathy. These findings suggest the applicability of cannabis-based medicines for peripheral neuropathy.",
       "finding": "mixed",
       "tags": [
         "pain",
@@ -1463,7 +1375,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41833046/",
       "pubmed_id": "41833046",
       "doi": null,
-      "plain_summary": "tion by Cannabidiol and Probiotics for Therapeutic Advancement in CNS Disorders: A Systematic Review. Baghel Chauhan S(), Jaitawat DPS(), Jain C(), Singh I(). Author information:\n()Amity Institute of Pharmacy, Amity University, Noida, Uttar Pradesh, , India.",
+      "plain_summary": "The observed benefits of CBD and probiotics suggest a synergistic mechanism through gut-brain axis modulation, addressing both neurological and immunological pathways. While animal studies are promising, translation to clinical practice requires further evidence.",
       "finding": "positive",
       "tags": [
         "anxiety",
@@ -1505,7 +1417,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41343025/",
       "pubmed_id": "41343025",
       "doi": null,
-      "plain_summary": "Summary not available. See source for full abstract.",
+      "plain_summary": "This study found that cannabis-based medical products were associated with short to medium-term improvements in pain, anxiety, sleep, and general quality-of-life in patients with fibromyalgia.",
       "finding": "mixed",
       "tags": [
         "pain",
@@ -1549,7 +1461,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/38171632/",
       "pubmed_id": "38171632",
       "doi": null,
-      "plain_summary": "Summary not available. See source for full abstract.",
+      "plain_summary": "Cannabis for medical use may be similarly effective and result in fewer discontinuations than opioids for chronic non-cancer pain.",
       "finding": "mixed",
       "tags": [
         "pain",
@@ -1590,7 +1502,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/39878042/",
       "pubmed_id": "39878042",
       "doi": null,
-      "plain_summary": "Summary not available. See source for full abstract.",
+      "plain_summary": "The management of severe pain after surgery, and the use of intravenous drugs with limited and potentially unsafe effectiveness, has led to the exploration of new treatment options to minimize side effects while improving pain relief. Cannabinoids have been suggested as a potential solution for managing post-surgical pain, but there is currently insufficient evidence to assess their effectiveness.",
       "finding": "mixed",
       "tags": [
         "pain",
@@ -1626,7 +1538,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41551042/",
       "pubmed_id": "41551042",
       "doi": null,
-      "plain_summary": "Fects and underlying mechanisms of medical cannabinoids in ischemic stroke: a systematic meta-analysis with bibliometric mapping of cerebral ischemia research.",
+      "plain_summary": "Medical cannabinoids exert multi-target neuroprotection in ischemic stroke by improving cerebral blood flow, reducing brain edema and BBB permeability, and inhibiting oxidative stress, neuroinflammation, apoptosis, and excitotoxicity. Future research should focus on high-quality clinical trials to validate these findings and translate medical cannabinoids into clinical practice.",
       "finding": "positive",
       "tags": [
         "inflammation",
@@ -1662,7 +1574,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/38797087/",
       "pubmed_id": "38797087",
       "doi": null,
-      "plain_summary": ", and pharmacokinetics of nanodispersible cannabidiol oral solution ( mg/mL) versus placebo in mild to moderate anxiety subjects: A double blind multicenter randomized clinical trial.",
+      "plain_summary": "Nanodispersible CBD was therapeutically safe with no serious adverse events, well tolerated, and effective for the treatment of mild to moderate anxiety disorders, as well as associated depression and sleep quality disturbances.",
       "finding": "positive",
       "tags": [
         "anxiety",
@@ -1702,7 +1614,7 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40526158/",
       "pubmed_id": "40526158",
       "doi": null,
-      "plain_summary": "Extracts in the Treatment of Chronic Pain: An Open Label Study.",
+      "plain_summary": "Of 88 patients, 51 individuals reported a decrease in pain, 38 a decrease in anxiety and 48 in insomnia, with 'decrease' defined as symptom reduction of 50% or more between the first and last consultation. In addition, 23 subjects reduced or discontinued other analgesics and/or anti-inflammatory drugs during the trial. Adverse effects were mild and reversible.",
       "finding": "positive",
       "tags": [
         "pain",
@@ -1726,7 +1638,7 @@
         "provider",
         "researcher"
       ],
-      "sample_size": "n=23",
+      "sample_size": "n=88",
       "score": 53,
       "score_notes": "type:clinical trial [pubtype](+17) | journal:+12 | year:2025(+14) | cbd_relevance:3hits(+9) | sample(+1)",
       "approved": true
@@ -1742,8 +1654,8 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/40956670/",
       "pubmed_id": "40956670",
       "doi": null,
-      "plain_summary": "Summary not available. See source for full abstract.",
-      "finding": "positive",
+      "plain_summary": "The anxiolytic effects of CBD may also be mediated by its antioxidant, anti-inflammatory, and neuroprotective properties, which contribute to reducing neural oxidative stress and neuroinflammation.77 These mechanisms could play a role in modulating anxiety-related pathways and improving overall brain resilience.",
+      "finding": "mixed",
       "tags": [
         "anxiety",
         "ptsd",
@@ -1783,7 +1695,7 @@
       "url": "https://www.mdpi.com/1422-0067/26/24/11963",
       "pubmed_id": "41465389",
       "doi": null,
-      "plain_summary": "'s Disease-Related Neuroinflammation: A Systematic Review and Meta-Analysis.",
+      "plain_summary": "CBD remains a biologically plausible, multi-pathway candidate for modulating neuroinflammation and behaviorally relevant circuits in Alzheimer's Disease. Preclinical signals are broadly convergent; clinical signals, especially for agitation and caregiver burden, are promising yet heterogeneous, reflecting population complexity and design variation rather than an absence of pharmacological activity.",
       "finding": "positive",
       "tags": [
         "inflammation",
@@ -1822,8 +1734,8 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/41096688/",
       "pubmed_id": "41096688",
       "doi": null,
-      "plain_summary": "Reyes-Resina I()()(), Lillo J()()(), Raïch I()()(), Rebassa JB()()(), Capó T()()(), Badia P(), Navarro G()()(). Author information:\n()Department of Biochemistry and Physiology, School of Pharmacy and Food Sciences, University of Barcelona, Barcelona, Spain. ()Network Center for Biomedical Research in Neurodegenerative Diseases, CiberNed, Spanish National Health Institute Carlos III, Av.",
-      "finding": "mixed",
+      "plain_summary": "Cannabinoid action on CB receptor 2 could prevent neuronal death and promote polarization of microglia to the neuroprotective M2 phenotype. Indeed, the endocannabinoids, 2-AG and anandamide, have antiparkinsonian properties; 2-AG is neuroprotective, and anandamide provides symptomatic relief. Furthermore, cannabinoids have shown to be effective in decreasing axonal transport of α-syn fibrils. Thus, the potential of cannabinoids for the treatment of Parkinson's disease arises as a promising new pathway that should be further explored",
+      "finding": "positive",
       "tags": [
         "pain",
         "inflammation",
