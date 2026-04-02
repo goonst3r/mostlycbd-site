@@ -2220,6 +2220,230 @@
       "score": 52,
       "score_notes": "type:double-blind [text](+20) | journal:+8 | year:2026(+15) | cbd_relevance:3hits(+9)",
       "approved": true
+    },
+    {
+      "id": "o3095",
+      "source": "openalex",
+      "title": "Oral Cannabidiol in the Treatment of Myofascial Pain Disorder of the Temporomandibular Region: A Placebo-Controlled Randomized Clinical Trial",
+      "authors": "Gwendolyn Reeve, Rachel B. Kutler, Adam Abel et al.",
+      "journal": "Medical Cannabis and Cannabinoids",
+      "year": 2026,
+      "study_type": "rct",
+      "url": "https://doi.org/10.1159/000551040",
+      "pubmed_id": null,
+      "doi": "10.1159/000551040",
+      "plain_summary": "Introduction: The efficacy of oral cannabidiol for management of myofascial pain disorder (MPD) of the temporomandibular region remains understudied. Therefore, the purpose of this study was to determine if cannabinoids provide pain relief and improved jaw function in patients with MPD of the temporomandibular region. Methods: This is a single-center, prospective, double-blind, randomized, placebo-controlled clinical trial.",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "cbd-only",
+        "safety",
+        "preclinical",
+        "rct"
+      ],
+      "conditions": [
+        "chronic-pain"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "n=54",
+      "score": 52,
+      "score_notes": "type:double-blind [text](+20) | journal:+8 | year:2026(+15) | cbd_relevance:2hits(+6) | sample(+3)",
+      "approved": true
+    },
+    {
+      "id": "p1051",
+      "source": "pubmed",
+      "title": "Assessing the Role of Cannabis in Managing Spasticity in Multiple Sclerosis: A Systematic Review and Meta-Analysis",
+      "authors": "AlHabil Y, Saadeddin L, Ishkirat H et al.",
+      "journal": "Clin Ther",
+      "year": 2026,
+      "study_type": "meta_analysis",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40753057/",
+      "pubmed_id": "40753057",
+      "doi": null,
+      "plain_summary": "Cannabis-based therapies are associated with clinically meaningful improvements in MS-related spasticity, particularly over longer durations. Despite the promising findings, high heterogeneity and suspected bias necessitate caution. Further high-quality randomized trials with standardized protocols and comprehensive safety assessments are warranted to validate efficacy and long-term outcomes.",
+      "finding": "positive",
+      "tags": [
+        "pain",
+        "ms",
+        "cbd-only",
+        "thc",
+        "safety",
+        "preclinical",
+        "meta-analysis"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "ms"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 51,
+      "score_notes": "type:meta-analysis [pubtype](+25) | journal:+8 | year:2026(+15) | cbd_relevance:1hits(+3)",
+      "approved": true
+    },
+    {
+      "id": "p1063",
+      "source": "pubmed",
+      "title": "Cannabidiol blood metabolite levels after cannabidiol treatment are associated with broadband EEG changes and improvements in visuomotor and non-verbal cognitive abilities in boys with autism requiring higher levels of support",
+      "authors": "Cazares C, Hutton A, Paez G et al.",
+      "journal": "Transl Psychiatry",
+      "year": 2026,
+      "study_type": "rct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41611664/",
+      "pubmed_id": "41611664",
+      "doi": null,
+      "plain_summary": "CBD metabolite levels in blood had a positive association with receptive vocabulary, nonverbal intelligence and visuomotor coordination. Our data suggest that this daily CBD preparation and administration schedule produced mixed effects, with some children showing improvements in cognitive and behavioral abilities while others demonstrated limited changes.",
+      "finding": "mixed",
+      "tags": [
+        "autism",
+        "cbd-only",
+        "preclinical",
+        "rct"
+      ],
+      "conditions": [
+        "autism"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 51,
+      "score_notes": "type:randomized controlled trial [pubtype](+22) | journal:+8 | year:2026(+15) | cbd_relevance:2hits(+6)",
+      "approved": true
+    },
+    {
+      "id": "p1083",
+      "source": "pubmed",
+      "title": "Cannabinoids: Therapeutic Perspectives for Management of Orofacial Pain, Oral Inflammation and Bone Healing-A Systematic Review",
+      "authors": "Campana MD, de Paolis G, Sammartino G et al.",
+      "journal": "Int J Mol Sci",
+      "year": 2025,
+      "study_type": "systematic_review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40332414/",
+      "pubmed_id": "40332414",
+      "doi": null,
+      "plain_summary": "CBD demonstrated potential in managing orofacial pain, reducing inflammation, and promoting bone healing. However, these conclusions are drawn from a heterogeneous body of evidence, including multiple preclinical studies with high risk of bias and clinical trials with varying outcomes and endpoints. Rigorous, well-powered, and standardized clinical trials are needed to confirm efficacy, determine safety, and guide dosage and formulation strategies.",
+      "finding": "positive",
+      "tags": [
+        "pain",
+        "inflammation",
+        "opioid",
+        "cbd-only",
+        "thc",
+        "mechanism",
+        "preclinical"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "inflammation",
+        "opioid-related"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 51,
+      "score_notes": "type:systematic review [pubtype](+23) | journal:+8 | year:2025(+14) | cbd_relevance:2hits(+6)",
+      "approved": true
+    },
+    {
+      "id": "p1112",
+      "source": "pubmed",
+      "title": "Exploring the effects of cannabidiol on pain sensitivity using quantitative sensory testing among individuals receiving methadone or buprenorphine for opioid use disorder: an open-label, proof-of-concept study",
+      "authors": "Costa GPA, Suh R, Sofuoglu M et al.",
+      "journal": "Addict Behav Rep",
+      "year": 2026,
+      "study_type": "rct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41496743/",
+      "pubmed_id": "41496743",
+      "doi": null,
+      "plain_summary": "This pilot study offers preliminary indications that CBD’s impact on pain sensitivity varies by dose and MOUD (medications for opioid use disorder) type, notably with potential benefits at 400 mg for individuals on buprenorphine. Coupled with its demonstrated safety and tolerability, these findings support future larger, placebo-controlled randomized trials to confirm CBD’s therapeutic utility for pain in this population.",
+      "finding": "positive",
+      "tags": [
+        "pain",
+        "opioid",
+        "cbd-only",
+        "safety",
+        "preclinical",
+        "dosing"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "opioid-related"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 51,
+      "score_notes": "type:placebo-controlled [text](+19) | journal:+8 | year:2026(+15) | cbd_relevance:3hits(+9)",
+      "approved": true
+    },    
+    {
+      "id": "p1136",
+      "source": "pubmed",
+      "title": "Vaporized cannabis versus placebo for acute migraine: A randomized, double-blind, placebo-controlled crossover trial",
+      "authors": "Schuster NM, Wallace MS, Marcotte TD et al.",
+      "journal": "Headache",
+      "year": 2026,
+      "study_type": "rct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41469488/",
+      "pubmed_id": "41469488",
+      "doi": null,
+      "plain_summary": "In this double‐blind study, people with migraine treated up to 4 migraine attacks, 1 attack was treated with each of 3 vaporized cannabis flower treatments (THC 6%, CBD 11%, and THC 6% + CBD 11%) or placebo cannabis flower without THC or CBD, within the first 4 h of migraine attack onset. Four puffs of cannabis flower containing THC 6% + CBD 11% was superior to placebo at treating migraine attacks, though the study did not examine the long‐term effects of frequent use.",
+      "finding": "positive",
+      "tags": [
+        "pain",
+        "cbd-only",
+        "thc",
+        "safety",
+        "preclinical",
+        "rct"
+      ],
+      "conditions": [
+        "chronic-pain"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 51,
+      "score_notes": "type:randomized controlled trial [pubtype](+22) | journal:+8 | year:2026(+15) | cbd_relevance:2hits(+6)",
+      "approved": true
     }
   ]
 }
