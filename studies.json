@@ -8,7 +8,7 @@
   },
   "studies": [
     {
-      "id": "s001",
+      "id": "s00001",
       "title": "CBD: A Systematic Review of Clinical and Preclinical Evidence in the Treatment of Pain",
       "authors": "Multiple authors, MDPI Pharmaceuticals",
       "journal": "Pharmaceuticals (MDPI)",
@@ -45,7 +45,7 @@
       "approved": true
     },
     {
-      "id": "s002",
+      "id": "s00002",
       "title": "Are Cannabis-Based Medicines a Useful Treatment for Neuropathic Pain? A Systematic Review",
       "authors": "Almuntashiri N, El Sharazly BM, Carter WG",
       "journal": "Biomolecules",
@@ -80,7 +80,7 @@
       "approved": true
     },
     {
-      "id": "s003",
+      "id": "s00003",
       "title": "Cannabis-Based Products for Chronic Pain: An Updated Systematic Review",
       "authors": "Chou R, Fu R, Ahmed AY, Morasco BJ",
       "journal": "Annals of Internal Medicine",
@@ -118,7 +118,7 @@
       "approved": true
     },
     {
-      "id": "s004",
+      "id": "s00004",
       "title": "Effectiveness of Cannabidiol to Manage Chronic Pain: A Systematic Review",
       "authors": "Multiple authors, PRISMA 2020",
       "journal": "Journal of Pain & Palliative Care Pharmacotherapy",
@@ -149,7 +149,7 @@
       "approved": true
     },
     {
-      "id": "s005",
+      "id": "s00005",
       "title": "Therapeutic Potential of Cannabidiol (CBD) in Anxiety Disorders: A Systematic Review and Meta-Analysis",
       "authors": "Multiple authors",
       "journal": "European Journal of Medicinal Chemistry Reports",
@@ -186,7 +186,7 @@
       "approved": true
     },
     {
-      "id": "s006",
+      "id": "s00006",
       "title": "Evidence for Use of Cannabinoids in Mood Disorders, Anxiety Disorders, and PTSD: A Systematic Review",
       "authors": "Stanciu CN, Brunette MF, Teja N, Budney AJ",
       "journal": "Psychiatric Services",
@@ -223,7 +223,7 @@
       "approved": true
     },
     {
-      "id": "s007",
+      "id": "s00007",
       "title": "Cannabidiol in Anxiety and Sleep: A Large Case Series",
       "authors": "Shannon S, Lewis N, Lee H, Hughes S",
       "journal": "The Permanente Journal",
@@ -258,7 +258,7 @@
       "approved": true
     },
     {
-      "id": "s008",
+      "id": "s0008",
       "title": "Cannabidiol as a Potential Treatment for Anxiety Disorders",
       "authors": "Blessing EM, Steenkamp MM, Manzanares J, Marmar CR",
       "journal": "Neurotherapeutics",
@@ -295,7 +295,7 @@
       "approved": true
     },
     {
-      "id": "s009",
+      "id": "s0009",
       "title": "Clinical and Cognitive Improvement Following Full-Spectrum, High-CBD Treatment for Anxiety: Open-Label Phase 2 Trial",
       "authors": "Dahlgren MK et al.",
       "journal": "Communications Medicine (Nature Portfolio)",
@@ -334,7 +334,7 @@
       "approved": true
     },
     {
-      "id": "s010",
+      "id": "s0010",
       "title": "Cannabis, Pain, and Sleep: Lessons from Therapeutic Clinical Trials of Sativex",
       "authors": "Russo EB",
       "journal": "Chemistry & Biodiversity",
@@ -375,7 +375,7 @@
       "approved": true
     },
     {
-      "id": "s011",
+      "id": "s0011",
       "title": "The Interplay between the Endocannabinoid System, Epilepsy, and Cannabinoids",
       "authors": "Cheung KAK, Peiris H, Wallace G, Holland OJ, Mitchell MD",
       "journal": "International Journal of Molecular Sciences",
@@ -409,7 +409,7 @@
       "approved": true
     },
     {
-      "id": "s012",
+      "id": "s0012",
       "title": "Targeting Endocannabinoid System in Epilepsy: For Good or for Bad",
       "authors": "MartÃ­nez-Aguirre C, Cinar R, Rocha L &mdash; Center for Research and Advanced Studies, Mexico City",
       "journal": "Neuroscience",
@@ -443,7 +443,7 @@
       "approved": true
     },
     {
-      "id": "s013",
+      "id": "s0013",
       "title": "Oral Cannabis for Taxane-Induced Neuropathy: A Pilot Randomized Placebo-Controlled Study",
       "authors": "Haney M, Choo T, Tiersten A et al. &mdash; Columbia University",
       "journal": "Cannabis and Cannabinoid Research",
@@ -478,7 +478,7 @@
       "approved": true
     },
     {
-      "id": "s014",
+      "id": "s0014",
       "title": "Cannabidiol: A Potential New Alternative for the Treatment of Anxiety, Depression, and Psychotic Disorders",
       "authors": "GarcÃ­a-GutiÃ©rrez MS et al.",
       "journal": "Frontiers in Psychiatry",
@@ -513,7 +513,7 @@
       "approved": true
     },
     {
-      "id": "s015",
+      "id": "s0015",
       "title": "ALS, the Endocannabinoid System, and Exogenous Cannabinoids: Current State and Clinical Implications",
       "authors": "Denton TT, Carter GT, Goddard M et al. &mdash; Washington State University",
       "journal": "Muscle & Nerve",
@@ -553,7 +553,7 @@
       "approved": true
     },
     {
-      "id": "s016",
+      "id": "s0016",
       "title": "Cannabidiol Modulates Serotonergic Transmission and Reverses Both Allodynia and Anxiety-like Behavior in Neuropathic Pain",
       "authors": "De Gregorio D, McLaughlin RJ, Posa L et al.",
       "journal": "PAIN",
@@ -589,7 +589,7 @@
       "approved": true
     },
     {
-      "id": "s017",
+      "id": "s0017",
       "title": "Oral capsules of tetra-hydro-cannabinol (THC), cannabidiol (CBD) and their combination in peripheral neuropathic pain treatment",
       "authors": "Zubcevic K, Petersen M, Bach FW et al.",
       "journal": "Eur J Pain",
@@ -627,7 +627,7 @@
       "approved": true
     },
     {
-      "id": "s018",
+      "id": "s0018",
       "source": "pubmed",
       "title": "Cannabis-based medicines for chronic neuropathic pain in adults",
       "authors": "Ateş G, Welsch P, Klose P et al.",
@@ -672,7 +672,7 @@
       "approved": true
     },
     {
-      "id": "s019",
+      "id": "s0019",
       "source": "pubmed",
       "title": "The efficacy and safety of cannabinoids for the treatment of mental disorders and substance use disorders: a systematic review and meta-analysis",
       "authors": "Wilson J, Dobson O, Langcake A et al.",
@@ -719,7 +719,7 @@
       "approved": true
     },
     {
-      "id": "s020",
+      "id": "s0020",
       "source": "pubmed",
       "title": "Effectiveness of cannabinoids on subjective sleep quality in people with and without insomnia or poor sleep: A systematic review and meta-analysis of randomised studies",
       "authors": "da Silva GHS, Barbosa EC, de Lima FR et al.",
@@ -757,7 +757,7 @@
       "approved": true
     },
     {
-      "id": "s021",
+      "id": "s0021",
       "source": "pubmed",
       "title": "CARE - A Retrospective, Dual-Cohort, 24-Week Real-World Study from the German Pain e-Registry on the Effectiveness and Safety of CBD-Dominant Oral Cannabis Extracts versus THC/Dronabinol in Older Patients with Chronic Pain",
       "authors": "Überall MA, Müller-Schwefe PCG, Küster MA et al.",
@@ -799,7 +799,7 @@
       "approved": true
     },
     {
-      "id": "s022",
+      "id": "s0022",
       "source": "pubmed",
       "title": "Medicinal cannabis for symptom control in advanced cancer: a double-blind, placebo-controlled, randomised clinical trial of 1:1 tetrahydrocannabinol and cannabidiol",
       "authors": "Hardy JR, Greer RM, Pelecanos AM et al.",
@@ -843,7 +843,7 @@
       "approved": true
     },
     {
-      "id": "s023",
+      "id": "s0023",
       "source": "pubmed",
       "title": "Randomized and Blind Evaluation of the Efficacy of a Full-Spectrum Oral Cannabis sativa Oil Extract, Standardized Based on CBD-A, CBD and THC-A, THC in Canines with Chronic Osteoarthritis",
       "authors": "Benjamin ET, Maria Teresa SE, Alexander NS et al.",
@@ -884,7 +884,7 @@
       "approved": true
     },
     {
-      "id": "s024",
+      "id": "s0024",
       "source": "pubmed",
       "title": "Impact of Medical Cannabis on the Quality of Life of Cancer Patients: A Critical Review",
       "authors": "Correa LG, Tucci AM",
@@ -930,7 +930,7 @@
       "approved": true
     },
     {
-      "id": "s025",
+      "id": "s0025",
       "source": "pubmed",
       "title": "Modulating the endocannabinoid system in alcohol use disorder: A translational systematic review and meta-analysis of preclinical and human studies",
       "authors": "Costa GPA, Cerezo-Matias MA, Funaro MC et al.",
@@ -966,7 +966,7 @@
       "approved": true
     },
     {
-      "id": "s026",
+      "id": "s0026",
       "source": "pubmed",
       "title": "Cannabinoids for Medical Purposes in Children: A Living Systematic Review",
       "authors": "Chhabra M, Paul A, Abulannaz O et al.",
@@ -1011,7 +1011,7 @@
       "approved": true
     },
     {
-      "id": "s027",
+      "id": "s0027",
       "source": "pubmed",
       "title": "Therapeutically Motivated Cannabis Use for Anxiety: Daily and Longitudinal Reductions Vary Between Flower and Edible Products",
       "authors": "Rosa L, Lisano JK, Skrzynski CJ et al.",
@@ -1046,7 +1046,7 @@
       "approved": true
     },
     {
-      "id": "s028",
+      "id": "s0028",
       "source": "pubmed",
       "title": "Efficacy and Safety of Cannabinoids for Autism Spectrum Disorder: An Updated Systematic Review",
       "authors": "Pereira DA, Cheidde L, Megiolaro MDR et al.",
@@ -1085,7 +1085,7 @@
       "approved": true
     },
     {
-      "id": "s029",
+      "id": "s0029",
       "source": "pubmed",
       "title": "The differential effects of medicinal cannabis on mental health: A systematic review",
       "authors": "de Bode N, Kroon E, Sznitman SR et al.",
@@ -1127,7 +1127,7 @@
       "approved": true
     },
     {
-      "id": "s030",
+      "id": "s0030",
       "source": "pubmed",
       "title": "Cannabinoids versus placebo for pain: A systematic review with meta-analysis and Trial Sequential Analysis",
       "authors": "Barakji J, Korang SK, Feinberg J et al.",
@@ -1166,7 +1166,7 @@
       "approved": true
     },
     {
-      "id": "s031",
+      "id": "s0031",
       "source": "pubmed",
       "title": "A systematic review of highly purified cannabidiol in developmental and epileptic encephalopathies and complex treatment-resistant epilepsies: Changes in seizure frequency and adverse events",
       "authors": "Coppola A, Moore-Ramdin L, Navetta M et al.",
@@ -1203,7 +1203,7 @@
       "approved": true
     },
     {
-      "id": "s033",
+      "id": "s0033",
       "source": "pubmed",
       "title": "The Potential Use of Cannabidiol in the Treatment of Opioid Use Disorder: A Systematic Review",
       "authors": "Shafie M, Ing K, Rostam-Abadi Y et al.",
@@ -1242,7 +1242,7 @@
       "approved": true
     },
     {
-      "id": "s034",
+      "id": "s0034",
       "source": "pubmed",
       "title": "Randomised Controlled Trial Evidence on Medicinal Cannabis for Treatment of Mental Health and Substance Use Disorders: A Scoping Review",
       "authors": "Cooling S, Bonomo YA, Castle D et al.",
@@ -1290,7 +1290,7 @@
       "approved": true
     },
     {
-      "id": "s036",
+      "id": "s0036",
       "source": "pubmed",
       "title": "Regular cannabinoid use and inflammatory biomarkers: Systematic review and hierarchical meta-analysis",
       "authors": "Belvederi Murri M, Guglielmo R, Zizzi A et al.",
@@ -1325,7 +1325,7 @@
       "approved": true
     },
     {
-      "id": "s037",
+      "id": "s0037",
       "source": "pubmed",
       "title": "The Use of Cannabinoids in the Treatment of Peripheral Neuropathy and Neuropathic Pain: A Systematic Review",
       "authors": "Choi J, Li G, Stephens KL et al.",
@@ -1365,7 +1365,7 @@
       "approved": true
     },
     {
-      "id": "s038",
+      "id": "s0038",
       "source": "pubmed",
       "title": "Synergistic Neuroimmune Modulation by Cannabidiol and Probiotics for Therapeutic Advancement in CNS Disorders: A Systematic Review",
       "authors": "Baghel Chauhan S, Jaitawat DPS, Jain C et al.",
@@ -1407,7 +1407,7 @@
       "approved": true
     },
     {
-      "id": "s039",
+      "id": "s0039",
       "source": "pubmed",
       "title": "UK Medical Cannabis Registry: a case series analysing clinical outcomes of medicinal cannabis therapy for fibromyalgia",
       "authors": "Varadpande M, Erridge S, Aggarwal A et al.",
@@ -1451,7 +1451,7 @@
       "approved": true
     },
     {
-      "id": "s040",
+      "id": "s0040",
       "source": "pubmed",
       "title": "Cannabis for medical use versus opioids for chronic non-cancer pain: a systematic review and network meta-analysis of randomised clinical trials",
       "authors": "Jeddi HM, Busse JW, Sadeghirad B et al.",
@@ -1492,7 +1492,7 @@
       "approved": true
     },
     {
-      "id": "s041",
+      "id": "s0041",
       "source": "pubmed",
       "title": "Cannabinoids for Acute Postoperative Pain Management: A Systematic Review and Meta-Analysis of Clinical Trials",
       "authors": "González Cárdenas VH, Valdivieso Díaz M, Mateus Almeciga CF et al.",
@@ -1528,7 +1528,7 @@
       "approved": true
     },
     {
-      "id": "s042",
+      "id": "s0042",
       "source": "pubmed",
       "title": "Exploring the neuroprotective effects and underlying mechanisms of medical cannabinoids in ischemic stroke: a systematic meta-analysis with bibliometric mapping of cerebral ischemia research",
       "authors": "Li X, Wen L, Du Y et al.",
@@ -1564,7 +1564,7 @@
       "approved": true
     },
     {
-      "id": "s043",
+      "id": "s0043",
       "source": "pubmed",
       "title": "Evaluation of the efficacy, safety, and pharmacokinetics of nanodispersible cannabidiol oral solution (150 mg/mL) versus placebo in mild to moderate anxiety subjects: A double blind multicenter randomized clinical trial",
       "authors": "Gundugurti PR, Banda N, Yadlapalli SSR et al.",
@@ -1604,7 +1604,7 @@
       "approved": true
     },
     {
-      "id": "s044",
+      "id": "s0044",
       "source": "pubmed",
       "title": "Effectiveness of Full Spectrum Cannabis Extracts in the Treatment of Chronic Pain: An Open Label Study",
       "authors": "F A, M L, G B et al.",
@@ -1644,7 +1644,7 @@
       "approved": true
     },
     {
-      "id": "s045",
+      "id": "s0045",
       "source": "pubmed",
       "title": "Effects of Different Cannabinoid Formulations on Anxiety-Related Disorders, and Tourette Syndrome: A Systematic Review and Meta-Analysis",
       "authors": "Raminelli AO, Simei JLQ, Guimarães FS et al.",
@@ -1685,7 +1685,7 @@
       "approved": true
     },
     {
-      "id": "s046",
+      "id": "s0046",
       "source": "pubmed",
       "title": "Therapeutic Potential for Cannabidiol on Alzheimer's Disease-Related Neuroinflammation: A Systematic Review and Meta-Analysis",
       "authors": "Wu S, Rajiah T, Ali AB",
@@ -1724,7 +1724,7 @@
       "approved": true
     },
     {
-      "id": "s047",
+      "id": "s0047",
       "source": "pubmed",
       "title": "The Interplay Between CB(2) and NMDA Receptors in Parkinson's Disease",
       "authors": "Reyes-Resina I, Lillo J, Raïch I et al.",
@@ -1762,7 +1762,7 @@
       "approved": true
     },
         {
-      "id": "s048",
+      "id": "s0048",
       "source": "pubmed",
       "title": "Effects of Cannabidiol on Social Relating, Anxiety, and Parental Stress in Autistic Children: A Randomized Controlled Crossover Trial",
       "authors": "Parrella NF, Hill AT, Enticott PG et al.",
@@ -1802,7 +1802,7 @@
       "approved": true
     },
     {
-      "id": "s049",
+      "id": "s0049",
       "source": "pubmed",
       "title": "Cannabis and cannabidiol for postoperative pain management in orthopedic surgery: a scoping review",
       "authors": "Tran K, Odland K, Polly DW Jr",
@@ -1841,7 +1841,7 @@
       "approved": true
     },
     {
-      "id": "s050",
+      "id": "s0050",
       "source": "pubmed",
       "title": "The Pleiotropic Influence of Cannabidiol and Tetrahydrocannabinol on Inflammatory Biomarkers: A Systematic Review and Meta-Analytical Synthesis",
       "authors": "Candeloro BM, de Oliveira CM, Gimenez FVM et al.",
@@ -1877,7 +1877,7 @@
       "approved": true
     },
     {
-      "id": "s051",
+      "id": "s0051",
       "source": "pubmed",
       "title": "Therapeutic potential of cannabidiol in oral disorders: A systematic review of clinical evidence",
       "authors": "de Abreu LM, Biancardi MR, Di Benedetto M et al.",
@@ -1917,7 +1917,7 @@
       "approved": true
     },
     {
-      "id": "s052",
+      "id": "s0052",
       "source": "pubmed",
       "title": "Clinical Outcomes and Patient Profiles in the UK Medical Cannabis Registry: A k-Means Clustering Analysis",
       "authors": "Erridge S, Clarke E, McLachlan K et al.",
@@ -1954,7 +1954,7 @@
       "approved": true
     },
     {
-      "id": "s053",
+      "id": "s0053",
       "source": "pubmed",
       "title": "Prenatal cannabis exposure and the risk for neuropsychiatric anomalies in the offspring: a systematic review and meta-analysis",
       "authors": "Bassalov H, Yakirevich-Amir N, Reuveni I et al.",
@@ -1992,7 +1992,7 @@
       "approved": true
     },
     {
-      "id": "s054",
+      "id": "s0054",
       "source": "pubmed",
       "title": "Efficacy and safety of cannabidiol oil in psoriasis: a randomized, double-blind, placebo-controlled trial",
       "authors": "Roongpisuthipong W, Klangjareonchai T, Kurathong S et al.",
@@ -2030,7 +2030,7 @@
       "approved": true
     },
     {
-      "id": "s055",
+      "id": "s0055",
       "source": "pubmed",
       "title": "Cross-sectional comparison of cannabis use in adults with neuropathic versus non-neuropathic pain",
       "authors": "Laroya CJP, Smith CL, Bindler RJ et al.",
@@ -2071,7 +2071,7 @@
       "approved": true
     },
     {
-      "id": "s056",
+      "id": "s0056",
       "source": "pubmed",
       "title": "UK Medical Cannabis Registry: A clinical outcomes analysis for insomnia",
       "authors": "Aggarwal A, Erridge S, Cowley I et al.",
@@ -2111,7 +2111,7 @@
       "approved": true
     },
     {
-      "id": "s057",
+      "id": "s0057",
       "source": "pubmed",
       "title": "Effects of cannabidiol in alcohol use disorder patients with and without co-occurring post-traumatic stress disorder: Tolerability but no evidence for efficacy in two randomized proof-of-concept trials",
       "authors": "Bogenschutz MP, Blessing E, Dgheim D et al.",
@@ -2149,7 +2149,7 @@
       "approved": true
     },
     {
-      "id": "s058",
+      "id": "s0058",
       "source": "pubmed",
       "title": "Unprescribed cannabinoids and multiple sclerosis: a multicenter, cross-sectional, epidemiological study in Lombardy, Italy",
       "authors": "Giossi R, Mercenari M, Filippi M et al.",
@@ -2183,7 +2183,7 @@
       "approved": true
     },
     {
-      "id": "s059",
+      "id": "s0059",
       "source": "openalex",
       "title": "Safety and Tolerability of Low-Dose Full-Spectrum Cannabidiol in Long-Term Virally Suppressed Adults with HIV: A Randomized Double-Blind Placebo-Controlled Trial",
       "authors": "Clemence Couton, Mathilde Wanneveich, Barbara De Dieuleveult et al.",
@@ -2222,7 +2222,7 @@
       "approved": true
     },
     {
-      "id": "o3095",
+      "id": "s0060",
       "source": "openalex",
       "title": "Oral Cannabidiol in the Treatment of Myofascial Pain Disorder of the Temporomandibular Region: A Placebo-Controlled Randomized Clinical Trial",
       "authors": "Gwendolyn Reeve, Rachel B. Kutler, Adam Abel et al.",
@@ -2257,7 +2257,7 @@
       "approved": true
     },
     {
-      "id": "p1051",
+      "id": "s0061",
       "source": "pubmed",
       "title": "Assessing the Role of Cannabis in Managing Spasticity in Multiple Sclerosis: A Systematic Review and Meta-Analysis",
       "authors": "AlHabil Y, Saadeddin L, Ishkirat H et al.",
@@ -2297,7 +2297,7 @@
       "approved": true
     },
     {
-      "id": "p1063",
+      "id": "s0062",
       "source": "pubmed",
       "title": "Cannabidiol blood metabolite levels after cannabidiol treatment are associated with broadband EEG changes and improvements in visuomotor and non-verbal cognitive abilities in boys with autism requiring higher levels of support",
       "authors": "Cazares C, Hutton A, Paez G et al.",
@@ -2331,7 +2331,7 @@
       "approved": true
     },
     {
-      "id": "p1083",
+      "id": "s0063",
       "source": "pubmed",
       "title": "Cannabinoids: Therapeutic Perspectives for Management of Orofacial Pain, Oral Inflammation and Bone Healing-A Systematic Review",
       "authors": "Campana MD, de Paolis G, Sammartino G et al.",
@@ -2372,7 +2372,7 @@
       "approved": true
     },
     {
-      "id": "p1112",
+      "id": "s0064",
       "source": "pubmed",
       "title": "Exploring the effects of cannabidiol on pain sensitivity using quantitative sensory testing among individuals receiving methadone or buprenorphine for opioid use disorder: an open-label, proof-of-concept study",
       "authors": "Costa GPA, Suh R, Sofuoglu M et al.",
@@ -2409,7 +2409,7 @@
       "approved": true
     },    
     {
-      "id": "p1136",
+      "id": "s0065",
       "source": "pubmed",
       "title": "Vaporized cannabis versus placebo for acute migraine: A randomized, double-blind, placebo-controlled crossover trial",
       "authors": "Schuster NM, Wallace MS, Marcotte TD et al.",
@@ -2444,6 +2444,202 @@
       "score": 51,
       "score_notes": "type:randomized controlled trial [pubtype](+22) | journal:+8 | year:2026(+15) | cbd_relevance:2hits(+6)",
       "approved": true
-    }
+    },
+    {
+      "id": "s0066",
+      "source": "pubmed",
+      "title": "Effects and safety of a CBD-rich Cannabis sativa oil in knee osteoarthritis: a double-blind, randomized, placebo-controlled trial - CANOA - cannabis for osteoarthritis",
+      "authors": "Mojoli A, Haider O, Fakih Y et al.",
+      "journal": "Front Pharmacol",
+      "year": 2025,
+      "study_type": "rct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41487518/",
+      "pubmed_id": "41487518",
+      "doi": null,
+      "plain_summary": "CBD-rich cannabis oil treatment was well tolerated, with no serious adverse effects observed. However, this treatment did not demonstrate superiority over placebo in alleviating pain or improving secondary outcomes in osteoarthritis patients. Further multicentrical and larger trials are warranted to explore the efficacy of alternative dosages and/or formulations containing CBD, THC and other cannabinoids.",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "sleep",
+        "inflammation",
+        "depression",
+        "cbd-only",
+        "thc",
+        "full-spectrum",
+        "safety",
+        "preclinical",
+        "dosing"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "sleep",
+        "inflammation",
+        "depression"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 51,
+      "score_notes": "type:double-blind [text](+20) | journal:+8 | year:2025(+14) | cbd_relevance:3hits(+9)",
+      "approved": true
+    },
+    {
+      "id": "s0067",
+      "source": "pubmed",
+      "title": "Health-related quality of life in patients receiving medicinal cannabis: systematic review and meta-analysis of primary research findings 2015-2025",
+      "authors": "Tait MA, Acret L, Costa DSJ et al.",
+      "journal": "Qual Life Res",
+      "year": 2026,
+      "study_type": "meta_analysis",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41621036/",
+      "pubmed_id": "41621036",
+      "doi": null,
+      "plain_summary": "This systematic review and meta-analyses of studies published between 2015 and 2025 found that few studies provided HRQL (health-related quality of life) definitions, and a third of studies did not explain why they measured HRQL. To ensure appropriate measures are used for this important treatment outcome, future studies should define HRQL and justify the HRQL assessment in the context of research objectives. Overall, improvements in HRQL were observed across studies of patients using MC.",
+      "finding": "mixed",
+      "tags": [
+        "cancer",
+        "ms",
+        "preclinical",
+        "meta-analysis"
+      ],
+      "conditions": [
+        "cancer-related",
+        "ms"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "n=52",
+      "score": 51,
+      "score_notes": "type:meta-analysis [pubtype](+25) | journal:+8 | year:2026(+15) | sample(+3)",
+      "approved": true
+    },
+    {
+      "id": "s0068",
+      "source": "pubmed",
+      "title": "Effects of legal access versus illegal market cannabis on use and mental health: A randomized controlled trial",
+      "authors": "Baltes-Flueckiger L, Steinauer R, Meyer M et al.",
+      "journal": "Addiction",
+      "year": 2025,
+      "study_type": "rct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40289676/",
+      "pubmed_id": "40289676",
+      "doi": null,
+      "plain_summary": "We measured the effects of public health-oriented cannabis access compared with the illegal market on cannabis use and related mental health outcomes in adult cannabis users. This was a two-arm, parallel group, open-label, randomized controlled trial. Follow-up outcome measurement took place after 6 months.",
+      "finding": "mixed",
+      "tags": [
+        "anxiety",
+        "depression",
+        "preclinical",
+        "rct"
+      ],
+      "conditions": [
+        "anxiety",
+        "depression"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "n=374",
+      "score": 51,
+      "score_notes": "type:randomized controlled trial [pubtype](+22) | journal:+8 | year:2025(+14) | sample(+7)",
+      "approved": true
+    },
+    {
+      "id": "s0069",
+      "source": "pubmed",
+      "title": "Cannabis Use Patterns Among Adults Living With Chronic Pain Before and During the COVID Pandemic: Insights From the COVID-19 Cannabis Health Study",
+      "authors": "Baral A, Vidot DC, Diggs BA et al.",
+      "journal": "Pain Res Manag",
+      "year": 2025,
+      "study_type": "review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41179652/",
+      "pubmed_id": "41179652",
+      "doi": null,
+      "plain_summary": "This study aims to identify sociodemographic factors associated with cannabis use for chronic pain management before and after COVID-19 was declared a pandemic. Furthermore, it seeks to compare cannabis use patterns in adults with and without chronic pain.",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "preclinical",
+        "dosing"
+      ],
+      "conditions": [
+        "chronic-pain"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "n=2243",
+      "score": 51,
+      "score_notes": "type:cross-sectional [text](+9) | journal:+12 | year:2025(+14) | cbd_relevance:1hits(+3) | sample(+13)",
+      "approved": true
+    },
+    {
+      "id": "s0070",
+      "source": "pubmed",
+      "title": "The therapeutic role of Cannabidiol in mental health: a systematic review",
+      "authors": "Khan R, Naveed S, Mian N et al.",
+      "journal": "J Cannabis Res",
+      "year": 2020,
+      "study_type": "systematic_review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33526132/",
+      "pubmed_id": "33526132",
+      "doi": null,
+      "plain_summary": "The therapeutic application of cannabidiol (CBD) is gaining interest due to expanding evidence for its use. The objective was to summarize the clinical outcomes, study designs and limitations for the use of CBD and nabiximols (whole plant extract from Cannabis sativa L. that has been purified into 1:1 ratio of CBD and delta-9-tetrahydrocannabinol) in the treatment of psychiatric disorders.",
+      "finding": "positive",
+      "tags": [
+        "anxiety",
+        "ptsd",
+        "sleep",
+        "autism",
+        "cbd-only",
+        "thc",
+        "balanced",
+        "full-spectrum",
+        "preclinical",
+        "rct"
+      ],
+      "conditions": [
+        "anxiety",
+        "ptsd",
+        "sleep",
+        "autism"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc",
+        "balanced",
+        "full-spectrum"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 51,
+      "score_notes": "type:systematic review [text](+23) | journal:+8 | year:2020(+5) | cbd_relevance:5hits(+15)",
+      "approved": true
+    }    
   ]
 }
