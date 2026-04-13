@@ -1,0 +1,38 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // ─────────────────────────────────────────────────────
+    // AVATARS — avatars/{memberId}/{filename}
+    // ─────────────────────────────────────────────────────
+    match /avatars/{memberId}/{allPaths=**} {
+      // Allow anyone to read avatars
+      allow read;
+
+      // Allow anyone to upload avatars (max 5MB per file)
+      allow write: if request.auth == null &&
+                      request.resource.size <= 5 * 1024 * 1024 &&
+                      request.resource.contentType.matches('image/.*');
+    }
+
+    // ─────────────────────────────────────────────────────
+    // RATING PHOTOS — ratings/{restaurantId}/{filename}
+    // ─────────────────────────────────────────────────────
+    match /ratings/{restaurantId}/{allPaths=**} {
+      // Allow anyone to read rating photos
+      allow read;
+
+      // Allow anyone to upload rating photos (max 5MB per file)
+      allow write: if request.auth == null &&
+                      request.resource.size <= 5 * 1024 * 1024 &&
+                      request.resource.contentType.matches('image/.*');
+    }
+
+    // ─────────────────────────────────────────────────────
+    // DENY everything else by default
+    // ─────────────────────────────────────────────────────
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

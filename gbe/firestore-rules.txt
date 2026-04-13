@@ -1,0 +1,83 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ─────────────────────────────────────────────────────
+    // MEMBERS collection
+    // ─────────────────────────────────────────────────────
+    match /members/{document=**} {
+      // Public read for all
+      allow read;
+
+      // Allow create/write with validation
+      allow create: if request.auth == null && validateMember(request.resource.data);
+      allow update: if request.auth == null && validateMember(request.resource.data);
+      allow delete: if request.auth == null;
+    }
+
+    // ─────────────────────────────────────────────────────
+    // RESTAURANTS collection
+    // ─────────────────────────────────────────────────────
+    match /restaurants/{document=**} {
+      // Public read for all
+      allow read;
+
+      // Allow create/write with validation
+      allow create: if request.auth == null && validateRestaurant(request.resource.data);
+      allow update: if request.auth == null && validateRestaurant(request.resource.data);
+      allow delete: if request.auth == null;
+    }
+
+    // ─────────────────────────────────────────────────────
+    // RATINGS collection
+    // ─────────────────────────────────────────────────────
+    match /ratings/{document=**} {
+      // Public read for all
+      allow read;
+
+      // Allow create/write with validation
+      allow create: if request.auth == null && validateRating(request.resource.data);
+      allow update: if request.auth == null && validateRating(request.resource.data);
+      allow delete: if request.auth == null;
+    }
+
+    // ─────────────────────────────────────────────────────
+    // VALIDATION FUNCTIONS
+    // ─────────────────────────────────────────────────────
+
+    function validateMember(data) {
+      return data.keys().hasAll(['name', 'createdAt']) &&
+             data.name is string &&
+             data.name.size() > 0 &&
+             data.name.size() <= 100 &&
+             data.guest is bool &&
+             data.createdAt is timestamp;
+    }
+
+    function validateRestaurant(data) {
+      return data.keys().hasAll(['spot', 'style', 'createdAt']) &&
+             data.spot is string &&
+             data.spot.size() > 0 &&
+             data.spot.size() <= 200 &&
+             data.style is string &&
+             data.style.size() <= 50 &&
+             data.createdAt is timestamp &&
+             (!('ratings' in data) || data.ratings is list) &&
+             (!('photos' in data) || (data.photos is list && data.photos.size() <= 50)) &&
+             (!('photoTags' in data) || (data.photoTags is list && data.photoTags.size() <= 100)) &&
+             (!('notes' in data) || (data.notes is list && data.notes.size() <= 100));
+    }
+
+    function validateRating(data) {
+      return data.keys().hasAll(['memberId', 'restaurantId', 'rating', 'createdAt']) &&
+             data.memberId is string &&
+             data.restaurantId is string &&
+             data.rating in ['marry', 'fuck', 'kill'] &&
+             data.createdAt is timestamp &&
+             data.updatedAt is timestamp &&
+             (!('photos' in data) || (data.photos is list && data.photos.size() <= 4)) &&
+             (!('photoTags' in data) || (data.photoTags is list && data.photoTags.size() <= 50)) &&
+             (!('notes' in data) || data.notes is string);
+    }
+  }
+}

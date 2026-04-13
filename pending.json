@@ -21,50 +21,7 @@
   },
   "pending": [
 
-    {
-      "id": "p1318",
-      "source": "pubmed",
-      "title": "Cannabidiol and cognitive functions/inflammatory markers in Parkinson's disease: A double-blind randomized controlled trial at Buriram Hospital (CBD-PD-BRH trial)",
-      "authors": "Mitarnun W, Kanjanarangsichai A, Junlaor P et al.",
-      "journal": "Parkinsonism Relat Disord",
-      "year": 2025,
-      "study_type": "rct",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/40267585/",
-      "pubmed_id": "40267585",
-      "doi": null,
-      "plain_summary": "unctions/inflammatory markers in Parkinson's disease: A double-blind randomized controlled trial at Buriram Hospital (CBD-PD-BRH trial). Mitarnun W(), Kanjanarangsichai A(), Junlaor P(), Kongngern L(), Mitarnun W(), Pangwong W(), Nonghan P(). Author information:\n()Neurology Unit, Department of Internal Medicine, Buriram Hospital, Buriram, Kingdom of Thailand.",
-      "finding": "mixed",
-      "tags": [
-        "anxiety",
-        "inflammation",
-        "depression",
-        "parkinson",
-        "cbd-only",
-        "thc",
-        "safety",
-        "preclinical",
-        "dosing",
-        "rct"
-      ],
-      "conditions": [
-        "anxiety",
-        "inflammation",
-        "depression",
-        "parkinson"
-      ],
-      "cannabinoids": [
-        "cbd",
-        "thc"
-      ],
-      "audience": [
-        "provider",
-        "researcher"
-      ],
-      "sample_size": "n=30",
-      "score": 51,
-      "score_notes": "type:randomized controlled trial [pubtype](+22) | journal:+8 | year:2025(+14) | cbd_relevance:2hits(+6) | sample(+1)",
-      "approved": false
-    },
+
     {
       "id": "p1324",
       "source": "pubmed",
