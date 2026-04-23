@@ -2684,6 +2684,164 @@
       "score": 51,
       "score_notes": "type:cross-sectional [text](+9) | journal:+12 | year:2025(+14) | cbd_relevance:1hits(+3) | sample(+13)",
       "approved": true
+    },
+    {
+      "id": "s00070",
+      "source": "pubmed",
+      "title": "Examination of the effects of cannabidiol on menstrual-related symptoms",
+      "authors": "Ferretti ML, Stanley TB, Peters EN et al.",
+      "journal": "Exp Clin Psychopharmacol",
+      "year": 2024,
+      "study_type": "rct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38451730/",
+      "pubmed_id": "38451730",
+      "doi": null,
+      "plain_summary": "Findings suggest that CBD may have the potential for managing MRS. Importantly, changes in symptoms appeared in the first month of CBD consumption and persisted over the 3 consumption months.",
+      "finding": "positive",
+      "tags": [
+        "anxiety",
+        "depression",
+        "cbd-only",
+        "preclinical",
+        "dosing"
+      ],
+      "conditions": [
+        "anxiety",
+        "depression"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "n=17",
+      "score": 51,
+      "score_notes": "type:randomized controlled trial [pubtype](+22) | journal:+8 | year:2024(+12) | cbd_relevance:3hits(+9)",
+      "approved": true
+    },
+    {
+      "id": "s00071",
+      "source": "pubmed",
+      "title": "Efficacy and Safety of Topical 5% Cannabidiol Plus Myrcene for the Treatment of Vestibulodynia: A Multi-Centric Randomized Controlled Trial",
+      "authors": "Murina F, Ettore G, Fochesato C et al.",
+      "journal": "Biomedicines",
+      "year": 2025,
+      "study_type": "rct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41153723/",
+      "pubmed_id": "41153723",
+      "doi": null,
+      "plain_summary": "Cannabidiol's positive effects on vestibulodynia patients can be attributed to its antinociceptive and anti-inflammatory properties.",
+      "finding": "positive",
+      "tags": [
+        "pain",
+        "neuropathy",
+        "inflammation",
+        "cbd-only",
+        "mechanism",
+        "safety",
+        "rct"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "neuropathic-pain",
+        "inflammation"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 50,
+      "score_notes": "type:randomized controlled trial [text](+22) | journal:+8 | year:2025(+14) | cbd_relevance:2hits(+6)",
+      "approved": true
+    },
+    {
+      "id": "s00072",
+      "source": "pubmed",
+      "title": "Cannabinoids in Chronic Pain: Clinical Outcomes, Adverse Effects and Legal Challenges",
+      "authors": "Sic A, George C, Gonzalez DF et al.",
+      "journal": "Neurol Int",
+      "year": 2025,
+      "study_type": "rct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41002929/",
+      "pubmed_id": "41002929",
+      "doi": null,
+      "plain_summary": "Cannabinoid-based therapies represent a promising yet still evolving option for chronic pain management. Their mechanisms, primarily mediated through CB1 and CB2 receptor pathways, offer a novel pharmacological approach distinct from conventional analgesics.",
+      "finding": "positive",
+      "tags": [
+        "pain",
+        "neuropathy",
+        "ms",
+        "fibromyalgia",
+        "cbd-only",
+        "balanced",
+        "mechanism",
+        "safety",
+        "preclinical",
+        "dosing"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "neuropathic-pain",
+        "ms",
+        "fibromyalgia"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "balanced"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 50,
+      "score_notes": "type:randomized controlled trial [text](+22) | journal:+8 | year:2025(+14) | cbd_relevance:2hits(+6)",
+      "approved": true
+    },
+    {
+      "id": "s00073",
+      "source": "pubmed",
+      "title": "Epilepsy, neuroinflammation and cannabidiol What do we know thus far?",
+      "authors": "Pes\u00e1ntez R\u00edos G, Perucca E, Striano P et al.",
+      "journal": "Front Pharmacol",
+      "year": 2025,
+      "study_type": "rct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41560741/",
+      "pubmed_id": "41560741",
+      "doi": null,
+      "plain_summary": "The last decade has seen impressive advances in understanding the value of CBD in the management of epilepsy. Increasing evidence is also accumulating that CBD efficacy may extend to a wide range of other epileptic conditions, ranging from DEEs to other rare syndromes, as well as common focal and generalized epilepsies in children and adults.",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "epilepsy",
+        "inflammation",
+        "cbd-only",
+        "mechanism",
+        "ecs",
+        "preclinical"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "epilepsy",
+        "inflammation"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 50,
+      "score_notes": "type:placebo-controlled [text](+19) | journal:+8 | year:2025(+14) | cbd_relevance:3hits(+9)",
+      "approved": true
     }
   ]
 }
