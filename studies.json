@@ -2842,6 +2842,232 @@
       "score": 50,
       "score_notes": "type:placebo-controlled [text](+19) | journal:+8 | year:2025(+14) | cbd_relevance:3hits(+9)",
       "approved": true
+    },
+    {
+      "id": "s00074",
+      "source": "pubmed",
+      "title": "Effects and mechanisms of cannabidiol in attenuating orofacial inflammatory pain and ameliorating pain-related affective deficits",
+      "authors": "Wang W, Xie G, Xu B et al.",
+      "journal": "Brain Res Bull",
+      "year": 2026,
+      "study_type": "clinical_trial",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41796907/",
+      "pubmed_id": "41796907",
+      "doi": null,
+      "plain_summary": "CBD exerts robust multi-dimensional therapeutic effects across sensory, affective, and cognitive domains in inflammatory pain models. The findings underscore the translational potential of CBD as a novel therapeutic strategy for comprehensive management of orofacial pain and pain-related debilitating emotional comorbidities.",
+      "finding": "positive",
+      "tags": [
+        "pain",
+        "neuropathy",
+        "anxiety",
+        "inflammation",
+        "depression",
+        "cbd-only",
+        "mechanism",
+        "ecs",
+        "preclinical"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "neuropathic-pain",
+        "anxiety",
+        "inflammation",
+        "depression"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 50,
+      "score_notes": "type:phase ii [text](+18) | journal:+8 | year:2026(+15) | cbd_relevance:3hits(+9)",
+      "approved": true
+    },
+    {
+      "id": "s00075",
+      "source": "pubmed",
+      "title": "Effects of Cannabidiol Ingestion on Thermoregulatory and Inflammatory Responses to Treadmill Exercise in the Heat in Recreationally Active Males",
+      "authors": "Johnson DA, Cable TG, Funnell MP et al.",
+      "journal": "Med Sci Sports Exerc",
+      "year": 2025,
+      "study_type": "rct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39294920/",
+      "pubmed_id": "39294920",
+      "doi": null,
+      "plain_summary": "CBD did not affect thermoregulation during exertional heat stress but appeared to elicit minor immunosuppressive effects, reducing CD14 and IL-6 responses, warranting investigation in humans under more severe heat strain and other proinflammatory scenarios.",
+      "finding": "mixed",
+      "tags": [
+        "inflammation",
+        "cbd-only",
+        "preclinical",
+        "rct"
+      ],
+      "conditions": [
+        "inflammation"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 50,
+      "score_notes": "type:randomized controlled trial [pubtype](+22) | journal:+8 | year:2025(+14) | cbd_relevance:2hits(+6)",
+      "approved": true
+    },
+    {
+      "id": "s00076",
+      "source": "pubmed",
+      "title": "Investigating the Relationship Between Cannabis Expectancies and Anxiety, Depression, and Pain Responses After Acute Flower and Edible Cannabis Use",
+      "authors": "Chen MY, Kramer EB, Gibson LP et al.",
+      "journal": "Cannabis Cannabinoid Res",
+      "year": 2025,
+      "study_type": "rct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38608236/",
+      "pubmed_id": "38608236",
+      "doi": null,
+      "plain_summary": "Among both flower and edible users, consistent, significant expectancy effects were found. Results were consistent with prior findings and demonstrate the need to measure and control pre-existing expectancies in future research that involves cannabis administration.",
+      "finding": "positive",
+      "tags": [
+        "pain",
+        "anxiety",
+        "depression",
+        "cbd-only",
+        "thc",
+        "preclinical"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "anxiety",
+        "depression"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 50,
+      "score_notes": "type:randomized controlled trial [pubtype](+22) | journal:+8 | year:2025(+14) | cbd_relevance:2hits(+6)",
+      "approved": true
+    },
+    {
+      "id": "s00077",
+      "source": "pubmed",
+      "title": "Cannabidiol as a treatment for cocaine use disorder: a scoping review",
+      "authors": "Dos Santos LC, da Cunha VB, Ribeiro JM et al.",
+      "journal": "Naunyn Schmiedebergs Arch Pharmacol",
+      "year": 2026,
+      "study_type": "rct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41632247/",
+      "pubmed_id": "41632247",
+      "doi": null,
+      "plain_summary": "Some evidence suggests a more favorable tolerability profile compared to traditional pharmacological treatments, as well as potential improvements in clinical and psychiatric complaints, but these findings remain preliminary.",
+      "finding": "mixed",
+      "tags": [
+        "cbd-only",
+        "safety",
+        "preclinical",
+        "dosing"
+      ],
+      "conditions": [],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 49,
+      "score_notes": "type:rct [text](+20) | journal:+8 | year:2026(+15) | cbd_relevance:2hits(+6)",
+      "approved": true
+    },
+    {
+      "id": "s00078",
+      "source": "pubmed",
+      "title": "The effects of standardized cannabis products in healthy volunteers and patients: a systematic literature review",
+      "authors": "Leen NA, Kowal MA, Batalla A et al.",
+      "journal": "Front Pharmacol",
+      "year": 2024,
+      "study_type": "systematic_review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39484170/",
+      "pubmed_id": "39484170",
+      "doi": null,
+      "plain_summary": "Safety and efficacy of standardized medicinal cannabis products should be further investigated in randomized clinical trials with sufficient sample size, with particular focus on cannabis dose and composition, age and differences between males and females.",
+      "finding": "positive",
+      "tags": [
+        "pain",
+        "anxiety",
+        "epilepsy",
+        "ms",
+        "cbd-only",
+        "thc",
+        "safety",
+        "preclinical",
+        "dosing"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "anxiety",
+        "epilepsy",
+        "ms"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 49,
+      "score_notes": "type:systematic review [pubtype](+23) | journal:+8 | year:2024(+12) | cbd_relevance:2hits(+6)",
+      "approved": true
+    },
+    {
+      "id": "s00079",
+      "source": "pubmed",
+      "title": "The effects of cannabidiol on sleep disturbances within a sample of high trait worriers: A double-blind, randomized placebo controlled trial",
+      "authors": "Gournay LR, Ferretti ML, Dickens HB et al.",
+      "journal": "Exp Clin Psychopharmacol",
+      "year": 2026,
+      "study_type": "rct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41678223/",
+      "pubmed_id": "41678223",
+      "doi": null,
+      "plain_summary": "Findings are encouraging for the development of CBD as a therapeutic option for sleep, particularly given its favorable safety profile. However, the lack of difference between 300 mg CBD and placebo highlights the need for further research to disentangle potential placebo effects and other confounding variables.",
+      "finding": "mixed",
+      "tags": [
+        "sleep",
+        "cbd-only",
+        "preclinical",
+        "rct"
+      ],
+      "conditions": [
+        "sleep"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "score": 49,
+      "score_notes": "type:double-blind [text](+20) | journal:+8 | year:2026(+15) | cbd_relevance:2hits(+6)",
+      "approved": true
     }
   ]
 }
