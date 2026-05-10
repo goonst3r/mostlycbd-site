@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<!-- saved from url=(0069)file:///C:/Users/jody/Downloads/Lauren_Atlanta_Budget_firebase_1.html -->
+<!-- saved from url=(0067)file:///C:/Users/jody/Downloads/Lauren_Atlanta_Budget_firebase.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lauren — Atlanta Budget</title>
 <!-- Firebase SDKs -->
-<script src="./index_v2_files/firebase-app-compat.js.download"></script>
-<script src="./index_v2_files/firebase-database-compat.js.download"></script>
-<link href="./index_v2_files/css2" rel="stylesheet">
+<script src="./index_files/firebase-app-compat.js.download"></script>
+<script src="./index_files/firebase-database-compat.js.download"></script>
+<link href="./index_files/css2" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -287,15 +287,15 @@ table.ct tr:hover td{background:#FAF7F4}
     </div>
   </div>
   <div class="tabs">
-    <button class="tab" onclick="showPage(&#39;budget&#39;,this)">Budget</button>
-    <button class="tab active" onclick="showPage(&#39;apartments&#39;,this)">Apartments</button>
+    <button class="tab active" onclick="showPage(&#39;budget&#39;,this)">Budget</button>
+    <button class="tab" onclick="showPage(&#39;apartments&#39;,this)">Apartments</button>
   </div>
 </div>
 
 <div class="wrap">
 
 <!-- ═══════════════════ BUDGET PAGE ═══════════════════ -->
-<div class="page" id="page-budget">
+<div class="page active" id="page-budget">
 
   <div class="slabel">Income</div>
   <div class="income-card">
@@ -308,7 +308,7 @@ table.ct tr:hover td{background:#FAF7F4}
     <div>
       <div class="tax-grid">
         <div class="tax-item"><span class="tl">Gross salary</span><span class="tv">$79,000</span></div>
-        <div class="tax-item" id="ti_401k" style=""><span class="tl" id="t_401k_lbl">401(k) Roth (post-tax)</span><span class="tv neg" id="t_401k">–$395</span></div>
+        <div class="tax-item" id="ti_401k" style="display:none"><span class="tl" id="t_401k_lbl">401(k) Roth (post-tax)</span><span class="tv neg" id="t_401k">—</span></div>
         <div class="tax-item" id="ti_health" style="display:none"><span class="tl">Health insurance</span><span class="tv neg" id="t_health">—</span></div>
         <div class="tax-item" id="ti_dental" style="display:none"><span class="tl">Dental / vision</span><span class="tv neg" id="t_dental">—</span></div>
         <div class="tax-item" id="ti_fsa" style="display:none"><span class="tl">FSA / HSA</span><span class="tv neg" id="t_fsa">—</span></div>
@@ -321,7 +321,7 @@ table.ct tr:hover td{background:#FAF7F4}
       </div>
       <div class="takehome-big">
         <span class="tl">Monthly take-home</span>
-        <span class="tv" id="t_takehome">$4,601</span>
+        <span class="tv" id="t_takehome">$4,996</span>
       </div>
     </div>
   </div>
@@ -330,10 +330,10 @@ table.ct tr:hover td{background:#FAF7F4}
   <div class="edit-card">
     <div class="edit-group-hdr"><span>💼</span> Benefits &amp; Payroll Elections</div>
     <div class="edit-line">
-      <label>401(k) type <span class="hint" id="hint_401k">Roth — post-tax. No income reduction now; withdrawals tax-free in retirement.</span></label>
+      <label>401(k) type <span class="hint" id="hint_401k">Select once Home Depot confirms plan options</span></label>
       <div class="tog-group roth-tog">
-        <button class="tog-btn" id="btn_none401k" onclick="set401k(&#39;none&#39;,this)">None yet</button>
-        <button class="tog-btn active" id="btn_roth" onclick="set401k(&#39;roth&#39;,this)">Roth</button>
+        <button class="tog-btn active" id="btn_none401k" onclick="set401k(&#39;none&#39;,this)">None yet</button>
+        <button class="tog-btn" id="btn_roth" onclick="set401k(&#39;roth&#39;,this)">Roth</button>
         <button class="tog-btn" id="btn_trad" onclick="set401k(&#39;trad&#39;,this)">Traditional</button>
       </div>
     </div>
@@ -350,7 +350,7 @@ table.ct tr:hover td{background:#FAF7F4}
     <div class="edit-line"><label>FSA / HSA contribution</label><div class="field-wrap"><span class="sym">$</span><input type="number" id="p_fsa" value="0" min="0"><span class="sym" style="margin-left:4px">/mo</span></div></div>
     <div class="edit-line"><label>Other pre-tax deduction <span class="hint">Commuter benefit, disability, etc.</span></label><div class="field-wrap"><span class="sym">$</span><input type="number" id="p_other" value="0" min="0"><span class="sym" style="margin-left:4px">/mo</span></div></div>
   </div>
-  <div class="pretax-banner" id="pretax_banner"><b>Roth 401(k):</b> $395/mo is post-tax — no income reduction now, but retirement withdrawals are 100% tax-free. Smart move at 22.</div>
+  <div class="pretax-banner" id="pretax_banner" style="display: none;"></div>
 
   <div class="slabel">Housing Scenario</div>
   <div class="scenario-row">
@@ -414,56 +414,56 @@ table.ct tr:hover td{background:#FAF7F4}
             <div><div class="res-hdr-title">Budget Summary</div><div class="res-hdr-scenario" id="res_label">Solo — 1 Bedroom</div></div>
           </div>
           <div class="pay-tog">
-            <button class="" id="btn_monthly" onclick="setPayView(&#39;monthly&#39;,this)">Monthly</button>
-            <button id="btn_paycheck" onclick="setPayView(&#39;paycheck&#39;,this)" class="active">Per Paycheck</button>
+            <button class="active" id="btn_monthly" onclick="setPayView(&#39;monthly&#39;,this)">Monthly</button>
+            <button id="btn_paycheck" onclick="setPayView(&#39;paycheck&#39;,this)">Per Paycheck</button>
           </div>
         </div>
-        <div class="res-line"><span class="rl">Take-home <span id="view_lbl" style="font-size:10px">(per paycheck)</span></span><span class="rv pos" id="r_takehome">$2,123</span></div>
-        <div class="res-line" id="r_ded_row" style=""><span class="rl" id="r_ded_lbl">401(k) Roth + deductions</span><span class="rv neg" id="r_ded">–$182</span></div>
+        <div class="res-line"><span class="rl">Take-home <span id="view_lbl" style="font-size:10px">(monthly)</span></span><span class="rv pos" id="r_takehome">$4,996</span></div>
+        <div class="res-line" id="r_ded_row" style="display:none"><span class="rl" id="r_ded_lbl">Deductions</span><span class="rv neg" id="r_ded">—</span></div>
         <div class="res-divider"></div>
-        <div class="res-line"><span class="rl">Rent</span><span class="rv neg" id="r_rent">–$857</span></div>
-        <div class="res-line"><span class="rl">Utilities</span><span class="rv neg" id="r_util">–$83</span></div>
-        <div class="res-line"><span class="rl">Internet</span><span class="rv neg" id="r_inet">–$30</span></div>
-        <div class="res-line"><span class="rl">Renters insurance</span><span class="rv neg" id="r_renters">–$7</span></div>
+        <div class="res-line"><span class="rl">Rent</span><span class="rv neg" id="r_rent">–$1,700</span></div>
+        <div class="res-line"><span class="rl">Utilities</span><span class="rv neg" id="r_util">–$130</span></div>
+        <div class="res-line"><span class="rl">Internet</span><span class="rv neg" id="r_inet">–$65</span></div>
+        <div class="res-line"><span class="rl">Renters insurance</span><span class="rv neg" id="r_renters">–$15</span></div>
         <div class="res-line" id="r_ins_row" style="display: none;"><span class="rl">Car insurance</span><span class="rv" id="r_ins">$0</span></div>
-        <div class="res-line"><span class="rl">Gas</span><span class="rv neg" id="r_gas">–$25</span></div>
-        <div class="res-line" id="r_park_row"><span class="rl">Parking</span><span class="rv neg" id="r_park">–$23</span></div>
+        <div class="res-line"><span class="rl">Gas</span><span class="rv neg" id="r_gas">–$55</span></div>
+        <div class="res-line" id="r_park_row"><span class="rl">Parking</span><span class="rv" id="r_park">$0</span></div>
         <div class="res-line" id="r_carpay_row" style="display:none"><span class="rl">Car payment</span><span class="rv" id="r_carpay">$0</span></div>
         <div class="res-line" id="r_transit_row" style="display:none"><span class="rl">MARTA transit</span><span class="rv" id="r_transit">$0</span></div>
-        <div class="res-line"><span class="rl">Groceries</span><span class="rv neg" id="r_groc">–$138</span></div>
-        <div class="res-line"><span class="rl">Dining / coffee</span><span class="rv neg" id="r_din">–$138</span></div>
-        <div class="res-line"><span class="rl">Bars / drinks</span><span class="rv neg" id="r_bars">–$46</span></div>
-        <div class="res-line"><span class="rl">Shopping</span><span class="rv neg" id="r_shop">–$69</span></div>
-        <div class="res-line"><span class="rl">Entertainment</span><span class="rv neg" id="r_ent">–$46</span></div>
-        <div class="res-line" id="r_atl_row" style=""><span class="rl">Atlanta activities</span><span class="rv neg" id="r_atl">–$37</span></div>
+        <div class="res-line"><span class="rl">Groceries</span><span class="rv neg" id="r_groc">–$300</span></div>
+        <div class="res-line"><span class="rl">Dining / coffee</span><span class="rv neg" id="r_din">–$300</span></div>
+        <div class="res-line"><span class="rl">Bars / drinks</span><span class="rv neg" id="r_bars">–$100</span></div>
+        <div class="res-line"><span class="rl">Shopping</span><span class="rv neg" id="r_shop">–$150</span></div>
+        <div class="res-line"><span class="rl">Entertainment</span><span class="rv neg" id="r_ent">–$100</span></div>
+        <div class="res-line" id="r_atl_row" style=""><span class="rl">Atlanta activities</span><span class="rv neg" id="r_atl">–$80</span></div>
         <div class="res-line" id="r_phone_row" style="display:none"><span class="rl">Phone</span><span class="rv" id="r_phone">$0</span></div>
-        <div class="res-line"><span class="rl">Subscriptions</span><span class="rv neg" id="r_subs">–$23</span></div>
-        <div class="res-line"><span class="rl">Health / gym</span><span class="rv neg" id="r_hlth">–$37</span></div>
-        <div class="res-line"><span class="rl">Emergency fund</span><span class="rv neg" id="r_emerg">–$46</span></div>
-        <div class="res-line" id="r_travel_row" style=""><span class="rl">Travel fund</span><span class="rv neg" id="r_travel">–$46</span></div>
-        <div class="res-line"><span class="rl">Student loans</span><span class="rv neg" id="r_loans">–$138</span></div>
+        <div class="res-line"><span class="rl">Subscriptions</span><span class="rv neg" id="r_subs">–$50</span></div>
+        <div class="res-line"><span class="rl">Health / gym</span><span class="rv neg" id="r_hlth">–$80</span></div>
+        <div class="res-line"><span class="rl">Emergency fund</span><span class="rv neg" id="r_emerg">–$100</span></div>
+        <div class="res-line" id="r_travel_row" style=""><span class="rl">Travel fund</span><span class="rv neg" id="r_travel">–$100</span></div>
+        <div class="res-line"><span class="rl">Student loans</span><span class="rv neg" id="r_loans">–$300</span></div>
         <div class="res-line" id="r_othsav_row" style="display:none"><span class="rl">Other savings</span><span class="rv" id="r_othsav">$0</span></div>
-        <div class="res-line"><span class="rl">Misc / buffer</span><span class="rv neg" id="r_misc">–$37</span></div>
+        <div class="res-line"><span class="rl">Misc / buffer</span><span class="rv neg" id="r_misc">–$80</span></div>
         <div class="res-divider"></div>
-        <div class="res-sub-row"><span class="rl">Total spend</span><span class="rv neu" id="r_total" style="font-family:&#39;DM Mono&#39;,monospace;font-weight:500">–$1,828</span></div>
+        <div class="res-sub-row"><span class="rl">Total spend</span><span class="rv neu" id="r_total" style="font-family:&#39;DM Mono&#39;,monospace;font-weight:500">–$3,705</span></div>
         <div class="res-total-row surplus" id="r_surplus_row">
-          <span class="rl">True surplus</span><span class="rv pos" id="r_surplus">$295</span>
+          <span class="rl">True surplus</span><span class="rv pos" id="r_surplus">$1,291</span>
         </div>
         <div class="annual-strip">
-          <div class="ann-item"><div class="ann-val" style="color:var(--rust)" id="ann_th">$55,206</div><div class="ann-lbl">Take-home/yr</div></div>
-          <div class="ann-item"><div class="ann-val" id="ann_sur" style="color: var(--sage);">$7,674</div><div class="ann-lbl">Surplus/yr</div></div>
-          <div class="ann-item"><div class="ann-val" style="color:var(--rust)" id="ann_pc">$2,123</div><div class="ann-lbl">Net/paycheck</div></div>
-          <div class="ann-item"><div class="ann-val" style="color:var(--brass)" id="ann_3rd">$2,123</div><div class="ann-lbl">3rd check</div></div>
+          <div class="ann-item"><div class="ann-val" style="color:var(--rust)" id="ann_th">$59,946</div><div class="ann-lbl">Take-home/yr</div></div>
+          <div class="ann-item"><div class="ann-val" id="ann_sur" style="color: var(--sage);">$15,486</div><div class="ann-lbl">Surplus/yr</div></div>
+          <div class="ann-item"><div class="ann-val" style="color:var(--rust)" id="ann_pc">$2,306</div><div class="ann-lbl">Net/paycheck</div></div>
+          <div class="ann-item"><div class="ann-val" style="color:var(--brass)" id="ann_3rd">$2,306</div><div class="ann-lbl">3rd check</div></div>
         </div>
         <div class="third-box">
           <div class="third-box-title">⚡ Bi-weekly: 2 extra paychecks / year</div>
-          <p>Two months/year have 3 paydays. That extra <b id="third_amt">$2,123</b> isn't in your monthly budget. Suggested uses:</p>
+          <p>Two months/year have 3 paydays. That extra <b id="third_amt">$2,306</b> isn't in your monthly budget. Suggested uses:</p>
           <ul><li>Top up emergency fund</li><li>Flights home (ATL is a Delta hub)</li><li>Extra Roth 401(k) contribution</li><li>Moving cost cushion</li></ul>
         </div>
         <div class="donut-wrap">
           <div class="donut-title">Where the money goes</div>
-          <svg id="donut_svg" viewBox="0 0 120 120" width="120" height="120" style="display:block;margin:0 auto;overflow:visible"><path d="M60,32 L60,14 A46,46 0 1,1 50.18877979321366,104.94151708669777 L54.02795291760832,87.35570605277255 A28,28 0 1,0 60,32 Z" fill="#B85C38"></path><path d="M54.02795291760832,87.35570605277255 L50.18877979321366,104.94151708669777 A46,46 0 0,1 42.87376611499268,102.69299840624956 L49.5753358960825,85.9870425081519 A28,28 0 0,0 54.02795291760832,87.35570605277255 Z" fill="#9A7B3C"></path><path d="M49.5753358960825,85.9870425081519 L42.87376611499268,102.69299840624956 A46,46 0 0,1 14.143165592176018,63.62639464115677 L32.087144273498446,62.2073706511389 A28,28 0 0,0 49.5753358960825,85.9870425081519 Z" fill="#4A7C5F"></path><path d="M32.087144273498446,62.2073706511389 L14.143165592176018,63.62639464115677 A46,46 0 0,1 23.401428621061633,32.133450643813944 L37.72260872586361,43.03775256579979 A28,28 0 0,0 32.087144273498446,62.2073706511389 Z" fill="#C8703C"></path><path d="M37.72260872586361,43.03775256579979 L23.401428621061633,32.133450643813944 A46,46 0 0,1 54.17820938158585,14.369892022970788 L56.45630136270443,32.22515166615614 A28,28 0 0,0 37.72260872586361,43.03775256579979 Z" fill="#6B8F71"></path><path d="M56.45630136270443,32.22515166615614 L54.17820938158585,14.369892022970788 A46,46 0 0,1 59.99999999999999,14 L59.99999999999999,32 A28,28 0 0,0 56.45630136270443,32.22515166615614 Z" fill="#8B7B5A"></path></svg>
-          <div class="legend" id="donut_legend"><div class="legend-item"><div class="legend-dot" style="background: rgb(184, 92, 56);"></div>Housing — $2,116 (53%)</div><div class="legend-item"><div class="legend-dot" style="background: rgb(154, 123, 60);"></div>Transport — $105 (3%)</div><div class="legend-item"><div class="legend-dot" style="background: rgb(74, 124, 95);"></div>Food — $700 (18%)</div><div class="legend-item"><div class="legend-dot" style="background: rgb(200, 112, 60);"></div>Lifestyle — $460 (12%)</div><div class="legend-item"><div class="legend-dot" style="background: rgb(107, 143, 113);"></div>Savings — $500 (13%)</div><div class="legend-item"><div class="legend-dot" style="background: rgb(139, 123, 90);"></div>Other — $80 (2%)</div></div>
+          <svg id="donut_svg" viewBox="0 0 120 120" width="120" height="120" style="display:block;margin:0 auto;overflow:visible"><path d="M60,32 L60,14 A46,46 0 1,1 55.52153839883878,105.78147421923987 L57.27397989494534,87.8669843073634 A28,28 0 1,0 60,32 Z" fill="#B85C38"></path><path d="M57.27397989494534,87.8669843073634 L55.52153839883878,105.78147421923987 A46,46 0 0,1 51.27703428866912,105.16536138678563 L54.690368697450765,87.49195910499995 A28,28 0 0,0 57.27397989494534,87.8669843073634 Z" fill="#9A7B3C"></path><path d="M54.690368697450765,87.49195910499995 L51.27703428866912,105.16536138678563 A46,46 0 0,1 14.853231310388779,68.81868906849198 L32.5193581889323,65.36789769386469 A28,28 0 0,0 54.690368697450765,87.49195910499995 Z" fill="#4A7C5F"></path><path d="M32.5193581889323,65.36789769386469 L14.853231310388779,68.81868906849198 A46,46 0 0,1 21.70506058055605,34.514756919716895 L36.69003687512107,44.48724334243637 A28,28 0 0,0 32.5193581889323,65.36789769386469 Z" fill="#C8703C"></path><path d="M36.69003687512107,44.48724334243637 L21.70506058055605,34.514756919716895 A46,46 0 0,1 53.778338573215805,14.42269282756532 L56.212901740218314,32.25729128634411 A28,28 0 0,0 36.69003687512107,44.48724334243637 Z" fill="#6B8F71"></path><path d="M56.212901740218314,32.25729128634411 L53.778338573215805,14.42269282756532 A46,46 0 0,1 59.99999999999999,14 L59.99999999999999,32 A28,28 0 0,0 56.212901740218314,32.25729128634411 Z" fill="#8B7B5A"></path></svg>
+          <div class="legend" id="donut_legend"><div class="legend-item"><div class="legend-dot" style="background: rgb(184, 92, 56);"></div>Housing — $1,910 (52%)</div><div class="legend-item"><div class="legend-dot" style="background: rgb(154, 123, 60);"></div>Transport — $55 (1%)</div><div class="legend-item"><div class="legend-dot" style="background: rgb(74, 124, 95);"></div>Food — $700 (19%)</div><div class="legend-item"><div class="legend-dot" style="background: rgb(200, 112, 60);"></div>Lifestyle — $460 (12%)</div><div class="legend-item"><div class="legend-dot" style="background: rgb(107, 143, 113);"></div>Savings — $500 (13%)</div><div class="legend-item"><div class="legend-dot" style="background: rgb(139, 123, 90);"></div>Other — $80 (2%)</div></div>
         </div>
       </div>
     </div>
@@ -476,7 +476,7 @@ table.ct tr:hover td{background:#FAF7F4}
 
 
 <!-- ═══════════════════ APARTMENTS PAGE ═══════════════════ -->
-<div class="page active" id="page-apartments">
+<div class="page" id="page-apartments">
 
   <div class="slabel">Atlanta Apartment Tracker</div>
   <div class="anchor-box">
@@ -499,285 +499,6 @@ table.ct tr:hover td{background:#FAF7F4}
   <div id="apt_grid" class="apt-grid"><div class="apt-card">
       <div class="apt-card-top">
         <div class="apt-rank r1">1</div>
-        <div class="apt-building">Modera Old Ivy</div>
-        <div class="apt-nbhd">Northwest Buckhead</div>
-        <div class="apt-addr">3651 Lenox Rd NE, Atlanta, GA 30305</div>
-        <div style="font-size:12px;color:var(--sub);margin-bottom:4px">🅿️ Garage (attached) — +$50/mo</div>
-        <div class="units-section">
-          <div class="units-label">Available Units</div>
-          
-        <div class="unit-row">
-          <div class="unit-header">
-            <span class="unit-name">A02 1BR · 526 · 625sf</span>
-            <button class="apply-unit-btn" onclick="applyUnit(0,0)">→ Apply to Budget</button>
-          </div>
-          
-          
-          <div class="unit-rent-line">
-            <span class="unit-base-rent">$1,820</span><span class="unit-mo">/mo base rent</span>
-          </div>
-          
-          <div class="unit-fees-list">
-            <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:3px">Required monthly fees</div>
-            <div class="unit-fee-row"><span class="fee-name">pest control</span><span class="fee-amt">+$3/mo</span></div><div class="unit-fee-row"><span class="fee-name">trash</span><span class="fee-amt">+$18/mo</span></div><div class="unit-fee-row"><span class="fee-name">rentplus credit reporting</span><span class="fee-amt">+$15/mo</span></div>
-          </div>
-          <div class="unit-total-line">
-            <span class="unit-total-label">Total rent incl. fees</span>
-            <span class="unit-total-amt">$1,856/mo</span>
-          </div>
-          <div style="font-size:11px;color:var(--faint);margin-top:4px">+$230/mo est. add-ons → <b style="color:var(--sub)">~$2,086 effective</b></div>
-        </div>
-        <div class="unit-row">
-          <div class="unit-header">
-            <span class="unit-name">1BR A02L (avail 6/6) · 822 · 723sf</span>
-            <button class="apply-unit-btn" onclick="applyUnit(0,1)">→ Apply to Budget</button>
-          </div>
-          
-          
-          <div class="unit-rent-line">
-            <span class="unit-base-rent">$1,878</span><span class="unit-mo">/mo base rent</span>
-          </div>
-          
-          <div class="unit-fees-list">
-            <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:3px">Required monthly fees</div>
-            <div class="unit-fee-row"><span class="fee-name">pest control</span><span class="fee-amt">+$3/mo</span></div><div class="unit-fee-row"><span class="fee-name">trash</span><span class="fee-amt">+$18/mo</span></div><div class="unit-fee-row"><span class="fee-name">rentplus credit reporting</span><span class="fee-amt">+$15/mo</span></div>
-          </div>
-          <div class="unit-total-line">
-            <span class="unit-total-label">Total rent incl. fees</span>
-            <span class="unit-total-amt">$1,914/mo</span>
-          </div>
-          <div style="font-size:11px;color:var(--faint);margin-top:4px">+$230/mo est. add-ons → <b style="color:var(--sub)">~$2,144 effective</b></div>
-        </div>
-        <div class="unit-row">
-          <div class="unit-header">
-            <span class="unit-name">1BR A08 (best deal move 5/25) · 366 · 772sf</span>
-            <button class="apply-unit-btn" onclick="applyUnit(0,2)">→ Apply to Budget</button>
-          </div>
-          
-          
-          <div class="unit-rent-line">
-            <span class="unit-base-rent">$1,932</span><span class="unit-mo">/mo base rent</span>
-          </div>
-          
-          <div class="unit-fees-list">
-            <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:3px">Required monthly fees</div>
-            <div class="unit-fee-row"><span class="fee-name">pest control</span><span class="fee-amt">+$3/mo</span></div><div class="unit-fee-row"><span class="fee-name">trash</span><span class="fee-amt">+$18/mo</span></div><div class="unit-fee-row"><span class="fee-name">rentplus credit reporting</span><span class="fee-amt">+$15/mo</span></div>
-          </div>
-          <div class="unit-total-line">
-            <span class="unit-total-label">Total rent incl. fees</span>
-            <span class="unit-total-amt">$1,968/mo</span>
-          </div>
-          <div style="font-size:11px;color:var(--faint);margin-top:4px">+$230/mo est. add-ons → <b style="color:var(--sub)">~$2,198 effective</b></div>
-        </div>
-        </div>
-        <div style="margin-bottom:8px"><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">Included in rent</div><div class="chips"><div class="chip inc">✓ Laundry</div></div></div>
-        <div style="margin-bottom:8px"><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">Amenities</div><div class="chips"><div class="chip transit">🚇 Transit</div><div class="chip amen">Gym</div><div class="chip amen">Pool</div><div class="chip amen">Rooftop</div><div class="chip amen">Doorman</div><div class="chip amen">Dishwasher</div></div></div>
-        
-      <div class="movein-block">
-        <div class="movein-title">Move-in cash needed</div>
-        <div class="movein-fees">
-          <div class="movein-fee-chip">App: $95</div>
-          <div class="movein-fee-chip">Security dep: $300</div>
-          <div class="movein-fee-chip">Move-in fee: $300</div>
-          
-          <div class="movein-fee-chip">amenity fee: $100</div>
-        </div>
-        <div class="movein-total">Total upfront: $795</div>
-      </div>
-        
-        <div class="apt-lease">💬 up to 6 wks free</div>
-        <div class="rating-stars"><span style="color:var(--brass);font-size:14px">★</span><span style="color:var(--brass);font-size:14px">★</span><span style="color:var(--brass);font-size:14px">★</span><span style="color:var(--brass);font-size:14px">★</span><span style="color:var(--rule);font-size:14px">☆</span></div>
-        
-        <div style="margin-top:4px"><a href="https://www.moderaoldivyatlanta.com/" target="_blank" style="font-size:12px;color:var(--rust);text-decoration:none">View listing ↗</a></div>
-      </div>
-      <div class="apt-card-actions">
-        <button class="apt-act-btn" onclick="openModal(0)">Edit</button>
-        <button class="apt-act-btn del" onclick="deleteApt(0)">Remove</button>
-      </div></div><div class="apt-card">
-      <div class="apt-card-top">
-        <div class="apt-rank r2">2</div>
-        <div class="apt-building">Beverly by Alta</div>
-        <div class="apt-nbhd">Buckhead</div>
-        <div class="apt-addr">3314 Piedmont Rd NE, Atlanta, GA 30305</div>
-        <div style="font-size:12px;color:var(--sub);margin-bottom:4px">🅿️ Garage (attached) — +$50/mo</div>
-        <div class="units-section">
-          <div class="units-label">Available Units</div>
-          
-        <div class="unit-row">
-          <div class="unit-header">
-            <span class="unit-name">1BR A1 (Avail Now) · 7038 · 684sf</span>
-            <button class="apply-unit-btn" onclick="applyUnit(1,0)">→ Apply to Budget</button>
-          </div>
-          
-          
-          <div class="unit-rent-line">
-            <span class="unit-base-rent">$1,770</span><span class="unit-mo">/mo base rent</span>
-          </div>
-          
-          <div class="unit-fees-list">
-            <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:3px">Required monthly fees</div>
-            <div class="unit-fee-row"><span class="fee-name">pest control</span><span class="fee-amt">+$5/mo</span></div><div class="unit-fee-row"><span class="fee-name">billing admin fee</span><span class="fee-amt">+$6/mo</span></div><div class="unit-fee-row"><span class="fee-name">valet trash doorstep</span><span class="fee-amt">+$26/mo</span></div>
-          </div>
-          <div class="unit-total-line">
-            <span class="unit-total-label">Total rent incl. fees</span>
-            <span class="unit-total-amt">$1,807/mo</span>
-          </div>
-          <div style="font-size:11px;color:var(--faint);margin-top:4px">+$330/mo est. add-ons → <b style="color:var(--sub)">~$2,137 effective</b></div>
-        </div>
-        <div class="unit-row">
-          <div class="unit-header">
-            <span class="unit-name">Studio S1 (Avail June 10) · 6036 · 585sf</span>
-            <button class="apply-unit-btn" onclick="applyUnit(1,1)">→ Apply to Budget</button>
-          </div>
-          
-          
-          <div class="unit-rent-line">
-            <span class="unit-base-rent">$1,685</span><span class="unit-mo">/mo base rent</span>
-          </div>
-          
-          <div class="unit-fees-list">
-            <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:3px">Required monthly fees</div>
-            <div class="unit-fee-row"><span class="fee-name">pest control</span><span class="fee-amt">+$5/mo</span></div><div class="unit-fee-row"><span class="fee-name">billing admin fee</span><span class="fee-amt">+$6/mo</span></div><div class="unit-fee-row"><span class="fee-name">valet trash doorstep</span><span class="fee-amt">+$26/mo</span></div>
-          </div>
-          <div class="unit-total-line">
-            <span class="unit-total-label">Total rent incl. fees</span>
-            <span class="unit-total-amt">$1,722/mo</span>
-          </div>
-          <div style="font-size:11px;color:var(--faint);margin-top:4px">+$330/mo est. add-ons → <b style="color:var(--sub)">~$2,052 effective</b></div>
-        </div>
-        <div class="unit-row">
-          <div class="unit-header">
-            <span class="unit-name">1BR A2 (Avail Now) · 4048 · 688sf</span>
-            <button class="apply-unit-btn" onclick="applyUnit(1,2)">→ Apply to Budget</button>
-          </div>
-          
-          
-          <div class="unit-rent-line">
-            <span class="unit-base-rent">$1,890</span><span class="unit-mo">/mo base rent</span>
-          </div>
-          
-          <div class="unit-fees-list">
-            <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:3px">Required monthly fees</div>
-            <div class="unit-fee-row"><span class="fee-name">pest control</span><span class="fee-amt">+$5/mo</span></div><div class="unit-fee-row"><span class="fee-name">billing admin fee</span><span class="fee-amt">+$6/mo</span></div><div class="unit-fee-row"><span class="fee-name">valet trash doorstep</span><span class="fee-amt">+$26/mo</span></div>
-          </div>
-          <div class="unit-total-line">
-            <span class="unit-total-label">Total rent incl. fees</span>
-            <span class="unit-total-amt">$1,927/mo</span>
-          </div>
-          <div style="font-size:11px;color:var(--faint);margin-top:4px">+$330/mo est. add-ons → <b style="color:var(--sub)">~$2,257 effective</b></div>
-        </div>
-        </div>
-        <div style="margin-bottom:8px"><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">Included in rent</div><div class="chips"><div class="chip inc">✓ Laundry</div></div></div>
-        <div style="margin-bottom:8px"><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">Amenities</div><div class="chips"><div class="chip transit">🚇 Transit</div><div class="chip amen">Gym</div><div class="chip amen">Pool</div></div></div>
-        
-      <div class="movein-block">
-        <div class="movein-title">Move-in cash needed</div>
-        <div class="movein-fees">
-          <div class="movein-fee-chip">App: $125</div>
-          <div class="movein-fee-chip">Security dep: $700</div>
-          <div class="movein-fee-chip">Move-in fee: $250</div>
-          
-          <div class="movein-fee-chip">new account fee: $15</div>
-        </div>
-        <div class="movein-total">Total upfront: $1,090</div>
-      </div>
-        
-        
-        <div class="rating-stars"><span style="color:var(--brass);font-size:14px">★</span><span style="color:var(--brass);font-size:14px">★</span><span style="color:var(--brass);font-size:14px">★</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span></div>
-        <div class="apt-note">"Complaints about thin walls, top floor (7th) preference"</div>
-        <div style="margin-top:4px"><a href="https://thebeverlybyalta.com/?rccustomid=Njc1OTQ%3d-Buh5mPiFSj0%3d&amp;cq_src=google_ads&amp;cq_cmp=22523623340&amp;cq_con=&amp;cq_term=&amp;cq_med=&amp;cq_plac=&amp;cq_net=x&amp;cq_pos=&amp;cq_plt=gp&amp;gad_source=1&amp;gad_campaignid=22523630879&amp;gbraid=0AAAAA-HGqMxefV_FIO1Nr--I5d2RlFnVK&amp;gclid=Cj0KCQjw2YDQBhD_ARIsAE1qeSc17MeIvrxaMBE9ZWYdXH2ymuSBlxqPSIck2LoDkufmOVFSLzl5fIAaAv50EALw_wcB" target="_blank" style="font-size:12px;color:var(--rust);text-decoration:none">View listing ↗</a></div>
-      </div>
-      <div class="apt-card-actions">
-        <button class="apt-act-btn" onclick="openModal(1)">Edit</button>
-        <button class="apt-act-btn del" onclick="deleteApt(1)">Remove</button>
-      </div></div><div class="apt-card">
-      <div class="apt-card-top">
-        <div class="apt-rank r3">3</div>
-        <div class="apt-building">The Berkshires at Vinings</div>
-        <div class="apt-nbhd">Vinings</div>
-        <div class="apt-addr">3200 Spring Hill Pkwy SE, Smyrna, GA 30080</div>
-        
-        <div class="units-section">
-          <div class="units-label">Available Units</div>
-          
-        <div class="unit-row">
-          <div class="unit-header">
-            <span class="unit-name">1BR The Hampton (6/8 move-in, avail now)) · 1505 (Bldg 15 / Flr 2) · 650sf</span>
-            <button class="apply-unit-btn" onclick="applyUnit(2,0)">→ Apply to Budget</button>
-          </div>
-          
-          
-          <div class="unit-rent-line">
-            <span class="unit-base-rent">$1,508</span><span class="unit-mo">/mo base rent</span>
-          </div>
-          
-          <div style="font-size:11px;color:var(--faint);margin-top:4px">+$175/mo est. add-ons → <b style="color:var(--sub)">~$1,683 effective</b></div>
-        </div>
-        <div class="unit-row">
-          <div class="unit-header">
-            <span class="unit-name">1BR The Berkley (6/8 move-in, avail now)) · 2118 (Bldg 21 / Flr 3) · 875sf</span>
-            <button class="apply-unit-btn" onclick="applyUnit(2,1)">→ Apply to Budget</button>
-          </div>
-          
-          
-          <div class="unit-rent-line">
-            <span class="unit-base-rent">$1,637</span><span class="unit-mo">/mo base rent</span>
-          </div>
-          
-          <div style="font-size:11px;color:var(--faint);margin-top:4px">+$175/mo est. add-ons → <b style="color:var(--sub)">~$1,812 effective</b></div>
-        </div>
-        </div>
-        <div style="margin-bottom:8px"><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">Included in rent</div><div class="chips"><div class="chip inc">✓ Laundry</div></div></div>
-        <div style="margin-bottom:8px"><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">Amenities</div><div class="chips"><div class="chip amen">Gym</div><div class="chip amen">Pool</div></div></div>
-        
-        <div class="apt-commute">🚗 Commute: <span>5 min</span> to Home Depot HQ</div>
-        <div class="apt-lease">💬 up to $750 off + $99 app and admin</div>
-        <div class="rating-stars"><span style="color:var(--brass);font-size:14px">★</span><span style="color:var(--brass);font-size:14px">★</span><span style="color:var(--brass);font-size:14px">★</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span></div>
-        <div class="apt-note">"no info on fees, utilities, parking, etc..."</div>
-        <div style="margin-top:4px"><a href="https://berkshiresatvinings.com/floorplans/" target="_blank" style="font-size:12px;color:var(--rust);text-decoration:none">View listing ↗</a></div>
-      </div>
-      <div class="apt-card-actions">
-        <button class="apt-act-btn" onclick="openModal(2)">Edit</button>
-        <button class="apt-act-btn del" onclick="deleteApt(2)">Remove</button>
-      </div></div><div class="apt-card">
-      <div class="apt-card-top">
-        <div class="apt-rank rN">4</div>
-        <div class="apt-building">Walton Riverwood</div>
-        <div class="apt-nbhd">Vinings</div>
-        <div class="apt-addr">3270 Walton Riverwood Ln SE, Atlanta, GA 30339</div>
-        
-        <div class="units-section">
-          <div class="units-label">Available Units</div>
-          
-        <div class="unit-row">
-          <div class="unit-header">
-            <span class="unit-name">1BR A2 · 3044 (flr 3) · 701sf</span>
-            <button class="apply-unit-btn" onclick="applyUnit(3,0)">→ Apply to Budget</button>
-          </div>
-          
-          
-          <div class="unit-rent-line">
-            <span class="unit-base-rent">$1,736</span><span class="unit-mo">/mo base rent</span>
-          </div>
-          
-          <div style="font-size:11px;color:var(--faint);margin-top:4px">+$175/mo est. add-ons → <b style="color:var(--sub)">~$1,911 effective</b></div>
-        </div>
-        </div>
-        
-        
-        
-        <div class="apt-commute">🚗 Commute: <span>10 min</span> to Home Depot HQ</div>
-        
-        <div class="rating-stars"><span style="color:var(--brass);font-size:14px">★</span><span style="color:var(--brass);font-size:14px">★</span><span style="color:var(--brass);font-size:14px">★</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span></div>
-        
-        <div style="margin-top:4px"><a href="https://www.waltonriverwood.com/?y_source=1_MTU1NTQxMzgtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D" target="_blank" style="font-size:12px;color:var(--rust);text-decoration:none">View listing ↗</a></div>
-      </div>
-      <div class="apt-card-actions">
-        <button class="apt-act-btn" onclick="openModal(3)">Edit</button>
-        <button class="apt-act-btn del" onclick="deleteApt(3)">Remove</button>
-      </div></div><div class="apt-card">
-      <div class="apt-card-top">
-        <div class="apt-rank rN">5</div>
         <div class="apt-building">Skyhouse Buckhead</div>
         <div class="apt-nbhd">Buckhead. across from train station</div>
         <div class="apt-addr">3390 Stratford Rd NE, Atlanta, GA 30326</div>
@@ -788,10 +509,8 @@ table.ct tr:hover td{background:#FAF7F4}
         <div class="unit-row">
           <div class="unit-header">
             <span class="unit-name">A1 · #0708 · 723sf</span>
-            <button class="apply-unit-btn" onclick="applyUnit(4,0)">→ Apply to Budget</button>
+            <button class="apply-unit-btn" onclick="applyUnit(0,0)">→ Apply to Budget</button>
           </div>
-          
-          
           <div class="unit-rent-line">
             <span class="unit-base-rent">$1,754</span><span class="unit-mo">/mo base rent</span>
           </div>
@@ -814,17 +533,17 @@ table.ct tr:hover td{background:#FAF7F4}
         <div class="movein-total">Total upfront: $300</div>
       </div>
         <div class="apt-commute">🚗 Commute: <span>20 min</span> to Home Depot HQ</div>
-        
+        <div class="apt-lease">📋 Lease: <b>12 mo</b></div>
         <div class="rating-stars"><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span></div>
         
         <div style="margin-top:4px"><a href="https://www.skyhousebuckhead.com/" target="_blank" style="font-size:12px;color:var(--rust);text-decoration:none">View listing ↗</a></div>
       </div>
       <div class="apt-card-actions">
-        <button class="apt-act-btn" onclick="openModal(4)">Edit</button>
-        <button class="apt-act-btn del" onclick="deleteApt(4)">Remove</button>
+        <button class="apt-act-btn" onclick="openModal(0)">Edit</button>
+        <button class="apt-act-btn del" onclick="deleteApt(0)">Remove</button>
       </div></div><div class="apt-card">
       <div class="apt-card-top">
-        <div class="apt-rank rN">6</div>
+        <div class="apt-rank r2">2</div>
         <div class="apt-building">Buckhead960 - The Whitley</div>
         <div class="apt-nbhd">Buckhead. By Lenox train station.</div>
         <div class="apt-addr">960 East Paces Ferry Rd NE, Atlanta, GA 30326</div>
@@ -835,10 +554,8 @@ table.ct tr:hover td{background:#FAF7F4}
         <div class="unit-row">
           <div class="unit-header">
             <span class="unit-name">1BR</span>
-            <button class="apply-unit-btn" onclick="applyUnit(5,0)">→ Apply to Budget</button>
+            <button class="apply-unit-btn" onclick="applyUnit(1,0)">→ Apply to Budget</button>
           </div>
-          
-          
           <div class="unit-rent-line">
             <span class="unit-base-rent">$1,573</span><span class="unit-mo">/mo base rent</span>
           </div>
@@ -861,17 +578,17 @@ table.ct tr:hover td{background:#FAF7F4}
         <div class="movein-total">Total upfront: $250</div>
       </div>
         <div class="apt-commute">🚗 Commute: <span>20 min</span> to Home Depot HQ</div>
-        <div class="apt-lease">💬 tour &amp; up to 1 month free</div>
+        <div class="apt-lease">📋 Lease: <b>12 mo</b> — tour &amp; up to 1 month free</div>
         <div class="rating-stars"><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span></div>
         <div class="apt-note">"move-in 6/1 for cheaper rent. Across from Lenox Marta Station. Conservice (water &amp; electric). Responsible for setup prior. Cable/Internet (AT&amp;T, Comcast, Google). Net Cafe has Starbucks coffee"</div>
         
       </div>
       <div class="apt-card-actions">
-        <button class="apt-act-btn" onclick="openModal(5)">Edit</button>
-        <button class="apt-act-btn del" onclick="deleteApt(5)">Remove</button>
+        <button class="apt-act-btn" onclick="openModal(1)">Edit</button>
+        <button class="apt-act-btn del" onclick="deleteApt(1)">Remove</button>
       </div></div><div class="apt-card">
       <div class="apt-card-top">
-        <div class="apt-rank rN">7</div>
+        <div class="apt-rank r3">3</div>
         <div class="apt-building">Cyan on Peachtree</div>
         <div class="apt-nbhd">Buckhead. Close to Buckhead train station.</div>
         <div class="apt-addr">3380 Peachtree Rd NE, Atlanta, GA 30326</div>
@@ -882,10 +599,8 @@ table.ct tr:hover td{background:#FAF7F4}
         <div class="unit-row">
           <div class="unit-header">
             <span class="unit-name">Studio · 1208</span>
-            <button class="apply-unit-btn" onclick="applyUnit(6,0)">→ Apply to Budget</button>
+            <button class="apply-unit-btn" onclick="applyUnit(2,0)">→ Apply to Budget</button>
           </div>
-          
-          
           <div class="unit-rent-line">
             <span class="unit-base-rent">$1,534</span><span class="unit-mo">/mo base rent</span>
           </div>
@@ -896,17 +611,17 @@ table.ct tr:hover td{background:#FAF7F4}
           </div>
           <div class="unit-total-line">
             <span class="unit-total-label">Total rent incl. fees</span>
-            <span class="unit-total-amt">$1,597/mo</span>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="unit-total-amt">$1,597/mo</span>
+            </div>
           </div>
           <div style="font-size:11px;color:var(--faint);margin-top:4px">+$300/mo est. add-ons → <b style="color:var(--sub)">~$1,897 effective</b></div>
         </div>
         <div class="unit-row">
           <div class="unit-header">
             <span class="unit-name">Studio · 1810</span>
-            <button class="apply-unit-btn" onclick="applyUnit(6,1)">→ Apply to Budget</button>
+            <button class="apply-unit-btn" onclick="applyUnit(2,1)">→ Apply to Budget</button>
           </div>
-          
-          
           <div class="unit-rent-line">
             <span class="unit-base-rent">$1,763</span><span class="unit-mo">/mo base rent</span>
           </div>
@@ -917,17 +632,17 @@ table.ct tr:hover td{background:#FAF7F4}
           </div>
           <div class="unit-total-line">
             <span class="unit-total-label">Total rent incl. fees</span>
-            <span class="unit-total-amt">$1,826/mo</span>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="unit-total-amt">$1,826/mo</span>
+            </div>
           </div>
           <div style="font-size:11px;color:var(--faint);margin-top:4px">+$300/mo est. add-ons → <b style="color:var(--sub)">~$2,126 effective</b></div>
         </div>
         <div class="unit-row">
           <div class="unit-header">
             <span class="unit-name">1BR · 811</span>
-            <button class="apply-unit-btn" onclick="applyUnit(6,2)">→ Apply to Budget</button>
+            <button class="apply-unit-btn" onclick="applyUnit(2,2)">→ Apply to Budget</button>
           </div>
-          
-          
           <div class="unit-rent-line">
             <span class="unit-base-rent">$1,667</span><span class="unit-mo">/mo base rent</span>
           </div>
@@ -938,7 +653,9 @@ table.ct tr:hover td{background:#FAF7F4}
           </div>
           <div class="unit-total-line">
             <span class="unit-total-label">Total rent incl. fees</span>
-            <span class="unit-total-amt">$1,730/mo</span>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="unit-total-amt">$1,730/mo</span>
+            </div>
           </div>
           <div style="font-size:11px;color:var(--faint);margin-top:4px">+$300/mo est. add-ons → <b style="color:var(--sub)">~$2,030 effective</b></div>
         </div>
@@ -958,17 +675,17 @@ table.ct tr:hover td{background:#FAF7F4}
         <div class="movein-total">Total upfront: $1,270</div>
       </div>
         <div class="apt-commute">🚗 Commute: <span>15 min</span> to Home Depot HQ</div>
-        <div class="apt-lease">💬 office M-F 9-6, SAT 10-5. *up to 6 wks free base rent, move by 5/25</div>
+        <div class="apt-lease">📋 Lease: <b>13 mo</b> — office M-F 9-6, SAT 10-5. *up to 6 wks free base rent, move by 5/25</div>
         <div class="rating-stars"><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span></div>
         <div class="apt-note">"Est. Move-in Cost $2204. Est. Application Cost $375. Utility - New account/final bill fee $20 / one-time. Access Device (fob, key, etc..) $125 / one-time. Electric - common area $usage-based / monthly. Holding Deposit (refundable) $250 / one-time. Package Service $25 / monthly. Parking (Vehicle Registration) $25 / per year. Pest Control $6 / monthly. Trash $25 / monthly. Utility - Billing Admin Fee $7 / monthly. Reserved parking spot $125 / monthly"</div>
         
       </div>
       <div class="apt-card-actions">
-        <button class="apt-act-btn" onclick="openModal(6)">Edit</button>
-        <button class="apt-act-btn del" onclick="deleteApt(6)">Remove</button>
+        <button class="apt-act-btn" onclick="openModal(2)">Edit</button>
+        <button class="apt-act-btn del" onclick="deleteApt(2)">Remove</button>
       </div></div><div class="apt-card">
       <div class="apt-card-top">
-        <div class="apt-rank rN">8</div>
+        <div class="apt-rank rN">4</div>
         <div class="apt-building">Cyan on Peachtree - 1 bed #811</div>
         <div class="apt-nbhd">Buckhead. close to Buckhead train station.</div>
         <div class="apt-addr">3380 Peachtree Rd NE, Atlanta, GA 30326</div>
@@ -979,10 +696,8 @@ table.ct tr:hover td{background:#FAF7F4}
         <div class="unit-row">
           <div class="unit-header">
             <span class="unit-name">1BR · 811</span>
-            <button class="apply-unit-btn" onclick="applyUnit(7,0)">→ Apply to Budget</button>
+            <button class="apply-unit-btn" onclick="applyUnit(3,0)">→ Apply to Budget</button>
           </div>
-          
-          
           <div class="unit-rent-line">
             <span class="unit-base-rent">$1,667</span><span class="unit-mo">/mo base rent</span>
           </div>
@@ -993,7 +708,9 @@ table.ct tr:hover td{background:#FAF7F4}
           </div>
           <div class="unit-total-line">
             <span class="unit-total-label">Total rent incl. fees</span>
-            <span class="unit-total-amt">$1,730/mo</span>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="unit-total-amt">$1,730/mo</span>
+            </div>
           </div>
           <div style="font-size:11px;color:var(--faint);margin-top:4px">+$300/mo est. add-ons → <b style="color:var(--sub)">~$2,030 effective</b></div>
         </div>
@@ -1013,17 +730,17 @@ table.ct tr:hover td{background:#FAF7F4}
         <div class="movein-total">Total upfront: $1,270</div>
       </div>
         <div class="apt-commute">🚗 Commute: <span>15 min</span> to Home Depot HQ</div>
-        <div class="apt-lease">💬 this is earliest move-in date</div>
+        <div class="apt-lease">📋 Lease: <b>13 mo</b> — this is earliest move-in date</div>
         <div class="rating-stars"><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span></div>
         <div class="apt-note">"Est. Move-in Cost $2226 (move-in 6/3). Est. Application Cost $375 (250+125). Base rent $1554. Utility - New account/final bill fee $20/one-time. Access Device $125/one-time. Electric - common area $usage-based/monthly. Holding Deposit (refundable) $250/one-time. Package Service $25/monthly. Parking (Vehicle Registration) $25/per year. Pest Control $6/monthly. Trash $25/monthly. Utility - Billing Admin Fee $7/monthly. Reserved parking spot $125/monthly"</div>
         
       </div>
       <div class="apt-card-actions">
-        <button class="apt-act-btn" onclick="openModal(7)">Edit</button>
-        <button class="apt-act-btn del" onclick="deleteApt(7)">Remove</button>
+        <button class="apt-act-btn" onclick="openModal(3)">Edit</button>
+        <button class="apt-act-btn del" onclick="deleteApt(3)">Remove</button>
       </div></div><div class="apt-card">
       <div class="apt-card-top">
-        <div class="apt-rank rN">9</div>
+        <div class="apt-rank rN">5</div>
         <div class="apt-building">The Boro Phipps</div>
         <div class="apt-nbhd">Buckhead. Lenox train station (8 min walk). Publix/Target (4 min walk)</div>
         <div class="apt-addr">3460 Kingsboro Rd NE, Atlanta, GA 30326</div>
@@ -1034,10 +751,8 @@ table.ct tr:hover td{background:#FAF7F4}
         <div class="unit-row">
           <div class="unit-header">
             <span class="unit-name">1BR · 514 · 1049sf</span>
-            <button class="apply-unit-btn" onclick="applyUnit(8,0)">→ Apply to Budget</button>
+            <button class="apply-unit-btn" onclick="applyUnit(4,0)">→ Apply to Budget</button>
           </div>
-          
-          
           <div class="unit-rent-line">
             <span class="unit-base-rent">$1,620</span><span class="unit-mo">/mo base rent</span>
           </div>
@@ -1060,14 +775,14 @@ table.ct tr:hover td{background:#FAF7F4}
         <div class="movein-total">Total upfront: $1,000</div>
       </div>
         <div class="apt-commute">🚗 Commute: <span>15 min</span> to Home Depot HQ</div>
-        
+        <div class="apt-lease">📋 Lease: <b>12 mo</b></div>
         <div class="rating-stars"><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span><span style="color:var(--rule);font-size:14px">☆</span></div>
         <div class="apt-note">"utilities in rent (trash/electric/water/sewer/can include internet) same management as Cyan on Peachtree"</div>
         
       </div>
       <div class="apt-card-actions">
-        <button class="apt-act-btn" onclick="openModal(8)">Edit</button>
-        <button class="apt-act-btn del" onclick="deleteApt(8)">Remove</button>
+        <button class="apt-act-btn" onclick="openModal(4)">Edit</button>
+        <button class="apt-act-btn del" onclick="deleteApt(4)">Remove</button>
       </div></div></div>
 
   <div id="compare_section" style="">
@@ -1088,24 +803,9 @@ table.ct tr:hover td{background:#FAF7F4}
         <th>#</th><th>Building / Unit</th><th>Style</th><th>Sq Ft</th>
         <th>Base Rent</th><th>Req. Monthly Fees</th><th>Total Rent</th>
         <th>Est. Utilities</th><th>Effective/mo</th><th>Move-in Cash</th>
-        <th>Parking</th><th>Lease</th><th>Available</th><th>Commute</th><th>Rating</th>
+        <th>Parking</th><th>Lease</th><th>Commute</th><th>Rating</th>
       </tr></thead><tbody id="ct_body"><tr class="ct-best">
       <td>1</td>
-      <td><div class="ct-name">The Berkshires at Vinings</div><div style="font-size:11px;color:var(--rust)">Vinings</div></td>
-      <td style="font-size:12px">1BR The Hampton (6/8 move-in, avail now)) 1505 (Bldg 15 / Flr 2)</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace">650sf</td>
-      <td class="ct-rent">$1,508</td>
-      <td style="font-size:12px;color:var(--red)">—</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace;font-weight:500">$1,508</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td class="ct-eff">$1,683</td>
-      <td style="font-size:12px;color:var(--faint)">—</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--brass);font-weight:600">—</td>
-      <td style="font-size:12px">5 min</td>
-      <td style="color:var(--brass);font-size:13px">★★★☆☆</td></tr><tr>
-      <td>2</td>
       <td><div class="ct-name">Buckhead960 - The Whitley</div><div style="font-size:11px;color:var(--rust)">Buckhead. By Lenox train station.</div></td>
       <td style="font-size:12px">1BR</td>
       <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace">—</td>
@@ -1116,26 +816,10 @@ table.ct tr:hover td{background:#FAF7F4}
       <td class="ct-eff">$1,748</td>
       <td style="font-size:12px;color:var(--red)">$250</td>
       <td style="font-size:12px;color:var(--sub)">Open lot</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--brass);font-weight:600">—</td>
+      <td style="font-size:12px;color:var(--sub)">12 mo</td>
       <td style="font-size:12px">20 min</td>
       <td style="color:var(--brass);font-size:13px">☆☆☆☆☆</td></tr><tr>
-      <td>3</td>
-      <td><div class="ct-name">The Berkshires at Vinings</div><div style="font-size:11px;color:var(--rust)">Vinings</div></td>
-      <td style="font-size:12px">1BR The Berkley (6/8 move-in, avail now)) 2118 (Bldg 21 / Flr 3)</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace">875sf</td>
-      <td class="ct-rent">$1,637</td>
-      <td style="font-size:12px;color:var(--red)">—</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace;font-weight:500">$1,637</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td class="ct-eff">$1,812</td>
-      <td style="font-size:12px;color:var(--faint)">—</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--brass);font-weight:600">—</td>
-      <td style="font-size:12px">5 min</td>
-      <td style="color:var(--brass);font-size:13px">★★★☆☆</td></tr><tr>
-      <td>4</td>
+      <td>2</td>
       <td><div class="ct-name">The Boro Phipps</div><div style="font-size:11px;color:var(--rust)">Buckhead. Lenox train station (8 min walk). Publix/Target (4 min walk)</div></td>
       <td style="font-size:12px">1BR 514</td>
       <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace">1049sf</td>
@@ -1146,11 +830,10 @@ table.ct tr:hover td{background:#FAF7F4}
       <td class="ct-eff">$1,820</td>
       <td style="font-size:12px;color:var(--red)">$1,000</td>
       <td style="font-size:12px;color:var(--sub)">Covered +$25</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--brass);font-weight:600">—</td>
+      <td style="font-size:12px;color:var(--sub)">12 mo</td>
       <td style="font-size:12px">15 min</td>
       <td style="color:var(--brass);font-size:13px">☆☆☆☆☆</td></tr><tr>
-      <td>5</td>
+      <td>3</td>
       <td><div class="ct-name">Cyan on Peachtree</div><div style="font-size:11px;color:var(--rust)">Buckhead. Close to Buckhead train station.</div></td>
       <td style="font-size:12px">Studio 1208</td>
       <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace">—</td>
@@ -1161,26 +844,10 @@ table.ct tr:hover td{background:#FAF7F4}
       <td class="ct-eff">$1,897</td>
       <td style="font-size:12px;color:var(--red)">$1,270</td>
       <td style="font-size:12px;color:var(--sub)">Garage (attached) +$125</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--brass);font-weight:600">—</td>
+      <td style="font-size:12px;color:var(--sub)">13 mo</td>
       <td style="font-size:12px">15 min</td>
       <td style="color:var(--brass);font-size:13px">☆☆☆☆☆</td></tr><tr>
-      <td>6</td>
-      <td><div class="ct-name">Walton Riverwood</div><div style="font-size:11px;color:var(--rust)">Vinings</div></td>
-      <td style="font-size:12px">1BR A2 3044 (flr 3)</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace">701sf</td>
-      <td class="ct-rent">$1,736</td>
-      <td style="font-size:12px;color:var(--red)">—</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace;font-weight:500">$1,736</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td class="ct-eff">$1,911</td>
-      <td style="font-size:12px;color:var(--faint)">—</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--brass);font-weight:600">—</td>
-      <td style="font-size:12px">10 min</td>
-      <td style="color:var(--brass);font-size:13px">★★★☆☆</td></tr><tr>
-      <td>7</td>
+      <td>4</td>
       <td><div class="ct-name">Skyhouse Buckhead</div><div style="font-size:11px;color:var(--rust)">Buckhead. across from train station</div></td>
       <td style="font-size:12px">A1 #0708</td>
       <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace">723sf</td>
@@ -1191,11 +858,10 @@ table.ct tr:hover td{background:#FAF7F4}
       <td class="ct-eff">$1,929</td>
       <td style="font-size:12px;color:var(--red)">$300</td>
       <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--brass);font-weight:600">—</td>
+      <td style="font-size:12px;color:var(--sub)">12 mo</td>
       <td style="font-size:12px">20 min</td>
       <td style="color:var(--brass);font-size:13px">☆☆☆☆☆</td></tr><tr>
-      <td>8</td>
+      <td>5</td>
       <td><div class="ct-name">Cyan on Peachtree</div><div style="font-size:11px;color:var(--rust)">Buckhead. Close to Buckhead train station.</div></td>
       <td style="font-size:12px">1BR 811</td>
       <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace">—</td>
@@ -1206,11 +872,10 @@ table.ct tr:hover td{background:#FAF7F4}
       <td class="ct-eff">$2,030</td>
       <td style="font-size:12px;color:var(--red)">$1,270</td>
       <td style="font-size:12px;color:var(--sub)">Garage (attached) +$125</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--brass);font-weight:600">—</td>
+      <td style="font-size:12px;color:var(--sub)">13 mo</td>
       <td style="font-size:12px">15 min</td>
       <td style="color:var(--brass);font-size:13px">☆☆☆☆☆</td></tr><tr>
-      <td>9</td>
+      <td>6</td>
       <td><div class="ct-name">Cyan on Peachtree - 1 bed #811</div><div style="font-size:11px;color:var(--rust)">Buckhead. close to Buckhead train station.</div></td>
       <td style="font-size:12px">1BR 811</td>
       <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace">—</td>
@@ -1221,41 +886,10 @@ table.ct tr:hover td{background:#FAF7F4}
       <td class="ct-eff">$2,030</td>
       <td style="font-size:12px;color:var(--red)">$1,270</td>
       <td style="font-size:12px;color:var(--sub)">Garage (attached) +$125</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--brass);font-weight:600">—</td>
+      <td style="font-size:12px;color:var(--sub)">13 mo</td>
       <td style="font-size:12px">15 min</td>
       <td style="color:var(--brass);font-size:13px">☆☆☆☆☆</td></tr><tr>
-      <td>10</td>
-      <td><div class="ct-name">Beverly by Alta</div><div style="font-size:11px;color:var(--rust)">Buckhead</div></td>
-      <td style="font-size:12px">Studio S1 (Avail June 10) 6036</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace">585sf</td>
-      <td class="ct-rent">$1,685</td>
-      <td style="font-size:12px;color:var(--red)">+$37/mo</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace;font-weight:500">$1,722</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td class="ct-eff">$2,052</td>
-      <td style="font-size:12px;color:var(--red)">$1,090</td>
-      <td style="font-size:12px;color:var(--sub)">Garage (attached) +$50</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--brass);font-weight:600">—</td>
-      <td style="font-size:12px">—</td>
-      <td style="color:var(--brass);font-size:13px">★★★☆☆</td></tr><tr>
-      <td>11</td>
-      <td><div class="ct-name">Modera Old Ivy</div><div style="font-size:11px;color:var(--rust)">Northwest Buckhead</div></td>
-      <td style="font-size:12px">A02 1BR 526</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace">625sf</td>
-      <td class="ct-rent">$1,820</td>
-      <td style="font-size:12px;color:var(--red)">+$36/mo</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace;font-weight:500">$1,856</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td class="ct-eff">$2,086</td>
-      <td style="font-size:12px;color:var(--red)">$795</td>
-      <td style="font-size:12px;color:var(--sub)">Garage (attached) +$50</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--brass);font-weight:600">—</td>
-      <td style="font-size:12px">—</td>
-      <td style="color:var(--brass);font-size:13px">★★★★☆</td></tr><tr>
-      <td>12</td>
+      <td>7</td>
       <td><div class="ct-name">Cyan on Peachtree</div><div style="font-size:11px;color:var(--rust)">Buckhead. Close to Buckhead train station.</div></td>
       <td style="font-size:12px">Studio 1810</td>
       <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace">—</td>
@@ -1266,70 +900,9 @@ table.ct tr:hover td{background:#FAF7F4}
       <td class="ct-eff">$2,126</td>
       <td style="font-size:12px;color:var(--red)">$1,270</td>
       <td style="font-size:12px;color:var(--sub)">Garage (attached) +$125</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--brass);font-weight:600">—</td>
+      <td style="font-size:12px;color:var(--sub)">13 mo</td>
       <td style="font-size:12px">15 min</td>
-      <td style="color:var(--brass);font-size:13px">☆☆☆☆☆</td></tr><tr>
-      <td>13</td>
-      <td><div class="ct-name">Beverly by Alta</div><div style="font-size:11px;color:var(--rust)">Buckhead</div></td>
-      <td style="font-size:12px">1BR A1 (Avail Now) 7038</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace">684sf</td>
-      <td class="ct-rent">$1,770</td>
-      <td style="font-size:12px;color:var(--red)">+$37/mo</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace;font-weight:500">$1,807</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td class="ct-eff">$2,137</td>
-      <td style="font-size:12px;color:var(--red)">$1,090</td>
-      <td style="font-size:12px;color:var(--sub)">Garage (attached) +$50</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--brass);font-weight:600">—</td>
-      <td style="font-size:12px">—</td>
-      <td style="color:var(--brass);font-size:13px">★★★☆☆</td></tr><tr>
-      <td>14</td>
-      <td><div class="ct-name">Modera Old Ivy</div><div style="font-size:11px;color:var(--rust)">Northwest Buckhead</div></td>
-      <td style="font-size:12px">1BR A02L (avail 6/6) 822</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace">723sf</td>
-      <td class="ct-rent">$1,878</td>
-      <td style="font-size:12px;color:var(--red)">+$36/mo</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace;font-weight:500">$1,914</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td class="ct-eff">$2,144</td>
-      <td style="font-size:12px;color:var(--red)">$795</td>
-      <td style="font-size:12px;color:var(--sub)">Garage (attached) +$50</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--brass);font-weight:600">—</td>
-      <td style="font-size:12px">—</td>
-      <td style="color:var(--brass);font-size:13px">★★★★☆</td></tr><tr>
-      <td>15</td>
-      <td><div class="ct-name">Modera Old Ivy</div><div style="font-size:11px;color:var(--rust)">Northwest Buckhead</div></td>
-      <td style="font-size:12px">1BR A08 (best deal move 5/25) 366</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace">772sf</td>
-      <td class="ct-rent">$1,932</td>
-      <td style="font-size:12px;color:var(--red)">+$36/mo</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace;font-weight:500">$1,968</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td class="ct-eff">$2,198</td>
-      <td style="font-size:12px;color:var(--red)">$795</td>
-      <td style="font-size:12px;color:var(--sub)">Garage (attached) +$50</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--brass);font-weight:600">—</td>
-      <td style="font-size:12px">—</td>
-      <td style="color:var(--brass);font-size:13px">★★★★☆</td></tr><tr>
-      <td>16</td>
-      <td><div class="ct-name">Beverly by Alta</div><div style="font-size:11px;color:var(--rust)">Buckhead</div></td>
-      <td style="font-size:12px">1BR A2 (Avail Now) 4048</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace">688sf</td>
-      <td class="ct-rent">$1,890</td>
-      <td style="font-size:12px;color:var(--red)">+$37/mo</td>
-      <td style="font-size:12px;font-family:&#39;DM Mono&#39;,monospace;font-weight:500">$1,927</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td class="ct-eff">$2,257</td>
-      <td style="font-size:12px;color:var(--red)">$1,090</td>
-      <td style="font-size:12px;color:var(--sub)">Garage (attached) +$50</td>
-      <td style="font-size:12px;color:var(--sub)">—</td>
-      <td style="font-size:12px;color:var(--brass);font-weight:600">—</td>
-      <td style="font-size:12px">—</td>
-      <td style="color:var(--brass);font-size:13px">★★★☆☆</td></tr></tbody></table>
+      <td style="color:var(--brass);font-size:13px">☆☆☆☆☆</td></tr></tbody></table>
     </div>
   </div>
 
@@ -1339,7 +912,7 @@ table.ct tr:hover td{background:#FAF7F4}
 <!-- ═══════════════════ MODAL ═══════════════════ -->
 <div class="modal-overlay" id="modal_overlay" onclick="maybeClose(event)">
   <div class="modal">
-    <div class="modal-hdr"><h2 id="modal_title">Edit Building</h2><button class="modal-close" onclick="closeModal()">×</button></div>
+    <div class="modal-hdr"><h2 id="modal_title">Add Building / Community</h2><button class="modal-close" onclick="closeModal()">×</button></div>
     <div class="modal-body">
 
       <div class="modal-sec">Building / Community Info</div>
@@ -1352,104 +925,14 @@ table.ct tr:hover td{background:#FAF7F4}
         <div class="modal-field"><label>Commute to Home Depot HQ (min)</label><input type="number" id="m_commute" placeholder="20" min="0"></div>
         <div class="modal-field"><label>My rating (1–5 ⭐)</label>
           <div id="m_stars" style="display:flex;gap:6px;margin-top:6px;font-size:22px">
-            <span class="star" onclick="setStars(1)" style="color: var(--brass);">★</span><span class="star" onclick="setStars(2)" style="color: var(--brass);">★</span><span class="star" onclick="setStars(3)" style="color: var(--brass);">★</span><span class="star" onclick="setStars(4)" style="color: var(--faint);">☆</span><span class="star" onclick="setStars(5)" style="color: var(--faint);">☆</span>
+            <span class="star" onclick="setStars(1)">☆</span><span class="star" onclick="setStars(2)">☆</span><span class="star" onclick="setStars(3)">☆</span><span class="star" onclick="setStars(4)">☆</span><span class="star" onclick="setStars(5)">☆</span>
           </div>
         </div>
       </div>
 
       <div class="modal-sec">Available Units</div>
       <p class="hint-text" style="margin-bottom:8px">Add one or more units/floor plans available in this community.</p>
-      <div class="units-editor" id="units_editor"><div class="unit-editor-row" id="unit_1778454131901_v4r3">
-    <div class="unit-editor-row-title">
-      <span>Unit / Floor Plan</span>
-      <button class="remove-unit-btn" onclick="removeUnitRow(&#39;unit_1778454131901_v4r3&#39;)" title="Remove unit">×</button>
-    </div>
-    <div class="modal-row-3">
-      <div class="modal-field"><label>Style / Plan</label><input type="text" class="u_style" placeholder="A1, S1..." value="1BR The Hampton (6/8 move-in, avail now))"></div>
-      <div class="modal-field"><label>Apt #</label><input type="text" class="u_aptnum" placeholder="#0708" value="1505 (Bldg 15 / Flr 2)"></div>
-      <div class="modal-field"><label>Floor</label><input type="text" class="u_floor" placeholder="7" value=""></div>
-    </div>
-    <div class="modal-row-3" style="margin-top:8px">
-      <div class="modal-field"><label>Room Type</label>
-        <select class="u_roomtype" style="border:1.5px solid var(--rule);border-radius:8px;padding:7px 10px;font-size:13px;font-family:&#39;Jost&#39;,sans-serif;color:var(--ink);background:var(--card);outline:none;width:100%">
-          <option value="" selected="">—</option>
-          <option value="Studio">Studio</option>
-          <option value="1BR">1 Bedroom</option>
-          <option value="2BR">2 Bedroom</option>
-          <option value="3BR">3 Bedroom</option>
-        </select>
-      </div>
-      <div class="modal-field"><label>Sq Ft</label><input type="number" class="u_sqft" placeholder="750" min="0" value="650"></div>
-      <div class="modal-field"><label>Available Date</label><input type="text" class="u_avail" placeholder="6/1/2025" value=""></div>
-    </div>
-    <div class="modal-row" style="margin-top:8px">
-      <div class="modal-field"><label>Base Rent ($/mo)</label><input type="number" class="u_rent" placeholder="1700" min="0" value="1508"></div>
-      <div class="modal-field"><label>Lease Length</label>
-        <select class="u_lease" style="border:1.5px solid var(--rule);border-radius:8px;padding:7px 10px;font-size:13px;font-family:&#39;Jost&#39;,sans-serif;color:var(--ink);background:var(--card);outline:none;width:100%">
-          <option value="" selected="">Unknown</option>
-          <option value="mth">Month-to-month</option>
-          <option value="6">6 months</option>
-          <option value="12">12 months</option>
-          <option value="13">13 months</option>
-          <option value="14">14 months</option>
-          <option value="15">15 months</option>
-          <option value="16">16 months</option>
-          <option value="18">18 months</option>
-          <option value="24">24 months</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-    </div>
-    <div style="margin-top:8px">
-      <div style="font-size:11px;font-weight:600;color:var(--sub);margin-bottom:5px">Required monthly fees (pest control, trash, utility billing, etc.):</div>
-      <div class="unit-req-fees" id="urf_unit_1778454131901_v4r3"></div>
-      <button class="add-misc-fee-btn" style="margin-top:4px" onclick="addUnitFee(&#39;unit_1778454131901_v4r3&#39;)">+ Add required fee</button>
-    </div></div><div class="unit-editor-row" id="unit_1778454131901_4sko">
-    <div class="unit-editor-row-title">
-      <span>Unit / Floor Plan</span>
-      <button class="remove-unit-btn" onclick="removeUnitRow(&#39;unit_1778454131901_4sko&#39;)" title="Remove unit">×</button>
-    </div>
-    <div class="modal-row-3">
-      <div class="modal-field"><label>Style / Plan</label><input type="text" class="u_style" placeholder="A1, S1..." value="1BR The Berkley (6/8 move-in, avail now))"></div>
-      <div class="modal-field"><label>Apt #</label><input type="text" class="u_aptnum" placeholder="#0708" value="2118 (Bldg 21 / Flr 3)"></div>
-      <div class="modal-field"><label>Floor</label><input type="text" class="u_floor" placeholder="7" value=""></div>
-    </div>
-    <div class="modal-row-3" style="margin-top:8px">
-      <div class="modal-field"><label>Room Type</label>
-        <select class="u_roomtype" style="border:1.5px solid var(--rule);border-radius:8px;padding:7px 10px;font-size:13px;font-family:&#39;Jost&#39;,sans-serif;color:var(--ink);background:var(--card);outline:none;width:100%">
-          <option value="" selected="">—</option>
-          <option value="Studio">Studio</option>
-          <option value="1BR">1 Bedroom</option>
-          <option value="2BR">2 Bedroom</option>
-          <option value="3BR">3 Bedroom</option>
-        </select>
-      </div>
-      <div class="modal-field"><label>Sq Ft</label><input type="number" class="u_sqft" placeholder="750" min="0" value="875"></div>
-      <div class="modal-field"><label>Available Date</label><input type="text" class="u_avail" placeholder="6/1/2025" value=""></div>
-    </div>
-    <div class="modal-row" style="margin-top:8px">
-      <div class="modal-field"><label>Base Rent ($/mo)</label><input type="number" class="u_rent" placeholder="1700" min="0" value="1637"></div>
-      <div class="modal-field"><label>Lease Length</label>
-        <select class="u_lease" style="border:1.5px solid var(--rule);border-radius:8px;padding:7px 10px;font-size:13px;font-family:&#39;Jost&#39;,sans-serif;color:var(--ink);background:var(--card);outline:none;width:100%">
-          <option value="" selected="">Unknown</option>
-          <option value="mth">Month-to-month</option>
-          <option value="6">6 months</option>
-          <option value="12">12 months</option>
-          <option value="13">13 months</option>
-          <option value="14">14 months</option>
-          <option value="15">15 months</option>
-          <option value="16">16 months</option>
-          <option value="18">18 months</option>
-          <option value="24">24 months</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-    </div>
-    <div style="margin-top:8px">
-      <div style="font-size:11px;font-weight:600;color:var(--sub);margin-bottom:5px">Required monthly fees (pest control, trash, utility billing, etc.):</div>
-      <div class="unit-req-fees" id="urf_unit_1778454131901_4sko"></div>
-      <button class="add-misc-fee-btn" style="margin-top:4px" onclick="addUnitFee(&#39;unit_1778454131901_4sko&#39;)">+ Add required fee</button>
-    </div></div></div>
+      <div class="units-editor" id="units_editor"></div>
       <button class="add-unit-btn" onclick="addUnitRow()">+ Add Unit / Floor Plan</button>
 
       <div class="modal-sec">What's Included in Rent</div>
@@ -1508,12 +991,29 @@ table.ct tr:hover td{background:#FAF7F4}
         <label class="cb-item"><input type="checkbox" id="m_beltline"> Beltline access</label>
         <label class="cb-item"><input type="checkbox" id="m_walkable"> Walkable area</label>
         <label class="cb-item"><input type="checkbox" id="m_dishwasher"> Dishwasher</label>
-        <label class="cb-item"><input type="checkbox" id="m_microwave"> Microwave</label>
         <label class="cb-item"><input type="checkbox" id="m_transit"> Transit access (MARTA)</label>
       </div>
 
-      <div class="modal-sec">Notes</div>
-      <div class="modal-field"><label>Lease notes / specials</label><input type="text" id="m_lease_note" placeholder="e.g. up to 1 month free, move-in special, renewal terms..."></div>
+      <div class="modal-sec">Lease &amp; Notes</div>
+      <div class="modal-row">
+        <div class="modal-field"><label>Lease length</label>
+          <select id="m_lease" onchange="toggleLease()">
+            <option value="">Unknown</option>
+            <option value="mth">Month-to-month</option>
+            <option value="6">6 months</option>
+            <option value="12">12 months</option>
+            <option value="13">13 months</option>
+            <option value="14">14 months</option>
+            <option value="15">15 months</option>
+            <option value="16">16 months</option>
+            <option value="18">18 months</option>
+            <option value="24">24 months</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="modal-field" id="lease_custom_wrap" style="display:none"><label>Custom (months)</label><input type="number" id="m_lease_custom" placeholder="e.g. 11" min="1"></div>
+        <div class="modal-field" id="lease_note_wrap"><label>Lease notes</label><input type="text" id="m_lease_note" placeholder="special, renewal terms..."></div>
+      </div>
       <div class="modal-field"><label>Notes / impressions</label><textarea id="m_notes" placeholder="First impression, vibe, commute test, follow-up questions..."></textarea></div>
       <div class="modal-field"><label>Listing URL</label><input type="text" id="m_url" placeholder="https://..."></div>
 
@@ -1946,7 +1446,7 @@ function renderApts(){
     const starsHTML=[1,2,3,4,5].map(i=>`<span style="color:${i<=(apt.rating||0)?'var(--brass)':'var(--rule)'};font-size:14px">${i<=(apt.rating||0)?'★':'☆'}</span>`).join('');
 
     // amenity chips
-    const amenMap={amen_gym:'Gym',amen_pool:'Pool',amen_rooftop:'Rooftop',amen_doorman:'Doorman',amen_pet:'Pet OK',amen_dog:'Dog park',amen_storage:'Storage',amen_balcony:'Balcony',amen_ev:'EV',amen_beltline:'Beltline',amen_walkable:'Walkable',amen_dishwasher:'Dishwasher',amen_microwave:'Microwave'};
+    const amenMap={amen_gym:'Gym',amen_pool:'Pool',amen_rooftop:'Rooftop',amen_doorman:'Doorman',amen_pet:'Pet OK',amen_dog:'Dog park',amen_storage:'Storage',amen_balcony:'Balcony',amen_ev:'EV',amen_beltline:'Beltline',amen_walkable:'Walkable',amen_dishwasher:'Dishwasher'};
     const transitChip = apt.amen_transit ? `<div class="chip transit">🚇 Transit</div>` : '';
     const amenChips = Object.entries(amenMap).filter(([k])=>apt[k]).map(([,v])=>`<div class="chip amen">${v}</div>`).join('');
     const inclItems = ['inc_water','inc_electric','inc_gas','inc_inet','inc_laundry','inc_park'].filter(k=>apt[k]).map(k=>({inc_water:'Water/sewer',inc_electric:'Electric',inc_gas:'Gas/heat',inc_inet:'Internet',inc_laundry:'Laundry',inc_park:'Parking'}[k]));
@@ -1974,17 +1474,13 @@ function renderApts(){
       const ec = unitEffective(apt, unit);
       const reqTotal = ec.reqFees;
       const feeRows  = (unit.req_fees||[]).map(f=>`<div class="unit-fee-row"><span class="fee-name">${f.label}</span><span class="fee-amt">+${fmt(f.amt)}/mo</span></div>`).join('');
-      // Build unit header line: style · apt# · floor · room_type · sqft
-      const metaParts = [unit.style, unit.apt_num, unit.floor?`Floor ${unit.floor}`:null, unit.room_type, unit.sqft?unit.sqft+'sf':null].filter(Boolean);
-      const leaseLbl  = unit.lease ? ({mth:'Month-to-month','6':'6 mo','12':'12 mo','13':'13 mo','14':'14 mo','15':'15 mo','16':'16 mo','18':'18 mo','24':'24 mo'}[unit.lease]||unit.lease) : null;
+      const metaParts = [unit.style, unit.apt_num, unit.sqft?unit.sqft+'sf':null].filter(Boolean);
       return `
         <div class="unit-row">
           <div class="unit-header">
-            <span class="unit-name">${metaParts.join(' · ')||'Unit'}</span>
+            <span class="unit-name">${metaParts.join(' · ')}</span>
             <button class="apply-unit-btn" onclick="applyUnit(${origIdx},${ui})">→ Apply to Budget</button>
           </div>
-          ${unit.avail?`<div style="font-size:11px;color:var(--brass);font-weight:600;margin-bottom:4px">📅 Available ${unit.avail}</div>`:''}
-          ${leaseLbl?`<div style="font-size:11px;color:var(--sub);margin-bottom:4px">📋 Lease: <b style="color:var(--ink)">${leaseLbl}</b></div>`:''}
           <div class="unit-rent-line">
             <span class="unit-base-rent">${fmt(unit.base_rent)}</span><span class="unit-mo">/mo base rent</span>
           </div>
@@ -1995,7 +1491,9 @@ function renderApts(){
           </div>
           <div class="unit-total-line">
             <span class="unit-total-label">Total rent incl. fees</span>
-            <span class="unit-total-amt">${fmt(ec.totalRent)}/mo</span>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="unit-total-amt">${fmt(ec.totalRent)}/mo</span>
+            </div>
           </div>`:''}
           ${ec.extra>0?`<div style="font-size:11px;color:var(--faint);margin-top:4px">+${fmt(ec.extra)}/mo est. add-ons → <b style="color:var(--sub)">~${fmt(ec.effective)} effective</b></div>`:''}
         </div>`;
@@ -2017,7 +1515,7 @@ function renderApts(){
         ${amenChips||transitChip?`<div style="margin-bottom:8px"><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">Amenities</div><div class="chips">${transitChip}${amenChips}</div></div>`:''}
         ${moveinBlock}
         ${apt.commute?`<div class="apt-commute">🚗 Commute: <span>${apt.commute} min</span> to Home Depot HQ</div>`:''}
-        ${apt.lease_note?`<div class="apt-lease">💬 ${apt.lease_note}</div>`:''}
+        ${leaseLabel(apt)?`<div class="apt-lease">📋 Lease: <b>${leaseLabel(apt)}</b>${apt.lease_note?` — ${apt.lease_note}`:''}</div>`:''}
         <div class="rating-stars">${starsHTML}</div>
         ${apt.notes?`<div class="apt-note">"${apt.notes}"</div>`:''}
         ${apt.url?`<div style="margin-top:4px"><a href="${apt.url}" target="_blank" style="font-size:12px;color:var(--rust);text-decoration:none">View listing ↗</a></div>`:''}
@@ -2076,8 +1574,7 @@ function renderCompare(){
       <td class="ct-eff">${fmt(ec.effective)}</td>
       <td style="font-size:12px;color:${movein>0?'var(--red)':'var(--faint)'}">${movein>0?fmt(movein):'—'}</td>
       <td style="font-size:12px;color:var(--sub)">${apt.park_type&&apt.park_type!=='none'?(PARK_LABELS[apt.park_type]||'')+(apt.park_cost>0?` +${fmt(apt.park_cost)}`:''):'—'}</td>
-      <td style="font-size:12px;color:var(--sub)">${({mth:'Mo-to-mo','6':'6 mo','12':'12 mo','13':'13 mo','14':'14 mo','15':'15 mo','16':'16 mo','18':'18 mo','24':'24 mo'}[unit.lease])||unit.lease||'—'}</td>
-      <td style="font-size:12px;color:var(--brass);font-weight:600">${unit.avail||'—'}</td>
+      <td style="font-size:12px;color:var(--sub)">${leaseLabel(apt)||'—'}</td>
       <td style="font-size:12px">${apt.commute?apt.commute+' min':'—'}</td>
       <td style="color:var(--brass);font-size:13px">${'★'.repeat(apt.rating||0)+'☆'.repeat(5-(apt.rating||0))}</td>`;
     tbody.appendChild(tr);
@@ -2130,10 +1627,10 @@ function openModal(idx){
   el('m_park_type').value=a.park_type||'none'; el('m_park_cost').value=a.park_cost||'';
   el('m_app_fee').value=a.app_fee||''; el('m_security').value=a.security||'';
   el('m_movein_fee').value=a.movein_fee||''; el('m_holding').value=a.holding||'';
-  el('m_lease_note').value=a.lease_note||'';
+  el('m_lease').value=a.lease||''; el('m_lease_custom').value=a.lease_custom||''; el('m_lease_note').value=a.lease_note||'';
   ['inc_water','inc_electric','inc_gas','inc_inet','inc_laundry','inc_park'].forEach(k=>el('m_'+k).checked=a[k]||false);
-  ['gym','pool','rooftop','doorman','pet','dog','storage','balcony','ev','beltline','walkable','dishwasher','microwave','transit'].forEach(k=>el('m_'+k).checked=a['amen_'+k]||false);
-  modalStars=a.rating||0; updateStarUI();
+  ['gym','pool','rooftop','doorman','pet','dog','storage','balcony','ev','beltline','walkable','dishwasher','transit'].forEach(k=>el('m_'+k).checked=a['amen_'+k]||false);
+  modalStars=a.rating||0; updateStarUI(); toggleLease();
   // Units
   unitRows=[]; el('units_editor').innerHTML='';
   const initUnits=a.units&&a.units.length>0?a.units:[{style:'',apt_num:'',sqft:'',base_rent:'',req_fees:[]}];
@@ -2160,41 +1657,11 @@ function addUnitRow(data={}){
       <button class="remove-unit-btn" onclick="removeUnitRow('${id}')" title="Remove unit">&times;</button>
     </div>
     <div class="modal-row-3">
-      <div class="modal-field"><label>Style / Plan</label><input type="text" class="u_style" placeholder="A1, S1..." value="${data.style||''}"></div>
+      <div class="modal-field"><label>Style / Plan</label><input type="text" class="u_style" placeholder="A1, S1, 1BR..." value="${data.style||''}"></div>
       <div class="modal-field"><label>Apt #</label><input type="text" class="u_aptnum" placeholder="#0708" value="${data.apt_num||''}"></div>
-      <div class="modal-field"><label>Floor</label><input type="text" class="u_floor" placeholder="7" value="${data.floor||''}"></div>
-    </div>
-    <div class="modal-row-3" style="margin-top:8px">
-      <div class="modal-field"><label>Room Type</label>
-        <select class="u_roomtype" style="border:1.5px solid var(--rule);border-radius:8px;padding:7px 10px;font-size:13px;font-family:'Jost',sans-serif;color:var(--ink);background:var(--card);outline:none;width:100%">
-          <option value="" ${!data.room_type?'selected':''}>—</option>
-          <option value="Studio" ${data.room_type==='Studio'?'selected':''}>Studio</option>
-          <option value="1BR" ${data.room_type==='1BR'?'selected':''}>1 Bedroom</option>
-          <option value="2BR" ${data.room_type==='2BR'?'selected':''}>2 Bedroom</option>
-          <option value="3BR" ${data.room_type==='3BR'?'selected':''}>3 Bedroom</option>
-        </select>
-      </div>
       <div class="modal-field"><label>Sq Ft</label><input type="number" class="u_sqft" placeholder="750" min="0" value="${data.sqft||''}"></div>
-      <div class="modal-field"><label>Available Date</label><input type="text" class="u_avail" placeholder="6/1/2025" value="${data.avail||''}"></div>
     </div>
-    <div class="modal-row" style="margin-top:8px">
-      <div class="modal-field"><label>Base Rent ($/mo)</label><input type="number" class="u_rent" placeholder="1700" min="0" value="${data.base_rent||''}"></div>
-      <div class="modal-field"><label>Lease Length</label>
-        <select class="u_lease" style="border:1.5px solid var(--rule);border-radius:8px;padding:7px 10px;font-size:13px;font-family:'Jost',sans-serif;color:var(--ink);background:var(--card);outline:none;width:100%">
-          <option value="" ${!data.lease?'selected':''}>Unknown</option>
-          <option value="mth" ${data.lease==='mth'?'selected':''}>Month-to-month</option>
-          <option value="6" ${data.lease==='6'?'selected':''}>6 months</option>
-          <option value="12" ${data.lease==='12'?'selected':''}>12 months</option>
-          <option value="13" ${data.lease==='13'?'selected':''}>13 months</option>
-          <option value="14" ${data.lease==='14'?'selected':''}>14 months</option>
-          <option value="15" ${data.lease==='15'?'selected':''}>15 months</option>
-          <option value="16" ${data.lease==='16'?'selected':''}>16 months</option>
-          <option value="18" ${data.lease==='18'?'selected':''}>18 months</option>
-          <option value="24" ${data.lease==='24'?'selected':''}>24 months</option>
-          <option value="other" ${data.lease==='other'?'selected':''}>Other</option>
-        </select>
-      </div>
-    </div>
+    <div class="modal-field" style="margin-top:8px"><label>Base Rent ($/mo)</label><input type="number" class="u_rent" placeholder="1700" min="0" value="${data.base_rent||''}"></div>
     <div style="margin-top:8px">
       <div style="font-size:11px;font-weight:600;color:var(--sub);margin-bottom:5px">Required monthly fees (pest control, trash, utility billing, etc.):</div>
       <div class="unit-req-fees" id="urf_${id}"></div>
@@ -2221,24 +1688,14 @@ function addMiscFeeRow(data={}){
 
 function saveApt(){
   const name=el('m_name').value.trim(); if(!name){ alert('Building name is required.'); return; }
-  // Collect units — now includes floor, room_type, avail, lease per unit
+  // Collect units
   const units=[]; document.querySelectorAll('.unit-editor-row').forEach(div=>{
     const rent=parseFloat(div.querySelector('.u_rent')?.value)||0;
     const req_fees=[]; div.querySelectorAll('.unit-req-fees .misc-fee-row').forEach(r=>{
       const inputs=r.querySelectorAll('input'); const lbl=inputs[0]?.value.trim(); const amt=parseFloat(inputs[1]?.value)||0;
       if(lbl||amt) req_fees.push({label:lbl||'Fee',amt});
     });
-    units.push({
-      style:    div.querySelector('.u_style')?.value.trim()||'',
-      apt_num:  div.querySelector('.u_aptnum')?.value.trim()||'',
-      floor:    div.querySelector('.u_floor')?.value.trim()||'',
-      room_type:div.querySelector('.u_roomtype')?.value||'',
-      sqft:     parseFloat(div.querySelector('.u_sqft')?.value)||null,
-      avail:    div.querySelector('.u_avail')?.value.trim()||'',
-      base_rent:rent,
-      lease:    div.querySelector('.u_lease')?.value||'',
-      req_fees
-    });
+    units.push({style:div.querySelector('.u_style')?.value.trim()||'',apt_num:div.querySelector('.u_aptnum')?.value.trim()||'',sqft:parseFloat(div.querySelector('.u_sqft')?.value)||null,base_rent:rent,req_fees});
   });
   if(units.length===0||!units.some(u=>u.base_rent>0)){ alert('At least one unit with a rent amount is required.'); return; }
   // Collect misc fees
@@ -2261,9 +1718,8 @@ function saveApt(){
     amen_doorman:el('m_doorman').checked, amen_pet:el('m_pet').checked, amen_dog:el('m_dog').checked,
     amen_storage:el('m_storage').checked, amen_balcony:el('m_balcony').checked, amen_ev:el('m_ev').checked,
     amen_beltline:el('m_beltline').checked, amen_walkable:el('m_walkable').checked,
-    amen_dishwasher:el('m_dishwasher').checked, amen_microwave:el('m_microwave').checked,
-    amen_transit:el('m_transit').checked,
-    lease_note:el('m_lease_note').value.trim(),
+    amen_dishwasher:el('m_dishwasher').checked, amen_transit:el('m_transit').checked,
+    lease:el('m_lease').value, lease_custom:el('m_lease_custom').value, lease_note:el('m_lease_note').value.trim(),
     notes:el('m_notes').value.trim(), url:el('m_url').value.trim(),
   };
   if(editIndex>=0) apartments[editIndex]=apt; else apartments.push(apt);
