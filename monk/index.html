@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0069)file:///C:/Users/jody/Downloads/Lauren_Atlanta_Budget_firebase_6.html -->
+<!-- saved from url=(0069)file:///C:/Users/jody/Downloads/Lauren_Atlanta_Budget_firebase_7.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -305,7 +305,7 @@ table.ct tr:hover td{background:#FAF7F4}
 .cal-day.empty{cursor:default}.cal-day.other-month{color:var(--rule)}
 
 /* Upcoming drawer */
-.upcoming-btn{position:fixed;top:110px;right:0;z-index:200;background:var(--rust);color:#fff;border:none;border-radius:8px 0 0 8px;padding:10px 10px;font-size:11px;font-weight:600;font-family:'Jost',sans-serif;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;box-shadow:-2px 2px 12px rgba(0,0,0,.15);transition:background .15s;line-height:1}
+.upcoming-btn{position:fixed;top:50%;right:0;transform:translateY(-50%);z-index:200;background:var(--rust);color:#fff;border:none;border-radius:8px 0 0 8px;padding:10px 10px;font-size:11px;font-weight:600;font-family:'Jost',sans-serif;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;box-shadow:-2px 2px 12px rgba(0,0,0,.15);transition:background .15s;line-height:1}
 .upcoming-btn:hover{background:#9E4A28}
 .upcoming-btn-label{font-size:9px;letter-spacing:.05em;text-transform:uppercase;writing-mode:vertical-rl;transform:rotate(180deg)}
 .upcoming-badge{background:var(--brass);color:#fff;border-radius:10px;padding:2px 6px;font-size:10px;font-weight:700;min-width:18px;text-align:center}
@@ -401,16 +401,16 @@ table.ct tr:hover td{background:#FAF7F4}
     </div>
   </div>
   <div class="tabs">
-    <button class="tab" onclick="showPage(&#39;budget&#39;,this)">Budget</button>
+    <button class="tab active" onclick="showPage(&#39;budget&#39;,this)">Budget</button>
     <button class="tab" onclick="showPage(&#39;apartments&#39;,this)">Apartments</button>
-    <button class="tab active" onclick="showPage(&#39;tours&#39;,this)">Tours</button>
+    <button class="tab" onclick="showPage(&#39;tours&#39;,this)">Tours</button>
   </div>
 </div>
 
 <div class="wrap">
 
 <!-- ═══════════════════ BUDGET PAGE ═══════════════════ -->
-<div class="page" id="page-budget">
+<div class="page active" id="page-budget">
 
   <div class="slabel">Income</div>
   <div class="income-card">
@@ -2032,7 +2032,7 @@ doesn't allow checking later move-in pricing"</div>
 </div><!-- /page-apartments -->
 
 <!-- ═══════════════════ TOURS PAGE ═══════════════════ -->
-<div class="page active" id="page-tours">
+<div class="page" id="page-tours">
 
   <div class="slabel">Tour Scheduler</div>
 
@@ -2044,9 +2044,9 @@ doesn't allow checking later move-in pricing"</div>
         <span class="date-bar-icon">📅</span>
         <div class="date-bar-selected">
           <div class="date-bar-selected-label">Viewing tours for</div>
-          <div class="date-bar-selected-date" id="date_bar_label">Saturday, May 16</div>
+          <div class="date-bar-selected-date" id="date_bar_label">Monday, May 11</div>
         </div>
-        <div class="date-bar-dots" id="date_bar_dots" style="display: flex;"><div class="date-bar-dot"></div><div class="date-bar-dot"></div><div class="date-bar-dot"></div><div class="date-bar-dot"></div></div>
+        <div class="date-bar-dots" id="date_bar_dots" style="display:none"></div>
         <span class="date-bar-chevron" id="date_bar_chevron">▼</span>
       </div>
       <div class="date-bar-panel" id="date_bar_panel">
@@ -2055,312 +2055,24 @@ doesn't allow checking later move-in pricing"</div>
           <span class="cal-month-label" id="cal_month_label">May 2026</span>
           <button class="cal-nav-btn" onclick="calNext()">›</button>
         </div>
-        <div class="cal-grid" id="cal_grid"><div class="cal-dow">Su</div><div class="cal-dow">Mo</div><div class="cal-dow">Tu</div><div class="cal-dow">We</div><div class="cal-dow">Th</div><div class="cal-dow">Fr</div><div class="cal-dow">Sa</div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day today">11</div><div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day selected has-tours">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div></div>
+        <div class="cal-grid" id="cal_grid"><div class="cal-dow">Su</div><div class="cal-dow">Mo</div><div class="cal-dow">Tu</div><div class="cal-dow">We</div><div class="cal-dow">Th</div><div class="cal-dow">Fr</div><div class="cal-dow">Sa</div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div><div class="cal-day today selected">11</div><div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day has-tours">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div></div>
       </div>
     </div>
 
     <!-- TIMELINE -->
     <div class="timeline-col">
       <div class="timeline-hdr">
-        <div class="timeline-date-label" id="timeline_date_label">Saturday, May 16, 2026</div>
+        <div class="timeline-date-label" id="timeline_date_label">Monday, May 11, 2026</div>
         <button class="add-tour-btn" onclick="openTourModal()">+ Schedule Tour</button>
       </div>
-      <div id="timeline_content"><div class="tour-block">
-      <div class="tour-block-accent" style="background:#B85C38"></div>
-      <div class="tour-block-body">
-        <div class="tour-time-row">
-          <span class="tour-time">10:00 AM – 10:45 AM</span>
-          <span class="tour-duration">45 min</span>
-          <span class="tour-status-badge status-scheduled">Scheduled</span>
-        </div>
-        <div class="tour-apt-name">
-          <span onclick="goToApartmentsTab()" style="cursor:pointer;border-bottom:1px dashed var(--rust-md)">Cortland at the Village (4.5 / 1319)</span>
-        </div>
-        <div class="tour-apt-nbhd">Smyrna</div>
-        <div class="tour-apt-addr">2085 Lake Park Dr SE, Smyrna, GA 30080</div>
-        
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap">
-          <a href="https://cortland.com/apartments/cortland-at-the-village/?utm_source=gmb_site&amp;utm_medium=organic" target="_blank" style="font-size:12px;font-weight:600;color:var(--rust);text-decoration:none;display:flex;align-items:center;gap:4px">🔗 View listing ↗</a>
-          <a href="https://maps.app.goo.gl/daE6aHYWwBJpK1up8" target="_blank" style="font-size:12px;font-weight:600;color:var(--brass);text-decoration:none;display:flex;align-items:center;gap:4px">★ Google Reviews (4.5) ↗</a>
-        </div>
-        
-        
-        
-
-        <div class="tour-checklist">
-          <div class="tour-checklist-title" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer" onclick="toggleChecklist(&#39;chk_1778515280861_ogh&#39;)">
-            <span>Tour Checklist <span style="font-weight:400;color:var(--faint)">(0/12)</span></span>
-            <span id="chk_1778515280861_ogh_icon" style="font-size:12px;color:var(--faint);transition:transform .2s">▼</span>
-          </div>
-          <div id="chk_1778515280861_ogh" style="display:none;margin-top:6px">
-            <div class="checklist-grid"><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515280861_ogh&#39;,0,this.checked)"> Cell signal strength</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515280861_ogh&#39;,1,this.checked)"> Natural light</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515280861_ogh&#39;,2,this.checked)"> Street / traffic noise</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515280861_ogh&#39;,3,this.checked)"> Water pressure</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515280861_ogh&#39;,4,this.checked)"> A/C &amp; heat response</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515280861_ogh&#39;,5,this.checked)"> Storage space</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515280861_ogh&#39;,6,this.checked)"> Closet size</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515280861_ogh&#39;,7,this.checked)"> Kitchen counter space</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515280861_ogh&#39;,8,this.checked)"> In-unit washer/dryer</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515280861_ogh&#39;,9,this.checked)"> Parking spot condition</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515280861_ogh&#39;,10,this.checked)"> Package / mail setup</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515280861_ogh&#39;,11,this.checked)"> Neighbor noise</label></div>
-          </div>
-        </div>
-
-        <div class="tour-post-notes">
-          <div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">Post-tour impressions</div>
-          <textarea placeholder="How did the tour go? Notes, pros, cons, gut feeling..." onchange="savePostNotes(&#39;1778515280861_ogh&#39;,this.value)"></textarea>
-        </div>
-
-        <div class="tour-actions">
-          <button class="tour-action-btn primary" onclick="openTourModal(&#39;1778515280861_ogh&#39;)">Edit</button>
-          <select class="tour-action-btn" onchange="updateTourStatus(&#39;1778515280861_ogh&#39;,this.value)" style="padding:5px 8px;cursor:pointer">
-            <option value="scheduled" selected="">Scheduled</option>
-            <option value="completed">Completed</option>
-            <option value="cancelled">Cancelled</option>
-            <option value="rescheduled">Rescheduled</option>
-          </select>
-          
-          <button class="tour-action-btn danger" onclick="deleteTour(&#39;1778515280861_ogh&#39;)" style="margin-left:auto">Delete</button>
-        </div>
-      </div></div><div class="tour-block">
-      <div class="tour-block-accent" style="background:#9A7B3C"></div>
-      <div class="tour-block-body">
-        <div class="tour-time-row">
-          <span class="tour-time">11:00 AM – 11:45 AM</span>
-          <span class="tour-duration">45 min</span>
-          <span class="tour-status-badge status-scheduled">Scheduled</span>
-        </div>
-        <div class="tour-apt-name">
-          <span onclick="goToApartmentsTab()" style="cursor:pointer;border-bottom:1px dashed var(--rust-md)">Park at Vinings (4.2 / 632)</span>
-        </div>
-        <div class="tour-apt-nbhd">Smyrna</div>
-        <div class="tour-apt-addr">3000 Spring Hill Pkwy SE, Smyrna, GA 30080</div>
-        
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap">
-          <a href="https://theparkatvinings.com/" target="_blank" style="font-size:12px;font-weight:600;color:var(--rust);text-decoration:none;display:flex;align-items:center;gap:4px">🔗 View listing ↗</a>
-          <a href="https://maps.app.goo.gl/6J7Ww2iPDcEYkLSr8" target="_blank" style="font-size:12px;font-weight:600;color:var(--brass);text-decoration:none;display:flex;align-items:center;gap:4px">★ Google Reviews (4.2) ↗</a>
-        </div>
-        
-        
-        
-
-        <div class="tour-checklist">
-          <div class="tour-checklist-title" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer" onclick="toggleChecklist(&#39;chk_1778515425177_s0x&#39;)">
-            <span>Tour Checklist <span style="font-weight:400;color:var(--faint)">(0/12)</span></span>
-            <span id="chk_1778515425177_s0x_icon" style="font-size:12px;color:var(--faint);transition:transform .2s">▼</span>
-          </div>
-          <div id="chk_1778515425177_s0x" style="display:none;margin-top:6px">
-            <div class="checklist-grid"><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515425177_s0x&#39;,0,this.checked)"> Cell signal strength</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515425177_s0x&#39;,1,this.checked)"> Natural light</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515425177_s0x&#39;,2,this.checked)"> Street / traffic noise</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515425177_s0x&#39;,3,this.checked)"> Water pressure</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515425177_s0x&#39;,4,this.checked)"> A/C &amp; heat response</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515425177_s0x&#39;,5,this.checked)"> Storage space</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515425177_s0x&#39;,6,this.checked)"> Closet size</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515425177_s0x&#39;,7,this.checked)"> Kitchen counter space</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515425177_s0x&#39;,8,this.checked)"> In-unit washer/dryer</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515425177_s0x&#39;,9,this.checked)"> Parking spot condition</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515425177_s0x&#39;,10,this.checked)"> Package / mail setup</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515425177_s0x&#39;,11,this.checked)"> Neighbor noise</label></div>
-          </div>
-        </div>
-
-        <div class="tour-post-notes">
-          <div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">Post-tour impressions</div>
-          <textarea placeholder="How did the tour go? Notes, pros, cons, gut feeling..." onchange="savePostNotes(&#39;1778515425177_s0x&#39;,this.value)"></textarea>
-        </div>
-
-        <div class="tour-actions">
-          <button class="tour-action-btn primary" onclick="openTourModal(&#39;1778515425177_s0x&#39;)">Edit</button>
-          <select class="tour-action-btn" onchange="updateTourStatus(&#39;1778515425177_s0x&#39;,this.value)" style="padding:5px 8px;cursor:pointer">
-            <option value="scheduled" selected="">Scheduled</option>
-            <option value="completed">Completed</option>
-            <option value="cancelled">Cancelled</option>
-            <option value="rescheduled">Rescheduled</option>
-          </select>
-          
-          <button class="tour-action-btn danger" onclick="deleteTour(&#39;1778515425177_s0x&#39;)" style="margin-left:auto">Delete</button>
-        </div>
-      </div></div><div class="tour-block">
-      <div class="tour-block-accent" style="background:#4A7C5F"></div>
-      <div class="tour-block-body">
-        <div class="tour-time-row">
-          <span class="tour-time">12:00 PM – 12:45 PM</span>
-          <span class="tour-duration">45 min</span>
-          <span class="tour-status-badge status-scheduled">Scheduled</span>
-        </div>
-        <div class="tour-apt-name">
-          <span onclick="goToApartmentsTab()" style="cursor:pointer;border-bottom:1px dashed var(--rust-md)">Windsor Encore Apartments (4.4 / 362)</span>
-        </div>
-        <div class="tour-apt-nbhd">Vinings</div>
-        <div class="tour-apt-addr">3290 Cobb Galleria Pkwy, Atlanta, GA 30339</div>
-        
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap">
-          <a href="https://www.windsorcommunities.com/properties/windsor-encore/" target="_blank" style="font-size:12px;font-weight:600;color:var(--rust);text-decoration:none;display:flex;align-items:center;gap:4px">🔗 View listing ↗</a>
-          <a href="https://maps.app.goo.gl/MuZyxDTtuajprx8H8" target="_blank" style="font-size:12px;font-weight:600;color:var(--brass);text-decoration:none;display:flex;align-items:center;gap:4px">★ Google Reviews (4.4) ↗</a>
-        </div>
-        
-        
-        
-
-        <div class="tour-checklist">
-          <div class="tour-checklist-title" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer" onclick="toggleChecklist(&#39;chk_1778525390526_o46&#39;)">
-            <span>Tour Checklist <span style="font-weight:400;color:var(--faint)">(0/12)</span></span>
-            <span id="chk_1778525390526_o46_icon" style="font-size:12px;color:var(--faint);transition:transform .2s">▼</span>
-          </div>
-          <div id="chk_1778525390526_o46" style="display:none;margin-top:6px">
-            <div class="checklist-grid"><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778525390526_o46&#39;,0,this.checked)"> Cell signal strength</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778525390526_o46&#39;,1,this.checked)"> Natural light</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778525390526_o46&#39;,2,this.checked)"> Street / traffic noise</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778525390526_o46&#39;,3,this.checked)"> Water pressure</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778525390526_o46&#39;,4,this.checked)"> A/C &amp; heat response</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778525390526_o46&#39;,5,this.checked)"> Storage space</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778525390526_o46&#39;,6,this.checked)"> Closet size</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778525390526_o46&#39;,7,this.checked)"> Kitchen counter space</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778525390526_o46&#39;,8,this.checked)"> In-unit washer/dryer</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778525390526_o46&#39;,9,this.checked)"> Parking spot condition</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778525390526_o46&#39;,10,this.checked)"> Package / mail setup</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778525390526_o46&#39;,11,this.checked)"> Neighbor noise</label></div>
-          </div>
-        </div>
-
-        <div class="tour-post-notes">
-          <div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">Post-tour impressions</div>
-          <textarea placeholder="How did the tour go? Notes, pros, cons, gut feeling..." onchange="savePostNotes(&#39;1778525390526_o46&#39;,this.value)"></textarea>
-        </div>
-
-        <div class="tour-actions">
-          <button class="tour-action-btn primary" onclick="openTourModal(&#39;1778525390526_o46&#39;)">Edit</button>
-          <select class="tour-action-btn" onchange="updateTourStatus(&#39;1778525390526_o46&#39;,this.value)" style="padding:5px 8px;cursor:pointer">
-            <option value="scheduled" selected="">Scheduled</option>
-            <option value="completed">Completed</option>
-            <option value="cancelled">Cancelled</option>
-            <option value="rescheduled">Rescheduled</option>
-          </select>
-          
-          <button class="tour-action-btn danger" onclick="deleteTour(&#39;1778525390526_o46&#39;)" style="margin-left:auto">Delete</button>
-        </div>
-      </div></div><div class="tour-block">
-      <div class="tour-block-accent" style="background:#2E86AB"></div>
-      <div class="tour-block-body">
-        <div class="tour-time-row">
-          <span class="tour-time">1:00 PM – 1:45 PM</span>
-          <span class="tour-duration">45 min</span>
-          <span class="tour-status-badge status-scheduled">Scheduled</span>
-        </div>
-        <div class="tour-apt-name">
-          <span onclick="goToApartmentsTab()" style="cursor:pointer;border-bottom:1px dashed var(--rust-md)">Rowe Vinings (4.5 / 433)</span>
-        </div>
-        <div class="tour-apt-nbhd">Vining</div>
-        <div class="tour-apt-addr">3151 Stillhouse Creek Dr, Atlanta, GA 30339</div>
-        
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap">
-          <a href="http://rowevinings.com/" target="_blank" style="font-size:12px;font-weight:600;color:var(--rust);text-decoration:none;display:flex;align-items:center;gap:4px">🔗 View listing ↗</a>
-          
-        </div>
-        
-        
-        
-
-        <div class="tour-checklist">
-          <div class="tour-checklist-title" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer" onclick="toggleChecklist(&#39;chk_1778521016451_6a9&#39;)">
-            <span>Tour Checklist <span style="font-weight:400;color:var(--faint)">(0/12)</span></span>
-            <span id="chk_1778521016451_6a9_icon" style="font-size:12px;color:var(--faint);transition:transform .2s">▼</span>
-          </div>
-          <div id="chk_1778521016451_6a9" style="display:none;margin-top:6px">
-            <div class="checklist-grid"><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778521016451_6a9&#39;,0,this.checked)"> Cell signal strength</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778521016451_6a9&#39;,1,this.checked)"> Natural light</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778521016451_6a9&#39;,2,this.checked)"> Street / traffic noise</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778521016451_6a9&#39;,3,this.checked)"> Water pressure</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778521016451_6a9&#39;,4,this.checked)"> A/C &amp; heat response</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778521016451_6a9&#39;,5,this.checked)"> Storage space</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778521016451_6a9&#39;,6,this.checked)"> Closet size</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778521016451_6a9&#39;,7,this.checked)"> Kitchen counter space</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778521016451_6a9&#39;,8,this.checked)"> In-unit washer/dryer</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778521016451_6a9&#39;,9,this.checked)"> Parking spot condition</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778521016451_6a9&#39;,10,this.checked)"> Package / mail setup</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778521016451_6a9&#39;,11,this.checked)"> Neighbor noise</label></div>
-          </div>
-        </div>
-
-        <div class="tour-post-notes">
-          <div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">Post-tour impressions</div>
-          <textarea placeholder="How did the tour go? Notes, pros, cons, gut feeling..." onchange="savePostNotes(&#39;1778521016451_6a9&#39;,this.value)"></textarea>
-        </div>
-
-        <div class="tour-actions">
-          <button class="tour-action-btn primary" onclick="openTourModal(&#39;1778521016451_6a9&#39;)">Edit</button>
-          <select class="tour-action-btn" onchange="updateTourStatus(&#39;1778521016451_6a9&#39;,this.value)" style="padding:5px 8px;cursor:pointer">
-            <option value="scheduled" selected="">Scheduled</option>
-            <option value="completed">Completed</option>
-            <option value="cancelled">Cancelled</option>
-            <option value="rescheduled">Rescheduled</option>
-          </select>
-          
-          <button class="tour-action-btn danger" onclick="deleteTour(&#39;1778521016451_6a9&#39;)" style="margin-left:auto">Delete</button>
-        </div>
-      </div></div><div class="tour-block">
-      <div class="tour-block-accent" style="background:#8B5CA8"></div>
-      <div class="tour-block-body">
-        <div class="tour-time-row">
-          <span class="tour-time">2:30 PM – 3:15 PM</span>
-          <span class="tour-duration">45 min</span>
-          <span class="tour-status-badge status-scheduled">Scheduled</span>
-        </div>
-        <div class="tour-apt-name">
-          <span onclick="goToApartmentsTab()" style="cursor:pointer;border-bottom:1px dashed var(--rust-md)">MAA West Village (4.5 / 819)</span>
-        </div>
-        <div class="tour-apt-nbhd">Smyrna</div>
-        <div class="tour-apt-addr">4600 W Village Pl, Smyrna, GA 30080</div>
-        
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap">
-          <a href="http://www.maac.com/georgia/atlanta/maa-west-village/?utm_medium=local%20listing&amp;utm_source=google&amp;utm_campaign=gmb&amp;utm_content=website" target="_blank" style="font-size:12px;font-weight:600;color:var(--rust);text-decoration:none;display:flex;align-items:center;gap:4px">🔗 View listing ↗</a>
-          <a href="https://maps.app.goo.gl/9qrA5QxxGpppLgbm8" target="_blank" style="font-size:12px;font-weight:600;color:var(--brass);text-decoration:none;display:flex;align-items:center;gap:4px">★ Google Reviews (4.5) ↗</a>
-        </div>
-        
-        
-        
-
-        <div class="tour-checklist">
-          <div class="tour-checklist-title" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer" onclick="toggleChecklist(&#39;chk_1778515305368_u8n&#39;)">
-            <span>Tour Checklist <span style="font-weight:400;color:var(--faint)">(0/12)</span></span>
-            <span id="chk_1778515305368_u8n_icon" style="font-size:12px;color:var(--faint);transition:transform .2s">▼</span>
-          </div>
-          <div id="chk_1778515305368_u8n" style="display:none;margin-top:6px">
-            <div class="checklist-grid"><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515305368_u8n&#39;,0,this.checked)"> Cell signal strength</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515305368_u8n&#39;,1,this.checked)"> Natural light</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515305368_u8n&#39;,2,this.checked)"> Street / traffic noise</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515305368_u8n&#39;,3,this.checked)"> Water pressure</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515305368_u8n&#39;,4,this.checked)"> A/C &amp; heat response</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515305368_u8n&#39;,5,this.checked)"> Storage space</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515305368_u8n&#39;,6,this.checked)"> Closet size</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515305368_u8n&#39;,7,this.checked)"> Kitchen counter space</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515305368_u8n&#39;,8,this.checked)"> In-unit washer/dryer</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515305368_u8n&#39;,9,this.checked)"> Parking spot condition</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515305368_u8n&#39;,10,this.checked)"> Package / mail setup</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778515305368_u8n&#39;,11,this.checked)"> Neighbor noise</label></div>
-          </div>
-        </div>
-
-        <div class="tour-post-notes">
-          <div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">Post-tour impressions</div>
-          <textarea placeholder="How did the tour go? Notes, pros, cons, gut feeling..." onchange="savePostNotes(&#39;1778515305368_u8n&#39;,this.value)"></textarea>
-        </div>
-
-        <div class="tour-actions">
-          <button class="tour-action-btn primary" onclick="openTourModal(&#39;1778515305368_u8n&#39;)">Edit</button>
-          <select class="tour-action-btn" onchange="updateTourStatus(&#39;1778515305368_u8n&#39;,this.value)" style="padding:5px 8px;cursor:pointer">
-            <option value="scheduled" selected="">Scheduled</option>
-            <option value="completed">Completed</option>
-            <option value="cancelled">Cancelled</option>
-            <option value="rescheduled">Rescheduled</option>
-          </select>
-          
-          <button class="tour-action-btn danger" onclick="deleteTour(&#39;1778515305368_u8n&#39;)" style="margin-left:auto">Delete</button>
-        </div>
-      </div></div><div class="tour-block">
-      <div class="tour-block-accent" style="background:#C8703C"></div>
-      <div class="tour-block-body">
-        <div class="tour-time-row">
-          <span class="tour-time">3:30 PM – 4:15 PM</span>
-          <span class="tour-duration">45 min</span>
-          <span class="tour-status-badge status-scheduled">Scheduled</span>
-        </div>
-        <div class="tour-apt-name">
-          <span onclick="goToApartmentsTab()" style="cursor:pointer;border-bottom:1px dashed var(--rust-md)">Windsor Vinings (4.4 / 461)</span>
-        </div>
-        
-        <div class="tour-apt-addr">4695 N Church Ln SE, Atlanta, GA 30339</div>
-        
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap">
-          <a href="https://www.windsorcommunities.com/properties/windsor-vinings/floorplans/" target="_blank" style="font-size:12px;font-weight:600;color:var(--rust);text-decoration:none;display:flex;align-items:center;gap:4px">🔗 View listing ↗</a>
-          <a href="https://maps.app.goo.gl/8z8KeCHv9xe1zQndA" target="_blank" style="font-size:12px;font-weight:600;color:var(--brass);text-decoration:none;display:flex;align-items:center;gap:4px">★ Google Reviews (4.4) ↗</a>
-        </div>
-        
-        
-        
-
-        <div class="tour-checklist">
-          <div class="tour-checklist-title" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer" onclick="toggleChecklist(&#39;chk_1778518797926_qtz&#39;)">
-            <span>Tour Checklist <span style="font-weight:400;color:var(--faint)">(0/12)</span></span>
-            <span id="chk_1778518797926_qtz_icon" style="font-size:12px;color:var(--faint);transition:transform .2s">▼</span>
-          </div>
-          <div id="chk_1778518797926_qtz" style="display:none;margin-top:6px">
-            <div class="checklist-grid"><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778518797926_qtz&#39;,0,this.checked)"> Cell signal strength</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778518797926_qtz&#39;,1,this.checked)"> Natural light</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778518797926_qtz&#39;,2,this.checked)"> Street / traffic noise</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778518797926_qtz&#39;,3,this.checked)"> Water pressure</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778518797926_qtz&#39;,4,this.checked)"> A/C &amp; heat response</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778518797926_qtz&#39;,5,this.checked)"> Storage space</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778518797926_qtz&#39;,6,this.checked)"> Closet size</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778518797926_qtz&#39;,7,this.checked)"> Kitchen counter space</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778518797926_qtz&#39;,8,this.checked)"> In-unit washer/dryer</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778518797926_qtz&#39;,9,this.checked)"> Parking spot condition</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778518797926_qtz&#39;,10,this.checked)"> Package / mail setup</label><label class="check-pill "><input type="checkbox" onchange="toggleCheck(&#39;1778518797926_qtz&#39;,11,this.checked)"> Neighbor noise</label></div>
-          </div>
-        </div>
-
-        <div class="tour-post-notes">
-          <div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:5px">Post-tour impressions</div>
-          <textarea placeholder="How did the tour go? Notes, pros, cons, gut feeling..." onchange="savePostNotes(&#39;1778518797926_qtz&#39;,this.value)"></textarea>
-        </div>
-
-        <div class="tour-actions">
-          <button class="tour-action-btn primary" onclick="openTourModal(&#39;1778518797926_qtz&#39;)">Edit</button>
-          <select class="tour-action-btn" onchange="updateTourStatus(&#39;1778518797926_qtz&#39;,this.value)" style="padding:5px 8px;cursor:pointer">
-            <option value="scheduled" selected="">Scheduled</option>
-            <option value="completed">Completed</option>
-            <option value="cancelled">Cancelled</option>
-            <option value="rescheduled">Rescheduled</option>
-          </select>
-          
-          <button class="tour-action-btn danger" onclick="deleteTour(&#39;1778518797926_qtz&#39;)" style="margin-left:auto">Delete</button>
-        </div>
-      </div></div></div>
+      <div id="timeline_content"><div class="timeline-empty"><div class="timeline-empty-icon">☀️</div><p style="margin-bottom:8px">No tours scheduled for this day.</p><button class="add-tour-btn" style="margin:0 auto;display:inline-flex" onclick="openTourModal()">+ Schedule Tour</button></div></div>
     </div>
 
   </div>
 </div><!-- /page-tours -->
 
 <!-- UPCOMING DRAWER BUTTON (fixed, visible only on tours page) -->
-<button class="upcoming-btn" id="upcoming_btn" style="display: flex;" onclick="openUpcomingDrawer()">
+<button class="upcoming-btn" id="upcoming_btn" style="display:none" onclick="openUpcomingDrawer()">
   <span class="upcoming-badge" id="upcoming_badge">6</span>
   <span class="upcoming-btn-label">Upcoming</span>
 </button>
