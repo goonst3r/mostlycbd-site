@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)file:///C:/Users/jody/Downloads/lauren_ga_move_checklist.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lauren's Georgia Move Checklist</title>
+<style>
+  :root {
+    --accent: #D85A30;
+    --accent-light: #FAECE7;
+    --accent-dark: #993C1D;
+    --text: #1a1a18;
+    --text-muted: #5a5a56;
+    --text-faint: #8a8a84;
+    --border: #e0ded6;
+    --bg: #ffffff;
+    --bg-alt: #f8f7f4;
+    --green-bg: #E1F5EE;
+    --green-text: #0F6E56;
+    --blue-bg: #E6F1FB;
+    --blue-text: #185FA5;
+    --amber-bg: #FAEEDA;
+    --amber-text: #854F0B;
+    --red-bg: #FCEBEB;
+    --red-text: #A32D2D;
+    --red-row: #7a1f1f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--text);
+    background: var(--bg);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── header ── */
+  .page-header {
+    background: var(--accent);
+    color: white;
+    padding: 2rem 2.5rem 1.5rem;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .page-header h1 {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: normal;
+    letter-spacing: 0.01em;
+    margin-bottom: 4px;
+  }
+  .page-header .sub {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    opacity: 0.85;
+  }
+  .header-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .header-meta span {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    opacity: 0.9;
+  }
+
+  /* ── layout ── */
+  .content { padding: 1.5rem 2.5rem 3rem; max-width: 860px; }
+
+  /* ── progress bar (screen only) ── */
+  .progress-wrap { margin-bottom: 1.5rem; }
+  .progress-label { font-family: Arial, sans-serif; font-size: 12px; color: var(--text-muted); margin-bottom: 5px; }
+  .progress-bar { background: var(--bg-alt); border-radius: 20px; height: 7px; overflow: hidden; border: 1px solid var(--border); }
+  .progress-fill { height: 100%; background: var(--accent); border-radius: 20px; transition: width 0.3s; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  /* ── phase ── */
+  .phase { margin-bottom: 2rem; }
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1.5px solid var(--border);
+  }
+  .phase-badge {
+    font-family: Arial, sans-serif;
+    background: var(--accent);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .phase-title {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  /* ── item ── */
+  .item {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    page-break-inside: avoid;
+  }
+  .item-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 11px 14px;
+    background: var(--bg);
+    cursor: pointer;
+  }
+  .item-header:hover { background: var(--bg-alt); }
+
+  .checkbox {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid #bbb;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    background: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .checkbox.checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .checkbox.checked::after {
+    content: '';
+    width: 10px;
+    height: 5px;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: rotate(-45deg) translateY(-1px);
+    display: block;
+  }
+
+  .item-text { flex: 1; }
+  .item-title {
+    font-family: Arial, sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .item-title.done {
+    text-decoration: line-through;
+    color: var(--text-faint);
+  }
+
+  .badges { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 4px; }
+  .badge {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .badge-online  { background: var(--green-bg); color: var(--green-text); }
+  .badge-inperson{ background: var(--blue-bg);  color: var(--blue-text); }
+  .badge-prep    { background: var(--amber-bg); color: var(--amber-text); }
+  .badge-deadline{ background: var(--red-bg);   color: var(--red-text); print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  .chevron {
+    font-family: Arial, sans-serif;
+    color: var(--text-faint);
+    font-size: 18px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 0;
+    user-select: none;
+    transition: transform 0.2s;
+  }
+  .chevron.open { transform: rotate(180deg); }
+
+  /* ── detail panel ── */
+  .detail {
+    display: none;
+    padding: 4px 14px 14px 42px;
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+  }
+  .detail.open { display: block; }
+
+  .detail-row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    padding: 6px 0;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .detail-row:last-child { border-bottom: none; }
+  .detail-row.alert { color: var(--red-row); }
+  .detail-icon {
+    flex-shrink: 0;
+    width: 16px;
+    margin-top: 2px;
+    text-align: center;
+    color: var(--text-faint);
+  }
+  .detail-icon.alert-icon { color: var(--red-text); }
+  .detail-row a { color: var(--accent); text-decoration: none; }
+  .detail-row a:hover { text-decoration: underline; }
+
+  /* ── legend ── */
+  .legend {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  /* ── footer ── */
+  .page-footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: var(--text-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* ── print styles ── */
+  @media print {
+    body { font-size: 12px; }
+    .page-header { padding: 1.25rem 1.5rem 1rem; }
+    .page-header h1 { font-size: 18px; }
+    .content { padding: 1rem 1.5rem 1rem; }
+    .progress-wrap { display: none; }
+    .item-header { cursor: default; }
+    .item-header:hover { background: var(--bg); }
+    .chevron { display: none; }
+    .detail { display: block !important; }
+    .phase { page-break-inside: avoid; }
+    .item { page-break-inside: avoid; }
+    .legend { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .page-header { padding: 1.25rem 1.25rem 1rem; }
+    .content { padding: 1rem 1.25rem 2rem; }
+    .header-meta { gap: 0.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Lauren's Georgia Move Checklist</h1>
+  <div class="sub">Pittsburgh, PA → Atlanta, GA · Home Depot Corporate HQ</div>
+  <div class="header-meta">
+    <span>📍 New address: 1301 Chattahoochee Ave NW #381, Atlanta, GA 30318</span>
+    <span>⏱ Key deadline: 30 days from move-in date</span>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="progress-label" id="prog-label">0 of 18 items completed</div>
+    <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="badge badge-online">ONLINE OPTION</span> Can be completed or started online</div>
+    <div class="legend-item"><span class="badge badge-prep">PREP AHEAD</span> Do before arriving in GA</div>
+    <div class="legend-item"><span class="badge badge-inperson">IN PERSON</span> Must visit in person</div>
+    <div class="legend-item"><span class="badge badge-deadline">30-DAY DEADLINE</span> Must complete within 30 days of move-in</div>
+  </div>
+
+  <div id="checklist"><div class="phase"><div class="phase-header"><span class="phase-badge">Before Move</span><span class="phase-title">Before the move — do from PA</span></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">USPS change of address</div><div class="badges"><span class="badge badge-online">ONLINE OPTION</span><span class="badge badge-prep">PREP AHEAD</span></div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row"><span class="detail-icon" aria-hidden="true">📬</span><span>Go to <a href="https://moversguide.usps.com/" target="_blank">moversguide.usps.com</a> — only $1.25 identity verification fee. Avoid third-party sites charging $40+.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>Set as permanent forwarding. Choose "individual" move (not family) so Lauren's mail forwards but yours stays in PA.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">⏰</span><span>Submit at least 2 weeks before move-in. Forwarding lasts up to 12 months — use that time to update all accounts.</span></div></div></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">Notify important accounts of address change</div><div class="badges"><span class="badge badge-prep">PREP AHEAD</span></div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row"><span class="detail-icon" aria-hidden="true">📋</span><span>Update: bank(s), credit cards, student loans, subscriptions, Amazon, Apple ID, doctor/dentist, insurance, employer HR, IRS (Form 8822 online or by mail), investment accounts.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>IRS address change: file Form 8822 at irs.gov or note on next tax return. Do within a few months of the move.</span></div></div></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">Get car insurance updated to Georgia</div><div class="badges"><span class="badge badge-online">ONLINE OPTION</span><span class="badge badge-prep">PREP AHEAD</span></div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row"><span class="detail-icon" aria-hidden="true">📞</span><span>Call your current insurer before the move. Car is in Mom's name — Mom must be the named insured. Lauren added as a rated driver at the Atlanta address.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>Georgia minimum coverage: 25/50/25 liability. Full coverage likely required by M&amp;T Bank since financed.</span></div><div class="detail-row alert"><span class="detail-icon alert-icon" aria-hidden="true">⚠️</span><span>Georgia will electronically verify insurance at vehicle registration — must be active before the tag office visit.</span></div></div></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">Get renters insurance</div><div class="badges"><span class="badge badge-online">ONLINE OPTION</span><span class="badge badge-prep">PREP AHEAD</span></div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>Lauren gets her own policy as named tenant at 1301 Chattahoochee Ave NW #381, Atlanta, GA 30318.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">💰</span><span>Typical cost: $15–$25/month in Atlanta. Good options: Lemonade (fast online), State Farm, Nationwide, USAA.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">✅</span><span>Check the lease — some communities require renters insurance at move-in with a minimum coverage amount.</span></div></div></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">Download and prep Form T-17 and MV-1</div><div class="badges"><span class="badge badge-online">ONLINE OPTION</span><span class="badge badge-prep">PREP AHEAD</span></div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row"><span class="detail-icon" aria-hidden="true">🔗</span><span>T-17 (Statement of Title Held by Lienholder): <a href="https://dor.georgia.gov/t-17-statement-title-held-lienholder-security-interest-holder-or-leasing-company" target="_blank">dor.georgia.gov — Form T-17</a></span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">🔗</span><span>MV-1 Title Application: search "Georgia Form MV-1" at <a href="https://dor.georgia.gov/" target="_blank">dor.georgia.gov</a></span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">📋</span><span>T-17 needs: vehicle year/make/VIN, title number, issuing state, owner names as on title, M&amp;T Bank full name and address, signatures from Lauren and Mom, loan account number.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">📞</span><span>Call M&amp;T Bank: 1-800-724-2240 — get exact lienholder address, loan account number, and Electronic Title Number (ELT).</span></div><div class="detail-row alert"><span class="detail-icon alert-icon" aria-hidden="true">⚠️</span><span>If title held in KY, MD, MI, MN, MO, MT, NY, OK, or WI — you need the original title, not just registration. Confirm with M&amp;T.</span></div></div></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">Contact M&amp;T Bank about the out-of-state move</div><div class="badges"><span class="badge badge-prep">PREP AHEAD</span></div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row"><span class="detail-icon" aria-hidden="true">📞</span><span>M&amp;T Bank customer service: 1-800-724-2240</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>Inform them Lauren is moving to GA. Ask: which state holds the title, ELT number, and confirm they're okay with vehicle being garaged in GA.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>Lender may need to be notified of new garaging address to keep the loan in compliance with insurance requirements.</span></div></div></div></div><div class="phase"><div class="phase-header"><span class="phase-badge">Week 1 Priority</span><span class="phase-title">Week 1 in Atlanta — complete in this order</span></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">Georgia Driver's License — DDS Customer Service Center (do this first)</div><div class="badges"><span class="badge badge-online">ONLINE OPTION</span><span class="badge badge-inperson">IN PERSON</span><span class="badge badge-deadline">30-DAY DEADLINE</span></div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row"><span class="detail-icon" aria-hidden="true">📍</span><span>Atlanta DDS Customer Service Center — 400 Whitehall St SW, Atlanta, GA 30303</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">⏰</span><span>Hours: Tue–Fri 7:30am–6:30pm · Sat 7:30am–12:00pm · Closed Sun–Mon</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">📞</span><span>DDS Call Center: (678) 413-8400</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">🔗</span><span>Submit required Online License/ID/Permit form BEFORE visiting: <a href="https://dds.georgia.gov/" target="_blank">dds.georgia.gov</a> — required for all in-person visits.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">📋</span><span>Bring: valid out-of-state license (must surrender it), 2 proofs of GA residency (lease + utility bill or bank statement), Social Security card, proof of citizenship or lawful status.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>No written or road test required when surrendering a valid out-of-state license. Vision test given on-site.</span></div><div class="detail-row alert"><span class="detail-icon alert-icon" aria-hidden="true">⚠️</span><span>Must have GA DL before registering the vehicle. Do this before the tag office visit.</span></div><div class="detail-row alert"><span class="detail-icon alert-icon" aria-hidden="true">⚠️</span><span>30-day deadline from date of establishing GA residency (move-in date).</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">💡</span><span>Avoid Tuesdays — busiest day statewide. Wednesday–Friday midday is best.</span></div></div></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">Vehicle registration &amp; Georgia plates — Fulton County Tag Office</div><div class="badges"><span class="badge badge-inperson">IN PERSON</span><span class="badge badge-deadline">30-DAY DEADLINE</span></div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row"><span class="detail-icon" aria-hidden="true">📍</span><span>Fulton County Tax Commissioner — 141 Pryor St SW, Suite 2097, Atlanta, GA 30303</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">⏰</span><span>Hours: Mon–Fri 8:00am–4:30pm · Closed weekends</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">📞</span><span>(404) 613-6100 · fultoncountytaxes.org</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">📋</span><span>Bring: completed Form T-17, original out-of-state registration certificate (in lieu of title), completed MV-1 Title Application, Lauren's new GA driver's license, proof of GA auto insurance, M&amp;T Bank name/address/loan#/ELT#, payment for fees.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">💰</span><span>Fees: Title transfer $18 + Registration $20 + TAVT (Title Ad Valorem Tax) — 3% of fair market value, one-time. Use TAVT calculator at dor.georgia.gov.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>The tag office will contact M&amp;T Bank directly to obtain the out-of-state title. You do not need the physical title in hand.</span></div><div class="detail-row alert"><span class="detail-icon alert-icon" aria-hidden="true">⚠️</span><span>30-day deadline from establishing GA residency.</span></div></div></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">Open a local Georgia bank account</div><div class="badges"><span class="badge badge-inperson">IN PERSON</span></div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row"><span class="detail-icon" aria-hidden="true">💡</span><span>Strongly recommended. Local branches matter for cashier's checks, cash deposits, in-person disputes, and notary services.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">🏦</span><span>Best options in Atlanta: Truist (46 Atlanta branches, formerly SunTrust — deep GA roots), Chase (nationwide + strong ATM network), Ameris Bank (Atlanta-headquartered, free checking, no minimum balance requirement).</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">⭐</span><span>Credit union option: Delta Community Credit Union — Atlanta-based, excellent rates, highly rated for customer service.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>She can keep her current account for existing direct deposits and bills while transitioning. Running both for a few months is fine.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">📋</span><span>Bring to open: new GA driver's license, Social Security number, opening deposit (typically $25–$100 minimum).</span></div></div></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">Register to vote in Georgia</div><div class="badges"><span class="badge badge-online">ONLINE OPTION</span></div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row"><span class="detail-icon" aria-hidden="true">🔗</span><span>Online at <a href="https://registertovote.sos.ga.gov/" target="_blank">registertovote.sos.ga.gov</a> — requires valid GA driver's license. Do this after getting the GA DL.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>Once registered in GA, cancel the PA voter registration to avoid being on two state rolls.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">⏰</span><span>Registration deadline is 29 days before any election. No immediate rush — do within the first month.</span></div></div></div></div><div class="phase"><div class="phase-header"><span class="phase-badge">Week 1–2</span><span class="phase-title">Employment &amp; insurance setup</span></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">Update direct deposit and payroll with Home Depot HR</div><div class="badges"><span class="badge badge-prep">PREP AHEAD</span></div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>Contact HR or employee portal to update direct deposit to new bank account and confirm payroll address is the Atlanta address.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>Update W-4 withholding — she'll now be paying Georgia state income tax (flat 5.39% for 2024). Confirm the right state is being withheld.</span></div></div></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">Confirm or enroll in health insurance</div><div class="badges"><span class="badge badge-prep">PREP AHEAD</span></div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>If on parent's health insurance: verify Atlanta address is on file and plan covers GA in-network providers.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>If starting Home Depot employer health insurance: enrollment window is typically 30 days from start date. Choose a plan with strong Atlanta-area network.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">💡</span><span>Find a GA primary care doctor within the first 60 days to avoid scrambling in an emergency.</span></div></div></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">Transfer prescriptions to a local pharmacy</div><div class="badges"><span class="badge badge-online">ONLINE OPTION</span></div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>Most major chains (CVS, Walgreens, Publix) allow online prescription transfers. Search near zip code 30318.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">💡</span><span>Publix pharmacies are popular in Atlanta — often cheaper for generics. Kroger also has strong Atlanta presence near her zip.</span></div></div></div></div><div class="phase"><div class="phase-header"><span class="phase-badge">Move-In Week</span><span class="phase-title">Setting up the apartment</span></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">Set up utilities — electricity, gas, internet</div><div class="badges"><span class="badge badge-online">ONLINE OPTION</span><span class="badge badge-prep">PREP AHEAD</span></div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row"><span class="detail-icon" aria-hidden="true">💡</span><span>Electricity: Georgia Power is the primary provider in Atlanta — set up online at georgiapower.com before move-in if possible.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">🔥</span><span>Gas: Atlanta Gas Light (AGL) or SouthStar Energy — confirm which the building uses with the leasing office.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">📶</span><span>Internet: Xfinity (Comcast) and AT&amp;T Fiber are the main providers in the 30318 area. Schedule install date before move-in week if possible.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">💡</span><span>Utility account in Lauren's name = excellent proof of GA residency for the DDS visit.</span></div></div></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">Document apartment condition at move-in</div><div class="badges"><span class="badge badge-prep">PREP AHEAD</span></div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row"><span class="detail-icon" aria-hidden="true">📸</span><span>Walk every room before unpacking and photograph all existing damage — walls, floors, appliances, fixtures, bathroom, closets.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">📋</span><span>Complete and return the move-in condition checklist/form to the leasing office within the window specified in the lease (typically 48–72 hours).</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>This documentation protects Lauren's security deposit at move-out. Date-stamp all photos.</span></div></div></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">Get oriented — neighborhood and emergency resources</div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row"><span class="detail-icon" aria-hidden="true">📍</span><span>Apartment area: Westside/Underwood Hills — close to BeltLine Westside Trail, Bellwood Quarry park, I-75/I-285 access.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">🛒</span><span>Nearest grocery: Publix on Howell Mill Rd (~1.5 mi), Kroger on Powers Ferry (~2 mi).</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">🏥</span><span>Nearest ER: Piedmont Hospital — 1968 Peachtree Rd NW, Atlanta, GA 30309. About 10 minutes away.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">🚌</span><span>MARTA: Nearest stations are Arts Center or Midtown (~3–4 mi). MARTA bus routes also serve the area.</span></div></div></div></div><div class="phase"><div class="phase-header"><span class="phase-badge">30-Day Deadline</span><span class="phase-title">Within 30 days — don't let these slip</span></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">Confirm both 30-day deadlines are met</div><div class="badges"><span class="badge badge-deadline">30-DAY DEADLINE</span></div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row alert"><span class="detail-icon alert-icon" aria-hidden="true">⚠️</span><span>GA Driver's License: must be applied for within 30 days of establishing GA residency (move-in date).</span></div><div class="detail-row alert"><span class="detail-icon alert-icon" aria-hidden="true">⚠️</span><span>Vehicle registration: must be transferred to GA within 30 days of establishing residency.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>PA voter registration: cancel once registered in GA.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>Student loan servicer: notify of new address if applicable.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">ℹ️</span><span>Professional licenses or certifications: update address with any issuing bodies.</span></div></div></div><div class="item"><div class="item-header"><div class="checkbox" role="checkbox" aria-checked="false" tabindex="0"></div><div class="item-text"><div class="item-title">Build an emergency fund and first-month budget</div></div><span class="chevron" aria-hidden="true">⌄</span></div><div class="detail"><div class="detail-row"><span class="detail-icon" aria-hidden="true">💰</span><span>First paycheck may be 2–4 weeks out. Make sure Lauren has enough liquid cash to cover first month without stress.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">📊</span><span>GA-specific budget line items: rent, utilities (~$100–$180/mo), groceries, gas, car insurance, renters insurance, internet.</span></div><div class="detail-row"><span class="detail-icon" aria-hidden="true">🎯</span><span>Target: 1 month expenses in checking, 3 months expenses in savings as the emergency fund goal.</span></div></div></div></div></div>
+
+  <div class="page-footer">
+    <span>Lauren's GA Move — generated for Jody &amp; family</span>
+    <span id="print-date">Printed: June 3, 2026</span>
+  </div>
+</div>
+
+<script>
+document.getElementById('print-date').textContent = 'Printed: ' + new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
+
+const data = [
+  {
+    phase: "Before the move — do from PA",
+    badge: "Before Move",
+    items: [
+      {
+        title: "USPS change of address",
+        badges: ["online","prep"],
+        detail: [
+          {icon:"📬", text:'Go to <a href="https://moversguide.usps.com" target="_blank">moversguide.usps.com</a> — only $1.25 identity verification fee. Avoid third-party sites charging $40+.'},
+          {icon:"ℹ️", text:'Set as permanent forwarding. Choose "individual" move (not family) so Lauren\'s mail forwards but yours stays in PA.'},
+          {icon:"⏰", text:"Submit at least 2 weeks before move-in. Forwarding lasts up to 12 months — use that time to update all accounts."}
+        ]
+      },
+      {
+        title: "Notify important accounts of address change",
+        badges: ["prep"],
+        detail: [
+          {icon:"📋", text:"Update: bank(s), credit cards, student loans, subscriptions, Amazon, Apple ID, doctor/dentist, insurance, employer HR, IRS (Form 8822 online or by mail), investment accounts."},
+          {icon:"ℹ️", text:"IRS address change: file Form 8822 at irs.gov or note on next tax return. Do within a few months of the move."}
+        ]
+      },
+      {
+        title: "Get car insurance updated to Georgia",
+        badges: ["online","prep"],
+        detail: [
+          {icon:"📞", text:"Call your current insurer before the move. Car is in Mom's name — Mom must be the named insured. Lauren added as a rated driver at the Atlanta address."},
+          {icon:"ℹ️", text:"Georgia minimum coverage: 25/50/25 liability. Full coverage likely required by M&T Bank since financed."},
+          {icon:"⚠️", text:"Georgia will electronically verify insurance at vehicle registration — must be active before the tag office visit.", alert:true}
+        ]
+      },
+      {
+        title: "Get renters insurance",
+        badges: ["online","prep"],
+        detail: [
+          {icon:"ℹ️", text:"Lauren gets her own policy as named tenant at 1301 Chattahoochee Ave NW #381, Atlanta, GA 30318."},
+          {icon:"💰", text:"Typical cost: $15–$25/month in Atlanta. Good options: Lemonade (fast online), State Farm, Nationwide, USAA."},
+          {icon:"✅", text:"Check the lease — some communities require renters insurance at move-in with a minimum coverage amount."}
+        ]
+      },
+      {
+        title: "Download and prep Form T-17 and MV-1",
+        badges: ["online","prep"],
+        detail: [
+          {icon:"🔗", text:'T-17 (Statement of Title Held by Lienholder): <a href="https://dor.georgia.gov/t-17-statement-title-held-lienholder-security-interest-holder-or-leasing-company" target="_blank">dor.georgia.gov — Form T-17</a>'},
+          {icon:"🔗", text:'MV-1 Title Application: search "Georgia Form MV-1" at <a href="https://dor.georgia.gov" target="_blank">dor.georgia.gov</a>'},
+          {icon:"📋", text:"T-17 needs: vehicle year/make/VIN, title number, issuing state, owner names as on title, M&T Bank full name and address, signatures from Lauren and Mom, loan account number."},
+          {icon:"📞", text:"Call M&T Bank: 1-800-724-2240 — get exact lienholder address, loan account number, and Electronic Title Number (ELT)."},
+          {icon:"⚠️", text:"If title held in KY, MD, MI, MN, MO, MT, NY, OK, or WI — you need the original title, not just registration. Confirm with M&T.", alert:true}
+        ]
+      },
+      {
+        title: "Contact M&T Bank about the out-of-state move",
+        badges: ["prep"],
+        detail: [
+          {icon:"📞", text:"M&T Bank customer service: 1-800-724-2240"},
+          {icon:"ℹ️", text:'Inform them Lauren is moving to GA. Ask: which state holds the title, ELT number, and confirm they\'re okay with vehicle being garaged in GA.'},
+          {icon:"ℹ️", text:"Lender may need to be notified of new garaging address to keep the loan in compliance with insurance requirements."}
+        ]
+      }
+    ]
+  },
+  {
+    phase: "Week 1 in Atlanta — complete in this order",
+    badge: "Week 1 Priority",
+    items: [
+      {
+        title: "Georgia Driver's License — DDS Customer Service Center (do this first)",
+        badges: ["online","inperson","deadline"],
+        detail: [
+          {icon:"📍", text:"Atlanta DDS Customer Service Center — 400 Whitehall St SW, Atlanta, GA 30303"},
+          {icon:"⏰", text:"Hours: Tue–Fri 7:30am–6:30pm · Sat 7:30am–12:00pm · Closed Sun–Mon"},
+          {icon:"📞", text:"DDS Call Center: (678) 413-8400"},
+          {icon:"🔗", text:'Submit required Online License/ID/Permit form BEFORE visiting: <a href="https://dds.georgia.gov" target="_blank">dds.georgia.gov</a> — required for all in-person visits.'},
+          {icon:"📋", text:"Bring: valid out-of-state license (must surrender it), 2 proofs of GA residency (lease + utility bill or bank statement), Social Security card, proof of citizenship or lawful status."},
+          {icon:"ℹ️", text:"No written or road test required when surrendering a valid out-of-state license. Vision test given on-site."},
+          {icon:"⚠️", text:"Must have GA DL before registering the vehicle. Do this before the tag office visit.", alert:true},
+          {icon:"⚠️", text:"30-day deadline from date of establishing GA residency (move-in date).", alert:true},
+          {icon:"💡", text:"Avoid Tuesdays — busiest day statewide. Wednesday–Friday midday is best."}
+        ]
+      },
+      {
+        title: "Vehicle registration & Georgia plates — Fulton County Tag Office",
+        badges: ["inperson","deadline"],
+        detail: [
+          {icon:"📍", text:"Fulton County Tax Commissioner — 141 Pryor St SW, Suite 2097, Atlanta, GA 30303"},
+          {icon:"⏰", text:"Hours: Mon–Fri 8:00am–4:30pm · Closed weekends"},
+          {icon:"📞", text:"(404) 613-6100 · fultoncountytaxes.org"},
+          {icon:"📋", text:"Bring: completed Form T-17, original out-of-state registration certificate (in lieu of title), completed MV-1 Title Application, Lauren's new GA driver's license, proof of GA auto insurance, M&T Bank name/address/loan#/ELT#, payment for fees."},
+          {icon:"💰", text:"Fees: Title transfer $18 + Registration $20 + TAVT (Title Ad Valorem Tax) — 3% of fair market value, one-time. Use TAVT calculator at dor.georgia.gov."},
+          {icon:"ℹ️", text:"The tag office will contact M&T Bank directly to obtain the out-of-state title. You do not need the physical title in hand."},
+          {icon:"⚠️", text:"30-day deadline from establishing GA residency.", alert:true}
+        ]
+      },
+      {
+        title: "Open a local Georgia bank account",
+        badges: ["inperson"],
+        detail: [
+          {icon:"💡", text:"Strongly recommended. Local branches matter for cashier's checks, cash deposits, in-person disputes, and notary services."},
+          {icon:"🏦", text:"Best options in Atlanta: Truist (46 Atlanta branches, formerly SunTrust — deep GA roots), Chase (nationwide + strong ATM network), Ameris Bank (Atlanta-headquartered, free checking, no minimum balance requirement)."},
+          {icon:"⭐", text:"Credit union option: Delta Community Credit Union — Atlanta-based, excellent rates, highly rated for customer service."},
+          {icon:"ℹ️", text:"She can keep her current account for existing direct deposits and bills while transitioning. Running both for a few months is fine."},
+          {icon:"📋", text:"Bring to open: new GA driver's license, Social Security number, opening deposit (typically $25–$100 minimum)."}
+        ]
+      },
+      {
+        title: "Register to vote in Georgia",
+        badges: ["online"],
+        detail: [
+          {icon:"🔗", text:'Online at <a href="https://registertovote.sos.ga.gov" target="_blank">registertovote.sos.ga.gov</a> — requires valid GA driver\'s license. Do this after getting the GA DL.'},
+          {icon:"ℹ️", text:"Once registered in GA, cancel the PA voter registration to avoid being on two state rolls."},
+          {icon:"⏰", text:"Registration deadline is 29 days before any election. No immediate rush — do within the first month."}
+        ]
+      }
+    ]
+  },
+  {
+    phase: "Employment & insurance setup",
+    badge: "Week 1–2",
+    items: [
+      {
+        title: "Update direct deposit and payroll with Home Depot HR",
+        badges: ["prep"],
+        detail: [
+          {icon:"ℹ️", text:"Contact HR or employee portal to update direct deposit to new bank account and confirm payroll address is the Atlanta address."},
+          {icon:"ℹ️", text:"Update W-4 withholding — she'll now be paying Georgia state income tax (flat 5.39% for 2024). Confirm the right state is being withheld."}
+        ]
+      },
+      {
+        title: "Confirm or enroll in health insurance",
+        badges: ["prep"],
+        detail: [
+          {icon:"ℹ️", text:"If on parent's health insurance: verify Atlanta address is on file and plan covers GA in-network providers."},
+          {icon:"ℹ️", text:"If starting Home Depot employer health insurance: enrollment window is typically 30 days from start date. Choose a plan with strong Atlanta-area network."},
+          {icon:"💡", text:"Find a GA primary care doctor within the first 60 days to avoid scrambling in an emergency."}
+        ]
+      },
+      {
+        title: "Transfer prescriptions to a local pharmacy",
+        badges: ["online"],
+        detail: [
+          {icon:"ℹ️", text:"Most major chains (CVS, Walgreens, Publix) allow online prescription transfers. Search near zip code 30318."},
+          {icon:"💡", text:"Publix pharmacies are popular in Atlanta — often cheaper for generics. Kroger also has strong Atlanta presence near her zip."}
+        ]
+      }
+    ]
+  },
+  {
+    phase: "Setting up the apartment",
+    badge: "Move-In Week",
+    items: [
+      {
+        title: "Set up utilities — electricity, gas, internet",
+        badges: ["online","prep"],
+        detail: [
+          {icon:"💡", text:"Electricity: Georgia Power is the primary provider in Atlanta — set up online at georgiapower.com before move-in if possible."},
+          {icon:"🔥", text:"Gas: Atlanta Gas Light (AGL) or SouthStar Energy — confirm which the building uses with the leasing office."},
+          {icon:"📶", text:"Internet: Xfinity (Comcast) and AT&T Fiber are the main providers in the 30318 area. Schedule install date before move-in week if possible."},
+          {icon:"💡", text:"Utility account in Lauren's name = excellent proof of GA residency for the DDS visit."}
+        ]
+      },
+      {
+        title: "Document apartment condition at move-in",
+        badges: ["prep"],
+        detail: [
+          {icon:"📸", text:"Walk every room before unpacking and photograph all existing damage — walls, floors, appliances, fixtures, bathroom, closets."},
+          {icon:"📋", text:"Complete and return the move-in condition checklist/form to the leasing office within the window specified in the lease (typically 48–72 hours)."},
+          {icon:"ℹ️", text:"This documentation protects Lauren's security deposit at move-out. Date-stamp all photos."}
+        ]
+      },
+      {
+        title: "Get oriented — neighborhood and emergency resources",
+        badges: [],
+        detail: [
+          {icon:"📍", text:"Apartment area: Westside/Underwood Hills — close to BeltLine Westside Trail, Bellwood Quarry park, I-75/I-285 access."},
+          {icon:"🛒", text:"Nearest grocery: Publix on Howell Mill Rd (~1.5 mi), Kroger on Powers Ferry (~2 mi)."},
+          {icon:"🏥", text:"Nearest ER: Piedmont Hospital — 1968 Peachtree Rd NW, Atlanta, GA 30309. About 10 minutes away."},
+          {icon:"🚌", text:"MARTA: Nearest stations are Arts Center or Midtown (~3–4 mi). MARTA bus routes also serve the area."}
+        ]
+      }
+    ]
+  },
+  {
+    phase: "Within 30 days — don't let these slip",
+    badge: "30-Day Deadline",
+    items: [
+      {
+        title: "Confirm both 30-day deadlines are met",
+        badges: ["deadline"],
+        detail: [
+          {icon:"⚠️", text:"GA Driver's License: must be applied for within 30 days of establishing GA residency (move-in date).", alert:true},
+          {icon:"⚠️", text:"Vehicle registration: must be transferred to GA within 30 days of establishing residency.", alert:true},
+          {icon:"ℹ️", text:"PA voter registration: cancel once registered in GA."},
+          {icon:"ℹ️", text:"Student loan servicer: notify of new address if applicable."},
+          {icon:"ℹ️", text:"Professional licenses or certifications: update address with any issuing bodies."}
+        ]
+      },
+      {
+        title: "Build an emergency fund and first-month budget",
+        badges: [],
+        detail: [
+          {icon:"💰", text:"First paycheck may be 2–4 weeks out. Make sure Lauren has enough liquid cash to cover first month without stress."},
+          {icon:"📊", text:"GA-specific budget line items: rent, utilities (~$100–$180/mo), groceries, gas, car insurance, renters insurance, internet."},
+          {icon:"🎯", text:"Target: 1 month expenses in checking, 3 months expenses in savings as the emergency fund goal."}
+        ]
+      }
+    ]
+  }
+];
+
+let checked = new Set();
+const container = document.getElementById('checklist');
+const total = data.reduce((a,p) => a + p.items.length, 0);
+
+function updateProgress() {
+  const n = checked.size;
+  document.getElementById('prog-label').textContent = n + ' of ' + total + ' items completed';
+  document.getElementById('prog-fill').style.width = Math.round(n / total * 100) + '%';
+}
+
+data.forEach((phase, pi) => {
+  const phaseEl = document.createElement('div');
+  phaseEl.className = 'phase';
+
+  const hdr = document.createElement('div');
+  hdr.className = 'phase-header';
+  hdr.innerHTML = '<span class="phase-badge">' + phase.badge + '</span><span class="phase-title">' + phase.phase + '</span>';
+  phaseEl.appendChild(hdr);
+
+  phase.items.forEach((item, ii) => {
+    const id = pi + '-' + ii;
+    const itemEl = document.createElement('div');
+    itemEl.className = 'item';
+
+    const itemHdr = document.createElement('div');
+    itemHdr.className = 'item-header';
+
+    const cb = document.createElement('div');
+    cb.className = 'checkbox';
+    cb.setAttribute('role','checkbox');
+    cb.setAttribute('aria-checked','false');
+    cb.setAttribute('tabindex','0');
+
+    const textWrap = document.createElement('div');
+    textWrap.className = 'item-text';
+
+    const titleEl = document.createElement('div');
+    titleEl.className = 'item-title';
+    titleEl.textContent = item.title;
+
+    const badgeRow = document.createElement('div');
+    badgeRow.className = 'badges';
+    const bmap = {
+      online: ['badge-online','ONLINE OPTION'],
+      prep: ['badge-prep','PREP AHEAD'],
+      inperson: ['badge-inperson','IN PERSON'],
+      deadline: ['badge-deadline','30-DAY DEADLINE']
+    };
+    item.badges.forEach(b => {
+      if (bmap[b]) {
+        const s = document.createElement('span');
+        s.className = 'badge ' + bmap[b][0];
+        s.textContent = bmap[b][1];
+        badgeRow.appendChild(s);
+      }
+    });
+
+    textWrap.appendChild(titleEl);
+    if (item.badges.length) textWrap.appendChild(badgeRow);
+
+    const chevEl = document.createElement('span');
+    chevEl.className = 'chevron';
+    chevEl.textContent = '⌄';
+    chevEl.setAttribute('aria-hidden','true');
+
+    itemHdr.appendChild(cb);
+    itemHdr.appendChild(textWrap);
+    itemHdr.appendChild(chevEl);
+
+    const detailEl = document.createElement('div');
+    detailEl.className = 'detail';
+
+    item.detail.forEach(row => {
+      const r = document.createElement('div');
+      r.className = 'detail-row' + (row.alert ? ' alert' : '');
+      const iconSpan = document.createElement('span');
+      iconSpan.className = 'detail-icon' + (row.alert ? ' alert-icon' : '');
+      iconSpan.setAttribute('aria-hidden','true');
+      iconSpan.textContent = row.icon;
+      const textSpan = document.createElement('span');
+      textSpan.innerHTML = row.text;
+      r.appendChild(iconSpan);
+      r.appendChild(textSpan);
+      detailEl.appendChild(r);
+    });
+
+    function toggleCheck(e) {
+      e.stopPropagation();
+      if (checked.has(id)) {
+        checked.delete(id);
+        cb.className = 'checkbox';
+        cb.setAttribute('aria-checked','false');
+        titleEl.className = 'item-title';
+      } else {
+        checked.add(id);
+        cb.className = 'checkbox checked';
+        cb.setAttribute('aria-checked','true');
+        titleEl.className = 'item-title done';
+      }
+      updateProgress();
+    }
+
+    cb.addEventListener('click', toggleCheck);
+    cb.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggleCheck(e); } });
+
+    itemHdr.addEventListener('click', e => {
+      if (e.target === cb || cb.contains(e.target)) return;
+      const isOpen = detailEl.classList.contains('open');
+      detailEl.classList.toggle('open', !isOpen);
+      chevEl.classList.toggle('open', !isOpen);
+    });
+
+    itemEl.appendChild(itemHdr);
+    itemEl.appendChild(detailEl);
+    phaseEl.appendChild(itemEl);
+  });
+
+  container.appendChild(phaseEl);
+});
+
+updateProgress();
+</script>
+
+
+</body></html>
