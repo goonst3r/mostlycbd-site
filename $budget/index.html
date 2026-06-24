@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>First Paycheck — Relocation &amp; Budget Planner</title>
+<meta name="description" content="Plan a job relocation: paycheck math, apartment comparison, and tour scheduling in one simple tool you keep forever." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C2333;
+    --ink-soft:#4A5066;
+    --paper:#F8F5EE;
+    --card:#FFFFFF;
+    --rule:#DEDACB;
+    --rule-strong:#C8C2AC;
+    --stamp:#B3551F;
+    --stamp-dark:#8F4317;
+    --teal:#2A6B60;
+    --teal-soft:#E3EEEA;
+    --gold:#9C7A2A;
+    --danger:#A33B3B;
+    --danger-soft:#F6E7E5;
+    --shadow: 0 1px 2px rgba(28,35,51,0.06), 0 6px 16px rgba(28,35,51,0.06);
+    --radius: 10px;
+    --mono: 'IBM Plex Mono', 'Courier New', monospace;
+    --sans: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  *{ box-sizing: border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{ margin:0; font-family: var(--sans); }
+  p{ margin:0; }
+  button{ font-family: inherit; }
+  input, select, textarea{ font-family: inherit; font-size: 14px; }
+
+  .tnum{ font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+  /* ---------- Layout shell ---------- */
+  .app{
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 24px 20px 80px;
+  }
+
+  .topbar{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+  }
+  .brand-mark{
+    font-family: var(--mono);
+    font-weight:700;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--stamp);
+    border: 1.5px solid var(--stamp);
+    border-radius: 999px;
+    padding: 3px 10px;
+    display:inline-block;
+    margin-bottom:8px;
+  }
+  .brand h1{
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .brand .tagline{
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  .toolbar{
+    display:flex;
+    gap:8px;
+    flex-wrap: wrap;
+    align-items:flex-start;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    appearance:none;
+    border-radius: 8px;
+    border: 1.5px solid var(--ink);
+    background: var(--card);
+    color: var(--ink);
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .btn, .tab, .seg-btn, .tour-day{ transition: background-color .12s ease, color .12s ease, border-color .12s ease, transform .08s ease; }
+  }
+  .btn:hover{ background: var(--ink); color: #fff; }
+  .btn:active{ transform: translateY(1px); }
+  .btn:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, .tab:focus-visible, .tour-day:focus-visible{
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+  }
+  .btn-primary{ background: var(--stamp); border-color: var(--stamp); color:#fff; }
+  .btn-primary:hover{ background: var(--stamp-dark); border-color: var(--stamp-dark); }
+  .btn-ghost{ border-color: var(--rule-strong); }
+  .btn-ghost:hover{ background: var(--ink); border-color: var(--ink); }
+  .btn-sm{ padding: 5px 10px; font-size: 12px; border-radius:6px; }
+  .btn-danger-text{ background:none; border:none; color: var(--danger); font-size:12px; font-weight:600; cursor:pointer; padding:4px 6px; text-decoration: underline; }
+  .btn-danger-text:hover{ color: var(--danger); background:none; }
+  .link-btn{ background:none; border:none; color: var(--teal); font-size:12px; font-weight:600; cursor:pointer; padding:0; text-decoration: underline; }
+
+  /* ---------- Boarding pass job card ---------- */
+  .pass{
+    background: var(--card);
+    border: 1.5px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display:grid;
+    grid-template-columns: 1fr 200px;
+    overflow:hidden;
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .pass-main{ padding: 18px 20px; }
+  .pass-stub{
+    padding: 18px 16px;
+    background: var(--ink);
+    color: #F8F5EE;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:10px;
+    position:relative;
+  }
+  .pass-perforation{
+    position:absolute;
+    left:0; top:0; bottom:0;
+    width:0;
+    border-left: 2px dashed rgba(248,245,238,0.55);
+  }
+  .pass-perforation::before, .pass-perforation::after{
+    content:"";
+    position:absolute;
+    width:16px; height:16px;
+    background: var(--paper);
+    border-radius:50%;
+    left:-8px;
+  }
+  .pass-perforation::before{ top:-8px; }
+  .pass-perforation::after{ bottom:-8px; }
+
+  .pass-label{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display:block;
+    margin-bottom:2px;
+  }
+  .pass-stub .pass-label{ color: rgba(248,245,238,0.65); }
+  .pass-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 18px;
+  }
+  .pass-field input, .pass-field select{
+    width:100%;
+    border:none;
+    border-bottom: 1.5px solid var(--rule);
+    background:transparent;
+    padding: 3px 0 4px;
+    font-size: 15px;
+    font-weight:600;
+    color: var(--ink);
+  }
+  .pass-field input::placeholder{ color: var(--rule-strong); font-weight:500; }
+  .pass-field input:focus, .pass-field select:focus{ outline:none; border-bottom-color: var(--stamp); }
+  .pass-stub .stub-value{ font-family: var(--mono); font-size: 20px; font-weight:700; }
+  .pass-stub .stub-sub{ font-family: var(--mono); font-size: 11px; color: rgba(248,245,238,0.7); }
+
+  @media (max-width: 640px){
+    .pass{ grid-template-columns: 1fr; }
+    .pass-perforation{ display:none; }
+    .pass-stub{ border-top: 2px dashed var(--rule); }
+  }
+
+  /* ---------- Tabs (luggage tag style) ---------- */
+  .tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .tab{
+    position:relative;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    font-weight:700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: var(--card);
+    border: 1.5px solid var(--rule-strong);
+    border-radius: 8px;
+    padding: 9px 16px 9px 26px;
+    cursor:pointer;
+    color: var(--ink-soft);
+  }
+  .tab::before{
+    content:"";
+    position:absolute;
+    left:10px; top:50%;
+    width:7px; height:7px;
+    margin-top:-3.5px;
+    border-radius:50%;
+    background: var(--paper);
+    border: 1.5px solid var(--rule-strong);
+  }
+  .tab.active{
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
+  .tab.active::before{ background: var(--ink); border-color: rgba(255,255,255,0.5); }
+  .tab:hover:not(.active){ border-color: var(--ink); color: var(--ink); }
+
+  .panel{ display:none; }
+  .panel.active{ display:block; }
+
+  /* ---------- Cards / sections ---------- */
+  .card{
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+  }
+  .card h2{ font-size: 16px; font-weight:700; margin-bottom: 2px; }
+  .card .card-sub{ color: var(--ink-soft); font-size: 12.5px; margin-bottom: 14px; }
+  .card-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom: 4px;}
+
+  .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px 18px; }
+  .grid3{ display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px 18px; }
+  @media (max-width: 640px){ .grid2, .grid3{ grid-template-columns: 1fr; } }
+
+  .field label{
+    display:block;
+    font-size: 11.5px;
+    font-weight:600;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+  .field .hint{
+    display:block;
+    font-size: 11px;
+    color: var(--rule-strong);
+    margin-top: 3px;
+  }
+  .field input, .field select{
+    width:100%;
+    border: 1.5px solid var(--rule);
+    border-radius: 6px;
+    padding: 8px 9px;
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .field input:focus, .field select:focus{ outline:none; border-color: var(--stamp); background:#fff; }
+  .field-row{ display:flex; align-items:center; gap:8px; }
+
+  .seg{ display:inline-flex; border: 1.5px solid var(--rule-strong); border-radius: 8px; overflow:hidden; }
+  .seg-btn{
+    background: var(--card);
+    border:none;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight:600;
+    cursor:pointer;
+    color: var(--ink-soft);
+  }
+  .seg-btn + .seg-btn{ border-left: 1.5px solid var(--rule-strong); }
+  .seg-btn.active{ background: var(--ink); color:#fff; }
+
+  /* ---------- Ledger line items ---------- */
+  .ledger{ border-top: 1px solid var(--rule); margin-top: 8px; }
+  .ledger-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .ledger-row .li-label{ font-size: 13.5px; font-weight:600; }
+  .ledger-row .li-hint{ font-size: 11.5px; color: var(--ink-soft); margin-top:1px; }
+  .ledger-row .li-input{ width: 130px; flex-shrink:0; }
+  .ledger-row .li-input input{
+    width:100%;
+    text-align:right;
+    border:none;
+    border-bottom: 1.5px solid var(--rule);
+    background:transparent;
+    padding: 4px 2px;
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight:600;
+  }
+  .ledger-row .li-input input:focus{ outline:none; border-bottom-color: var(--stamp); }
+  .ledger-row .li-input .prefix{ font-family: var(--mono); color: var(--ink-soft); margin-right:2px; }
+
+  .ledger-total{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 12px 0 4px;
+    font-weight:700;
+  }
+  .ledger-total .val{ font-family: var(--mono); font-size: 16px; }
+
+  .category-card{ }
+  .category-card summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 14px 18px;
+    font-weight:700;
+    font-size: 14.5px;
+  }
+  .category-card summary::-webkit-details-marker{ display:none; }
+  .category-card summary .cat-total{ font-family: var(--mono); color: var(--ink-soft); font-weight:600; font-size:13px; }
+  .category-card summary::after{
+    content: "▾";
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-left: 8px;
+  }
+  details.category-card{
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    box-shadow: var(--shadow);
+  }
+  details.category-card[open] summary::after{ content:"▴"; }
+  .category-body{ padding: 0 18px 14px; }
+
+  /* ---------- Overview stat cards ---------- */
+  .stat-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap:12px; margin-bottom:16px; }
+  @media (max-width: 760px){ .stat-grid{ grid-template-columns: repeat(2,1fr); } }
+  .stat{
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    box-shadow: var(--shadow);
+  }
+  .stat .stat-label{ font-size: 11px; text-transform:uppercase; letter-spacing:0.06em; color: var(--ink-soft); font-weight:700; }
+  .stat .stat-value{ font-family: var(--mono); font-size: 22px; font-weight:700; margin-top:4px; }
+  .stat.positive .stat-value{ color: var(--teal); }
+  .stat.negative .stat-value{ color: var(--danger); }
+
+  .bar-wrap{ display:flex; height: 30px; border-radius:6px; overflow:hidden; border:1px solid var(--rule); margin: 10px 0 12px; }
+  .bar-seg{ height:100%; }
+  .legend{ display:flex; gap:14px; flex-wrap:wrap; font-size:12px; }
+  .legend-item{ display:flex; align-items:center; gap:6px; color: var(--ink-soft); }
+  .legend-dot{ width:10px; height:10px; border-radius:3px; display:inline-block; }
+
+  .note-box{
+    background: var(--teal-soft);
+    border: 1px solid var(--teal);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: var(--ink);
+    margin-top: 10px;
+  }
+  .note-box.warn{ background: #F4EBD8; border-color: var(--gold); }
+
+  .assumptions{
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height:1.6;
+  }
+  .assumptions li{ margin-bottom: 4px; }
+
+  /* ---------- Tables ---------- */
+  table.cmp{ width:100%; border-collapse: collapse; font-size: 13px; }
+  table.cmp th, table.cmp td{ padding: 9px 8px; border-bottom: 1px solid var(--rule); text-align:left; vertical-align: top; }
+  table.cmp th{
+    font-size: 11px; text-transform:uppercase; letter-spacing:0.04em; color: var(--ink-soft);
+    cursor:pointer; user-select:none; white-space:nowrap;
+  }
+  table.cmp th:hover{ color: var(--ink); }
+  table.cmp td.num{ font-family: var(--mono); text-align:right; white-space:nowrap; }
+  table.cmp tr:hover{ background: var(--paper); }
+  .sort-arrow{ font-size:10px; margin-left:3px; }
+
+  .pill{
+    display:inline-block;
+    font-size: 10.5px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+  .pill.active{ background: var(--teal-soft); color: var(--teal); }
+  .pill.archived{ background: #ECE9DF; color: var(--ink-soft); }
+  .pill.scheduled{ background: var(--teal-soft); color: var(--teal); }
+  .pill.completed{ background: #ECE9DF; color: var(--ink-soft); }
+  .pill.cancelled{ background: var(--danger-soft); color: var(--danger); }
+
+  .stars{ color: var(--gold); font-size: 13px; letter-spacing:1px; }
+
+  .empty-state{
+    text-align:center;
+    padding: 36px 20px;
+    color: var(--ink-soft);
+    font-size: 13.5px;
+  }
+  .empty-state .big{ font-size: 28px; margin-bottom: 6px; }
+
+  /* ---------- Modal ---------- */
+  .modal-overlay{
+    position:fixed; inset:0;
+    background: rgba(28,35,51,0.45);
+    display:none;
+    align-items:center; justify-content:center;
+    padding: 20px;
+    z-index: 50;
+  }
+  .modal-overlay.open{ display:flex; }
+  .modal{
+    background: var(--paper);
+    border-radius: var(--radius);
+    border: 1.5px solid var(--ink);
+    width: 100%;
+    max-width: 560px;
+    max-height: 88vh;
+    overflow-y:auto;
+    padding: 20px 22px;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.25);
+  }
+  .modal h3{ font-size: 17px; margin-bottom: 4px; }
+  .modal-sub{ color: var(--ink-soft); font-size: 12.5px; margin-bottom: 16px; }
+  .modal-actions{ display:flex; justify-content:flex-end; gap:8px; margin-top: 18px; padding-top:14px; border-top:1px solid var(--rule); }
+  .modal-close{ position:absolute; top:14px; right:16px; background:none; border:none; font-size:20px; cursor:pointer; color: var(--ink-soft); line-height:1; }
+  .modal-wrap{ position:relative; }
+
+  /* ---------- Calendar ---------- */
+  .cal-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+  .cal-head h3{ font-family: var(--mono); font-size:15px; letter-spacing:0.04em; }
+  .cal-grid{ display:grid; grid-template-columns: repeat(7,1fr); gap:4px; }
+  .cal-dow{ text-align:center; font-size:10.5px; font-weight:700; color: var(--ink-soft); text-transform:uppercase; padding-bottom:4px; }
+  .tour-day{
+    min-height: 56px;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 5px 6px;
+    cursor:pointer;
+    background: var(--card);
+    text-align:left;
+  }
+  .tour-day.empty{ background:transparent; border-color:transparent; cursor:default; }
+  .tour-day.today{ border-color: var(--stamp); border-width:1.5px; }
+  .tour-day:hover:not(.empty){ border-color: var(--ink); }
+  .tour-day .d-num{ font-family: var(--mono); font-size:12px; font-weight:700; }
+  .tour-day .d-dot{ width:6px; height:6px; border-radius:50%; background: var(--stamp); display:inline-block; margin-left:4px; }
+  .tour-day .d-count{ font-size:10px; color: var(--stamp); font-weight:700; }
+
+  .tour-list-item{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:10px;
+    padding: 10px 0; border-bottom: 1px solid var(--rule);
+  }
+  .tour-list-item:last-child{ border-bottom:none; }
+  .tour-list-item .t-when{ font-family: var(--mono); font-size:12px; color: var(--ink-soft); }
+  .tour-list-item .t-name{ font-weight:700; font-size:13.5px; }
+
+  footer.app-footer{
+    text-align:center;
+    color: var(--rule-strong);
+    font-size: 11px;
+    margin-top: 30px;
+    font-family: var(--mono);
+  }
+
+  @media print{
+    .topbar .toolbar, .tabs, .btn, .modal-overlay, footer.app-footer{ display:none !important; }
+    .panel{ display:none !important; }
+    #panel-budget{ display:block !important; }
+    body{ background:#fff; }
+    .card, .pass{ box-shadow:none; }
+    details.category-card{ break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <div class="topbar">
+    <div class="brand">
+      <span class="brand-mark">Educate to plan</span>
+      <h1>First Paycheck</h1>
+      <p class="tagline">Plan the move. Keep the decisions.</p>
+    </div>
+    <div class="toolbar">
+      <button class="btn btn-ghost btn-sm" id="btn-print">Print budget</button>
+      <button class="btn btn-ghost btn-sm" id="btn-import">Import file</button>
+      <input type="file" id="file-import" accept="application/json" style="display:none">
+      <button class="btn btn-ghost btn-sm" id="btn-export">Save to file</button>
+      <button class="btn-danger-text" id="btn-clear">Clear all data</button>
+    </div>
+  </div>
+
+  <!-- Boarding-pass job card -->
+  <div class="pass">
+    <div class="pass-main">
+      <div class="pass-grid">
+        <div class="pass-field">
+          <span class="pass-label">Employer</span>
+          <input id="inp-job-employer" type="text" placeholder="Where you're working">
+        </div>
+        <div class="pass-field">
+          <span class="pass-label">Role</span>
+          <input id="inp-job-role" type="text" placeholder="Your title">
+        </div>
+        <div class="pass-field">
+          <span class="pass-label">City, State</span>
+          <input id="inp-job-city" type="text" placeholder="New city, ST">
+        </div>
+        <div class="pass-field">
+          <span class="pass-label">Start date</span>
+          <input id="inp-job-startDate" type="date">
+        </div>
+      </div>
+    </div>
+    <div class="pass-stub">
+      <div class="pass-perforation"></div>
+      <div>
+        <span class="pass-label">Annual salary</span>
+        <input id="inp-job-salary" type="number" min="0" step="500" placeholder="0"
+          style="background:transparent;border:none;border-bottom:1.5px solid rgba(248,245,238,0.4);color:#fff;font-family:var(--mono);font-size:20px;font-weight:700;width:100%;padding:2px 0;">
+      </div>
+      <div>
+        <span class="pass-label">Pay frequency</span>
+        <select id="inp-job-payFrequency" style="background:#1C2333;border:1px solid rgba(248,245,238,0.4);color:#fff;font-size:12px;padding:5px 6px;border-radius:5px;width:100%;">
+          <option value="weekly">Weekly</option>
+          <option value="biweekly" selected>Biweekly</option>
+          <option value="semimonthly">Semimonthly</option>
+          <option value="monthly">Monthly</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-tab="overview" role="tab">Overview</button>
+    <button class="tab" data-tab="budget" role="tab">Budget</button>
+    <button class="tab" data-tab="apartments" role="tab">Apartments</button>
+    <button class="tab" data-tab="tours" role="tab">Tours</button>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="panel active" id="panel-overview" data-panel="overview">
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-label">Take-home / month</div><div class="stat-value tnum" id="stat-net-monthly">$0</div></div>
+      <div class="stat"><div class="stat-label">Total spend / month</div><div class="stat-value tnum" id="stat-spend-monthly">$0</div></div>
+      <div class="stat" id="stat-surplus-card"><div class="stat-label">True surplus / month</div><div class="stat-value tnum" id="stat-surplus-monthly">$0</div></div>
+      <div class="stat"><div class="stat-label">Surplus / year</div><div class="stat-value tnum" id="stat-surplus-annual">$0</div></div>
+    </div>
+
+    <div class="card">
+      <h2>Where the money goes</h2>
+      <p class="card-sub">Share of your monthly take-home, by category.</p>
+      <div class="bar-wrap" id="overview-bar"></div>
+      <div class="legend" id="overview-legend"></div>
+    </div>
+
+    <div class="card" id="overview-extra-paycheck" style="display:none;">
+      <h2>Heads up — extra paycheck months</h2>
+      <p class="card-sub" id="overview-extra-paycheck-text"></p>
+    </div>
+
+    <div class="card">
+      <h2>How the numbers work</h2>
+      <p class="card-sub">This tool estimates federal tax (2026 single-filer brackets) and FICA automatically. State tax is whatever rate you enter — every state is different, so you stay in control of that number. Any estimate can be overwritten directly in the Budget tab.</p>
+    </div>
+  </div>
+
+  <!-- BUDGET -->
+  <div class="panel" id="panel-budget" data-panel="budget">
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2>Paycheck &amp; payroll elections</h2>
+          <p class="card-sub">Fill these in from your offer letter or HR onboarding packet.</p>
+        </div>
+      </div>
+      <div class="grid3" style="margin-bottom:14px;">
+        <div class="field">
+          <label>401(k) type</label>
+          <select id="inp-pay-k401Type">
+            <option value="none">None yet</option>
+            <option value="roth">Roth (post-tax)</option>
+            <option value="traditional">Traditional (pre-tax)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Contribution</label>
+          <div class="field-row">
+            <input id="inp-pay-k401Value" type="number" min="0" step="0.5" placeholder="0">
+            <select id="inp-pay-k401Mode" style="width:90px;">
+              <option value="pct">%</option>
+              <option value="dollar">$/mo</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>State + local tax rate</label>
+          <div class="field-row">
+            <input id="inp-pay-stateTaxPct" type="number" min="0" step="0.1" placeholder="0">
+            <span class="li-input prefix" style="font-family:var(--mono);color:var(--ink-soft);">%</span>
+          </div>
+          <span class="hint">Flat estimate — look up your state's rate, or leave 0 if your state has none.</span>
+        </div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Health insurance ($/mo)</label><input id="inp-pay-health" type="number" min="0" step="1" placeholder="0"></div>
+        <div class="field"><label>Dental &amp; vision ($/mo)</label><input id="inp-pay-dentalVision" type="number" min="0" step="1" placeholder="0"></div>
+        <div class="field"><label>FSA / HSA ($/mo)</label><input id="inp-pay-fsaHsa" type="number" min="0" step="1" placeholder="0"></div>
+      </div>
+      <div class="field" style="margin-top:12px; max-width:280px;">
+        <label>Other pre-tax deduction ($/mo)</label>
+        <input id="inp-pay-otherPretax" type="number" min="0" step="1" placeholder="0">
+        <span class="hint">Commuter benefit, disability, etc.</span>
+      </div>
+
+      <div class="ledger" style="margin-top:16px;">
+        <div class="ledger-row">
+          <div><div class="li-label">Federal income tax (est.)</div><div class="li-hint" id="hint-fedTax"></div></div>
+          <div class="li-input"><span class="prefix">−$</span><input id="inp-pay-fedTaxManual" type="number" step="1"></div>
+        </div>
+        <div class="ledger-row">
+          <div><div class="li-label">State income tax (est.)</div><div class="li-hint" id="hint-stateTax"></div></div>
+          <div class="li-input"><span class="prefix">−$</span><input id="inp-pay-stateTaxManual" type="number" step="1"></div>
+        </div>
+        <div class="ledger-row">
+          <div><div class="li-label">Social Security (6.2%, 2026)</div><div class="li-hint" id="hint-ssTax"></div></div>
+          <div class="li-input"><span class="prefix">−$</span><input id="inp-pay-ssTaxManual" type="number" step="1"></div>
+        </div>
+        <div class="ledger-row">
+          <div><div class="li-label">Medicare (1.45%, 2026)</div><div class="li-hint" id="hint-medicareTax"></div></div>
+          <div class="li-input"><span class="prefix">−$</span><input id="inp-pay-medicareTaxManual" type="number" step="1"></div>
+        </div>
+        <div class="ledger-total">
+          <span>Estimated take-home</span>
+          <span class="val tnum" id="ledger-net-monthly">$0 / mo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Housing scenario</h2>
+      <p class="card-sub">Switch this any time — your numbers for both are saved.</p>
+      <div class="seg">
+        <button class="seg-btn active" data-scenario="solo">Solo</button>
+        <button class="seg-btn" data-scenario="roommate">With roommate</button>
+      </div>
+    </div>
+
+    <div id="budget-categories"></div>
+
+    <div class="card">
+      <h2>Budget summary</h2>
+      <table class="cmp" style="margin-top:6px;">
+        <thead><tr><th>Monthly</th><th class="num">Amount</th></tr></thead>
+        <tbody id="summary-table-body"></tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Assumptions</h2>
+      <ul class="assumptions" id="assumptions-list"></ul>
+    </div>
+  </div>
+
+  <!-- APARTMENTS -->
+  <div class="panel" id="panel-apartments" data-panel="apartments">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2>Apartment tracker</h2>
+          <p class="card-sub">Add every place you're considering. Sort by whatever matters most, then apply your pick to the budget.</p>
+        </div>
+        <button class="btn btn-primary btn-sm" id="btn-add-apartment">+ Add listing</button>
+      </div>
+      <div class="seg" style="margin-bottom:12px;">
+        <button class="seg-btn active" data-aptfilter="active">Active</button>
+        <button class="seg-btn" data-aptfilter="archived">Archived</button>
+      </div>
+      <div id="apartments-table-wrap"></div>
+    </div>
+  </div>
+
+  <!-- TOURS -->
+  <div class="panel" id="panel-tours" data-panel="tours">
+    <div class="card">
+      <div class="card-head">
+        <h2>Tour scheduler</h2>
+        <button class="btn btn-primary btn-sm" id="btn-add-tour">+ Schedule tour</button>
+      </div>
+      <div class="cal-head">
+        <button class="btn btn-ghost btn-sm" id="cal-prev">‹ Prev</button>
+        <h3 id="cal-month-label"></h3>
+        <button class="btn btn-ghost btn-sm" id="cal-next">Next ›</button>
+      </div>
+      <div class="cal-grid" id="cal-dow-row"></div>
+      <div class="cal-grid" id="cal-grid" style="margin-top:4px;"></div>
+    </div>
+    <div class="card">
+      <h2>Upcoming tours</h2>
+      <div id="tours-list"></div>
+    </div>
+  </div>
+
+  <footer class="app-footer">FIRST PAYCHECK · YOUR DATA STAYS ON YOUR DEVICE · NOT TAX OR FINANCIAL ADVICE</footer>
+</div>
+
+<!-- Modal: Apartment -->
+<div class="modal-overlay" id="modal-apartment">
+  <div class="modal modal-wrap">
+    <button class="modal-close" data-close-modal>×</button>
+    <h3 id="apt-modal-title">Add listing</h3>
+    <p class="modal-sub">Lump your "extra fees" into one number — keep it simple.</p>
+    <div class="grid2">
+      <div class="field"><label>Building / unit name</label><input id="apt-name" type="text" placeholder="e.g. Rowe Vinings — A1C"></div>
+      <div class="field"><label>Neighborhood</label><input id="apt-neighborhood" type="text" placeholder="e.g. Vinings"></div>
+      <div class="field"><label>Address</label><input id="apt-address" type="text" placeholder="Street, City, ST"></div>
+      <div class="field"><label>Bed / bath / sqft</label><input id="apt-bedbath" type="text" placeholder="e.g. 1BR · 1BA · 780sf"></div>
+      <div class="field"><label>Base rent ($/mo)</label><input id="apt-baseRent" type="number" min="0" step="1"></div>
+      <div class="field"><label>Other required fees ($/mo)</label><input id="apt-extraFees" type="number" min="0" step="1"></div>
+      <div class="field"><label>Move-in cash needed ($)</label><input id="apt-moveInCash" type="number" min="0" step="1"></div>
+      <div class="field"><label>Commute to work (minutes)</label><input id="apt-commute" type="number" min="0" step="1"></div>
+      <div class="field">
+        <label>My rating</label>
+        <select id="apt-rating">
+          <option value="0">Not rated</option>
+          <option value="1">★☆☆☆☆</option>
+          <option value="2">★★☆☆☆</option>
+          <option value="3">★★★☆☆</option>
+          <option value="4">★★★★☆</option>
+          <option value="5">★★★★★</option>
+        </select>
+      </div>
+      <div class="field"><label>Listing URL</label><input id="apt-url" type="text" placeholder="https://"></div>
+    </div>
+    <div class="field" style="margin-top:12px;"><label>Notes</label><input id="apt-notes" type="text" placeholder="Anything worth remembering"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost btn-sm" data-close-modal>Cancel</button>
+      <button class="btn btn-primary btn-sm" id="apt-save">Save listing</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Tour -->
+<div class="modal-overlay" id="modal-tour">
+  <div class="modal modal-wrap">
+    <button class="modal-close" data-close-modal>×</button>
+    <h3 id="tour-modal-title">Schedule a tour</h3>
+    <div class="grid2">
+      <div class="field" style="grid-column:1/-1;">
+        <label>Listing</label>
+        <select id="tour-apartmentId"></select>
+      </div>
+      <div class="field"><label>Building name (if not on your list)</label><input id="tour-buildingName" type="text" placeholder="Optional"></div>
+      <div class="field"><label>Status</label>
+        <select id="tour-status">
+          <option value="scheduled">Scheduled</option>
+          <option value="completed">Completed</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+      </div>
+      <div class="field"><label>Date</label><input id="tour-date" type="date"></div>
+      <div class="field"><label>Start time</label><input id="tour-startTime" type="time"></div>
+      <div class="field"><label>End time</label><input id="tour-endTime" type="time"></div>
+    </div>
+    <div class="field" style="margin-top:12px;"><label>Notes / questions to ask</label><input id="tour-notes" type="text" placeholder="Optional"></div>
+    <div class="modal-actions">
+      <button class="btn-danger-text" id="tour-delete" style="display:none;">Delete tour</button>
+      <button class="btn btn-ghost btn-sm" data-close-modal>Cancel</button>
+      <button class="btn btn-primary btn-sm" id="tour-save">Save tour</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   FIRST PAYCHECK — relocation budget / apartment / tour planner
+   Vanilla JS, no dependencies, runs fully offline from disk.
+   ============================================================ */
+
+function $(id){ return document.getElementById(id); }
+
+/* ---------- Tax constants (2026, single filer) ---------- */
+var FED_BRACKETS = [
+  [0,12400,0.10],[12400,50400,0.12],[50400,105700,0.22],
+  [105700,201775,0.24],[201775,256225,0.32],[256225,640600,0.35],[640600,Infinity,0.37]
+];
+var STD_DEDUCTION = 16100;
+var SS_WAGE_BASE = 184500;
+var SS_RATE = 0.062;
+var MEDICARE_RATE = 0.0145;
+var ADDL_MEDICARE_RATE = 0.009;
+var ADDL_MEDICARE_THRESHOLD = 200000;
+
+function federalTaxAnnual(taxable){
+  var tax = 0;
+  for(var i=0;i<FED_BRACKETS.length;i++){
+    var lo=FED_BRACKETS[i][0], hi=FED_BRACKETS[i][1], rate=FED_BRACKETS[i][2];
+    if(taxable>lo){ tax += (Math.min(taxable,hi)-lo)*rate; } else break;
+  }
+  return tax;
+}
+function periodsPerYear(freq){ return {weekly:52,biweekly:26,semimonthly:24,monthly:12}[freq]||26; }
+function freqLabel(freq){ return {weekly:'Weekly',biweekly:'Biweekly',semimonthly:'Semimonthly',monthly:'Monthly'}[freq]||'Biweekly'; }
+
+/* ---------- Budget category schema ---------- */
+var CATEGORY_SCHEMA = {
+  'Housing': [
+    {key:'rentSolo', label:'Rent', hint:'Studio or 1BR in your target area', scenario:'solo'},
+    {key:'rentRoommate', label:'Rent — your share', hint:'Your portion of shared rent', scenario:'roommate'},
+    {key:'utilitiesSolo', label:'Utilities (electric, gas, water)', hint:'', scenario:'solo'},
+    {key:'utilitiesRoommate', label:'Utilities — your share', hint:'', scenario:'roommate'},
+    {key:'internetSolo', label:'Internet', hint:'Set to 0 if included in rent', scenario:'solo'},
+    {key:'internetRoommate', label:'Internet — your share', hint:'', scenario:'roommate'},
+    {key:'rentersInsurance', label:'Renters insurance', hint:'Often $12–20/mo', scenario:null}
+  ],
+  'Transportation': [
+    {key:'carInsurance', label:'Car insurance', hint:'', scenario:null},
+    {key:'gas', label:'Gas', hint:'', scenario:null},
+    {key:'parking', label:'Parking', hint:'', scenario:null},
+    {key:'carPayment', label:'Car payment', hint:'If applicable', scenario:null},
+    {key:'transit', label:'Public transit', hint:'Monthly pass', scenario:null}
+  ],
+  'Food': [
+    {key:'groceries', label:'Groceries', hint:'', scenario:null},
+    {key:'dining', label:'Dining out / coffee', hint:'', scenario:null},
+    {key:'bars', label:'Bars / drinks with friends', hint:'', scenario:null}
+  ],
+  'Lifestyle & Personal': [
+    {key:'shopping', label:'Shopping / clothing', hint:'', scenario:null},
+    {key:'entertainment', label:'Entertainment', hint:'Concerts, events, etc.', scenario:null},
+    {key:'activities', label:'Local activities', hint:'Weekend spend', scenario:null},
+    {key:'phone', label:'Phone bill', hint:'', scenario:null},
+    {key:'subscriptions', label:'Subscriptions', hint:'Streaming, music, etc.', scenario:null},
+    {key:'healthGym', label:'Health / gym / personal care', hint:'', scenario:null}
+  ],
+  'Savings & Goals': [
+    {key:'emergencyFund', label:'Emergency fund', hint:'Goal: 3–6 months expenses', scenario:null},
+    {key:'travelFund', label:'Travel fund', hint:'', scenario:null},
+    {key:'studentLoans', label:'Student loans', hint:'', scenario:null},
+    {key:'otherSavings', label:'Other savings goal', hint:'', scenario:null},
+    {key:'misc', label:'Miscellaneous / buffer', hint:'', scenario:null}
+  ]
+};
+var CAT_COLORS = {
+  'Housing': '#B3551F',
+  'Transportation': '#9C7A2A',
+  'Food': '#2A6B60',
+  'Lifestyle & Personal': '#6E5A9E',
+  'Savings & Goals': '#3B6FA0'
+};
+
+function slug(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
+function uid(){ return 'id'+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
+function escapeHtml(s){
+  return String(s==null?'':s).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
+function fmtMoney(n){
+  if(n==null || isNaN(n)) n=0;
+  var neg = n<0;
+  var v = Math.round(Math.abs(n));
+  return (neg?'\u2212$':'$') + v.toLocaleString('en-US');
+}
+function pad2(n){ return String(n).padStart(2,'0'); }
+function todayISO(){ var d=new Date(); return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate()); }
+function formatTime(t){
+  if(!t) return '';
+  var parts = t.split(':'); var h=Number(parts[0]), min=Number(parts[1]);
+  var ampm = h>=12?'PM':'AM';
+  var h12 = ((h+11)%12)+1;
+  return h12+':'+pad2(min)+' '+ampm;
+}
+
+/* ---------- State ---------- */
+var state;
+var STORAGE_KEY = 'firstPaycheckPlannerData';
+
+function defaultState(){
+  var budget = {};
+  Object.keys(CATEGORY_SCHEMA).forEach(function(cat){
+    budget[cat] = {};
+    CATEGORY_SCHEMA[cat].forEach(function(item){ budget[cat][item.key]=0; });
+  });
+  var d = new Date();
+  return {
+    job:{employer:'',role:'',city:'',startDate:'',salary:0,payFrequency:'biweekly'},
+    payroll:{
+      k401Type:'none', k401Mode:'pct', k401Value:0,
+      stateTaxPct:0, health:0, dentalVision:0, fsaHsa:0, otherPretax:0,
+      fedTaxAuto:true, fedTaxManual:0,
+      stateTaxAuto:true, stateTaxManual:0,
+      ssTaxAuto:true, ssTaxManual:0,
+      medicareTaxAuto:true, medicareTaxManual:0
+    },
+    housing:{scenario:'solo'},
+    budget: budget,
+    apartments: [],
+    tours: [],
+    ui:{ aptSort:{field:'effective',dir:'asc'}, aptFilter:'active', calMonth: d.getFullYear()+'-'+pad2(d.getMonth()+1) }
+  };
+}
+function mergeIntoDefaults(parsed){
+  var d = defaultState();
+  if(!parsed || typeof parsed!=='object') return d;
+  d.job = Object.assign({}, d.job, parsed.job||{});
+  d.payroll = Object.assign({}, d.payroll, parsed.payroll||{});
+  d.housing = Object.assign({}, d.housing, parsed.housing||{});
+  if(parsed.budget){
+    Object.keys(d.budget).forEach(function(cat){
+      if(parsed.budget[cat]) d.budget[cat] = Object.assign({}, d.budget[cat], parsed.budget[cat]);
+    });
+  }
+  d.apartments = Array.isArray(parsed.apartments) ? parsed.apartments : [];
+  d.tours = Array.isArray(parsed.tours) ? parsed.tours : [];
+  d.ui = Object.assign({}, d.ui, parsed.ui||{});
+  if(!d.ui.aptSort) d.ui.aptSort = {field:'effective',dir:'asc'};
+  return d;
+}
+function loadState(){
+  var raw=null;
+  try{ raw = localStorage.getItem(STORAGE_KEY); }catch(e){}
+  if(raw){
+    try{ state = mergeIntoDefaults(JSON.parse(raw)); return; }catch(e){}
+  }
+  state = defaultState();
+}
+function saveState(){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+}
+
+/* ---------- Payroll calculation ---------- */
+function getAutoEstimates(){
+  var grossMonthly = (state.job.salary||0)/12;
+  var k401Monthly = 0;
+  if(state.payroll.k401Type!=='none'){
+    k401Monthly = state.payroll.k401Mode==='pct'
+      ? grossMonthly*((state.payroll.k401Value||0)/100)
+      : (state.payroll.k401Value||0);
+  }
+  var k401TradMonthly = (state.payroll.k401Type==='traditional') ? k401Monthly : 0;
+  var cafeteriaMonthly = (state.payroll.health||0)+(state.payroll.dentalVision||0)+(state.payroll.fsaHsa||0)+(state.payroll.otherPretax||0);
+
+  var annualGross = grossMonthly*12;
+  var fedTaxableAnnual = Math.max(0, annualGross - k401TradMonthly*12 - cafeteriaMonthly*12 - STD_DEDUCTION);
+  var fedTaxMonthly = federalTaxAnnual(fedTaxableAnnual)/12;
+
+  var stateTaxableMonthly = Math.max(0, grossMonthly - k401TradMonthly - cafeteriaMonthly);
+  var stateTaxMonthly = stateTaxableMonthly*((state.payroll.stateTaxPct||0)/100);
+
+  var ficaWageMonthly = Math.max(0, grossMonthly - cafeteriaMonthly);
+  var ficaWageAnnual = ficaWageMonthly*12;
+  var ssWageAnnualCapped = Math.min(ficaWageAnnual, SS_WAGE_BASE);
+  var ssTaxMonthly = (ssWageAnnualCapped*SS_RATE)/12;
+  var medicareAnnual = ficaWageAnnual*MEDICARE_RATE;
+  if(ficaWageAnnual>ADDL_MEDICARE_THRESHOLD){ medicareAnnual += (ficaWageAnnual-ADDL_MEDICARE_THRESHOLD)*ADDL_MEDICARE_RATE; }
+  var medicareTaxMonthly = medicareAnnual/12;
+
+  return {grossMonthly:grossMonthly, k401Monthly:k401Monthly, k401TradMonthly:k401TradMonthly,
+    cafeteriaMonthly:cafeteriaMonthly, fedTaxMonthly:fedTaxMonthly, stateTaxMonthly:stateTaxMonthly,
+    ssTaxMonthly:ssTaxMonthly, medicareTaxMonthly:medicareTaxMonthly};
+}
+function getEffectivePayroll(){
+  var est = getAutoEstimates();
+  var fedTax = state.payroll.fedTaxAuto ? est.fedTaxMonthly : (state.payroll.fedTaxManual||0);
+  var stateTax = state.payroll.stateTaxAuto ? est.stateTaxMonthly : (state.payroll.stateTaxManual||0);
+  var ssTax = state.payroll.ssTaxAuto ? est.ssTaxMonthly : (state.payroll.ssTaxManual||0);
+  var medicareTax = state.payroll.medicareTaxAuto ? est.medicareTaxMonthly : (state.payroll.medicareTaxManual||0);
+  var netMonthly = est.grossMonthly - est.k401Monthly - est.cafeteriaMonthly - fedTax - stateTax - ssTax - medicareTax;
+  var periods = periodsPerYear(state.job.payFrequency);
+  var netPerPaycheck = (netMonthly*12)/periods;
+  var out = Object.assign({}, est);
+  out.fedTax=fedTax; out.stateTax=stateTax; out.ssTax=ssTax; out.medicareTax=medicareTax;
+  out.netMonthly=netMonthly; out.netPerPaycheck=netPerPaycheck; out.periods=periods;
+  return out;
+}
+
+/* ---------- Recalculation / rendering of computed displays ---------- */
+function setAutoFieldDisplay(field, value, inputId, hintId, autoText){
+  var input = $(inputId), hint = $(hintId);
+  var isAuto = state.payroll[field+'Auto'];
+  if(isAuto){
+    input.value = Math.round(value);
+    hint.innerHTML = autoText;
+  } else {
+    hint.innerHTML = 'Custom value &middot; <button class="link-btn" data-reset-field="'+field+'">reset to estimate</button>';
+  }
+}
+
+function recalcAll(){
+  var p = getEffectivePayroll();
+
+  setAutoFieldDisplay('fedTax', p.fedTax, 'inp-pay-fedTaxManual', 'hint-fedTax', 'Auto-estimated &middot; 2026 single-filer brackets');
+  setAutoFieldDisplay('stateTax', p.stateTax, 'inp-pay-stateTaxManual', 'hint-stateTax', 'Auto-estimated from your rate above');
+  setAutoFieldDisplay('ssTax', p.ssTax, 'inp-pay-ssTaxManual', 'hint-ssTax', 'Auto-estimated &middot; 6.2% up to $184,500/yr');
+  setAutoFieldDisplay('medicareTax', p.medicareTax, 'inp-pay-medicareTaxManual', 'hint-medicareTax', 'Auto-estimated &middot; 1.45%, no cap');
+
+  $('ledger-net-monthly').textContent = fmtMoney(p.netMonthly)+' / mo';
+
+  var scenario = state.housing.scenario;
+  var catTotals = {};
+  var totalSpend = 0;
+  Object.keys(CATEGORY_SCHEMA).forEach(function(cat){
+    var t=0;
+    CATEGORY_SCHEMA[cat].forEach(function(item){
+      if(item.scenario && item.scenario!==scenario) return;
+      t += Number(state.budget[cat][item.key])||0;
+    });
+    catTotals[cat]=t;
+    totalSpend+=t;
+    var el = $('cattotal-'+slug(cat));
+    if(el) el.textContent = fmtMoney(t);
+  });
+
+  var surplus = p.netMonthly - totalSpend;
+
+  $('stat-net-monthly').textContent = fmtMoney(p.netMonthly);
+  $('stat-spend-monthly').textContent = fmtMoney(totalSpend);
+  $('stat-surplus-monthly').textContent = fmtMoney(surplus);
+  $('stat-surplus-annual').textContent = fmtMoney(surplus*12);
+  var surplusCard = $('stat-surplus-card');
+  surplusCard.classList.toggle('positive', surplus>=0);
+  surplusCard.classList.toggle('negative', surplus<0);
+
+  renderOverviewBar(catTotals, p.netMonthly, surplus);
+  renderSummaryTable(p, catTotals, totalSpend, surplus);
+  renderAssumptions(p);
+  renderExtraPaycheck(p);
+
+  saveState();
+}
+
+function renderOverviewBar(catTotals, netMonthly, surplus){
+  var wrap = $('overview-bar'), legend = $('overview-legend');
+  if(netMonthly<=0){
+    wrap.innerHTML='';
+    legend.innerHTML = '<span style="color:var(--ink-soft);font-size:12px;">Enter your salary on the boarding pass above to see this breakdown.</span>';
+    return;
+  }
+  var segs='', legendHtml='';
+  Object.keys(CATEGORY_SCHEMA).forEach(function(cat){
+    var amt = catTotals[cat]||0;
+    var pct = Math.max(0, (amt/netMonthly)*100);
+    if(amt>0){
+      segs += '<div class="bar-seg" style="width:'+pct.toFixed(2)+'%;background:'+CAT_COLORS[cat]+';" title="'+cat+': '+fmtMoney(amt)+'"></div>';
+    }
+    legendHtml += '<span class="legend-item"><span class="legend-dot" style="background:'+CAT_COLORS[cat]+'"></span>'+cat+' &middot; '+fmtMoney(amt)+' ('+pct.toFixed(0)+'%)</span>';
+  });
+  if(surplus>0){
+    var spct=(surplus/netMonthly)*100;
+    segs += '<div class="bar-seg" style="width:'+spct.toFixed(2)+'%;background:#DCD6C2;" title="Unallocated: '+fmtMoney(surplus)+'"></div>';
+    legendHtml += '<span class="legend-item"><span class="legend-dot" style="background:#DCD6C2"></span>Unallocated &middot; '+fmtMoney(surplus)+' ('+spct.toFixed(0)+'%)</span>';
+  }
+  wrap.innerHTML = segs;
+  legend.innerHTML = legendHtml + (surplus<0 ? '<div class="note-box warn" style="margin-top:8px;width:100%;">Projected to spend '+fmtMoney(Math.abs(surplus))+' more than take-home each month.</div>' : '');
+}
+
+function renderSummaryTable(p, catTotals, totalSpend, surplus){
+  function row(label, val, strong){
+    var color = val<0 ? 'var(--danger)' : (strong && val>0 ? 'var(--teal)' : 'var(--ink)');
+    return '<tr><td'+(strong?' style="font-weight:700"':'')+'>'+label+'</td><td class="num tnum" style="color:'+color+'">'+fmtMoney(val)+'</td></tr>';
+  }
+  var rows = row('Take-home (per paycheck)', p.netPerPaycheck) + row('Take-home (monthly)', p.netMonthly);
+  Object.keys(CATEGORY_SCHEMA).forEach(function(cat){ rows += row(cat, -(catTotals[cat]||0)); });
+  rows += row('Total spend', -totalSpend, true);
+  rows += row('True surplus (monthly)', surplus, true);
+  rows += row('True surplus (annual)', surplus*12, true);
+  $('summary-table-body').innerHTML = rows;
+}
+
+function renderAssumptions(p){
+  var f = state.payroll;
+  var list = [
+    'Federal tax uses 2026 single-filer brackets (10&ndash;37%) with a $16,100 standard deduction.',
+    'FICA: 6.2% Social Security up to $184,500 of pay in 2026, plus 1.45% Medicare with no cap (and an extra 0.9% above $200,000/yr).',
+    'State + local tax is a flat '+(f.stateTaxPct||0)+'% estimate you entered &mdash; your actual state calculation may differ.',
+    'Traditional 401(k) lowers federal and state taxable wages, but not Social Security or Medicare wages &mdash; that matches how payroll actually works.',
+    'Housing scenario: '+(state.housing.scenario==='solo'?'Solo':'With roommate')+'.',
+    'Pay frequency: '+freqLabel(state.job.payFrequency)+' ('+p.periods+' paychecks/year).',
+    'Any of the four tax lines in Payroll can be typed over directly with the numbers from your real paystub.'
+  ];
+  $('assumptions-list').innerHTML = list.map(function(t){ return '<li>'+t+'</li>'; }).join('');
+}
+
+function renderExtraPaycheck(p){
+  var box = $('overview-extra-paycheck'), text = $('overview-extra-paycheck-text');
+  var freq = state.job.payFrequency;
+  if(freq==='biweekly' || freq==='weekly'){
+    box.style.display='block';
+    var months = freq==='biweekly' ? 2 : 4;
+    var assumed = freq==='biweekly' ? 24 : 48;
+    text.textContent = 'You\u2019re paid '+freqLabel(freq).toLowerCase()+' \u2014 that\u2019s '+p.periods+' paychecks a year, not the '+assumed+' this monthly budget assumes. About '+months+' month'+(months>1?'s':'')+' a year will hand you one extra paycheck of roughly '+fmtMoney(p.netPerPaycheck)+' beyond this budget. Good candidates: your emergency fund, moving costs, or extra debt payoff.';
+  } else {
+    box.style.display='none';
+  }
+}
+
+/* ---------- Budget categories DOM (built once) ---------- */
+function buildBudgetCategoriesDOM(){
+  var html='';
+  Object.keys(CATEGORY_SCHEMA).forEach(function(cat){
+    html += '<details class="category-card" open><summary><span>'+cat+'</span><span class="cat-total tnum" id="cattotal-'+slug(cat)+'">$0</span></summary><div class="category-body"><div class="ledger">';
+    CATEGORY_SCHEMA[cat].forEach(function(item){
+      html += '<div class="ledger-row" data-scenario-row="'+(item.scenario||'')+'">'
+        + '<div><div class="li-label">'+item.label+'</div>'+(item.hint?'<div class="li-hint">'+item.hint+'</div>':'')+'</div>'
+        + '<div class="li-input"><span class="prefix">$</span><input type="number" min="0" step="1" inputmode="decimal" data-cat="'+cat+'" data-key="'+item.key+'"></div>'
+        + '</div>';
+    });
+    html += '</div></div></details>';
+  });
+  $('budget-categories').innerHTML = html;
+  $('budget-categories').addEventListener('input', function(e){
+    var inp = e.target.closest('input[data-cat]');
+    if(!inp) return;
+    state.budget[inp.dataset.cat][inp.dataset.key] = parseFloat(inp.value)||0;
+    recalcAll();
+  });
+}
+function applyScenarioVisibility(){
+  document.querySelectorAll('[data-scenario-row]').forEach(function(row){
+    var s = row.getAttribute('data-scenario-row');
+    row.style.display = (s==='' || s===state.housing.scenario) ? '' : 'none';
+  });
+}
+function setScenario(s){
+  state.housing.scenario = s;
+  document.querySelectorAll('[data-scenario]').forEach(function(b){ b.classList.toggle('active', b.dataset.scenario===s); });
+  applyScenarioVisibility();
+  recalcAll();
+}
+
+/* ---------- Apartments ---------- */
+function getApartmentEffective(a){ return (Number(a.baseRent)||0)+(Number(a.extraFees)||0); }
+
+function renderApartmentsTable(){
+  var filter = state.ui.aptFilter;
+  var list = state.apartments.filter(function(a){ return filter==='active' ? a.status!=='archived' : a.status==='archived'; });
+  var sortField = state.ui.aptSort.field, sortDir = state.ui.aptSort.dir;
+  list = list.slice().sort(function(a,b){
+    var av,bv;
+    if(sortField==='effective'){ av=getApartmentEffective(a); bv=getApartmentEffective(b); }
+    else if(sortField==='name'){ av=(a.name||'').toLowerCase(); bv=(b.name||'').toLowerCase(); }
+    else { av=Number(a[sortField])||0; bv=Number(b[sortField])||0; }
+    if(av<bv) return sortDir==='asc'?-1:1;
+    if(av>bv) return sortDir==='asc'?1:-1;
+    return 0;
+  });
+
+  var wrap = $('apartments-table-wrap');
+  if(list.length===0){
+    wrap.innerHTML = '<div class="empty-state"><div class="big">\uD83C\uDFF7\uFE0F</div>'+(filter==='active' ? 'No listings yet \u2014 add your first place to start comparing.' : 'Nothing archived yet.')+'</div>';
+    return;
+  }
+  function arrow(f){
+    if(sortField!==f) return '';
+    return '<span class="sort-arrow">'+(sortDir==='asc'?'\u25B2':'\u25BC')+'</span>';
+  }
+  var rows = list.map(function(a){
+    var eff = getApartmentEffective(a);
+    var rating = Number(a.rating)||0;
+    var stars = rating>0 ? '\u2605'.repeat(rating)+'\u2606'.repeat(5-rating) : '\u2014';
+    return '<tr>'
+      +'<td><strong>'+escapeHtml(a.name||'Untitled')+'</strong>'
+        +(a.neighborhood?'<br><span style="color:var(--ink-soft);font-size:11.5px;">'+escapeHtml(a.neighborhood)+'</span>':'')
+        +(a.bedbath?'<br><span style="color:var(--ink-soft);font-size:11.5px;">'+escapeHtml(a.bedbath)+'</span>':'')+'</td>'
+      +'<td class="num tnum">'+fmtMoney(a.baseRent)+'</td>'
+      +'<td class="num tnum">'+fmtMoney(eff)+'</td>'
+      +'<td class="num tnum">'+fmtMoney(a.moveInCash)+'</td>'
+      +'<td class="num">'+(a.commute? a.commute+' min':'\u2014')+'</td>'
+      +'<td><span class="stars">'+stars+'</span></td>'
+      +'<td><span class="pill '+(a.status==='archived'?'archived':'active')+'">'+(a.status==='archived'?'Archived':'Active')+'</span></td>'
+      +'<td style="white-space:nowrap;">'
+        +'<button class="btn btn-sm btn-ghost" data-action="apt-apply" data-id="'+a.id+'">Apply</button> '
+        +'<button class="btn-danger-text" style="color:var(--ink-soft);" data-action="apt-edit" data-id="'+a.id+'">Edit</button> '
+        +(a.status==='archived'
+          ? '<button class="btn-danger-text" style="color:var(--teal);" data-action="apt-unarchive" data-id="'+a.id+'">Restore</button>'
+          : '<button class="btn-danger-text" style="color:var(--ink-soft);" data-action="apt-archive" data-id="'+a.id+'">Archive</button>')
+        +' <button class="btn-danger-text" data-action="apt-delete" data-id="'+a.id+'">Delete</button>'
+      +'</td>'
+    +'</tr>';
+  }).join('');
+
+  wrap.innerHTML = '<table class="cmp"><thead><tr>'
+    +'<th data-sort="name">Building / unit'+arrow('name')+'</th>'
+    +'<th data-sort="baseRent" class="num">Base rent'+arrow('baseRent')+'</th>'
+    +'<th data-sort="effective" class="num">Effective/mo'+arrow('effective')+'</th>'
+    +'<th data-sort="moveInCash" class="num">Move-in cash'+arrow('moveInCash')+'</th>'
+    +'<th data-sort="commute" class="num">Commute'+arrow('commute')+'</th>'
+    +'<th data-sort="rating">Rating'+arrow('rating')+'</th>'
+    +'<th>Status</th><th></th>'
+    +'</tr></thead><tbody>'+rows+'</tbody></table>';
+}
+
+var aptModalMode='add', aptModalId=null;
+function openApartmentModal(id){
+  aptModalId = id; aptModalMode = id? 'edit':'add';
+  var a = id ? state.apartments.find(function(x){return x.id===id;}) : null;
+  $('apt-modal-title').textContent = id? 'Edit listing' : 'Add listing';
+  $('apt-name').value = a? a.name||'' : '';
+  $('apt-neighborhood').value = a? a.neighborhood||'' : '';
+  $('apt-address').value = a? a.address||'' : '';
+  $('apt-bedbath').value = a? a.bedbath||'' : '';
+  $('apt-baseRent').value = a? (a.baseRent||'') : '';
+  $('apt-extraFees').value = a? (a.extraFees||'') : '';
+  $('apt-moveInCash').value = a? (a.moveInCash||'') : '';
+  $('apt-commute').value = a? (a.commute||'') : '';
+  $('apt-rating').value = a? (a.rating||0) : 0;
+  $('apt-url').value = a? a.url||'' : '';
+  $('apt-notes').value = a? a.notes||'' : '';
+  openModal('modal-apartment');
+}
+function saveApartmentFromModal(){
+  var name = $('apt-name').value.trim();
+  if(!name){ alert('Give this listing a name first.'); return; }
+  var data = {
+    name:name, neighborhood:$('apt-neighborhood').value.trim(), address:$('apt-address').value.trim(),
+    bedbath:$('apt-bedbath').value.trim(), baseRent:parseFloat($('apt-baseRent').value)||0,
+    extraFees:parseFloat($('apt-extraFees').value)||0, moveInCash:parseFloat($('apt-moveInCash').value)||0,
+    commute:parseFloat($('apt-commute').value)||0, rating:parseInt($('apt-rating').value)||0,
+    url:$('apt-url').value.trim(), notes:$('apt-notes').value.trim()
+  };
+  if(aptModalMode==='edit'){
+    var a = state.apartments.find(function(x){return x.id===aptModalId;});
+    if(a) Object.assign(a, data);
+  } else {
+    data.id = uid(); data.status='active';
+    state.apartments.push(data);
+  }
+  closeAllModals();
+  renderApartmentsTable();
+  populateTourApartmentOptions();
+  saveState();
+}
+function toggleApartmentArchive(id, archived){
+  var a = state.apartments.find(function(x){return x.id===id;}); if(!a) return;
+  a.status = archived? 'archived':'active';
+  renderApartmentsTable(); saveState();
+}
+function deleteApartment(id){
+  if(!confirm('Delete this listing? This can\u2019t be undone.')) return;
+  state.apartments = state.apartments.filter(function(x){return x.id!==id;});
+  renderApartmentsTable(); populateTourApartmentOptions(); saveState();
+}
+function applyApartmentToBudget(id){
+  var a = state.apartments.find(function(x){return x.id===id;}); if(!a) return;
+  var eff = getApartmentEffective(a);
+  var key = state.housing.scenario==='solo' ? 'rentSolo' : 'rentRoommate';
+  state.budget.Housing[key] = eff;
+  var input = document.querySelector('#budget-categories input[data-cat="Housing"][data-key="'+key+'"]');
+  if(input) input.value = eff;
+  recalcAll();
+  setActiveTab('budget');
+}
+
+/* ---------- Tours / calendar ---------- */
+function renderCalendar(){
+  var parts = state.ui.calMonth.split('-');
+  var y = Number(parts[0]), m = Number(parts[1]);
+  var first = new Date(y, m-1, 1);
+  var startDow = first.getDay();
+  var daysInMonth = new Date(y, m, 0).getDate();
+  $('cal-month-label').textContent = first.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+
+  $('cal-dow-row').innerHTML = ['Su','Mo','Tu','We','Th','Fr','Sa'].map(function(d){ return '<div class="cal-dow">'+d+'</div>'; }).join('');
+
+  var toursByDay = {};
+  state.tours.forEach(function(t){ if(t.date){ (toursByDay[t.date]=toursByDay[t.date]||[]).push(t); } });
+
+  var cells='';
+  for(var i=0;i<startDow;i++) cells += '<div class="tour-day empty"></div>';
+  var todayStr = todayISO();
+  for(var day=1; day<=daysInMonth; day++){
+    var dateStr = y+'-'+pad2(m)+'-'+pad2(day);
+    var dayTours = toursByDay[dateStr]||[];
+    var isToday = dateStr===todayStr;
+    cells += '<button type="button" class="tour-day'+(isToday?' today':'')+'" data-day="'+dateStr+'">'
+      +'<span class="d-num">'+day+'</span>'
+      +(dayTours.length? '<div class="d-count">'+dayTours.length+' tour'+(dayTours.length>1?'s':'')+'</div>' : '')
+      +'</button>';
+  }
+  var totalCells = startDow+daysInMonth;
+  var trailing = (7 - (totalCells%7))%7;
+  for(var j=0;j<trailing;j++) cells += '<div class="tour-day empty"></div>';
+  $('cal-grid').innerHTML = cells;
+}
+function changeCalMonth(delta){
+  var parts = state.ui.calMonth.split('-');
+  var y = Number(parts[0]), m = Number(parts[1]);
+  m += delta;
+  if(m<1){m=12;y--;} if(m>12){m=1;y++;}
+  state.ui.calMonth = y+'-'+pad2(m);
+  renderCalendar(); saveState();
+}
+function renderToursList(){
+  var list = state.tours.slice().sort(function(a,b){ return ((a.date||'')+(a.startTime||'')).localeCompare((b.date||'')+(b.startTime||'')); });
+  var wrap = $('tours-list');
+  if(list.length===0){ wrap.innerHTML = '<div class="empty-state"><div class="big">\uD83D\uDDFA\uFE0F</div>No tours scheduled yet \u2014 pick a day on the calendar above.</div>'; return; }
+  wrap.innerHTML = list.map(function(t){
+    var when = (t.date||'\u2014') + (t.startTime? ' &middot; '+formatTime(t.startTime) : '') + (t.endTime? '\u2013'+formatTime(t.endTime):'');
+    return '<div class="tour-list-item" data-tour-id="'+t.id+'" style="cursor:pointer;">'
+      +'<div><div class="t-name">'+escapeHtml(t.buildingName||'Untitled tour')+'</div><div class="t-when">'+when+'</div></div>'
+      +'<span class="pill '+t.status+'">'+t.status+'</span>'
+    +'</div>';
+  }).join('');
+}
+var tourModalId=null;
+function openTourModal(id, prefillDate){
+  tourModalId = id;
+  var t = id ? state.tours.find(function(x){return x.id===id;}) : null;
+  $('tour-modal-title').textContent = id? 'Edit tour' : 'Schedule a tour';
+  populateTourApartmentOptions();
+  $('tour-apartmentId').value = t? (t.apartmentId||'') : '';
+  $('tour-buildingName').value = t? t.buildingName||'' : '';
+  $('tour-status').value = t? t.status||'scheduled' : 'scheduled';
+  $('tour-date').value = t? t.date||'' : (prefillDate||todayISO());
+  $('tour-startTime').value = t? t.startTime||'' : '';
+  $('tour-endTime').value = t? t.endTime||'' : '';
+  $('tour-notes').value = t? t.notes||'' : '';
+  $('tour-delete').style.display = id? 'inline-block':'none';
+  openModal('modal-tour');
+}
+function populateTourApartmentOptions(){
+  var sel = $('tour-apartmentId');
+  var active = state.apartments.filter(function(a){ return a.status!=='archived'; });
+  sel.innerHTML = '<option value="">\u2014 Not on my list / type below \u2014</option>'
+    + active.map(function(a){ return '<option value="'+a.id+'">'+escapeHtml(a.name)+'</option>'; }).join('');
+}
+function saveTourFromModal(){
+  var date = $('tour-date').value;
+  if(!date){ alert('Pick a date for this tour.'); return; }
+  var buildingName = $('tour-buildingName').value.trim();
+  var apartmentId = $('tour-apartmentId').value || null;
+  if(!buildingName && apartmentId){
+    var a = state.apartments.find(function(x){return x.id===apartmentId;});
+    if(a) buildingName = a.name;
+  }
+  if(!buildingName){ alert('Add a building name, or pick one from your list.'); return; }
+  var data = { apartmentId:apartmentId, buildingName:buildingName, status:$('tour-status').value, date:date,
+    startTime:$('tour-startTime').value, endTime:$('tour-endTime').value, notes:$('tour-notes').value.trim() };
+  if(tourModalId){
+    var existing = state.tours.find(function(x){return x.id===tourModalId;});
+    if(existing) Object.assign(existing, data);
+  } else {
+    data.id = uid();
+    state.tours.push(data);
+  }
+  closeAllModals();
+  renderCalendar(); renderToursList(); saveState();
+}
+function deleteTour(){
+  if(!tourModalId) return;
+  if(!confirm('Delete this tour?')) return;
+  state.tours = state.tours.filter(function(x){return x.id!==tourModalId;});
+  closeAllModals();
+  renderCalendar(); renderToursList(); saveState();
+}
+
+/* ---------- Modals / tabs ---------- */
+function openModal(id){ $(id).classList.add('open'); }
+function closeAllModals(){ document.querySelectorAll('.modal-overlay').forEach(function(m){ m.classList.remove('open'); }); }
+function setActiveTab(tab){
+  document.querySelectorAll('.tab').forEach(function(b){ b.classList.toggle('active', b.dataset.tab===tab); });
+  document.querySelectorAll('.panel').forEach(function(p){ p.classList.toggle('active', p.dataset.panel===tab); });
+}
+
+/* ---------- Global click delegation ---------- */
+function handleAction(action, id){
+  if(action==='apt-edit') openApartmentModal(id);
+  else if(action==='apt-archive') toggleApartmentArchive(id, true);
+  else if(action==='apt-unarchive') toggleApartmentArchive(id, false);
+  else if(action==='apt-delete') deleteApartment(id);
+  else if(action==='apt-apply') applyApartmentToBudget(id);
+}
+function handleGlobalClick(e){
+  var t;
+  t = e.target.closest('[data-reset-field]');
+  if(t){ var f=t.dataset.resetField; state.payroll[f+'Auto']=true; recalcAll(); return; }
+  t = e.target.closest('[data-tab]');
+  if(t){ setActiveTab(t.dataset.tab); return; }
+  t = e.target.closest('[data-scenario]');
+  if(t){ setScenario(t.dataset.scenario); return; }
+  t = e.target.closest('[data-aptfilter]');
+  if(t){
+    state.ui.aptFilter = t.dataset.aptfilter;
+    document.querySelectorAll('[data-aptfilter]').forEach(function(b){ b.classList.toggle('active', b===t); });
+    renderApartmentsTable(); saveState(); return;
+  }
+  t = e.target.closest('[data-sort]');
+  if(t){
+    var fld = t.dataset.sort;
+    if(state.ui.aptSort.field===fld){ state.ui.aptSort.dir = state.ui.aptSort.dir==='asc'?'desc':'asc'; }
+    else { state.ui.aptSort.field=fld; state.ui.aptSort.dir='asc'; }
+    renderApartmentsTable(); saveState(); return;
+  }
+  t = e.target.closest('[data-action]');
+  if(t){ handleAction(t.dataset.action, t.dataset.id); return; }
+  t = e.target.closest('[data-close-modal]');
+  if(t){ closeAllModals(); return; }
+  t = e.target.closest('[data-day]');
+  if(t && !t.classList.contains('empty')){ openTourModal(null, t.dataset.day); return; }
+  t = e.target.closest('[data-tour-id]');
+  if(t){ openTourModal(t.dataset.tourId); return; }
+}
+
+/* ---------- Export / Import / Clear ---------- */
+function exportData(){
+  var blob = new Blob([JSON.stringify(state,null,2)], {type:'application/json'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  var slugName = (state.job.employer||'my-plan').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+  a.href=url; a.download = 'first-paycheck-'+(slugName||'plan')+'.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+function importDataFromFile(file){
+  var reader = new FileReader();
+  reader.onload = function(){
+    try{
+      var parsed = JSON.parse(reader.result);
+      state = mergeIntoDefaults(parsed);
+      saveState();
+      hydrateUI();
+    }catch(e){ alert('That file couldn\u2019t be read. Make sure it\u2019s a First Paycheck export.'); }
+  };
+  reader.readAsText(file);
+}
+function clearAllData(){
+  if(!confirm('This clears everything on this device \u2014 job info, budget, apartments, and tours. Export a backup first if you want to keep it. Continue?')) return;
+  state = defaultState();
+  try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+  hydrateUI();
+}
+
+/* ---------- Hydrate UI from state (init + import) ---------- */
+function hydrateUI(){
+  $('inp-job-employer').value = state.job.employer||'';
+  $('inp-job-role').value = state.job.role||'';
+  $('inp-job-city').value = state.job.city||'';
+  $('inp-job-startDate').value = state.job.startDate||'';
+  $('inp-job-salary').value = state.job.salary||'';
+  $('inp-job-payFrequency').value = state.job.payFrequency||'biweekly';
+
+  $('inp-pay-k401Type').value = state.payroll.k401Type||'none';
+  $('inp-pay-k401Value').value = state.payroll.k401Value||'';
+  $('inp-pay-k401Mode').value = state.payroll.k401Mode||'pct';
+  $('inp-pay-stateTaxPct').value = state.payroll.stateTaxPct||'';
+  $('inp-pay-health').value = state.payroll.health||'';
+  $('inp-pay-dentalVision').value = state.payroll.dentalVision||'';
+  $('inp-pay-fsaHsa').value = state.payroll.fsaHsa||'';
+  $('inp-pay-otherPretax').value = state.payroll.otherPretax||'';
+  if(!state.payroll.fedTaxAuto) $('inp-pay-fedTaxManual').value = state.payroll.fedTaxManual||0;
+  if(!state.payroll.stateTaxAuto) $('inp-pay-stateTaxManual').value = state.payroll.stateTaxManual||0;
+  if(!state.payroll.ssTaxAuto) $('inp-pay-ssTaxManual').value = state.payroll.ssTaxManual||0;
+  if(!state.payroll.medicareTaxAuto) $('inp-pay-medicareTaxManual').value = state.payroll.medicareTaxManual||0;
+
+  document.querySelectorAll('[data-scenario]').forEach(function(b){ b.classList.toggle('active', b.dataset.scenario===state.housing.scenario); });
+  applyScenarioVisibility();
+
+  document.querySelectorAll('#budget-categories input[data-cat]').forEach(function(inp){
+    var cat=inp.dataset.cat, key=inp.dataset.key;
+    var v = (state.budget[cat] && state.budget[cat][key]) || '';
+    inp.value = v;
+  });
+
+  document.querySelectorAll('[data-aptfilter]').forEach(function(b){ b.classList.toggle('active', b.dataset.aptfilter===state.ui.aptFilter); });
+
+  renderApartmentsTable();
+  renderCalendar();
+  renderToursList();
+  recalcAll();
+}
+
+/* ---------- Init ---------- */
+function bindSimple(id, group, key, type){
+  $(id).addEventListener('input', function(){
+    state[group][key] = type==='number' ? (parseFloat(this.value)||0) : this.value;
+    recalcAll();
+  });
+}
+function bindManualTax(id, field){
+  $(id).addEventListener('input', function(){
+    state.payroll[field+'Auto'] = false;
+    state.payroll[field+'Manual'] = parseFloat(this.value)||0;
+    recalcAll();
+  });
+}
+function bindStaticListeners(){
+  bindSimple('inp-job-employer','job','employer','text');
+  bindSimple('inp-job-role','job','role','text');
+  bindSimple('inp-job-city','job','city','text');
+  bindSimple('inp-job-startDate','job','startDate','text');
+  bindSimple('inp-job-salary','job','salary','number');
+  $('inp-job-payFrequency').addEventListener('change', function(){ state.job.payFrequency=this.value; recalcAll(); });
+
+  bindSimple('inp-pay-k401Value','payroll','k401Value','number');
+  $('inp-pay-k401Type').addEventListener('change', function(){ state.payroll.k401Type=this.value; recalcAll(); });
+  $('inp-pay-k401Mode').addEventListener('change', function(){ state.payroll.k401Mode=this.value; recalcAll(); });
+  bindSimple('inp-pay-stateTaxPct','payroll','stateTaxPct','number');
+  bindSimple('inp-pay-health','payroll','health','number');
+  bindSimple('inp-pay-dentalVision','payroll','dentalVision','number');
+  bindSimple('inp-pay-fsaHsa','payroll','fsaHsa','number');
+  bindSimple('inp-pay-otherPretax','payroll','otherPretax','number');
+
+  bindManualTax('inp-pay-fedTaxManual','fedTax');
+  bindManualTax('inp-pay-stateTaxManual','stateTax');
+  bindManualTax('inp-pay-ssTaxManual','ssTax');
+  bindManualTax('inp-pay-medicareTaxManual','medicareTax');
+
+  document.addEventListener('click', handleGlobalClick);
+
+  $('btn-export').addEventListener('click', exportData);
+  $('btn-import').addEventListener('click', function(){ $('file-import').click(); });
+  $('file-import').addEventListener('change', function(){ if(this.files[0]) importDataFromFile(this.files[0]); this.value=''; });
+  $('btn-print').addEventListener('click', function(){ window.print(); });
+  $('btn-clear').addEventListener('click', clearAllData);
+
+  $('btn-add-apartment').addEventListener('click', function(){ openApartmentModal(null); });
+  $('btn-add-tour').addEventListener('click', function(){ openTourModal(null, todayISO()); });
+
+  $('apt-save').addEventListener('click', saveApartmentFromModal);
+  $('tour-save').addEventListener('click', saveTourFromModal);
+  $('tour-delete').addEventListener('click', deleteTour);
+
+  $('cal-prev').addEventListener('click', function(){ changeCalMonth(-1); });
+  $('cal-next').addEventListener('click', function(){ changeCalMonth(1); });
+}
+
+function init(){
+  loadState();
+  buildBudgetCategoriesDOM();
+  bindStaticListeners();
+  hydrateUI();
+}
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
