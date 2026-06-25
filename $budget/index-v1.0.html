@@ -302,23 +302,7 @@
     padding: 10px 0;
     border-bottom: 1px solid var(--rule);
   }
-  .ledger-row .li-label-wrap{ flex:1; min-width:0; }
-  .ledger-row .li-label-input{
-    width:100%; border:none; background:transparent; padding:2px 0;
-    font-size: 13.5px; font-weight:600; color: var(--ink); font-family: inherit;
-  }
-  .ledger-row .li-label-input::placeholder{ color: var(--rule-strong); font-weight:500; }
-  .ledger-row .li-label-input:focus{ outline:none; border-bottom: 1.5px solid var(--stamp); }
-  .ledger-row .li-remove{
-    background:none; border:none; color: var(--rule-strong); font-size:19px; line-height:1;
-    cursor:pointer; padding:2px 4px; flex-shrink:0;
-  }
-  .ledger-row .li-remove:hover{ color: var(--danger); }
-  .ded-type-select{
-    font-size: 11px; font-weight:600; border: 1.5px solid var(--rule-strong); border-radius:6px;
-    padding: 5px 6px; background: var(--paper); color: var(--ink-soft); flex-shrink:0;
-  }
-  .ded-type-select:focus{ outline:none; border-color: var(--stamp); }
+  .ledger-row .li-label{ font-size: 13.5px; font-weight:600; }
   .ledger-row .li-hint{ font-size: 11.5px; color: var(--ink-soft); margin-top:1px; }
   .ledger-row .li-input{ width: 130px; flex-shrink:0; }
   .ledger-row .li-input input{
@@ -628,8 +612,7 @@
           <p class="card-sub">Fill these in from your offer letter or HR onboarding packet.</p>
         </div>
       </div>
-      <span class="pass-label">Contribution rates</span>
-      <div class="grid3" style="margin: 6px 0 4px;">
+      <div class="grid3" style="margin-bottom:14px;">
         <div class="field">
           <label>401(k) type</label>
           <select id="inp-pay-k401Type">
@@ -647,7 +630,6 @@
               <option value="dollar">$/mo</option>
             </select>
           </div>
-          <span class="hint" id="k401-readout"></span>
         </div>
         <div class="field">
           <label>State + local tax rate</label>
@@ -655,16 +637,19 @@
             <input id="inp-pay-stateTaxPct" type="number" min="0" step="0.1" placeholder="0">
             <span class="li-input prefix" style="font-family:var(--mono);color:var(--ink-soft);">%</span>
           </div>
-          <span class="hint" id="statetax-readout">Look up your state's rate, or leave 0 if your state has none.</span>
+          <span class="hint">Flat estimate — look up your state's rate, or leave 0 if your state has none.</span>
         </div>
       </div>
-
-      <div style="border-top:1px solid var(--rule); margin:18px 0 4px; padding-top:14px; display:flex; align-items:center; justify-content:space-between;">
-        <span class="pass-label">Other deductions</span>
-        <button type="button" class="btn btn-ghost btn-sm" data-action="ded-add">+ Add deduction</button>
+      <div class="grid3">
+        <div class="field"><label>Health insurance ($/mo)</label><input id="inp-pay-health" type="number" min="0" step="1" placeholder="0"></div>
+        <div class="field"><label>Dental &amp; vision ($/mo)</label><input id="inp-pay-dentalVision" type="number" min="0" step="1" placeholder="0"></div>
+        <div class="field"><label>FSA / HSA ($/mo)</label><input id="inp-pay-fsaHsa" type="number" min="0" step="1" placeholder="0"></div>
       </div>
-      <p class="card-sub" style="margin:2px 0 8px;">Health, ESPP, garnishments, anything else on your paystub. Mark each Pre-tax or Post-tax — that's what drives the tax math below.</p>
-      <div class="ledger" data-deductions-list></div>
+      <div class="field" style="margin-top:12px; max-width:280px;">
+        <label>Other pre-tax deduction ($/mo)</label>
+        <input id="inp-pay-otherPretax" type="number" min="0" step="1" placeholder="0">
+        <span class="hint">Commuter benefit, disability, etc.</span>
+      </div>
 
       <div class="ledger" style="margin-top:16px;">
         <div class="ledger-row">
@@ -932,21 +917,15 @@ var STORAGE_KEY = 'firstPaycheckPlannerData';
 function defaultState(){
   var budget = {};
   Object.keys(CATEGORY_SCHEMA).forEach(function(cat){
-    budget[cat] = CATEGORY_SCHEMA[cat].map(function(item){
-      return {id:item.key, label:item.label, hint:item.hint||'', amount:0, scenario:item.scenario||null};
-    });
+    budget[cat] = {};
+    CATEGORY_SCHEMA[cat].forEach(function(item){ budget[cat][item.key]=0; });
   });
   var d = new Date();
   return {
     job:{employer:'',role:'',city:'',startDate:'',salary:0,payFrequency:'biweekly'},
     payroll:{
       k401Type:'none', k401Mode:'pct', k401Value:0,
-      stateTaxPct:0,
-      deductions: [
-        {id:'health', label:'Health insurance', amount:0, pretax:true},
-        {id:'dentalVision', label:'Dental & vision', amount:0, pretax:true},
-        {id:'fsaHsa', label:'FSA / HSA', amount:0, pretax:true}
-      ],
+      stateTaxPct:0, health:0, dentalVision:0, fsaHsa:0, otherPretax:0,
       fedTaxAuto:true, fedTaxManual:0,
       stateTaxAuto:true, stateTaxManual:0,
       ssTaxAuto:true, ssTaxManual:0,
@@ -959,55 +938,15 @@ function defaultState(){
     ui:{ aptSort:{field:'effective',dir:'asc'}, aptFilter:'active', calMonth: d.getFullYear()+'-'+pad2(d.getMonth()+1) }
   };
 }
-function migrateBudgetCategory(defaultArr, parsedVal){
-  if(Array.isArray(parsedVal)){
-    return parsedVal.map(function(it){
-      return { id:(it&&it.id)||uid(), label:(it&&it.label)||'', hint:(it&&it.hint)||'',
-        amount: Number(it&&it.amount)||0, scenario:(it&&it.scenario)||null };
-    });
-  }
-  if(parsedVal && typeof parsedVal==='object'){
-    return defaultArr.map(function(item){
-      var has = Object.prototype.hasOwnProperty.call(parsedVal, item.id);
-      return Object.assign({}, item, {amount: has ? (Number(parsedVal[item.id])||0) : 0});
-    });
-  }
-  return defaultArr.slice();
-}
-function migratePayrollDeductions(parsedPayroll){
-  var defaults = [
-    {id:'health', label:'Health insurance', amount:0, pretax:true},
-    {id:'dentalVision', label:'Dental & vision', amount:0, pretax:true},
-    {id:'fsaHsa', label:'FSA / HSA', amount:0, pretax:true}
-  ];
-  if(parsedPayroll && Array.isArray(parsedPayroll.deductions)){
-    return parsedPayroll.deductions.map(function(d){
-      return { id:(d&&d.id)||uid(), label:(d&&d.label)||'', amount:Number(d&&d.amount)||0, pretax: !(d&&d.pretax===false) };
-    });
-  }
-  if(parsedPayroll && typeof parsedPayroll==='object' &&
-     (parsedPayroll.health!=null || parsedPayroll.dentalVision!=null || parsedPayroll.fsaHsa!=null || parsedPayroll.otherPretax!=null || parsedPayroll.otherPosttax!=null)){
-    var list = [
-      {id:'health', label:'Health insurance', amount:Number(parsedPayroll.health)||0, pretax:true},
-      {id:'dentalVision', label:'Dental & vision', amount:Number(parsedPayroll.dentalVision)||0, pretax:true},
-      {id:'fsaHsa', label:'FSA / HSA', amount:Number(parsedPayroll.fsaHsa)||0, pretax:true}
-    ];
-    if(Number(parsedPayroll.otherPretax)) list.push({id:'otherPretaxLegacy', label:'Other pre-tax deduction', amount:Number(parsedPayroll.otherPretax)||0, pretax:true});
-    if(Number(parsedPayroll.otherPosttax)) list.push({id:'otherPosttaxLegacy', label:'Other post-tax deduction', amount:Number(parsedPayroll.otherPosttax)||0, pretax:false});
-    return list;
-  }
-  return defaults;
-}
 function mergeIntoDefaults(parsed){
   var d = defaultState();
   if(!parsed || typeof parsed!=='object') return d;
   d.job = Object.assign({}, d.job, parsed.job||{});
   d.payroll = Object.assign({}, d.payroll, parsed.payroll||{});
-  d.payroll.deductions = migratePayrollDeductions(parsed.payroll);
   d.housing = Object.assign({}, d.housing, parsed.housing||{});
   if(parsed.budget){
     Object.keys(d.budget).forEach(function(cat){
-      d.budget[cat] = migrateBudgetCategory(d.budget[cat], parsed.budget[cat]);
+      if(parsed.budget[cat]) d.budget[cat] = Object.assign({}, d.budget[cat], parsed.budget[cat]);
     });
   }
   d.apartments = Array.isArray(parsed.apartments) ? parsed.apartments : [];
@@ -1038,11 +977,7 @@ function getAutoEstimates(){
       : (state.payroll.k401Value||0);
   }
   var k401TradMonthly = (state.payroll.k401Type==='traditional') ? k401Monthly : 0;
-  var cafeteriaMonthly = 0, postTaxOtherMonthly = 0;
-  (state.payroll.deductions||[]).forEach(function(d){
-    var amt = Number(d.amount)||0;
-    if(d.pretax) cafeteriaMonthly += amt; else postTaxOtherMonthly += amt;
-  });
+  var cafeteriaMonthly = (state.payroll.health||0)+(state.payroll.dentalVision||0)+(state.payroll.fsaHsa||0)+(state.payroll.otherPretax||0);
 
   var annualGross = grossMonthly*12;
   var fedTaxableAnnual = Math.max(0, annualGross - k401TradMonthly*12 - cafeteriaMonthly*12 - STD_DEDUCTION);
@@ -1060,7 +995,7 @@ function getAutoEstimates(){
   var medicareTaxMonthly = medicareAnnual/12;
 
   return {grossMonthly:grossMonthly, k401Monthly:k401Monthly, k401TradMonthly:k401TradMonthly,
-    cafeteriaMonthly:cafeteriaMonthly, postTaxOtherMonthly:postTaxOtherMonthly, fedTaxMonthly:fedTaxMonthly, stateTaxMonthly:stateTaxMonthly,
+    cafeteriaMonthly:cafeteriaMonthly, fedTaxMonthly:fedTaxMonthly, stateTaxMonthly:stateTaxMonthly,
     ssTaxMonthly:ssTaxMonthly, medicareTaxMonthly:medicareTaxMonthly};
 }
 function getEffectivePayroll(){
@@ -1069,7 +1004,7 @@ function getEffectivePayroll(){
   var stateTax = state.payroll.stateTaxAuto ? est.stateTaxMonthly : (state.payroll.stateTaxManual||0);
   var ssTax = state.payroll.ssTaxAuto ? est.ssTaxMonthly : (state.payroll.ssTaxManual||0);
   var medicareTax = state.payroll.medicareTaxAuto ? est.medicareTaxMonthly : (state.payroll.medicareTaxManual||0);
-  var netMonthly = est.grossMonthly - est.k401Monthly - est.cafeteriaMonthly - est.postTaxOtherMonthly - fedTax - stateTax - ssTax - medicareTax;
+  var netMonthly = est.grossMonthly - est.k401Monthly - est.cafeteriaMonthly - fedTax - stateTax - ssTax - medicareTax;
   var periods = periodsPerYear(state.job.payFrequency);
   var netPerPaycheck = (netMonthly*12)/periods;
   var out = Object.assign({}, est);
@@ -1100,25 +1035,14 @@ function recalcAll(){
 
   $('ledger-net-monthly').textContent = fmtMoney(p.netMonthly)+' / mo';
 
-  var k401Readout = $('k401-readout');
-  if(state.payroll.k401Type!=='none' && state.payroll.k401Mode==='pct'){
-    k401Readout.textContent = '= '+fmtMoney(p.k401Monthly)+'/mo';
-  } else {
-    k401Readout.textContent = '';
-  }
-  var stateReadout = $('statetax-readout');
-  stateReadout.textContent = (state.payroll.stateTaxPct>0)
-    ? ('\u2248 '+fmtMoney(p.stateTaxMonthly)+'/mo \u00b7 look up your state\u2019s real rate if unsure')
-    : 'Look up your state\u2019s rate, or leave 0 if your state has none.';
-
   var scenario = state.housing.scenario;
   var catTotals = {};
   var totalSpend = 0;
   Object.keys(CATEGORY_SCHEMA).forEach(function(cat){
     var t=0;
-    (state.budget[cat]||[]).forEach(function(item){
+    CATEGORY_SCHEMA[cat].forEach(function(item){
       if(item.scenario && item.scenario!==scenario) return;
-      t += Number(item.amount)||0;
+      t += Number(state.budget[cat][item.key])||0;
     });
     catTotals[cat]=t;
     totalSpend+=t;
@@ -1189,7 +1113,6 @@ function renderAssumptions(p){
     'FICA: 6.2% Social Security up to $184,500 of pay in 2026, plus 1.45% Medicare with no cap (and an extra 0.9% above $200,000/yr).',
     'State + local tax is a flat '+(f.stateTaxPct||0)+'% estimate you entered &mdash; your actual state calculation may differ.',
     'Traditional 401(k) lowers federal and state taxable wages, but not Social Security or Medicare wages &mdash; that matches how payroll actually works.',
-    'Each deduction below is Pre-tax (lowers all four tax lines) or Post-tax (lowers take-home only) \u2014 set by the toggle next to it.',
     'Housing scenario: '+(state.housing.scenario==='solo'?'Solo':'With roommate')+'.',
     'Pay frequency: '+freqLabel(state.job.payFrequency)+' ('+p.periods+' paychecks/year).',
     'Any of the four tax lines in Payroll can be typed over directly with the numbers from your real paystub.'
@@ -1211,95 +1134,24 @@ function renderExtraPaycheck(p){
 }
 
 /* ---------- Budget categories DOM (built once) ---------- */
-function deductionRowHTML(item){
-  return '<div class="ledger-row" data-deduct-id="'+item.id+'">'
-    + '<div class="li-label-wrap"><input type="text" class="li-label-input" placeholder="Deduction name" data-role="ded-label" data-id="'+item.id+'" value="'+escapeHtml(item.label)+'"></div>'
-    + '<select class="ded-type-select" data-role="ded-type" data-id="'+item.id+'">'
-      + '<option value="pretax"'+(item.pretax?' selected':'')+'>Pre-tax</option>'
-      + '<option value="posttax"'+(!item.pretax?' selected':'')+'>Post-tax</option>'
-    + '</select>'
-    + '<div class="li-input"><span class="prefix">$</span><input type="number" min="0" step="1" inputmode="decimal" data-role="ded-amount" data-id="'+item.id+'" value="'+(item.amount||'')+'"></div>'
-    + '<button type="button" class="li-remove" title="Remove this deduction" data-action="ded-remove" data-id="'+item.id+'">&times;</button>'
-  + '</div>';
-}
-function renderDeductions(){
-  var el = document.querySelector('[data-deductions-list]');
-  if(!el) return;
-  var items = state.payroll.deductions||[];
-  if(items.length===0){
-    el.innerHTML = '<div style="padding:12px 0;color:var(--ink-soft);font-size:12.5px;">No other deductions yet &mdash; add one below.</div>';
-  } else {
-    el.innerHTML = items.map(deductionRowHTML).join('');
-  }
-}
-function addDeduction(){
-  var item = {id: uid(), label:'', amount:0, pretax:true};
-  state.payroll.deductions.push(item);
-  renderDeductions();
-  saveState();
-  var inp = document.querySelector('[data-deduct-id="'+item.id+'"] [data-role="ded-label"]');
-  if(inp) inp.focus();
-}
-function removeDeduction(id){
-  state.payroll.deductions = state.payroll.deductions.filter(function(x){ return x.id!==id; });
-  renderDeductions();
-  recalcAll();
-}
-
-function ledgerRowHTML(cat, item){
-  return '<div class="ledger-row" data-scenario-row="'+(item.scenario||'')+'" data-item-id="'+item.id+'">'
-    + '<div class="li-label-wrap">'
-      + '<input type="text" class="li-label-input" placeholder="Line item" data-role="label" data-cat="'+cat+'" data-id="'+item.id+'" value="'+escapeHtml(item.label)+'">'
-      + (item.hint? '<div class="li-hint">'+escapeHtml(item.hint)+'</div>' : '')
-    + '</div>'
-    + '<div class="li-input"><span class="prefix">$</span><input type="number" min="0" step="1" inputmode="decimal" data-role="amount" data-cat="'+cat+'" data-id="'+item.id+'" value="'+(item.amount||'')+'"></div>'
-    + '<button type="button" class="li-remove" title="Remove this line" data-action="budget-remove" data-cat="'+cat+'" data-id="'+item.id+'">&times;</button>'
-  + '</div>';
-}
-function renderCategoryItems(cat){
-  var ledgerEl = document.querySelector('.ledger[data-cat-ledger="'+cat+'"]');
-  if(!ledgerEl) return;
-  var items = state.budget[cat]||[];
-  if(items.length===0){
-    ledgerEl.innerHTML = '<div style="padding:12px 0;color:var(--ink-soft);font-size:12.5px;">No line items yet &mdash; add one below.</div>';
-  } else {
-    ledgerEl.innerHTML = items.map(function(item){ return ledgerRowHTML(cat, item); }).join('');
-  }
-  applyScenarioVisibility();
-}
-function addBudgetItem(cat){
-  if(!cat || !state.budget[cat]) return;
-  var item = {id: uid(), label:'', hint:'', amount:0, scenario:null};
-  state.budget[cat].push(item);
-  renderCategoryItems(cat);
-  saveState();
-  var row = document.querySelector('.ledger[data-cat-ledger="'+cat+'"] [data-item-id="'+item.id+'"]');
-  if(row){ var inp = row.querySelector('[data-role="label"]'); if(inp) inp.focus(); }
-}
-function removeBudgetItem(cat, id){
-  if(!cat || !state.budget[cat]) return;
-  state.budget[cat] = state.budget[cat].filter(function(x){ return x.id!==id; });
-  renderCategoryItems(cat);
-  recalcAll();
-}
 function buildBudgetCategoriesDOM(){
   var html='';
   Object.keys(CATEGORY_SCHEMA).forEach(function(cat){
-    html += '<details class="category-card" open><summary><span>'+cat+'</span><span class="cat-total tnum" id="cattotal-'+slug(cat)+'">$0</span></summary>'
-      + '<div class="category-body">'
-        + '<div class="ledger" data-cat-ledger="'+cat+'"></div>'
-        + '<button type="button" class="btn btn-ghost btn-sm" style="margin-top:10px;" data-action="budget-add" data-cat="'+cat+'">+ Add line</button>'
-      + '</div></details>';
+    html += '<details class="category-card" open><summary><span>'+cat+'</span><span class="cat-total tnum" id="cattotal-'+slug(cat)+'">$0</span></summary><div class="category-body"><div class="ledger">';
+    CATEGORY_SCHEMA[cat].forEach(function(item){
+      html += '<div class="ledger-row" data-scenario-row="'+(item.scenario||'')+'">'
+        + '<div><div class="li-label">'+item.label+'</div>'+(item.hint?'<div class="li-hint">'+item.hint+'</div>':'')+'</div>'
+        + '<div class="li-input"><span class="prefix">$</span><input type="number" min="0" step="1" inputmode="decimal" data-cat="'+cat+'" data-key="'+item.key+'"></div>'
+        + '</div>';
+    });
+    html += '</div></div></details>';
   });
   $('budget-categories').innerHTML = html;
   $('budget-categories').addEventListener('input', function(e){
-    var inp = e.target.closest('input[data-role]');
+    var inp = e.target.closest('input[data-cat]');
     if(!inp) return;
-    var cat=inp.dataset.cat, id=inp.dataset.id, role=inp.dataset.role;
-    var item = (state.budget[cat]||[]).find(function(x){ return x.id===id; });
-    if(!item) return;
-    if(role==='amount'){ item.amount = parseFloat(inp.value)||0; recalcAll(); }
-    else { item.label = inp.value; saveState(); }
+    state.budget[inp.dataset.cat][inp.dataset.key] = parseFloat(inp.value)||0;
+    recalcAll();
   });
 }
 function applyScenarioVisibility(){
@@ -1430,13 +1282,10 @@ function deleteApartment(id){
 function applyApartmentToBudget(id){
   var a = state.apartments.find(function(x){return x.id===id;}); if(!a) return;
   var eff = getApartmentEffective(a);
-  var scenario = state.housing.scenario;
-  var key = scenario==='solo' ? 'rentSolo' : 'rentRoommate';
-  var label = scenario==='solo' ? 'Rent' : 'Rent — your share';
-  var item = state.budget.Housing.find(function(x){return x.id===key;});
-  if(item){ item.amount = eff; }
-  else { state.budget.Housing.push({id:key, label:label, hint:'', amount:eff, scenario:scenario}); }
-  renderCategoryItems('Housing');
+  var key = state.housing.scenario==='solo' ? 'rentSolo' : 'rentRoommate';
+  state.budget.Housing[key] = eff;
+  var input = document.querySelector('#budget-categories input[data-cat="Housing"][data-key="'+key+'"]');
+  if(input) input.value = eff;
   recalcAll();
   setActiveTab('budget');
 }
@@ -1553,16 +1402,12 @@ function setActiveTab(tab){
 }
 
 /* ---------- Global click delegation ---------- */
-function handleAction(action, id, cat){
+function handleAction(action, id){
   if(action==='apt-edit') openApartmentModal(id);
   else if(action==='apt-archive') toggleApartmentArchive(id, true);
   else if(action==='apt-unarchive') toggleApartmentArchive(id, false);
   else if(action==='apt-delete') deleteApartment(id);
   else if(action==='apt-apply') applyApartmentToBudget(id);
-  else if(action==='budget-add') addBudgetItem(cat);
-  else if(action==='budget-remove') removeBudgetItem(cat, id);
-  else if(action==='ded-add') addDeduction();
-  else if(action==='ded-remove') removeDeduction(id);
 }
 function handleGlobalClick(e){
   var t;
@@ -1586,7 +1431,7 @@ function handleGlobalClick(e){
     renderApartmentsTable(); saveState(); return;
   }
   t = e.target.closest('[data-action]');
-  if(t){ handleAction(t.dataset.action, t.dataset.id, t.dataset.cat); return; }
+  if(t){ handleAction(t.dataset.action, t.dataset.id); return; }
   t = e.target.closest('[data-close-modal]');
   if(t){ closeAllModals(); return; }
   t = e.target.closest('[data-day]');
@@ -1637,7 +1482,10 @@ function hydrateUI(){
   $('inp-pay-k401Value').value = state.payroll.k401Value||'';
   $('inp-pay-k401Mode').value = state.payroll.k401Mode||'pct';
   $('inp-pay-stateTaxPct').value = state.payroll.stateTaxPct||'';
-  renderDeductions();
+  $('inp-pay-health').value = state.payroll.health||'';
+  $('inp-pay-dentalVision').value = state.payroll.dentalVision||'';
+  $('inp-pay-fsaHsa').value = state.payroll.fsaHsa||'';
+  $('inp-pay-otherPretax').value = state.payroll.otherPretax||'';
   if(!state.payroll.fedTaxAuto) $('inp-pay-fedTaxManual').value = state.payroll.fedTaxManual||0;
   if(!state.payroll.stateTaxAuto) $('inp-pay-stateTaxManual').value = state.payroll.stateTaxManual||0;
   if(!state.payroll.ssTaxAuto) $('inp-pay-ssTaxManual').value = state.payroll.ssTaxManual||0;
@@ -1646,7 +1494,11 @@ function hydrateUI(){
   document.querySelectorAll('[data-scenario]').forEach(function(b){ b.classList.toggle('active', b.dataset.scenario===state.housing.scenario); });
   applyScenarioVisibility();
 
-  Object.keys(CATEGORY_SCHEMA).forEach(function(cat){ renderCategoryItems(cat); });
+  document.querySelectorAll('#budget-categories input[data-cat]').forEach(function(inp){
+    var cat=inp.dataset.cat, key=inp.dataset.key;
+    var v = (state.budget[cat] && state.budget[cat][key]) || '';
+    inp.value = v;
+  });
 
   document.querySelectorAll('[data-aptfilter]').forEach(function(b){ b.classList.toggle('active', b.dataset.aptfilter===state.ui.aptFilter); });
 
@@ -1682,20 +1534,10 @@ function bindStaticListeners(){
   $('inp-pay-k401Type').addEventListener('change', function(){ state.payroll.k401Type=this.value; recalcAll(); });
   $('inp-pay-k401Mode').addEventListener('change', function(){ state.payroll.k401Mode=this.value; recalcAll(); });
   bindSimple('inp-pay-stateTaxPct','payroll','stateTaxPct','number');
-  document.querySelector('[data-deductions-list]').addEventListener('input', function(e){
-    var inp = e.target.closest('[data-role="ded-label"], [data-role="ded-amount"]');
-    if(!inp) return;
-    var item = (state.payroll.deductions||[]).find(function(x){ return x.id===inp.dataset.id; });
-    if(!item) return;
-    if(inp.dataset.role==='ded-label'){ item.label = inp.value; saveState(); }
-    else { item.amount = parseFloat(inp.value)||0; recalcAll(); }
-  });
-  document.querySelector('[data-deductions-list]').addEventListener('change', function(e){
-    var sel = e.target.closest('[data-role="ded-type"]');
-    if(!sel) return;
-    var item = (state.payroll.deductions||[]).find(function(x){ return x.id===sel.dataset.id; });
-    if(item){ item.pretax = sel.value==='pretax'; recalcAll(); }
-  });
+  bindSimple('inp-pay-health','payroll','health','number');
+  bindSimple('inp-pay-dentalVision','payroll','dentalVision','number');
+  bindSimple('inp-pay-fsaHsa','payroll','fsaHsa','number');
+  bindSimple('inp-pay-otherPretax','payroll','otherPretax','number');
 
   bindManualTax('inp-pay-fedTaxManual','fedTax');
   bindManualTax('inp-pay-stateTaxManual','stateTax');
