@@ -48,6 +48,13 @@ function getPrimaryType(ratings) {
   return 'kill';
 }
 
+const RATING_POINTS = { marry: 3, fuck: 2, kill: 1 };
+
+function getScore(ratings) {
+  if (!ratings || ratings.length === 0) return 0;
+  return ratings.reduce((sum, r) => sum + (RATING_POINTS[r.rating] || 0), 0);
+}
+
 function buildRankingString(ratings) {
   if (!ratings || ratings.length === 0) return '----';
   return ratings.map(r => r.rating[0].toUpperCase()).join('').padEnd(4, '-').slice(0, 8);
@@ -127,21 +134,15 @@ document.addEventListener('alpine:init', () => {
           ratings,
           rankingString: buildRankingString(ratings),
           primaryType: getPrimaryType(ratings),
+          score: getScore(ratings),
         };
       });
     },
 
     get sorted() {
-      const rank = { marry: 0, fuck: 1, kill: 2, unrated: 3 };
       return [...this.enriched].sort((a, b) => {
-        const d = rank[a.primaryType] - rank[b.primaryType];
-        if (d !== 0) return d;
-        if (a.primaryType !== 'unrated') {
-          const ac = a.ratings.filter(r => r.rating === a.primaryType).length;
-          const bc = b.ratings.filter(r => r.rating === b.primaryType).length;
-          if (bc !== ac) return bc - ac;
-          return b.ratings.length - a.ratings.length;
-        }
+        if (b.score !== a.score) return b.score - a.score;
+        if (b.ratings.length !== a.ratings.length) return b.ratings.length - a.ratings.length;
         return a.spot.localeCompare(b.spot);
       });
     },
