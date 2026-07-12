@@ -64,6 +64,24 @@ function ratingImg(type, size) {
   return `<img src="./${src}" width="${s}" height="${s}" alt="${type}" style="display:block;border-radius:50%;">`;
 }
 
+// ── HEIC/HEIF conversion (iPhone photos → browser-friendly JPEG) ─
+function isHeic(file) {
+  return /\.(heic|heif)$/i.test(file.name) || file.type === 'image/heic' || file.type === 'image/heif';
+}
+
+async function convertHeicIfNeeded(file) {
+  if (!isHeic(file)) return file;
+  try {
+    const result = await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.85 });
+    const blob = Array.isArray(result) ? result[0] : result;
+    const newName = file.name.replace(/\.(heic|heif)$/i, '.jpg');
+    return new File([blob], newName, { type: 'image/jpeg' });
+  } catch (err) {
+    console.error('HEIC conversion failed:', err);
+    return file;
+  }
+}
+
 // ── Alpine Store ────────────────────────────────────────────────
 document.addEventListener('alpine:init', () => {
 
@@ -642,7 +660,8 @@ document.addEventListener('alpine:init', () => {
       if (!sel) return;
       this.saving = true;
       try {
-        const [url] = await DB.uploadPhotos([file], sel.id);
+        const converted = await convertHeicIfNeeded(file);
+        const [url] = await DB.uploadPhotos([converted], sel.id);
         await this._applyNewImg(url);
         this.close();
       } catch (err) {
@@ -734,15 +753,16 @@ document.addEventListener('alpine:init', () => {
       this.uploading = false;
     },
 
-    addFiles(input) {
+    async addFiles(input) {
       const files = Array.from(input.files);
       const remaining = 6 - this.photos.length;
       const toAdd = files.slice(0, remaining);
-      toAdd.forEach(f => {
-        this.photos.push(f);
-        this.previews.push(URL.createObjectURL(f));
-      });
       input.value = '';
+      for (const f of toAdd) {
+        const converted = await convertHeicIfNeeded(f);
+        this.photos.push(converted);
+        this.previews.push(URL.createObjectURL(converted));
+      }
     },
 
     removePhoto(idx) {
@@ -904,8 +924,10 @@ document.addEventListener('alpine:init', () => {
       if (!file) return;
       input.value = '';
 
+      const converted = await convertHeicIfNeeded(file);
+
       // Apply cartoon filter via canvas
-      const filtered = await this._applyCartoonFilter(file);
+      const filtered = await this._applyCartoonFilter(converted);
       this.avatarFile = filtered;
       this.avatarPreview = URL.createObjectURL(filtered);
     },

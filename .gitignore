@@ -10,3 +10,7 @@ gbe/src-app/dist/
 # Environment
 .env
 .env.local
+
+# Firebase service account keys — never commit
+*firebase-adminsdk*.json
+*service-account*.json
