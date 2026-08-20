@@ -1,0 +1,1522 @@
+{
+  "meta": {
+    "last_updated": "2026-08-20",
+    "total_entries": 213,
+    "methodology": "Auto-published entries clear three checkable criteria: PubMed-indexed (real peer review), a recognized clinical evidence-hierarchy publication type (meta-analysis, systematic review, RCT, or clinical trial), and on-topic relevance. No score, no editorial-stance keyword weighting."
+  },
+  "studies": [
+    {
+      "id": "s001",
+      "source": "pubmed",
+      "title": "Updated trends in the global prevalence and burden of mental disorders, 1990-2023: a systematic analysis for the Global Burden of Disease Study 2023",
+      "authors": "GBD 2023 Mental Disorder Collaborators",
+      "journal": "Lancet",
+      "year": 2026,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42167272/",
+      "pubmed_id": "42167272",
+      "doi": null,
+      "plain_summary": "Updated trends in the global prevalence and burden of mental disorders, -: a systematic analysis for the Global Burden of Disease Study . GBD Mental Disorder Collaborators. Collaborators: Santomauro DF(), Miller PA(), Shadid J(), Wulf Hanson S(), Vo A(), Roy DJ(), Hagins H(), Mantilla Herrera AM(), Scott JG(), Erskine HE(), McGrath JJ(), Aalruz H(), Abbastabar H(), Abdel Razeq NMI(), Abdelgalil AA(), Abdolizadeh A(), Abdulah DM(), Abdulmalik AE(), Abebe MG(), Abebe M(),...",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "anxiety",
+        "epilepsy",
+        "depression",
+        "cancer",
+        "ms",
+        "als",
+        "autism",
+        "opioid",
+        "cbd-only"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "anxiety",
+        "epilepsy",
+        "depression",
+        "cancer-related",
+        "ms",
+        "als",
+        "autism",
+        "opioid-related"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s002",
+      "source": "pubmed",
+      "title": "Biological effects of Cannabidiol on normal human healthy cell populations: Systematic review of the literature",
+      "authors": "Pagano S, Coniglio M, Valenti C et al.",
+      "journal": "Biomed Pharmacother",
+      "year": 2020,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33038581/",
+      "pubmed_id": "33038581",
+      "doi": null,
+      "plain_summary": "Epub Oct . Biological effects of Cannabidiol on normal human healthy cell populations: Systematic review of the literature. Pagano S(), Coniglio M(), Valenti C(), Federici MI(), Lombardo G(), Cianetti S(), Marinucci L().",
+      "finding": "mixed",
+      "tags": [
+        "inflammation",
+        "cbd-only",
+        "safety",
+        "preclinical",
+        "dosing"
+      ],
+      "conditions": [
+        "inflammation"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=29",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s003",
+      "source": "pubmed",
+      "title": "Effects of cannabinoids on resting state functional brain connectivity: A systematic review",
+      "authors": "Lorenzetti V, Gaillard A, Thomson D et al.",
+      "journal": "Neurosci Biobehav Rev",
+      "year": 2023,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36563921/",
+      "pubmed_id": "36563921",
+      "doi": null,
+      "plain_summary": "Epub Dec . Effects of cannabinoids on resting state functional brain connectivity: A systematic review. Lorenzetti V(), Gaillard A(), Thomson D(), Englund A(), Freeman TP().",
+      "finding": "mixed",
+      "tags": [
+        "cbd-only",
+        "thc",
+        "preclinical"
+      ],
+      "conditions": [],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=318",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s004",
+      "source": "pubmed",
+      "title": "Cannabis-based products for pediatric epilepsy: A systematic review",
+      "authors": "Elliott J, DeJean D, Clifford T et al.",
+      "journal": "Epilepsia",
+      "year": 2019,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30515765/",
+      "pubmed_id": "30515765",
+      "doi": null,
+      "plain_summary": "Epub Dec . Cannabis-based products for pediatric epilepsy: A systematic review. Elliott J()(), DeJean D(), Clifford T()(), Coyle D(), Potter BK(), Skidmore B(), Alexander C(), Repetski AE(), Shukla V(), McCoy B()(), Wells GA()().",
+      "finding": "mixed",
+      "tags": [
+        "sleep",
+        "epilepsy",
+        "cbd-only",
+        "safety",
+        "preclinical",
+        "meta-analysis",
+        "rct"
+      ],
+      "conditions": [
+        "sleep",
+        "epilepsy"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=3",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s005",
+      "source": "pubmed",
+      "title": "Cannabidiol in the context of substance use disorder treatment: A systematic review",
+      "authors": "Paulus V, Billieux J, Benyamina A et al.",
+      "journal": "Addict Behav",
+      "year": 2022,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35580370/",
+      "pubmed_id": "35580370",
+      "doi": null,
+      "plain_summary": "Epub May . Cannabidiol in the context of substance use disorder treatment: A systematic review. Paulus V(), Billieux J(), Benyamina A(), Karila L().",
+      "finding": "mixed",
+      "tags": [
+        "anxiety",
+        "epilepsy",
+        "opioid",
+        "cbd-only"
+      ],
+      "conditions": [
+        "anxiety",
+        "epilepsy",
+        "opioid-related"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s006",
+      "source": "pubmed",
+      "title": "Cannabis use and social anxiety in young adulthood: A meta-analysis",
+      "authors": "Single A, Bilevicius E, Ho V et al.",
+      "journal": "Addict Behav",
+      "year": 2022,
+      "study_type": "meta_analysis",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35184002/",
+      "pubmed_id": "35184002",
+      "doi": null,
+      "plain_summary": "Epub Feb . Cannabis use and social anxiety in young adulthood: A meta-analysis. Single A(), Bilevicius E(), Ho V(), Theule J(), Buckner JD(), Mota N(), Keough MT().",
+      "finding": "mixed",
+      "tags": [
+        "anxiety",
+        "preclinical",
+        "meta-analysis"
+      ],
+      "conditions": [
+        "anxiety"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s007",
+      "source": "pubmed",
+      "title": "Cannabinoids for the treatment of dementia",
+      "authors": "Bosnjak Kuharic D, Markovic D, Brkovic T et al.",
+      "journal": "Cochrane Database Syst Rev",
+      "year": 2021,
+      "study_type": "meta_analysis",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34532852/",
+      "pubmed_id": "34532852",
+      "doi": null,
+      "plain_summary": "rkovic D(), Brkovic T(), Jeric Kegalj M(), Rubic Z(), Vuica Vukasovic A(), Jeroncic A(), Puljak L().",
+      "finding": "mixed",
+      "tags": [
+        "cbd-only",
+        "thc",
+        "safety",
+        "ecs",
+        "preclinical",
+        "dosing",
+        "meta-analysis",
+        "rct"
+      ],
+      "conditions": [],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=17",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s008",
+      "source": "pubmed",
+      "title": "The efficacy and safety of cannabinoids for the treatment of mental disorders and substance use disorders: a systematic review and meta-analysis",
+      "authors": "Wilson J, Dobson O, Langcake A et al.",
+      "journal": "Lancet Psychiatry",
+      "year": 2026,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41856154/",
+      "pubmed_id": "41856154",
+      "doi": null,
+      "plain_summary": "Epub Mar . The efficacy and safety of cannabinoids for the treatment of mental disorders and substance use disorders: a systematic review and meta-analysis. Wilson J(), Dobson O(), Langcake A(), Mishra P(), Bryant Z(), Leung J(), Dawson D(), Graham M(), Teesson M(), Freeman TP(), Hall W(), Chan GCK(), Stockings E().",
+      "finding": "mixed",
+      "tags": [
+        "anxiety",
+        "ptsd",
+        "sleep",
+        "depression",
+        "autism",
+        "opioid",
+        "cbd-only",
+        "thc",
+        "safety",
+        "preclinical"
+      ],
+      "conditions": [
+        "anxiety",
+        "ptsd",
+        "sleep",
+        "depression",
+        "autism",
+        "opioid-related"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=2477",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s009",
+      "source": "pubmed",
+      "title": "Cannabinoids in Treating Parkinson's Disease Symptoms: A Systematic Review of Clinical Studies",
+      "authors": "Varshney K, Patel A, Ansari S et al.",
+      "journal": "Cannabis Cannabinoid Res",
+      "year": 2023,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37253174/",
+      "pubmed_id": "37253174",
+      "doi": null,
+      "plain_summary": "Epub May . Cannabinoids in Treating Parkinson's Disease Symptoms: A Systematic Review of Clinical Studies. Varshney K()(), Patel A(), Ansari S(), Shet P(), Panag SS().",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "parkinson",
+        "cbd-only",
+        "thc",
+        "safety",
+        "preclinical",
+        "dosing"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "parkinson"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s010",
+      "source": "pubmed",
+      "title": "Effects of cannabidiol on brain excitation and inhibition systems; a randomised placebo-controlled single dose trial during magnetic resonance spectroscopy in adults with and without autism spectrum disorder",
+      "authors": "Pretzsch CM, Freyberg J, Voinescu B et al.",
+      "journal": "Neuropsychopharmacology",
+      "year": 2019,
+      "study_type": "rct",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30758329/",
+      "pubmed_id": "30758329",
+      "doi": null,
+      "plain_summary": "Epub Feb . Effects of cannabidiol on brain excitation and inhibition systems; a randomised placebo-controlled single dose trial during magnetic resonance spectroscopy in adults with and without autism spectrum disorder. Pretzsch CM(), Freyberg J(), Voinescu B(), Lythgoe D(), Horder J(), Mendez MA(), Wichers R(), Ajram L(), Ivin G(), Heasman M(), Edden RAE(), Williams S(), Murphy DGM(), Daly E(), McAlonan GM().",
+      "finding": "mixed",
+      "tags": [
+        "autism",
+        "cbd-only",
+        "preclinical",
+        "dosing"
+      ],
+      "conditions": [
+        "autism"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s011",
+      "source": "pubmed",
+      "title": "Treating insomnia symptoms with medicinal cannabis: a randomized, crossover trial of the efficacy of a cannabinoid medicine compared with placebo",
+      "authors": "Walsh JH, Maddison KJ, Rankin T et al.",
+      "journal": "Sleep",
+      "year": 2021,
+      "study_type": "rct",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34115851/",
+      "pubmed_id": "34115851",
+      "doi": null,
+      "plain_summary": "crossover trial of the efficacy of a cannabinoid medicine compared with placebo. Walsh JH()(), Maddison KJ()(), Rankin T(), Murray K(), McArdle N()(), Ree MJ()(), Hillman DR()(), Eastwood PR()()().",
+      "finding": "mixed",
+      "tags": [
+        "sleep",
+        "safety",
+        "preclinical",
+        "rct"
+      ],
+      "conditions": [
+        "sleep"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=20",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s012",
+      "source": "pubmed",
+      "title": "Efficacy and safety of cannabidiol oil in psoriasis: a randomized, double-blind, placebo-controlled trial",
+      "authors": "Roongpisuthipong W, Klangjareonchai T, Kurathong S et al.",
+      "journal": "J Dermatolog Treat",
+      "year": 2026,
+      "study_type": "rct",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41459647/",
+      "pubmed_id": "41459647",
+      "doi": null,
+      "plain_summary": "Epub Dec . Efficacy and safety of cannabidiol oil in psoriasis: a randomized, double-blind, placebo-controlled trial. Roongpisuthipong W(), Klangjareonchai T(), Kurathong S(), Roongpisuthipong A().",
+      "finding": "mixed",
+      "tags": [
+        "sleep",
+        "inflammation",
+        "cbd-only",
+        "safety",
+        "preclinical",
+        "dosing",
+        "rct"
+      ],
+      "conditions": [
+        "sleep",
+        "inflammation"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=28",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s013",
+      "source": "pubmed",
+      "title": "Cannabinoids in multiple sclerosis: A neurophysiological analysis",
+      "authors": "Vecchio D, Varrasi C, Virgilio E et al.",
+      "journal": "Acta Neurol Scand",
+      "year": 2020,
+      "study_type": "clinical_trial",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32632918/",
+      "pubmed_id": "32632918",
+      "doi": null,
+      "plain_summary": "Epub Jul . Cannabinoids in multiple sclerosis: A neurophysiological analysis. Vecchio D(), Varrasi C(), Virgilio E(), Spagarino A(), Naldi P(), Cantello R().",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "ms",
+        "cbd-only",
+        "thc",
+        "preclinical"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "ms"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=15",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s014",
+      "source": "pubmed",
+      "title": "Cannabidiol as a Treatment for Mood Disorders: A Systematic Review",
+      "authors": "Pinto JV, Saraf G, Frysch C et al.",
+      "journal": "Can J Psychiatry",
+      "year": 2020,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31830820/",
+      "pubmed_id": "31830820",
+      "doi": null,
+      "plain_summary": "Epub Dec . Cannabidiol as a Treatment for Mood Disorders: A Systematic Review. Pinto JV()(), Saraf G(), Frysch C(), Vigo D(), Keramatian K(), Chakrabarty T(), Lam RW(), Kauer-Sant'Anna M(), Yatham LN().",
+      "finding": "mixed",
+      "tags": [
+        "anxiety",
+        "depression",
+        "cbd-only",
+        "thc",
+        "preclinical"
+      ],
+      "conditions": [
+        "anxiety",
+        "depression"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s015",
+      "source": "pubmed",
+      "title": "Are cannabinoids effective in multiple sclerosis?",
+      "authors": "Meza R, Peña J, García K et al.",
+      "journal": "Medwave",
+      "year": 2017,
+      "study_type": "meta_analysis",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28306712/",
+      "pubmed_id": "28306712",
+      "doi": null,
+      "plain_summary": "ish, Spanish; Abstract available in Spanish from the publisher] Meza R(), Peña J(), García K(), Corsi O(), Rada G().",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "ms",
+        "safety",
+        "preclinical",
+        "meta-analysis"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "ms"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=35",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s016",
+      "source": "pubmed",
+      "title": "Cannabidiol for Scan-Related Anxiety in Women With Advanced Breast Cancer: A Randomized Clinical Trial",
+      "authors": "Nayak MM, Chai P, Catalano PJ et al.",
+      "journal": "JAMA Netw Open",
+      "year": 2024,
+      "study_type": "rct",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39680411/",
+      "pubmed_id": "39680411",
+      "doi": null,
+      "plain_summary": "ed Breast Cancer: A Randomized Clinical Trial. Nayak MM()(), Chai P()()()()(), Catalano PJ()(), Pirl WF()()(), Tulsky JA()()(), Tung SC()()(), Lin NU()(), Andrade N(), Johns S(), Vaz C(), Hughes M(), Braun IM()()().",
+      "finding": "mixed",
+      "tags": [
+        "anxiety",
+        "cancer",
+        "cbd-only",
+        "balanced",
+        "safety",
+        "preclinical",
+        "dosing"
+      ],
+      "conditions": [
+        "anxiety",
+        "cancer-related"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "balanced"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=50",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s017",
+      "source": "pubmed",
+      "title": "Impact of cannabidiol on myocardial recovery in patients with acute myocarditis: primary results of the ARCHER study",
+      "authors": "McNamara DM, Cooper LT, Friedrich MG et al.",
+      "journal": "ESC Heart Fail",
+      "year": 2026,
+      "study_type": "rct",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41711722/",
+      "pubmed_id": "41711722",
+      "doi": null,
+      "plain_summary": "Impact of cannabidiol on myocardial recovery in patients with acute myocarditis: primary results of the ARCHER study. McNamara DM(), Cooper LT(), Friedrich MG()()(), Arbel Y(), Bhimaraj A()(), Bocchi E(), Hamer A(), Herdy AH(), Kerneis M()(), Liu PP(), Parker AB(), Pocock SJ(), Smith ER(), Tang WHW(), Torre-Amione G()(), Tschöpe C()()(); ARCHER Study Group. Collaborators: Herdy AH, Avancini Caramori PR, Bocch E, Moura L, Macedo AVS, Vieira Moreira MDC, de Albuquerque DC,...",
+      "finding": "mixed",
+      "tags": [
+        "inflammation",
+        "cbd-only",
+        "preclinical",
+        "dosing",
+        "rct"
+      ],
+      "conditions": [
+        "inflammation"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=109",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s018",
+      "source": "pubmed",
+      "title": "Analgesic Effect of Cannabinoids for Fibromyalgia: A Systematic Review and Meta-Analysis",
+      "authors": "Lam PM, Wang F, Shing CH et al.",
+      "journal": "Pain Physician",
+      "year": 2026,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42013320/",
+      "pubmed_id": "42013320",
+      "doi": null,
+      "plain_summary": "Apr;():-. Analgesic Effect of Cannabinoids for Fibromyalgia: A Systematic Review and Meta-Analysis. Lam PM(), Wang F()(), Shing CH(), Ho HC(), Russo M(), Ching Wong SS()().",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "anxiety",
+        "sleep",
+        "depression",
+        "fibromyalgia",
+        "safety",
+        "preclinical",
+        "meta-analysis",
+        "rct"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "anxiety",
+        "sleep",
+        "depression",
+        "fibromyalgia"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=248",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s019",
+      "source": "pubmed",
+      "title": "Effects of Cannabidiol on Social Relating, Anxiety, and Parental Stress in Autistic Children: A Randomized Controlled Crossover Trial",
+      "authors": "Parrella NF, Hill AT, Enticott PG et al.",
+      "journal": "Autism Res",
+      "year": 2026,
+      "study_type": "rct",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41452412/",
+      "pubmed_id": "41452412",
+      "doi": null,
+      "plain_summary": "Epub Dec . Effects of Cannabidiol on Social Relating, Anxiety, and Parental Stress in Autistic Children: A Randomized Controlled Crossover Trial. Parrella NF(), Hill AT(), Enticott PG(), Botha T(), Catchlove S(), Downey L(), Ford TC()().",
+      "finding": "mixed",
+      "tags": [
+        "anxiety",
+        "sleep",
+        "autism",
+        "cbd-only",
+        "safety",
+        "preclinical",
+        "dosing",
+        "rct"
+      ],
+      "conditions": [
+        "anxiety",
+        "sleep",
+        "autism"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s020",
+      "source": "pubmed",
+      "title": "A randomized clinical trial of low-dose cannabis extract in Alzheimer's disease",
+      "authors": "Cury RM, da Silva T, Cezar-Dos-Santos F et al.",
+      "journal": "J Alzheimers Dis",
+      "year": 2025,
+      "study_type": "rct",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41160460/",
+      "pubmed_id": "41160460",
+      "doi": null,
+      "plain_summary": "Epub Oct . A randomized clinical trial of low-dose cannabis extract in Alzheimer's disease. Cury RM(), da Silva T(), Cezar-Dos-Santos F(), Fakih YRC(), Narvaez KAR(), Gouvea MC(), Espínola C(), Ferreira CF(), de Castro WAC(), Pamplona FA(), Silva EGD(), Bicca MA()(), Nascimento FP().",
+      "finding": "mixed",
+      "tags": [
+        "balanced",
+        "safety",
+        "preclinical",
+        "dosing",
+        "rct"
+      ],
+      "conditions": [],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s021",
+      "source": "pubmed",
+      "title": "Cannabis for the treatment of ulcerative colitis",
+      "authors": "Kafil TS, Nguyen TM, MacDonald JK et al.",
+      "journal": "Cochrane Database Syst Rev",
+      "year": 2018,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30406638/",
+      "pubmed_id": "30406638",
+      "doi": null,
+      "plain_summary": "n TM, MacDonald JK, Chande N.",
+      "finding": "mixed",
+      "tags": [
+        "ibd",
+        "cbd-only",
+        "thc",
+        "safety",
+        "preclinical",
+        "dosing",
+        "rct"
+      ],
+      "conditions": [
+        "ibd"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=60",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s022",
+      "source": "pubmed",
+      "title": "Cannabis-Based Products for Chronic Pain : A Systematic Review",
+      "authors": "McDonagh MS, Morasco BJ, Wagner J et al.",
+      "journal": "Ann Intern Med",
+      "year": 2022,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35667066/",
+      "pubmed_id": "35667066",
+      "doi": null,
+      "plain_summary": "Epub Jun . Cannabis-Based Products for Chronic Pain : A Systematic Review. McDonagh MS(), Morasco BJ(), Wagner J(), Ahmed AY(), Fu R(), Kansagara D(), Chou R().",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "neuropathy",
+        "balanced",
+        "full-spectrum",
+        "safety",
+        "preclinical"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "neuropathic-pain"
+      ],
+      "cannabinoids": [
+        "balanced",
+        "full-spectrum"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=1740",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s023",
+      "source": "pubmed",
+      "title": "The Safety and Efficacy of Marijuana in Persons Living with HIV",
+      "authors": "Charron CB, Leung JM",
+      "journal": "AIDS Rev",
+      "year": 2019,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31332397/",
+      "pubmed_id": "31332397",
+      "doi": null,
+      "plain_summary": "arron CB(), Leung JM()().",
+      "finding": "mixed",
+      "tags": [
+        "inflammation",
+        "cbd-only",
+        "thc",
+        "mechanism",
+        "safety",
+        "preclinical"
+      ],
+      "conditions": [
+        "inflammation"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s024",
+      "source": "pubmed",
+      "title": "Cannabinoids, the Blood-Brain Barrier, and Neurodegeneration: Mechanisms, Dysregulation, and Therapeutic Perspectives",
+      "authors": "Ben-Shabat S, Yarmolinsky L, Sharon N et al.",
+      "journal": "Biomolecules",
+      "year": 2026,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41750294/",
+      "pubmed_id": "41750294",
+      "doi": null,
+      "plain_summary": "s, Dysregulation, and Therapeutic Perspectives. Ben-Shabat S(), Yarmolinsky L(), Sharon N(), Zeadnaa-Aldda T(), Dayan S(), Khalfin B(), Fleisher-Berkovich S().",
+      "finding": "mixed",
+      "tags": [
+        "ms",
+        "parkinson",
+        "mechanism",
+        "safety",
+        "ecs",
+        "preclinical"
+      ],
+      "conditions": [
+        "ms",
+        "parkinson"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s025",
+      "source": "pubmed",
+      "title": "Patient-reported benefits from nabiximols treatment in multiple sclerosis-related spasticity exceed conventional measures",
+      "authors": "Haupts MR, Essner U, Mäurer M",
+      "journal": "Neurodegener Dis Manag",
+      "year": 2024,
+      "study_type": "clinical_trial",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38318862/",
+      "pubmed_id": "38318862",
+      "doi": null,
+      "plain_summary": "Epub Feb . Patient-reported benefits from nabiximols treatment in multiple sclerosis-related spasticity exceed conventional measures. Haupts MR(), Essner U(), Mäurer M().",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "sleep",
+        "ms",
+        "balanced",
+        "safety",
+        "preclinical"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "sleep",
+        "ms"
+      ],
+      "cannabinoids": [
+        "balanced"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=51",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s026",
+      "source": "pubmed",
+      "title": "Therapeutic Potential for Cannabidiol on Alzheimer's Disease-Related Neuroinflammation: A Systematic Review and Meta-Analysis",
+      "authors": "Wu S, Rajiah T, Ali AB",
+      "journal": "Int J Mol Sci",
+      "year": 2025,
+      "study_type": "meta_analysis",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41465389/",
+      "pubmed_id": "41465389",
+      "doi": null,
+      "plain_summary": "euroinflammation: A Systematic Review and Meta-Analysis. Wu S(), Rajiah T(), Ali AB().",
+      "finding": "mixed",
+      "tags": [
+        "inflammation",
+        "cancer",
+        "cbd-only",
+        "mechanism",
+        "safety",
+        "preclinical",
+        "meta-analysis"
+      ],
+      "conditions": [
+        "inflammation",
+        "cancer-related"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s027",
+      "source": "pubmed",
+      "title": "The Pleiotropic Influence of Cannabidiol and Tetrahydrocannabinol on Inflammatory Biomarkers: A Systematic Review and Meta-Analytical Synthesis",
+      "authors": "Candeloro BM, de Oliveira CM, Gimenez FVM et al.",
+      "journal": "Int J Mol Sci",
+      "year": 2025,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41373770/",
+      "pubmed_id": "41373770",
+      "doi": null,
+      "plain_summary": "nflammatory Biomarkers: A Systematic Review and Meta-Analytical Synthesis. Candeloro BM(), de Oliveira CM(), Gimenez FVM()(), Barbosa MPCN(), Soares BP(), Ruiz ACF(), Folegatti DRMA(), Barbalho SM()()()(), Oliveira NS(), Porto AA(), Garner DM(), Sousa FH(), Valenti VE().",
+      "finding": "mixed",
+      "tags": [
+        "inflammation",
+        "cbd-only",
+        "thc",
+        "preclinical"
+      ],
+      "conditions": [
+        "inflammation"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s028",
+      "source": "pubmed",
+      "title": "A Systematic Review and Meta-Analysis on the Effects of Exercise on the Endocannabinoid System",
+      "authors": "Desai S, Borg B, Cuttler C et al.",
+      "journal": "Cannabis Cannabinoid Res",
+      "year": 2022,
+      "study_type": "meta_analysis",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34870469/",
+      "pubmed_id": "34870469",
+      "doi": null,
+      "plain_summary": "Epub Dec . A Systematic Review and Meta-Analysis on the Effects of Exercise on the Endocannabinoid System. Desai S(), Borg B(), Cuttler C(), Crombie KM(), Rabinak CA()()()(), Hill MN(), Marusak HA()().",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "anxiety",
+        "ptsd",
+        "depression",
+        "ecs",
+        "preclinical",
+        "meta-analysis"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "anxiety",
+        "ptsd",
+        "depression"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s029",
+      "source": "pubmed",
+      "title": "Cannabinoid treatment for autism: a proof-of-concept randomized trial",
+      "authors": "Aran A, Harel M, Cassuto H et al.",
+      "journal": "Mol Autism",
+      "year": 2021,
+      "study_type": "rct",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33536055/",
+      "pubmed_id": "33536055",
+      "doi": null,
+      "plain_summary": "Aran A(), Harel M(), Cassuto H(), Polyansky L(), Schnapp A(), Wattad N(), Shmueli D(), Golan D(), Castellanos FX().",
+      "finding": "mixed",
+      "tags": [
+        "autism",
+        "cbd-only",
+        "thc",
+        "safety",
+        "ecs",
+        "preclinical",
+        "rct"
+      ],
+      "conditions": [
+        "autism"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=150",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s030",
+      "source": "pubmed",
+      "title": "Acute effects of cannabigerol on anxiety, stress, and mood: a double-blind, placebo-controlled, crossover, field trial",
+      "authors": "Cuttler C, Stueber A, Cooper ZD et al.",
+      "journal": "Sci Rep",
+      "year": 2024,
+      "study_type": "rct",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39003387/",
+      "pubmed_id": "39003387",
+      "doi": null,
+      "plain_summary": "ind, placebo-controlled, crossover, field trial. Cuttler C(), Stueber A(), Cooper ZD(), Russo E().",
+      "finding": "mixed",
+      "tags": [
+        "anxiety",
+        "depression",
+        "preclinical",
+        "rct"
+      ],
+      "conditions": [
+        "anxiety",
+        "depression"
+      ],
+      "cannabinoids": [
+        "cbg"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s031",
+      "source": "pubmed",
+      "title": "Cannabidiol treatment in hand osteoarthritis and psoriatic arthritis: a randomized, double-blind, placebo-controlled trial",
+      "authors": "Vela J, Dreyer L, Petersen KK et al.",
+      "journal": "Pain",
+      "year": 2022,
+      "study_type": "rct",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34510141/",
+      "pubmed_id": "34510141",
+      "doi": null,
+      "plain_summary": "Epub Aug . Cannabidiol treatment in hand osteoarthritis and psoriatic arthritis: a randomized, double-blind, placebo-controlled trial. Vela J()(), Dreyer L()(), Petersen KK(), Arendt-Nielsen L(), Duch KS(), Kristensen S()().",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "anxiety",
+        "sleep",
+        "depression",
+        "cbd-only",
+        "safety",
+        "preclinical",
+        "rct"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "anxiety",
+        "sleep",
+        "depression"
+      ],
+      "cannabinoids": [
+        "cbd"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s032",
+      "source": "pubmed",
+      "title": "Cannabidiol (CBD) use in psychiatric disorders: A systematic review",
+      "authors": "Bonaccorso S, Ricciardi A, Zangani C et al.",
+      "journal": "Neurotoxicology",
+      "year": 2019,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31412258/",
+      "pubmed_id": "31412258",
+      "doi": null,
+      "plain_summary": "Epub Aug . Cannabidiol (CBD) use in psychiatric disorders: A systematic review. Bonaccorso S(), Ricciardi A(), Zangani C(), Chiappini S(), Schifano F().",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "anxiety",
+        "ptsd",
+        "sleep",
+        "cbd-only",
+        "thc",
+        "safety",
+        "preclinical",
+        "rct"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "anxiety",
+        "ptsd",
+        "sleep"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=1301",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s033",
+      "source": "pubmed",
+      "title": "Interventions for generalized anxiety disorder",
+      "authors": "Byrne GJ",
+      "journal": "Curr Opin Psychiatry",
+      "year": 2023,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36705012/",
+      "pubmed_id": "36705012",
+      "doi": null,
+      "plain_summary": "Epub Dec . Interventions for generalized anxiety disorder. Byrne GJ()().",
+      "finding": "mixed",
+      "tags": [
+        "anxiety",
+        "depression",
+        "cbd-only",
+        "thc"
+      ],
+      "conditions": [
+        "anxiety",
+        "depression"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s034",
+      "source": "pubmed",
+      "title": "Therapeutic potential of cannabinoids in neurological conditions: a systematic review of clinical trials",
+      "authors": "Hakami AY, Alshehri FS",
+      "journal": "Front Pharmacol",
+      "year": 2025,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39981181/",
+      "pubmed_id": "39981181",
+      "doi": null,
+      "plain_summary": "eCollection . Therapeutic potential of cannabinoids in neurological conditions: a systematic review of clinical trials. Hakami AY()(), Alshehri FS().",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "epilepsy",
+        "ms",
+        "fibromyalgia",
+        "parkinson",
+        "cbd-only",
+        "thc",
+        "safety",
+        "preclinical",
+        "dosing"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "epilepsy",
+        "ms",
+        "fibromyalgia",
+        "parkinson"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s035",
+      "source": "pubmed",
+      "title": "The Effects of Cannabinoids on Pro- and Anti-Inflammatory Cytokines: A Systematic Review of In Vivo Studies",
+      "authors": "Henshaw FR, Dewsbury LS, Lim CK et al.",
+      "journal": "Cannabis Cannabinoid Res",
+      "year": 2021,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33998900/",
+      "pubmed_id": "33998900",
+      "doi": null,
+      "plain_summary": "Epub Apr . The Effects of Cannabinoids on Pro- and Anti-Inflammatory Cytokines: A Systematic Review of In Vivo Studies. Henshaw FR()(), Dewsbury LS(), Lim CK(), Steiner GZ()().",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "neuropathy",
+        "inflammation",
+        "cancer",
+        "cbd-only",
+        "thc",
+        "preclinical"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "neuropathic-pain",
+        "inflammation",
+        "cancer-related"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc",
+        "cbg"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=20",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s036",
+      "source": "pubmed",
+      "title": "Pharmacokinetics of Cannabidiol: A Systematic Review and Meta-Regression Analysis",
+      "authors": "Moazen-Zadeh E, Chisholm A, Bachi K et al.",
+      "journal": "Cannabis Cannabinoid Res",
+      "year": 2024,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37643301/",
+      "pubmed_id": "37643301",
+      "doi": null,
+      "plain_summary": "Epub Aug . Pharmacokinetics of Cannabidiol: A Systematic Review and Meta-Regression Analysis. Moazen-Zadeh E()(), Chisholm A()()(), Bachi K()()(), Hurd YL()()().",
+      "finding": "mixed",
+      "tags": [
+        "cbd-only",
+        "balanced",
+        "preclinical",
+        "dosing"
+      ],
+      "conditions": [],
+      "cannabinoids": [
+        "cbd",
+        "balanced"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=14",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s037",
+      "source": "pubmed",
+      "title": "Cannabinoids in Urology. Which Benign Conditions Might They Be Appropriate to Treat: A Systematic Review",
+      "authors": "Taylor C, Birch B",
+      "journal": "Urology",
+      "year": 2021,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33129871/",
+      "pubmed_id": "33129871",
+      "doi": null,
+      "plain_summary": "Cannabinoids in Urology. Which Benign Conditions Might They Be Appropriate to Treat: A Systematic Review. Taylor C(), Birch B().",
+      "finding": "mixed",
+      "tags": [],
+      "conditions": [],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": true,
+      "auto_publish": true,
+      "review_reason": null,
+      "approved": true
+    },
+    {
+      "id": "s038",
+      "source": "pubmed",
+      "title": "Does cannabidiol reduce the adverse effects of cannabis in schizophrenia? A randomised, double-blind, cross-over trial",
+      "authors": "Chesney E, Oliver D, Sarma A et al.",
+      "journal": "Neuropsychopharmacology",
+      "year": 2025,
+      "study_type": "rct",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40702165/",
+      "pubmed_id": "40702165",
+      "doi": null,
+      "plain_summary": 
