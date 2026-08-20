@@ -742,29 +742,40 @@
     }
 
     // ── Card template ──
+    // Presented like a book jacket: title as the headline, the summary
+    // as the blurb (the part worth reading), citation info compact and
+    // secondary. A study with no PubMed/OpenAlex abstract on file gets
+    // an honest, visually distinct note instead of blank space.
     function renderCard(s) {
       const displayTags = (s.tags || []).slice(0, 5);
       const pubmedLink  = s.pubmed_id
         ? `<a class="card2-link" href="https://pubmed.ncbi.nlm.nih.gov/${s.pubmed_id}/" target="_blank" rel="noopener">PubMed →</a>`
         : (s.url ? `<a class="card2-link" href="${s.url}" target="_blank" rel="noopener">Source →</a>` : '');
 
+      const hasSample  = s.sample_size && s.sample_size !== 'See source';
+      const summary    = s.plain_summary || '';
+      const noAbstract = summary.startsWith('No abstract on file');
+
+      // Byline: lead author + "et al." (already trimmed to 3 names by the
+      // pipeline) then journal, joined with a middle dot to match the
+      // site's own separator style — one compact line, not a name dump.
+      const bylineParts = [s.authors, s.journal].filter(Boolean);
+
       return `
       <div class="study-card2">
         <div class="card2-toprow">
           <div class="card2-finding-badge ${s.finding}" title="${findingLabel[s.finding]||''} finding"></div>
           <span class="card2-type-label">${typeLabels[s.study_type] || s.study_type || ''}</span>
+          ${hasSample ? `<span class="card2-sample-pill">${s.sample_size}</span>` : ''}
           <span class="card2-year">${s.year || ''}</span>
         </div>
         <p class="card2-title">
           <a href="${s.url || '#'}" target="_blank" rel="noopener">${s.title}</a>
         </p>
-        <div class="card2-byline">
-          ${s.authors ? `${s.authors} — ` : ''}<em>${s.journal || ''}</em>
-        </div>
-        <p class="card2-summary">${s.plain_summary || ''}</p>
+        <div class="card2-byline">${bylineParts.join(' · ')}</div>
+        <p class="card2-summary${noAbstract ? ' card2-summary--empty' : ''}">${summary}</p>
         <div class="card2-bottom">
           <div class="card2-tags">
-            ${s.sample_size && s.sample_size !== 'See source' ? `<span class="card2-meta-pill">${s.sample_size}</span>` : ''}
             ${displayTags.map(t => `<span class="card2-tag">${t}</span>`).join('')}
           </div>
           ${pubmedLink}

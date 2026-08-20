@@ -48,6 +48,7 @@ Config: edit the CONFIG block below.
 import json, time, re, os, argparse
 from datetime import datetime, date, timedelta
 import urllib.request, urllib.parse
+import xml.etree.ElementTree as ET
  
 # ═══════════════════════════════════════════
 #  CONFIG — edit this section
@@ -242,17 +243,44 @@ def is_on_topic(title, abstract):
     return any(term in full_text for term in CORE_TOPIC_TERMS)
  
  
+def finalize_summary_text(section):
+    """
+    Shared cleanup + truncation for any summary/conclusion text, whether
+    it came from PubMed's own <AbstractText Label="CONCLUSIONS"> tag or
+    from the regex fallback in extract_conclusion().
+    """
+    if not section:
+        return ""
+    # Strip bracketed citation markers like [12] or [12,13] — NOT bare
+    # numbers, which are load-bearing in scientific text (sample sizes,
+    # percentages, doses, years). A blanket digit-strip here previously
+    # mangled every summary that survived this far.
+    section = re.sub(r"\[\d+(?:\s*[,\-–]\s*\d+)*\]", "", section)
+    section = re.sub(r"(PMID|doi|DOI|PMCID):[\s\S]{0,80}", "", section)
+    section = re.sub(r"https?://\S+", "", section)
+    section = re.sub(r"\s{2,}", " ", section).strip()
+    if len(section) > 480:
+        section = section[:480].rsplit(" ", 1)[0] + "..."
+    return section
+
+
 def extract_conclusion(abstract):
     """
     Pull the CONCLUSIONS/INTERPRETATION section of a structured abstract
     specifically, instead of grabbing the first few sentences (which are
     usually background/methods). Falls back to the last portion of the
     abstract if no structured section is found.
+
+    Only used as a fallback now — pubmed_abstract() already returns
+    PubMed's own labeled CONCLUSIONS text directly when the abstract is
+    structured, which is more reliable than this regex scan. This still
+    runs for unstructured abstracts and for OpenAlex entries (which have
+    no XML labels to draw on).
     """
     if not abstract:
         return ""
     text = re.sub(r"Author information:.*", "", abstract, flags=re.IGNORECASE | re.DOTALL)
- 
+
     m = re.search(
         r"(?:CONCLUSIONS?|INTERPRETATION|CLINICAL\s+(?:IMPLICATIONS|RELEVANCE))[S]?:?\s*(.+?)"
         r"(?:\n\n|(?:BACKGROUND|OBJECTIVE|METHODS?|RESULTS?|PMID|DOI):|$)",
@@ -263,16 +291,28 @@ def extract_conclusion(abstract):
     else:
         # No structured section — use the back half of the abstract, which
         # is where conclusions conventionally land in unstructured abstracts.
-        sentences = re.split(r"(?<=[.!?])\s+", text.strip())
+        #
+        # Split only at a period/!/? that's followed by a capital letter.
+        # A plain "split after any [.!?]" treats decimals (2.5 mg),
+        # abbreviations (e.g., et al., vs.), and stats notation (P <.05)
+        # as sentence ends, which fragments the text and can leave
+        # "last 3 sentences" starting mid-sentence, lowercase, no subject.
+        sentences = re.split(r"(?<=[.!?])\s+(?=[A-Z])", text.strip())
         section = " ".join(sentences[max(0, len(sentences) - 3):])
- 
-    section = re.sub(r"\[?\d+\]?", "", section)
-    section = re.sub(r"(PMID|doi|DOI|PMCID):[\s\S]{0,80}", "", section)
-    section = re.sub(r"https?://\S+", "", section)
-    section = re.sub(r"\s{2,}", " ", section).strip()
-    if len(section) > 480:
-        section = section[:480].rsplit(" ", 1)[0] + "..."
-    return section
+
+        # Safety net: if it still starts lowercase, the split was still
+        # wrong somewhere — widen the window before giving up, rather
+        # than ever publish a summary that opens mid-sentence.
+        tries = 0
+        while section and section[0].islower() and tries < len(sentences):
+            tries += 1
+            section = " ".join(sentences[max(0, len(sentences) - 3 - tries):])
+        if section and section[0].islower():
+            # Whole thing is apparently one dense run-on — use the full
+            # cleaned abstract rather than an unfixably broken fragment.
+            section = text.strip()
+
+    return finalize_summary_text(section)
  
  
 def infer_finding_from_conclusion(conclusion_text):
@@ -418,10 +458,50 @@ def pubmed_details(pmids):
     except: return []
  
 def pubmed_abstract(pmid):
-    raw = fetch_url(pm_url("efetch.fcgi", {"db":"pubmed","id":pmid,"retmode":"text","rettype":"abstract"}))
-    return raw.strip() if raw else ""
+    """
+    Fetch the abstract via efetch XML, not plain text.
+
+    The old text-format fetch returned the full MEDLINE citation block —
+    dateline, title, author list, "Author information:" affiliations,
+    THEN the actual abstract. clean_title_case() stripped everything
+    from "Author information:" onward to remove the affiliations, which
+    also deleted the real abstract sitting right after it — every
+    downstream summary was built from title + author names, not science.
+
+    XML separates <AbstractText> (the actual abstract, with a Label
+    attribute like "CONCLUSIONS" on structured abstracts) from
+    <Affiliation> (author info) at the schema level, so there's no
+    regex guessing involved. Returns (full_abstract_text, labeled_conclusion).
+    labeled_conclusion is the CONCLUSIONS/INTERPRETATION section text
+    directly from PubMed's own structure when present, else None.
+    """
+    raw = fetch_url(pm_url("efetch.fcgi", {"db":"pubmed","id":pmid,"retmode":"xml","rettype":"abstract"}))
+    if not raw:
+        return "", None
+    try:
+        root = ET.fromstring(raw)
+    except ET.ParseError:
+        return "", None
+
+    parts, labeled_conclusion = [], None
+    for el in root.findall(".//AbstractText"):
+        text = "".join(el.itertext()).strip()
+        if not text:
+            continue
+        label = (el.get("Label") or "").strip()
+        parts.append(f"{label}: {text}" if label else text)
+        # Substring match, not exact — PubMed's structured-abstract labels
+        # vary a lot ("CONCLUSION", "CONCLUSIONS AND RELEVANCE", "CLINICAL
+        # RELEVANCE", "INTERPRETATION", "SIGNIFICANCE"...). An exact-match
+        # set was silently missing most of these and dumping them into the
+        # much less reliable sentence-splitting fallback below.
+        label_up = label.upper()
+        if any(k in label_up for k in ("CONCLUSION", "INTERPRETATION", "RELEVANCE", "SIGNIFICANCE")):
+            labeled_conclusion = text
+
+    return " ".join(parts), labeled_conclusion
  
-def pubmed_to_entry(details, abstract, idx, existing_ids):
+def pubmed_to_entry(details, abstract, idx, existing_ids, labeled_conclusion=None):
     pmid = str(details.get("uid", ""))
     uid  = f"pmid:{pmid}"
     if uid in existing_ids: return None, None
@@ -442,7 +522,19 @@ def pubmed_to_entry(details, abstract, idx, existing_ids):
         return None, {"pmid": pmid, "title": title, "reason": "retracted_publication"}
  
     on_topic = is_on_topic(title, abstract)
-    conclusion = extract_conclusion(clean_title_case(abstract))
+    # Prefer PubMed's own labeled CONCLUSIONS/INTERPRETATION text straight
+    # from the XML — it's already isolated from authors/affiliations by
+    # the schema. Only fall back to the regex scan for unstructured
+    # abstracts where no such label exists.
+    conclusion = (
+        finalize_summary_text(labeled_conclusion) if labeled_conclusion
+        else extract_conclusion(clean_title_case(abstract))
+    )
+    if not conclusion:
+        # PubMed has no abstract on file for this record (common for older
+        # entries, letters, and some conference proceedings) — say so
+        # plainly instead of leaving the card blank.
+        conclusion = "No abstract on file with PubMed for this entry — see the source link for details."
     tags = infer_tags(title, abstract)
  
     entry = {
@@ -494,9 +586,9 @@ def run_pubmed(existing_ids):
     entries, retracted = [], []
     for i, det in enumerate(details_list):
         pmid     = str(det.get("uid",""))
-        abstract = pubmed_abstract(pmid)
+        abstract, labeled_conclusion = pubmed_abstract(pmid)
         time.sleep(0.35)
-        entry, retract_flag = pubmed_to_entry(det, abstract, 1000+i, existing_ids)
+        entry, retract_flag = pubmed_to_entry(det, abstract, 1000+i, existing_ids, labeled_conclusion)
         if entry:
             entries.append(entry)
             existing_ids.add(f"pmid:{pmid}")
@@ -575,6 +667,9 @@ def openalex_to_entry(work, idx, existing_ids):
     tier, _ = classify_tier(title, abstract, pubtype_list=None)
     on_topic = is_on_topic(title, abstract)
     conclusion = extract_conclusion(abstract)
+    if not conclusion:
+        # OpenAlex frequently omits abstracts for publisher/legal reasons.
+        conclusion = "No abstract on file with OpenAlex for this entry — see the source link for details."
     tags = infer_tags(title, abstract)
     url = f"https://doi.org/{doi}" if doi else f"https://openalex.org/{oa_id}"
  

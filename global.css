@@ -3925,6 +3925,18 @@ body.rdb-filters-open { overflow: hidden; }
   border-radius: 3px;
 }
 
+.card2-sample-pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .06em;
+  color: var(--rdb-muted);
+  background: rgba(197,179,139,.20);
+  border: 1px solid rgba(197,179,139,.40);
+  padding: 2px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
 .card2-year {
   font-family: 'DM Mono', monospace;
   font-size: 10px;
@@ -3934,10 +3946,10 @@ body.rdb-filters-open { overflow: hidden; }
 
 .card2-title {
   font-family: 'Inter', sans-serif;
-  font-size: 13.5px;
+  font-size: 14.5px;
   font-weight: 600;
   line-height: 1.35;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
   color: var(--rdb-text);
 }
 
@@ -3949,20 +3961,35 @@ body.rdb-filters-open { overflow: hidden; }
 
 .card2-title a:hover { color: var(--rdb-green); border-bottom-color: var(--rdb-green); }
 
+/* Byline — deliberately quiet. It's citation metadata, not the point
+   of the card, so it sits small and muted between the title (the
+   headline) and the summary (the blurb — the part worth reading). */
 .card2-byline {
   font-family: 'DM Mono', monospace;
   font-size: 9.5px;
   color: var(--rdb-muted);
-  margin-bottom: 7px;
+  letter-spacing: .02em;
+  margin-bottom: 9px;
 }
 
-.card2-byline em { font-style: italic; }
+.card2-byline em { font-style: normal; }
 
+/* Summary — the blurb. Serif to read as editorial content rather than
+   UI chrome, sized up from the byline so it's unmistakably the card's
+   focal text, not an afterthought under a wall of author names. */
 .card2-summary {
-  font-size: 12.5px;
-  color: rgba(45,45,45,.8);
-  line-height: 1.55;
-  margin-bottom: 10px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 14px;
+  color: var(--rdb-text);
+  line-height: 1.6;
+  margin-bottom: 11px;
+}
+
+.card2-summary--empty {
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--rdb-muted);
 }
 
 .card2-bottom {

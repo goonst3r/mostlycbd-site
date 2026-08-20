@@ -1,0 +1,375 @@
+{
+  "meta": {
+    "generated": "2026-08-20T16:44:26.888329",
+    "pipeline_version": "2.0",
+    "total_pending": 9,
+    "instructions": "These are outliers, not a full review queue: off-topic-flagged matches, lower evidence tiers (observational/case-report/preclinical), or OpenAlex hits without PubMed's peer-review confirmation. Set 'approved': true on entries you want published, then run: python build_evidence.py --approve"
+  },
+  "pending": [
+    {
+      "id": "p1003",
+      "source": "pubmed",
+      "title": "Long-term safety and effectiveness of fenfluramine in children and adults with Dravet syndrome",
+      "authors": "Scheffer IE, Nabbout R, Lagae L et al.",
+      "journal": "Epilepsia",
+      "year": 2025,
+      "study_type": "rct",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40072476/",
+      "pubmed_id": "40072476",
+      "doi": null,
+      "plain_summary": "In adult patients, 29 of 41 (70.7%) and 29 of 42 patients (69.1%) demonstrated clinically meaningful improvement on CGI-I at last visit as rated by caregivers and investigators, respectively. SIGNIFICANCE: Our OLE study of FFA in patients with DS confirmed previous positive findings and extended the exposure up to 3.5 years. No new or unexpected safety signals were observed and FFA demonstrated sustained and clinically meaningful reduction in MCSF.",
+      "finding": "positive",
+      "tags": [
+        "epilepsy",
+        "safety",
+        "preclinical",
+        "dosing",
+        "rct"
+      ],
+      "conditions": [
+        "epilepsy"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=324",
+      "on_topic": false,
+      "auto_publish": false,
+      "review_reason": "off_topic_match",
+      "approved": false
+    },
+    {
+      "id": "p1020",
+      "source": "pubmed",
+      "title": "Medical Cannabinoids in Children and Adolescents: A Systematic Review",
+      "authors": "Wong SS, Wilens TE",
+      "journal": "Pediatrics",
+      "year": 2017,
+      "study_type": "case_report",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29061872/",
+      "pubmed_id": "29061872",
+      "doi": null,
+      "plain_summary": "Additional research is needed to evaluate the potential role of medical cannabinoids in children and adolescents, especially given increasing accessibility from state legalization and potential psychiatric and neurocognitive adverse effects identified from studies of recreational cannabis use.",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "neuropathy",
+        "ptsd",
+        "epilepsy",
+        "cancer",
+        "ms",
+        "safety",
+        "preclinical",
+        "dosing",
+        "rct"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "neuropathic-pain",
+        "ptsd",
+        "epilepsy",
+        "cancer-related",
+        "ms"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=795",
+      "on_topic": true,
+      "auto_publish": false,
+      "review_reason": "tier_below_auto_publish:case_report",
+      "approved": false
+    },
+    {
+      "id": "p1062",
+      "source": "pubmed",
+      "title": "Memantine for autism spectrum disorder",
+      "authors": "Brignell A, Marraffa C, Williams K et al.",
+      "journal": "Cochrane Database Syst Rev",
+      "year": 2022,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36006807/",
+      "pubmed_id": "36006807",
+      "doi": null,
+      "plain_summary": "of data, and the decision to present these results. The other two studies reported no financial support or sponsorship; though in one of the two, the study medication was an in-kind contribution from Forest Pharmaceuticals. Primary outcomes There was no clear evidence of a difference between memantine and placebo with respect to severity of core symptoms of autism, although we are very uncertain about the evidence. The standardised mean difference in autism symptoms score in...",
+      "finding": "mixed",
+      "tags": [
+        "autism",
+        "safety",
+        "preclinical",
+        "dosing",
+        "rct"
+      ],
+      "conditions": [
+        "autism"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=204",
+      "on_topic": false,
+      "auto_publish": false,
+      "review_reason": "off_topic_match",
+      "approved": false
+    },
+    {
+      "id": "p1063",
+      "source": "pubmed",
+      "title": "Effects of ganaxolone on non-seizure outcomes in CDKL5 Deficiency Disorder: Double-blind placebo-controlled randomized trial",
+      "authors": "Downs J, Jacoby P, Specchio N et al.",
+      "journal": "Eur J Paediatr Neurol",
+      "year": 2024,
+      "study_type": "clinical_trial",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38959712/",
+      "pubmed_id": "38959712",
+      "doi": null,
+      "plain_summary": "Daytime sleepiness scores were similar between groups. The total change in QOL score for children in the ganaxolone group was 2.6 points (95%CI -1.74,7.02) higher (improved) than in the placebo group but without statistical significance. Along with better seizure control, children who received ganaxolone had improved behavioural scores in select domains compared to placebo.",
+      "finding": "mixed",
+      "tags": [
+        "anxiety",
+        "sleep",
+        "epilepsy",
+        "depression",
+        "rct"
+      ],
+      "conditions": [
+        "anxiety",
+        "sleep",
+        "epilepsy",
+        "depression"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": false,
+      "auto_publish": false,
+      "review_reason": "off_topic_match",
+      "approved": false
+    },
+    {
+      "id": "p1064",
+      "source": "pubmed",
+      "title": "Randomized Placebo-Controlled Trial of Nabilone for Agitation in Alzheimer's Disease",
+      "authors": "Herrmann N, Ruthirakuhan M, Gallagher D et al.",
+      "journal": "Am J Geriatr Psychiatry",
+      "year": 2019,
+      "study_type": "clinical_trial",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31182351/",
+      "pubmed_id": "31182351",
+      "doi": null,
+      "plain_summary": "Nabilone may be an effective treatment for agitation. However, sedation and cognition should be closely monitored.",
+      "finding": "positive",
+      "tags": [
+        "safety",
+        "preclinical",
+        "dosing",
+        "rct"
+      ],
+      "conditions": [],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=25",
+      "on_topic": false,
+      "auto_publish": false,
+      "review_reason": "off_topic_match",
+      "approved": false
+    },
+    {
+      "id": "p1065",
+      "source": "pubmed",
+      "title": "Atypical antipsychotics for autism spectrum disorder: a network meta-analysis",
+      "authors": "Meza N, Franco JV, Sguassero Y et al.",
+      "journal": "Cochrane Database Syst Rev",
+      "year": 2025,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40396498/",
+      "pubmed_id": "40396498",
+      "doi": null,
+      "plain_summary": "Risperidone and aripiprazole may reduce symptoms of irritability compared to placebo in children with ASD in the short term, but lurasidone probably has little to no effect on irritability compared to placebo. Other benefits and potential harms observed ranged from moderate- to very low-certainty evidence. The available data did not allow comprehensive subgroup analyses. New randomised controlled trials with larger sample sizes are needed to balance the efficacy and safety...",
+      "finding": "negative",
+      "tags": [
+        "autism",
+        "safety",
+        "preclinical",
+        "meta-analysis",
+        "rct"
+      ],
+      "conditions": [
+        "autism"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=31",
+      "on_topic": false,
+      "auto_publish": false,
+      "review_reason": "off_topic_match",
+      "approved": false
+    },
+    {
+      "id": "p1092",
+      "source": "pubmed",
+      "title": "Opioids for Chronic Noncancer Pain: A Systematic Review and Meta-analysis",
+      "authors": "Busse JW, Wang L, Kamaleldin M et al.",
+      "journal": "JAMA",
+      "year": 2018,
+      "study_type": "meta_analysis",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30561481/",
+      "pubmed_id": "30561481",
+      "doi": null,
+      "plain_summary": "AND RELEVANCE: In this meta-analysis of RCTs of patients with chronic noncancer pain, evidence from high-quality studies showed that opioid use was associated with statistically significant but small improvements in pain and physical functioning, and increased risk of vomiting compared with placebo. Comparisons of opioids with nonopioid alternatives suggested that the benefit for pain and functioning may be similar, although the evidence was from studies of only low to...",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "neuropathy",
+        "epilepsy",
+        "inflammation",
+        "depression",
+        "cancer",
+        "opioid",
+        "safety",
+        "preclinical",
+        "meta-analysis"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "neuropathic-pain",
+        "epilepsy",
+        "inflammation",
+        "depression",
+        "cancer-related",
+        "opioid-related"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=169",
+      "on_topic": false,
+      "auto_publish": false,
+      "review_reason": "off_topic_match",
+      "approved": false
+    },
+    {
+      "id": "p1136",
+      "source": "pubmed",
+      "title": "Use of Cannabidiol in the Management of Insomnia: A Systematic Review",
+      "authors": "Ranum RM, Whipple MO, Croghan I et al.",
+      "journal": "Cannabis Cannabinoid Res",
+      "year": 2023,
+      "study_type": "case_report",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36149724/",
+      "pubmed_id": "36149724",
+      "doi": null,
+      "plain_summary": "The results of our systematic review suggest that CBD alone or with equal quantities of THC may be beneficial in alleviating the symptoms of insomnia. Nevertheless, future research assessing CBDs effectiveness in population of patients specifically with insomnia utilizing validated subjective and objective measures is necessary before definitive inferences can be made.",
+      "finding": "positive",
+      "tags": [
+        "sleep",
+        "cbd-only",
+        "thc",
+        "preclinical",
+        "rct"
+      ],
+      "conditions": [
+        "sleep"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=34",
+      "on_topic": true,
+      "auto_publish": false,
+      "review_reason": "tier_below_auto_publish:case_report",
+      "approved": false
+    },
+    {
+      "id": "p1177",
+      "source": "pubmed",
+      "title": "Updated trends in the global prevalence and burden of mental disorders, 1990-2023: a systematic analysis for the Global Burden of Disease Study 2023",
+      "authors": "GBD 2023 Mental Disorder Collaborators",
+      "journal": "Lancet",
+      "year": 2026,
+      "study_type": "systematic_review",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42167272/",
+      "pubmed_id": "42167272",
+      "doi": null,
+      "plain_summary": "A significant health burden was imposed by mental disorders in all countries and territories in 2023, irrespective of the health resources available. In some instances, this burden has increased over time and is unevenly distributed across populations. Stronger surveillance systems, particularly in low-income and middle-income countries, are required. Additionally, we need more coordinated and inclusive policies to reduce the burden through early treatment and prevention,...",
+      "finding": "mixed",
+      "tags": [
+        "anxiety",
+        "depression",
+        "autism",
+        "preclinical"
+      ],
+      "conditions": [
+        "anxiety",
+        "depression",
+        "autism"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "See source",
+      "on_topic": false,
+      "auto_publish": false,
+      "review_reason": "off_topic_match",
+      "approved": false
+    }
+  ]
+}
