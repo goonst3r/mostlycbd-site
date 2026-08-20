@@ -53,7 +53,7 @@ import urllib.request, urllib.parse
 #  CONFIG — edit this section
 # ═══════════════════════════════════════════
 
-PUBMED_API_KEY   = ""          # Free: ncbi.nlm.nih.gov/account/ — raises rate limit 3→10 req/s
+PUBMED_API_KEY   = "253cf9dde891b23bda684b0e8f581cd10609"          # Free: ncbi.nlm.nih.gov/account/ — raises rate limit 3→10 req/s
 OPENALEX_EMAIL   = ""          # Optional but polite: puts you in OpenAlex's "polite pool"
 STUDIES_FILE     = "studies.json"
 PENDING_FILE     = "pending.json"      # outliers needing a human glance — NOT a full review queue
