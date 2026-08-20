@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "generated": "2026-08-20T16:07:00.635539",
+    "pipeline_version": "2.0",
+    "total_pending": 3,
+    "instructions": "These are outliers, not a full review queue: off-topic-flagged matches, lower evidence tiers (observational/case-report/preclinical), or OpenAlex hits without PubMed's peer-review confirmation. Set 'approved': true on entries you want published, then run: python build_evidence.py --approve"
+  },
+  "pending": [
+    {
+      "id": "p1126",
+      "source": "pubmed",
+      "title": "Medical Cannabinoids in Children and Adolescents: A Systematic Review",
+      "authors": "Wong SS, Wilens TE",
+      "journal": "Pediatrics",
+      "year": 2017,
+      "study_type": "case_report",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29061872/",
+      "pubmed_id": "29061872",
+      "doi": null,
+      "plain_summary": ". Wong SS(), Wilens TE().",
+      "finding": "mixed",
+      "tags": [
+        "pain",
+        "neuropathy",
+        "ptsd",
+        "epilepsy",
+        "cancer",
+        "ms",
+        "safety",
+        "preclinical",
+        "dosing"
+      ],
+      "conditions": [
+        "chronic-pain",
+        "neuropathic-pain",
+        "ptsd",
+        "epilepsy",
+        "cancer-related",
+        "ms"
+      ],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=795",
+      "on_topic": true,
+      "auto_publish": false,
+      "review_reason": "tier_below_auto_publish:case_report",
+      "approved": false
+    },
+    {
+      "id": "p1185",
+      "source": "pubmed",
+      "title": "Use of Cannabidiol in the Management of Insomnia: A Systematic Review",
+      "authors": "Ranum RM, Whipple MO, Croghan I et al.",
+      "journal": "Cannabis Cannabinoid Res",
+      "year": 2023,
+      "study_type": "case_report",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36149724/",
+      "pubmed_id": "36149724",
+      "doi": null,
+      "plain_summary": "Epub Sep . Use of Cannabidiol in the Management of Insomnia: A Systematic Review. Ranum RM(), Whipple MO(), Croghan I(), Bauer B(), Toussaint LL(), Vincent A().",
+      "finding": "mixed",
+      "tags": [
+        "sleep",
+        "cbd-only",
+        "thc",
+        "preclinical",
+        "rct"
+      ],
+      "conditions": [
+        "sleep"
+      ],
+      "cannabinoids": [
+        "cbd",
+        "thc"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=34",
+      "on_topic": true,
+      "auto_publish": false,
+      "review_reason": "tier_below_auto_publish:case_report",
+      "approved": false
+    },
+    {
+      "id": "p1216",
+      "source": "pubmed",
+      "title": "Randomized Placebo-Controlled Trial of Nabilone for Agitation in Alzheimer's Disease",
+      "authors": "Herrmann N, Ruthirakuhan M, Gallagher D et al.",
+      "journal": "Am J Geriatr Psychiatry",
+      "year": 2019,
+      "study_type": "clinical_trial",
+      "evidence_tier_source": "pubtype",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31182351/",
+      "pubmed_id": "31182351",
+      "doi": null,
+      "plain_summary": "Epub May . Randomized Placebo-Controlled Trial of Nabilone for Agitation in Alzheimer's Disease. Herrmann N(), Ruthirakuhan M(), Gallagher D(), Verhoeff NPLG(), Kiss A(), Black SE(), Lanctôt KL().",
+      "finding": "mixed",
+      "tags": [
+        "safety",
+        "preclinical",
+        "dosing",
+        "rct"
+      ],
+      "conditions": [],
+      "cannabinoids": [
+        "cannabinoids"
+      ],
+      "audience": [
+        "patient",
+        "provider",
+        "researcher"
+      ],
+      "sample_size": "N=25",
+      "on_topic": false,
+      "auto_publish": false,
+      "review_reason": "off_topic_match",
+      "approved": false
+    }
+  ]
+}
